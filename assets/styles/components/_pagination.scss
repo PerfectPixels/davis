@@ -1,0 +1,37 @@
+.woocommerce.archive nav.woocommerce-pagination ul.page-numbers { border: 1px solid #e2e2e2; border-radius: 4px; list-style: none; margin: 0; padding: 0;
+	
+	li { border: none;
+	
+		.page-numbers { font-size: 13px; color: #000; line-height: 45px; width: 45px; height: 45px; text-align: center; border-right: 1px solid #e2e2e2; margin: 0; padding: 0; position: relative; left: inherit; right: inherit; }
+		
+		.page-numbers:after{ display: none; }
+		
+		.page-numbers.prev,
+		.page-numbers.next { background: transparent; width: 90px; }
+		
+		.page-numbers.prev:before,
+		.page-numbers.next:before { font-size: 22px; vertical-align: middle; font-family: "fonticon" !important; font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; speak: none; line-height: 23px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+		
+		.page-numbers.prev:before { content: "\54"; }
+		
+		.page-numbers.next:before { content: "\55"; }
+		
+		.page-numbers.current { color: #fff !important; }
+		
+	}
+	
+	li:first-child {
+	
+		.page-numbers.current { border-radius: 4px 0 0 4px; }
+	
+	}
+	
+	li:last-child {
+		
+		.page-numbers { border: none; }		
+		
+		.page-numbers.current { border-radius: 0 4px 4px 0; }
+		
+	}
+	
+}

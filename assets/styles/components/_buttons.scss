@@ -1,0 +1,36 @@
+body .container button.button,
+body .container input.button,
+body .container a.button,
+a.vc_btn3 { background: #fff; font-size: 13px !important; font-weight: normal !important; line-height: 1 !important; text-transform: uppercase; cursor: pointer; color: #fff; padding: 20px 30px !important; letter-spacing: -0.03em !important; position: relative; display: inline-block; margin: 16px 0 0; z-index: 1; border-radius: 0; outline: none !important; transition: all 0.3s $cb; }
+
+body .container button.button:hover,
+body .container input.button:hover,
+body .container a.button:hover,
+a.vc_btn3:hover { color: #000; text-decoration: none; opacity: 0.7; }
+
+body .container .button.black { background: #000; color: #fff; margin: 0 5% 0 0; }
+body .container .button.black:hover,
+body .container input.button.black:hover { color: #fff !important; }
+
+.vc_btn3-container { margin: 0; }
+
+button.submit,
+input.submit,
+input[type=submit]  { background: #000 !important; font-size: 11px !important; font-weight: normal !important; line-height: 1 !important; text-transform: uppercase; cursor: pointer; color: #fff; padding: 15px 40px !important; border: none; letter-spacing: -0.03em !important; position: relative; display: inline-block; margin: 10px 0 0; z-index: 1; border-radius: 0; outline: none !important; transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1); 
+						
+	.loading { left: 20px !important; border: 1px solid rgba(255,255,255,.2)!important; border-left-color: rgba(255,255,255,.8)!important; }
+	.loading:before,
+	.loading:after { border: 1px solid rgba(255,255,255,.2)!important; border-left-color: rgba(255,255,255,.8)!important; }
+	
+}
+button.submit:after,
+input.submit:after,
+input[type=submit]:after { background: $yellow !important; width: 100%; height: 0; top: 0; left: 0; content: ''; position: absolute; z-index: -1; transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1); }
+button.submit:hover:after,
+input.submit:hover:after,
+input[type=submit]:hover:after { height: 100%; }
+
+button.message { background: $turquoise !important; width: 100% !important; font-size: 11px !important; line-height: 15px; text-transform: uppercase !important; letter-spacing: -0.01em !important; text-align: center !important; color: #fff !important; opacity: 0 !important; border-color: transparent !important; visibility: hidden !important; transition: all 350ms cubic-bezier(0.2, 1, 0.3, 1); }
+button.message:after { display: none; }
+button.message.show { animation: inFromAbove 350ms both cubic-bezier(0.2, 1, 0.3, 1); }
+button.message.error { background: $red !important; }
