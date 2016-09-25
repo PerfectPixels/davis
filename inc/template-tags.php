@@ -7,6 +7,8 @@
  * @package Davis
  */
 
+ namespace PP\TemplateTags;
+
 if ( ! function_exists( 'davis_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.

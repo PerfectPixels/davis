@@ -1,0 +1,512 @@
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+select, input[type="search"] {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+}
+
+input[type="search"] {
+  border-radius: 0;
+  margin-top: 0;
+}
+
+select {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.cd-select::after {
+  /* switcher arrow for select element */
+  content: '';
+  position: absolute;
+  z-index: 1;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* -------------------------------- 
+
+Patterns - reusable parts of our design
+
+-------------------------------- */
+.cd-text-replace {
+  /* replace text with image */
+  color: transparent;
+  text-indent: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.has-search-field {
+
+	.search-box { position: absolute; left: 2%; top: 15px; width: 35%;
+	
+		form { position: relative; display: block; border-radius: 3px; border: 1px solid #ddd;
+		
+			.cd-select { display: inline-block; position: relative; height: 40px; top: 20px; float: left; width: auto; transform: translateY(-50%); color: #555; font-size: 1.4rem; overflow: hidden; border-right: 1px solid #ddd;
+		  
+				select { position: absolute; left: 0; top: 50%; bottom: auto; transform: translateY(-50%); opacity: 0; color: transparent; }
+		  
+				select:focus { outline: none; }
+		  
+				.selected-value { color: #555; position: relative; display: inline-block; pointer-events: none; transition: background-color 0.3s; padding: .5em 2.7em .5em .8em; font-size: 1.4rem; border-radius: 3px; }
+		 
+				.selected-value:before,
+				.selected-value:after { background-color: #555; content: ''; display: block; height: 2px; width: 8px; position: absolute; right: 17px; top: 50%; margin-top: -1px; transition: all .3s $cb; transform: rotate3d(0,0,1,45deg); }
+		  
+				.selected-value:after { right: 12px; transform: rotate3d(0,0,1,-45deg); }
+		  
+			}
+			
+			.search-input { width: auto; overflow: hidden; position: relative; height: 40px;
+			
+				input { background: #fff; width: 100%; height: 40px; position: absolute; top: 0; left: 0; display: block; padding-left: 15px; }
+			
+				input:focus { outline: none; }
+				
+			}
+			
+			button { color: #fff; width: auto; height: 42px; top: 20px; padding: 3px 10px; position: relative; float: right; margin: 0 -1px 0 0; transform: translateY(-50%); border: none; border-radius: 0 3px 3px 0; }
+			
+			button:before { font-size: 24px; line-height: 37px; }
+			
+		}
+		
+	}
+	
+	.header-buttons li.search a.cd-search-trigger { display: none; }
+	
+}
+
+.center_logo-left_menu .search-box { left: 58%; width: 30%; }
+	
+.top_logo-left_menu .search-box { left: 17%; width: 64%; }
+
+/* -------------------------------- 
+
+Search Form
+
+-------------------------------- */
+.cd-main-search .cd-select {
+  /* hide select element on small devices */
+  display: none;
+}
+.cd-main-search .close {
+  /* 'X' icon to close search form - hidden on small devices */
+  display: none;
+}
+.cd-main-search input[type="search"] {
+  width: 100%;
+}
+.cd-main-search input[type="search"]:focus {
+  outline: none;
+}
+.cd-main-search input[type="search"]::-webkit-input-placeholder {
+  color: #ccc;
+}
+.cd-main-search input[type="search"]::-moz-placeholder {
+  color: #ccc;
+}
+.cd-main-search input[type="search"]:-moz-placeholder {
+  color: #ccc;
+}
+.cd-main-search input[type="search"]:-ms-input-placeholder {
+  color: #ccc;
+}
+
+.nav-header {
+
+  .cd-main-search {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  .cd-main-search form {
+    position: relative;
+    height: 100%;
+    /* 170px (margin left) is the sum of the logo width (124px) and additional 46px margin (to separate the form form the logo) */
+    /* 116px (margin right) takes into account the space occupied by the a.cd-search-trigger and a.close */
+    margin: 0 calc(5% + 116px) 0 calc(3% + 170px);
+  }
+  .cd-main-search input[type="search"] {
+    font-size: 2.4rem;
+    height: 100%;
+    background-color: transparent;
+    /* don't overlap <select> element */
+    padding-right: 170px;
+  }
+  .cd-main-search .cd-select {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    color: #5c5d6a;
+    font-size: 1.4rem;
+    overflow: hidden;
+  }
+  .cd-main-search span {
+    display: inline-block;
+    opacity: 0.4;
+  }
+  .cd-main-search option {
+    /* style <option> elements on Firefox */
+    color: #333545;
+    background-color: #ffffff;
+  }
+  .cd-main-search select {
+    /* the <select> element is not visible (if the list of options is not open) -  it is covered by the .selected-value element */
+    position: absolute;
+    right: 0;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    opacity: 0;
+    color: transparent;
+  }
+  .cd-main-search select:focus {
+    outline: none;
+  }
+  .cd-main-search .selected-value {
+  	position: relative;
+    opacity: 1;
+    /* clicking on this element will open the <select> drop-down list */
+    pointer-events: none;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+  }
+  .cd-main-search .selected-value:before,
+  .cd-main-search .selected-value:after {
+  	content: '';
+  	display: block;
+  	height: 2px;
+  	width: 8px;
+  	position: absolute;
+  	right: 7px;
+  	top: 50%;
+  	margin-top: -1px;
+  	transition: all .3s $cb;
+  	transform: rotate3d(0,0,1,45deg);
+  }
+  .cd-main-search .selected-value:after {
+  	right: 2px;
+  	transform: rotate3d(0,0,1,-45deg);
+  }
+  .cd-main-search select, .cd-main-search .selected-value {
+    padding: 0.5em 1.7em 0.5em .3em;
+    font-size: 1.4rem;
+    border-radius: 3px;
+  }
+  .no-pointerevents .cd-main-search .selected-value {
+    /* if the browser doesn't support the pointer-events property, hide the .selected-value element */
+    display: none;
+  }
+  .no-pointerevents .cd-main-search select {
+    /* if the browser doesn't support the pointer-events property, show the <select> element */
+    position: relative;
+    color: #ffffff;
+    transform: translateY(0);
+  }
+  .no-pointerevents .cd-main-search select:focus {
+    background-color: #3d3f4e;
+  }
+  .cd-main-search .close {
+    /* 'X' icon - used to close the search form */
+    display: inline-block;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    transform: translateY(-50%) scale(0);
+    transition: transform 0.3s;
+  }
+  .cd-main-search .close::before, .cd-main-search .close::after {
+    /* used to create the 'X' icon in css */
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 2px;
+    left: 50%;
+    top: 50%;
+  }
+  .cd-main-search .close::before {
+    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  }
+  .cd-main-search .close::after {
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+  .cd-main-search.is-visible {
+    /* search form open */
+    opacity: 1;
+    visibility: visible;
+  }
+  .cd-main-search.is-visible .close {
+    transform: translateY(-50%) scale(1);
+  }
+  .animate-search .cd-main-search.is-visible {
+    animation: cd-slide-in 0.3s;
+  }
+  
+}
+
+@keyframes cd-slide-in {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.cd-search-suggestions {
+  /* drowpdown with search suggestions - hidden on small devices */
+  display: none;
+}
+
+.nav-header {
+
+  .cd-search-suggestions {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: calc( 92% - 286px);
+    padding: 2em;
+    /* same margin of <form> element */
+    margin: 0 calc(5% + 116px) 0 calc(3% + 170px);
+    background-color: #ffffff;
+    box-shadow:  0 4px 10px rgba(0,0,0,0.06);
+  }
+  .cd-search-suggestions::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  .cd-search-suggestions .quick-links, .cd-search-suggestions .news {
+    display: inline-block;
+  }
+  .cd-search-suggestions .quick-links {
+    float: right;
+    width: 140px;
+    text-align: right;
+  }
+  .cd-search-suggestions .news {
+    float: left;
+    width: calc(100% - 140px);
+  }
+  .cd-search-suggestions h3 {
+    margin-bottom: 1.5em;
+    text-transform: uppercase;
+    color: #7a7c86;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: .1em;
+  }
+  .cd-search-suggestions h4 {
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+  .cd-search-suggestions h4 a {
+    /* prevent the text from wrapping */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    padding: .2em 0;
+  }
+  .cd-search-suggestions a {
+    display: inline-block;
+    color: #333545;
+  }
+  .no-touch .cd-search-suggestions a:hover {
+    opacity: .8;
+  }
+  .cd-search-suggestions time {
+    font-size: 1.2rem;
+    color: #70727d;
+  }
+  .cd-search-suggestions .news li {
+    position: relative;
+    padding: 0.625em 0.75em 0.75em 4em;
+    margin-bottom: 0.25em;
+  }
+  .cd-search-suggestions .news li:last-of-type {
+    margin-bottom: 0;
+  }
+  .cd-search-suggestions .image-wrapper {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+  }
+  .cd-search-suggestions .image-wrapper img {
+    display: block;
+  }
+  .cd-search-suggestions .quick-links a {
+    padding: .5em 0;
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+  
+}
+
+.nav-header.animate-search .is-visible .cd-search-suggestions {
+	/* trigger the dropdown animation if <header> has the .animate-search class */
+	transform-origin: center top;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: cd-3d-rotation 0.5s 0.3s;
+	animation-fill-mode: backwards;
+}
+
+@-webkit-keyframes cd-3d-rotation {
+  0% {
+    -webkit-transform: perspective(1000px) rotateX(-90deg);
+  }
+  100% {
+    -webkit-transform: perspective(1000px) translateY(0);
+  }
+}
+@-moz-keyframes cd-3d-rotation {
+  0% {
+    -moz-transform: perspective(1000px) rotateX(-90deg);
+  }
+  100% {
+    -moz-transform: perspective(1000px) translateY(0);
+  }
+}
+@keyframes cd-3d-rotation {
+  0% {
+    transform: perspective(1000px) rotateX(-90deg);
+  }
+  100% {
+    transform: perspective(1000px) translateY(0);
+  }
+}
+.cd-search-trigger {
+  /* trigger serach form visibility - hidden on small devices */
+  display: none;
+}
+
+@media only screen and (max-width: 1099px) {
+
+	.nav-header .cd-main-search form { margin: 0 calc(5% + 70px) 0 calc(3% + 70px); }
+
+	.nav-header .cd-search-suggestions { width: calc(92% - 140px); margin: 0 calc(5% + 70px) 0 calc(3% + 70px); }
+	
+	.has-search-field .search-box { top: 5px; }
+	
+	.top_logo-left_menu .search-box { width: 57%; }
+	
+	.center_logo-left_menu .search-box { left: 17%; width: 57%; }
+}
+
+@media only screen and (min-width: 1100px) {
+  .cd-search-trigger {
+    display: block;
+    transition: transform 0.3s;
+  }
+  .cd-search-trigger.search-form-visible:hover {
+  	color: inherit !important;
+  }
+  .cd-search-trigger.search-form-visible::after {
+    transform: translateX(-50%) translateY(-50%) scale(1);
+  }
+}
+
+/* -------------------------------- 
+
+Content cover layer
+
+-------------------------------- */
+.cd-cover-layer {
+  /* cover main content when search form is open - hidden on smal devices */
+  display: none;
+}
+@media only screen and (min-width: 1100px) {
+  .cd-cover-layer {
+    display: block;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  .cd-cover-layer.search-form-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* -------------------------------- 
+
+JavaScript Disabled
+
+-------------------------------- */
+
+.no-js .cd-search-trigger {
+  display: inline-block;
+  text-indent: 0;
+  color: #ffffff;
+  float: right;
+  line-height: 50px;
+}
+@media only screen and (min-width: 1100px) {
+  .no-js .cd-search-trigger {
+    text-indent: 100%;
+    color: transparent;
+    line-height: normal;
+  }
+}
+
+.no-js .cd-main-search {
+  position: static;
+  opacity: 1;
+  visibility: visible;
+  padding: 2em 5%;
+  background: #333545;
+}
+.no-js .cd-main-search form {
+  margin: 0;
+}
+.no-js .cd-main-search input[type="search"] {
+  background: #333545;
+}
+.no-js .cd-main-search select {
+  position: relative;
+  color: #ffffff;
+  opacity: 1;
+  transform: translateY(0);
+}
+.no-js .cd-main-search select:focus {
+  background-color: #3d3f4e;
+}
+.no-js .cd-main-search .selected-value {
+  display: none;
+}

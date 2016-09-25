@@ -1,224 +1,1165 @@
-# Copyright (C) 2016 Automattic
-# This file is distributed under the GNU General Public License v2 or later.
+# Copyright (C) 2016 Davis
+# This file is distributed under the same license as the Davis package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Davis 1.0.0\n"
+"Project-Id-Version: Davis\n"
 "Report-Msgid-Bugs-To: https://example.com/bugreport/\n"
-"POT-Creation-Date: 2016-02-14 21:43:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: PerfectPixels<info@example.com>\n"
-
-#: 404.php:17
-#@ davis
-msgid "Oops! That page can&rsquo;t be found."
-msgstr ""
-
-#: 404.php:21
-#@ davis
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Language-Team: PerfectPixels <info@example.com>\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: 404.php:16
 msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
 msgstr ""
 
-#: 404.php:33
-#@ davis
-msgid "Most Used Categories"
-msgstr ""
-
-#. translators: %1$s: smiley
-#: 404.php:51
-#, php-format
-#@ davis
-msgid "Try looking in the monthly archives. %1$s"
-msgstr ""
-
 #: comments.php:31
-#, php-format
-#@ davis
 msgctxt "comments title"
 msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: comments.php:40
-#: comments.php:61
-#@ davis
+#: comments.php:40, comments.php:61
 msgid "Comment navigation"
 msgstr ""
 
-#: comments.php:43
-#: comments.php:64
-#@ davis
+#: comments.php:43, comments.php:64
 msgid "Older Comments"
 msgstr ""
 
-#: comments.php:44
-#: comments.php:65
-#@ davis
+#: comments.php:44, comments.php:65
 msgid "Newer Comments"
 msgstr ""
 
-#: comments.php:78
-#@ davis
+#: comments.php:78, template-parts/comments.php:31
 msgid "Comments are closed."
 msgstr ""
 
-#: footer.php:18
-#@ davis
-msgid "https://wordpress.org/"
+#: functions.php:39
+msgid "Error locating %s for inclusion"
 msgstr ""
 
-#: footer.php:18
-#, php-format
-#@ davis
-msgid "Proudly powered by %s"
+#: header.php:56
+msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
 
-#: footer.php:20
-#, php-format
-#@ davis
-msgid "Theme: %1$s by %2$s."
+#: inc/extras.php:36
+msgid "by"
 msgstr ""
 
-#: functions.php:47
-#@ davis
+#: inc/extras.php:79
+msgid "Continued"
+msgstr ""
+
+#: inc/extras.php:125
+msgid "Wishlist"
+msgstr ""
+
+#: inc/extras.php:185, woocommerce/cart/mini-cart.php:22
+msgid "sprintfngettextYou have %d item in your cart"
+msgstr ""
+
+#: inc/extras.php:291
+msgid "We cannot find any account with this email address"
+msgstr ""
+
+#: inc/extras.php:293
+msgid "Your password is incorrect"
+msgstr ""
+
+#: inc/extras.php:296
+msgid "You are now logged in"
+msgstr ""
+
+#: inc/extras.php:320
+msgid "Please enter email address"
+msgstr ""
+
+#: inc/extras.php:322
+msgid "Please enter password"
+msgstr ""
+
+#: inc/extras.php:359
+msgid "Successfully registered! You are now logged in"
+msgstr ""
+
+#: inc/extras.php:361
+msgid "Email address already registered"
+msgstr ""
+
+#: inc/extras.php:386
+msgid "Enter an email address"
+msgstr ""
+
+#: inc/extras.php:402, inc/extras.php:407
+msgid "Invalid email address"
+msgstr ""
+
+#: inc/extras.php:420
+msgid "Password reset is not allowed for this user"
+msgstr ""
+
+#: inc/extras.php:447
+msgid "Check your email for the confirmation link"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/checkbox.php:57
+msgid "Mega Menu"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/checkbox.php:58
+msgid "Add Image"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/media.php:62
+msgid "Menu Image"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/media.php:187
+msgid "Change menu item image"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/media.php:187
+msgid "Set menu item image"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/media.php:187
+msgid "Set image"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/media.php:187
+msgid "Remove"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/media.php:219
+msgid "Chose menu image"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/media.php:220
+msgid "Select"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/select.php:58
+msgid "Image Type"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/select.php:68
+msgid "Icon Position"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/select.php:77, inc/menu-item-custom-fields/fields/select.php:85
+msgid "Background Location"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/select.php:93
+msgid "Image Size"
+msgstr ""
+
+#: inc/menu-item-custom-fields/fields/select.php:102
+msgid "Number of columns"
+msgstr ""
+
+#: inc/menu-walker.php:43
+msgid "Back"
+msgstr ""
+
+#: inc/reviews-pro.php:63
+msgid "Customer Reviews"
+msgstr ""
+
+#: inc/setup.php:50
+msgid "Primary Navigation"
+msgstr ""
+
+#: inc/setup.php:51
+msgid "Left Top Bar Navigation"
+msgstr ""
+
+#: inc/setup.php:52
+msgid "Right Top Bar Navigation"
+msgstr ""
+
+#: inc/setup.php:53
+msgid "Account Navigation"
+msgstr ""
+
+#: inc/setup.php:54
+msgid "Footer Navigation"
+msgstr ""
+
+#: inc/setup.php:79
 msgid "Primary"
 msgstr ""
 
-#: functions.php:102
-#@ davis
-msgid "Sidebar"
+#: inc/setup.php:100
+msgid "Footer Top"
 msgstr ""
 
-#: header.php:25
-#@ davis
-msgid "Skip to content"
+#: inc/setup.php:118
+msgid "Footer Bottom"
 msgstr ""
 
-#: header.php:45
-#@ davis
-msgid "Primary Menu"
+#: inc/setup.php:347
+msgid "Theme Options"
 msgstr ""
 
-#: inc/template-tags.php:28
-#, php-format
-#@ davis
+#: inc/setup.php:353
+msgid "Header Options"
+msgstr ""
+
+#: inc/single-variation.php:453
+msgid "DISPLAY OPTIONS"
+msgstr ""
+
+#: inc/single-variation.php:458, inc/theme_options/inc/login.php:157, inc/theme_options/inc/login.php:166, inc/theme_options/inc/login.php:315, inc/theme_options/inc/login.php:324
+msgid "Title"
+msgstr ""
+
+#: inc/single-variation.php:468
+msgid "Colors (lowercase separate with a comma)"
+msgstr ""
+
+#: inc/single-variation.php:702
+msgid "Show in Search Results?"
+msgstr ""
+
+#: inc/single-variation.php:708
+msgid "Show in Filtered Results?"
+msgstr ""
+
+#: inc/single-variation.php:714
+msgid "Show in Catalog?"
+msgstr ""
+
+#: inc/single-variation.php:720
+msgid "Featured"
+msgstr ""
+
+#: inc/template-tags.php:30
 msgctxt "post date"
 msgid "Posted on %s"
 msgstr ""
 
-#: inc/template-tags.php:33
-#, php-format
-#@ davis
+#: inc/template-tags.php:35
 msgctxt "post author"
 msgid "by %s"
 msgstr ""
 
-#. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:50
-#: inc/template-tags.php:56
-#@ davis
+#: inc/template-tags.php:52, inc/template-tags.php:58
 msgid ", "
 msgstr ""
 
-#: inc/template-tags.php:52
-#, php-format
-#@ davis
+#: inc/template-tags.php:54
 msgid "Posted in %1$s"
 msgstr ""
 
-#: inc/template-tags.php:58
-#, php-format
-#@ davis
+#: inc/template-tags.php:60
 msgid "Tagged %1$s"
 msgstr ""
 
-#: inc/template-tags.php:64
-#@ davis
-msgid "Leave a comment"
+#: inc/template-tags.php:67
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr ""
 
-#: inc/template-tags.php:64
-#@ davis
-msgid "1 Comment"
-msgstr ""
-
-#: inc/template-tags.php:64
-#@ davis
-msgid "% Comments"
-msgstr ""
-
-#. translators: %s: Name of current post
-#: inc/template-tags.php:71
-#: template-parts/content-page.php:33
-#, php-format
-#@ davis
+#: inc/template-tags.php:74
 msgid "Edit %s"
 msgstr ""
 
-#: search.php:19
-#, php-format
-#@ davis
-msgid "Search Results for: %s"
+#: inc/theme_options/inc/footer.php:6
+msgid "Footer"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:19
+msgid "Sidebar display options"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:20
+msgid "Choose where to display the footer sidebar."
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:26
+msgid "Nowhere"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:27
+msgid "Products pages (shop, categories, product)"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:28
+msgid "Product page only"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:29
+msgid "Everywhere"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:43
+msgid "Display Bottom Sidebar"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:44
+msgid "Choose if you want to display or remove the bottom sidebar in the footer."
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:50, inc/theme_options/inc/footer.php:123, inc/theme_options/inc/header.php:54, inc/theme_options/inc/header.php:196, inc/theme_options/inc/header.php:243, inc/theme_options/inc/header.php:388, inc/theme_options/inc/header.php:745, inc/theme_options/inc/header.php:827, inc/theme_options/inc/header.php:841, inc/theme_options/inc/shop.php:78
+msgid "Show"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:51, inc/theme_options/inc/footer.php:124, inc/theme_options/inc/header.php:55, inc/theme_options/inc/header.php:197, inc/theme_options/inc/header.php:244, inc/theme_options/inc/header.php:389, inc/theme_options/inc/header.php:746, inc/theme_options/inc/header.php:828, inc/theme_options/inc/header.php:842, inc/theme_options/inc/shop.php:79
+msgid "Hide"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:57, inc/theme_options/inc/footer.php:215, inc/theme_options/inc/header.php:82, inc/theme_options/inc/login.php:36, inc/theme_options/inc/login.php:194
+msgid "Background Color"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:77, inc/theme_options/inc/footer.php:231, inc/theme_options/inc/header.php:113, inc/theme_options/inc/login.php:124, inc/theme_options/inc/login.php:282
+msgid "Text Color"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:107
+msgid "Copyright Text"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:111
+msgid "© 2016 ThemeConcept Ltd. All Rights Reserved."
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:116, inc/theme_options/inc/header.php:236
+msgid "Display Social Media"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:117
+msgid "Choose if you want to display or remove the social media."
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:130, inc/theme_options/inc/header.php:271, inc/theme_options/inc/social-media.php:14
+msgid "Facebook"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:131, inc/theme_options/inc/header.php:272
+msgid "Make sure you have added the Facebook URL to the "
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:131, inc/theme_options/inc/footer.php:148, inc/theme_options/inc/footer.php:165, inc/theme_options/inc/footer.php:182, inc/theme_options/inc/footer.php:199, inc/theme_options/inc/header.php:272, inc/theme_options/inc/header.php:294, inc/theme_options/inc/header.php:316, inc/theme_options/inc/header.php:338, inc/theme_options/inc/header.php:360
+msgid "Social Media section"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:147, inc/theme_options/inc/header.php:293, inc/theme_options/inc/social-media.php:23
+msgid "Twitter"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:148, inc/theme_options/inc/header.php:294
+msgid "Make sure you have added the Twitter URL to the "
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:164, inc/theme_options/inc/header.php:315, inc/theme_options/inc/social-media.php:32
+msgid "Google Plus"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:165, inc/theme_options/inc/header.php:316
+msgid "Make sure you have added the Google Plus URL to the "
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:181, inc/theme_options/inc/header.php:337, inc/theme_options/inc/social-media.php:41
+msgid "Instagram"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:182, inc/theme_options/inc/header.php:338
+msgid "Make sure you have added the Instagram URL to the "
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:198, inc/theme_options/inc/header.php:359, inc/theme_options/inc/social-media.php:50
+msgid "Pinterest"
+msgstr ""
+
+#: inc/theme_options/inc/footer.php:199, inc/theme_options/inc/header.php:360
+msgid "Make sure you have added the Pinterest URL to the "
+msgstr ""
+
+#: inc/theme_options/inc/general.php:6
+msgid "Fonts & Colors"
+msgstr ""
+
+#: inc/theme_options/inc/general.php:68
+msgid "Primary Color"
+msgstr ""
+
+#: inc/theme_options/inc/general.php:108
+msgid "Secondary Color"
+msgstr ""
+
+#: inc/theme_options/inc/general.php:109
+msgid "Color used on the top of the primary color."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:6
+msgid "Header"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:19
+msgid "Light Logo"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:20, inc/theme_options/inc/header.php:30
+msgid "Make sure you upload a logo that is at least 100 pixels tall."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:29
+msgid "Dark Logo"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:47
+msgid "Display Top Bar"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:48
+msgid "Choose to show/hide the top bar above the menu header."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:61
+msgid "Fixed Top Bar"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:62
+msgid "Choose to have the top bar always at the top of the page whenever the user scroll the page or to let it move."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:68, inc/theme_options/inc/header.php:542
+msgid "Fixed"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:69, inc/theme_options/inc/header.php:543
+msgid "Moving"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:154
+msgid "Hover Text Color"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:189, inc/theme_options/inc/header.php:738
+msgid "User Action Icons"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:190, inc/theme_options/inc/header.php:739
+msgid "Choose to show/hide the action icons (account, login, cart, wishlist...)"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:203, inc/theme_options/inc/header.php:752
+msgid "Icon Counter Color"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:204, inc/theme_options/inc/header.php:753
+msgid "Select the color of the text counter inside the action icons (cart and wishlist)."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:237
+msgid "Choose to show/hide the social media icons."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:257
+msgid "Social media location"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:258
+msgid "Choose to display the social media icons on the left or the right of the top bar."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:264, inc/theme_options/inc/header.php:409
+msgid "Right"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:265, inc/theme_options/inc/header.php:410
+msgid "Left"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:381
+msgid "Display Message Box"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:382
+msgid "Choose to show/hide the message box."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:402
+msgid "Message location"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:403
+msgid "Choose to display the message box on the left or the right of the top bar."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:416
+msgid "Message Text"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:420, template-parts/header/topbar.php:5
+msgid "Free shipping and returns on all orders"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:437
+msgid "Message text Color"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:473
+msgid "Message Box Color"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:517
+msgid "Choose a layout between all the available ones."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:535
+msgid "Fixed Header"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:536
+msgid "Choose to have the header always at the top of the page whenever the user scroll the page or to let it move."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:550
+msgid "Top Page Transparent Header"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:551
+msgid "Choose to have a transparent header when at the top page. ( Ideal if you have a slideshow underneath a sticky header )"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:557, woocommerce/single-product/contributions/actions.php:18
+msgid "Yes"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:558, woocommerce/single-product/contributions/actions.php:20
+msgid "No"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:564
+msgid "Transparent Header Text Color"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:596
+msgid "Header Background Color"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:631
+msgid "Header Text Color"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:675
+msgid "Header Hover Text Color"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:710
+msgid "Logo Selection"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:711
+msgid "Select the logo type you want to display depending on the header color."
+msgstr ""
+
+#: inc/theme_options/inc/header.php:717
+msgid "Light"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:718
+msgid "Dark"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:724
+msgid "Mega Menu Style"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:725
+msgid "Choose to have the submenu fullwidth or boxed"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:731
+msgid "Fullwidth"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:732
+msgid "Boxed"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:790
+msgid "Icon Counter Hover Color"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:820
+msgid "Search Icon"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:821
+msgid "Choose to show/hide the search icon"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:834
+msgid "Search Input Field"
+msgstr ""
+
+#: inc/theme_options/inc/header.php:835
+msgid "Choose to show/hide the search input field."
+msgstr ""
+
+#: inc/theme_options/inc/login.php:6
+msgid "Login Popup"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:20
+msgid "Login Popup Style"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:21
+msgid "Choose which style you can to display the login popup."
+msgstr ""
+
+#: inc/theme_options/inc/login.php:27
+msgid "Tabs"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:28
+msgid "Left Image"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:57, inc/theme_options/inc/login.php:215
+msgid "Background Image"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:72, inc/theme_options/inc/login.php:230
+msgid "Background Repeat"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:78, inc/theme_options/inc/login.php:236
+msgid "Repeat"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:79, inc/theme_options/inc/login.php:237
+msgid "No Repeat"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:98, inc/theme_options/inc/login.php:256
+msgid "Background Size"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:104, inc/theme_options/inc/login.php:262
+msgid "Cover"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:105, inc/theme_options/inc/login.php:263
+msgid "Contain"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:140, inc/theme_options/inc/login.php:298
+msgid "Button Color"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:161
+msgid "Welcome back!"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:170
+msgid "If you already have an account, you can sign in again by clicking on the button below."
+msgstr ""
+
+#: inc/theme_options/inc/login.php:175, inc/theme_options/inc/login.php:333
+msgid "Button"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:179
+msgid "Login now"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:319
+msgid "Hi There!"
+msgstr ""
+
+#: inc/theme_options/inc/login.php:328
+msgid "If you don’t have an account yet, you can join us by clicking on the button below."
+msgstr ""
+
+#: inc/theme_options/inc/login.php:337
+msgid "Create an account"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:6
+msgid "Shop"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:19
+msgid "Page Title"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:23, inc/titles.php:20
+msgid "Shop all products"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:28
+msgid "Products per row"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:42
+msgid "Shop Sidebar"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:43
+msgid "Choose if you want to display the sidebar on the product page and select the type."
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:49
+msgid "No Sidebar"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:50
+msgid "Default Sidebar"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:51
+msgid "Off-canvas Sidebar"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:57
+msgid "Product Card Style"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:58
+msgid "Choose between the different product design style."
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:71
+msgid "Product Details"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:72
+msgid "Choose if you want to create a clean style by only displaying the product. The details are display only on hover."
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:85
+msgid "Variations Slider"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:86
+msgid "Choose if you want to display the product variations as a slider on the shop pages."
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:92, inc/theme_options/inc/shop.php:107, inc/theme_options/inc/shop.php:224
+msgid "Enable"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:93, inc/theme_options/inc/shop.php:108, inc/theme_options/inc/shop.php:225
+msgid "Disable"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:100
+msgid "Single Variation Product"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:101
+msgid "Separate the variations as single standalone products on category pages without subcategories. This is ideal for customers to have the variations slider on the top categories and see all variations at glance when filtering down."
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:131
+msgid "Select the style of the short description, metas and image slider. (can be overwritten in the product option itself)"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:146
+msgid "The cart is being cached, make sure you empty the cache after updating any option in this section."
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:154
+msgid "Cart Title"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:158, woocommerce/cart/mini-cart.php:21, woocommerce/cart/mini-cart.php:33
+msgid "Cart Summary"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:163
+msgid "Details Title"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:167, woocommerce/cart/mini-cart.php:36, woocommerce/checkout/form-checkout.php:44
+msgid "Customer Details"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:172
+msgid "Details Subtitle"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:176, woocommerce/checkout/form-checkout.php:45
+msgid "Fill in your details in the form bellow"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:181
+msgid "Shipping / Payment Title"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:185, woocommerce/cart/mini-cart.php:39, woocommerce/checkout/form-checkout.php:141
+msgid "Shipping & Payment"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:190
+msgid "Shipping / Payment Subtitle"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:194, woocommerce/checkout/form-checkout.php:142
+msgid "Select your preferred shipping and payment methods"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:199
+msgid "Review Title"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:203, woocommerce/checkout/form-checkout.php:164
+msgid "Review Order"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:208
+msgid "Review Subtitle"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:212, woocommerce/checkout/form-checkout.php:165
+msgid "Confirm your cart content and the total of your order"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:217
+msgid "Quick Checkout"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:218
+msgid "Choose if you want a quick checkout available on all pages instead of the default Woocommerce checkout page. PLEASE NOTE: Quick checkout was not tested with all existing plugins that adds/modifies the checkout process or layout. If you find any issues while using it please disable it."
+msgstr ""
+
+#: inc/titles.php:15
+msgid "Latest Posts"
+msgstr ""
+
+#: inc/titles.php:32
+msgid "Search Results for %s"
+msgstr ""
+
+#: inc/titles.php:36
+msgid "Not Found"
+msgstr ""
+
+#: template-parts/comments.php:9
+msgctxt "comments title"
+msgid "One response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s responses to &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/comments.php:19
+msgid "&larr; Older comments"
+msgstr ""
+
+#: template-parts/comments.php:22
+msgid "Newer comments &rarr;"
 msgstr ""
 
 #: template-parts/content-none.php:14
-#@ davis
 msgid "Nothing Found"
 msgstr ""
 
 #: template-parts/content-none.php:21
-#, php-format
-#@ davis
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
 #: template-parts/content-none.php:25
-#@ davis
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr ""
 
 #: template-parts/content-none.php:31
-#@ davis
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
 
-#: template-parts/content-page.php:22
-#: template-parts/content.php:38
-#@ davis
+#: template-parts/content-page.php:2, template-parts/content-single.php:11
 msgid "Pages:"
 msgstr ""
 
-#. translators: %s: Name of current post. 
-#: template-parts/content.php:33
-#, php-format
-#@ davis
-msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+#: template-parts/entry-meta.php:2, woocommerce/single-product/contributions/meta.php:22, woocommerce/single-product/review.php:52
+msgid "By"
 msgstr ""
 
-#. Theme Name of the plugin/theme
-msgid "_s"
+#: template-parts/header/header-icons.php:12
+msgid "Cart"
 msgstr ""
 
-#. Theme URI of the plugin/theme
-#@ davis
-msgid "http://underscores.me/"
+#: template-parts/header/header-icons.php:29
+msgid "Wishlists"
 msgstr ""
 
-#. Description of the plugin/theme
-#@ davis
-msgid "Hi. I'm a starter theme called <code>_s</code>, or <em>underscores</em>, if you like. I'm a theme meant for hacking so don't use me as a <em>Parent Theme</em>. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for."
+#: template-parts/header/header-icons.php:37
+msgid "My Account"
 msgstr ""
 
-#. Author of the plugin/theme
-#@ davis
-msgid "Automattic"
+#: template-parts/header/header-icons.php:39, woocommerce/myaccount/form-login.php:80, woocommerce/myaccount/form-login.php:95
+msgid "Login"
 msgstr ""
 
-#. Author URI of the plugin/theme
-#@ davis
-msgid "http://automattic.com/"
+#: template-parts/header/header-icons.php:46
+msgid "Account Settings"
+msgstr ""
+
+#: template-parts/header/header-icons.php:47
+msgid "Logout"
+msgstr ""
+
+#: template-parts/header/navigation.php:71, template-parts/header/navigation.php:82, template-parts/header/navigation.php:125, template-parts/header/navigation.php:136
+msgid "All"
+msgstr ""
+
+#: template-parts/header/navigation.php:120
+msgid "Search on %s"
+msgstr ""
+
+#: template-parts/header/navigation.php:123
+msgid "in"
+msgstr ""
+
+#: template-parts/header/page-title.php:68
+msgid "From your account dashboard you can view your recent orders, manage your shipping and billing addresses"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:42
+msgid "Order Review"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:122
+msgid "Your shopping cart is empty. Browse our <a href=\"%s\" class=\"primary-color\">shop</a>"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:133
+msgid "Subtotal"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:158
+msgid "Place Order"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:36
+msgid "Your are using Paypal Checkout - Please double check your details before placing your order."
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:59
+msgid "Returning customer? "
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:60
+msgid "Click here to login"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:81
+msgid "Login/Register with Social Media"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:88, woocommerce/myaccount/form-login.php:164
+msgid "We would never post anything without your permission."
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:145
+msgid "Shipping Method"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:152
+msgid "Payment Method"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:29
+msgid "Something went wrong"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:42, woocommerce/checkout/thankyou.php:242
+msgid "Thank you!"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:95, woocommerce/myaccount/form-login.php:148, woocommerce/myaccount/form-login.php:149
+msgid "Registering"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:95, woocommerce/myaccount/form-login.php:71, woocommerce/myaccount/form-login.php:148, woocommerce/myaccount/form-login.php:149
+msgid "Register"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:189
+msgid "Order Summary"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:223
+msgid "Grand Total"
+msgstr ""
+
+#: woocommerce/loop/add-to-cart.php:46, woocommerce/loop/add-to-cart.php:47
+msgid "Add to Cart"
+msgstr ""
+
+#: woocommerce/loop/add-to-cart.php:46, woocommerce/loop/add-to-cart.php:48
+msgid "Out of stock"
+msgstr ""
+
+#: woocommerce/loop/variable.php:36
+msgid "Select your options"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:26
+msgid "Recent Orders"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:48
+msgid "View all"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:85, woocommerce/myaccount/form-login.php:110
+msgid "Username or Email Address*"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:88, woocommerce/myaccount/form-login.php:138
+msgid "Password*"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:94
+msgid "Remember me"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:95
+msgid "Please wait"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:96
+msgid "Lost your password?"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:107
+msgid "Lost you password?"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:108
+msgid "Please enter your username or email address. You will receive a link to create a new password via email."
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:112
+msgid "Sending email"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:112
+msgid "Reset Password"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:113, woocommerce/single-product/form-flag-contribution.php:45
+msgid "Cancel"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:122
+msgid "Registration"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:128
+msgid "Username*"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:133
+msgid "Email Address*"
+msgstr ""
+
+#: woocommerce/myaccount/payment-methods.php:53
+msgid "Ending"
+msgstr ""
+
+#: woocommerce/myaccount/payment-methods.php:59
+msgid "Expires"
+msgstr ""
+
+#: woocommerce/order/order-details.php:48
+msgid "Order Placed"
+msgstr ""
+
+#: woocommerce/order/order-details.php:52
+msgid "Total"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:38, woocommerce/single-product/contributions.php:52
+msgid "Summary"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:40
+msgid "%s"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:46
+msgctxt "noun"
+msgid "Based on %d rating"
+msgid_plural "Based on %d ratings"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product-reviews.php:90, woocommerce/single-product-reviews.php:121, woocommerce/single-product/contributions-list.php:65, woocommerce/single-product/contributions.php:107
+msgid "Leave a review"
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/simple.php:75, woocommerce/single-product/add-to-cart/variation-add-to-cart-button.php:23
+msgid "Add to cart"
+msgstr ""
+
+#: woocommerce/single-product/contributions-list.php:64
+msgid "There are no reviews yet. Be the first to review this product."
+msgstr ""
+
+#: woocommerce/single-product/contributions-list.php:71
+msgid "There are no reviews yet. Only logged in customers who have purchased this product may leave a review."
+msgstr ""
+
+#: woocommerce/single-product/contributions/actions.php:16
+msgid "Was this review helpful to you?"
+msgstr ""
+
+#: woocommerce/single-product/contributions/contribution-question.php:17
+msgid "Question:"
+msgstr ""
+
+#: woocommerce/single-product/contributions/contribution-question.php:26
+msgid "Answer question"
+msgstr ""
+
+#: woocommerce/single-product/contributions/contribution-question.php:51
+msgid "Answer:"
+msgstr ""
+
+#: woocommerce/single-product/contributions/contribution-question.php:54
+msgid "What is your answer?"
+msgstr ""
+
+#: woocommerce/single-product/contributions/contribution-question.php:55
+msgid "Submit answer"
+msgstr ""
+
+#: woocommerce/single-product/contributions/contribution-review.php:66
+msgid "comment"
+msgstr ""
+
+#: woocommerce/single-product/contributions/contribution-review.php:68
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/contributions/meta.php:30, woocommerce/single-product/review.php:58
+msgid "on the"
+msgstr ""
+
+#: woocommerce/single-product/form-contribution.php:74
+msgid "Add a review to \"%s\""
+msgstr ""
+
+#: woocommerce/single-product/form-flag-contribution.php:40
+msgid "Please be as detailed as possible"
+msgstr ""
+
+#: woocommerce/single-product/short-description.php:31
+msgid "Read more"
 msgstr ""

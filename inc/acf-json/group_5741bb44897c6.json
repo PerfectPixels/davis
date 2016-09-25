@@ -1,0 +1,207 @@
+{
+    "key": "group_5741bb44897c6",
+    "title": "Page Title Options",
+    "fields": [
+        {
+            "key": "field_5741bcc7470e1",
+            "label": "Hide Page Title",
+            "name": "hide_page_title",
+            "type": "true_false",
+            "instructions": "Choose if you want to hide the page title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0
+        },
+        {
+            "key": "field_5741bc33470e0",
+            "label": "Custom Title",
+            "name": "page_title_custom_title",
+            "type": "text",
+            "instructions": "Leave empty to display the default one.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5741bcc7470e1",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_5741be21470e5",
+            "label": "Subtitle",
+            "name": "page_title_subtitle",
+            "type": "text",
+            "instructions": "Add a short subtitle to go below the page title.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5741bcc7470e1",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_5741c31384473",
+            "label": "Background Color",
+            "name": "page_title_background_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5741bcc7470e1",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#fff"
+        },
+        {
+            "key": "field_5741bd0d470e2",
+            "label": "Background Image",
+            "name": "page_title_background_image",
+            "type": "image",
+            "instructions": "Choose an image to create an image banner underneath the page title.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5741bcc7470e1",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5741bd6b470e3",
+            "label": "Background Video",
+            "name": "page_title_background_video",
+            "type": "url",
+            "instructions": "Choose an image to create an video banner underneath the page title.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5741bcc7470e1",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Enter the URL path of an MP4 video only"
+        },
+        {
+            "key": "field_5741bdd9470e4",
+            "label": "Text Color",
+            "name": "page_title_text_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5741bcc7470e1",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#000"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1464859696
+}

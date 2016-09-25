@@ -1,0 +1,11 @@
+.wrap:not(.container) { padding: 80px 0 0; width: 100%!important; overflow: hidden; }
+
+body:not(.modal-open) .wrap.container { padding: 0 0; min-height: 100vh; z-index: 2; }
+
+.wrap.container { margin-bottom: 100px; }
+
+body.modal-open .wrap.container { transform: none; will-change: inherit; }
+
+body.offcanvas-sidebar .wrap.container { position: static; transform: none; will-change: inherit; }
+
+.vc_row > .container { padding-left: 0; padding-right: 0; }
