@@ -6,7 +6,7 @@ if ( class_exists( 'WC_Widget_Recent_Reviews' ) ) {
 
 	require_once ABSPATH . '/wp-content/plugins/woocommerce/includes/widgets/class-wc-widget-recent-reviews.php';
 	
-	class Tomo_Widget_Recent_Reviews extends WC_Widget_Recent_Reviews {
+	class pp_Widget_Recent_Reviews extends WC_Widget_Recent_Reviews {
 	
 		/**
 		 * Constructor.
@@ -98,6 +98,6 @@ if ( class_exists( 'WC_Widget_Recent_Reviews' ) ) {
 		}
 	}
 	
-	$tomo_widget_recent_reviews = new Tomo_Widget_Recent_Reviews();
+	$pp_widget_recent_reviews = new pp_Widget_Recent_Reviews();
 
 } ?>

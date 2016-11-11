@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php if ( 1 === count( $available_methods ) ) :
 		$method = current( $available_methods ); ?>
-		
+
 		<ul id="shipping_method">
 			<li>
 				<input type="radio" name="shipping_method[<?php echo $index; ?>]" data-index="<?php echo $index; ?>" id="shipping_method_<?php echo $index; ?>_<?php echo sanitize_title( $method->id ); ?>" value="<?php echo esc_attr( $method->id ); ?>" <?php checked( $method->id, $chosen_method ); ?> class="shipping_method" />

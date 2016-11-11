@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Add the Shop panel
 TC_Kirki::add_panel( 'panel_shop', array(
@@ -127,16 +127,37 @@ TC_Kirki::add_section( 'section_product_page', array(
 // Product images style
 Kirki::add_field( 'pp_theme', array(
 	'settings'    => 'product_style',
-	'label'       => __( 'Product Page Style', 'my_textdomain' ),
-	'description' => __( 'Select the style of the short description, metas and image slider. (can be overwritten in the product option itself)', 'davis' ),
+	'label'       => __( 'Product Images Style', 'davis' ),
+	'description' => __( 'Select the way the product is been showcased. (can be overwritten in the product option itself)', 'davis' ),
 	'section'  => 'section_product_page',
 	'type'        => 'select',
-	'default'     => 'default',
+	'default'     => 'thumb',
 	'priority'    => 10,
 	'choices'     => array(
-		'default' => esc_attr__( 'Default', 'my_textdomain' ),
-		'carousel' => esc_attr__( 'Carousel', 'my_textdomain' ),
-		'slideshow' => esc_attr__( 'Fullwidth Slideshow', 'my_textdomain' ),
+		'thumb' => esc_attr__( 'Thumbnails', 'davis' ),
+		'carousel' => esc_attr__( 'Carousel', 'davis' ),
+		'slideshow' => esc_attr__( 'Fullwidth Slideshow', 'davis' ),
+	),
+) );
+// Product images position
+Kirki::add_field( 'pp_theme', array(
+	'settings'    => 'product_images_position',
+	'label'       => __( 'Product Images Position', 'davis' ),
+	'description' => __( 'Select the which side you want the images to be displayed.', 'davis' ),
+	'section'  => 'section_product_page',
+	'type'        => 'select',
+	'default'     => 'right',
+	'priority'    => 10,
+	'choices'     => array(
+		'left' => esc_attr__( 'Left', 'davis' ),
+		'right' => esc_attr__( 'Right', 'davis' ),
+	),
+	'active_callback'    => array(
+		array(
+			'setting'  => 'product_style',
+			'operator' => '!=',
+			'value'    => 'slideshow',
+		),
 	),
 ) );
 

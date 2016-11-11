@@ -20,7 +20,6 @@
    'inc/widgets.php',   // Widgets creation
    'inc/titles.php',    // Page titles
    'inc/template-tags.php',    // Page titles
-   //'inc/wrapper.php',   // Theme wrapper class
    'inc/menu-item-custom-fields/menu-item-custom-fields.php',   // Custom field for mega menu
    'inc/menu-walker.php',   // Custom menu walker
    //'inc/customizer.php', // Theme customizer

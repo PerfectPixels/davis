@@ -29,8 +29,6 @@ var js_files     = [
   "assets/scripts/plugins/hoverIntent.js",
   "assets/scripts/plugins/hashchange.js",
   "assets/scripts/plugins/scrollTo.js",
-  "assets/scripts/plugins/owl.carousel.js",
-  "assets/scripts/plugins/owl.carousel1.js",
   "assets/scripts/override/woocommerce-wishlists.js",
   "assets/scripts/main.js"
 ];

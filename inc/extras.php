@@ -146,8 +146,8 @@ add_filter('get_wishlist_items', __NAMESPACE__ . '\\get_wishlist_items');
 /**
 * WooCommerce Update Number of Items in the cart
 */
-function tomo_ajax_added_to_cart() {
-	function tomo_refresh_minicart($fragments) {
+function pp_ajax_added_to_cart() {
+	function pp_refresh_minicart($fragments) {
 		global $woocommerce;
 		ob_start(); ?>
 
@@ -158,14 +158,14 @@ function tomo_ajax_added_to_cart() {
 
 		return $fragments;
 	}
-	add_filter('add_to_cart_fragments', __NAMESPACE__ . '\\tomo_refresh_minicart');
+	add_filter('add_to_cart_fragments', __NAMESPACE__ . '\\pp_refresh_minicart');
 }
-add_action('woocommerce_ajax_added_to_cart', __NAMESPACE__ . '\\tomo_ajax_added_to_cart');
+add_action('woocommerce_ajax_added_to_cart', __NAMESPACE__ . '\\pp_ajax_added_to_cart');
 
 /**
 * Get the updated cart parts
 */
-function tomo_get_refreshed_fragments($full_cart){
+function pp_get_refreshed_fragments($full_cart){
 	// Get mini cart
     ob_start();
 
@@ -214,7 +214,7 @@ function tomo_get_refreshed_fragments($full_cart){
 /**
 * Update the cart quantity with AJAX
 */
-function tomo_qty_cart() {
+function pp_qty_cart() {
     // Set item key as the hash found in input.qty's name
     $cart_item_key = $_POST['hash'];
 
@@ -232,35 +232,35 @@ function tomo_qty_cart() {
         \WC()->cart->set_quantity( $cart_item_key, $threeball_product_quantity, true );
     }
 
-    echo tomo_get_refreshed_fragments(false);
+    echo pp_get_refreshed_fragments(false);
 
     die();
 
 }
-add_action('wp_ajax_qty_cart', __NAMESPACE__ . '\\tomo_qty_cart');
-add_action('wp_ajax_nopriv_qty_cart', __NAMESPACE__ . '\\tomo_qty_cart');
+add_action('wp_ajax_qty_cart', __NAMESPACE__ . '\\pp_qty_cart');
+add_action('wp_ajax_nopriv_qty_cart', __NAMESPACE__ . '\\pp_qty_cart');
 
 /**
 * Remove product with AJAX
 */
-function tomo_product_remove() {
+function pp_product_remove() {
 
 	\WC()->cart->set_quantity( $_POST['item_key'], 0, true );
 
-    echo tomo_get_refreshed_fragments(false);
+    echo pp_get_refreshed_fragments(false);
 
     die();
 }
-add_action( 'wp_ajax_product_remove', __NAMESPACE__ . '\\tomo_product_remove' );
-add_action( 'wp_ajax_nopriv_product_remove', __NAMESPACE__ . '\\tomo_product_remove' );
+add_action( 'wp_ajax_product_remove', __NAMESPACE__ . '\\pp_product_remove' );
+add_action( 'wp_ajax_nopriv_product_remove', __NAMESPACE__ . '\\pp_product_remove' );
 
 /**
 * Function to call the woocommerce breadcrumbs
 */
-function tomo_woocommerce_breadcrumb(){
+function pp_woocommerce_breadcrumb(){
     woocommerce_breadcrumb();
 }
-add_action( 'woo_custom_breadcrumb', __NAMESPACE__ . '\\tomo_woocommerce_breadcrumb' );
+add_action( 'woo_custom_breadcrumb', __NAMESPACE__ . '\\pp_woocommerce_breadcrumb' );
 
 /**
 * AJAX login
@@ -458,7 +458,7 @@ add_action( 'wp_ajax_lost_pass', __NAMESPACE__ . '\\lost_pass_callback' );
 /**
  * WooCommerce Loop Product Thumbs
  **/
-function tomo_template_loop_product_thumbnail( $size = 'shop_catalog', $placeholder_width = 0, $placeholder_height = 0  ) {
+function pp_template_loop_product_thumbnail( $size = 'shop_catalog', $placeholder_width = 0, $placeholder_height = 0  ) {
 	global $post, $product, $woocommerce;
 
 	$size = 'shop_catalog';
@@ -468,6 +468,7 @@ function tomo_template_loop_product_thumbnail( $size = 'shop_catalog', $placehol
 	$terms = get_the_terms($post->ID, 'pa_colors');
 	$product_colors = null;
 	$output = null;
+	$variations_slider = false;
 
 	if ( is_array( $terms ) ) {
 		foreach ( $terms as $term ) {
@@ -484,9 +485,14 @@ function tomo_template_loop_product_thumbnail( $size = 'shop_catalog', $placehol
 	if ( ! $placeholder_width ){ $placeholder_width = $image_size['width']; }
 	if ( ! $placeholder_height ){ $placeholder_height = $image_size['height']; }
 
+	// Check if the variations product slider is enabled
+	if ( get_field('variations_slider') === 'yes' || get_field('variations_slider') === 'default' && get_theme_mod('shop_variations_slider', false) ){
+		$variations_slider = true;
+	}
+
 	if ( sizeof( $available_variations ) > 0 ){
 
-		if ( get_field('variations_slider') == 'yes' && get_theme_mod('shop_variations_slider', false) == true ){
+		if ( $variations_slider ){
 			$output = '<div class="product-slider" data-product_variations="' . htmlspecialchars( json_encode( $available_variations ) ) . '">';
 		}
 
@@ -526,7 +532,7 @@ function tomo_template_loop_product_thumbnail( $size = 'shop_catalog', $placehol
 			// Display all attributes to add them in the data-attr in the html
 			foreach ($variation['attributes'] as $key => $attribute ){
 				$data_counter++;
-				if ( get_field('variations_slider') != 'yes' || get_theme_mod('shop_variations_slider', false) != true ){ $attribute = ''; }
+				if ( !$variations_slider ){ $attribute = ''; }
 				$data_attr .= ' data-attr-name-' . $data_counter . '="' . $key.'" data-attr-value-' . $data_counter . '="' . $attribute . '"';
 			}
 
@@ -545,7 +551,7 @@ function tomo_template_loop_product_thumbnail( $size = 'shop_catalog', $placehol
 
 			$sales .= '</div>';
 
-			if ( !$exist && $variation['variation_is_visible'] == 1 && $variation['is_purchasable'] == 1 && get_field('variations_slider') == 'yes' && get_theme_mod('shop_variations_slider', false) == true ){
+			if ( !$exist && $variation['variation_is_visible'] == 1 && $variation['is_purchasable'] == 1 && $variations_slider ){
 				$output .= '<div>' . $sales . $variation['price_html'];
 
 				$output .= '<a href="' . $variation_url . '" class="img"' .$stock_class . ' data-colors="'. $product_colors .'" data-variation-id="'.$variation['variation_id'].'" data-product-id="' . $post->ID .'"' . $data_attr . ' data-attr-counter="' . $data_counter . '">' . /* wp_get_attachment_image( $post->ID, $size, $thumb_attr ); */ '<img src="' .esc_url( $img_src ) . '" class="attachment-'.$size.'" srcset="' . esc_attr( $img_srcset ) . '" sizes="' .$img_sizes .'" title="' .$variation['image_title'] . '">';
@@ -568,11 +574,11 @@ function tomo_template_loop_product_thumbnail( $size = 'shop_catalog', $placehol
 			}
 		}
 
-		if ( get_field('variations_slider') == 'yes' && get_theme_mod('shop_variations_slider', false) == true ){
+		if ( $variations_slider ){
 			$output .= '</div>'; // Closing of product-slider
 		}
 
-		if ( get_field('variations_slider') != 'yes' || get_theme_mod('shop_variations_slider', false) != true ){
+		if ( !$variations_slider ){
 			$output .= '<a href="' . get_permalink() . '" class="img" data-colors="'. $product_colors .'" data-variation-id="'.$variation['variation_id'].'" data-product-id="' . $post->ID .'"' . $data_attr . ' data-attr-counter="' . $data_counter . '">' . get_the_post_thumbnail( $post->ID, $size ) . '</a>';
 		}
 
@@ -592,13 +598,13 @@ function tomo_template_loop_product_thumbnail( $size = 'shop_catalog', $placehol
 }
 
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
-add_action( 'woocommerce_before_shop_loop_item_title', __NAMESPACE__ . '\\tomo_template_loop_product_thumbnail', 10);
+add_action( 'woocommerce_before_shop_loop_item_title', __NAMESPACE__ . '\\pp_template_loop_product_thumbnail', 10);
 
 
 /**
 * AJAX add to cart variable
 */
-function tomo_add_to_cart_variable() {
+function pp_add_to_cart_variable() {
 
 	ob_start();
 
@@ -615,7 +621,7 @@ function tomo_add_to_cart_variable() {
 		}
 
 		// Return fragments
-		tomo_get_refreshed_fragments( true );
+		pp_get_refreshed_fragments( true );
 	} else {
 		$this->json_headers();
 
@@ -628,14 +634,14 @@ function tomo_add_to_cart_variable() {
 	}
 	die();
 }
-add_action( 'wp_ajax_woocommerce_add_to_cart_variable_rc', __NAMESPACE__ . '\\tomo_add_to_cart_variable' );
-add_action( 'wp_ajax_nopriv_woocommerce_add_to_cart_variable_rc', __NAMESPACE__ . '\\tomo_add_to_cart_variable' );
+add_action( 'wp_ajax_woocommerce_add_to_cart_variable_rc', __NAMESPACE__ . '\\pp_add_to_cart_variable' );
+add_action( 'wp_ajax_nopriv_woocommerce_add_to_cart_variable_rc', __NAMESPACE__ . '\\pp_add_to_cart_variable' );
 
 
 /**
 * Output all the available variables
 */
-function tomo_variable_add_to_cart($single_variation_product) {
+function pp_variable_add_to_cart($single_variation_product) {
     global $product;
 
     /*
@@ -659,46 +665,53 @@ if ($product->variation_id){
         'single_variation_product' => $single_variation_product
     ) );
 }
-add_filter( 'tomo_variable_add_to_cart', __NAMESPACE__ . '\\tomo_variable_add_to_cart', 10 );
+add_filter( 'pp_variable_add_to_cart', __NAMESPACE__ . '\\pp_variable_add_to_cart', 10 );
 
 
 /**
 * Ajax action to update the shipping methods
 */
-function tomo_calculate_shipping() {
-	\WC()->shipping->reset_shipping();
+function pp_calculate_shipping() {
+	try {
+      \WC()->shipping->reset_shipping();
 
-	$country  = wc_clean( $_POST['calc_shipping_country'] );
-	$state    = wc_clean( isset( $_POST['calc_shipping_state'] ) ? $_POST['calc_shipping_state'] : '' );
-	$postcode = apply_filters( 'woocommerce_shipping_calculator_enable_postcode', true ) ? wc_clean( isset( $_POST['calc_shipping_postcode'] ) ? $_POST['calc_shipping_postcode'] : '' ) : '';
-	$city     = apply_filters( 'woocommerce_shipping_calculator_enable_city', false ) ? wc_clean( isset( $_POST['calc_shipping_city'] ) ? $_POST['calc_shipping_city'] : '' ) : '';
+      $country  = wc_clean( $_POST['calc_shipping_country'] );
+      $state    = wc_clean( isset( $_POST['calc_shipping_state'] ) ? $_POST['calc_shipping_state'] : '' );
+      $postcode = apply_filters( 'woocommerce_shipping_calculator_enable_postcode', true ) ? wc_clean( $_POST['calc_shipping_postcode'] ) : '';
+      $city     = apply_filters( 'woocommerce_shipping_calculator_enable_city', false ) ? wc_clean( $_POST['calc_shipping_city'] ) : '';
 
-	if ( $postcode && ! WC_Validation::is_postcode( $postcode, $country ) ) {
-		echo json_encode( array('error' => true, 'title' => __( 'Wrong postcode/ZIP.', 'woocommerce' ), 'message' => __( 'Please enter a valid postcode/ZIP.', 'woocommerce' ) ) );
-	} elseif ( $postcode ) {
-		$postcode = wc_format_postcode( $postcode, $country );
-	}
+      if ( $postcode && ! WC_Validation::is_postcode( $postcode, $country ) ) {
+        throw new Exception( __( 'Please enter a valid postcode/ZIP.', 'woocommerce' ) );
+      } elseif ( $postcode ) {
+        $postcode = wc_format_postcode( $postcode, $country );
+      }
 
-	if ( $country ) {
-		\WC()->customer->set_location( $country, $state, $postcode, $city );
-		\WC()->customer->set_shipping_location( $country, $state, $postcode, $city );
-	} else {
-		\WC()->customer->set_to_base();
-		\WC()->customer->set_shipping_to_base();
-	}
+      if ( $country ) {
+        \WC()->customer->set_location( $country, $state, $postcode, $city );
+        \WC()->customer->set_shipping_location( $country, $state, $postcode, $city );
+      } else {
+        \WC()->customer->set_to_base();
+        \WC()->customer->set_shipping_to_base();
+      }
 
-	\WC()->customer->calculated_shipping( true );
+      \WC()->customer->calculated_shipping( true );
 
-	echo do_action( 'woocommerce_calculated_shipping' );
+      echo do_action( 'woocommerce_calculated_shipping' );
+
+    } catch ( Exception $e ) {
+      if ( ! empty( $e ) ) {
+        echo $e->getMessage();
+      }
+    }
 }
-add_action( 'wp_ajax_calculate_shipping', __NAMESPACE__ . '\\tomo_calculate_shipping' );
-add_action( 'wp_ajax_nopriv_calculate_shipping', __NAMESPACE__ . '\\tomo_calculate_shipping' );
+add_action( 'wp_ajax_calculate_shipping', __NAMESPACE__ . '\\pp_calculate_shipping' );
+add_action( 'wp_ajax_nopriv_calculate_shipping', __NAMESPACE__ . '\\pp_calculate_shipping' );
 
 
 /**
 * Change update cart action if on checkout page
 */
-function tomo_update_cart_action(){
+function pp_update_cart_action(){
 
 	// Add Discount
 	if ( ! empty( $_POST['apply_coupon'] ) && ! empty( $_POST['coupon_code'] ) ) {
@@ -714,7 +727,7 @@ function tomo_update_cart_action(){
 	elseif ( ! empty( $_GET['remove_item'] ) && isset( $_GET['_wpnonce'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'woocommerce-cart' ) ) {
 		$cart_item_key = sanitize_text_field( $_GET['remove_item'] );
 
-		if ( $cart_item = WC()->cart->get_cart_item( $cart_item_key ) ) {
+		if ( $cart_item = \WC()->cart->get_cart_item( $cart_item_key ) ) {
 			\WC()->cart->remove_cart_item( $cart_item_key );
 
 			$product = wc_get_product( $cart_item['product_id'] );
@@ -813,7 +826,7 @@ function tomo_update_cart_action(){
 	}
 }
 remove_action( 'wp_loaded', array( 'WC_Form_Handler', 'update_cart_action' ), 20 );
-add_action( 'wp_loaded', __NAMESPACE__ . '\\tomo_update_cart_action' , 20 );
+add_action( 'wp_loaded', __NAMESPACE__ . '\\pp_update_cart_action' , 20 );
 
 
 /**
@@ -873,7 +886,7 @@ remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_pro
  * Change the tax_query for last cat pages to only display single variation products
  */
 if ( class_exists( 'JCK_WSSV' ) ) {
-	add_filter( 'pre_get_posts', array( 'Tomo_Exclude_Variable', 'apply_user_filters' ), 900000 );
+	add_filter( 'pre_get_posts', array( 'pp_Exclude_Variable', 'apply_user_filters' ), 900000 );
 	remove_filter( 'pre_get_posts', array( 'BeRocket_AAPF', 'apply_user_filters' ), 900000 );
 }
 
@@ -942,7 +955,7 @@ add_action( 'wp_ajax_nopriv_get_srcset', __NAMESPACE__ . '\\pffwc_get_srcset_cal
  * @access public
  * @param string $coupon
  */
-function tomo_cart_totals_coupon_html( $coupon ) {
+function pp_cart_totals_coupon_html( $coupon ) {
     if ( is_string( $coupon ) ) {
         $coupon = new \WC_Coupon( $coupon );
     }
@@ -963,7 +976,7 @@ function tomo_cart_totals_coupon_html( $coupon ) {
 
     // get rid of empty array elements
     $value = array_filter( $value );
-    $value = implode( ', ', $value ) . ' <a href="' . esc_url( add_query_arg( 'remove_coupon', urlencode( $coupon->code ), defined( 'WOOCOMMERCE_CHECKOUT' ) ? wc_get_checkout_url() : wc_get_cart_url() ) ) . '" class="tomo-remove-coupon" data-coupon="' . esc_attr( $coupon->code ) . '"></a>';
+    $value = implode( ', ', $value ) . ' <a href="' . esc_url( add_query_arg( 'remove_coupon', urlencode( $coupon->code ), defined( 'WOOCOMMERCE_CHECKOUT' ) ? wc_get_checkout_url() : wc_get_cart_url() ) ) . '" class="pp-remove-coupon" data-coupon="' . esc_attr( $coupon->code ) . '"></a>';
 
     echo apply_filters( 'woocommerce_cart_totals_coupon_html', $value, $coupon );
 }

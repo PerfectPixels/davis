@@ -1,7 +1,7 @@
 body.admin-bar .navbar-fixed-top { top: 32px; }
 
 .navbar-top { font-size: 1.15rem; line-height: 1; text-transform: uppercase; height: $topbar-height; min-height: inherit; margin: 0; padding: 0 15px; border: none; border-radius: 0; z-index: 4; transform: translateX(0); transition: transform .3s;
-	li a { padding: 15px 15px 14px; transition: color 350ms $cb;
+	li a { padding: 15px 15px 14px; transition: color 350ms $cb; cursor: pointer;
 
 		span { transition: color 350ms $cb; }
 
@@ -15,7 +15,7 @@ body.admin-bar .navbar-fixed-top { top: 32px; }
 	}
 
 	li.nav-left-top,
-	li.nav-right-top { padding: 0;
+	li.nav-right-top { padding: 0; line-height: 1;
 		.nav li { float: left; position: relative;
 
 			> a { padding-left: 15px; padding-right: 31px; }
@@ -61,7 +61,7 @@ body.admin-bar .navbar-fixed-top { top: 32px; }
 		.nav > li:last-child:after { display: none; }
 	}
 
-	li.message-box { letter-spacing: -0.03em; padding: 15px 15px 14px; margin: 0 15px; }
+	li.message-box { letter-spacing: -0.03em; padding: 15px 15px 14px; margin: 0 15px; line-height: 1;}
 
 	.navbar-right {
 
@@ -95,7 +95,7 @@ body.admin-bar .navbar-fixed-top { top: 32px; }
 		}
 
 		// MY ACCOUNT MENU && MY FAVORITES MENU
-		.dropdown-hover .dropdown-menu { position: absolute; min-width: 100%; left: 0; right: inherit; display: block; top: 100%; margin: 0; padding: 10px 0; list-style: none; opacity: 0; transform: scaleY(0); z-index: -2; transform-origin: top left; transition: all 350ms $cb;
+		.dropdown-hover .dropdown-menu { position: absolute; min-width: 100%; left: 0; right: inherit; display: block; top: 100%; margin: 0; padding: 10px 0; border: none; border-radius: 0; box-shadow: none; list-style: none; opacity: 0; transform: scaleY(0); z-index: -2; transform-origin: top left; transition: all 350ms $cb;
 
 			li { position: relative; opacity: 0; transition: opacity 350ms $cb; transition-delay: 200ms; }
 

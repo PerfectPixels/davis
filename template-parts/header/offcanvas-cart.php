@@ -8,6 +8,6 @@ if ( get_theme_mod('quick_checkout', true) == true ){ $cart_class .= ' quick-che
 ?>
 
 <aside class="offcanvas-cart<?php echo $cart_class; ?>">
-	<?php if ( class_exists( 'WC_Widget_Cart' ) ) { the_widget( 'tomo_WC_Widget_Cart' ); } ?>
+	<?php if ( class_exists( 'WC_Widget_Cart' ) ) { the_widget( 'pp_WC_Widget_Cart' ); } ?>
 	<a href="#" class="close-cart"></a>
 </aside>

@@ -124,22 +124,11 @@ TC_Kirki::add_field( 'pp_theme', array(
 		),
 	),
 	'transport' => 'postMessage',
-	'js_vars'   => array(
-		array(
-			'element'  => '.navbar-top *',
-			'function' => 'css',
-			'property' => 'color',
-		),
-		array(
-			'element'  => array( '.nav-topbar .menu-item-has-children > a:before', '.nav-topbar .menu-item-has-children > a:after' ),
-			'function' => 'css',
-			'property' => 'background-color',
-		),
-	),
 	'output' => array(
 		array(
 			'element'  => '.navbar-top *',
 			'property' => 'color',
+			'suffix'   => '!important',
 		),
 		array(
 			'element'  => array( '.nav-topbar .menu-item-has-children > a:before', '.nav-topbar .menu-item-has-children > a:after' ),

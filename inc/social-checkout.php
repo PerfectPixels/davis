@@ -4,7 +4,7 @@ if ( class_exists( 'WC_Social_Checkout' ) ) {
 
 	require_once ABSPATH . 'wp-content/plugins/woocommerce-social-checkout/woocommerce-sc-frontend.php';
 	
-	class Tomo_Social_Checkout_Frontend extends WC_Social_Checkout_Frontend {
+	class pp_Social_Checkout_Frontend extends WC_Social_Checkout_Frontend {
 		
 		public function __construct() {
 		
@@ -16,7 +16,7 @@ if ( class_exists( 'WC_Social_Checkout' ) ) {
 			global $WC_Social_Checkout_Frontend;
 			
 			remove_action( 'woocommerce_thankyou', array( $WC_Social_Checkout_Frontend, 'social_checkout' ), 0 );
-			add_action( 'woocommerce_share_purchase', array( $this, 'tomo_social_checkout' ), 0 );
+			add_action( 'woocommerce_share_purchase', array( $this, 'pp_social_checkout' ), 0 );
 		}
 		
 					
@@ -25,7 +25,7 @@ if ( class_exists( 'WC_Social_Checkout' ) ) {
 		 * Invokes hooks to allow each service to do its thing.
 		 * @param  int $order_id WooCommerce order ID
 		 */
-		public function tomo_social_checkout( $order_id ) {
+		public function pp_social_checkout( $order_id ) {
 	
 			$order      = new WC_Order( $order_id );
 			$settings   = WC_Social_Checkout::get_settings();
@@ -63,6 +63,6 @@ if ( class_exists( 'WC_Social_Checkout' ) ) {
 	
 	}
 	
-	$tomo_social_checkout_frontend = new Tomo_Social_Checkout_Frontend();
+	$pp_social_checkout_frontend = new pp_Social_Checkout_Frontend();
 
 } ?>

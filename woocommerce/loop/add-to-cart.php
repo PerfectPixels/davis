@@ -15,17 +15,17 @@ global $product, $single_variation;
 
 ?>
 
-	
+
 <nav class="buttons">
 	<div>
 		<?php if ( class_exists( 'WC_Wishlists_Plugin' ) ){ echo WC_Wishlists_Plugin::add_to_wishlist_button(); } ?>
-		
+
 		<?php echo do_shortcode( '[yith_wcwl_add_to_wishlist]' ); ?>
-		
+
 		<a class="icon-eye-line" data-toggle="tooltip" data-placement="top" title="Preview item"></a>
-		
+
 		<?php
-		if ( $product->is_type( 'variable' ) && ( get_field('variations_slider') != 'yes' || get_theme_mod('shop_variations_slider') != true ) ){
+		if ( $product->is_type( 'variable' ) && ( get_field('variations_slider') === 'no' || get_field('variations_slider') === 'default' && !get_theme_mod('shop_variations_slider', false) ) ){
 			echo apply_filters( 'woocommerce_loop_add_to_cart_link',
 				sprintf( '<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" data-quantity="%s" data-toggle="tooltip" data-placement="top"  title="%s" class="cart_button go-to-page %s"></a>',
 					esc_url( $product->add_to_cart_url() ),
@@ -52,7 +52,7 @@ global $product, $single_variation;
 				),
 			$product );
 		}
-		
+
 		?>
 	</div>
 </nav>

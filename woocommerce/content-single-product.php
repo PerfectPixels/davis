@@ -26,7 +26,21 @@ $attachment_ids = $product->get_gallery_attachment_ids();
 // Change the position of the price if it is not a variation product
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 
-$product_style = get_theme_mod('product_style', 'default');
+// Get the images style
+$product_style = get_theme_mod('product_style', 'thumb');
+$page_product_style = get_field('page_images_style');
+
+if ($page_product_style !== 'default'){
+    $product_style = $page_product_style;
+}
+
+// Get the images position
+$images_pos = get_theme_mod('product_images_position', 'right');
+$page_images_position = get_field('page_product_images_position');
+
+if ($page_images_position !== 'default'){
+    $images_pos = $page_images_position;
+}
 
 ?>
 
@@ -46,7 +60,7 @@ $product_style = get_theme_mod('product_style', 'default');
 
 <div itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<div class="container style-<?php echo $product_style; ?>">
+	<div class="container style-<?php echo $product_style; ?> images-<?php echo $images_pos; ?>">
 
 
 		<div class="summary entry-summary">
@@ -67,13 +81,13 @@ $product_style = get_theme_mod('product_style', 'default');
 					do_action( 'woocommerce_single_product_summary' );
 				?>
 
-				<?php
+				<?php if ($product_style === 'thumb') :
 
 					wc_get_template( 'single-product/images-styles/thumb-slider.php', array(
 				        'attachment_ids' => $attachment_ids,
 				    ) );
 
-				?>
+				endif; ?>
 
 			</section>
 		</div><!-- .summary -->

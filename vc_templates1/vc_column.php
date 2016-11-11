@@ -21,8 +21,8 @@ $output = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
-$width = tomo_translateColumnWidthToSpan( $width );
-$width = tomo_column_offset_class_merge( $offset, $width );
+$width = pp_translateColumnWidthToSpan( $width );
+$width = pp_column_offset_class_merge( $offset, $width );
 
 $css_classes = array(
 	$this->getExtraClass( $el_class ),

@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( class_exists( 'WC_Widget_Cart' ) ) {
 
-	class tomo_WC_Widget_Cart extends WC_Widget {
+	class pp_WC_Widget_Cart extends WC_Widget {
 	
 		/**
 		 * Constructor

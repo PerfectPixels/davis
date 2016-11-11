@@ -30,7 +30,7 @@ $average = $product->get_average_rating();
 
 ?>
 <div id="reviews">
-	<div id="comments" <?php if ( 'no' == get_option( 'woocommerce_enable_review_rating' ) ) : ?>class="no-rating"<?php endif; ?>>
+	<div id="comments" <?php if ( get_option( 'woocommerce_enable_review_rating' ) === 'no' ) : ?>class="no-rating"<?php endif; ?>>
 
 		<?php if ( $total_rating_count > 0 ) : ?>
 			<div class="product-rating">
@@ -81,20 +81,20 @@ $average = $product->get_average_rating();
 
 				<div id="review_form_wrapper" class="contribution-form-wrapper active">
 
-					<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'yes' || wc_customer_bought_product( '', get_current_user_id(), $product->id ) ) : ?>
+					<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) !== 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->id ) ) : ?>
 
-						<p class="woocommerce-verification-required"><?php _e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
+						<a class="leave-review button" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#review-modal"><?php _e('Leave a review', 'davis' ); ?></a>
 
 					<?php else : ?>
 
-						<a class="leave-review button" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#review-modal"><?php _e('Leave a review', 'davis' ); ?></a>
+						<p class="woocommerce-verification-required"><?php _e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
 
 					<?php endif; ?>
 				</div>
 			</div>
 		<?php endif; ?>
 
-		<div class="container-reviews" <?php if ( $total_rating_count === 0 ) : ?>style="width: 100%;<?php endif; ?>">
+		<div class="container-reviews <?php if (!have_comments()){ echo 'noreview'; } ?>" <?php if ( $total_rating_count === 0 ) : ?>style="width: 100%;<?php endif; ?>">
 			<div id="contributions-list">
 				<?php if ( have_comments() ) : ?>
 
@@ -111,6 +111,14 @@ $average = $product->get_average_rating();
 						) ) );
 						echo '</nav>';
 					endif; ?>
+
+					<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) !== 'no' && $total_rating_count === 0  || wc_customer_bought_product( '', get_current_user_id(), $product->id ) && $total_rating_count === 0 ) : ?>
+
+						<p class="woocommerce-noreviews">
+							<a class="leave-review button" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#review-modal"><?php _e('Leave a review', 'davis' ); ?></a>
+						</p>
+						
+					<?php endif; ?>
 
 				<?php else : ?>
 

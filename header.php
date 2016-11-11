@@ -30,7 +30,10 @@
 	}
 
 	// Remove class .container is fullwidth
-	if (get_field('fullwidth')) { $fullwidth_class = ''; }
+	if (get_field('fullwidth') || is_product()) {
+		$fullwidth_class = '';
+		$content_classes = '';
+	}
 	// Check if header is sticky
 	if (get_theme_mod('fixed_header', false) == true) { $fixed_classes .= 'nav-is-fixed'; }
 	// Check if top bar is sticky
@@ -73,7 +76,7 @@
 
 		?>
 
-		<div class="wrap <?php echo $fullwidth_class; ?>" role="document">
+		<div id="page-content" class="wrap <?php echo $fullwidth_class; ?>" role="document">
 
 			<?php do_action( 'main_result_count' ); ?>
 

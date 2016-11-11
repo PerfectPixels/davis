@@ -177,8 +177,8 @@
 
 				// Open the navigation
 				openMobileNav: function( $btn ){
-					var $container 	= $('.wrap.container'),
-						$els 		= $( 'nav.navbar-top, #header-slider, .nav-button, .nav-header, .primary-nav, #footer' ),
+					var $container 	= $('#page-content'),
+						$els 		= $( 'nav.navbar-top, #header-slider, #page-content, .nav-button, .nav-header, .primary-nav, #footer' ),
 						$overlay 	= $('.nav-overlay');
 
 					if( $container.hasClass('nav-is-visible') ) {
@@ -214,7 +214,7 @@
 								$nextMenu.parents( '.main-menu-item' ).children( '.sub-menu' ).css( 'height', nextMenuH );
 							}
 						} else {
-							$( '.wrap.container' ).off().one( 'transitionend', function(){
+							$( '#page-content' ).off().one( 'transitionend', function(){
 								$( window ).resize();
 							});
 						}
@@ -229,7 +229,7 @@
 
 				// Close the navigation
 				closeNav: function(){
-					var $container 	= $('.wrap.container'),
+					var $container 	= $('#page-content'),
 						$els 		= $( 'nav.navbar-top, #header-slider, .nav-button, .nav-header, .primary-nav, #footer' );
 
 					$els.removeClass( 'nav-is-visible' );
@@ -270,7 +270,7 @@
 			  			screenSize 	= PP.method.checkWindowWidth();
 
 			        if ( screenSize === 'desktop' ) {
-						navigation.detach().insertAfter( '.brand' );
+						navigation.detach().insertAfter( '.nav-header .brand' );
 						navigation.find('.cd-search-wrapper' ).remove();
 
 						// For mobile - Unbind click on main menu item
@@ -280,7 +280,7 @@
 
 						var newListItem = $('<li class="cd-search-wrapper"></li>');
 
-						navigation.detach().insertAfter( '.wrap.container' );
+						navigation.detach().insertAfter( '#page-content' );
 						PP.obj.$searchForm.clone().appendTo( newListItem );
 						newListItem.appendTo( navigation.find( 'ul' ) );
 
@@ -1240,7 +1240,7 @@
 					var _this = this;
 
 					$('#toggle-offcanvas-sidebar').on('click', function(){
-						var $parent  = $(this).parents('.wrap.container'),
+						var $parent  = $(this).parents('#page-content'),
 							parentH  = $parent.height(),
 							sidebarH = $('aside.sidebar').outerHeight();
 
@@ -1632,81 +1632,13 @@
 						return false;
 					}
 
-					var $form = $( 'form.variations_form.cart' );
-
-					// Create the sliders
-					var $mainSlider = $( "#main-slider" ).flickity({
-						accessibility: true,
-						prevNextButtons: false,
-						pageDots: true,
-						resize: true,
-						wrapAround: true
-					});
-
-					var $thumbSlider = $( "#thumb-slider" ).flickity({
-						accessibility: true,
-						prevNextButtons: false,
-						pageDots: true,
-						resize: true,
-						wrapAround: true
-					});
-
-					$thumbSlider.on('settle.flickity', function(){
-						var $mainSliderData = $mainSlider.data('flickity'),
-							number = $mainSliderData.selectedIndex;
-
-						// el.find( ".owl-item" ).eq( number ).addClass( "synced" );
-						// el.trigger("owl.goTo", number);
-					})
-
-					function syncPosition( el ){
-						var number = this.currentItem,
-							owlCarousel = $thumbSlider.data("owlCarousel1");
-
-						$thumbSlider.find( ".owl-item" ).removeClass( "synced" ).eq( number ).addClass( "synced" );
-
-						if( owlCarousel !== undefined ){
-							var visibleThumb = owlCarousel.owl.visibleItems,
-								num = number,
-								found = false;
-
-							for ( var i in visibleThumb ){
-								if ( num === visibleThumb[i] ){
-									var found = true;
-								}
-							}
-
-							if( found === false ){
-								if ( num > visibleThumb[visibleThumb.length-1] ){
-									$thumbSlider.trigger( "owl.goTo", num - visibleThumb.length+2 )
-								} else {
-									if ( num - 1 === -1 ){
-										num = 0;
-									}
-									$thumbSlider.trigger("owl.goTo", num);
-								}
-							} else if ( num === visibleThumb[visibleThumb.length-1] ){
-								$thumbSlider.trigger( "owl.goTo", visibleThumb[1] );
-							} else if ( num === visibleThumb[0] ){
-								$thumbSlider.trigger( "owl.goTo", num-1 );
-							}
-						}
-					}
-
-					// Make the thumb click change the main slider - move to next if last visible item is clicked
-					$thumbSlider.on("click", ".owl-item", function(){
-						var $el = $(this),
-							number = $el.index();
-
-						// Main slider moves
-						$mainSlider.trigger( "owl.goTo", number );
-
-						return false;
-					});
+					var $form = $( 'form.variations_form.cart' ),
+						$mainSlider = $( '#main-slider' ),
+						$thumbSlider = $( '#thumb-slider' );
 
 					// Ajax add to cart
 					/*
-$form.on( 'submit', function(){
+					$form.on( 'submit', function(){
 						var $container = $form.parent(),
 							productId = $container.find( 'input[name="product_id"]' ).val(),
 							variationId = $container.find( 'input[name="variation_id"]' ).val(),
@@ -1737,7 +1669,7 @@ $form.on( 'submit', function(){
 
 						return false;
 					});
-*/
+					*/
 
 					// Unbind any existing events
 					//$form.off( 'change focusin', '.variations select' );
@@ -1748,7 +1680,7 @@ $form.on( 'submit', function(){
 					// On changing an attribute
 					$form.on( 'change', '.variations select', function() {
 						/*
-		var selected = $( this ).find( 'option:selected' ).val(),
+						var selected = $( this ).find( 'option:selected' ).val(),
 							variationName = $( this ).attr( 'name' );
 
 						if ( selected === '' || selected === undefined || selected === null ){
@@ -1765,10 +1697,10 @@ $form.on( 'submit', function(){
 								$mainSlider.trigger( "owl.jumpTo", number );
 							}
 						});
-		*/
+						*/
 
 						// added to get around variation image flicker issue
-						$( '.product.has-default-attributes > .images' ).fadeTo( 200, 1 );
+						$( '.product.has-default-attributes #main-slider' ).fadeTo( 200, 1 );
 
 						// Custom event for when variation selection has been changed
 						$form.trigger( 'woocommerce_variation_has_changed' );
@@ -1776,9 +1708,6 @@ $form.on( 'submit', function(){
 
 					// Trigger a change
 					$form.find( '.variations select' ).trigger( 'change' );
-
-					// Make the featured image fullheight
-					//PP.method.singleProductFeaturedImg();
 
 					// Move the variation description in the tab
 					$form.on('found_variation', function(){
@@ -1798,12 +1727,12 @@ $form.on( 'submit', function(){
 							$variationPrice = $( '.single_variation .woocommerce-variation-price' );
 
 						/*
-if ( $variationContent.length > 0 && $variationContent.text().length > 0 || $variationContent.length > 0 &&$variationContent.html().length > 0 ) {
+						if ( $variationContent.length > 0 && $variationContent.text().length > 0 || $variationContent.length > 0 &&$variationContent.html().length > 0 ) {
 							$( '#variation_desc' ).html( $variationContent ).show().next().addClass( 'col-md-6' ).removeClass( 'col-md-12' );
 						} else {
 							$( '#variation_desc' ).hide().next().removeClass( 'col-md-6' ).addClass( 'col-md-12' );
 						}
-*/
+						*/
 
 						// Hide the general price
 						if ( $variationStock.length > 0 && $variationStock.html().length > 0 ){
@@ -1815,28 +1744,20 @@ if ( $variationContent.length > 0 && $variationContent.text().length > 0 || $var
 						}
 
 						// Change the first slider image
-						var imgsrc = $mainSlider.find( '.owl-item:first-child img' ).attr( 'src' ),
-							imgsrcset = $mainSlider.find( '.owl-item:first-child img' ).attr( 'srcset' );
+						var imgsrc = $mainSlider.find( '.item:first-child img' ).attr( 'src' ),
+							imgsrcset = $mainSlider.find( '.item:first-child img' ).attr( 'srcset' );
 
-						$thumbSlider.find( '.owl-item:first-child' ).addClass( 'synced' ).find( 'img' ).attr({
+						$thumbSlider.find( '.thumb:first-child' ).find( 'img' ).attr({
 							src: imgsrc,
 							srcset: imgsrcset
 						});
 
 						// Main slider moves to first slide
-						$mainSlider.trigger( "owl.jumpTo", 0 );
+						$mainSlider.flickity( 'select', 0 );
 					}
 
 					switchContent();
 
-				},
-
-				// Make the height of both top div equal
-				singleProductFeaturedImg: function(){
-					if ( PP.obj.$body.hasClass( 'single-product' ) ){
-						var windowH = $(window).height() - ( $( 'nav.navbar' ).height() + $( 'header.banner' ).height() );
-						$( 'div.product .summary, div.product .gbtr_images' ).css( 'max-height', windowH );
-					}
 				},
 
 				// Change hashtag when clicking on description or review link
@@ -1911,10 +1832,10 @@ if ( $variationContent.length > 0 && $variationContent.text().length > 0 || $var
 					this.selectVariations();
 					this.singleVariationProduct();
 					this.checkFilterColor();
-					this.selectProductVariation();
 					this.singleProductDesc();
 					this.productReviewAction();
 					this.productsFiltered();
+					this.selectProductVariation();
 
 					$('#comments_filter').select2({
 						minimumResultsForSearch: Infinity
@@ -2538,7 +2459,7 @@ if ( $variationContent.length > 0 && $variationContent.text().length > 0 || $var
 
 						// Check if shipping to different address is not selected
 						if ( ! $('input#ship-to-different-address-checkbox' ).is( ':checked' ) ){
-							// Make the form that calculate the shipping selected witht hte correct choice
+							// Make the form that calculate the shipping selected witht the correct choice
 							$( 'select#calc_shipping_country' ).val( $(this).find(":selected").val() ).prop( 'selected', true );
 							// AJAX call to set it
 							PP.method.checkout.calShipping( $( this ).parents( 'form.woocommerce-checkout' ) );
@@ -2656,7 +2577,7 @@ if ( $variationContent.length > 0 && $variationContent.text().length > 0 || $var
 
 						return false;
 					});
-			},
+				},
 
 				// Ajax call to submit the coupon
 				ajaxCoupon: function( $form ){
@@ -2845,18 +2766,18 @@ if ( $variationContent.length > 0 && $variationContent.text().length > 0 || $var
 
 				// Well, it centers modal vertically
 				centerModal: function(){
-				$('div.modal').on('shown.bs.modal', function (e) {
-					var $modal = $(this).find('.container'),
-						modalH = $modal.outerHeight(),
-						windowH = PP.obj.$window.outerHeight();
+					$('div.modal').on('shown.bs.modal', function (e) {
+						var $modal = $(this).find('.container'),
+							modalH = $modal.outerHeight(),
+							windowH = PP.obj.$window.outerHeight();
 
-					if (modalH < windowH){
-						$modal.css({
-							marginTop: (windowH - modalH) / 2
-						});
-					}
-				});
-			},
+						if (modalH < windowH){
+							$modal.css({
+								marginTop: (windowH - modalH) / 2
+							});
+						}
+					});
+				},
 
 				// Change some widgets UI
 				widgetUIMod: function(){
@@ -2894,53 +2815,53 @@ if ( $variationContent.length > 0 && $variationContent.text().length > 0 || $var
 
 				// Get URL parameter
 				getUrlParameter: function( sParam ) {
-			    var sPageURL = decodeURIComponent( window.location.search.substring(1) ),
-			        sURLVariables = sPageURL.split( '&' ),
-			        sParameterName,
-			        i;
+				    var sPageURL = decodeURIComponent( window.location.search.substring(1) ),
+				        sURLVariables = sPageURL.split( '&' ),
+				        sParameterName,
+				        i;
 
-			    for ( i = 0; i < sURLVariables.length; i++ ) {
-			        sParameterName = sURLVariables[i].split( '=' );
+				    for ( i = 0; i < sURLVariables.length; i++ ) {
+				        sParameterName = sURLVariables[i].split( '=' );
 
-			        if ( sParameterName[0] === sParam ) {
-			            return sParameterName[1] === undefined ? true : sParameterName[1];
-			        }
-			    }
-			},
+				        if ( sParameterName[0] === sParam ) {
+				            return sParameterName[1] === undefined ? true : sParameterName[1];
+				        }
+				    }
+				},
 
 				// Tab Bootstrap
 				tabs: function(){
-			    $('.vc_tta-tabs-container a').click(function (e) {
-					e.preventDefault();
-					$(this).tab('show');
-				});
-				$('.vc_tta-tabs-container').each(function(){
-					$(this).find('a:first').tab('show');
-				});
-			},
+				    $('.vc_tta-tabs-container a').click(function (e) {
+						e.preventDefault();
+						$(this).tab('show');
+					});
+					$('.vc_tta-tabs-container').each(function(){
+						$(this).find('a:first').tab('show');
+					});
+				},
 
 				// Make the image retina using srcset with WP Retina plugin
 				retinaImg: function( img, productImg ){
-				var src	= img.attr( 'src' );
+					var src	= img.attr( 'src' );
 
-				if ( productImg &&  src !== PP.obj.last_src || !productImg ){
-					$.post(
-						woocommerce_params.ajax_url,
-						{
-							action: 'get_srcset',
-							nonce: $('.navbar .widget_shopping_cart_content #_wpnonce').val(),
-							src: src
-						},
-						function( srcset ) {
-							if ( srcset !== '' ) {
-								img.attr( 'srcset', srcset );
+					if ( productImg &&  src !== PP.obj.last_src || !productImg ){
+						$.post(
+							woocommerce_params.ajax_url,
+							{
+								action: 'get_srcset',
+								nonce: $('.navbar .widget_shopping_cart_content #_wpnonce').val(),
+								src: src
+							},
+							function( srcset ) {
+								if ( srcset !== '' ) {
+									img.attr( 'srcset', srcset );
+								}
 							}
-						}
-					);
+						);
 
-					PP.obj.last_src = src;
-				}
-			},
+						PP.obj.last_src = src;
+					}
+				},
 
 				// Add scrolled class
 				scrollClass: function(){
@@ -3119,16 +3040,17 @@ if ( $variationContent.length > 0 && $variationContent.text().length > 0 || $var
 			    PP.bodyClick(e);
 
 				// Make the recommended products a slider - Located on the thankyou page
-				$( '#recommended-products .related > ul.products' ).owlCarousel({
-					items: 3,
-					margin: 1,
-					loop: ( ( $( '#recommended-products li.product' ).length > 3 ) ? true : false ),
-					nav: ( ( $( '#recommended-products li.product' ).length > 3 ) ? true : false ),
-					navText: [ '', '' ],
-					navClass: [ 'owl-prev icon-left-arrow', 'owl-next icon-right-arrow' ],
-					dots: true,
-					mouseDrag: false
-				});
+				$( '#recommended-products .related > ul.products' ).flickity();
+				// $( '#recommended-products .related > ul.products' ).owlCarousel({
+				// 	items: 3,
+				// 	margin: 1,
+				// 	loop: ( ( $( '#recommended-products li.product' ).length > 3 ) ? true : false ),
+				// 	nav: ( ( $( '#recommended-products li.product' ).length > 3 ) ? true : false ),
+				// 	navText: [ '', '' ],
+				// 	navClass: [ 'owl-prev icon-left-arrow', 'owl-next icon-right-arrow' ],
+				// 	dots: true,
+				// 	mouseDrag: false
+				// });
 
 				// Check for login redirect
 				if ( PP.method.global.getUrlParameter('login') === 'true' ){

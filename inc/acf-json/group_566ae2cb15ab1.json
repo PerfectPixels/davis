@@ -16,11 +16,12 @@
                 "id": ""
             },
             "choices": {
+                "default": "Default",
                 "yes": "Yes",
                 "no": "No"
             },
             "default_value": [
-                "yes"
+                "default"
             ],
             "allow_null": 0,
             "multiple": 0,
@@ -69,5 +70,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Those options are for variable product only",
-    "modified": 1467816158
+    "modified": 1478709076
 }

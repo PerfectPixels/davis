@@ -3,7 +3,7 @@
 /**
  * Calculate new width for VC
  */
-function tomo_translateColumnWidthToSpan( $width ) {
+function pp_translateColumnWidthToSpan( $width ) {
 	preg_match( '/(\d+)\/(\d+)/', $width, $matches );
 
 	if ( ! empty( $matches ) ) {
@@ -24,7 +24,7 @@ function tomo_translateColumnWidthToSpan( $width ) {
 /**
  * Calculate new offset for VC
  */
-function tomo_column_offset_class_merge( $column_offset, $width ) {
+function pp_column_offset_class_merge( $column_offset, $width ) {
 	// Remove offset settings if
 	if ( '1' === vc_settings()->get( 'not_responsive_css' ) ) {
 		$column_offset = preg_replace( '/col\-(lg|md|xs)[^\s]*/', '', $column_offset );
@@ -44,7 +44,7 @@ function tomo_column_offset_class_merge( $column_offset, $width ) {
  * @since 4.2
  * @return string
  */
-function tomo_remove_wpautop( $content, $autop = false ) {
+function pp_remove_wpautop( $content, $autop = false ) {
 
 	if ( $autop ) { // Possible to use !preg_match('('.WPBMap::getTagsRegexp().')', $content)
 		$content = wpautop( preg_replace( '/<\/?p\>/', "\n", $content ) . "\n" );

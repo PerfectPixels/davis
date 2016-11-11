@@ -3,14 +3,14 @@
 require_once(get_template_directory().'/lib/vc_overwrites.php');
 
 // Tabs container & Tab Headers
-add_shortcode( 'tomo_tabs', 'tomo_tabs_shortcode' );
-function tomo_tabs_shortcode( $atts, $content = null ) {
+add_shortcode( 'pp_tabs', 'pp_tabs_shortcode' );
+function pp_tabs_shortcode( $atts, $content = null ) {
    $a = shortcode_atts( array(
       'foo' => ''
    ), $atts );
    
    // Extract tab titles
-	preg_match_all( '/tomo_tab([^\]]+)/i', $content, $matches, PREG_OFFSET_CAPTURE );
+	preg_match_all( '/pp_tab([^\]]+)/i', $content, $matches, PREG_OFFSET_CAPTURE );
 	$tab_titles = array();
 	
 	if ( isset( $matches[1] ) ) {
@@ -30,18 +30,18 @@ function tomo_tabs_shortcode( $atts, $content = null ) {
 	
 	$tabs_nav .= '</ul>';
   
-   echo $tabs_nav . '<div class="tab-content">' . tomo_remove_wpautop( $content ) . '</div>';
+   echo $tabs_nav . '<div class="tab-content">' . pp_remove_wpautop( $content ) . '</div>';
 }
 
 // Tab Content
-add_shortcode( 'tomo_tab', 'tomo_tab_shortcode' );
-function tomo_tab_shortcode( $atts, $content = null ) {
+add_shortcode( 'pp_tab', 'pp_tab_shortcode' );
+function pp_tab_shortcode( $atts, $content = null ) {
    $a = shortcode_atts( array(
       'title' => '',
       'tab_id' => ''
    ), $atts );
    
-   $output = '<div role="tabpanel" class="tab-pane" id="tab-' . ( empty( $tab_id ) ? sanitize_title( $title ) : esc_attr( $tab_id ) ) . '">' . tomo_remove_wpautop( $content ) . '</div>';
+   $output = '<div role="tabpanel" class="tab-pane" id="tab-' . ( empty( $tab_id ) ? sanitize_title( $title ) : esc_attr( $tab_id ) ) . '">' . pp_remove_wpautop( $content ) . '</div>';
   
    echo $output;
 }

@@ -3,8 +3,8 @@
 // REGISTER TAB SHORTCODE
 vc_map( array(
     "name" => __("Horizontal Tabs", "tomokids"),
-    "base" => "tomo_tabs",
-    "as_parent" => array('only' => 'tomo_tab'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
+    "base" => "pp_tabs",
+    "as_parent" => array('only' => 'pp_tab'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
     "content_element" => true,
     "show_settings_on_create" => false,
     "is_container" => true,
@@ -15,8 +15,8 @@ vc_map( array(
 ) );
 vc_map( array(
     "name" => __("Tab", "tomokids"),
-    "base" => "tomo_tab",
-    "as_child" => array('only' => 'tomo_tabs'), // Use only|except attributes to limit parent (separate multiple values with comma)
+    "base" => "pp_tab",
+    "as_child" => array('only' => 'pp_tabs'), // Use only|except attributes to limit parent (separate multiple values with comma)
     "content_element" => true,
     "show_settings_on_create" => false,
     "is_container" => true,
@@ -37,11 +37,11 @@ vc_map( array(
 ) );
 //Your "container" content element should extend WPBakeryShortCodesContainer class to inherit all required functionality
 if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
-    class WPBakeryShortCode_Tomo_Tabs extends WPBakeryShortCodesContainer {
+    class WPBakeryShortCode_pp_Tabs extends WPBakeryShortCodesContainer {
     }
 }
 if ( class_exists( 'WPBakeryShortCode' ) ) {
-    class WPBakeryShortCode_Tomo_Tab extends WPBakeryShortCode {
+    class WPBakeryShortCode_pp_Tab extends WPBakeryShortCode {
     }
 }
 

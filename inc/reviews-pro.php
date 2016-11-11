@@ -4,7 +4,7 @@ if ( class_exists( 'WC_Product_Reviews_Pro' ) ) {
 
 	require_once ABSPATH . 'wp-content/plugins/woocommerce-product-reviews-pro/includes/frontend/class-wc-product-reviews-pro-frontend.php';
 	
-	class Tomo_Product_Reviews_Pro_Frontend extends WC_Product_Reviews_Pro_Frontend {
+	class pp_Product_Reviews_Pro_Frontend extends WC_Product_Reviews_Pro_Frontend {
 	
 		/**
 		 * Add hooks
@@ -70,13 +70,13 @@ if ( class_exists( 'WC_Product_Reviews_Pro' ) ) {
 			$tabs['questions'] = array(
 				'title' 	=> __( 'Questions & Answers', 'woocommerce' ),
 				'priority' 	=> 50,
-				'callback' 	=> 'tomo_questions_tab_content'
+				'callback' 	=> 'pp_questions_tab_content'
 			);
 			
 			/**
 			 * Loads the product questions template
 			*/
-			function tomo_questions_tab_content() {
+			function pp_questions_tab_content() {
 			
 				
 				// The WooCommerce template path within the theme
@@ -102,6 +102,6 @@ if ( class_exists( 'WC_Product_Reviews_Pro' ) ) {
 	
 	}
 	
-	$tomo_reviews_pro_frontend = new Tomo_Product_Reviews_Pro_Frontend();
+	$pp_reviews_pro_frontend = new pp_Product_Reviews_Pro_Frontend();
 
 } ?>

@@ -37,15 +37,12 @@ function setup() {
 	) );
 
 	// Make theme available for translation
-	// Community translations can be found at https://github.com/roots/sage-translations
 	load_theme_textdomain('davis', get_template_directory() . '/languages');
 
 	// Enable plugins to manage the document title
-	// http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
 	add_theme_support('title-tag');
 
 	// Register wp_nav_menu() menus
-	// http://codex.wordpress.org/Function_Reference/register_nav_menus
 	register_nav_menus([
 		'primary_navigation' => __('Primary Navigation', 'davis'),
 		'left_topbar_navigation' => __('Left Top Bar Navigation', 'davis' ),
@@ -55,17 +52,12 @@ function setup() {
 	]);
 
 	// Enable post thumbnails
-	// http://codex.wordpress.org/Post_Thumbnails
-	// http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
-	// http://codex.wordpress.org/Function_Reference/add_image_size
 	add_theme_support('post-thumbnails');
 
 	// Enable post formats
-	// http://codex.wordpress.org/Post_Formats
 	add_theme_support('post-formats', ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio']);
 
 	// Enable HTML5 markup support
-	// http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
 	add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
 }
@@ -225,7 +217,7 @@ add_action('wp_ajax_nopriv_dynamic_css', __NAMESPACE__ . '\\dynamic_css');
 /**
  * Woocommerce image size
  */
-function tomo_woocommerce_image_dimensions() {
+function pp_woocommerce_image_dimensions() {
 	global $pagenow;
 
 	if ( ! isset( $_GET['activated'] ) || $pagenow != 'themes.php' ) {
@@ -256,20 +248,28 @@ function tomo_woocommerce_image_dimensions() {
 	update_option( 'shop_thumbnail_image_size', $thumbnail ); 	// Image gallery thumbs
 
 }
-add_action( 'after_switch_theme', __NAMESPACE__ . '\\tomo_woocommerce_image_dimensions', 1 );
+add_action( 'after_switch_theme', __NAMESPACE__ . '\\pp_woocommerce_image_dimensions', 1 );
 
 /**
  * Remove Woocommerce breadcrumbs
  */
-function tomo_remove_wc_breadcrumbs() {
+function pp_remove_wc_breadcrumbs() {
     remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 }
-add_action( 'init', __NAMESPACE__ . '\\tomo_remove_wc_breadcrumbs' );
-
+add_action( 'init', __NAMESPACE__ . '\\pp_remove_wc_breadcrumbs' );
 
 /**
  * Include ACF to the theme
  */
+
+// Create the get_field function if ACF plugin is not activated
+// if ( !is_admin() && !function_exists('get_field') ) {
+//
+//     function get_field($key) {
+//         return get_post_meta(get_the_ID(), $key, true);
+//     }
+//
+// }
 
 // 1. customize ACF path
 function my_acf_settings_path( $path ) {

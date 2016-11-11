@@ -9,17 +9,9 @@ $img = wp_get_attachment_image_src( $tn_id, 'shop_single' );
 $width = $img[1];
 $height = $img[2];
 
-// Get the images position
-$images_pos = get_theme_mod('product_images_position', 'right');
-$page_images_position = get_field('page_product_images_position');
-
-if ($page_images_position !== 'default'){
-    $images_pos = $page_images_position;
-}
-
 ?>
 
-<div id="main-slider" class="images"  data-flickity='{ "accessibility": true, "prevNextButtons": true, "pageDots": true, "resize": true, "wrapAround": true, "cellAlign": "<?php echo $images_pos; ?>" }'>
+<div id="main-slider" class="images"  data-flickity='{ "accessibility": true, "contain": true, "prevNextButtons": true, "pageDots": false, "resize": true, "wrapAround": true }'>
 
 	<?php
     // Image size

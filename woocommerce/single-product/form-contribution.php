@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 
 global $product;
-$contribution_type = new Tomo_Product_Reviews_Pro_Contribution_Type( $type );
+$contribution_type = new pp_Product_Reviews_Pro_Contribution_Type( $type );
 
 /**
  * Fires before contribution form with type $type

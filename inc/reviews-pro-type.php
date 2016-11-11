@@ -4,7 +4,7 @@ if ( class_exists( 'WC_Product_Reviews_Pro' ) ) {
 
 	require_once ABSPATH . 'wp-content/plugins/woocommerce-product-reviews-pro/includes/class-wc-product-reviews-pro-contribution-type.php';
 	
-	class Tomo_Product_Reviews_Pro_Contribution_Type extends WC_Product_Reviews_Pro_Contribution_Type {
+	class pp_Product_Reviews_Pro_Contribution_Type extends WC_Product_Reviews_Pro_Contribution_Type {
 	
 	
 		/** @public string contribution type */

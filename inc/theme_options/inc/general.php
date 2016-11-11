@@ -13,6 +13,127 @@ TC_Kirki::add_section( 'section_fonts', array(
     'priority'       => 160,
     'capability'     => 'edit_theme_options',
 ) );
+// Header font
+TC_Kirki::add_field( 'pp_theme', array(
+	'type'        => 'typography',
+	'settings'    => 'header_font',
+	'label'       => esc_attr__( 'Header & Nav Font', 'kirki' ),
+	'section'     => 'section_fonts',
+	'default'     => array(
+		'font-family'    => 'Montserrat',
+		'variant'        => 'regular',
+		'line-height'    => '26px',
+		'letter-spacing' => '-0.02em',
+	),
+	'priority'    => 10,
+	'output'      => array(
+		array(
+			'element' => array( '.navbar-top', '.nav-header' ),
+		),
+	),
+) );
+// H1 font
+TC_Kirki::add_field( 'pp_theme', array(
+	'type'        => 'typography',
+	'settings'    => 'h1_font',
+	'label'       => esc_attr__( 'H1 Font', 'kirki' ),
+	'section'     => 'section_fonts',
+	'default'     => array(
+		'font-family'    => 'Montserrat',
+		'variant'        => 'regular',
+	),
+	'priority'    => 10,
+	'output'      => array(
+		array(
+			'element' => 'h1',
+		),
+	),
+) );
+// H2 font
+TC_Kirki::add_field( 'pp_theme', array(
+	'type'        => 'typography',
+	'settings'    => 'h2_font',
+	'label'       => esc_attr__( 'H2 Font', 'kirki' ),
+	'section'     => 'section_fonts',
+	'default'     => array(
+		'font-family'    => 'Montserrat',
+		'variant'        => 'regular',
+	),
+	'priority'    => 10,
+	'output'      => array(
+		array(
+			'element' => 'h2',
+		),
+	),
+) );
+// H3 font
+TC_Kirki::add_field( 'pp_theme', array(
+	'type'        => 'typography',
+	'settings'    => 'h3_font',
+	'label'       => esc_attr__( 'H3 Font', 'kirki' ),
+	'section'     => 'section_fonts',
+	'default'     => array(
+		'font-family'    => 'Montserrat',
+		'variant'        => 'regular',
+	),
+	'priority'    => 10,
+	'output'      => array(
+		array(
+			'element' => 'h3',
+		),
+	),
+) );
+// H4 font
+TC_Kirki::add_field( 'pp_theme', array(
+	'type'        => 'typography',
+	'settings'    => 'h4_font',
+	'label'       => esc_attr__( 'H4 Font', 'kirki' ),
+	'section'     => 'section_fonts',
+	'default'     => array(
+		'font-family'    => 'Montserrat',
+		'variant'        => 'regular',
+	),
+	'priority'    => 10,
+	'output'      => array(
+		array(
+			'element' => 'h4',
+		),
+	),
+) );
+// H5 font
+TC_Kirki::add_field( 'pp_theme', array(
+	'type'        => 'typography',
+	'settings'    => 'h5_font',
+	'label'       => esc_attr__( 'H5 Font', 'kirki' ),
+	'section'     => 'section_fonts',
+	'default'     => array(
+		'font-family'    => 'Montserrat',
+		'variant'        => 'regular',
+	),
+	'priority'    => 10,
+	'output'      => array(
+		array(
+			'element' => 'h5',
+		),
+	),
+) );
+// H6 font
+TC_Kirki::add_field( 'pp_theme', array(
+	'type'        => 'typography',
+	'settings'    => 'h6_font',
+	'label'       => esc_attr__( 'H6 Font', 'kirki' ),
+	'section'     => 'section_fonts',
+	'default'     => array(
+		'font-family'    => 'Montserrat',
+		'variant'        => 'regular',
+	),
+	'priority'    => 10,
+	'output'      => array(
+		array(
+			'element' => 'h6',
+		),
+	),
+) );
 // Body font
 TC_Kirki::add_field( 'pp_theme', array(
 	'type'        => 'typography',
@@ -21,7 +142,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	'section'     => 'section_fonts',
 	'default'     => array(
 		'font-family'    => 'Montserrat',
-		'variant'        => '400',
+		'variant'        => 'regular',
 		'line-height'    => '26px',
 		'letter-spacing' => '-0.02em',
 	),
@@ -31,17 +152,6 @@ TC_Kirki::add_field( 'pp_theme', array(
 			'element' => 'body',
 		),
 	),
-) );
-TC_Kirki::add_field( 'pp_theme', array(
-	'type'        => 'typography',
-	'settings'    => 'body_font_light',
-	'label'       => esc_attr__( 'Body Font - Light', 'kirki' ),
-	'section'     => 'section_fonts',
-	'default'     => array(
-		'font-family'    => 'Montserrat',
-		'variant'        => '100',
-	),
-	'priority'    => 10,
 ) );
 TC_Kirki::add_field( 'pp_theme', array(
 	'type'        => 'typography',
@@ -82,7 +192,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( 'body a:after', '.custom.tp-bullets .tp-bullet.selected', '.primary-bg-color-hover:hover', '.woocommerce-MyAccount-navigation li.is-active a', '.owl-item:before' ),
+			'element'  => array( 'body a:after', '.custom.tp-bullets .tp-bullet.selected', '.primary-bg-color-hover:hover', '.woocommerce-MyAccount-navigation li.is-active a', '#thumb-slider .thumb:after' ),
 			'property' => 'background-color',
 		),
 		array(

@@ -144,7 +144,7 @@ if ( $product->variation_id ){
 				do_action( 'woocommerce_after_shop_loop_item' );
 				
 				if ( $product->is_type( 'variable' ) ){
-					Extras\tomo_variable_add_to_cart( true );
+					Extras\pp_variable_add_to_cart( true );
 				}
 				
 			?>
@@ -193,7 +193,7 @@ if ( $product->variation_id ){
 				do_action( 'woocommerce_after_shop_loop_item' );
 				
 				if ($product->variation_id){
-					Extras\tomo_variable_add_to_cart();
+					Extras\pp_variable_add_to_cart();
 				}
 		
 			?>
