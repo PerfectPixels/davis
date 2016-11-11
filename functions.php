@@ -28,8 +28,7 @@
    'inc/reviews-pro.php', // Change the reviews pro plugin
    'inc/reviews-pro-type.php', // Change the reviews pro plugin
    'inc/social-checkout.php', // Change the reviews pro plugin
-   'inc/kirki/kirki.php', // Include Kirki customiser
-   'inc/theme-kirki.php', // Include Kirki customiser
+   'inc/class-tgm-plugin-activation.php', // Include TGM plugin
    'inc/theme_options/conf.php' // All customiser sections, panel, fields
  ];
 

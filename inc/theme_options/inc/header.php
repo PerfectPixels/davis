@@ -1,20 +1,20 @@
 <?php
 
 // Add the Header panel
-TC_Kirki::add_panel( 'panel_header', array(
+Kirki::add_panel( 'panel_header', array(
     'priority'    => 10,
     'title'       => __( 'Header', 'davis' ),
 ) );
 
 // LOGO
-TC_Kirki::add_section( 'logos', array(
+Kirki::add_section( 'logos', array(
     'title'          => __( 'Logos' ),
     'panel'          => 'panel_header', // Not typically needed.
     'priority'       => 160,
     'capability'     => 'edit_theme_options',
 ) );
 // Light logo
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'light_logo',
 	'label'    => __( 'Light Logo', 'davis' ),
     'description' => __( 'Make sure you upload a logo that is at least 100 pixels tall.', 'davis' ),
@@ -24,7 +24,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	'default'  => '',
 ) );
 // Dark logo
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'dark_logo',
 	'label'    => __( 'Dark Logo', 'davis' ),
     'description' => __( 'Make sure you upload a logo that is at least 100 pixels tall.', 'davis' ),
@@ -35,14 +35,14 @@ TC_Kirki::add_field( 'pp_theme', array(
 ) );
 
 // TOP BAR
-TC_Kirki::add_section( 'top_bar', array(
+Kirki::add_section( 'top_bar', array(
     'title'          => __( 'Top Bar' ),
     'panel'          => 'panel_header', // Not typically needed.
     'priority'       => 160,
     'capability'     => 'edit_theme_options',
 ) );
 // Show/Hide top bar
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'display_top_bar',
 	'label'    => __( 'Display Top Bar', 'davis' ),
     'description' => __( 'Choose to show/hide the top bar above the menu header.', 'davis' ),
@@ -56,7 +56,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Fixed top bar
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'fixed_top_bar',
 	'label'    => __( 'Fixed Top Bar', 'davis' ),
     'description' => __( 'Choose to have the top bar always at the top of the page whenever the user scroll the page or to let it move.', 'davis' ),
@@ -77,7 +77,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Top Bar color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'top_bar_color',
 	'label'    => __( 'Background Color', 'davis' ),
 	'section'  => 'top_bar',
@@ -108,7 +108,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Top Bar text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'top_bar_text_color',
 	'label'    => __( 'Text Color', 'davis' ),
 	'section'  => 'top_bar',
@@ -138,7 +138,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Top Bar hover text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'top_bar_hover_text_color',
 	'label'    => __( 'Hover Text Color', 'davis' ),
 	'section'  => 'top_bar',
@@ -173,7 +173,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Topbar Icons
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'topbar_action_icons',
 	'label'    => __( 'User Action Icons', 'davis' ),
     'description' => __( 'Choose to show/hide the action icons (account, login, cart, wishlist...)', 'davis' ),
@@ -187,7 +187,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Topbar Icon text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'topbar_icon_text_color',
 	'label'    => __( 'Icon Counter Color', 'davis' ),
     'description' => __( 'Select the color of the text counter inside the action icons (cart and wishlist).', 'davis' ),
@@ -220,7 +220,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Show/Hide social media
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'display_social_media',
 	'label'    => __( 'Display Social Media', 'davis' ),
     'description' => __( 'Choose to show/hide the social media icons.', 'davis' ),
@@ -241,7 +241,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Social media position
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'social_media_pos',
 	'label'    => __( 'Social media location', 'davis' ),
     'description' => __( 'Choose to display the social media icons on the left or the right of the top bar.', 'davis' ),
@@ -255,7 +255,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Facebook
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'facebook_top_bar',
 	'label'    => __( 'Facebook', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Facebook URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -277,7 +277,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Twitter
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'twitter_top_bar',
 	'label'    => __( 'Twitter', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Twitter URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -299,7 +299,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Google PLus
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'google_top_bar',
 	'label'    => __( 'Google Plus', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Google Plus URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -321,7 +321,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Instagram
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'instagram_top_bar',
 	'label'    => __( 'Instagram', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Instagram URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -343,7 +343,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Pinterest
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'pinterest_top_bar',
 	'label'    => __( 'Pinterest', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Pinterest URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -365,7 +365,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Show/Hide message
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'display_message',
 	'label'    => __( 'Display Message Box', 'davis' ),
     'description' => __( 'Choose to show/hide the message box.', 'davis' ),
@@ -386,7 +386,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Message position
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'message_pos',
 	'label'    => __( 'Message location', 'davis' ),
     'description' => __( 'Choose to display the message box on the left or the right of the top bar.', 'davis' ),
@@ -400,7 +400,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Message text
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'message_text',
 	'label'    => __( 'Message Text', 'davis' ),
 	'section'  => 'top_bar',
@@ -421,7 +421,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'message_text_color',
 	'label'    => __( 'Message text Color', 'davis' ),
 	'section'  => 'top_bar',
@@ -457,7 +457,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Box color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'message_box_color',
 	'label'    => __( 'Message Box Color', 'davis' ),
 	'section'  => 'top_bar',
@@ -494,14 +494,14 @@ TC_Kirki::add_field( 'pp_theme', array(
 ) );
 
 // HEADER TYPE
-TC_Kirki::add_section( 'header_options', array(
+Kirki::add_section( 'header_options', array(
     'title'          => __( 'Header Options' ),
     'panel'          => 'panel_header', // Not typically needed.
     'priority'       => 160,
     'capability'     => 'edit_theme_options',
 ) );
 // Show/Hide header
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'header_type',
     'description' => __( 'Choose a layout between all the available ones.', 'davis' ),
 	'section'  => 'header_options',
@@ -519,7 +519,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Fixed header
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'fixed_header',
 	'label'    => __( 'Fixed Header', 'davis' ),
     'description' => __( 'Choose to have the header always at the top of the page whenever the user scroll the page or to let it move.', 'davis' ),
@@ -534,7 +534,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 ) );
 // Transparent header
 /*
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'transparent_header',
 	'label'    => __( 'Top Page Transparent Header', 'davis' ),
     'description' => __( 'Choose to have a transparent header when at the top page. ( Ideal if you have a slideshow underneath a sticky header )', 'davis' ),
@@ -548,7 +548,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Transparent Header text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'transparent_header_text_color',
 	'label'    => __( 'Transparent Header Text Color', 'davis' ),
 	'section'  => 'header_options',
@@ -580,7 +580,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 ) );
 */
 // Header background color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'header_bg_color',
 	'label'    => __( 'Header Background Color', 'davis' ),
 	'section'  => 'header_options',
@@ -615,7 +615,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Header text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'header_text_color',
 	'label'    => __( 'Header Text Color', 'davis' ),
 	'section'  => 'header_options',
@@ -659,7 +659,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Header hover text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'header_hover_text_color',
 	'label'    => __( 'Header Hover Text Color', 'davis' ),
 	'section'  => 'header_options',
@@ -694,7 +694,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Logo Choice
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'logo_selection',
 	'label'    => __( 'Logo Selection', 'davis' ),
     'description' => __( 'Select the logo type you want to display depending on the header color.', 'davis' ),
@@ -708,7 +708,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Mega Menu style
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'megamenu_fullwidth',
 	'label'    => __( 'Mega Menu Style', 'davis' ),
     'description' => __( 'Choose to have the submenu fullwidth or boxed', 'davis' ),
@@ -722,7 +722,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Header Icons
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'header_action_icons',
 	'label'    => __( 'User Action Icons', 'davis' ),
     'description' => __( 'Choose to show/hide the action icons (account, login, cart, wishlist...)', 'davis' ),
@@ -736,7 +736,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Header Icon text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'header_icon_text_color',
 	'label'    => __( 'Icon Counter Color', 'davis' ),
     'description' => __( 'Select the color of the text counter inside the action icons (cart and wishlist).', 'davis' ),
@@ -774,7 +774,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Header Icon hover text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'header_icon_hover_text_color',
 	'label'    => __( 'Icon Counter Hover Color', 'davis' ),
 	'section'  => 'header_options',
@@ -804,7 +804,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Search Icons
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'header_search_icons',
 	'label'    => __( 'Search Icon', 'davis' ),
     'description' => __( 'Choose to show/hide the search icon', 'davis' ),
@@ -818,7 +818,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Search Field
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'header_search_field',
 	'label'    => __( 'Search Input Field', 'davis' ),
     'description' => __( 'Choose to show/hide the search input field.', 'davis' ),
