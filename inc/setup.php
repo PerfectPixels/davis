@@ -305,15 +305,6 @@ add_action( 'tgmpa_register', 'davis_register_required_plugins' );
  * ACF options for the theme
  */
 
-// Create the get_field function if ACF plugin is not activated
-if ( !is_admin() && !function_exists('get_field') ) {
-
-    function get_field($key) {
-        return get_post_meta(get_the_ID(), $key, true);
-    }
-
-}
-
 // Hide ACF field group menu item
 //add_filter('acf/settings/show_admin', '__return_false');
 
