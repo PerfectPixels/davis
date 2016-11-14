@@ -58,55 +58,55 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: inc/extras.php:125
+#: inc/extras.php:126
 msgid "Wishlist"
 msgstr ""
 
-#: inc/extras.php:185, woocommerce/cart/mini-cart.php:22
+#: inc/extras.php:186, woocommerce/cart/mini-cart.php:22
 msgid "sprintfngettextYou have %d item in your cart"
 msgstr ""
 
-#: inc/extras.php:291
+#: inc/extras.php:292
 msgid "We cannot find any account with this email address"
 msgstr ""
 
-#: inc/extras.php:293
+#: inc/extras.php:294
 msgid "Your password is incorrect"
 msgstr ""
 
-#: inc/extras.php:296
+#: inc/extras.php:297
 msgid "You are now logged in"
 msgstr ""
 
-#: inc/extras.php:320
+#: inc/extras.php:321
 msgid "Please enter email address"
 msgstr ""
 
-#: inc/extras.php:322
+#: inc/extras.php:323
 msgid "Please enter password"
 msgstr ""
 
-#: inc/extras.php:359
+#: inc/extras.php:360
 msgid "Successfully registered! You are now logged in"
 msgstr ""
 
-#: inc/extras.php:361
+#: inc/extras.php:362
 msgid "Email address already registered"
 msgstr ""
 
-#: inc/extras.php:386
+#: inc/extras.php:387
 msgid "Enter an email address"
 msgstr ""
 
-#: inc/extras.php:402, inc/extras.php:407
+#: inc/extras.php:403, inc/extras.php:408
 msgid "Invalid email address"
 msgstr ""
 
-#: inc/extras.php:420
+#: inc/extras.php:421
 msgid "Password reset is not allowed for this user"
 msgstr ""
 
-#: inc/extras.php:447
+#: inc/extras.php:448
 msgid "Check your email for the confirmation link"
 msgstr ""
 
@@ -206,11 +206,11 @@ msgstr ""
 msgid "Footer Bottom"
 msgstr ""
 
-#: inc/setup.php:351
+#: inc/setup.php:343
 msgid "Theme Options"
 msgstr ""
 
-#: inc/setup.php:357
+#: inc/setup.php:349
 msgid "Header Options"
 msgstr ""
 

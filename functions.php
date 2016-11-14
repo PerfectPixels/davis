@@ -13,10 +13,11 @@
   *
   */
  $pp_includes = [
+   'inc/setup.php',     // Theme setup
    'inc/assets.php',    // Scripts and stylesheets
    'inc/extras.php',    // Custom functions
    //'inc/single-variation.php',    // Display variations as simple products
-   'inc/setup.php',     // Theme setup
+   'inc/class-tgm-plugin-activation.php', // Include TGM plugin
    'inc/widgets.php',   // Widgets creation
    'inc/titles.php',    // Page titles
    'inc/template-tags.php',    // Page titles
@@ -28,7 +29,6 @@
    'inc/reviews-pro.php', // Change the reviews pro plugin
    'inc/reviews-pro-type.php', // Change the reviews pro plugin
    'inc/social-checkout.php', // Change the reviews pro plugin
-   'inc/class-tgm-plugin-activation.php', // Include TGM plugin
    'inc/theme_options/conf.php' // All customiser sections, panel, fields
  ];
 
@@ -40,3 +40,14 @@
    require_once $filepath;
  }
  unset($file, $filepath);
+
+ /*
+ * If ACF plugin is not activated, create this fallback
+ */
+ if ( !is_admin() && !function_exists('get_field') ) {
+
+     function get_field($key) {
+         return get_post_meta(get_the_ID(), $key, true);
+     }
+
+ }

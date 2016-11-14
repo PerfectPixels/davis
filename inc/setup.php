@@ -276,8 +276,9 @@ add_action( 'init', __NAMESPACE__ . '\\pp_remove_wc_breadcrumbs' );
  			),
 
  		array(
- 			'name'               => 'Advanced Custom Fields', // The plugin name.
- 			'slug'               => 'acf', // The plugin slug (typically the folder name).
+ 			'name'               => 'Advanced Custom Fields Pro', // The plugin name.
+ 			'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
+            'source'             => get_stylesheet_directory() . '/inc/tgm-plugins/advanced-custom-fields-pro.zip', // The plugin source.
  			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
  			'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
  		),
@@ -299,7 +300,7 @@ add_action( 'init', __NAMESPACE__ . '\\pp_remove_wc_breadcrumbs' );
 
  	tgmpa( $plugins, $config );
  }
-add_action( 'tgmpa_register', 'davis_register_required_plugins' );
+add_action( 'tgmpa_register', __NAMESPACE__ . '\\davis_register_required_plugins' );
 
 /**
  * ACF options for the theme
