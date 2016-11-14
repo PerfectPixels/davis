@@ -1,20 +1,20 @@
 <?php 
 
 // FOOTER PANET DECLARATION
-TC_Kirki::add_panel( 'panel_footer', array(
+Kirki::add_panel( 'panel_footer', array(
     'priority'    => 11,
     'title'       => __( 'Footer', 'davis' ),
 ) );
 
 // TOP SIDEBAR SECTION
-TC_Kirki::add_section( 'section_sidebar_footer_top', array(
+Kirki::add_section( 'section_sidebar_footer_top', array(
     'title'          => __( 'Top Sidebar' ),
     'panel'          => 'panel_footer', // Not typically needed.
     'priority'       => 160,
     'capability'     => 'edit_theme_options',
 ) );
 // Sidebar
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' 		=> 'footer_sidebar',
 	'label'    		=> __( 'Sidebar display options', 'davis' ),
     'description' 	=> __( 'Choose where to display the footer sidebar.', 'davis' ),
@@ -31,14 +31,14 @@ TC_Kirki::add_field( 'pp_theme', array(
 ) );
 
 // BOTTOM SIDEBAR SECTION
-TC_Kirki::add_section( 'section_sidebar_footer_bottom', array(
+Kirki::add_section( 'section_sidebar_footer_bottom', array(
     'title'          => __( 'Bottom Sidebar' ),
     'panel'          => 'panel_footer', // Not typically needed.
     'priority'       => 160,
     'capability'     => 'edit_theme_options',
 ) );
 // Hide/Show
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'footer_sidebar_bottom',
 	'label'    => __( 'Display Bottom Sidebar', 'davis' ),
     'description' => __( 'Choose if you want to display or remove the bottom sidebar in the footer.', 'davis' ),
@@ -52,7 +52,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Background color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'footer_bg_color',
 	'label'    => __( 'Background Color', 'davis' ),
 	'section'  => 'section_sidebar_footer_bottom',
@@ -72,7 +72,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'footer_txt_color',
 	'label'    => __( 'Text Color', 'davis' ),
 	'section'  => 'section_sidebar_footer_bottom',
@@ -95,14 +95,14 @@ TC_Kirki::add_field( 'pp_theme', array(
 ) );
 
 // COPYRIGHT SECTION
-TC_Kirki::add_section( 'section_footer_copyright', array(
+Kirki::add_section( 'section_footer_copyright', array(
     'title'          => __( 'Copyright' ),
     'panel'          => 'panel_footer', // Not typically needed.
     'priority'       => 160,
     'capability'     => 'edit_theme_options',
 ) );
 // Copyright text
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'copyright_text',
 	'label'    => __( 'Copyright Text', 'davis' ),
 	'section'  => 'section_footer_copyright',
@@ -111,7 +111,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	'default'  => __( '© 2016 ThemeConcept Ltd. All Rights Reserved.', 'davis' ),
 ) );
 // Hide/Show Social media
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'footer_social',
 	'label'    => __( 'Display Social Media', 'davis' ),
     'description' => __( 'Choose if you want to display or remove the social media.', 'davis' ),
@@ -125,7 +125,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Facebook
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'facebook_footer',
 	'label'    => __( 'Facebook', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Facebook URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -142,7 +142,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Twitter
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'twitter_footer',
 	'label'    => __( 'Twitter', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Twitter URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -159,7 +159,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Google PLus
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'google_footer',
 	'label'    => __( 'Google Plus', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Google Plus URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -176,7 +176,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Instagram
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'instagram_footer',
 	'label'    => __( 'Instagram', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Instagram URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -193,7 +193,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Pinterest
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'pinterest_footer',
 	'label'    => __( 'Pinterest', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Pinterest URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -210,7 +210,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Background color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'copyright_bg_color',
 	'label'    => __( 'Background Color', 'davis' ),
 	'section'  => 'section_footer_copyright',
@@ -226,7 +226,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'copyright_txt_color',
 	'label'    => __( 'Text Color', 'davis' ),
 	'section'  => 'section_footer_copyright',

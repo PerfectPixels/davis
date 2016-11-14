@@ -1,13 +1,13 @@
 <?php 
 
 // LOGIN PANET DECLARATION
-TC_Kirki::add_panel( 'panel_login', array(
+Kirki::add_panel( 'panel_login', array(
     'priority'    => 11,
     'title'       => __( 'Login Popup', 'davis' ),
 ) );
 
 // LOGIN SECTION
-TC_Kirki::add_section( 'section_login', array(
+Kirki::add_section( 'section_login', array(
     'title'          => __( 'Login Section' ),
     'panel'          => 'panel_login', // Not typically needed.
     'priority'       => 10,
@@ -15,7 +15,7 @@ TC_Kirki::add_section( 'section_login', array(
 ) );
 // Login popup
 if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
-	TC_Kirki::add_field( 'pp_theme', array(
+	Kirki::add_field( 'pp_theme', array(
 		'settings' 		=> 'login_style',
 		'label'    		=> __( 'Login Popup Style', 'davis' ),
 	    'description' 	=> __( 'Choose which style you can to display the login popup.', 'davis' ),
@@ -31,7 +31,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 endif;
 
 // Login background color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'login_bg_color',
 	'label'    => __( 'Background Color', 'davis' ),
 	'section'  => 'section_login',
@@ -67,7 +67,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Login background repeat
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' 		=> 'login_bg_img_repeat',
 	'label'    		=> __( 'Background Repeat', 'davis' ),
 	'section'  		=> 'section_login',
@@ -93,7 +93,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Login background size
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' 		=> 'login_bg_img_size',
 	'label'    		=> __( 'Background Size', 'davis' ),
 	'section'  		=> 'section_login',
@@ -119,7 +119,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Login text color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'login_txt_color',
 	'label'    => __( 'Text Color', 'davis' ),
 	'section'  => 'section_login',
@@ -135,7 +135,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Login button color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'login_btn_color',
 	'label'    => __( 'Button Color', 'davis' ),
 	'section'  => 'section_login',
@@ -152,7 +152,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Login Title
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'login_title',
 	'label'    => __( 'Title', 'davis' ),
 	'section'  => 'section_login',
@@ -161,7 +161,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	'default'  => __( 'Welcome back!', 'davis' ),
 ) );
 // Login Subtitle
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'login_subtitle',
 	'label'    => __( 'Title', 'davis' ),
 	'section'  => 'section_login',
@@ -170,7 +170,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	'default'  => __( 'If you already have an account, you can sign in again by clicking on the button below.', 'davis' ),
 ) );
 // Login Button
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'login_btn',
 	'label'    => __( 'Button', 'davis' ),
 	'section'  => 'section_login',
@@ -182,14 +182,14 @@ TC_Kirki::add_field( 'pp_theme', array(
 if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 
 	// REGISTRATION SECTION
-	TC_Kirki::add_section( 'section_registration', array(
+	Kirki::add_section( 'section_registration', array(
 	    'title'          => __( 'Registration Section' ),
 		'panel'          => 'panel_login', // Not typically needed.
 	    'priority'       => 10,
 	    'capability'     => 'edit_theme_options',
 	) );
 	// Registration background color
-	TC_Kirki::add_field( 'pp_theme', array(
+	Kirki::add_field( 'pp_theme', array(
 		'settings' => 'registration_bg_color',
 		'label'    => __( 'Background Color', 'davis' ),
 		'section'  => 'section_registration',
@@ -225,7 +225,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 		),
 	) );
 	// Registration background repeat
-	TC_Kirki::add_field( 'pp_theme', array(
+	Kirki::add_field( 'pp_theme', array(
 		'settings' 		=> 'registration_bg_img_repeat',
 		'label'    		=> __( 'Background Repeat', 'davis' ),
 		'section'  		=> 'section_registration',
@@ -251,7 +251,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 		),
 	) );
 	// Registration background size
-	TC_Kirki::add_field( 'pp_theme', array(
+	Kirki::add_field( 'pp_theme', array(
 		'settings' 		=> 'registration_bg_img_size',
 		'label'    		=> __( 'Background Size', 'davis' ),
 		'section'  		=> 'section_registration',
@@ -277,7 +277,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 		),
 	) );
 	// Registration text color
-	TC_Kirki::add_field( 'pp_theme', array(
+	Kirki::add_field( 'pp_theme', array(
 		'settings' => 'registration_txt_color',
 		'label'    => __( 'Text Color', 'davis' ),
 		'section'  => 'section_registration',
@@ -293,7 +293,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 		),
 	) );
 	// Registration button color
-	TC_Kirki::add_field( 'pp_theme', array(
+	Kirki::add_field( 'pp_theme', array(
 		'settings' => 'registration_btn_color',
 		'label'    => __( 'Button Color', 'davis' ),
 		'section'  => 'section_registration',
@@ -310,7 +310,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 		),
 	) );
 	// Registration Title
-	TC_Kirki::add_field( 'pp_theme', array(
+	Kirki::add_field( 'pp_theme', array(
 		'settings' => 'registration_title',
 		'label'    => __( 'Title', 'davis' ),
 		'section'  => 'section_registration',
@@ -319,7 +319,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 		'default'  => __( 'Hi There!', 'davis' ),
 	) );
 	// Registration Subtitle
-	TC_Kirki::add_field( 'pp_theme', array(
+	Kirki::add_field( 'pp_theme', array(
 		'settings' => 'registration_subtitle',
 		'label'    => __( 'Title', 'davis' ),
 		'section'  => 'section_registration',
@@ -328,7 +328,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 		'default'  => __( 'If you don’t have an account yet, you can join us by clicking on the button below.', 'davis' ),
 	) );
 	// Registration Button
-	TC_Kirki::add_field( 'pp_theme', array(
+	Kirki::add_field( 'pp_theme', array(
 		'settings' => 'registration_btn',
 		'label'    => __( 'Button', 'davis' ),
 		'section'  => 'section_registration',

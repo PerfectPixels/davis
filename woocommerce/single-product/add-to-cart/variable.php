@@ -37,10 +37,10 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 						<td class="value">
 							<?php
 								$selected = isset( $_REQUEST[ 'attribute_' . sanitize_title( $attribute_name ) ] ) ? wc_clean( $_REQUEST[ 'attribute_' . sanitize_title( $attribute_name ) ] ) : $product->get_variation_default_attribute( $attribute_name );
-								
+
 								$text = rtrim( str_replace( 'pa_', '', sanitize_title( $attribute_name ) ), 's' );
 								$select_text = 'Select ' . $text;
-								
+
 								wc_dropdown_variation_attribute_options( array( 'options' => $options, 'attribute' => $attribute_name, 'product' => $product, 'selected' => $selected, 'show_option_none' => __( $select_text, 'woocommerce' ) ) );
 							?>
 						</td>
@@ -57,16 +57,16 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 				 * woocommerce_before_single_variation Hook.
 				 */
 				do_action( 'woocommerce_before_single_variation' );
-				
+
 			?>
-			
+
 			<div class="woocommerce-variation regular_price">
 				<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-				
+
 					<?php
-					
+
 						$the_price = $product->get_price_html();
-					
+
 						if ( strpos($the_price, '<del>') !== false ){
 							preg_match('/<del>(.*?)<\/del>/s', $the_price, $del);
 							preg_match('/<span class="woocommerce-Price-currencySymbol">(.*?)<\/span>/s', $the_price, $cur);
@@ -76,15 +76,15 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 					?>
 
 					<p class="price"><?php echo $the_price; ?></p>
-				
+
 					<meta itemprop="price" content="<?php echo esc_attr( $product->get_price() ); ?>" />
 					<meta itemprop="priceCurrency" content="<?php echo esc_attr( get_woocommerce_currency() ); ?>" />
 					<link itemprop="availability" href="http://schema.org/<?php echo $product->is_in_stock() ? 'InStock' : 'OutOfStock'; ?>" />
-				
+
 				</div>
 			</div>
-			
-			<?php 				
+
+			<?php
 				/**
 				 * woocommerce_single_variation hook. Used to output the cart button and placeholder for variation data.
 				 * @since 2.4.0

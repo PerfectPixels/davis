@@ -1,20 +1,20 @@
 <?php
 
 // Add the General panel
-TC_Kirki::add_panel( 'panel_general', array(
+Kirki::add_panel( 'panel_general', array(
     'priority'    => 10,
     'title'       => __( 'Fonts & Colors', 'davis' ),
 ) );
 
 // FONTS
-TC_Kirki::add_section( 'section_fonts', array(
+Kirki::add_section( 'section_fonts', array(
     'title'          => __( 'Fonts' ),
     'panel'          => 'panel_general', // Not typically needed.
     'priority'       => 160,
     'capability'     => 'edit_theme_options',
 ) );
 // Header font
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'type'        => 'typography',
 	'settings'    => 'header_font',
 	'label'       => esc_attr__( 'Header & Nav Font', 'kirki' ),
@@ -33,7 +33,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // H1 font
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'type'        => 'typography',
 	'settings'    => 'h1_font',
 	'label'       => esc_attr__( 'H1 Font', 'kirki' ),
@@ -50,7 +50,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // H2 font
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'type'        => 'typography',
 	'settings'    => 'h2_font',
 	'label'       => esc_attr__( 'H2 Font', 'kirki' ),
@@ -67,7 +67,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // H3 font
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'type'        => 'typography',
 	'settings'    => 'h3_font',
 	'label'       => esc_attr__( 'H3 Font', 'kirki' ),
@@ -84,7 +84,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // H4 font
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'type'        => 'typography',
 	'settings'    => 'h4_font',
 	'label'       => esc_attr__( 'H4 Font', 'kirki' ),
@@ -101,7 +101,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // H5 font
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'type'        => 'typography',
 	'settings'    => 'h5_font',
 	'label'       => esc_attr__( 'H5 Font', 'kirki' ),
@@ -118,7 +118,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // H6 font
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'type'        => 'typography',
 	'settings'    => 'h6_font',
 	'label'       => esc_attr__( 'H6 Font', 'kirki' ),
@@ -135,7 +135,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Body font
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'type'        => 'typography',
 	'settings'    => 'body_font',
 	'label'       => esc_attr__( 'Body Font', 'kirki' ),
@@ -153,7 +153,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 		),
 	),
 ) );
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'type'        => 'typography',
 	'settings'    => 'body_font_bold',
 	'label'       => esc_attr__( 'Body Font - Bold', 'kirki' ),
@@ -166,14 +166,14 @@ TC_Kirki::add_field( 'pp_theme', array(
 ) );
 
 // COLORS
-TC_Kirki::add_section( 'section_colors', array(
+Kirki::add_section( 'section_colors', array(
     'title'          => __( 'Colors' ),
     'panel'          => 'panel_general', // Not typically needed.
     'priority'       => 160,
     'capability'     => 'edit_theme_options',
 ) );
 // Primary color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'primary_color',
 	'label'    => __( 'Primary Color', 'davis' ),
 	'section'  => 'section_colors',
@@ -213,7 +213,7 @@ TC_Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 // Secondary color color
-TC_Kirki::add_field( 'pp_theme', array(
+Kirki::add_field( 'pp_theme', array(
 	'settings' => 'secondary_color',
 	'label'    => __( 'Secondary Color', 'davis' ),
 	'description'    => __( 'Color used on the top of the primary color.', 'davis' ),

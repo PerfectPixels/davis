@@ -111,12 +111,13 @@ function get_wishlist_items($type) {
 		$lists = \YITH_WCWL()->get_wishlists();
 		$token = false;
 
-		if ( is_user_logged_in() ){
-			$token = $list['wishlist_token'];
-		}
-
 		foreach ( $lists as $list ) {
-	  	$wishlist_items = \YITH_WCWL()->count_products( $token );
+
+			if ( is_user_logged_in() ){
+				$token = $list['wishlist_token'];
+			}
+
+	  		$wishlist_items = \YITH_WCWL()->count_products( $token );
 			$counter++;
 			$wl_name = $list['wishlist_name'];
 			$wl_url = '';

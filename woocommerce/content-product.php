@@ -6,7 +6,7 @@
  *
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 2.5.0
+ * @version 2.6.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -46,17 +46,18 @@ $product_colors = get_field( 'product_colors', get_the_ID() );
 $available_variations = 0;
 $variationTmpl 		  = null;
 
+// Check if the variations product slider is enabled
+$variations_slider = false;
+
+if ( get_field('variations_slider') === 'yes' || get_field('variations_slider') === 'default' && get_theme_mod('shop_variations_slider', false) ){
+	$variations_slider = true;
+}
+
 if ( $product->is_type( 'variable' ) ){
 	$available_variations = $product->get_available_variations();
 	$first_attr = current(array_keys( $available_variations[0]['attributes'] ));
 	$variationCount = 0;
 	$created_variations = array();
-	$variations_slider = false;
-
-	// Check if the variations product slider is enabled
-	if ( get_field('variations_slider') === 'yes' || get_field('variations_slider') === 'default' && get_theme_mod('shop_variations_slider', false) ){
-		$variations_slider = true;
-	}
 
 	// Get the variation name
 	$variations = str_replace('attribute_', '', $first_attr);
