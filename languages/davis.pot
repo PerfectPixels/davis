@@ -308,11 +308,11 @@ msgstr ""
 msgid "Choose if you want to display or remove the bottom sidebar in the footer."
 msgstr ""
 
-#: inc/theme_options/inc/footer.php:50, inc/theme_options/inc/footer.php:123, inc/theme_options/inc/header.php:54, inc/theme_options/inc/header.php:185, inc/theme_options/inc/header.php:232, inc/theme_options/inc/header.php:377, inc/theme_options/inc/header.php:734, inc/theme_options/inc/header.php:816, inc/theme_options/inc/header.php:830, inc/theme_options/inc/shop.php:78
+#: inc/theme_options/inc/footer.php:50, inc/theme_options/inc/footer.php:123, inc/theme_options/inc/header.php:54, inc/theme_options/inc/header.php:185, inc/theme_options/inc/header.php:232, inc/theme_options/inc/header.php:377, inc/theme_options/inc/header.php:722, inc/theme_options/inc/header.php:804, inc/theme_options/inc/header.php:818, inc/theme_options/inc/shop.php:78
 msgid "Show"
 msgstr ""
 
-#: inc/theme_options/inc/footer.php:51, inc/theme_options/inc/footer.php:124, inc/theme_options/inc/header.php:55, inc/theme_options/inc/header.php:186, inc/theme_options/inc/header.php:233, inc/theme_options/inc/header.php:378, inc/theme_options/inc/header.php:735, inc/theme_options/inc/header.php:817, inc/theme_options/inc/header.php:831, inc/theme_options/inc/shop.php:79
+#: inc/theme_options/inc/footer.php:51, inc/theme_options/inc/footer.php:124, inc/theme_options/inc/header.php:55, inc/theme_options/inc/header.php:186, inc/theme_options/inc/header.php:233, inc/theme_options/inc/header.php:378, inc/theme_options/inc/header.php:723, inc/theme_options/inc/header.php:805, inc/theme_options/inc/header.php:819, inc/theme_options/inc/shop.php:79
 msgid "Hide"
 msgstr ""
 
@@ -444,19 +444,19 @@ msgstr ""
 msgid "Hover Text Color"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:178, inc/theme_options/inc/header.php:727
+#: inc/theme_options/inc/header.php:178, inc/theme_options/inc/header.php:715
 msgid "User Action Icons"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:179, inc/theme_options/inc/header.php:728
+#: inc/theme_options/inc/header.php:179, inc/theme_options/inc/header.php:716
 msgid "Choose to show/hide the action icons (account, login, cart, wishlist...)"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:192, inc/theme_options/inc/header.php:741
+#: inc/theme_options/inc/header.php:192, inc/theme_options/inc/header.php:729
 msgid "Icon Counter Color"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:193, inc/theme_options/inc/header.php:742
+#: inc/theme_options/inc/header.php:193, inc/theme_options/inc/header.php:730
 msgid "Select the color of the text counter inside the action icons (cart and wishlist)."
 msgstr ""
 
@@ -556,55 +556,55 @@ msgstr ""
 msgid "Header Hover Text Color"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:699
+#: inc/theme_options/inc/header.php:687
 msgid "Logo Selection"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:700
+#: inc/theme_options/inc/header.php:688
 msgid "Select the logo type you want to display depending on the header color."
 msgstr ""
 
-#: inc/theme_options/inc/header.php:706
+#: inc/theme_options/inc/header.php:694
 msgid "Light"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:707
+#: inc/theme_options/inc/header.php:695
 msgid "Dark"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:713
+#: inc/theme_options/inc/header.php:701
 msgid "Mega Menu Style"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:714
+#: inc/theme_options/inc/header.php:702
 msgid "Choose to have the submenu fullwidth or boxed"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:720
+#: inc/theme_options/inc/header.php:708
 msgid "Fullwidth"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:721
+#: inc/theme_options/inc/header.php:709
 msgid "Boxed"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:779
+#: inc/theme_options/inc/header.php:767
 msgid "Icon Counter Hover Color"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:809
+#: inc/theme_options/inc/header.php:797
 msgid "Search Icon"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:810
+#: inc/theme_options/inc/header.php:798
 msgid "Choose to show/hide the search icon"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:823
+#: inc/theme_options/inc/header.php:811
 msgid "Search Input Field"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:824
+#: inc/theme_options/inc/header.php:812
 msgid "Choose to show/hide the search input field."
 msgstr ""
 

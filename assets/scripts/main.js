@@ -298,9 +298,36 @@
 				calSubmenuHeight: function(){
 
 					$( '.menu-item-has-children ul .sub-menu' ).each( function(){
-						var $el = $( this )
+						var $el = $( this );
 
 						$el.attr( 'data-height', $el.outerHeight() );
+					});
+
+				},
+
+				// Give a width to all simple submenus
+				calSubmenuWidth: function(){
+
+					$( '.simple-nav > .sub-menu' ).each( function(){
+						var $el = $( this ),
+							w = 0;
+
+						// Loop throught each submenu item to get the longest value
+						$el.find('.sub-menu-item > .sub-menu-link').not('.sub-menu-item ul li .sub-menu-link').each(function(){
+							var itemTxt = $(this).text();
+							var c = document.createElement("canvas");
+							var ctx = c.getContext("2d");
+
+							ctx.font="13px Montserra";
+
+						    var txtW = ctx.measureText(itemTxt).width;
+
+							if (txtW > w) {
+								w = txtW;
+							}
+						});
+
+						$el.css('width', w + 'px');
 					});
 
 				},

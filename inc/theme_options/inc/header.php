@@ -668,21 +668,9 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => $primary_color,
 	'transport' => 'postMessage',
-	'js_vars'   => array(
-		array(
-			'element'  => array( '.nav-header a:hover', '.current_page_item > a' ),
-			'property' => 'color',
-			'suffix'   => '!important',
-		),
-		array(
-			'element'  => array( '.search-box button', '.cd-marker', '.cd-search-trigger.search-form-visible:after', '.primary-nav > li > a:after', '.dropdown-menu li a:after', '.menu-link:hover:before', '.menu-link:hover:after', '.go-back a:hover:before', '.go-back a:hover:after' ),
-			'function' => 'css',
-			'property' => 'background-color',
-		),
-	),
 	'output' => array(
 		array(
-			'element'  => array( '.nav-header a:hover', '.current_page_item > a' ),
+			'element'  => array( '.nav-header a:hover', '.nav-header a:hover:before', '.nav-header a:hover:after', '.current_page_item > a' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
