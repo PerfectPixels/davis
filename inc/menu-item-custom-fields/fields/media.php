@@ -46,18 +46,18 @@ class Menu_Item_Media_Fields {
 	 */
 	public static function init() {
 		global $pagenow;
-		
+
 		add_action( 'wp_ajax_set-menu-item-thumbnail', array( __CLASS__, 'wp_ajax_set_menu_item_thumbnail' ) );
 		add_action( 'wp_nav_menu_item_custom_fields', array( __CLASS__, '_fields' ), 10, 4 );
 		add_action( 'wp_update_nav_menu_item', array( __CLASS__, '_save' ), 10, 3 );
 		add_filter( 'wp_setup_nav_menu_item', array( __CLASS__, 'menu_image_wp_setup_nav_menu_item' ) );
 		add_filter( 'manage_nav-menus_columns', array( __CLASS__, '_columns' ), 99 );
 		add_action( 'admin_head-nav-menus.php', array( __CLASS__, 'menu_image_admin_head_nav_menus_action' ) );
-		
+
 		if( $pagenow == 'nav-menus.php' ) {
 			add_action( 'admin_head', array( __CLASS__, 'menu_css' ) );
 		}
-		
+
 		self::$fields = array(
 			'menu-img' => __( 'Menu Image', 'davis' )
 		);
@@ -91,7 +91,7 @@ class Menu_Item_Media_Fields {
 			else {
 				$value = null;
 			}
-			
+
 			error_log( print_r($value, true) );
 
 			// Update
@@ -102,10 +102,10 @@ class Menu_Item_Media_Fields {
 				delete_post_meta( $menu_item_db_id, $key );
 				delete_post_thumbnail( $menu_item_db_id );
 			}
-			
+
 		}
 	}
-	
+
 	/**
 	 * Load menu image meta for each menu item.
 	 *
@@ -118,7 +118,7 @@ class Menu_Item_Media_Fields {
 
 		return $item;
 	}
-	
+
 	/**
 	 * Update item thumbnail via ajax action.
 	 *
@@ -134,9 +134,9 @@ class Menu_Item_Media_Fields {
 		$thumbnail_id  = intval( $_POST[ 'thumbnail_id' ] );
 
 		check_ajax_referer( "update-menu-item" );
-		
+
 		self::$ajax = true;
-		
+
 		if ( $thumbnail_id == '-1' ) {
 			$return = self::_fields( $post_ID, '', '', '' );
 		} else {
@@ -158,7 +158,7 @@ class Menu_Item_Media_Fields {
 	 *
 	 * @return string Form fields
 	 */
-	public static function _fields( $id, $item, $depth, $args ) { 
+	public static function _fields( $id, $item, $depth, $args ) {
 		foreach ( self::$fields as $_key => $label ) :
 			$key   			= sprintf( 'menu-item-%s', $_key );
 			$id_class = sprintf( 'edit-%s-%s', $key, $item->ID );
@@ -167,29 +167,29 @@ class Menu_Item_Media_Fields {
 			$value 			= get_post_meta( $item->ID, $key, true );
 			$class 			= sprintf( 'field-%s', $_key );
 			$default_size 	= apply_filters( 'menu_image_default_size', array( 125, 125, false ) );
-			
-			if ( $id ){ 
-				$item_id  = $id; 					
+
+			if ( $id ){
+				$item_id  = $id;
 				$id_class = sprintf( 'edit-%s-%s', $key, $item_id );
 				$name  	  = sprintf( '%s[%s]', $key, $item_id );
-			} 
-			
+			}
+
 			if ( ! self::$ajax ){
 				$thumbnail_id 	= get_post_thumbnail_id( $item_id );
 			}
-			
-			if ( self::$attachment_id ){ 
-				$thumbnail_id = self::$attachment_id; 
+
+			if ( self::$attachment_id ){
+				$thumbnail_id = self::$attachment_id;
 			} ?>
-			
+
 			<div id="menu-image-<?php echo $item_id; ?>" class="field-image hide-if-no-js wp-media-buttons">
 				<p class="description description-thin <?php echo esc_attr( $class ) ?>">
 					<label><?php echo esc_html( $label ); ?><br /><a title="<?php $thumbnail_id ? esc_attr_e( 'Change menu item image', 'davis' ) : esc_attr_e( 'Set menu item image', 'davis' ); ?>" href="#" class="set-post-thumbnail button" data-item-id="<?php echo $item_id; ?>" style="height: auto;"><?php echo ( $thumbnail_id ? wp_get_attachment_image( $thumbnail_id, $default_size ) : esc_html__( 'Set image', 'davis' ) ); ?></a><?php echo ( $thumbnail_id ? '<a href="#" class="remove-post-thumbnail">' . __( 'Remove', 'davis' ) . '</a>' : '' ); ?></label>
 					<input type="hidden" id="<?php echo esc_attr( $id_class ); ?>" class="<?php echo esc_attr( $id_class ); ?>" value="<?php echo $value; ?>" name="<?php echo esc_attr( $name ); ?>" />
 				</p>
 			</div>
-			
-			<?php 
+
+			<?php
 		endforeach;
 	}
 
@@ -205,14 +205,14 @@ class Menu_Item_Media_Fields {
 
 		return $columns;
 	}
-	
-	
+
+
 	/**
 	 * Loading media-editor script ot nav-menus page.
 	 *
 	 */
 	public static function menu_image_admin_head_nav_menus_action() {
-		wp_enqueue_script( 'davis-admin', get_template_directory_uri() . '/lib/menu-item-custom-fields/fields/js/media-upload.js', array( 'jquery' ) );
+		wp_enqueue_script( 'davis-admin', get_template_directory_uri() . '/inc/menu-item-custom-fields/fields/js/media-upload.js', array( 'jquery' ) );
 		wp_localize_script(
 			'davis-admin', 'menuImage', array(
 				'l10n'     => array(
@@ -238,7 +238,7 @@ class Menu_Item_Media_Fields {
 	  	.field-image { display: none; }
 	  	.set-post-thumbnail { max-width: 100%; text-align: center; padding: 5px !important; }
 	  	.set-post-thumbnail img { width: 125px; height: auto; padding:0 !important; }
-	  	
+
 	  	.menu-item:not(.menu-item-depth-0) .field-img-type option[value=mega-menu-bg] { display: none; }
 	  </style>";
 	}

@@ -146,23 +146,23 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: inc/menu-item-custom-fields/fields/select.php:58
+#: inc/menu-item-custom-fields/fields/select.php:31
 msgid "Image Type"
 msgstr ""
 
-#: inc/menu-item-custom-fields/fields/select.php:68
+#: inc/menu-item-custom-fields/fields/select.php:41
 msgid "Icon Position"
 msgstr ""
 
-#: inc/menu-item-custom-fields/fields/select.php:77, inc/menu-item-custom-fields/fields/select.php:85
+#: inc/menu-item-custom-fields/fields/select.php:50, inc/menu-item-custom-fields/fields/select.php:58
 msgid "Background Location"
 msgstr ""
 
-#: inc/menu-item-custom-fields/fields/select.php:93
+#: inc/menu-item-custom-fields/fields/select.php:66
 msgid "Image Size"
 msgstr ""
 
-#: inc/menu-item-custom-fields/fields/select.php:102
+#: inc/menu-item-custom-fields/fields/select.php:75
 msgid "Number of columns"
 msgstr ""
 

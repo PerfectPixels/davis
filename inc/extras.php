@@ -43,7 +43,7 @@ function custom_woocommerce_template_loop_product_title( $variationTmpl ) {
 
 	$by_brand .= '</div>';
 
-	echo '<h3>' . get_the_title() . $by_brand . '</h3>';
+	echo '<h3><a href="' . get_permalink($product->id) . '">' . get_the_title() . '</a>' . $by_brand . '</h3>';
 
 }
 

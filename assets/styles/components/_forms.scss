@@ -27,14 +27,14 @@ input[type="number"] {
 
 span.input { background:#fff; position: relative; display: block; overflow: hidden; border: 2px solid #f2f3f3; margin-bottom: 20px;
 	input { background:#fff; font-size: 16px; border: none; padding: 17px; width: 60%; position: absolute; top: 0; right: 100%; display: block; appearance: none; outline: none !important; transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1); }
-	
-	label { font-size: 16px; color: #abaaaa; width: 100%; height: 100%; text-align: left; cursor: text; display: inline-block;  margin: 0; transform-origin: 0% 50%; transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1); 
+
+	label { font-size: 16px; color: #abaaaa; width: 100%; height: 100%; text-align: left; cursor: text; display: inline-block;  margin: 0; transform-origin: 0% 50%; transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 		span { font-size: 16px; color: #abaaaa; position: relative; display: block; width: 100%; padding: 20px 10px 19px; line-height: 1; }
 	}
 }
 span.input.focus {
 	input { transform: translate3d(100%, 0, 0); transition-delay: 0.06s; }
-	
+
 	label { transform: translate3d(60%, 0, 0); pointer-events: none; }
 }
 
@@ -47,9 +47,9 @@ body .container button.message.error { background: $red !important; }
 body .container button[disabled=disabled] { cursor: text; }
 
 span.select2 { text-align: right; width: auto !important;
-	span.select2-selection { height: auto; border: none; border-radius: none; outline: none !important; 
+	span.select2-selection { height: auto; border: none; border-radius: none; outline: none !important;
 		span.select2-selection__rendered { line-height: 13px; padding: 15px 40px 12px 20px; }
-		
+
 		.select2-selection__arrow { width: 10px; height: 13px; right: 20px; top: 50%; margin-top: -6px; transform: rotate3d(1,0,0,0deg); transition: transform 350ms cubic-bezier(0.7, 0, 0.3, 1);
 				b { border-color: #000 transparent transparent transparent !important; border-width: 5px !important; margin-left: 0; left: inherit; right: 0; top: 6px; }
 			}
@@ -59,7 +59,7 @@ span.select2 { text-align: right; width: auto !important;
 }
 
 span.select2.select2-container--open {
-	span.select2-selection { 
+	span.select2-selection {
 		.select2-selection__arrow { transform: rotate3d(1,0,0,180deg); }
 	}
 }
@@ -68,32 +68,32 @@ span.select2-container {
 	span.select2-dropdown { z-index: 99; border: 1px solid #f7f8f9; border-bottom-width: 2px; border-radius: 0;
 		ul.select2-results__options { max-height: inherit; overflow: hidden;
 			li.select2-results__option { color: #000; font-size: 11px; padding: 10px 20px; text-transform: uppercase; border-bottom: 1px solid #f7f8f9; }
-			
+
 			li.select2-results__option:last-child { border-bottom: none; }
-			
+
 			li.select2-results__option--highlighted[aria-selected] { background: #000; color: #fff; }
 		}
 	}
 }
 
 div.select2-container { width: 100% !important;
-		
+
 	a.select2-choice,
 	a.select2-selection { background: #fff; color: #000; border:1px solid #cbcaca !important; box-shadow: inset 1px -1px 0 #cbcaca; border: none; border-radius: 0 !important; font-size: 12px; font-weight: bold; line-height: 1; height: auto; padding: 22px 10px; margin-bottom: 10px; text-transform: uppercase; text-align: left;
-		
+
 		.select2-arrow,
 		.select2-selection__arrow { background: none; border: none; width: 0; height: 0; border:6px solid transparent; border-top-color: #ccc; right: 10px; top: 25px; border-radius: 0; margin: 0;
-		
+
 			b { display: none; }
-		
+
 		}
-		
+
 		.select2-selection__arrow:before { display: none; }
-		
+
 		.select2-selection__rendered { padding: 0; font-size: 14px; line-height: 26px; color: #000; height: auto; text-transform: none !important; }
-	
+
 	}
-	
+
 	a.select2-choice:hover,
 	a.select2-selection:hover { color: #000 !important; box-shadow: inset 1px -1px 0 #000 !important; border-color: #000 !important; }
 
@@ -108,49 +108,49 @@ div.select2-container--open {
 }
 
 div.select2-container-active {
-	
+
 	a.select2-choice,
 	a.select2-selection { color: #000 !important; box-shadow: inset 1px -1px 0 #000 !important; border-color: #000 !important;
-		
+
 	}
-	
+
 }
 
 div.select2-drop {  margin-top: -2px; }
 
 div.select2-drop.select2-drop-active { border-color: #000 !important; border-left-width: 2px !important;
-	
-	.select2-search { padding: 5px; 
-		
+
+	.select2-search { padding: 5px;
+
 		input { margin: 0 !important; }
-		
+
 	}
-	
-} 
+
+}
 
 body.archive {
-	
-	div.select2-drop.select2-drop-active { border-color: #ccc !important; border-left-width: 1px !important; border-top: 1px solid #ccc; width: auto !important;
-	
-		.select2-results { background: #fff; padding: 0; 
-			
-			.select2-highlighted { border-radius: 0; 
-				
+
+	div.select2-drop.select2-drop-active { border-color: #ccc !important; border-left-width: 1px !important; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; width: auto !important;
+
+		.select2-results { background: #fff; padding: 0;
+
+			.select2-highlighted { border-radius: 0;
+
 				.select2-result-label { color: #000; }
-				
+
 			}
-			
+
 			.select2-result {
-				
+
 				.select2-result-label { font-size: 13px; color: #999; text-transform: capitalize; padding: 5px 15px; }
-				
+
 			}
-			
+
 		}
-		
-		
-	} 
-	
+
+
+	}
+
 }
 
 input[type=checkbox] { display: none !important; }
@@ -191,17 +191,17 @@ input[type=tel]:focus,
 input[type=date]:focus,
 textarea:focus { color: #000; box-shadow: inset 1px -1px 0 #000 !important; border-color: #000 !important; }
 
-::-webkit-input-placeholder {  
-   color: #cbcaca;  
+::-webkit-input-placeholder {
+   color: #cbcaca;
 }
-:-moz-placeholder {  
-   color: #cbcaca;  
+:-moz-placeholder {
+   color: #cbcaca;
 }
-::-moz-placeholder {  
-   color: #cbcaca;  
+::-moz-placeholder {
+   color: #cbcaca;
 }
-:-ms-input-placeholder {  
-   color: #cbcaca;  
+:-ms-input-placeholder {
+   color: #cbcaca;
 }
 
 .error input,

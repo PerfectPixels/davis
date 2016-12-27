@@ -1751,7 +1751,8 @@
 						// Display the variation description if any
 						var $variationContent = $( '.single_variation .woocommerce-variation-description' ),
 							$variationStock = $( '.single_variation .woocommerce-variation-availability' ),
-							$variationPrice = $( '.single_variation .woocommerce-variation-price' );
+							$variationPrice = $( '.single_variation .woocommerce-variation-price' ),
+							$saleBadge = $('.product-type-variable .container .single-product-sale');
 
 						/*
 						if ( $variationContent.length > 0 && $variationContent.text().length > 0 || $variationContent.length > 0 &&$variationContent.html().length > 0 ) {
@@ -1762,11 +1763,20 @@
 						*/
 
 						// Hide the general price
-						if ( $variationStock.length > 0 && $variationStock.html().length > 0 ){
-							$( '.single_variation_wrap .regular_price' ).hide();
+						if ($variationStock.length > 0) {
 
-							if ( $variationPrice.html().length === 0 ){
+							if ($variationStock.children().length === 0) {
+								$( '.single_variation_wrap .regular_price' ).hide();
+							}
+
+							if ($variationPrice.children().length === 0) {
 								$variationPrice.html( $( '.single_variation_wrap .regular_price' ).html() );
+							}
+
+							if ($variationPrice.find('del').length > 0) {
+								$saleBadge.show();
+							} else {
+								$saleBadge.hide();
 							}
 						}
 
@@ -1827,7 +1837,6 @@
 						var $container = $( this ).parents( '.comment_container' );
 
 						$container.append( $( this ).parents( 'li.question' ).find( 'form.form-contribution_comment' ) );
-
 					});
 				},
 
@@ -2947,7 +2956,7 @@
 		// On body click
 		'bodyClick': function( e ){
 			PP.obj.$body.on( 'click', function ( e ) {
-
+console.log(e.target);
 				// Close the mini cart
 		    	if ( ! $( '.offcanvas-cart' ).is( e.target ) && $( '.offcanvas-cart' ).has( e.target ).length === 0 && ! $( '.modal' ).is( e.target ) && $( '.modal' ).has( e.target ).length === 0 ) {
 					PP.method.cart.popupCart( $( '.offcanvas-cart' ), 'close' );

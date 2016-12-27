@@ -9,6 +9,19 @@ $img = wp_get_attachment_image_src( $tn_id, 'shop_single' );
 $width = $img[1];
 $height = $img[2];
 
+// Count number of images
+$img_nb = sizeof($attachment_ids);
+$wrap = 'true';
+$nav = 'true';
+
+if ($img_nb < 3) {
+    $wrap = 'false';
+
+    if ($img_nb == 0) {
+        $nav = 'false';
+    }
+}
+
 // Get the images position
 $images_pos = get_theme_mod('product_images_position', 'right');
 $page_images_position = get_field('page_product_images_position');
@@ -17,9 +30,11 @@ if ($page_images_position !== 'default'){
     $images_pos = $page_images_position;
 }
 
-?>
 
-<div id="main-slider" class="images"  data-flickity='{ "accessibility": true, "prevNextButtons": true, "pageDots": true, "resize": true, "wrapAround": true, "cellAlign": "<?php echo $images_pos; ?>" }'>
+?>
+<?php // TODO: Counting the number of images. If has less than 3, do not wrapAround. If has only 1, do not show next/prev/dots buttons.  ?>
+
+<div id="main-slider" class="images"  data-flickity='{ "accessibility": true, "prevNextButtons": <?php echo $nav; ?>, "pageDots": <?php echo $nav; ?>, "resize": true, "wrapAround": <?php echo $wrap; ?>, "cellAlign": "<?php echo $images_pos; ?>" }'>
 
 	<?php
     // Image size

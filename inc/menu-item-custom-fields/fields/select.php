@@ -1,29 +1,6 @@
 <?php
 /**
- * Menu item custom fields example
- *
- * Copy this file into your wp-content/mu-plugins directory.
- *
- * @package Menu_Item_Custom_Fields_Example
- * @version 0.2.0
- * @author Dzikri Aziz <kvcrvt@gmail.com>
- *
- *
- * Plugin name: Menu Item Custom Fields Example
- * Plugin URI: https://github.com/kucrut/wp-menu-item-custom-fields
- * Description: Example usage of Menu Item Custom Fields in plugins/themes
- * Version: 0.2.0
- * Author: Dzikri Aziz
- * Author URI: http://kucrut.org/
- * License: GPL v2
- * Text Domain: menu-item-custom-fields-example
- */
-
-
-/**
- * Sample menu item metadata
- *
- * This class demonstrate the usage of Menu Item Custom Fields in plugins/themes.
+ * Menu item metadata
  *
  * @since 0.1.0
  */
@@ -31,10 +8,6 @@ class Menu_Item_Select_Fields {
 
 	/**
 	 * Holds our custom fields
-	 *
-	 * @var    array
-	 * @access protected
-	 * @since  Menu_Item_Custom_Fields_Example 0.2.0
 	 */
 	protected static $fields = array();
 
@@ -44,70 +17,70 @@ class Menu_Item_Select_Fields {
 	 */
 	public static function init() {
 		global $pagenow;
-		
+
 		add_action( 'wp_nav_menu_item_custom_fields', array( __CLASS__, '_fields' ), 10, 4 );
 		add_action( 'wp_update_nav_menu_item', array( __CLASS__, '_save' ), 10, 3 );
 		//add_filter( 'manage_nav-menus_columns', array( __CLASS__, '_columns' ), 99 );
-		
+
 		if( $pagenow == 'nav-menus.php' ) {
 			add_action( 'admin_head', array( __CLASS__, 'menu_css' ) );
 		}
-		
+
 		self::$fields = array(
-			'img-type' => array ( 
-				'title' => __( 'Image Type', 'davis' ), 
-				'choices' => array( 
-					'img-no-text' => 'Image without text', 
-					'img-below-text' => 'Image below text', 
-					'icon' => 'Icon', 
-					'mega-menu-bg' => 'Mega submenu background', 
-					'bg-img' => 'Background image' 
-				) 
+			'img-type' => array (
+				'title' => __( 'Image Type', 'davis' ),
+				'choices' => array(
+					'img-no-text' => 'Image without text',
+					'img-below-text' => 'Image below text',
+					'icon' => 'Icon',
+					'mega-menu-bg' => 'Mega submenu background',
+					'bg-img' => 'Background image'
+				)
 			),
-			'icon-pos' => array ( 
-				'title' => __( 'Icon Position', 'davis' ), 
-				'choices' => array( 
-					'before' => 'Before', 
+			'icon-pos' => array (
+				'title' => __( 'Icon Position', 'davis' ),
+				'choices' => array(
+					'before' => 'Before',
 					'after' => 'After',
-					'above' => 'Above', 
+					'above' => 'Above',
 					'below' => 'Below'
-				) 
+				)
 			),
-			'bg-type' => array ( 
-				'title' => __( 'Background Location', 'davis' ), 
-				'choices' => array( 
-					'desktop-mobile' => 'Desktop & Mobile', 
+			'bg-type' => array (
+				'title' => __( 'Background Location', 'davis' ),
+				'choices' => array(
+					'desktop-mobile' => 'Desktop & Mobile',
 					'desktop' => 'Desktop only',
 					'mobile' => 'Mobile only'
-				) 
+				)
 			),
-			'bg-mega-type' => array ( 
-				'title' => __( 'Background Location', 'davis' ), 
-				'choices' => array( 
-					'desktop-mobile' => 'Desktop & Mobile', 
+			'bg-mega-type' => array (
+				'title' => __( 'Background Location', 'davis' ),
+				'choices' => array(
+					'desktop-mobile' => 'Desktop & Mobile',
 					'desktop' => 'Desktop only',
 					'mobile' => 'Mobile only'
-				) 
+				)
 			),
-			'img-size' => array ( 
-				'title' => __( 'Image Size', 'davis' ), 
-				'choices' => array( 
-					'thumbnail' => 'Thumbnail', 
-					'medium' => 'Medium', 
-					'large' => 'Large', 
-					'full' => 'Original' 
-				) 
+			'img-size' => array (
+				'title' => __( 'Image Size', 'davis' ),
+				'choices' => array(
+					'thumbnail' => 'Thumbnail',
+					'medium' => 'Medium',
+					'large' => 'Large',
+					'full' => 'Original'
+				)
 			),
-			'megamenu-columns' => array ( 
-				'title' => __( 'Number of columns', 'davis' ), 
-				'choices' => array( 
-					'column-1' => '1 Column', 
-					'column-2' => '2 Columns', 
-					'column-3' => '3 Columns', 
+			'megamenu-columns' => array (
+				'title' => __( 'Number of columns', 'davis' ),
+				'choices' => array(
+					'column-1' => '1 Column',
+					'column-2' => '2 Columns',
+					'column-3' => '3 Columns',
 					'column-4' => '4 Columns',
-					'column-5' => '5 Columns', 
+					'column-5' => '5 Columns',
 					'column-6' => '6 Columns'
-				) 
+				)
 			)
 		);
 	}
@@ -162,7 +135,7 @@ class Menu_Item_Select_Fields {
 	 *
 	 * @return string Form fields
 	 */
-	public static function _fields( $id, $item, $depth, $args ) { 
+	public static function _fields( $id, $item, $depth, $args ) {
 		foreach ( self::$fields as $_key => $opts ) :
 			$key   = sprintf( 'menu-item-%s', $_key );
 			$id    = sprintf( 'edit-%s-%s', $key, $item->ID );
@@ -170,8 +143,8 @@ class Menu_Item_Select_Fields {
 			$name  = sprintf( '%s[%s]', $key, $item->ID );
 			$value = get_post_meta( $item->ID, $key, true );
 			$class = sprintf( 'field-%s', $_key );
-			
-			?>	
+
+			?>
 			<p class="description description-thin <?php echo esc_attr( $class ) ?>">
 				<label for="<?php echo esc_attr( $id ); ?>">
 					<?php echo esc_html( $label ); ?><br>
@@ -182,7 +155,7 @@ class Menu_Item_Select_Fields {
 					</select>
 				</label>
 			</p>
-			<?php 
+			<?php
 		endforeach;
 	}
 
