@@ -43,6 +43,14 @@ $slick-opacity-not-active: 0.25 !default;
 
 /* Arrows */
 
+.slick-arrow svg {
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    width: 60%;
+    height: 60%;
+}
+
 .slick-prev,
 .slick-next {
     position: absolute;

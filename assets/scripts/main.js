@@ -1354,7 +1354,14 @@
 
 				// Slider for the variation products
 				productSlider: function(){
-					var $sliders = $('.product-slider');
+					var $sliders = $('.product-slider'),
+						$productsList = $sliders.parents( 'ul.products' ),
+						sliderP = '20%';
+
+					// Check the product styly
+					if ($productsList.hasClass('product-style-2') || !$productsList.hasClass('display-3-per-row')) {
+						sliderP = '0px';
+					}
 
 					// Slick Slider
 					$sliders.slick({
@@ -1363,7 +1370,9 @@
 						dots: true,
 						centerMode: true,
 						resize: true,
-						centerPadding: '80px'
+						centerPadding: sliderP,
+						prevArrow: '<button type="button" class="slick-prev"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path></svg></button>',
+						nextArrow: '<button type="button" class="slick-next"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg></button>'
 					});
 
 					// Change the slide details on slider change event
@@ -1374,10 +1383,11 @@
 
 					// Avoid the flick of stacked images on load
 					$sliders.css( 'opacity', 1 );
+					$('.product-type-simple a.img').css( 'opacity', 1 );
 
 					$sliders.each(function(){
 						var $slider		= $(this),
-							$container	= $slider.parents( 'ul.products' )
+							$container	= $slider.parents( 'ul.products' ),
 							sliderW		= $slider.find('img:first').innerWidth();
 
 						if ( sliderW === 0 ) { sliderW = 'auto'; }
