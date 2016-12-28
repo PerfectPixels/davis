@@ -23,7 +23,6 @@
    'inc/template-tags.php',    // Page titles
    'inc/menu-item-custom-fields/menu-item-custom-fields.php',   // Custom field for mega menu
    'inc/menu-walker.php',   // Custom menu walker
-   //'inc/customizer.php', // Theme customizer
    //'inc/shortcodes.php', // Theme Shortcodes
    //'inc/vc_mapper.php', // Map Shortcodes to VC
    'inc/reviews-pro.php', // Change the reviews pro plugin

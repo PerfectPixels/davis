@@ -1675,6 +1675,16 @@
 						$mainSlider = $( '#main-slider' ),
 						$thumbSlider = $( '#thumb-slider' );
 
+					// Initialize the slick sliders
+					$mainSlider.slick({
+						prevArrow: '<button type="button" class="slick-prev"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path></svg></button>',
+						nextArrow: '<button type="button" class="slick-next"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg></button>'
+					});
+					$thumbSlider.slick({
+						prevArrow: '<button type="button" class="slick-prev"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path></svg></button>',
+						nextArrow: '<button type="button" class="slick-next"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg></button>'
+					});
+
 					// Ajax add to cart
 					/*
 					$form.on( 'submit', function(){
@@ -1749,7 +1759,7 @@
 					$form.find( '.variations select' ).trigger( 'change' );
 
 					// Move the variation description in the tab
-					$form.on('found_variation', function(){
+					$form.on('found_variation', function(event, variation){
 
 						switchContent();
 
@@ -1758,6 +1768,34 @@
 							$( '.single_variation_wrap .regular_price' ).delay( 200 ).slideDown( 200 );
 						}
 					});
+
+					/**
+					 * Sets product images for the chosen variation
+					 */
+					$.fn.wc_variations_image_update = function( variation ) {
+						var $form             = this,
+							$product          = $form.closest('.product'),
+							$product_img      = $product.find( 'div.images .item[data-slick-index="0"] img' ),
+							$product_link     = $product.find( 'div.images .item[data-slick-index="0"] a.zoom' );
+
+						if ( variation && variation.image_src && variation.image_src.length > 1 ) {
+							$product_img.wc_set_variation_attr( 'src', variation.image_src );
+							$product_img.wc_set_variation_attr( 'title', variation.image_title );
+							$product_img.wc_set_variation_attr( 'alt', variation.image_alt );
+							$product_img.wc_set_variation_attr( 'srcset', variation.image_srcset );
+							$product_img.wc_set_variation_attr( 'sizes', variation.image_sizes );
+							$product_link.wc_set_variation_attr( 'href', variation.image_link );
+							$product_link.wc_set_variation_attr( 'title', variation.image_caption );
+						} else {
+							$product_img.wc_reset_variation_attr( 'src' );
+							$product_img.wc_reset_variation_attr( 'title' );
+							$product_img.wc_reset_variation_attr( 'alt' );
+							$product_img.wc_reset_variation_attr( 'srcset' );
+							$product_img.wc_reset_variation_attr( 'sizes' );
+							$product_link.wc_reset_variation_attr( 'href' );
+							$product_link.wc_reset_variation_attr( 'title' );
+						}
+					};
 
 					function switchContent(){
 						// Display the variation description if any
@@ -1793,16 +1831,17 @@
 						}
 
 						// Change the first slider image
-						var imgsrc = $mainSlider.find( '.item:first-child img' ).attr( 'src' ),
-							imgsrcset = $mainSlider.find( '.item:first-child img' ).attr( 'srcset' );
+						var $firstItem = $mainSlider.find( '.item[data-slick-index="0"] img' ),
+							imgsrc = $firstItem.attr( 'src' ),
+							imgsrcset = $firstItem.attr( 'srcset' );
 
-						$thumbSlider.find( '.thumb:first-child' ).find( 'img' ).attr({
+						$thumbSlider.find( '.thumb[data-slick-index="0"] img' ).attr({
 							src: imgsrc,
 							srcset: imgsrcset
 						});
 
 						// Main slider moves to first slide
-						$mainSlider.flickity( 'select', 0 );
+						$mainSlider.slick( 'slickGoTo', -2 );
 					}
 
 					switchContent();

@@ -39,7 +39,7 @@ $sidebar = (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mo
 
 	</main>
 
-	<?php if ( $sidebar ) : ?>
+	<?php if (Setup\display_sidebar() && $sidebar) : ?>
 		<?php get_sidebar(); ?>
 	<?php endif; ?>
 

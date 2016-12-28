@@ -22,19 +22,9 @@ if ($img_nb < 3) {
     }
 }
 
-// Get the images position
-$images_pos = get_theme_mod('product_images_position', 'right');
-$page_images_position = get_field('page_product_images_position');
-
-if ($page_images_position !== 'default'){
-    $images_pos = $page_images_position;
-}
-
-
 ?>
-<?php // TODO: Counting the number of images. If has less than 3, do not wrapAround. If has only 1, do not show next/prev/dots buttons.  ?>
 
-<div id="main-slider" class="images"  data-flickity='{ "accessibility": true, "prevNextButtons": <?php echo $nav; ?>, "pageDots": <?php echo $nav; ?>, "resize": true, "wrapAround": <?php echo $wrap; ?>, "cellAlign": "<?php echo $images_pos; ?>" }'>
+<div id="main-slider" class="images"  data-slick='{ "accessibility": true, "centerMode": true, "centerPadding": "5%", "arrows": <?php echo $nav; ?>, "dots": <?php echo $nav; ?>, "infinite": <?php echo $wrap; ?> }'>
 
 	<?php
     // Image size

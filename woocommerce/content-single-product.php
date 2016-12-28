@@ -62,6 +62,15 @@ if ($page_images_position !== 'default'){
 
 	<div class="container style-<?php echo $product_style; ?> images-<?php echo $images_pos; ?>">
 
+		<?php if ($images_pos === 'left') :
+			/**
+			 * woocommerce_before_single_product_summary hook.
+			 *
+			 * @hooked woocommerce_show_product_sale_flash - 10
+			 * @hooked woocommerce_show_product_images - 20
+			 */
+			do_action( 'woocommerce_before_single_product_summary' );
+		endif; ?>
 
 		<div class="summary entry-summary">
 
@@ -92,7 +101,7 @@ if ($page_images_position !== 'default'){
 			</section>
 		</div><!-- .summary -->
 
-		<?php
+		<?php if ($images_pos === 'right') :
 			/**
 			 * woocommerce_before_single_product_summary hook.
 			 *
@@ -100,7 +109,7 @@ if ($page_images_position !== 'default'){
 			 * @hooked woocommerce_show_product_images - 20
 			 */
 			do_action( 'woocommerce_before_single_product_summary' );
-		?>
+		endif; ?>
 
 	</div>
 

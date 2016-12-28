@@ -129,6 +129,7 @@ function display_sidebar() {
     is_404(),
     is_front_page(),
     is_page_template('template-custom.php'),
+    is_product(),
   ]);
 
   return apply_filters('sage/display_sidebar', $display);
@@ -143,7 +144,6 @@ function assets() {
 	$quick_checkout = get_theme_mod('quick_checkout', true);
 
 	wp_enqueue_style('sage/css', get_stylesheet_directory_uri() . '/assets/styles/main.css', false, null);
-	//wp_enqueue_style('dynamic-css', admin_url('admin-ajax.php').'?action=dynamic_css');
 
 	//wp_dequeue_style( 'wc-product-reviews-pro-frontend');
 
@@ -173,7 +173,7 @@ function assets() {
 	}
 
 	if ( $woocommerce_active ) {
-		$suffix               = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		$assets_path = str_replace( array( 'http:', 'https:' ), '', \WC()->plugin_url() ) . '/assets/';
 		$frontend_script_path = $assets_path . 'js/frontend/';
 
@@ -201,18 +201,6 @@ function assets() {
 	}
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
-
-/**
- * Load dynamic CSS
- */
-/*
-function dynamic_css() {
-  require_once(get_template_directory().'/lib/dynamic.css.php');
-  exit;
-}
-add_action('wp_ajax_dynamic_css', __NAMESPACE__ . '\\dynamic_css');
-add_action('wp_ajax_nopriv_dynamic_css', __NAMESPACE__ . '\\dynamic_css');
-*/
 
 /**
  * Woocommerce image size

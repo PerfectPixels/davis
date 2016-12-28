@@ -42,7 +42,7 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:37
+#: functions.php:36
 msgid "Error locating %s for inclusion"
 msgstr ""
 
@@ -206,11 +206,11 @@ msgstr ""
 msgid "Footer Bottom"
 msgstr ""
 
-#: inc/setup.php:343
+#: inc/setup.php:331
 msgid "Theme Options"
 msgstr ""
 
-#: inc/setup.php:349
+#: inc/setup.php:337
 msgid "Header Options"
 msgstr ""
 
