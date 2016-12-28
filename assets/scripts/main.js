@@ -817,6 +817,8 @@
 											window.parent.location.hash = '#cart';
 											parent.location.reload( true );
 										}
+										// Add the empty class
+										$('.offcanvas-cart').addClass('empty');
 									}
 
 									$(name).replaceWith(value);
@@ -909,7 +911,7 @@
 					$('.add_to_cart_button').off().on('click', function(){
 						var $el = $(this),
 							$container = $el.parents( 'li.product' ),
-							$item = $container.find( '.flickity-slider .is-selected a' ),
+							$item = $container.find( '.slick-track .slick-active a' ),
 							url = $el.attr( 'href' ),
 							url = url.split( '?' ),
 							param = ( ( url[1] !== undefined ) ? url[1].split( '&' ) : '' ),
@@ -927,7 +929,7 @@
 						}
 
 						// Change container if not a variable product
-						if ( ! $container.hasClass('product-type-variable') ){
+						if ( !$container.hasClass('product-type-variable') ){
 							$item = $container.find( 'a.img' );
 						} else {
 							// Set correct variationID
@@ -1354,25 +1356,24 @@
 				productSlider: function(){
 					var $sliders = $('.product-slider');
 
-					// init Flickity with jQuery
-					var $productSliders = $sliders.flickity({
+					// Slick Slider
+					$sliders.slick({
 						accessibility: true,
-						prevNextButtons: true,
-						pageDots: true,
+						arrows: true,
+						dots: true,
+						centerMode: true,
 						resize: true,
-						wrapAround: true
+						centerPadding: '80px'
 					});
 
 					// Change the slide details on slider change event
-					$productSliders.on( 'select.flickity', function() {
+					$sliders.on('afterChange', function(event, slick, currentSlide) {
 						// Get instance
-						var flkty = $( this ).data( 'flickity' );
-
-						PP.method.product.slideDetails( $( this ), $( flkty.selectedElement ) );
+						PP.method.product.slideDetails($(this), currentSlide);
 					});
 
 					// Avoid the flick of stacked images on load
-					$productSliders.css( 'opacity', 1 );
+					$sliders.css( 'opacity', 1 );
 
 					$sliders.each(function(){
 						var $slider		= $(this),
@@ -1383,17 +1384,18 @@
 
 						// Dynamically add the correct image width
 						if ( $container.hasClass( 'product-style-1' ) ) {
-							$slider.find( '.flickity-slider > div' ).css('width', sliderW);
+							$slider.find( '.slick-track .slick-slide' ).css('width', sliderW);
 						}
 
 						// Run setupDetails on flickity init
-						PP.method.product.slideDetails( $slider, $slider.find( '.flickity-slider > div.is-selected' ) );
+						PP.method.product.slideDetails( $slider, $slider.find('.slick-active').attr('data-slick-index') );
 					});
 				},
 
 				// Setting up the correct product details on the current slide
-				slideDetails: function( $slider, $currentSlide ){
+				slideDetails: function( $slider, slideIndex ){
 					var $container		 = $slider.parents( 'li.product' ),
+						$currentSlide	 = $slider.find('.slick-slide[data-slick-index="'+ slideIndex +'"]'),
 						priceHtml 		 = $currentSlide.find( '.price' ).html(),
 						$item 			 = $currentSlide.find( 'a' ),
 						$cartBtn 		 = $container.find('nav.buttons a.cart_button'),
@@ -1435,7 +1437,7 @@
 				// Display the correct available attributes depending on item and other attribute selection
 				filterVariationAttributes: function( $el, exclude, opening ){
 					var $container = $el.parents( 'li.product' ),
-						$item = $container.find( '.flickity-slider .is-selected a' ),
+						$item = $container.find( '.slick-track .slick-active a' ),
 						current_settings = {},
 						$product_variations = $container.find( '.product-slider' ).data( 'product_variations' ),
 						$options = $container.find('section.variation-options');
@@ -2956,7 +2958,6 @@
 		// On body click
 		'bodyClick': function( e ){
 			PP.obj.$body.on( 'click', function ( e ) {
-console.log(e.target);
 				// Close the mini cart
 		    	if ( ! $( '.offcanvas-cart' ).is( e.target ) && $( '.offcanvas-cart' ).has( e.target ).length === 0 && ! $( '.modal' ).is( e.target ) && $( '.modal' ).has( e.target ).length === 0 ) {
 					PP.method.cart.popupCart( $( '.offcanvas-cart' ), 'close' );
