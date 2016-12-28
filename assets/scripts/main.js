@@ -1356,7 +1356,7 @@
 				productSlider: function(){
 					var $sliders = $('.product-slider'),
 						$productsList = $sliders.parents( 'ul.products' ),
-						sliderP = '20%';
+						sliderP = '22%';
 
 					// Check the product styly
 					if ($productsList.hasClass('product-style-2') || !$productsList.hasClass('display-3-per-row')) {

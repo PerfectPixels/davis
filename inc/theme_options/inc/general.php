@@ -187,7 +187,7 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'color',
 		),
 		array(
-			'element'  => array( 'body a:hover', 'body a:focus', '.primary-color-hover:hover', 'span.price', '.slick-dots .slick-active button', '.ui-slider-handle', '.widget_product_categories li.current-cat:before', '.widget_product_categories li.current-cat > a', '.widget_product_categories li.current-cat > .count', '.chosen a', '.chosen .count', 'ul.product_list_widget a:hover span.product-title', 'ul#login-tabs a.active', '.woocommerce-tabs li.active a' ),
+			'element'  => array( 'body a:hover', 'body a:focus', '.primary-color-hover:hover', 'span.price', '.slick-dots .slick-active button', '.ui-slider-handle', '.widget_product_categories li.current-cat:before', '.widget_product_categories li.current-cat > a', '.widget_product_categories li.current-cat > .count', '.chosen:before', '.chosen a', '.chosen .count', 'ul.product_list_widget a:hover span.product-title', 'ul#login-tabs a.active', '.woocommerce-tabs li.active a' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),

@@ -14,21 +14,21 @@ use PP\Setup;
 global $woocommerce_active;
 
 if ( $woocommerce_active ) {
-	$sidebar = get_theme_mod('footer_sidebar', 'products_pages');
+	$footer_sidebar = get_theme_mod('footer_sidebar', 'products_pages');
 
-	switch($sidebar){
+	switch($footer_sidebar){
 		case 'products_pages';
 			if ( is_shop() || is_product_category() || is_product() ){
-				get_template_part("templates/sidebar-footer");
+				$footer_sidebar = true;
 			}
 			break;
 		case 'product';
 			if ( is_product() ){
-				get_template_part("templates/sidebar-footer");
+				$footer_sidebar = true;
 			}
 			break;
 		case 'all';
-			get_template_part("templates/sidebar-footer");
+			$footer_sidebar = true;
 			break;
 	}
 }
@@ -36,17 +36,20 @@ if ( $woocommerce_active ) {
 $sidebar = (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mod('shop_sidebar', 'no');
 
 ?>
-		</main>
 
-		<?php if ( Setup\display_sidebar() && $sidebar ) : ?>
-			<aside class="sidebar col-md-3 col-md-pull-9">
-				<?php get_sidebar(); ?>
-			</aside>
-		<?php endif; ?>
+	</main>
 
-	</div>
+	<?php if ( $sidebar ) : ?>
+		<?php get_sidebar(); ?>
+	<?php endif; ?>
 
-	<footer id="footer">
+</div>
+
+<?php if ($footer_sidebar) :
+	get_template_part("template-parts/sidebar-footer");
+endif; ?>
+
+<footer id="footer">
 
 	<?php if (  get_theme_mod('footer_sidebar_bottom', true) == true ){ ?>
 		<aside class="bottom-widgets">
@@ -64,7 +67,7 @@ $sidebar = (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mo
 			<div class="col-md-8 footer_nav">
                 <?php if ( get_theme_mod('footer_social', false) == true ) { ?>
                 	<ul id="footer-social">
-			    		<?php get_template_part( 'templates/social', 'icons' ); ?>
+			    		<?php get_template_part( 'template-parts/social', 'icons' ); ?>
                 	</ul>
 				<?php } ?>
 

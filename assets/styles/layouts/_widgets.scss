@@ -1,367 +1,365 @@
 body .container {
 
 	section.widget { padding-bottom: 20px;
-	
-		ul { list-style: none; margin: 0; padding: 0; 
-			
+
+		ul { list-style: none; margin: 0; padding: 0;
+
 			li { font-size: 13px; color: #000; margin: 0; padding: 0 0 0 16px; position: relative;
-				
+
 				a { color: #000; }
-				
+
 			}
-			
+
 			li:before { background: #000; width: 6px; height: 1px; content: ""; position: absolute; left: 0; top: 13px; transform: rotate3d(0,0,1,45deg); transition: all .3s $cb; transform-origin: right bottom; }
-			
+
 			li:after { @extend li:before; transform: rotate3d(0,0,1,-45deg); transform-origin: right top; }
-			
+
 			li:hover:before,
 			li:hover:after { transform: rotate3d(0,0,1,0); }
-			
+
 		}
 
 		// PRODUCTS
 		ul.product_list_widget { margin: 40px 0 0;
-			
+
 			li { margin-bottom: 10px; padding: 0;
-			
-				a { color: #000; height: 60px; display: table; overflow: hidden; transition: color 350ms ease;
-				
+
+				a { color: #000; height: 60px; display: table; overflow: hidden; cursor: pointer; transition: color 350ms ease;
+
 					figure { width: 60px; display: table-cell; vertical-align: middle;
-				
+
 						img { width: 100px; margin: 0; }
-						
+
 					}
-					
+
 					.meta { float: none; color: #999; padding: 0 0 0 7px; position: relative; display: table-cell; vertical-align: middle;
-	
+
 						span.product-title,
 						span.amount,
 						span.variation,
 						span.reviewer { font-size: 12px; font-weight: normal; letter-spacing: -0.01em; display: block; line-height: 1; }
-						
+
 						span.amount,
 						span.variation,
 						span.reviewer { color: #999; display: inline; }
-						
+
 						span.variation { border-left: 1px solid; padding: 0 0 0 10px; margin: 0 0 0 5px; }
-						
+
 						span.amount,
 						span.reviewer { padding: 0 3px; }
-						
+
 						span.product-title { text-transform: uppercase; font-size: 11px; color: #000; padding: 0 3px 3px; transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1); }
-						
+
 							.star-rating { margin: 0 0 2px 3px; color: $yellow; }
-					
+
 						del { color: $red; padding: 0; margin-bottom: -12px; display: block;
-						
+
 							span { padding: 0 !important; }
-							
+
 							span.amount { color: $red; }
-							
+
 						}
-						
+
 						ins { color: #999; text-decoration: none; padding: 0 3px 0 0;
-							
+
 							span { padding: 0 !important; }
-							
+
 						}
-						
+
 					}
-				
+
 				}
-				
+
 				a:hover { text-decoration: none;  }
-				
+
 			}
-			
+
 			li:before,
 			li:after { display: none; }
-			
+
 		}
-		
+
 	}
-	
+
 	section.widget_price_filter {
-		
+
 		.ui-slider { background: #ccc !important;
-		
+
 			.ui-slider-handle { background: #fff; border: 1px solid; }
-			
+
 			.ui-slider-range { position: relative; }
-			
+
 			.ui-slider-range:before { background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%); position: absolute; top: 0; right: 0; bottom: 0; left: 0; content: ""; }
-		
+
 		}
-		
+
 		.price_slider_amount { overflow: hidden;
-			
+
 			.button { font-size: 13px !important; color: #555; margin: 0; padding: 7px 13px !important; text-transform: none; border: 1px solid #555;; float: right; }
-			
+
 			.button:hover { color: #000; border-color: #000; }
-			
+
 			.price_label { color: #000; float: left; }
-			
+
 		}
-		
+
 	}
-	
+
 	section.widget_product_categories {
-		
+
 		ul {
-			
-			li { padding: 0 0 0 23px; 
-			
-				a { font-size: 12px; display: block; padding: 0; }
-				
+
+			li { padding: 0;
+
+				a { font-size: 12px; display: block; padding: 0 0 0 23px; font-weight: normal; cursor: pointer; }
+
 				.count { background: #eee; font-size: 10px; font-weight: bold; padding: 5px 7px; line-height: 1; border-radius: 0 45%; position: absolute; top: 3px; right: 0; }
-				
+
 			}
-			
+
 			li:before { background: #fff; color: #ccc; width: 13px; height: 13px; top: 6px; border: 1px solid; border-radius: 50%; transform: none !important; }
-			
+
 			li:after { display: none; }
-			
+
 		}
-		
+
 	}
-	
+
 	section.widget_rating_filter,
-	section.widget_layered_nav { @extend section.widget_product_categories; 
-		
+	section.widget_layered_nav { @extend section.widget_product_categories;
+
 		ul {
-			
-			li.chosen { padding: 0; }
-			
-			li.chosen:before,
+
+			li.chosen a:before,
 			li.chosen:after { display: none; }
-			
+
 		}
-		
+
 	}
-	
+
 	section.widget_layered_nav ul li:before { border-radius: 0; }
-	
+
 	section.widget_layered_nav.query-or ul li:before { border-radius: 50%; }
-	
+
 	section.widget_rating_filter,
-	section.widget_layered_nav_filters { 
-	
+	section.widget_layered_nav_filters {
+
 		ul {
-			
+
 			li { padding: 0; }
-		
+
 			li:before,
 			li:after { display: none; }
-			
+
 		}
-		
+
 	}
-	
-	section.widget_layered_nav_filters { 
-	
+
+	section.widget_layered_nav_filters {
+
 		ul {
-			
+
 			li { padding-right: 10px; }
-					
-		}	
-	
+
+		}
+
 	}
-	
+
 	section.widget_shopping_cart {
-		
-		header { 
-		
+
+		header {
+
 			h4 { font-size: 13px; color: #000; font-weight: bold; text-transform: uppercase; }
-		
+
 			h6,
 			ul.cart-nav { display: none; visibility: hidden; }
-		
+
 		}
-		
+
 		.quick-btn { display: none; visibility: hidden; }
-		
+
 		ul.cart_list { margin-top: 20px;
-		
+
 			li:after { width: inherit; left: 0; right: 0; }
-			
+
 			li:before,
 			li:after { transform: none !important; top: inherit; }
-			
+
 			li.mini_cart_item { padding: 14px 0 29px;
-			
-				table { 
-					
+
+				table {
+
 					td { display: none; }
-					
+
 					td:first-child { display: block; width: 100%; }
-					
+
 				}
-				
+
 				.item-details {
-					
+
 					.title { width: auto; height: auto; }
-					
+
 					.quantity .spinner { height: auto; }
 				}
-				
+
 			}
-			
+
 			li.mini_cart_item:first-child { padding-top: 0; }
-			
+
 			li.mini_cart_item:last-of-type { margin: 0; }
-			
+
 			li.empty:before,
 			li.empty:after { display: none; }
-			
+
 		}
-		
+
 		.total { padding: 10px 0 !important;
-			
+
 			small,
 			span { font-size: 13px; }
-			
+
 		}
-		
+
 		.cart-btn-container {
-			
+
 			a.button,
 			a.checkout,
 			a.paypal-express-checkout-button { background: #000 !important; width: 100% !important; text-align: center; color: #fff !important; border-radius: 0; font-size: 12px !important; font-weight: bold !important; line-height: 1; overflow: hidden; cursor: pointer; transition: all .3s $cb; backface-visibility: hidden; float: none; }
-			
+
 			a.button { width: auto; padding-left: 30px; padding-right: 30px; }
-			
+
 			a.checkout,
 			a.button { margin: 5px 0 15px;
-				
+
 				span { display: inline-block; width: 100%; height: 100%; transition: all 0.3s; backface-visibility: hidden; }
-				
+
 			}
-			
+
 			a.checkout:before,
 			a.button:before { position: absolute; height: 100%; width: 100%; left: 0; top: -100%; line-height: 2.5; font-size: 180%; transition: all 0.3s; }
-			
+
 			a.checkout:hover,
 			a.button:hover {
-				
+
 				span { transform: translateY(300%); }
-				
+
 			}
-			
+
 			a.checkout:hover:before,
 			a.button:hover:before { top: 0; }
-			
+
 			a.paypal-express-checkout-button { background: #009cde !important; color: #009cde !important; font-size: 0; margin-top: 3px; padding: 13px 0 14px; }
 			a.paypal-express-checkout-button:before { background: url(../images/paypal-logo.png) no-repeat; background-size: 22px 26px; background-position: 0 50%; text-align: left; padding: 9px 0 0 31px; height: 28px; display: inline-block; content: "Paypal checkout"; font-size: 13px; letter-spacing: -0.02em; line-height: 1; color: #fff !important; }
-			
-		}
-		
-	}
-	
-	section.widget_revslider {
-		
-		.rev_slider_wrapper { width: 100% !important; left: 0 !important; }
-		
-	}
-	
-	section.widget_calendar {
-	
-		#calendar_wrap { padding:0 5px 5px 0; 
 
-			table { background:none; margin:0; width:100%; border:none; border-collapse:collapse; border-radius:0; 
-						
+		}
+
+	}
+
+	section.widget_revslider {
+
+		.rev_slider_wrapper { width: 100% !important; left: 0 !important; }
+
+	}
+
+	section.widget_calendar {
+
+		#calendar_wrap { padding:0 5px 5px 0;
+
+			table { background:none; margin:0; width:100%; border:none; border-collapse:collapse; border-radius:0;
+
 				caption { background:#f5f5f5; font-size:14px; color: #000; text-align: center; font-weight:bold; padding:10px 0; border-bottom:none; }
-				
+
 				thead { border-top:none !important;
-				
+
 					tr {
-					
+
 						th { background:#f5f5f5; font-size:12px !important; padding:4px 0 !important; text-align: center; }
-					
+
 						td { font-size:14px; font-weight:bold; width:12%; text-align:center; color:#000; padding:6px 0 6px; }
-						
+
 					}
-					
+
 				}
-				
-				tfoot, 
-				tbody  { @extend thead; 
-					
-					tr td { background:#f5f5f5; border:1px solid #ccc; position:relative; 
-						
+
+				tfoot,
+				tbody  { @extend thead;
+
+					tr td { background:#f5f5f5; border:1px solid #ccc; position:relative;
+
 						a { color: #999; }
-						
+
 					}
-					
+
 					tr td.pad { background:#f9f9f9; }
-					
+
 				}
-				
+
 				caption,
 				thead {  border:1px solid #ccc; position:relative; }
-									
+
 			}
-			
+
 		}
-		
+
 	}
-	
+
 	section.widget_search {
-		
-		form { position: relative; 
-		
+
+		form { position: relative;
+
 			input[type=search] { background: #fff; color: #999 !important; width: 100%; border:1px solid #ccc !important; box-shadow: none !important; border: none; border-radius: 3px !important; font-size: 12px; font-weight: normal; line-height: 1; height: auto; padding: 15px 55px 15px 15px; margin-bottom: 0; text-transform: capitalize; text-align: left; }
-				
+
 			input[type=search]:hover,
 			input[type=search]:focus { color: #000 !important; box-shadow: inset 1px -1px 0 #000 !important; border-color: #000 !important; outline: none; }
-			
+
 			input[type=submit] { opacity: 0; position: absolute; width: 47px; height: 47px; top: 0; right: 0; padding: 0 !important; margin: 0; z-index: 2; }
-			
+
 			label { width: 100%; }
-			
+
 			label:before { background: #ccc; width: 1px; height: 14px; position: absolute; content: ""; top: 17px; right: 47px; }
-			
+
 			label:after { font-family: "fonticon" !important; content: "\77"; font-size: 21px; font-style: normal!important; font-weight: 400!important; font-variant: normal!important; text-transform: none!important; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; position: absolute; width: 47px; height: 47px; top: 0; right: 0; padding: 13px 12px; z-index: 1; }
-		
+
 		}
-		
+
 	}
-	
-	section.widget_product_search { @extend section.widget_search; 
-	
+
+	section.widget_product_search { @extend section.widget_search;
+
 		form {
-			
+
 			label { position: static !important; display: block; }
 
 		}
-		
+
 	}
-	
+
 	section.widget_product_tag_cloud {
-		
+
 		a { color: #aaa; border: 1px solid; padding: 5px 15px; }
-		
+
 	}
-	
+
 }
 
 body #footer aside.bottom-widgets .container section.widget {
 
 	h3 { margin-bottom: 40px; }
-		
+
 	ul {
-		
+
 		li { padding-left: 0; font-size: 14px;
-			
+
 			a { padding: 4px 0; display: block; transition: color 350ms $cb; }
-					
+
 			a:after { bottom: 0; left: 0; right: 100%; height: 1px; width: inherit; position: absolute; content: ""; transition: right 200ms $cb, left 400ms $cb; transition-delay: .3s; }
 			a:hover:after { right: 0; left: 100% }
-			
+
 		}
-		
+
 		li:before,
 		li:after { display: none; }
-	
+
 	}
-	
+
 }
