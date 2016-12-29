@@ -7,7 +7,7 @@ $use_variation_img = false;
 if ( $attachment_ids ) { ?>
 
     <div class="product_thumbs">
-		<div id="thumb-slider"  data-flickity='{ "accessibility": true, "contain": true, "prevNextButtons": false, "pageDots": false, "resize": true, "asNavFor": "#main-slider" }'>
+		<div id="thumb-slider"  data-slick='{ "accessibility": true, "arrows": false, "dots": true, "focusOnSelect": true, "slidesToShow": 5, "slidesToScroll": 1, "asNavFor": "#main-slider" }'>
 
 			<?php
 

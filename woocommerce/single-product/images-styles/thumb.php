@@ -11,7 +11,7 @@ $height = $img[2];
 
 ?>
 
-<div id="main-slider" class="images"  data-flickity='{ "accessibility": true, "contain": true, "prevNextButtons": true, "pageDots": false, "resize": true, "wrapAround": true }'>
+<div id="main-slider" class="images"  data-slick='{ "accessibility": true, "fade": true, "asNavFor": "#thumb-slider"  }'>
 
 	<?php
     // Image size
