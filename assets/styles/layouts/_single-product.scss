@@ -35,7 +35,7 @@
 
 					p { font-size: $desc-size; line-height: $desc-line-height; color: #777; margin: 0; display: block; display: -webkit-box; max-width: 100%; height: $desc-size*$desc-line-height*$lines-to-show; -webkit-line-clamp: $lines-to-show; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
 
-					a { font-size: $desc-size; text-decoration: underline; color: #777; }
+					a { font-size: 13px; text-decoration: underline; color: #777; }
 
 					a:hover { text-decoration: underline; }
 
@@ -127,10 +127,11 @@
 							}
 							.wl-add-to:before { content: "\66"; padding: 14px 11px; display: block; font-size: 17px; }
 
-							.single_add_to_cart_button { background: rgba(0,0,0,0.8); color: #fff; font-size: 11px; text-transform: uppercase; text-decoration: none; line-height: 1; float: right; display: inline-block; cursor: pointer; border: none; padding: 15px 15px 14px 45px; cursor: pointer; position: relative; outline: none; vertical-align: top; }
-							.single_add_to_cart_button[disabled=disabled] { cursor: not-allowed; }
-							.single_add_to_cart_button[disabled=disabled]:before { opacity: 0.5; }
-							.single_add_to_cart_button:before { position: absolute; left: 15px; top: 8px; font-size: 20px; }
+							.single_add_to_cart_button { background: rgba(0,0,0,0.8); color: #fff; font-size: 11px !important; text-transform: uppercase; text-decoration: none; line-height: 1; float: right; display: inline-block; border: none; padding: 15px 15px 14px 45px !important; margin: 0 !important; position: relative; outline: none; vertical-align: top;
+
+								&:before { position: absolute; left: 15px; top: 8px; font-size: 20px; }
+
+							}
 
 							.yith-wcwl-add-to-wishlist { display: inline-block; margin: 0 1px 0 0; vertical-align: top;
 
@@ -149,11 +150,11 @@
 
 						.regular_price p,
 						.single_variation p,
-						.single_variation .price { text-align: left; color: #000 !important; margin: 0; line-height: 22px;
+						.single_variation .price { text-align: left; color: #000 !important; margin: 0; line-height: 20px;
 
 							span { font-size: 26px; font-weight: bold; }
 
-							del { line-height: 1; display: block;
+							del { line-height: 0.8; display: block;
 
 								span { font-size: 12px; }
 
@@ -217,9 +218,9 @@
 
 		&.style-thumb {
 
-			#main-slider {
+			#main-slider { margin: 0 !important;
 
-				img { max-height: 525px; width: auto; }
+				img { max-height: 525px; width: 470px; }
 
 				.slick-arrow { width: 30px; height: 30px; }
 
@@ -231,7 +232,7 @@
 
 			}
 
-			#thumb-slider { width: 100%; border: 1px solid #999;
+			#thumb-slider { width: 100%; opacity: 0; transition: opacity .3s $cb;
 
 				.slick-list { overflow: hidden; }
 
@@ -243,9 +244,9 @@
 
 				}
 
-				.thumb {  height: 100px; text-align: center; outline: none; position: relative; border-right: 1px solid #999;
+				.thumb {  height: 100px; text-align: center; outline: none; position: relative; cursor: pointer;
 
-					img {  max-height: 100px; width: auto; max-width: none; display: inline-block; opacity: .3; padding: 5px 0; }
+					img {  max-height: 100px; width: auto; display: inline-block; opacity: .3; padding: 5px 0; }
 
 					&.slick-current {
 
@@ -255,9 +256,13 @@
 
 					}
 
+					&:before { position: absolute; left: 0; right: -1px; bottom: 0; top: 0; content: ""; border: 1px solid #999; }
+
 					&:after { position: absolute; left: 0; right: 0; bottom: 0; height: 0; content: ""; transition: height .3s $cb}
 
 				}
+
+				&.scrollable { border-right: 1px solid #999; }
 
 			}
 
@@ -281,13 +286,13 @@
 
 			}
 
-			#main-slider { overflow: visible; margin: 0 0 0 4% !important;
+			#main-slider { overflow: visible; margin: 0 0 0 4% !important; float: left;
 
 				.slick-track { overflow: visible;
 
 					.item { opacity: 0.2; margin: 0 40px;
 
-						a img { max-width: 470px; }
+						// a img { max-width: 470px; }
 
 						&.slick-active { opacity: 1; }
 
@@ -315,7 +320,9 @@
 
 			&.images-left {
 
-				#main-slider { margin: 0 0 0 8% !important; }
+				#main-slider { margin: 0 0 0 6% !important; }
+
+				.summary { margin: 0 0 0 2% !important; }
 
 				span.single-product-sale { left: 0; right: inherit; }
 

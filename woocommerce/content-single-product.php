@@ -92,7 +92,7 @@ if ($page_images_position !== 'default'){
 
 				<?php if ($product_style === 'thumb') :
 
-					wc_get_template( 'single-product/images-styles/thumb-slider.php', array(
+					wc_get_template( 'single-product/thumb-slider.php', array(
 				        'attachment_ids' => $attachment_ids,
 				    ) );
 

@@ -26,38 +26,38 @@ if ( ! $product->is_purchasable() ) {
 }
 
 ?>
-	
+
 <?php if ( $product->is_in_stock() ) : ?>
 
 	<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 	<form class="cart" method="post" enctype='multipart/form-data'>
-			
+
 		<div class="single_variation_wrap">
-		
+
 			<div class="woocommerce-variation single_variation">
 				<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-			
+
 					<p class="price"><?php echo $product->get_price_html(); ?></p>
-				
+
 					<meta itemprop="price" content="<?php echo esc_attr( $product->get_price() ); ?>" />
 					<meta itemprop="priceCurrency" content="<?php echo esc_attr( get_woocommerce_currency() ); ?>" />
 					<link itemprop="availability" href="http://schema.org/<?php echo $product->is_in_stock() ? 'InStock' : 'OutOfStock'; ?>" />
-				
+
 				</div>
-			
+
 				<?php
 					// Availability
 					$availability      = $product->get_availability();
 					$availability_html = empty( $availability['availability'] ) ? '' : '<p class="stock ' . esc_attr( $availability['class'] ) . '">' . esc_html( $availability['availability'] ) . '</p>';
-					
+
 					echo apply_filters( 'woocommerce_stock_html', $availability_html, $availability['availability'], $product );
 				?>
 			</div>
-			
+
 			<div class="variations_button">
 			 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
-		
+
 			 	<?php
 			 		if ( ! $product->is_sold_individually() ) {
 			 			woocommerce_quantity_input( array(
@@ -67,14 +67,14 @@ if ( ! $product->is_purchasable() ) {
 			 			) );
 			 		}
 			 	?>
-		
+
 			 	<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
-			 	
+
 			 	<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
-		
-			 	<button type="submit" class="cart_button icon-shopping-bag single_add_to_cart_button"><?php _e('Add to cart', 'davis'); ?></button>
+
+			 	<button type="submit" class="cart_button button icon-shopping-bag single_add_to_cart_button"><?php _e('Add to cart', 'davis'); ?></button>
 			</div>
-	 	
+
 	 	</div>
 	</form>
 

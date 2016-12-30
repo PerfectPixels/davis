@@ -28,7 +28,7 @@
 
 	.woocommerce-message,
 	.woocommerce-error,
-	.woocommerce-info { background: #f2f3f3; position: relative; border: none; padding: 20px 50px 20px 77px!important; color: #000; }
+	.woocommerce-info { background: #f2f3f3; position: relative; border: none; margin: 0 auto 30px !important; padding: 20px 50px 20px 77px!important; color: #000; max-width: 1300px; }
 
 	.woocommerce-message:before,
 	.woocommerce-error:before,

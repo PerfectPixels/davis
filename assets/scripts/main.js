@@ -1683,7 +1683,7 @@
 					$thumbSlider.slick({
 						prevArrow: '<button type="button" class="slick-prev"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path></svg></button>',
 						nextArrow: '<button type="button" class="slick-next"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg></button>'
-					});
+					}).css('opacity',1);
 
 					// Ajax add to cart
 					/*
@@ -1728,25 +1728,6 @@
 
 					// On changing an attribute
 					$form.on( 'change', '.variations select', function() {
-						/*
-						var selected = $( this ).find( 'option:selected' ).val(),
-							variationName = $( this ).attr( 'name' );
-
-						if ( selected === '' || selected === undefined || selected === null ){
-							return false;
-						}
-
-						$( 'div.images .slider .owl-item' ).each( function(){
-							var $el = $( this ),
-								alt = $el.find( 'img' ).attr( 'alt' ),
-								number = $el.index();
-
-							if ( alt.indexOf( selected ) > 0 ){
-								// Main slider moves
-								$mainSlider.trigger( "owl.jumpTo", number );
-							}
-						});
-						*/
 
 						// added to get around variation image flicker issue
 						$( '.product.has-default-attributes #main-slider' ).fadeTo( 200, 1 );
@@ -1761,7 +1742,7 @@
 					// Move the variation description in the tab
 					$form.on('found_variation', function(event, variation){
 
-						switchContent();
+						switchContent(variation);
 
 					}).on( 'hide_variation', function() {
 						if ( $( '.single_variation' ).css( 'display' ) === 'block' ){
@@ -1769,79 +1750,96 @@
 						}
 					});
 
-					/**
-					 * Sets product images for the chosen variation
-					 */
-					$.fn.wc_variations_image_update = function( variation ) {
-						var $form             = this,
-							$product          = $form.closest('.product'),
-							$product_img      = $product.find( 'div.images .item[data-slick-index="0"] img' ),
-							$product_link     = $product.find( 'div.images .item[data-slick-index="0"] a.zoom' );
-
-						if ( variation && variation.image_src && variation.image_src.length > 1 ) {
-							$product_img.wc_set_variation_attr( 'src', variation.image_src );
-							$product_img.wc_set_variation_attr( 'title', variation.image_title );
-							$product_img.wc_set_variation_attr( 'alt', variation.image_alt );
-							$product_img.wc_set_variation_attr( 'srcset', variation.image_srcset );
-							$product_img.wc_set_variation_attr( 'sizes', variation.image_sizes );
-							$product_link.wc_set_variation_attr( 'href', variation.image_link );
-							$product_link.wc_set_variation_attr( 'title', variation.image_caption );
-						} else {
-							$product_img.wc_reset_variation_attr( 'src' );
-							$product_img.wc_reset_variation_attr( 'title' );
-							$product_img.wc_reset_variation_attr( 'alt' );
-							$product_img.wc_reset_variation_attr( 'srcset' );
-							$product_img.wc_reset_variation_attr( 'sizes' );
-							$product_link.wc_reset_variation_attr( 'href' );
-							$product_link.wc_reset_variation_attr( 'title' );
-						}
-					};
-
-					function switchContent(){
+					function switchContent(variation){
 						// Display the variation description if any
-						var $variationContent = $( '.single_variation .woocommerce-variation-description' ),
-							$variationStock = $( '.single_variation .woocommerce-variation-availability' ),
-							$variationPrice = $( '.single_variation .woocommerce-variation-price' ),
-							$saleBadge = $('.product-type-variable .container .single-product-sale');
+						var $variationPrice = $( '.single_variation .woocommerce-variation-price' ),
+							$saleBadge = $('.product-type-variable .container .single-product-sale'),
+							$selectVar = $mainSlider.closest('.product').find('.summary .variations select'),
+							$slideVar = false,
+							slideIndex;
 
-						/*
-						if ( $variationContent.length > 0 && $variationContent.text().length > 0 || $variationContent.length > 0 &&$variationContent.html().length > 0 ) {
-							$( '#variation_desc' ).html( $variationContent ).show().next().addClass( 'col-md-6' ).removeClass( 'col-md-12' );
-						} else {
-							$( '#variation_desc' ).hide().next().removeClass( 'col-md-6' ).addClass( 'col-md-12' );
-						}
-						*/
-
-						// Hide the general price
-						if ($variationStock.length > 0) {
-
-							if ($variationStock.children().length === 0) {
-								$( '.single_variation_wrap .regular_price' ).hide();
+						// Check if a variation is selected
+						if (variation) {
+							// Find the image with the same title as the variation selected
+							if (variation.image_title !== ''){
+								$slideVar = $mainSlider.find('img[data-image-title="'+ variation.image_title +'"]'),
+								slideIndex = $slideVar.parents('.item').attr('data-slick-index');
 							}
 
-							if ($variationPrice.children().length === 0) {
-								$variationPrice.html( $( '.single_variation_wrap .regular_price' ).html() );
+							// Hide global price
+							$( '.single_variation_wrap .regular_price' ).hide();
+
+							// Get correct pricing
+							if (variation.price_html) {
+								$variationPrice.html( variation.price_html );
 							}
 
-							if ($variationPrice.find('del').length > 0) {
+							// Show sale badge if variation is on sale
+							if (variation.price_html.includes('del')) {
 								$saleBadge.show();
 							} else {
 								$saleBadge.hide();
 							}
+
+						} else {
+							var triggerChange = false;
+
+							// If the page loads with all selected variations, trigger a change
+							$selectVar.each(function(){
+								var $sel = $(this);
+
+								if ($sel.val() !== '') {
+									triggerChange = true;
+								} else {
+									triggerChange = false;
+								}
+							});
+
+							if (triggerChange){
+								$selectVar.change();
+							}
+
 						}
 
-						// Change the first slider image
-						var $firstItem = $mainSlider.find( '.item[data-slick-index="0"] img' ),
-							imgsrc = $firstItem.attr( 'src' ),
-							imgsrcset = $firstItem.attr( 'srcset' );
+						// If image with title or alt exists - display it
+						if ($slideVar && $slideVar.length > 0) {
+							// Main slider moves to the slide
+							$mainSlider.slick( 'slickGoTo', slideIndex );
+						} else {
+							// Set the first slider image to the chosen variation
+							var $product = $mainSlider.closest('.product'),
+								$product_img = $product.find( '#main-slider .item[data-slick-index="0"] img' ),
+								$product_link = $product.find( '#main-slider .item[data-slick-index="0"] a.zoom' );
 
-						$thumbSlider.find( '.thumb[data-slick-index="0"] img' ).attr({
-							src: imgsrc,
-							srcset: imgsrcset
-						});
+							if ( variation && variation.image_src && variation.image_src.length > 1 ) {
+								$product_img.wc_set_variation_attr( 'src', variation.image_src );
+								$product_img.wc_set_variation_attr( 'title', variation.image_title );
+								$product_img.wc_set_variation_attr( 'alt', variation.image_alt );
+								$product_img.wc_set_variation_attr( 'srcset', variation.image_srcset );
+								$product_img.wc_set_variation_attr( 'sizes', variation.image_sizes );
+								$product_link.wc_set_variation_attr( 'href', variation.image_link );
+								$product_link.wc_set_variation_attr( 'title', variation.image_caption );
 
-						// Main slider moves to first slide
-						$mainSlider.slick( 'slickGoTo', -2 );
+								// Change the first slider image
+								$thumbSlider.find( '.thumb[data-slick-index="0"] img' ).attr({
+									src: variation.image_src,
+									srcset: variation.image_srcset
+								});
+
+								// Main slider moves to first slide
+								$mainSlider.slick( 'slickGoTo', 0 );
+							} else {
+								$product_img.wc_reset_variation_attr( 'src' );
+								$product_img.wc_reset_variation_attr( 'title' );
+								$product_img.wc_reset_variation_attr( 'alt' );
+								$product_img.wc_reset_variation_attr( 'srcset' );
+								$product_img.wc_reset_variation_attr( 'sizes' );
+								$product_link.wc_reset_variation_attr( 'href' );
+								$product_link.wc_reset_variation_attr( 'title' );
+							}
+
+						}
+
 					}
 
 					switchContent();
