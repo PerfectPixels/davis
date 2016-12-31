@@ -17,7 +17,9 @@
             },
             "choices": {
                 "default": "Default",
-                "thumb": "Thumbnails",
+                "thumb": "Thumbnails below Summary",
+                "thumb-image": "Thumbnails below Image",
+                "vertical-thumb": "Vertical Thumbnails",
                 "carousel": "Carousel",
                 "slideshow": "Fullwidth Slideshow"
             },
@@ -28,9 +30,8 @@
             "multiple": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": "",
-            "disabled": 0,
-            "readonly": 0
+            "return_format": "value",
+            "placeholder": ""
         },
         {
             "key": "field_582349eb23320",
@@ -67,7 +68,8 @@
             "ajax": 0,
             "placeholder": "",
             "disabled": 0,
-            "readonly": 0
+            "readonly": 0,
+            "return_format": "value"
         }
     ],
     "location": [
@@ -87,5 +89,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Those options are for variable product only",
-    "modified": 1478724771
+    "modified": 1483148117
 }

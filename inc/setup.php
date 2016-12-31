@@ -215,13 +215,13 @@ function pp_woocommerce_image_dimensions() {
   	$catalog = array(
 		'width' 	=> '255',	// px
 		'height'	=> '290',	// px
-		'crop'		=> 0 		// true
+		'crop'		=> 0 		// false
 	);
 
 	$single = array(
 		'width' 	=> '1000',	// px
 		'height'	=> '1000',	// px
-		'crop'		=> 0 		// true
+		'crop'		=> 0 		// false
 	);
 
 	$thumbnail = array(

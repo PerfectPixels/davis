@@ -129,14 +129,17 @@ Kirki::add_field( 'pp_theme', array(
 	'settings'    => 'product_style',
 	'label'       => __( 'Product Images Style', 'davis' ),
 	'description' => __( 'Select the way the product is been showcased. (can be overwritten in the product option itself)', 'davis' ),
-	'section'  => 'section_product_page',
+	'section'     => 'section_product_page',
 	'type'        => 'select',
 	'default'     => 'thumb',
 	'priority'    => 10,
 	'choices'     => array(
-		'thumb' => esc_attr__( 'Thumbnails', 'davis' ),
-		'carousel' => esc_attr__( 'Carousel', 'davis' ),
-		'slideshow' => esc_attr__( 'Fullwidth Slideshow', 'davis' ),
+		'thumb'       => esc_attr__( 'Thumbnails below Summary', 'davis' ),
+		'thumb-image' => esc_attr__( 'Thumbnails over Image', 'davis' ),
+		'vertical-thumb' => esc_attr__( 'Vertical Thumbnails', 'davis' ),
+		'no-thumb' => esc_attr__( 'No Thumbnails', 'davis' ),
+		'carousel'    => esc_attr__( 'Carousel', 'davis' ),
+		'slideshow'   => esc_attr__( 'Fullwidth Slideshow', 'davis' ),
 	),
 ) );
 // Product images position

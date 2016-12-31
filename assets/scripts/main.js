@@ -1675,18 +1675,26 @@
 						$mainSlider = $( '#main-slider' ),
 						$thumbSlider = $( '#thumb-slider' );
 
+					// Check if the product style layout has a vertical thumbnails slider
+					if ($form.parents('.style-vertical-thumb').length > 0){
+						// Wait for main slider to initiate
+						$thumbSlider.on('init', function(){
+							$thumbSlider.css({ height: $mainSlider.outerHeight() });
+						});
+					}
+
 					// Initialize the slick sliders
 					$mainSlider.slick({
 						prevArrow: '<button type="button" class="slick-prev"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path></svg></button>',
 						nextArrow: '<button type="button" class="slick-next"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg></button>'
 					});
+
 					$thumbSlider.slick({
 						prevArrow: '<button type="button" class="slick-prev"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path></svg></button>',
 						nextArrow: '<button type="button" class="slick-next"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg></button>'
 					}).css('opacity',1);
 
 					// Ajax add to cart
-					/*
 					$form.on( 'submit', function(){
 						var $container = $form.parent(),
 							productId = $container.find( 'input[name="product_id"]' ).val(),
@@ -1718,7 +1726,6 @@
 
 						return false;
 					});
-					*/
 
 					// Unbind any existing events
 					//$form.off( 'change focusin', '.variations select' );

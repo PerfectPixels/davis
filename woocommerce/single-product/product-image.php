@@ -44,17 +44,21 @@ if ($img_nb < 3) {
 }
 
 switch ($product_style) {
-    case 'thumb':
-        $data_slick = '{ "accessibility": true, "fade": true, "asNavFor": "#thumb-slider"  }';
-        break;
     case 'carousel':
         $data_slick = '{ "accessibility": true, "centerMode": true, "centerPadding": "5%", "arrows": '.$nav.', "dots": '.$nav.', "infinite": '.$wrap.' }';
         break;
     case 'slideshow':
         $data_slick = '{ "accessibility": true, "fade": true, , "asNavFor": "#thumb-slider" }';
         break;
+    default:
+        $data_slick = '{ "accessibility": true, "fade": true, "asNavFor": "#thumb-slider"  }';
+        break;
 }
 ?>
+
+<?php if ($product_style === 'thumb-image' || $product_style === 'vertical-thumb') : ?>
+    <div class="thumb-image-container">
+<?php endif; ?>
 
 <div id="main-slider" data-slick='<?php echo $data_slick; ?>'>
 
@@ -98,3 +102,14 @@ switch ($product_style) {
 	?>
 
 </div>
+
+<?php if ($product_style === 'thumb-image' || $product_style === 'vertical-thumb') :
+
+    wc_get_template( 'single-product/thumb-slider.php', array(
+        'attachment_ids' => $attachment_ids,
+        'product_style' => $product_style
+    ) ); ?>
+
+    </div>
+
+<?php endif; ?>
