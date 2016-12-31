@@ -7,6 +7,7 @@ $thumb_to_show = 5;
 // Count number of images
 $img_nb = sizeof($attachment_ids);
 $longer = '';
+$attr = '';
 
 if ( has_post_thumbnail() ){ $img_nb += 1; }
 

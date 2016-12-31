@@ -342,7 +342,11 @@
 
 		}
 
-		&.style-no-thumb { @extend .style-thumb; }
+		&.style-no-thumb { @extend .style-thumb;
+
+			.summary section div[itemprop="description"] p { height: auto; -webkit-line-clamp: inherit; }
+
+		}
 
 		&.style-carousel {
 

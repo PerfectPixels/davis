@@ -38,7 +38,7 @@ if ( has_post_thumbnail() ){ $img_nb += 1; }
 if ($img_nb < 3) {
     $wrap = 'false';
 
-    if ($img_nb == 0) {
+    if ($img_nb < 2) {
         $nav = 'false';
     }
 }
