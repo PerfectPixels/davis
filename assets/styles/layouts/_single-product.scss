@@ -342,6 +342,8 @@
 
 		}
 
+		&.style-no-thumb { @extend .style-thumb; }
+
 		&.style-carousel {
 
 			.summary { margin: 0 !important;

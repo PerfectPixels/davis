@@ -44,6 +44,9 @@ if ($img_nb < 3) {
 }
 
 switch ($product_style) {
+    case 'no-thumb':
+        $data_slick = '{ "accessibility": true, "fade": true }';
+        break;
     case 'carousel':
         $data_slick = '{ "accessibility": true, "centerMode": true, "centerPadding": "5%", "arrows": '.$nav.', "dots": '.$nav.', "infinite": '.$wrap.' }';
         break;
