@@ -8,13 +8,11 @@
  *
  * @package Menu_Item_Custom_Fields
  * @version 0.1.1
- * @author Dzikri Aziz <kvcrvt@gmail.com>
  */
 
 /**
  * Menu item custom fields walker
  *
- * Based on {@link https://twitter.com/westonruter Weston Ruter}'s {@link https://gist.github.com/3802459 gist}
  *
  * @since 0.1.0
  */

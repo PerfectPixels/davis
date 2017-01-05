@@ -16,6 +16,6 @@ function overwride_woocommerce_widgets() {
 	}
 
 }
-add_action( 'widgets_init', __NAMESPACE__ . '\\overwride_woocommerce_widgets', 15 );
+add_action( 'widgets_init', 'overwride_woocommerce_widgets', 15 );
 
 ?>

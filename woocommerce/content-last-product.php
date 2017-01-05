@@ -13,8 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-use PP\Extras;
-
 global $product, $single_variation;
 
 // Check if it has children
@@ -140,13 +138,9 @@ if ( $product->variation_id ){
 				 * woocommerce_after_shop_loop_item hook
 				 *
 				 * @hooked woocommerce_template_loop_add_to_cart - 10
+				 * @hooked pp_variable_add_to_cart - 15
 				 */
-				do_action( 'woocommerce_after_shop_loop_item' );
-
-				if ( $product->is_type( 'variable' ) ){
-					Extras\pp_variable_add_to_cart( true );
-				}
-
+				do_action( 'woocommerce_after_shop_loop_item', true );
 			?>
 		</div>
 
@@ -175,7 +169,6 @@ if ( $product->variation_id ){
 
 		<div class="product-meta">
 			<?php
-
 				/**
 				 * woocommerce_after_shop_loop_item_title hook
 				 *
@@ -184,18 +177,13 @@ if ( $product->variation_id ){
 				 */
 				do_action( 'woocommerce_after_shop_loop_item_title' );
 
-
 				/**
 				 * woocommerce_after_shop_loop_item hook
 				 *
 				 * @hooked woocommerce_template_loop_add_to_cart - 10
+				 * @hooked pp_variable_add_to_cart - 15
 				 */
-				do_action( 'woocommerce_after_shop_loop_item' );
-
-				if ($product->variation_id){
-					Extras\pp_variable_add_to_cart();
-				}
-
+				do_action( 'woocommerce_after_shop_loop_item', false );
 			?>
 		</div>
 

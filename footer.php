@@ -9,8 +9,6 @@
  * @package Davis
  */
 
-use PP\Setup;
-
 global $woocommerce_active;
 
 if ( $woocommerce_active ) {
@@ -39,7 +37,7 @@ $sidebar = (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mo
 
 	</main>
 
-	<?php if (Setup\display_sidebar() && $sidebar) : ?>
+	<?php if (display_sidebar() && $sidebar) : ?>
 		<?php get_sidebar(); ?>
 	<?php endif; ?>
 

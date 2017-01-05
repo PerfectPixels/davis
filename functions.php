@@ -1,44 +1,34 @@
 <?php
-/**
- 	* Davis functions and definitions.
- 	*
- 	* @link https://developer.wordpress.org/themes/basics/theme-functions/
- 	*
- 	* @package Davis
-	*
-  * The $pp_includes array determines the code incrary included in your theme.
-  * Add or remove files to the array as needed. Supports child theme overrides.
-  *
-  * Please note that missing files will produce a fatal error.
-  *
-  */
- $pp_includes = [
-   'inc/setup.php',     // Theme setup
-   'inc/assets.php',    // Scripts and stylesheets
-   'inc/extras.php',    // Custom functions
-   //'inc/single-variation.php',    // Display variations as simple products
-   'inc/class-tgm-plugin-activation.php', // Include TGM plugin
-   'inc/widgets.php',   // Widgets creation
-   'inc/titles.php',    // Page titles
-   'inc/template-tags.php',    // Page titles
-   'inc/menu-item-custom-fields/menu-item-custom-fields.php',   // Custom field for mega menu
-   'inc/menu-walker.php',   // Custom menu walker
-   //'inc/shortcodes.php', // Theme Shortcodes
-   //'inc/vc_mapper.php', // Map Shortcodes to VC
-   'inc/reviews-pro.php', // Change the reviews pro plugin
-   'inc/reviews-pro-type.php', // Change the reviews pro plugin
-   'inc/social-checkout.php', // Change the reviews pro plugin
-   'inc/theme_options/conf.php' // All customiser sections, panel, fields
- ];
+   /**
+    * Davis files definition
+    *
+    * @link https://developer.wordpress.org/themes/basics/theme-functions/
+    *
+    * @package Davis
+    *
+    *
+    */
 
- foreach ($pp_includes as $file) {
-   if (!$filepath = locate_template($file)) {
-     trigger_error(sprintf(__('Error locating %s for inclusion', 'davis'), $file), E_USER_ERROR);
-   }
+    require get_template_directory() . '/inc/setup.php';
+    require get_template_directory() . '/inc/assets.php';
+    require get_template_directory() . '/inc/extras.php';
+    require get_template_directory() . '/inc/frontend/cart.php';
+    require get_template_directory() . '/inc/theme_options/conf.php';
 
-   require_once $filepath;
- }
- unset($file, $filepath);
+    if ( is_admin() ) {
+        require get_template_directory() . '/inc/menu-item-custom-fields/menu-item-custom-fields.php';
+        require get_template_directory() . '/inc/class-tgm-plugin-activation.php';
+    } else {
+        require get_template_directory() . '/inc/titles.php';
+        require get_template_directory() . '/inc/template-tags.php';
+        require get_template_directory() . '/inc/widgets.php';
+        require get_template_directory() . '/inc/menu-walker.php';
+
+        // Pluguns Override
+        require get_template_directory() . '/inc/reviews-pro.php';
+        require get_template_directory() . '/inc/reviews-pro-type.php';
+        require get_template_directory() . '/inc/social-checkout.php';
+    }
 
  /*
  * If ACF plugin is not activated, create this fallback

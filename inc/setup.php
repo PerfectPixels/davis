@@ -1,9 +1,5 @@
 <?php
 
-namespace PP\Setup;
-
-use PP\Assets;
-
 /**
  * If woocommerce is active
  */
@@ -60,8 +56,11 @@ function setup() {
 	// Enable HTML5 markup support
 	add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
+    // Initialize
+	new PP_Cart;
+
 }
-add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
+add_action('after_setup_theme', 'setup');
 
 /**
  * Register sidebars
@@ -115,7 +114,7 @@ function widgets_init() {
 		'after_title'   => '</h3>'
 	]);
 }
-add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
+add_action('widgets_init', 'widgets_init');
 
 /**
  * Determine which pages should NOT display the sidebar
@@ -132,7 +131,7 @@ function display_sidebar() {
     is_product(),
   ]);
 
-  return apply_filters('sage/display_sidebar', $display);
+  return $display;
 }
 
 /**
@@ -174,13 +173,13 @@ function assets() {
 
 	if ( $woocommerce_active ) {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-		$assets_path = str_replace( array( 'http:', 'https:' ), '', \WC()->plugin_url() ) . '/assets/';
+		$assets_path = str_replace( array( 'http:', 'https:' ), '', WC()->plugin_url() ) . '/assets/';
 		$frontend_script_path = $assets_path . 'js/frontend/';
 
 		// Cart localized script needed on all pages
 		$wc_cart_params = array(
-			'ajax_url'                     => \WC()->ajax_url(),
-			'wc_ajax_url'                  => \WC_AJAX::get_endpoint( "%%endpoint%%" ),
+			'ajax_url'                     => WC()->ajax_url(),
+			'wc_ajax_url'                  => WC_AJAX::get_endpoint( "%%endpoint%%" ),
 			'update_shipping_method_nonce' => wp_create_nonce( "update-shipping-method" ),
 			'checkout_page'             => esc_url( wc_get_checkout_url() ),
 		);
@@ -200,7 +199,7 @@ function assets() {
 
 	}
 }
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+add_action('wp_enqueue_scripts', 'assets', 100);
 
 /**
  * Woocommerce image size
@@ -236,7 +235,7 @@ function pp_woocommerce_image_dimensions() {
 	update_option( 'shop_thumbnail_image_size', $thumbnail ); 	// Image gallery thumbs
 
 }
-add_action( 'after_switch_theme', __NAMESPACE__ . '\\pp_woocommerce_image_dimensions', 1 );
+add_action( 'after_switch_theme', 'pp_woocommerce_image_dimensions', 1 );
 
 /**
  * Remove Woocommerce breadcrumbs
@@ -244,7 +243,7 @@ add_action( 'after_switch_theme', __NAMESPACE__ . '\\pp_woocommerce_image_dimens
 function pp_remove_wc_breadcrumbs() {
     remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 }
-add_action( 'init', __NAMESPACE__ . '\\pp_remove_wc_breadcrumbs' );
+add_action( 'init', 'pp_remove_wc_breadcrumbs' );
 
 /**
  * Register the TGM Plugin
@@ -288,7 +287,7 @@ add_action( 'init', __NAMESPACE__ . '\\pp_remove_wc_breadcrumbs' );
 
  	tgmpa( $plugins, $config );
  }
-add_action( 'tgmpa_register', __NAMESPACE__ . '\\davis_register_required_plugins' );
+add_action( 'tgmpa_register', 'davis_register_required_plugins' );
 
 /**
  * ACF options for the theme
@@ -306,7 +305,7 @@ function my_acf_json_save_point( $path ) {
     return $path;
 
 }
-add_filter('acf/settings/save_json', __NAMESPACE__ . '\\my_acf_json_save_point');
+add_filter('acf/settings/save_json', 'my_acf_json_save_point');
 
 
 // Automatically load JSON
@@ -318,7 +317,7 @@ function my_acf_json_load_point( $paths ) {
     // return
     return $paths;
 }
-add_filter('acf/settings/load_json', __NAMESPACE__ . '\\my_acf_json_load_point');
+add_filter('acf/settings/load_json', 'my_acf_json_load_point');
 
 
 /**
@@ -339,6 +338,6 @@ function toolbar_link_to_options( $wp_admin_bar ) {
 					'parent'=> 'theme_options'
 				) );
 }
-add_action( 'admin_bar_menu', __NAMESPACE__ . '\\toolbar_link_to_options', 40 );
+add_action( 'admin_bar_menu', 'toolbar_link_to_options', 40 );
 
 ?>

@@ -13,8 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-use PP\Extras;
-
 global $product, $single_variation;
 
 // Ensure visibility
@@ -202,18 +200,13 @@ if ( !$variations_slider && ( $product->is_type( 'variable' ) || $product->is_ty
 			</span>
 
 			<?php
-
 				/**
 				 * woocommerce_after_shop_loop_item hook
 				 *
 				 * @hooked woocommerce_template_loop_add_to_cart - 10
+				 * @hooked pp_variable_add_to_cart - 15
 				 */
-				do_action( 'woocommerce_after_shop_loop_item' );
-
-				if ( $product->is_type( 'variable' ) ){
-					Extras\pp_variable_add_to_cart( true );
-				}
-
+				do_action( 'woocommerce_after_shop_loop_item', true );
 			?>
 		</section>
 
@@ -285,19 +278,13 @@ if ( !$variations_slider && ( $product->is_type( 'variable' ) || $product->is_ty
 			</span>
 
 			<?php
-
 				/**
-				 * woocommerce_after_shop_loop_item hook.
+				 * woocommerce_after_shop_loop_item hook
 				 *
-				 * @hooked woocommerce_template_loop_product_link_close - 5
 				 * @hooked woocommerce_template_loop_add_to_cart - 10
+				 * @hooked pp_variable_add_to_cart - 15
 				 */
-				do_action( 'woocommerce_after_shop_loop_item' );
-
-				if ($product->is_type( 'variable' )){
-					Extras\pp_variable_add_to_cart(false);
-				}
-
+				do_action( 'woocommerce_after_shop_loop_item', false );
 			?>
 		</section>
 

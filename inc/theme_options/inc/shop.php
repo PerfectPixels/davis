@@ -139,7 +139,8 @@ Kirki::add_field( 'pp_theme', array(
 		'vertical-thumb' => esc_attr__( 'Vertical Thumbnails', 'davis' ),
 		'no-thumb' => esc_attr__( 'No Thumbnails', 'davis' ),
 		'carousel'    => esc_attr__( 'Carousel', 'davis' ),
-		'slideshow'   => esc_attr__( 'Fullwidth Slideshow', 'davis' ),
+		'slideshow'   => esc_attr__( 'Slideshow', 'davis' ),
+		'fullwidth'   => esc_attr__( 'Fullwidth', 'davis' ),
 	),
 ) );
 // Product images position

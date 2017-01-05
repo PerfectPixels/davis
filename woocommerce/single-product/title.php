@@ -20,5 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<h1 itemprop="name" class="product_title entry-title"><?php the_title(); ?></h1>
-<h6><?php do_action('woo_custom_breadcrumb'); ?></h6>
+
+<div class="title-wrap">
+	<h1 itemprop="name" class="product_title entry-title"><?php the_title(); ?></h1>
+	<h6><?php do_action('woo_custom_breadcrumb'); ?></h6>

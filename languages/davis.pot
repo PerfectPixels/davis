@@ -1,4 +1,4 @@
-# Copyright (C) 2016 Davis
+# Copyright (C) 2017 Davis
 # This file is distributed under the same license as the Davis package.
 msgid ""
 msgstr ""
@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Language-Team: PerfectPixels <info@example.com>\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -42,10 +42,6 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:36
-msgid "Error locating %s for inclusion"
-msgstr ""
-
 #: header.php:59
 msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
@@ -62,52 +58,52 @@ msgstr ""
 msgid "Wishlist"
 msgstr ""
 
-#: inc/extras.php:186, woocommerce/cart/mini-cart.php:22
-msgid "sprintfngettextYou have %d item in your cart"
-msgstr ""
-
-#: inc/extras.php:292
+#: inc/extras.php:182
 msgid "We cannot find any account with this email address"
 msgstr ""
 
-#: inc/extras.php:294
+#: inc/extras.php:184
 msgid "Your password is incorrect"
 msgstr ""
 
-#: inc/extras.php:297
+#: inc/extras.php:187
 msgid "You are now logged in"
 msgstr ""
 
-#: inc/extras.php:321
+#: inc/extras.php:211
 msgid "Please enter email address"
 msgstr ""
 
-#: inc/extras.php:323
+#: inc/extras.php:213
 msgid "Please enter password"
 msgstr ""
 
-#: inc/extras.php:360
+#: inc/extras.php:250
 msgid "Successfully registered! You are now logged in"
 msgstr ""
 
-#: inc/extras.php:362
+#: inc/extras.php:252
 msgid "Email address already registered"
 msgstr ""
 
-#: inc/extras.php:387
+#: inc/extras.php:277
 msgid "Enter an email address"
 msgstr ""
 
-#: inc/extras.php:403, inc/extras.php:408
+#: inc/extras.php:293, inc/extras.php:298
 msgid "Invalid email address"
 msgstr ""
 
-#: inc/extras.php:421
+#: inc/extras.php:311
 msgid "Password reset is not allowed for this user"
 msgstr ""
 
-#: inc/extras.php:448
+#: inc/extras.php:338
 msgid "Check your email for the confirmation link"
+msgstr ""
+
+#: inc/frontend/cart.php:114, woocommerce/cart/mini-cart.php:22
+msgid "sprintfngettextYou have %d item in your cart"
 msgstr ""
 
 #: inc/menu-item-custom-fields/fields/checkbox.php:57
@@ -174,43 +170,43 @@ msgstr ""
 msgid "Customer Reviews"
 msgstr ""
 
-#: inc/setup.php:47
+#: inc/setup.php:43
 msgid "Primary Navigation"
 msgstr ""
 
-#: inc/setup.php:48
+#: inc/setup.php:44
 msgid "Left Top Bar Navigation"
 msgstr ""
 
-#: inc/setup.php:49
+#: inc/setup.php:45
 msgid "Right Top Bar Navigation"
 msgstr ""
 
-#: inc/setup.php:50
+#: inc/setup.php:46
 msgid "Account Navigation"
 msgstr ""
 
-#: inc/setup.php:51
+#: inc/setup.php:47
 msgid "Footer Navigation"
 msgstr ""
 
-#: inc/setup.php:71
+#: inc/setup.php:70
 msgid "Primary"
 msgstr ""
 
-#: inc/setup.php:92
+#: inc/setup.php:91
 msgid "Footer Top"
 msgstr ""
 
-#: inc/setup.php:110
+#: inc/setup.php:109
 msgid "Footer Bottom"
 msgstr ""
 
-#: inc/setup.php:331
+#: inc/setup.php:330
 msgid "Theme Options"
 msgstr ""
 
-#: inc/setup.php:337
+#: inc/setup.php:336
 msgid "Header Options"
 msgstr ""
 
@@ -472,11 +468,11 @@ msgstr ""
 msgid "Choose to display the social media icons on the left or the right of the top bar."
 msgstr ""
 
-#: inc/theme_options/inc/header.php:253, inc/theme_options/inc/header.php:398, inc/theme_options/inc/shop.php:156
+#: inc/theme_options/inc/header.php:253, inc/theme_options/inc/header.php:398, inc/theme_options/inc/shop.php:157
 msgid "Right"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:254, inc/theme_options/inc/header.php:399, inc/theme_options/inc/shop.php:155
+#: inc/theme_options/inc/header.php:254, inc/theme_options/inc/header.php:399, inc/theme_options/inc/shop.php:156
 msgid "Left"
 msgstr ""
 
@@ -580,7 +576,7 @@ msgstr ""
 msgid "Choose to have the submenu fullwidth or boxed"
 msgstr ""
 
-#: inc/theme_options/inc/header.php:708
+#: inc/theme_options/inc/header.php:708, inc/theme_options/inc/shop.php:143
 msgid "Fullwidth"
 msgstr ""
 
@@ -748,11 +744,11 @@ msgstr ""
 msgid "Choose if you want to display the product variations as a slider on the shop pages."
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:92, inc/theme_options/inc/shop.php:107, inc/theme_options/inc/shop.php:248
+#: inc/theme_options/inc/shop.php:92, inc/theme_options/inc/shop.php:107, inc/theme_options/inc/shop.php:249
 msgid "Enable"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:93, inc/theme_options/inc/shop.php:108, inc/theme_options/inc/shop.php:249
+#: inc/theme_options/inc/shop.php:93, inc/theme_options/inc/shop.php:108, inc/theme_options/inc/shop.php:250
 msgid "Disable"
 msgstr ""
 
@@ -793,82 +789,82 @@ msgid "Carousel"
 msgstr ""
 
 #: inc/theme_options/inc/shop.php:142
-msgid "Fullwidth Slideshow"
-msgstr ""
-
-#: inc/theme_options/inc/shop.php:148
-msgid "Product Images Position"
+msgid "Slideshow"
 msgstr ""
 
 #: inc/theme_options/inc/shop.php:149
+msgid "Product Images Position"
+msgstr ""
+
+#: inc/theme_options/inc/shop.php:150
 msgid "Select the which side you want the images to be displayed."
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:170
+#: inc/theme_options/inc/shop.php:171
 msgid "The cart is being cached, make sure you empty the cache after updating any option in this section."
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:178
+#: inc/theme_options/inc/shop.php:179
 msgid "Cart Title"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:182, woocommerce/cart/mini-cart.php:21, woocommerce/cart/mini-cart.php:33
+#: inc/theme_options/inc/shop.php:183, woocommerce/cart/mini-cart.php:21, woocommerce/cart/mini-cart.php:33
 msgid "Cart Summary"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:187
+#: inc/theme_options/inc/shop.php:188
 msgid "Details Title"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:191, woocommerce/cart/mini-cart.php:36, woocommerce/checkout/form-checkout.php:44
+#: inc/theme_options/inc/shop.php:192, woocommerce/cart/mini-cart.php:36, woocommerce/checkout/form-checkout.php:44
 msgid "Customer Details"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:196
+#: inc/theme_options/inc/shop.php:197
 msgid "Details Subtitle"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:200, woocommerce/checkout/form-checkout.php:45
+#: inc/theme_options/inc/shop.php:201, woocommerce/checkout/form-checkout.php:45
 msgid "Fill in your details in the form bellow"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:205
+#: inc/theme_options/inc/shop.php:206
 msgid "Shipping / Payment Title"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:209, woocommerce/cart/mini-cart.php:39, woocommerce/checkout/form-checkout.php:141
+#: inc/theme_options/inc/shop.php:210, woocommerce/cart/mini-cart.php:39, woocommerce/checkout/form-checkout.php:141
 msgid "Shipping & Payment"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:214
+#: inc/theme_options/inc/shop.php:215
 msgid "Shipping / Payment Subtitle"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:218, woocommerce/checkout/form-checkout.php:142
+#: inc/theme_options/inc/shop.php:219, woocommerce/checkout/form-checkout.php:142
 msgid "Select your preferred shipping and payment methods"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:223
+#: inc/theme_options/inc/shop.php:224
 msgid "Review Title"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:227, woocommerce/checkout/form-checkout.php:164
+#: inc/theme_options/inc/shop.php:228, woocommerce/checkout/form-checkout.php:164
 msgid "Review Order"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:232
+#: inc/theme_options/inc/shop.php:233
 msgid "Review Subtitle"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:236, woocommerce/checkout/form-checkout.php:165
+#: inc/theme_options/inc/shop.php:237, woocommerce/checkout/form-checkout.php:165
 msgid "Confirm your cart content and the total of your order"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:241
+#: inc/theme_options/inc/shop.php:242
 msgid "Quick Checkout"
 msgstr ""
 
-#: inc/theme_options/inc/shop.php:242
+#: inc/theme_options/inc/shop.php:243
 msgid "Choose if you want a quick checkout available on all pages instead of the default Woocommerce checkout page. PLEASE NOTE: Quick checkout was not tested with all existing plugins that adds/modifies the checkout process or layout. If you find any issues while using it please disable it."
 msgstr ""
 

@@ -43,3 +43,5 @@ if ( $rating_count > 0 ) : ?>
 	</div>
 
 <?php endif; ?>
+
+</div> <?php // Closing div.title-wrap from the title.php

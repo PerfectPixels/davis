@@ -1671,7 +1671,7 @@
 						return false;
 					}
 
-					var $form = $( 'form.variations_form.cart' ),
+					var $form = $( 'form.cart' ),
 						$mainSlider = $( '#main-slider' ),
 						$thumbSlider = $( '#thumb-slider' );
 
@@ -1697,28 +1697,33 @@
 					// Ajax add to cart
 					$form.on( 'submit', function(){
 						var $container = $form.parent(),
-							productId = $container.find( 'input[name="product_id"]' ).val(),
+							$selectBoxes = $container.find( 'table.variations select' ),
+							productId = $container.find( 'input[name="add-to-cart"]' ).val(),
 							variationId = $container.find( 'input[name="variation_id"]' ).val(),
 							variation = {},
 							qty = $container.find( 'input[name="quantity"]' ).val(),
 							selected = false,
 							productSku = '';
 
-						$container.find( 'table.variations select' ).each( function(){
-							var $selectbox = $( this ),
-								key = $selectbox.attr( 'name' ).replace('attribute_pa_', '').replace('attribute_', ''),
-								val = $selectbox.find('option:selected').val();
+						if ($selectBoxes.length > 0){
+							$selectBoxes.each( function(){
+								var $selectbox = $( this ),
+									key = $selectbox.attr( 'name' ).replace('attribute_pa_', '').replace('attribute_', ''),
+									val = $selectbox.find('option:selected').val();
 
-							if ( val === '' || val === undefined || val === null) {
-								$selectbox.addClass( 'error' ).one( 'focusin touchstart', function(){
-									$( this ).removeClass( 'error' );
-								});
-								selected = false;
-							} else {
-								variation[ key ] = val;
-								selected = true;
-							}
-						});
+								if ( val === '' || val === undefined || val === null) {
+									$selectbox.addClass( 'error' ).one( 'focusin touchstart', function(){
+										$( this ).removeClass( 'error' );
+									});
+									selected = false;
+								} else {
+									variation[ key ] = val;
+									selected = true;
+								}
+							});
+						} else {
+							selected = true;
+						}
 
 						if ( selected ){
 							PP.method.cart.ajaxToCart($container, productId, productSku, variationId, variation, qty);
@@ -1760,6 +1765,7 @@
 					function switchContent(variation){
 						// Display the variation description if any
 						var $variationPrice = $( '.single_variation .woocommerce-variation-price' ),
+							$variationWrap = $( '.single_variation_wrap' ),
 							$saleBadge = $('.product-type-variable .container .single-product-sale'),
 							$selectVar = $mainSlider.closest('.product').find('.summary .variations select'),
 							$slideVar = false,
@@ -1773,12 +1779,14 @@
 								slideIndex = $slideVar.parents('.item').attr('data-slick-index');
 							}
 
-							// Hide global price
-							$( '.single_variation_wrap .regular_price' ).hide();
-
 							// Get correct pricing
 							if (variation.price_html) {
+								// Hide global price
+								$variationWrap.find( '.regular_price' ).hide();
 								$variationPrice.html( variation.price_html );
+								$variationWrap.removeClass('availability');
+							} else if (variation.availability_html){
+								$variationWrap.addClass('availability');
 							}
 
 							// Show sale badge if variation is on sale

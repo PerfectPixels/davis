@@ -20,11 +20,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
+// Get the images style
+$product_style = get_theme_mod('product_style', 'thumb');
+$page_product_style = get_field('page_images_style');
+
+if ($page_product_style !== 'default'){
+    $product_style = $page_product_style;
+}
+
 $attribute_keys = array_keys( $attributes );
 
 do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 <form class="variations_form cart" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint( $product->id ); ?>" data-product_variations="<?php echo htmlspecialchars( json_encode( $available_variations ) ) ?>">
+
+	<?php if ($product_style === 'slideshow') :
+		wc_get_template( 'single-product/price.php', array(
+			'in_form' => false
+		));
+	endif; ?>
+
 	<?php do_action( 'woocommerce_before_variations_form' ); ?>
 
 	<?php if ( empty( $available_variations ) && false !== $available_variations ) : ?>
@@ -51,54 +66,9 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
-		<div class="single_variation_wrap">
-			<?php
-				/**
-				 * woocommerce_before_single_variation Hook.
-				 */
-				do_action( 'woocommerce_before_single_variation' );
-
-			?>
-
-			<div class="woocommerce-variation regular_price">
-				<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-
-					<?php
-
-						$the_price = $product->get_price_html();
-
-						if ( strpos($the_price, '<del>') !== false ){
-							preg_match('/<del>(.*?)<\/del>/s', $the_price, $del);
-							preg_match('/<span class="woocommerce-Price-currencySymbol">(.*?)<\/span>/s', $the_price, $cur);
-							$the_price = '<ins><span>From </span>' . $cur[1] . $product->get_price() . '</ins><del>Was ' . $del[1] . '</del>';
-						}
-					
-					?>
-
-					<p class="price"><?php echo $the_price; ?></p>
-
-					<meta itemprop="price" content="<?php echo esc_attr( $product->get_price() ); ?>" />
-					<meta itemprop="priceCurrency" content="<?php echo esc_attr( get_woocommerce_currency() ); ?>" />
-					<link itemprop="availability" href="http://schema.org/<?php echo $product->is_in_stock() ? 'InStock' : 'OutOfStock'; ?>" />
-
-				</div>
-			</div>
-
-			<?php
-				/**
-				 * woocommerce_single_variation hook. Used to output the cart button and placeholder for variation data.
-				 * @since 2.4.0
-				 * @hooked woocommerce_single_variation - 10 Empty div for variation data.
-				 * @hooked woocommerce_single_variation_add_to_cart_button - 20 Qty and cart button.
-				 */
-				do_action( 'woocommerce_single_variation' );
-
-				/**
-				 * woocommerce_after_single_variation Hook.
-				 */
-				do_action( 'woocommerce_after_single_variation' );
-			?>
-		</div>
+		<?php wc_get_template( 'single-product/price.php', array(
+			'in_form' => true
+		)); ?>
 
 	<?php endif; ?>
 

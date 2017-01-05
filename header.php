@@ -1,43 +1,43 @@
 <?php
-	/**
-	* The header for our theme.
-	*
-	* This is the template that displays all of the <head> section and everything up until <div id="content">
-	*
-	*/
+/**
+* The header for our theme.
+*
+* This is the template that displays all of the <head> section and everything up until <div id="content">
+*
+*/
 
-	use PP\Extras;
+use PP\Extras;
 
-	global $woocommerce;
+global $woocommerce;
 
-	$content_classes 	= 'col-xs-12';
-	$fullwidth_class 	= 'container';
-	$order_received 	= Extras\URL_has('order-received');
-	$fixed_classes 		= '';
-	$sidebar 					= (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mod('shop_sidebar', 'no');
-	$sidebar_class 		= '';
+$content_classes 	= 'col-xs-12';
+$fullwidth_class 	= 'container';
+$order_received 	= Extras\URL_has('order-received');
+$fixed_classes 		= '';
+$sidebar 					= (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mod('shop_sidebar', 'no');
+$sidebar_class 		= '';
 
-	if ((!get_field('hide_sidebar') && !is_checkout() && !is_product()) || ($sidebar && (is_shop() || is_product_category() || is_product_tag()))) {
+if ((!get_field('hide_sidebar') && !is_checkout() && !is_product()) || ($sidebar && (is_shop() || is_product_category() || is_product_tag()))) {
 
-		if ($sidebar === 'sidebar'){
-			$content_classes = 'col-md-9 col-md-push-3';
-		} else if ($sidebar === 'offcanvas'){
-			$content_classes = 'col-md-12';
-			$sidebar_class = 'offcanvas-sidebar';
-		}
-	} else {
-		$sidebar = false;
+	if ($sidebar === 'sidebar'){
+		$content_classes = 'col-md-9 col-md-push-3';
+	} else if ($sidebar === 'offcanvas'){
+		$content_classes = 'col-md-12';
+		$sidebar_class = 'offcanvas-sidebar';
 	}
+} else {
+	$sidebar = false;
+}
 
-	// Remove class .container is fullwidth
-	if (get_field('fullwidth') || is_product()) {
-		$fullwidth_class = '';
-		$content_classes = '';
-	}
-	// Check if header is sticky
-	if (get_theme_mod('fixed_header', false) == true) { $fixed_classes .= 'nav-is-fixed'; }
-	// Check if top bar is sticky
-	if (get_theme_mod('fixed_top_bar', true) == true) {	$fixed_classes .= ' top-bar-is-fixed'; }
+// Remove class .container is fullwidth
+if (get_field('fullwidth') || is_product()) {
+	$fullwidth_class = '';
+	$content_classes = '';
+}
+// Check if header is sticky
+if (get_theme_mod('fixed_header', false) == true) { $fixed_classes .= 'nav-is-fixed'; }
+// Check if top bar is sticky
+if (get_theme_mod('fixed_top_bar', true) == true) {	$fixed_classes .= ' top-bar-is-fixed'; }
 
 ?>
 

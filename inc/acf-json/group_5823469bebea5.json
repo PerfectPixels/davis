@@ -22,7 +22,8 @@
                 "vertical-thumb": "Vertical Thumbnails",
                 "no-thumb": "No Thumbnails",
                 "carousel": "Carousel",
-                "slideshow": "Fullwidth Slideshow"
+                "slideshow": "Slideshow",
+                "fullwidth": "Fullwidth"
             },
             "default_value": [
                 "default"
@@ -90,5 +91,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Those options are for variable product only",
-    "modified": 1483156279
+    "modified": 1483373310
 }
