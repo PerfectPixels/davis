@@ -1048,7 +1048,8 @@
 
 			    	var $submitBtn = $loginForm.find('.submit'),
 						submitBtnTxt = $submitBtn.text(),
-						lodingMessage = $submitBtn.attr('data-message');
+						lodingMessage = $submitBtn.attr('data-message'),
+						$rememberChkb = $loginForm.find('input.remember');
 
 					// Change the button text to let message to the user
 				    $submitBtn.addClass('load').html('<p class="loading"></p>' + lodingMessage);
@@ -1069,7 +1070,7 @@
 				                'email': $loginForm.find('input.email').val(),
 				                'order_id': $loginForm.find('input.order_id').val(),
 				                'password': $loginForm.find('input.password').val(),
-				                'remember': $loginForm.find('input.remember').val(),
+				                'remember': ( ($rememberChkb.is(':checked')) ? $rememberChkb.val() : '' ),
 				                'security': $loginForm.find('#security').val()
 				            },
 				            success: function(data){
@@ -1083,7 +1084,6 @@
 										if ( ajax === 'reloadForm' ){
 
 											// Replace the NEW CONTENT
-
 											$.ajax({
 											   url: wc_cart_params.checkout_page,
 											   type: 'GET',
@@ -1162,6 +1162,13 @@
 					                });
 				                }
 				            },
+							complete: function(){
+								if (ajax === 'popup'){
+									setTimeout(function(){
+										$('#login-modal').modal( 'hide' );
+									}, 1200);
+								}
+							},
 				            error: function(xhr, ajaxOptions, thrownError){
 					            $submitBtn.removeClass('load').addClass('message show error').html(xhr.responseText).attr('disabled', 'disabled');
 					            $loginForm.find('input').one('keyup', function(){
@@ -1184,7 +1191,7 @@
 				    	if ( PP.method.global.getUrlParameter('login') === 'true' && PP.method.global.getUrlParameter('redirect') !== '' ){
 					    	PP.method.login.ajaxLogin( $(this), false );
 				    	} else {
-					    	PP.method.login.ajaxLogin( $(this), true );
+					    	PP.method.login.ajaxLogin( $(this), 'popup' );
 						}
 
 				        return false;

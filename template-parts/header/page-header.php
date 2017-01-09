@@ -1,3 +1,3 @@
-<?php use PP\Titles; ?>
+<?php
 
-
+?>

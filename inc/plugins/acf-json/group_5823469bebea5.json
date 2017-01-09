@@ -1,0 +1,95 @@
+{
+    "key": "group_5823469bebea5",
+    "title": "Product Page Options",
+    "fields": [
+        {
+            "key": "field_5823469c02155",
+            "label": "Product Images Style",
+            "name": "page_images_style",
+            "type": "select",
+            "instructions": "Select the way the product is been showcased",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default",
+                "thumb": "Thumbnails below Summary",
+                "thumb-image": "Thumbnails below Image",
+                "vertical-thumb": "Vertical Thumbnails",
+                "no-thumb": "No Thumbnails",
+                "carousel": "Carousel",
+                "slideshow": "Slideshow",
+                "fullwidth": "Fullwidth"
+            },
+            "default_value": [
+                "default"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_582349eb23320",
+            "label": "Product Images Position",
+            "name": "page_product_images_position",
+            "type": "select",
+            "instructions": "Select the position you want the text to appear",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5823469c02155",
+                        "operator": "!=",
+                        "value": "slideshow"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default",
+                "left": "Left",
+                "right": "Right"
+            },
+            "default_value": [
+                "default"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0,
+            "return_format": "value"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Those options are for variable product only",
+    "modified": 1483619828
+}

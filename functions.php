@@ -9,25 +9,48 @@
     *
     */
 
+    // Setup the theme
     require get_template_directory() . '/inc/setup.php';
-    require get_template_directory() . '/inc/assets.php';
-    require get_template_directory() . '/inc/extras.php';
+    // Hooks for the cart
     require get_template_directory() . '/inc/frontend/cart.php';
-    require get_template_directory() . '/inc/theme_options/conf.php';
+    // Hooks for the login
+    require get_template_directory() . '/inc/frontend/login.php';
+    // Hooks for woocommerce
+    require get_template_directory() . '/inc/frontend/woocommerce.php';
+    // Options for the customizer
+    require get_template_directory() . '/inc/backend/theme_options/conf.php';
 
     if ( is_admin() ) {
-        require get_template_directory() . '/inc/menu-item-custom-fields/menu-item-custom-fields.php';
-        require get_template_directory() . '/inc/class-tgm-plugin-activation.php';
-    } else {
-        require get_template_directory() . '/inc/titles.php';
-        require get_template_directory() . '/inc/template-tags.php';
-        require get_template_directory() . '/inc/widgets.php';
-        require get_template_directory() . '/inc/menu-walker.php';
+        // Backend hooks related
+        require get_template_directory() . '/inc/backend/register-plugins.php';
+        //require get_template_directory() . '/inc/backend/nav-custom-fields.php';
 
-        // Pluguns Override
-        require get_template_directory() . '/inc/reviews-pro.php';
-        require get_template_directory() . '/inc/reviews-pro-type.php';
-        require get_template_directory() . '/inc/social-checkout.php';
+        // Plugins libs/init
+        require get_template_directory() . '/inc/plugins/class-tgm-plugin-activation.php';
+        require get_template_directory() . '/inc/plugins/acf.php';
+
+        // Mega menu
+	    require get_template_directory() . '/inc/mega-menu/class-mega-menu.php';
+    } else {
+        // Global functions
+        require get_template_directory() . '/inc/functions/titles.php';
+        require get_template_directory() . '/inc/functions/cart.php';
+        require get_template_directory() . '/inc/functions/reviews.php';
+        require get_template_directory() . '/inc/functions/wishlist.php';
+
+        // Frontend hooks related
+        require get_template_directory() . '/inc/frontend/layout.php';
+        require get_template_directory() . '/inc/frontend/menu-walker.php';
+
+	    require get_template_directory() . '/inc/mega-menu/class-mega-menu-walker.php';
+
+        require get_template_directory() . '/inc/frontend/template-tags.php';
+        require get_template_directory() . '/inc/frontend/widgets.php';
+
+        // Plugins Override
+        require get_template_directory() . '/inc/plugins/reviews-pro.php';
+        require get_template_directory() . '/inc/plugins/reviews-pro-type.php';
+        require get_template_directory() . '/inc/plugins/social-checkout.php';
     }
 
  /*

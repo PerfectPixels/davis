@@ -11,8 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use PP\Extras;
-
 ?>
 <section class="shop_table woocommerce-checkout-review-order-table">
 	<div class="cart-total plus">
@@ -23,7 +21,7 @@ use PP\Extras;
 	<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
 	<div class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?> minus">
 		<span class="label"><?php _e( 'Coupon', 'woocommerce' ); ?></span>
-		<span class="price"><?php Extras\pp_cart_totals_coupon_html( $coupon ); ?></span>
+		<span class="price"><?php pp_cart_totals_coupon_html( $coupon ); ?></span>
 	</div>
 	<?php endforeach; ?>
 

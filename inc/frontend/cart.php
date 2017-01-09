@@ -22,7 +22,7 @@ class PP_Cart {
 		}
 
 		// Define all hook
-		add_action( 'template_redirect', array( $this, 'hooks' ) );
+		add_action( 'template_redirect', array( $this, 'initiate_hooks' ) );
 
 		// Define all ajax cart functions
 		add_filter('add_to_cart_fragments', array( $this, 'pp_refresh_minicart' ));
@@ -41,12 +41,12 @@ class PP_Cart {
 	}
 
     /**
-	 * Hooks to WooCommerce actions, filters
+	 * Hooks to all cart actions, filters
 	 *
 	 * @since  1.0
 	 * @return void
 	 */
-	function hooks() {
+	function initiate_hooks() {
 
         // Return the variables for the shop page
         add_action( 'woocommerce_after_shop_loop_item', array( $this, 'pp_variable_add_to_cart' ), 15 );

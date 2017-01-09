@@ -8,8 +8,6 @@
  * @package WC-Product-Reviews-Pro/Templates
  * @version 1.2.0
  */
- 
-use PP\Extras;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -23,7 +21,7 @@ $rating_enabled = $rating && get_option( 'woocommerce_enable_review_rating' ) ==
 	<div id="comment-<?php comment_ID(); ?>" class="comment_container">
 
 		<div class="comment-text">
-		
+
 			<?php if ( $title || $rating_enabled ) : ?>
 
 				<h3 class="contribution-title review-title">
@@ -57,25 +55,25 @@ $rating_enabled = $rating && get_option( 'woocommerce_enable_review_rating' ) ==
 				<?php // Display the attachments.
 				wc_product_reviews_pro_contribution_attachments( $contribution ); ?>
 			</div>
-			
+
 			<?php // Display the comment icon
-			$comment_count = Extras\wc_product_reviews_pro_get_children_comment_count( get_comment_ID() ); ?>
-			
+			$comment_count = wc_product_reviews_pro_get_children_comment_count( get_comment_ID() ); ?>
+
 			<a class="icon-bubble-chat toggle-comment">
 				<?php if ( $comment_count === 0 ){
-					_e( 'comment', 'davis' ); 
+					_e( 'comment', 'davis' );
 				} else {
-					echo sprintf( _n( '%s comment', '%s comments', $comment_count, 'davis' ), $comment_count ); 
+					echo sprintf( _n( '%s comment', '%s comments', $comment_count, 'davis' ), $comment_count );
 				} ?>
 			</a>
-			
+
 			<div class="actions-vote">
 				<?php // Display the karma markup.
 				wc_product_reviews_pro_contribution_karma( $contribution ); ?>
-	
+
 				<?php // Display the actions markup.
 				wc_product_reviews_pro_contribution_actions( $contribution ); ?>
-	
+
 				<?php wc_product_reviews_pro_contribution_flag_form( $comment ); ?>
 			</div>
 

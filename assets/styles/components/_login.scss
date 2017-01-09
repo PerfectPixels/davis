@@ -3,128 +3,131 @@
 	.modal-dialog { display: flex; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; transition: all 350ms $cb;
 
 		> div { padding: 0 0;
-		
+
 			h2 { font-weight: bold; letter-spacing: -0.035em; }
 
 			div.wrap-form { overflow: hidden; position: relative; width: 100%; height: 505px;
 
-				form { position: absolute; width: 100%; height: 100%; overflow: hidden; display: table !important; visibility: hidden; padding: 0; margin: 0; border: none; opacity: 0; border-radius: 0 !important; animation: inFromTop 0s both $cb; animation-delay: 0.05s; 
-					
+				form { position: absolute; width: 100%; height: 100%; overflow: hidden; display: table !important; visibility: hidden; padding: 0; margin: 0; border: none; opacity: 0; border-radius: 0 !important; animation: inFromTop 0s both $cb; animation-delay: 0.05s;
+
 					.content { display: table-cell; vertical-align: middle; }
-					
+
 				}
 
 				form.hide { animation: outToBottom 0s both $cb; animation-delay: 0s; }
-				
+
 				label { width: 100%; position: relative; }
-				
+
 				label[for=username]:before,
 				label[for=reg_username]:before,
 				label[for=login-email]:before { font-family: "fonticon" !important; content: "\72"; font-size: 27px; color: #dbdbdb; font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; position: absolute; left: 20px; top: 15px; }
-				
+
 				label[for=password]:before,
 				label[for=reg_password]:before { @extend label[for=username]:before; font-size: 22px; top: 17px; content: "\56"; }
-				
+
 				label[for=reg_email]:before { @extend label[for=username]:before; font-size: 22px; top: 17px; content: "\57"; }
-				
+
 				input[type=text],
 				input[type=email],
 				input[type=password] { padding-left: 52px; }
-				
+
 				#registration {
-	
+
 					input.button { display: none !important; }
-				
-					button.button { display: block !important; }	
-					
+
+					button.button { display: block !important; }
+
 					button[disabled=disabled] { cursor: not-allowed; opacity: 0.5; }
 					button[disabled=disabled]:after { height: 0 !important; }
-					
+
 				}
 			}
-			
+
 			.wc-social-login { padding: 30px 0 0; border-top: 2px solid #f2f3f3; }
-		
+
 			.toggle-view { background-position: 50% 100%; padding: 50px 35px; display: table !important; width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 1; z-index: 1; transition: all .6s $cb;
-			
+
 				.content { display: table-cell; vertical-align: middle; }
-			
+
 			}
-			
+
 			.toggle-view.hide { opacity: 0; z-index: -1; display: table; }
-			
+
 			.toggle-view:before { background: #000; content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.2; }
-			
+
 			.rememberme { font-size: 14px; font-weight: normal; display: block; }
 			.rememberme:before { margin-left: 1px; }
 			.rememberme:after { top: 8px; left: 6px; }
-			
+
 			.newsletter { font-size: 15px; font-weight: normal; display: block; margin-bottom: 20px; }
 			.newsletter:before { margin-left: 1px; }
 			.newsletter:after { top: 7px; left: 4px; }
-			
+
 			a.lost { font-size: 14px; line-height: 21px; font-weight: bold; color: #999; text-align: center; display: block; padding: 15px 0; }
 		}
-		
+
 		> div.no-reg-username {
-			
+
 			div.wrap-form { height: 430px; }
-			
+
 		}
-		
+
 		small { text-align: center; display: block; font-weight: bold; margin: 0 0 20px; color: #999; }
-		
+
 		div.col-md-5 { background: #000;
-		
+
 			h2 { text-align: left; position: relative; margin: 0; }
 			h6 { position: relative; margin: 20px 0; line-height: 1.4; }
-			
+
 			a.button { width: 100%; text-align: center; color: #000 !important; font-size: 14px !important; }
 		}
-		
+
 		div.col-md-7 { padding: 0 35px;
 			h2 { text-align: center; margin: 0 0 35px; }
 			h6 { text-align: center; margin: 0 0 35px; line-height: 1.4; color: #999; }
-			
+
 			.button { width: 100%; margin: 20px 0 0; float: none; padding-top: 25px !important; padding-bottom: 25px !important;
 				p.loading { position: absolute !important; left: 35px !important; }
 			}
 			.button.load { padding-left: 50px !important; }
-			.button.message { position: absolute; bottom: 0; left: 0; margin: 0 !important; }
+
+			form.register {
+				.button.message { position: absolute; bottom: 0; left: 0; margin: 0 !important; }
+			}
 		}
-		
+
 		div.col-md-12 { @extend div.col-md-7; }
 	}
-	
+
 	.modal-dialog.tabs { flex-direction: column; max-width: 600px!important;
-		
+
 		ul#login-tabs { background: #f7f7f7; list-style: none; text-align: center; margin: 0; padding: 40px 0;
-			
+
 			li { display: inline-block; margin: 0 20px; line-height: 1;
-				
+
 				a { font-size: 40px; color: #000; font-weight: bold; text-transform: uppercase; letter-spacing: -0.035em; cursor: pointer; transition: all .3s $cb; }
-				
+
 			}
-			
+
 		}
-		
+
 		div.wrap-form { height: 450px;
-		
+
 			#registration h2,
 			#login h2 { display: none; }
-			
+
 			#password h2 { font-size: 22px; margin-bottom: 0; }
-			
+
 		}
-		
+
 		> div.no-reg-username {
-		
+
 			div.wrap-form { height: 380px; }
-			
+
 		}
-		
+
 	}
-	
+
 }
 
 .login-modal.open {
@@ -140,15 +143,15 @@
 
 			}
 		}
-		
+
 	}
-	
+
 }
 
 .wc-social-login { margin: 0; text-align: center;
 
 	p { font-size: 22px; font-weight: bold; color: #000; letter-spacing: -0.035em; text-transform: uppercase; margin-bottom: 30px; line-height: 1.2; }
-	
+
 	.button-social-login { background-image: url(../images/facebook.png) !important; background-size: 50px 50px !important; width: 50px; height: 50px; box-shadow: none; border-radius: 0; display: inline-block; margin: 0 2% 20px; text-indent: -9999%;
 
 		span { display: none !important; }
@@ -166,19 +169,18 @@
 	.button-social-login-vk { background-image: url(../images/vk.png) !important; }
 }
 
-#wc-product-reviews-pro-modal { background: none; width: 100%; top: 0; left: 0; margin-left: 0; padding: 0; overflow-y: auto; overflow-x: hidden; 
-	
+#wc-product-reviews-pro-modal { background: none; width: 100%; top: 0; left: 0; margin-left: 0; padding: 0; overflow-y: auto; overflow-x: hidden;
+
 	.close { top: -25px; width: 50px; height: 50px; font-size: 43px; line-height: 44px; left: 50%; margin-left: -25px; opacity: 1 !important; filter: alpha(opacity=100) !important; }
-	
+
 	#registration {
-	
+
 		input.button { display: block !important; }
-	
-		button.button { display: none !important; }	
-		
+
+		button.button { display: none !important; }
+
 	}
-	
+
 }
 
 #wc-product-reviews-pro-modal-overlay { background: #000; opacity: 0.5; filter: alpha(opacity=50); }
-

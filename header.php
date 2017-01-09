@@ -6,13 +6,10 @@
 *
 */
 
-use PP\Extras;
-
 global $woocommerce;
 
 $content_classes 	= 'col-xs-12';
 $fullwidth_class 	= 'container';
-$order_received 	= Extras\URL_has('order-received');
 $fixed_classes 		= '';
 $sidebar 					= (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mod('shop_sidebar', 'no');
 $sidebar_class 		= '';

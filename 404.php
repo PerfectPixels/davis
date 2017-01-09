@@ -9,8 +9,6 @@
 
 get_header();
 
-use PP\TemplateTags;
-
 ?>
 
 	<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'davis' ); ?></p>

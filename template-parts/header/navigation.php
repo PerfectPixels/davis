@@ -96,7 +96,7 @@ if ( true == $search_field && ( $header_type == 'center_logo-left_menu' || $head
 				'theme_location' 	=> 'primary_navigation',
 				'container'			=> '',
 				'menu_class' 		=> 'primary-nav is-fixed' . $megamenu_class,
-				'walker' 			=> new TC_Walker_Nav_Menu()
+				'walker' 			=> new PP_Walker_Nav_Menu()
 			] );
 		} ?>
     </nav>

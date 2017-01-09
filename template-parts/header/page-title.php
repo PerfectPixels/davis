@@ -1,10 +1,6 @@
 <?php
 
-global $current_user, $woocommerce_active;
-
-$current_page = $_SERVER['REQUEST_URI'];
-
-if (strpos($current_page, 'checkout') !== false || strpos($current_page, 'basket') !== false || strpos($current_page, 'account') !== false || strpos($current_page, 'affiliate-area') !== false){ $current_page = home_url(); }
+global $wp, $current_user, $woocommerce_active;
 
 ?>
 
@@ -29,7 +25,7 @@ if (strpos($current_page, 'checkout') !== false || strpos($current_page, 'basket
 			if ( $text_color ){ $color_style = 'style="color: '.$text_color.';"'; }
 
 			// Get title
-			$title = PP\Titles\title();
+			$title = title();
 
 			// If it is a product category page then use the attachement
 			if ( $woocommerce_active ) {
@@ -67,7 +63,34 @@ if (strpos($current_page, 'checkout') !== false || strpos($current_page, 'basket
 				$title = sprintf( __( 'Hello %1$s', 'woocommerce' ), $current_user->display_name );
 				$subtitle = __( 'From your account dashboard you can view your recent orders, manage your shipping and billing addresses', 'davis' );
 
-			} ?>
+			}
+
+			// Title for the thank you page
+			if ( is_order_received_page() ) {
+				$order_id = get_query_var('order-received');
+				$order    = new WC_Order( $order_id );
+
+				if ( $order ){
+
+					if ( $order->has_status( 'failed' ) ){
+
+						$title = __( 'Something went wrong', 'davis' );
+						$subtitle = __( 'Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'davis' );
+
+					} else {
+
+						$title = __( 'Thank you!', 'davis' );
+						$subtitle = sprintf( __( 'Your order #%s has been received', 'woocommerce' ), $order->get_order_number() );
+
+					}
+				} else {
+
+						$title = __( 'Thank you!', 'davis' );
+						$subtitle = __( 'Your order has been received but cannot be viewed here. Please check your email for the order confirmation or login if you have an account.', 'woocommerce' );
+
+				}
+			}
+			?>
 
 			<li class="selected <?php echo $classes; ?>" style="<?php if ( $bg_img ){ echo 'background-image: url('.$bg_img.');'; } if ( $bg_color ){ echo 'background-color: '.$bg_color.';'; } ?>">
 
