@@ -1,7 +1,7 @@
 $main_elements: '#page-content, #header-slider, .nav-header';
 $main_elements_visible: '#page-content.nav-is-visible, #header-slider.nav-is-visible, .nav-header.nav-is-visible';
 
-#{$main_elements} { position: relative; transition: transform 0.3s; transform: translateZ(0); will-change: transform; }
+#{$main_elements} { position: relative; transition: transform 0.3s; }
 
 .nav-header { z-index: 3; transition: background 300ms $cb, transform .3s, box-shadow 1s;  }
 
@@ -649,7 +649,7 @@ support for no js
 
 	  	}
 
-	  	.mega-menu { display: flex; border-top: 1px solid #ddd;
+	  	.mega-menu { border-top: 1px solid #ddd;
 
 	  		> li { float: left; overflow: hidden; -webkit-overflow-scrolling: touch; border-right: 1px solid #ddd; transition: opacity .3s .4s $cb, height .3s $cb;
 

@@ -1,12 +1,19 @@
 <% if ( depth == 0 ) { %>
-<a href="#" class="media-menu-item active" data-title="<?php esc_attr_e( 'Mega Menu Content', 'mrbara' ) ?>" data-panel="mega"><?php esc_html_e( 'Mega Menu', 'mrbara' ) ?></a>
-<a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Mega Menu Background', 'mrbara' ) ?>" data-panel="background"><?php esc_html_e( 'Background', 'mrbara' ) ?></a>
-<div class="separator"></div>
-<a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Menu Icon', 'mrbara' ) ?>" data-panel="icon"><?php esc_html_e( 'Icon', 'mrbara' ) ?></a>
-<% } else if ( depth == 1 ) { %>
-<a href="#" class="media-menu-item active" data-title="<?php esc_attr_e( 'Menu Content', 'mrbara' ) ?>" data-panel="content"><?php esc_html_e( 'Menu Content', 'mrbara' ) ?></a>
-<a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Menu General', 'mrbara' ) ?>" data-panel="general"><?php esc_html_e( 'General', 'mrbara' ) ?></a>
-<a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Menu Icon', 'mrbara' ) ?>" data-panel="icon"><?php esc_html_e( 'Icon', 'mrbara' ) ?></a>
+    <li class="pp-mega-menu-item-setting-tab pp-mega-menu-to-content active-item-setting-tab" data-panel="mega">
+        <a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Mega Menu Content', 'davis' ) ?>"><?php esc_html_e( 'Mega Menu', 'davis' ) ?></a>
+    </li>
 <% } else { %>
-<a href="#" class="media-menu-item active" data-title="<?php esc_attr_e( 'Menu Icon', 'mrbara' ) ?>" data-panel="icon"><?php esc_html_e( 'Icon', 'mrbara' ) ?></a>
+    <li class="pp-mega-menu-item-setting-tab pp-mega-menu-to-content active-item-setting-tab" data-panel="content">
+        <a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Menu Content', 'davis' ) ?>"><?php esc_html_e( 'Menu Content', 'davis' ) ?></a>
+    </li>
 <% } %>
+
+<li class="pp-mega-menu-item-setting-tab pp-mega-menu-to-content" data-panel="general">
+    <a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Menu Settings', 'davis' ) ?>"><?php esc_html_e( 'Settings', 'davis' ) ?></a>
+</li>
+<li class="pp-mega-menu-item-setting-tab pp-mega-menu-to-content" data-panel="background">
+    <a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Mega Menu Design', 'davis' ) ?>"><?php esc_html_e( 'Design', 'davis' ) ?></a>
+</li>
+<li class="pp-mega-menu-item-setting-tab pp-mega-menu-to-content" data-panel="icon">
+    <a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Menu Icon', 'davis' ) ?>"><?php esc_html_e( 'Icon', 'davis' ) ?></a>
+</li>

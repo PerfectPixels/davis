@@ -5,22 +5,22 @@
  *
  * @package MrBara
  */
-class MrBara_Mega_Menu_Walker extends Walker_Nav_Menu {
+class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 	/**
-	 * Store state of top level item
+	 * Current item
 	 *
 	 * @since 1.0.0
-	 * @var boolean
+	 * @var object
 	 */
-	protected $in_mega = false;
+	private $curItem;
 
 	/**
-	 * Background Item
+	 * Current item
 	 *
 	 * @since 1.0.0
-	 * @var string
+	 * @var object
 	 */
-	protected $style = '';
+	private $mega;
 
 	/**
 	 * Mega menu column
@@ -28,7 +28,7 @@ class MrBara_Mega_Menu_Walker extends Walker_Nav_Menu {
 	 * @since 1.0.0
 	 * @var int
 	 */
-	protected $column = 3;
+	protected $column = '';
 
 	/**
 	 * Starts the list before the elements are added.
@@ -42,47 +42,49 @@ class MrBara_Mega_Menu_Walker extends Walker_Nav_Menu {
 	 * @param array  $args   An array of arguments. @see wp_nav_menu()
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
-		$indent = str_repeat( "\t", $depth );
+        // Depth-dependent classes.
+        $indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
 
-		if ( ! $this->in_mega ) {
-			$output .= "\n$indent<ul class=\"dropdown-submenu\">\n";
-		} else {
-			if ( $depth == 0 ) {
-				$output .= "\n$indent<ul\n$this->style class=\"dropdown-submenu\">\n$indent<li>\n$indent<div class=\"mega-menu-content\">\n$indent<div class=\"row\">\n";
-			} elseif ( $depth == 1 ) {
-				$output .= "\n$indent<div class=\"mega-menu-submenu\"><ul class=\"sub-menu check\">\n";
-			} else {
-				$output .= "\n$indent<ul class=\"sub-menu check\">\n";
-			}
-		}
-	}
+		// Get settings added
+		$icon            	= get_post_meta( $this->curItem->ID, 'pp_menu_item_icon', true );
+		$mega_menu       	= get_post_meta( $this->curItem->ID, 'pp_menu_item_mega', true );
+		$hide_text       	= get_post_meta( $this->curItem->ID, 'pp_menu_item_hide_text', true );
+		$hide_desktop    	= get_post_meta( $this->curItem->ID, 'pp_menu_item_hide_desktop', true );
+		$hide_mobile     	= get_post_meta( $this->curItem->ID, 'pp_menu_item_hide_mobile', true );
+		$uppercase_text  	= get_post_meta( $this->curItem->ID, 'pp_menu_item_uppercase_text', true );
+		$hot_badge       	= get_post_meta( $this->curItem->ID, 'pp_menu_item_hot', true );
+		$new_badge       	= get_post_meta( $this->curItem->ID, 'pp_menu_item_new', true );
+		$trend_badge     	= get_post_meta( $this->curItem->ID, 'pp_menu_item_trending', true );
+		$sale_badge      	= get_post_meta( $this->curItem->ID, 'pp_menu_item_sale', true );
+		$img_background  	= get_post_meta( $this->curItem->ID, 'pp_menu_item_background', true );
+		$img_type		  	= get_post_meta( $this->curItem->ID, 'pp_menu_item_img_type', true );
+        $img_size 	     	= get_post_meta( $this->curItem->ID, 'pp_menu_item_img_size', true );
+		$img_pos		  	= get_post_meta( $this->curItem->ID, 'pp_menu_item_img_pos', true );
+		$img_hide_desktop	= get_post_meta( $this->curItem->ID, 'pp_menu_item_hide_img_desktop', true );
+		$img_hide_mobile 	= get_post_meta( $this->curItem->ID, 'pp_menu_item_hide_img_mobile', true );
+        $icon_pos 		 	= get_post_meta( $this->curItem->ID, 'pp_menu_item_icon_pos', true );
 
-	/**
-	 * Ends the list of after the elements are added.
-	 *
-	 * @see   Walker::end_lvl()
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param int    $depth  Depth of menu item. Used for padding.
-	 * @param array  $args   An array of arguments. @see wp_nav_menu()
-	 */
-	public function end_lvl( &$output, $depth = 0, $args = array() ) {
-		$indent = str_repeat( "\t", $depth );
+        $style		= '';
+        $bg_class 	= '';
 
-		if ( ! $this->in_mega ) {
-			$output .= "\n$indent</ul>\n";
-		} else {
-			if ( $depth == 0 ) {
-				$output .= "\n$indent</div>\n$indent</div>\n$indent</li>\n$indent</ul>\n";
-			} elseif ( $depth == 1 ) {
-				$output .= "\n$indent</ul>\n$indent</div>";
-			} else {
-				$output .= "\n$indent</ul>\n";
-			}
-		}
-	}
+        $classes = array(
+            'sub-menu is-hidden',
+            ( $depth == 0 && $mega_menu ? 'mega-menu' : ''),
+            ( $depth > 2 && $mega_menu ? 'is-hidden' : '' )
+        );
+        $class_names = implode( ' ', $classes );
+
+        if ( $img_background ){
+			$style = ' style="background: url(' . $img_background['image'] . ') ' . $img_background['position']['x'] . ' ' . $img_background['position']['y'] . ' ' . $img_background['repeat'] . ' ' . $img_background['attachment'];
+			$style .= ( isset($img_background['size'] ) ? ';' . ' background-size:' . $img_background['size'] . ';"' : ';"');
+			if ($img_hide_desktop && $img_hide_mobile){ $bg_class = ''; } else if ($img_hide_desktop){ $bg_class = ' bg-img-mobile'; } else if ($img_hide_mobile){ $bg_class = ' bg-img-desktop'; } else { $bg_class = ' bg-img-desktop-mobile'; }
+        }
+
+        $back_btn = '<li class="go-back"><a href="#0">' . __( 'Back', 'davis' ) . '</a></li>';
+
+        // Build HTML for output.
+        $output .= "\n" . $indent . '<ul class="' . $class_names . $bg_class . '"' . $style . '>' . $back_btn . "\n";
+    }
 
 	/**
 	 * Start the element output.
@@ -97,311 +99,123 @@ class MrBara_Mega_Menu_Walker extends Walker_Nav_Menu {
 	 * @param int    $id     Current item ID.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+		global $wp_query;
 
-		$item_icon            = get_post_meta( $item->ID, 'tamm_menu_item_icon', true );
-		$item_content         = get_post_meta( $item->ID, 'tamm_menu_item_content', true );
-		$item_is_mega         = apply_filters( 'mrbara_menu_item_mega', get_post_meta( $item->ID, 'tamm_menu_item_mega', true ), $item->ID );
-		$item_mega_width      = get_post_meta( $item->ID, 'tamm_menu_item_mega_width', true );
-		$item_is_mega_style2  = get_post_meta( $item->ID, 'tamm_menu_item_mega_style2', true );
-		$item_width           = get_post_meta( $item->ID, 'tamm_menu_item_width', true );
-		$item_hide_text       = get_post_meta( $item->ID, 'tamm_menu_item_hide_text', true );
-		$item_uppercase_text  = get_post_meta( $item->ID, 'tamm_menu_item_uppercase_text', true );
-		$item_hot             = get_post_meta( $item->ID, 'tamm_menu_item_hot', true );
-		$item_new             = get_post_meta( $item->ID, 'tamm_menu_item_new', true );
-		$item_trending        = get_post_meta( $item->ID, 'tamm_menu_item_trending', true );
-		$item_mega_background = get_post_meta( $item->ID, 'tamm_menu_item_background', true );
+		$this->curItem = $item;
 
-		$classes   = empty( $item->classes ) ? array() : (array) $item->classes;
-		$classes[] = 'menu-item-' . $item->ID;
+		$class = '';
+        $indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
 
-		$this->style = '';
-		$inline = '';
+        // Passed classes.
+        $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+        $class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
 
-		if ( $item_mega_background ) {
+		// Get settings added
+		$icon           	= get_post_meta( $item->ID, 'pp_menu_item_icon', true );
+		$mega_menu       	= get_post_meta( $item->ID, 'pp_menu_item_mega', true );
+		$menu_item_width 	= get_post_meta( $item->ID, 'pp_menu_item_width', true );
+		$hide_text       	= get_post_meta( $item->ID, 'pp_menu_item_hide_text', true );
+		$hide_desktop    	= get_post_meta( $item->ID, 'pp_menu_item_hide_desktop', true );
+		$hide_mobile     	= get_post_meta( $item->ID, 'pp_menu_item_hide_mobile', true );
+		$uppercase_text  	= get_post_meta( $item->ID, 'pp_menu_item_uppercase_text', true );
+		$hot_badge       	= get_post_meta( $item->ID, 'pp_menu_item_hot', true );
+		$new_badge       	= get_post_meta( $item->ID, 'pp_menu_item_new', true );
+		$trend_badge     	= get_post_meta( $item->ID, 'pp_menu_item_trending', true );
+		$sale_badge      	= get_post_meta( $item->ID, 'pp_menu_item_sale', true );
+		$img_background  	= get_post_meta( $item->ID, 'pp_menu_item_background', true );
+		$img_type		  	= get_post_meta( $item->ID, 'pp_menu_item_img_type', true );
+        $img_size 	     	= get_post_meta( $item->ID, 'pp_menu_item_img_size', true );
+        $img_pos 	     	= get_post_meta( $item->ID, 'pp_menu_item_img_pos', true );
+		$img_hide_desktop	= get_post_meta( $item->ID, 'pp_menu_item_hide_img_desktop', true );
+		$img_hide_mobile 	= get_post_meta( $item->ID, 'pp_menu_item_hide_img_mobile', true );
+        $icon_pos 		 	= get_post_meta( $item->ID, 'pp_menu_item_icon_pos', true );
 
+        $style		= '';
+        $bg_class 	= '';
+		$badge		= '';
+        $img 		= wp_get_attachment_image( $item->thumbnail_id, $img_size, false, "class=menu-image" );
+        $img_src	= wp_get_attachment_image_src( $item->thumbnail_id, $img_size, false );
 
-			if ( isset( $item_mega_background['image'] ) ) {
-				$inline = 'background-image: url(' . esc_attr( $item_mega_background['image'] ) . ')';
-			}
-
-			if ( isset( $item_mega_background['position'] ) ) {
-				$inline .= '; background-position:' . esc_attr( $item_mega_background['position']['x'] ) . ' ' . esc_attr( $item_mega_background['position']['y'] );
-			}
-
-			if ( isset( $item_mega_background['repeat'] ) ) {
-				$inline .= ' ; background-repeat:' . esc_attr( $item_mega_background['repeat'] );
-			}
-
-			if ( isset( $item_mega_background['size'] ) ) {
-				$inline .= '; background-size:' . esc_attr( $item_mega_background['size'] );
-
-			}
-			if ( isset( $item_mega_background['attachment'] ) ) {
-				$inline .= '; background-attachment:' . esc_attr( $item_mega_background['attachment'] );
-			}
-
-			if ( isset( $item_mega_background['color'] ) ) {
-				$inline .= '; background-color:' . esc_attr( $item_mega_background['color'] );
-			}
-
-		}
-
-		if ( $item_mega_width ) {
-			$inline .= '; width:' . esc_attr( $item_mega_width );
-		}
-
-		if ( $inline ) {
-			$this->style = 'style="' . $inline . '"';;
-		}
-
-		/**
-		 * Filter the arguments for a single nav menu item.
-		 *
-		 * @since 4.4.0
-		 *
-		 * @param array  $args  An array of arguments.
-		 * @param object $item  Menu item data object.
-		 * @param int    $depth Depth of menu item. Used for padding.
-		 */
-		$args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
-
-		/**
-		 * Check if this is top level and is mega menu
-		 * Add Bootstrap class for menu that has children
-		 */
+		// Save the parent post meta mega menu
 		if ( ! $depth ) {
-			$this->in_mega = $item_is_mega;
+			$this->mega = $mega_menu;
 		}
 
-		/**
-		 * Store mege menu panel's column
-		 */
-		if ( 1 == $depth && $this->in_mega ) {
-			$columns      = array(
-				'20.00%'  => 5,
-				'25.00%'  => 3,
-				'33.33%'  => 4,
-				'50.00%'  => 6,
-				'66.66%'  => 8,
-				'75.00%'  => 9,
-				'100.00%' => 12,
+		// Store mege menu panel's column
+		if ( 1 == $depth && $this->mega ) {
+			$columns = array(
+				'20.00%'  => 'col-md-5',
+				'25.00%'  => 'col-md-3',
+				'33.33%'  => 'col-md-4',
+				'50.00%'  => 'col-md-6',
+				'66.66%'  => 'col-md-8',
+				'75.00%'  => 'col-md-9',
+				'100.00%' => 'col-md-12',
 			);
-			$width        = $item_width ? $item_width : '25.00%';
+			$width = $menu_item_width ? $menu_item_width : '25.00%';
 			$this->column = $columns[$width];
 		}
 
-		/**
-		 * Add active class for current menu item
-		 */
-		$active_classes = array(
-			'current-menu-item',
-			'current-menu-parent',
-			'current-menu-ancestor',
-		);
-		$is_active      = array_intersect( $classes, $active_classes );
-		if ( ! empty( $is_active ) ) {
-			$classes[] = 'active';
+        // Depth-dependent classes
+        $depth_classes = array(
+            ( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
+            ( $depth == 1 ? $this->column : '' ),
+        	( $depth == 0 && !$this->mega ? 'simple-nav' : '' )
+        );
+        $depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
+
+        if ( $img_background && $depth > 0 ){
+			$style = ' style="background: url(' . $img_src[0] . ') ' . $img_background['position']['x'] . ' ' . $img_background['position']['y'] . ' ' . $img_background['repeat'] . ' ' . $img_background['attachment'];
+			$style .= ( isset($img_background['size'] ) ? ';' . ' background-size:' . $img_background['size'] . ';"' : ';"');
+			if ($img_hide_desktop && $img_hide_mobile){ $bg_class = ''; } else if ($img_hide_desktop){ $bg_class = ' bg-img-mobile'; } else if ($img_hide_mobile){ $bg_class = ' bg-img-desktop'; } else { $bg_class = ' bg-img-desktop-mobile'; }
+        }
+
+        // Build HTML.
+        $output .= $indent . '<li class="' . $depth_class_names . ' ' . $class_names . $bg_class . '"' . $style . '>';
+
+        // Link attributes.
+        $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+        $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+        $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+        $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+        $attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . ( $img_background ? ' has-img' : '' ) . ( $hide_text == 'img-no-text' ? ' img-tag' : '' ) . '"';
+
+		// Badges
+		if ( $hot_badge ) {
+			$badge .= '<span class="hot-badge">' . esc_html__( 'Hot', 'davis' ) . '</span>';
+		}
+		if ( $new_badge ) {
+			$badge .= '<span class="new-badge">' . esc_html__( 'New', 'davis' ) . '</span>';
+		}
+		if ( $trend_badge ) {
+			$badge .= '<span class="trending-badge">' . esc_html__( 'Trending', 'davis' ) . '</span>';
+		}
+		if ( $sale_badge ) {
+			$badge .= '<span class="sale-badge">' . esc_html__( 'Sale', 'davis' ) . '</span>';
 		}
 
-		if ( in_array( 'menu-item-has-children', $classes ) ) {
-			if ( ! $depth || ( $depth && ! $this->in_mega ) ) {
-				$classes[] = 'dropdown';
-			}
-			if ( ! $depth && $this->in_mega ) {
-				$classes[] = 'is-mega-menu';
+        // Build HTML output and pass through the proper filter.
+        $item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s%6$s%7$s%8$s<span></span></a>%9$s%10$s',
+            $args->before,
+            $attributes,
+            $args->link_before,
+            ( $icon && ( $icon_pos == 'before' || $icon_pos == 'above' ) ? $img : '' ),
+            ( $img_background && $hide_text ? $img : apply_filters( 'the_title', $item->title, $item->ID ) ),
+            ( $img_background && $icon_pos == 'img-below-text' ? '<br>'.$img : '' ),
+            ( $icon && ( $icon_pos == 'after' || $icon_pos == 'below' ) ? $img : '' ),
+            $args->link_after,
+            $args->after,
+			$badge
+        );
 
-				if ( $item_is_mega_style2 ) {
-					$classes[] = 'mega-menu-style-2';
-				}
-			}
-			if ( ! $this->in_mega ) {
-				$classes[] = 'hasmenu';
-			}
-		}
-
-		/**
-		 * Filter the CSS class(es) applied to a menu item's list item element.
-		 *
-		 * @since 3.0.0
-		 * @since 4.1.0 The `$depth` parameter was added.
-		 *
-		 * @param array  $classes The CSS classes that are applied to the menu item's `<li>` element.
-		 * @param object $item    The current menu item.
-		 * @param array  $args    An array of {@see wp_nav_menu()} arguments.
-		 * @param int    $depth   Depth of menu item. Used for padding.
-		 */
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
-		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
-
-		/**
-		 * Filter the ID applied to a menu item's list item element.
-		 *
-		 * @since 3.0.1
-		 * @since 4.1.0 The `$depth` parameter was added.
-		 *
-		 * @param string $menu_id The ID that is applied to the menu item's `<li>` element.
-		 * @param object $item    The current menu item.
-		 * @param array  $args    An array of {@see wp_nav_menu()} arguments.
-		 * @param int    $depth   Depth of menu item. Used for padding.
-		 */
-		$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
-		$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-
-		if ( $depth == 1 & $this->in_mega ) {
-
-			if ( $this->column == 5 ) {
-				$class_names = ' class="mr-col mr-col-md-' . $this->column . '"';
-			} else {
-				$class_names = ' class="mr-col col-md-' . $this->column . '"';
-			}
-			$output .= $indent . '<div' . $id . $class_names . '>' . "\n";
-
-			if ( $item_uppercase_text ) {
-				$output .= $indent . '<div class="menu-item-mega uppercase-text">';
-			} else {
-				$output .= $indent . '<div class="menu-item-mega">';
-			}
-
-
-		} else {
-			$output .= $indent . '<li' . $id . $class_names . '>';
-		}
-
-		$atts           = array();
-		$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
-		$atts['target'] = ! empty( $item->target ) ? $item->target : '';
-		$atts['rel']    = ! empty( $item->xfn ) ? $item->xfn : '';
-		$atts['href']   = ! empty( $item->url ) ? $item->url : '';
-
-		$atts['class'] = '';
-		/**
-		 * Add attributes for menu item link when this is not mega menu item
-		 */
-		if ( in_array( 'menu-item-has-children', $classes ) ) {
-			$atts['class']         = 'dropdown-toggle';
-			$atts['role']          = 'button';
-			$atts['data-toggle']   = 'dropdown';
-			$atts['aria-haspopup'] = 'true';
-			$atts['aria-expanded'] = 'false';
-		}
-
-		if ( $depth == 1 && $this->in_mega ) {
-			if ( $item_hide_text ) {
-				$atts['class'] .= ' hide-text';
-			}
-		}
-
-		/**
-		 * Filter the HTML attributes applied to a menu item's anchor element.
-		 *
-		 * @since 3.6.0
-		 * @since 4.1.0 The `$depth` parameter was added.
-		 *
-		 * @param array  $atts   {
-		 *                       The HTML attributes applied to the menu item's `<a>` element, empty strings are ignored.
-		 *
-		 * @type string  $title  Title attribute.
-		 * @type string  $target Target attribute.
-		 * @type string  $rel    The rel attribute.
-		 * @type string  $href   The href attribute.
-		 * }
-		 *
-		 * @param object $item   The current menu item.
-		 * @param array  $args   An array of {@see wp_nav_menu()} arguments.
-		 * @param int    $depth  Depth of menu item. Used for padding.
-		 */
-		$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
-
-		$attributes = '';
-		foreach ( $atts as $attr => $value ) {
-			if ( ! empty( $value ) ) {
-				$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
-				$attributes .= ' ' . $attr . '="' . $value . '"';
-			}
-		}
-
-		/** This filter is documented in wp-includes/post-template.php */
-		$title = apply_filters( 'the_title', $item->title, $item->ID );
-
-		/**
-		 * Filter a menu item's title.
-		 *
-		 * @since 4.4.0
-		 *
-		 * @param string $title The menu item's title.
-		 * @param object $item  The current menu item.
-		 * @param array  $args  An array of {@see wp_nav_menu()} arguments.
-		 * @param int    $depth Depth of menu item. Used for padding.
-		 */
-		$title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
-
-		$badge = array();
-		if ( $item_hot || $item_new || $item_trending ) {
-			$badge[] = '<span class="items-badge">';
-			if ( $item_hot ) {
-				$badge[] = '<span class="hot-badge">' . esc_html__( 'Hot', 'mrbara' ) . '</span>';
-			}
-			if ( $item_new ) {
-				$badge[] = '<span class="new-badge">' . esc_html__( 'New', 'mrbara' ) . '</span>';
-			}
-			if ( $item_trending ) {
-				$badge[] = '<span class="trending-badge">' . esc_html__( 'Trending', 'mrbara' ) . '</span>';
-			}
-			$badge[] = '</span>';
-		}
-
-		if ( $depth == 1 && $this->in_mega ) {
-
-			$item_output = '<a ' . $attributes . '>' . $title . implode( $badge ) . '</a>';
-
-			if ( ! empty( $item_content ) ) {
-				$item_output .= '<div class="mega-content">' . do_shortcode( $item_content ) . '</div>';
-			}
-		} else {
-			$item_output = $args->before;
-			$item_output .= '<a' . $attributes . '>' . implode( $badge );
-			$item_output .= $item_icon ? '<i class="' . esc_attr( $item_icon ) . '"></i> ' : '';
-			$item_output .= $args->link_before . $title . $args->link_after;
-			$item_output .= '</a>';
-			$item_output .= $args->after;
-		}
-
-		/**
-		 * Filter a menu item's starting output.
-		 *
-		 * The menu item's starting output only includes `$args->before`, the opening `<a>`,
-		 * the menu item's title, the closing `</a>`, and `$args->after`. Currently, there is
-		 * no filter for modifying the opening and closing `<li>` for a menu item.
-		 *
-		 * @since 3.0.0
-		 *
-		 * @param string $item_output The menu item's starting HTML output.
-		 * @param object $item        Menu item data object.
-		 * @param int    $depth       Depth of menu item. Used for padding.
-		 * @param array  $args        An array of {@see wp_nav_menu()} arguments.
-		 */
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
 
-	/**
-	 * Ends the element output, if needed.
-	 *
-	 * @see   Walker::end_el()
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param object $item   Page data object. Not used.
-	 * @param int    $depth  Depth of page. Not Used.
-	 * @param array  $args   An array of arguments. @see wp_nav_menu()
-	 */
-	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
-		if ( $depth == 1 & $this->in_mega ) {
-			$output .= "</div>\n";
-			$output .= "</div>\n";
-		} else {
-			$output .= "</li>\n";
-		}
-	}
+	/* Function to determine if the current item has children */
+    function display_element ($element, &$children_elements, $max_depth, $depth = 0, $args, &$output){
+        // check, whether there are children for the given ID and append it to the element with a (new) ID
+        $element->hasChildren = isset( $children_elements[$element->ID] ) && !empty( $children_elements[$element->ID] );
+
+        return parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
+    }
 }

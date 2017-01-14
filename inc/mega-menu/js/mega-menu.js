@@ -1,25 +1,25 @@
-var taMegaMenu;
+var menuSettings;
 
 (function ($, _) {
 	'use strict';
 
-	var api;
-	api = taMegaMenu = {
+	var options;
+	options = menuSettings = {
 		init: function () {
-			api.$body = $('body');
-			api.$modal = $('#tamm-settings');
-			api.itemData = {};
-			api.templates = {
-				menus     : _.template($('#tamm-tmpl-menus').html()),
-				title     : _.template($('#tamm-tmpl-title').html()),
-				mega      : _.template($('#tamm-tmpl-mega').html()),
-				background: _.template($('#tamm-tmpl-background').html()),
-				icon      : _.template($('#tamm-tmpl-icon').html()),
-				content   : _.template($('#tamm-tmpl-content').html()),
-				general   : _.template($('#tamm-tmpl-general').html())
+			options.$body = $('body');
+			options.$modal = $('#menu-modal');
+			options.itemData = {};
+			options.templates = {
+				menus     : _.template($('#pp-tmpl-menus').html()),
+				title     : _.template($('#pp-tmpl-title').html()),
+				mega      : _.template($('#pp-tmpl-mega').html()),
+				background: _.template($('#pp-tmpl-background').html()),
+				icon      : _.template($('#pp-tmpl-icon').html()),
+				content   : _.template($('#pp-tmpl-content').html()),
+				general   : _.template($('#pp-tmpl-general').html())
 			};
 
-			api.frame = wp.media({
+			options.frame = wp.media({
 				library: {
 					type: 'image'
 				}
@@ -29,76 +29,76 @@ var taMegaMenu;
 		},
 
 		initActions: function () {
-			api.$body
+			options.$body
 				.on('click', '.opensettings', this.openModal)
-				.on('click', '.tamm-modal-backdrop, .tamm-modal-close, .tamm-button-cancel', this.closeModal);
+				.on('click', '.mega-modal-backdrop, .mega-modal-close, .pp-button-cancel', this.closeModal);
 
-			api.$modal
-				.on('click', '.tamm-menu a', this.switchPanel)
-				.on('click', '.tamm-column-handle', this.resizeMegaColumn)
-				.on('click', '.tamm-button-save', this.saveChanges);
+			options.$modal
+				.on('click', '.pp-mega-menu-item-setting-tab a', this.switchPanel)
+				.on('click', '.item-controls span', this.resizeMegaColumn)
+				.on('click', '.pp-button-save', this.saveChanges);
 		},
 
 		openModal: function () {
-			api.getItemData(this);
+			options.getItemData(this);
 
-			api.$modal.show();
-			api.$body.addClass('modal-open');
-			api.render();
+			options.$modal.show();
+			options.$body.addClass('modal-open');
+			options.render(this);
 
 			return false;
 		},
 
 		closeModal: function () {
-			api.$modal.hide().find('.tamm-content').html('');
-			api.$body.removeClass('modal-open');
+			options.$modal.hide().find('.pp-menu-item-tab-content').html('');
+			options.$body.removeClass('modal-open');
 			return false;
 		},
 
 		switchPanel: function (e) {
 			e.preventDefault();
 
-			var $el = $(this),
+			var $el = $(this).parent(),
 				panel = $el.data('panel');
 
-			$el.addClass('active').siblings('.active').removeClass('active');
-			api.openSettings(panel);
+			$el.addClass('active-item-setting-tab').siblings('.active-item-setting-tab').removeClass('active-item-setting-tab');
+			options.openSettings(panel);
 		},
 
-		render: function () {
+		render: function (menuItem) {
 			// Render menu
-			api.$modal.find('.tamm-frame-menu .tamm-menu').html(api.templates.menus(api.itemData));
+			options.$modal.find('.pp-mega-menu-item-setting-tabs').html(options.templates.menus(options.itemData));
 
-			var $activeMenu = api.$modal.find('.tamm-menu a.active');
+			var $activeMenu = options.$modal.find('.pp-mega-menu-item-setting-tabs .active-item-setting-tab');
+
+			// Render title
+			var title = $(menuItem).parents('.menu-item-settings').find('input.edit-menu-item-title').val();
+			options.$modal.find('.pp-mega-menu-item-header-bar').html(options.templates.title({title: title}));
 
 			// Render content
 			this.openSettings($activeMenu.data('panel'));
 		},
 
 		openSettings: function (panel) {
-			var $content = api.$modal.find('.tamm-frame-content .tamm-content'),
-				$panel = $content.children('#tamm-panel-' + panel);
+			var $content = options.$modal.find('.pp-menu-item-tab-content'),
+				$panel = $content.children('#inside-' + panel);
 
 			if ($panel.length) {
 				$panel.addClass('active').siblings().removeClass('active');
 			} else {
-				$content.append(api.templates[panel](api.itemData));
-				$content.children('#tamm-panel-' + panel).addClass('active').siblings().removeClass('active');
+				$content.append(options.templates[panel](options.itemData));
+				$content.children('#inside-' + panel).addClass('active').siblings().removeClass('active');
 
 				if ('mega' == panel) {
-					api.initMegaColumns();
+					options.initMegaColumns();
 				}
 				if ('background' == panel) {
-					api.initBackgroundFields();
+					options.initBackgroundFields();
 				}
 				if ('icon' == panel) {
-					api.initIconFields();
+					options.initIconFields();
 				}
 			}
-
-			// Render title
-			var title = api.$modal.find('.tamm-frame-menu .tamm-menu a[data-panel=' + panel + ']').data('title');
-			api.$modal.find('.tamm-frame-title').html(api.templates.title({title: title}));
 		},
 
 		resizeMegaColumn: function (e) {
@@ -106,7 +106,7 @@ var taMegaMenu;
 
 			var steps = ['20.00%', '25.00%', '33.33%', '50.00%', '66.66%', '75.00%', '100.00%'],
 				$el = $(this),
-				$column = $el.closest('.tamm-submenu-column'),
+				$column = $el.closest('.menu-item-container'),
 				width = $column.data('width'),
 				current = _.indexOf(steps, width),
 				next;
@@ -115,7 +115,7 @@ var taMegaMenu;
 				return;
 			}
 
-			if ($el.hasClass('tamm-resizable-w')) {
+			if ($el.hasClass('submenu-bigger')) {
 				next = current == steps.length ? current : current + 1;
 			} else {
 				next = current == 0 ? current : current - 1;
@@ -123,11 +123,11 @@ var taMegaMenu;
 
 			$column[0].style.width = steps[next];
 			$column.data('width', steps[next]);
-			$column.find('.menu-item-depth-0 .menu-item-width').val(steps[next]);
+			$column.find('.menu-item-handle .menu-item-width').val(steps[next]);
 		},
 
 		initMegaColumns: function () {
-			var $columns = api.$modal.find('#tamm-panel-mega .tamm-submenu-column'),
+			var $columns = options.$modal.find('#inside-mega .menu-item-container'),
 				defaultWidth = '25.00%';
 
 			if (!$columns.length) {
@@ -146,83 +146,104 @@ var taMegaMenu;
 
 				column.style.width = width;
 				column.dataset.width = width;
-				$(column).find('.menu-item-depth-0 .menu-item-width').val(width);
+				$(column).find('.menu-item-handle .menu-item-width').val(width);
 			});
 		},
 
 		initBackgroundFields: function () {
-			api.$modal.find('.background-color-picker').wpColorPicker();
+			options.$modal.find('.background-color-picker').wpColorPicker();
 
 			// Background image
-			api.$modal.on('click', '.background-image .upload-button', function (e) {
+			options.$modal.on('click', '.item-media .upload-button', function (e) {
 				e.preventDefault();
 
 				var $el = $(this);
 
 				// Remove all attached 'select' event
-				api.frame.off('select');
+				options.frame.off('select');
 
 				// Update inputs when select image
-				api.frame.on('select', function () {
+				options.frame.on('select', function () {
 					// Update input value for single image selection
-					var url = api.frame.state().get('selection').first().toJSON().url;
+					var url = options.frame.state().get('selection').first().toJSON().url;
 
-					$el.siblings('.background-image-preview').html('<img src="' + url + '">');
+					$el.siblings('.thumbnail-image').html('<img src="' + url + '">');
 					$el.siblings('input').val(url);
+					$el.addClass('hidden');
 					$el.siblings('.remove-button').removeClass('hidden');
 				});
 
-				api.frame.open();
-			}).on('click', '.background-image .remove-button', function (e) {
+				options.frame.open();
+			}).on('click', '.item-media .remove-button', function (e) {
 				e.preventDefault();
 
 				var $el = $(this);
 
-				$el.siblings('.background-image-preview').html('');
+				$el.siblings('.thumbnail-image').html('');
 				$el.siblings('input').val('');
 				$el.addClass('hidden');
+				$el.siblings('.upload-button').removeClass('hidden');
 			});
 
-			// Background position
-			api.$modal.on('change', '.background-position select', function () {
-				var $el = $(this);
+			// Image type
+			options.$modal.on('change', '.image-size select', function () {
+				var $el = $(this),
+					$container = $el.parents('.inside-background');
 
-				if ('custom' == $el.val()) {
-					$el.next('input').removeClass('hidden');
+				if ('background' == $el.val()) {
+					$container.find('.background-position, .background-repeat, .background-attachment').removeClass('hidden');
+					$container.find('.image-position').addClass('hidden');
 				} else {
-					$el.next('input').addClass('hidden');
+					$container.find('.background-position, .background-repeat, .background-attachment').addClass('hidden');
+					$container.find('.image-position').removeClass('hidden');
 				}
 			});
 		},
 
 		initIconFields: function () {
-			var $input = api.$modal.find('#tamm-icon-input'),
-				$preview = api.$modal.find('#tamm-selected-icon'),
-				$icons = api.$modal.find('.tamm-icon-selector .icons i');
+			var $input = options.$modal.find('#pp-icon-input'),
+				$preview = options.$modal.find('.pp-icon-selector .selected-icon'),
+				$icons = options.$modal.find('.pp-icon-selector .icons-content i');
 
-			api.$modal.on('click', '.tamm-icon-selector .icons i', function () {
+			// Select an icon
+			options.$modal.on('click', '.pp-icon-selector .icons-content span', function () {
 				var $el = $(this),
-					icon = $el.data('icon');
+					icon = $el.find('i').data('icon');
 
-				$el.addClass('active').siblings('.active').removeClass('active');
+				$('.pp-icon-selector .icons-content span.active').removeClass('active');
+				$el.addClass('active');
 
 				$input.val(icon);
 				$preview.html('<i class="' + icon + '"></i>');
 			});
 
-			$preview.on('click', 'i', function () {
-				$(this).remove();
+			// Delete the selected icon
+			options.$modal.on('click', '.pp-icon-selector .remove-icon', function () {
+				$preview.html('');
 				$input.val('');
 			});
 
-			api.$modal.on('keyup', '.tamm-icon-search', function (e) {
-				var term = $(this).val().toUpperCase();
+			// Tab icons
+			options.$modal.on('click', '.pp-icon-selector .icons-tab', function () {
+				var $el = $(this),
+					$target = $('.pp-icon-selector .icons-content.' + $el.data('tab') );
+
+				if (!$el.hasClass('active')){
+					$el.addClass('active').siblings('.active').removeClass('active');
+					$target.addClass('active').siblings('.active').removeClass('active');
+				}
+			});
+
+			// Search for icons
+			options.$modal.on('keyup', '.pp-icon-search', function (e) {
+				var term = $(this).val().toUpperCase(),
+					$iconContainer = $icons.parent();
 
 				if (!term) {
-					$icons.show();
+					$iconContainer.show();
 				} else {
-					$icons.hide().filter(function () {
-						return $(this).data('icon').toUpperCase().indexOf(term) > -1;
+					$iconContainer.hide().filter(function () {
+						return $(this).find('i').data('icon').toUpperCase().indexOf(term) > -1;
 					}).show();
 				}
 			});
@@ -230,25 +251,32 @@ var taMegaMenu;
 
 		getItemData: function (menuItem) {
 			var $menuItem = $(menuItem).closest('li.menu-item'),
-				$menuData = $menuItem.find('.tamm-data'),
+				$menuData = $menuItem.find('.pp-data'),
 				children = $menuItem.childMenuItems();
 
-			api.itemData = {
+			options.itemData = {
 				depth          : $menuItem.menuItemDepth(),
 				megaData       : {
-					mega         : $menuData.data('mega'),
-					megaStyle2   : $menuData.data('mega-style2'),
-					mega_width   : $menuData.data('mega_width'),
-					width        : $menuData.data('width'),
-					background   : $menuData.data('background'),
-					icon         : $menuData.data('icon'),
-					hideText     : $menuData.data('hide-text'),
-					hot          : $menuData.data('hot'),
-					uppercaseText: $menuData.data('uppercase-text'),
-					new          : $menuData.data('new'),
-					trending     : $menuData.data('trending'),
-					disableLink  : $menuData.data('disable-link'),
-					content      : $menuData.html()
+					mega         		: $menuData.data('mega'),
+					mega_width   		: $menuData.data('mega_width'),
+					width        		: $menuData.data('width'),
+					background   		: $menuData.data('background'),
+					img_type			: $menuData.data('img_type'),
+					img_size			: $menuData.data('img_size'),
+					img_pos				: $menuData.data('img_pos'),
+					icon         		: $menuData.data('icon'),
+					hide_text     		: $menuData.data('hide_text'),
+					hide_desktop  		: $menuData.data('hide_desktop'),
+					hide_mobile   		: $menuData.data('hide_mobile'),
+					hide_img_desktop  	: $menuData.data('hide_img_desktop'),
+					hide_img_mobile  	 : $menuData.data('hide_img_mobile'),
+					hot          		: $menuData.data('hot'),
+					uppercase_text		: $menuData.data('uppercase_text'),
+					new          		: $menuData.data('new'),
+					trending     		: $menuData.data('trending'),
+					sale     			: $menuData.data('sale'),
+					disable_link  		: $menuData.data('disable_link'),
+					content      		: $menuData.html()
 				},
 				data           : $menuItem.getItemData(),
 				children       : [],
@@ -258,27 +286,34 @@ var taMegaMenu;
 			if (!_.isEmpty(children)) {
 				_.each(children, function (item) {
 					var $item = $(item),
-						$itemData = $item.find('.tamm-data'),
+						$itemData = $item.find('.pp-data'),
 						depth = $item.menuItemDepth();
 
-					api.itemData.children.push({
+					options.itemData.children.push({
 						depth          : depth,
-						subDepth       : depth - api.itemData.depth - 1,
+						subDepth       : depth - options.itemData.depth - 1,
 						data           : $item.getItemData(),
 						megaData       : {
-							mega         : $itemData.data('mega'),
-							megaStyle2   : $itemData.data('mega-style2'),
-							mega_width   : $itemData.data('mega_width'),
-							width        : $itemData.data('width'),
-							background   : $itemData.data('background'),
-							icon         : $itemData.data('icon'),
-							hideText     : $itemData.data('hide-text'),
-							hot          : $itemData.data('hot'),
-							uppercaseText: $itemData.data('uppercase-text'),
-							new          : $itemData.data('new'),
-							trending     : $itemData.data('trending'),
-							disableLink  : $itemData.data('disable-link'),
-							content      : $itemData.html()
+							mega         		: $itemData.data('mega'),
+							mega_width   		: $itemData.data('mega_width'),
+							width        		: $itemData.data('width'),
+							background   		: $itemData.data('background'),
+							img_type		   	: $itemData.data('img_type'),
+							img_size		   	: $itemData.data('img_size'),
+							img_pos		   		: $itemData.data('img_pos'),
+							icon         		: $itemData.data('icon'),
+							hide_text     		: $itemData.data('hide_text'),
+							hide_desktop  		: $itemData.data('hide_desktop'),
+							hide_mobile   		: $itemData.data('hide_mobile'),
+							hide_img_desktop 	: $itemData.data('hide_img_desktop'),
+							hide_img_mobile   	: $itemData.data('hide_img_mobile'),
+							hot          		: $itemData.data('hot'),
+							uppercase_text		: $itemData.data('uppercase_text'),
+							new          		: $itemData.data('new'),
+							trending     		: $itemData.data('trending'),
+							sale     			: $itemData.data('sale'),
+							disable_link  		: $itemData.data('disable_link'),
+							content      		: $itemData.html()
 						},
 						originalElement: item
 					});
@@ -288,37 +323,16 @@ var taMegaMenu;
 		},
 
 		setItemData: function (item, data, depth) {
-			if (!_.has(data, 'mega')) {
-				data.mega = false;
-			}
+			var checkboxes = ['mega', 'hide_text', 'uppercase_text', 'disable_link', 'hide_desktop', 'hide_mobile', 'hot', 'new', 'trending', 'sale', 'hide_img_desktop', 'hide_img_mobile'];
 
-			if (!_.has(data, 'megaStyle2')) {
-				data.megaStyle2 = false;
-			}
-
-			if (depth == 0) {
-				if (!_.has(data, 'hideText')) {
-					data.hideText = false;
+			// Set the checkboxes to false if does not exist in the data
+			$.each(checkboxes, function(index, value){
+				if (!_.has(data, value)) {
+					data[value] = false;
 				}
+			});
 
-				if (!_.has(data, 'hot')) {
-					data.hot = false;
-				}
-
-				if (!_.has(data, 'uppercaseText')) {
-					data.uppercaseText = false;
-				}
-
-				if (!_.has(data, 'trending')) {
-					data.trending = false;
-				}
-
-				if (!_.has(data, 'new')) {
-					data.new = false;
-				}
-			}
-
-			var $dataHolder = $(item).find('.tamm-data');
+			var $dataHolder = $(item).find('.pp-data');
 
 			if (_.has(data, 'content')) {
 				$dataHolder.html(data.content);
@@ -337,42 +351,41 @@ var taMegaMenu;
 		},
 
 		saveChanges: function () {
-			var data = api.$modal.find('.tamm-content :input').serialize(),
-				$spinner = api.$modal.find('.tamm-toolbar .spinner');
+			var data = options.$modal.find('.pp-menu-item-tab-content :input').serialize(),
+				$spinner = options.$modal.find('.pp-mega-menu-item-controls .spinner');
 
 			$spinner.addClass('is-active');
 
 			$.post(ajaxurl, {
-				action: 'tamm_save_menu_item_data',
+				action: 'pp_save_menu_item_data',
 				data  : data
 			}, function (res) {
 				if (!res.success) {
 					return;
 				}
 
-
 				var data = res.data['menu-item'];
 
 				// Update parent menu item
-				if (_.has(data, api.itemData.data['menu-item-db-id'])) {
-					api.setItemData(api.itemData.originalElement, data[api.itemData.data['menu-item-db-id']], 0);
+				if (_.has(data, options.itemData.data['menu-item-db-id'])) {
+					options.setItemData(options.itemData.originalElement, data[options.itemData.data['menu-item-db-id']], 0);
 				}
 
-				_.each(api.itemData.children, function (menuItem) {
+				_.each(options.itemData.children, function (menuItem) {
 					if (!_.has(data, menuItem.data['menu-item-db-id'])) {
 						return;
 					}
 
-					api.setItemData(menuItem.originalElement, data[menuItem.data['menu-item-db-id']], 1);
+					options.setItemData(menuItem.originalElement, data[menuItem.data['menu-item-db-id']], 1);
 				});
 
 				$spinner.removeClass('is-active');
-				api.closeModal();
+				options.closeModal();
 			});
 		}
 	};
 
 	$(function () {
-		taMegaMenu.init();
+		menuSettings.init();
 	});
 })(jQuery, _);

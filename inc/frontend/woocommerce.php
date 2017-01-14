@@ -28,13 +28,16 @@ class PP_Woocommerce {
         add_action( 'wp_ajax_get_srcset', array( $this, 'pffwc_get_srcset_callback' ) );
         add_action( 'wp_ajax_nopriv_get_srcset', array( $this, 'pffwc_get_srcset_callback' ) );
 
+        /**
+         * Split the payment template and the review order
+         */
+        add_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
+        remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+        add_filter( 'woocommerce_checkout_order_payment', 'woocommerce_checkout_payment', 20 );
+
         // Position the star rating after the price
         remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
         add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 15 );
-
-        // Remove Result count to the archive page - Add new action to use in base.php
-        remove_action( 'woocommerce_before_shop_loop_result_count', 'woocommerce_result_count', 20 );
-        add_filter( 'main_result_count', 'woocommerce_result_count', 20 );
 
         // Split the loop before shop template
         remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
@@ -77,6 +80,10 @@ class PP_Woocommerce {
         // Product title
         remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
         add_action( 'woocommerce_shop_loop_item_title', array( $this, 'custom_woocommerce_template_loop_product_title' ), 10 );
+
+        // Remove Result count to the archive page - Add new action to use in base.php
+        remove_action( 'woocommerce_before_shop_loop_result_count', 'woocommerce_result_count', 20 );
+        add_filter( 'main_result_count', 'woocommerce_result_count', 20 );
 
         // Number of columns in product archive
         add_filter('loop_shop_columns', array( $this, 'loop_columns' ));
@@ -324,7 +331,7 @@ class PP_Woocommerce {
     			$retina_url = wr2x_cdn_this( $retina_url );
     			$img_url = wr2x_cdn_this( $_POST['src'] );
     			$img_url  = apply_filters( 'wr2x_img_url', $img_url );
-    			echo  "$img_url, $retina_url 2x";
+    			echo "$img_url, $retina_url 2x";
     		} else {
     			echo $_POST['src'];
     		}

@@ -1,70 +1,140 @@
 <% var itemId = data['menu-item-db-id']; %>
-<div id="tamm-panel-background" class="tamm-panel-background tamm-panel">
-	<p class="background-image">
-		<label><?php esc_html_e( 'Background Image', 'mrbara' ) ?></label><br>
-		<span class="background-image-preview">
-			<% if ( megaData.background.image ) { %>
-				<img src="<%= megaData.background.image %>">
-			<% } %>
-		</span>
 
-		<button type="button" class="button remove-button <% if ( ! megaData.background.image ) { print( 'hidden' ) } %>"><?php esc_html_e( 'Remove', 'mrbara' ) ?></button>
-		<button type="button" class="button upload-button" id="background_image-button"><?php esc_html_e( 'Select Image', 'mrbara' ) ?></button>
+<div id="inside-background" class="inside-background inside">
 
-		<input type="hidden" name="<%= taMegaMenu.getFieldName( 'background.image', itemId ) %>" value="<%= megaData.background.image %>">
-	</p>
+	<div class="element_label"><?php esc_html_e( 'Background Image Type, Position & Size', 'davis' ) ?></div>
+	<div class="edit_form_line spacing">
+        <label>
+            <span><?php esc_html_e( 'Image Source', 'davis' ) ?></span>
+			<div class="item-media">
+                <div class="thumbnail-image">
+					<% if ( megaData.background.image ) { %>
+						<img src="<%= megaData.background.image %>">
+					<% } %>
+				</div>
+                <input type="hidden" name="<%= menuSettings.getFieldName( 'background.image', itemId ) %>" value="<%= megaData.background.image %>">
+				<a class="remove-button <% if ( ! megaData.background.image ) { print( 'hidden' ) } %>"><span class="dashicons dashicons-no-alt"></span></a>
+				<a class="upload-button <% if ( megaData.background.image ) { print( 'hidden' ) } %>" id="background_image-button"><span class="dashicons dashicons-plus"></span></a>
+            </div>
+        </label>
+    </div>
+	<div class="edit_form_line spacing image-size">
+        <label>
+            <span><?php esc_html_e( 'Image Type', 'davis' ) ?></span>
+			<div class="inner">
+				<select name="<%= menuSettings.getFieldName( 'img_type', itemId ) %>">
+					<option value="background" <% if ( megaData.img_type == 'background' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Background Image', 'davis' ) ?></option>
+					<option value="image" <% if ( megaData.img_type == 'image' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Image HTML Tag', 'davis' ) ?></option>
+				</select>
+			</div>
+        </label>
+    </div>
+	<div class="edit_form_line spacing">
+        <label>
+            <span><?php esc_html_e( 'Image Size', 'davis' ) ?></span>
+			<div class="inner">
+				<select name="<%= menuSettings.getFieldName( 'img_size', itemId ) %>">
+					<?php global $_wp_additional_image_sizes;
+						$available_sizes = get_intermediate_image_sizes();
 
-	<p class="background-color">
-		<label><?php esc_html_e( 'Background Color', 'mrbara' ) ?></label><br>
-		<input type="text" class="background-color-picker" name="<%= taMegaMenu.getFieldName( 'background.color', itemId ) %>" value="<%= megaData.background.color %>">
-	</p>
+                        foreach ($available_sizes as &$size) {
+                            if (in_array($size, array('thumbnail', 'medium', 'medium_large', 'large'))) { ?>
+                                <option value="<?php echo $size ?>" <% if ( megaData.img_size == '<?php echo $size ?>' ) { print( 'selected="selected"' ) } %>>
+                                    <?php echo ucwords(str_replace(array('_', '-'), array(' ', ' '), $size)) . ' (' . get_option("{$size}_size_w") . 'x' . get_option("{$size}_size_h") . ')' ?>
+                                </option>
+                            <?php } else if (isset($_wp_additional_image_sizes[$size])) { ?>
+                            	<option value="<?php echo $size ?>" <% if ( megaData.img_size == '<?php echo $size ?>' ) { print( 'selected="selected"' ) } %>>
+                                	<?php echo ucwords(str_replace(array('_', '-'), array(' ', ' '), $size)) . ' (' . $_wp_additional_image_sizes[$size]['width'] . 'x' . $_wp_additional_image_sizes[$size]['height'] . ')' ?>
+                                </option>
+							<?php }
+                        }
+                    ?>
+					<option value="full" <% if ( 'full' == megaData.img_size ) { print( 'selected="selected"' ) } %>><?php _e('Full Size (Original Size)', 'davis') ?></option>
+				</select>
+			</div>
+        </label>
+    </div>
+	<div class="edit_form_line spacing image-position <% if ( megaData.img_type == 'background' ) { print( 'hidden' ) } %>">
+        <label>
+            <span><?php esc_html_e( 'Image Absolute Position', 'davis' ) ?></span>
+			<div class="inner">
+				<p class="description"><?php esc_html_e( 'Top', 'davis' ) ?></p>
+				<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.top', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.top %>">
+			</div>
+			<div class="inner">
+				<p class="description"><?php esc_html_e( 'Right', 'davis' ) ?></p>
+				<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.right', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.right %>">
+			</div>
+			<div class="inner">
+				<p class="description"><?php esc_html_e( 'Bottom', 'davis' ) ?></p>
+				<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.bottom', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.bottom %>">
+			</div>
+			<div class="inner">
+				<p class="description"><?php esc_html_e( 'Left', 'davis' ) ?></p>
+				<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.left', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.left %>">
+			</div>
+        </label>
+    </div>
+	<div class="edit_form_line spacing background-position <% if ( megaData.img_type == 'image' ) { print( 'hidden' ) } %>">
+        <label>
+            <span><?php esc_html_e( 'Background Position', 'davis' ) ?></span>
+			<div class="inner">
+				<p class="description"><?php esc_html_e( 'Horizontally', 'davis' ) ?></p>
+				<select name="<%= menuSettings.getFieldName( 'background.position.x', itemId ) %>">
+					<option value="left" <% if ( megaData.background.position.x  == 'left' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Left', 'davis' ) ?></option>
+					<option value="center" <% if ( megaData.background.position.x == 'center' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Center', 'davis' ) ?></option>
+					<option value="right" <% if ( megaData.background.position.x == 'right' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Right', 'davis' ) ?></option>
+				</select>
+			</div>
+			<div class="inner">
+				<p class="description"><?php esc_html_e( 'Vertically', 'davis' ) ?></p>
+				<select name="<%= menuSettings.getFieldName( 'background.position.y', itemId ) %>">
+					<option value="top" <% if ( megaData.background.position.y == 'top' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Top', 'davis' ) ?></option>
+					<option value="center" <% if (megaData.background.position.y == 'center' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Middle', 'davis' ) ?></option>
+					<option value="bottom" <% if ( megaData.background.position.y == 'bottom' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Bottom', 'davis' ) ?></option>
+				</select>
+			</div>
+        </label>
+    </div>
+	<div class="edit_form_line spacing background-repeat <% if ( megaData.img_type == 'image' ) { print( 'hidden' ) } %>">
+        <label>
+            <span><?php esc_html_e( 'Background Repeat', 'davis' ) ?></span>
+			<div class="inner">
+				<select name="<%= menuSettings.getFieldName( 'background.repeat', itemId ) %>">
+					<option value="no-repeat" <% if ( megaData.background.repeat == 'no-repeat' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'No Repeat', 'davis' ) ?></option>
+					<option value="repeat" <% if ( megaData.background.repeat == 'repeat' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Repeat', 'davis' ) ?></option>
+					<option value="repeat-x" <% if ( megaData.background.repeat == 'repeat-x' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Repeat Horizontally', 'davis' ) ?></option>
+					<option value="repeat-y" <% if ( megaData.background.repeat == 'repeat-y' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Repeat Vertically', 'davis' ) ?></option>
+				</select>
+			</div>
+        </label>
+    </div>
+	<div class="edit_form_line spacing background-attachment <% if ( megaData.img_type == 'image' ) { print( 'hidden' ) } %>">
+        <label>
+            <span><?php esc_html_e( 'Background Attachment', 'davis' ) ?></span>
+			<div class="inner">
+				<select name="<%= menuSettings.getFieldName( 'background.attachment', itemId ) %>">
+					<option value="scroll" <% if ( megaData.background.attachment == 'scroll' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Scroll', 'davis' ) ?></option>
+					<option value="fixed" <% if ( megaData.background.attachment == 'fixed' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Fixed', 'davis' ) ?></option>
+				</select>
+			</div>
+        </label>
+    </div>
 
-	<p class="background-repeat">
-		<label><?php esc_html_e( 'Background Repeat', 'mrbara' ) ?></label><br>
-		<select name="<%= taMegaMenu.getFieldName( 'background.repeat', itemId ) %>">
-			<option value="no-repeat" <% if ( 'no-repeat' == megaData.background.repeat ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'No Repeat', 'mrbara' ) ?></option>
-			<option value="repeat" <% if ( 'repeat' == megaData.background.repeat ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Tile', 'mrbara' ) ?></option>
-			<option value="repeat-x" <% if ( 'repeat-x' == megaData.background.repeat ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Tile Horizontally', 'mrbara' ) ?></option>
-			<option value="repeat-y" <% if ( 'repeat-y' == megaData.background.repeat ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Tile Vertically', 'mrbara' ) ?></option>
-		</select>
-	</p>
+	<div class="element_label"><?php esc_html_e( 'Background Image Settings', 'davis' ) ?></div>
+	<div class="edit_form_line">
+        <label>
+            <span><?php esc_html_e( 'Hide Image on Desktop', 'davis' ) ?></span>
+            <input type="checkbox" name="<%= menuSettings.getFieldName( 'hide_img_desktop', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.hide_img_desktop ) { print( 'checked="checked"' ); } %> >
+            <span class="description"><?php esc_html_e( 'Hide the image for the desktop view.', 'davis' ) ?></span>
+        </label>
+    </div>
+	<div class="edit_form_line">
+        <label>
+            <span><?php esc_html_e( 'Hide Image on Mobile', 'davis' ) ?></span>
+            <input type="checkbox" name="<%= menuSettings.getFieldName( 'hide_img_mobile', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.hide_img_mobile ) { print( 'checked="checked"' ); } %> >
+            <span class="description"><?php esc_html_e( 'Hide the image for the mobile view.', 'davis' ) ?></span>
+        </label>
+    </div>
 
-	<p class="background-position background-position-x">
-		<label><?php esc_html_e( 'Background Position', 'mrbara' ) ?></label><br>
-
-		<select name="<%= taMegaMenu.getFieldName( 'background.position.x', itemId ) %>">
-			<option value="left" <% if ( 'left' == megaData.background.position.x ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Left', 'mrbara' ) ?></option>
-			<option value="center" <% if ( 'center' == megaData.background.position.x ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Center', 'mrbara' ) ?></option>
-			<option value="right" <% if ( 'right' == megaData.background.position.x ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Right', 'mrbara' ) ?></option>
-			<option value="custom" <% if ( 'custom' == megaData.background.position.x ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Custom', 'mrbara' ) ?></option>
-		</select>
-
-		<input
-			type="text"
-			name="<%= taMegaMenu.getFieldName( 'background.position.custom.x', itemId ) %>"
-			value="<%= megaData.background.position.custom.x %>"
-			class="<% if ( 'custom' != megaData.background.position.x ) { print( 'hidden' ) } %>">
-	</p>
-
-	<p class="background-position background-position-y">
-		<select name="<%= taMegaMenu.getFieldName( 'background.position.y', itemId ) %>">
-			<option value="top" <% if ( 'top' == megaData.background.position.y ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Top', 'mrbara' ) ?></option>
-			<option value="center" <% if ( 'center' == megaData.background.position.y ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Middle', 'mrbara' ) ?></option>
-			<option value="bottom" <% if ( 'bottom' == megaData.background.position.y ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Bottom', 'mrbara' ) ?></option>
-			<option value="custom" <% if ( 'custom' == megaData.background.position.y ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Custom', 'mrbara' ) ?></option>
-		</select>
-		<input
-			type="text"
-			name="<%= taMegaMenu.getFieldName( 'background.position.custom.y', itemId ) %>"
-			value="<%= megaData.background.position.custom.y %>"
-			class="<% if ( 'custom' != megaData.background.position.y ) { print( 'hidden' ) } %>">
-	</p>
-
-	<p class="background-attachment">
-		<label><?php esc_html_e( 'Background Attachment', 'mrbara' ) ?></label><br>
-		<select name="<%= taMegaMenu.getFieldName( 'background.attachment', itemId ) %>">
-			<option value="scroll" <% if ( 'scroll' == megaData.background.attachment ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Scroll', 'mrbara' ) ?></option>
-			<option value="fixed" <% if ( 'fixed' == megaData.background.attachment ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Fixed', 'mrbara' ) ?></option>
-		</select>
-	</p>
 </div>

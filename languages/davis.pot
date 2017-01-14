@@ -46,7 +46,7 @@ msgstr ""
 msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
 
-#: inc/backend/nav-fields/checkbox.php:42
+#: inc/backend/nav-fields/checkbox.php:42, inc/mega-menu/tmpl/menus.php:3
 msgid "Mega Menu"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: inc/backend/nav-fields/select.php:31
+#: inc/backend/nav-fields/select.php:31, inc/mega-menu/tmpl/background.php:23
 msgid "Image Type"
 msgstr ""
 
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Background Location"
 msgstr ""
 
-#: inc/backend/nav-fields/select.php:66
+#: inc/backend/nav-fields/select.php:66, inc/mega-menu/tmpl/background.php:34
 msgid "Image Size"
 msgstr ""
 
@@ -290,7 +290,7 @@ msgstr ""
 msgid "Choose to have the top bar always at the top of the page whenever the user scroll the page or to let it move."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:68, inc/backend/theme_options/inc/header.php:531
+#: inc/backend/theme_options/inc/header.php:68, inc/backend/theme_options/inc/header.php:531, inc/mega-menu/tmpl/background.php:109
 msgid "Fixed"
 msgstr ""
 
@@ -330,11 +330,11 @@ msgstr ""
 msgid "Choose to display the social media icons on the left or the right of the top bar."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:253, inc/backend/theme_options/inc/header.php:398, inc/backend/theme_options/inc/shop.php:157
+#: inc/backend/theme_options/inc/header.php:253, inc/backend/theme_options/inc/header.php:398, inc/backend/theme_options/inc/shop.php:157, inc/mega-menu/tmpl/background.php:56, inc/mega-menu/tmpl/background.php:77
 msgid "Right"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:254, inc/backend/theme_options/inc/header.php:399, inc/backend/theme_options/inc/shop.php:156
+#: inc/backend/theme_options/inc/header.php:254, inc/backend/theme_options/inc/header.php:399, inc/backend/theme_options/inc/shop.php:156, inc/mega-menu/tmpl/background.php:64, inc/mega-menu/tmpl/background.php:75
 msgid "Left"
 msgstr ""
 
@@ -450,7 +450,7 @@ msgstr ""
 msgid "Icon Counter Hover Color"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:797
+#: inc/backend/theme_options/inc/header.php:797, inc/mega-menu/tmpl/icon.php:17
 msgid "Search Icon"
 msgstr ""
 
@@ -486,11 +486,11 @@ msgstr ""
 msgid "Left Image"
 msgstr ""
 
-#: inc/backend/theme_options/inc/login.php:57, inc/backend/theme_options/inc/login.php:215
+#: inc/backend/theme_options/inc/login.php:57, inc/backend/theme_options/inc/login.php:215, inc/mega-menu/tmpl/background.php:26
 msgid "Background Image"
 msgstr ""
 
-#: inc/backend/theme_options/inc/login.php:72, inc/backend/theme_options/inc/login.php:230
+#: inc/backend/theme_options/inc/login.php:72, inc/backend/theme_options/inc/login.php:230, inc/mega-menu/tmpl/background.php:92
 msgid "Background Repeat"
 msgstr ""
 
@@ -498,7 +498,7 @@ msgstr ""
 msgid "Repeat"
 msgstr ""
 
-#: inc/backend/theme_options/inc/login.php:79, inc/backend/theme_options/inc/login.php:237
+#: inc/backend/theme_options/inc/login.php:79, inc/backend/theme_options/inc/login.php:237, inc/mega-menu/tmpl/background.php:95
 msgid "No Repeat"
 msgstr ""
 
@@ -782,7 +782,7 @@ msgstr ""
 msgid "Check your email for the confirmation link"
 msgstr ""
 
-#: inc/frontend/menu-walker.php:43
+#: inc/frontend/menu-walker.php:43, inc/mega-menu/class-mega-menu-walker.php:161
 msgid "Back"
 msgstr ""
 
@@ -816,7 +816,7 @@ msgstr ""
 msgid "Edit %s"
 msgstr ""
 
-#: inc/frontend/woocommerce.php:289
+#: inc/frontend/woocommerce.php:296
 msgid "by"
 msgstr ""
 
@@ -834,6 +834,242 @@ msgstr ""
 
 #: inc/functions/wishlist.php:54
 msgid "Wishlist"
+msgstr ""
+
+#: inc/mega-menu/class-mega-menu-walker.php:347
+msgid "Hot"
+msgstr ""
+
+#: inc/mega-menu/class-mega-menu-walker.php:353
+msgid "New"
+msgstr ""
+
+#: inc/mega-menu/class-mega-menu-walker.php:359
+msgid "Trending"
+msgstr ""
+
+#: inc/mega-menu/class-mega-menu-walker.php:365
+msgid "Sale"
+msgstr ""
+
+#: inc/mega-menu/class-menu-edit.php:197, inc/mega-menu/tmpl/menus.php:12
+msgid "Settings"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:5
+msgid "Background Image Type, Position & Size"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:8
+msgid "Image Source"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:27
+msgid "Image HTML Tag"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:43
+msgid "Full Size (Original Size)"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:50
+msgid "Image Absolute Position"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:52, inc/mega-menu/tmpl/background.php:83
+msgid "Top"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:60, inc/mega-menu/tmpl/background.php:85
+msgid "Bottom"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:71
+msgid "Background Position"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:73
+msgid "Horizontally"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:76
+msgid "Center"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:81
+msgid "Vertically"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:84
+msgid "Middle"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:96
+msgid "Tile"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:97
+msgid "Tile Horizontally"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:98
+msgid "Tile Vertically"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:105
+msgid "Background Attachment"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:108
+msgid "Scroll"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:115
+msgid "Background Image Settings"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:118
+msgid "Hide Image on Desktop"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:120
+msgid "Hide the image for the desktop view."
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:125
+msgid "Hide Image on Mobile"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:127
+msgid "Hide the image for the mobile view."
+msgstr ""
+
+#: inc/mega-menu/tmpl/content.php:9
+msgid "Allow HTML and Shortcodes"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:13
+msgid "Mega Width"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:27
+msgid "Item Settings"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:35
+msgid "Hide Text"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:39
+msgid "Hide the menu item text. Useful if the menu item needs to be an image only."
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:55
+msgid "Uppercase SubMenu"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:59
+msgid "Display the menu item text uppercased."
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:73
+msgid "Disable Link"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:77
+msgid "Remove the hyperlink from the menu item."
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:89
+msgid "Hide on Desktop"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:93
+msgid "Hide the menu item for the desktop view."
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:103
+msgid "Hide on Mobile"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:107
+msgid "Hide the menu item text for the mobile view."
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:117
+msgid "Item Badges"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:123
+msgid "Hot Badge"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:127
+msgid "Add a hot badge next to the menu item."
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:137
+msgid "New Badge"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:141
+msgid "Add a new badge next to the menu item."
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:151
+msgid "Trending Badge"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:155
+msgid "Add a trending badge next to the menu item."
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:165
+msgid "Sale Badge"
+msgstr ""
+
+#: inc/mega-menu/tmpl/general.php:169
+msgid "Add a sale badge next to the menu item."
+msgstr ""
+
+#: inc/mega-menu/tmpl/mega.php:7
+msgid "Enable Mega Menu"
+msgstr ""
+
+#: inc/mega-menu/tmpl/menus.php:3
+msgid "Mega Menu Content"
+msgstr ""
+
+#: inc/mega-menu/tmpl/menus.php:7, inc/mega-menu/tmpl/menus.php:7
+msgid "Menu Content"
+msgstr ""
+
+#: inc/mega-menu/tmpl/menus.php:12
+msgid "Menu Settings"
+msgstr ""
+
+#: inc/mega-menu/tmpl/menus.php:15
+msgid "Mega Menu Design"
+msgstr ""
+
+#: inc/mega-menu/tmpl/menus.php:15
+msgid "Design"
+msgstr ""
+
+#: inc/mega-menu/tmpl/menus.php:18
+msgid "Menu Icon"
+msgstr ""
+
+#: inc/mega-menu/tmpl/menus.php:18
+msgid "Icon"
+msgstr ""
+
+#: inc/mega-menu/tmpl/title.php:4
+msgid "Close"
+msgstr ""
+
+#: inc/mega-menu/tmpl/title.php:9
+msgid "Save All"
 msgstr ""
 
 #: inc/plugins/reviews-pro.php:63

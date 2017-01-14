@@ -1166,7 +1166,7 @@
 								if (ajax === 'popup'){
 									setTimeout(function(){
 										$('#login-modal').modal( 'hide' );
-									}, 1200);
+									}, 100
 								}
 							},
 				            error: function(xhr, ajaxOptions, thrownError){

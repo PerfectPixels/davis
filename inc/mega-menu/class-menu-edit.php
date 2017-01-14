@@ -11,7 +11,7 @@ if ( ! class_exists( 'Walker_Nav_Menu_Edit' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
 }
 
-class MrBara_Mega_Menu_Walker_Edit extends Walker_Nav_Menu_Edit {
+class PP_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 	/**
 	 * Start the element output.
 	 *
@@ -27,35 +27,48 @@ class MrBara_Mega_Menu_Walker_Edit extends Walker_Nav_Menu_Edit {
 	 * @param int    $id     Not used.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		$item_icon            = get_post_meta( $item->ID, 'tamm_menu_item_icon', true );
-		$item_hide_text       = get_post_meta( $item->ID, 'tamm_menu_item_hide_text', true );
-		$item_uppercase_text  = get_post_meta( $item->ID, 'tamm_menu_item_uppercase_text', true );
-		$item_hot             = get_post_meta( $item->ID, 'tamm_menu_item_hot', true );
-		$item_new             = get_post_meta( $item->ID, 'tamm_menu_item_new', true );
-		$item_trending        = get_post_meta( $item->ID, 'tamm_menu_item_trending', true );
-		$item_disable_link    = get_post_meta( $item->ID, 'tamm_menu_item_disable_link', true );
-		$item_content         = get_post_meta( $item->ID, 'tamm_menu_item_content', true );
-		$item_mega            = get_post_meta( $item->ID, 'tamm_menu_item_mega', true );
-		$item_mega_style2     = get_post_meta( $item->ID, 'tamm_menu_item_mega_style2', true );
-		$item_mega_width      = get_post_meta( $item->ID, 'tamm_menu_item_width', true );
-		$mega_width           = get_post_meta( $item->ID, 'tamm_menu_item_mega_width', true );
+		$icon            	= get_post_meta( $item->ID, 'pp_menu_item_icon', true );
+		$mega_menu       	= get_post_meta( $item->ID, 'pp_menu_item_mega', true );
+		$mega_menu_width 	= get_post_meta( $item->ID, 'pp_menu_item_mega_width', true );
+		$menu_item_width 	= get_post_meta( $item->ID, 'pp_menu_item_width', true );
+		$hide_text       	= get_post_meta( $item->ID, 'pp_menu_item_hide_text', true );
+		$hide_desktop    	= get_post_meta( $item->ID, 'pp_menu_item_hide_desktop', true );
+		$hide_mobile     	= get_post_meta( $item->ID, 'pp_menu_item_hide_mobile', true );
+		$uppercase_text 	= get_post_meta( $item->ID, 'pp_menu_item_uppercase_text', true );
+		$disable_link    	= get_post_meta( $item->ID, 'pp_menu_item_disable_link', true );
+		$hot_badge       	= get_post_meta( $item->ID, 'pp_menu_item_hot', true );
+		$new_badge       	= get_post_meta( $item->ID, 'pp_menu_item_new', true );
+		$trend_badge     	= get_post_meta( $item->ID, 'pp_menu_item_trending', true );
+		$sale_badge      	= get_post_meta( $item->ID, 'pp_menu_item_sale', true );
+		$img_background  	= get_post_meta( $item->ID, 'pp_menu_item_background', true );
+		$img_type		  	= get_post_meta( $item->ID, 'pp_menu_item_img_type', true );
+        $img_size 	     	= get_post_meta( $item->ID, 'pp_menu_item_img_size', true );
+		$img_pos		  	= get_post_meta( $item->ID, 'pp_menu_item_img_pos', true );
+		$img_hide_desktop	= get_post_meta( $item->ID, 'pp_menu_item_hide_img_desktop', true );
+		$img_hide_mobile 	= get_post_meta( $item->ID, 'pp_menu_item_hide_img_mobile', true );
+        $icon_pos 		 	= get_post_meta( $item->ID, 'pp_menu-item-icon_pos', true );
+		$content         	= get_post_meta( $item->ID, 'pp_menu_item_content', true );
 
-		$item_mega_background = wp_parse_args(
-			get_post_meta( $item->ID, 'tamm_menu_item_background', true ),
+		$img_background = wp_parse_args(
+			get_post_meta( $item->ID, 'pp_menu_item_background', true ),
 			array(
 				'image'      => '',
-				'color'      => '',
 				'attachment' => 'scroll',
 				'size'       => '',
 				'repeat'     => 'no-repeat',
 				'position'   => array(
 					'x'      => 'left',
 					'y'      => 'top',
-					'custom' => array(
-						'x' => '',
-						'y' => '',
-					)
 				)
+			)
+		);
+		$img_pos = wp_parse_args(
+			get_post_meta( $item->ID, 'pp_menu_item_img_pos', true ),
+			array(
+				'top'      	=> '',
+				'right' 	=> '',
+				'bottom'	=> '',
+				'left'     	=> ''
 			)
 		);
 
@@ -68,30 +81,38 @@ class MrBara_Mega_Menu_Walker_Edit extends Walker_Nav_Menu_Edit {
 		// Add more menu item data
 		$settings = $dom->getElementById( 'menu-item-settings-' . esc_attr( $item->ID ) );
 		$data     = $dom->createElement( 'span' );
-		$data->setAttribute( 'class', 'hidden tamm-data' );
-		$data->setAttribute( 'data-mega', intval( $item_mega ) );
-		$data->setAttribute( 'data-mega-style2', intval( $item_mega_style2 ) );
-		$data->setAttribute( 'data-mega_width', esc_attr( $mega_width ) );
-		$data->setAttribute( 'data-width', esc_attr( $item_mega_width ) );
-		$data->setAttribute( 'data-background', json_encode( $item_mega_background ) );
-		$data->setAttribute( 'data-icon', esc_attr( $item_icon ) );
-		$data->setAttribute( 'data-hide-text', intval( $item_hide_text ) );
-		$data->setAttribute( 'data-uppercase-text', intval( $item_uppercase_text ) );
-		$data->setAttribute( 'data-hot', intval( $item_hot ) );
-		$data->setAttribute( 'data-new', intval( $item_new ) );
-		$data->setAttribute( 'data-trending', intval( $item_trending ) );
-		$data->setAttribute( 'data-disable-link', intval( $item_disable_link ) );
-		$data->nodeValue = $item_content;
+		$data->setAttribute( 'class', 'hidden pp-data' );
+		$data->setAttribute( 'data-mega', intval( $mega_menu ) );
+		$data->setAttribute( 'data-mega_width', esc_attr( $mega_menu_width ) );
+		$data->setAttribute( 'data-width', esc_attr( $menu_item_width ) );
+		$data->setAttribute( 'data-background', json_encode( $img_background ) );
+		$data->setAttribute( 'data-img_type', esc_attr( $img_type ) );
+		$data->setAttribute( 'data-img_size', esc_attr( $img_size ) );
+		$data->setAttribute( 'data-img_pos', json_encode( $img_pos ) );
+		$data->setAttribute( 'data-hide_img_desktop', intval( $img_hide_desktop ) );
+		$data->setAttribute( 'data-hide_img_mobile', intval( $img_hide_mobile ) );
+		$data->setAttribute( 'data-icon', esc_attr( $icon ) );
+		$data->setAttribute( 'data-icon_pos', esc_attr( $icon_pos ) );
+		$data->setAttribute( 'data-hide_text', intval( $hide_text ) );
+		$data->setAttribute( 'data-hide_desktop', intval( $hide_desktop ) );
+		$data->setAttribute( 'data-hide_mobile', intval( $hide_mobile ) );
+		$data->setAttribute( 'data-uppercase_text', intval( $uppercase_text ) );
+		$data->setAttribute( 'data-hot', intval( $hot_badge ) );
+		$data->setAttribute( 'data-new', intval( $new_badge ) );
+		$data->setAttribute( 'data-trending', intval( $trend_badge ) );
+		$data->setAttribute( 'data-sale', intval( $sale_badge ) );
+		$data->setAttribute( 'data-disable_link', intval( $disable_link ) );
+		$data->nodeValue = $content;
 		if( $settings ) {
 			$settings->appendChild( $data );
 		}
 
 		// Add settings link
-		$link            = $dom->createElement( 'a' );
-		$link->nodeValue = esc_html__( 'Settings', 'mrbara' );
+		$link = $dom->createElement( 'a' );
+		$link->nodeValue = esc_html__( 'Settings', 'davis' );
 		$link->setAttribute( 'class', 'item-config-mega opensettings submitcancel hide-if-no-js' );
 		$link->setAttribute( 'href', '#' );
-		$sep            = $dom->createElement( 'span' );
+		$sep = $dom->createElement( 'span' );
 		$sep->nodeValue = ' | ';
 		$sep->setAttribute( 'class', 'meta-sep hide-if-no-js' );
 		$cancel = $dom->getElementById( 'cancel-' . esc_attr( $item->ID ) );
@@ -105,15 +126,15 @@ class MrBara_Mega_Menu_Walker_Edit extends Walker_Nav_Menu_Edit {
 	}
 }
 
-class MrBara_Mega_Menu_Edit {
+class PP_Nav_Menu_Edit {
 	/**
-	 * MrBara_Mega_Menu_Edit constructor.
+	 * PP_Nav_Menu_Edit constructor.
 	 */
 	public function __construct() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 		add_action( 'admin_footer-nav-menus.php', array( $this, 'modal' ) );
 		add_action( 'admin_footer-nav-menus.php', array( $this, 'templates' ) );
-		add_action( 'wp_ajax_tamm_save_menu_item_data', array( $this, 'save_menu_item_data' ) );
+		add_action( 'wp_ajax_pp_save_menu_item_data', array( $this, 'save_menu_item_data' ) );
 	}
 
 	/**
@@ -126,13 +147,13 @@ class MrBara_Mega_Menu_Edit {
 			return;
 		}
 
-		wp_register_style( 'mrbara-mega-font-awesome', get_template_directory_uri() . '/inc/mega-menu/css/ionicons.min.css', array(), '4.5' );
-		wp_register_style( 'mrbara-mega-menu', get_template_directory_uri() . '/inc/mega-menu/css/mega-menu.css', array( 'media-views', 'wp-color-picker', 'mrbara-mega-font-awesome' ), '20160530' );
-		wp_enqueue_style( 'mrbara-mega-menu' );
+		wp_register_style( 'pp-mega-font-awesome', get_template_directory_uri() . '/inc/mega-menu/css/ionicons.min.css', array(), '4.5' );
+		wp_register_style( 'pp-mega-menu', get_template_directory_uri() . '/inc/mega-menu/css/mega-menu.css', array( 'media-views', 'wp-color-picker', 'pp-mega-font-awesome' ), '20160530' );
+		wp_enqueue_style( 'pp-mega-menu' );
 
-		wp_register_script( 'mrbara-mega-menu', get_template_directory_uri() . '/inc/mega-menu/js/mega-menu.js', array( 'jquery', 'jquery-ui-resizable', 'backbone', 'underscore', 'wp-color-picker' ), '20160530', true );
+		wp_register_script( 'pp-mega-menu', get_template_directory_uri() . '/inc/mega-menu/js/mega-menu.js', array( 'jquery', 'jquery-ui-resizable', 'backbone', 'underscore', 'wp-color-picker' ), '20160530', true );
 		wp_enqueue_media();
-		wp_enqueue_script( 'mrbara-mega-menu' );
+		wp_enqueue_script( 'pp-mega-menu' );
 	}
 
 	/**
@@ -140,33 +161,15 @@ class MrBara_Mega_Menu_Edit {
 	 */
 	public function modal() {
 		?>
-		<div id="tamm-settings" tabindex="0" class="tamm-settings">
-			<div class="tamm-modal media-modal wp-core-ui">
-				<button type="button" class="button-link media-modal-close tamm-modal-close">
-					<span class="media-modal-icon"><span class="screen-reader-text"><?php esc_html_e( 'Close', 'mrbara' ) ?></span></span>
-				</button>
+		<div id="menu-modal" tabindex="0" class="menu-modal">
+			<div class="mega-modal media-modal wp-core-ui">
 				<div class="media-modal-content">
-					<div class="tamm-frame-menu media-frame-menu">
-						<div class="tamm-menu media-menu"></div>
-					</div>
-					<div class="tamm-frame-title media-frame-title"></div>
-					<div class="tamm-frame-content media-frame-content">
-						<div class="tamm-content">
-							<!--							<span class="spinner"></span>-->
-						</div>
-					</div>
-					<div class="tamm-frame-toolbar media-frame-toolbar">
-						<div class="tamm-toolbar media-toolbar">
-							<div class="tamm-toolbar-primary media-toolbar-primary search-form">
-								<button type="button" class="button tamm-button tamm-button-save media-button button-primary button-large"><?php esc_html_e( 'Save Changes', 'mrbara' ) ?></button>
-								<button type="button" class="button tamm-button tamm-button-cancel media-button button-secondary button-large"><?php esc_html_e( 'Cancel', 'mrbara' ) ?></button>
-								<span class="spinner"></span>
-							</div>
-						</div>
-					</div>
+					<div class="pp-mega-menu-item-header-bar"></div>
+					<div class="pp-mega-menu-item-setting-tabs"></div>
+					<div class="pp-menu-item-tab-content"></div>
 				</div>
 			</div>
-			<div class="media-modal-backdrop tamm-modal-backdrop"></div>
+			<div class="media-modal-backdrop mega-modal-backdrop"></div>
 		</div>
 		<?php
 	}
@@ -176,7 +179,7 @@ class MrBara_Mega_Menu_Edit {
 	 */
 	public function templates() {
 		$templates = apply_filters(
-			'tamm_js_templates', array(
+			'pp_js_templates', array(
 				'menus',
 				'title',
 				'mega',
@@ -188,9 +191,9 @@ class MrBara_Mega_Menu_Edit {
 		);
 
 		foreach ( $templates as $template ) {
-			$file = apply_filters( 'tamm_js_template_path', plugin_dir_path( __FILE__ ) . 'tmpl/' . $template . '.php', $template );
+			$file = apply_filters( 'pp_js_template_path', plugin_dir_path( __FILE__ ) . 'tmpl/' . $template . '.php', $template );
 			?>
-			<script type="text/template" id="tamm-tmpl-<?php echo esc_attr( $template ) ?>">
+			<script type="text/template" id="pp-tmpl-<?php echo esc_attr( $template ) ?>">
 				<?php
 				if ( file_exists( $file ) ) {
 					include $file;
@@ -208,7 +211,6 @@ class MrBara_Mega_Menu_Edit {
 		$_POST['data'] = stripslashes_deep( $_POST['data'] );
 		parse_str( $_POST['data'], $data );
 
-
 		$i = 0;
 		// Save menu item data
 		foreach ( $data['menu-item'] as $id => $meta ) {
@@ -218,51 +220,81 @@ class MrBara_Mega_Menu_Edit {
 
 			if ( $i == 0 ) {
 				if ( in_array( 'mega', $keys ) ) {
-					update_post_meta( $id, 'tamm_menu_item_mega', true );
+					update_post_meta( $id, 'pp_menu_item_mega', true );
 				} else {
-					delete_post_meta( $id, 'tamm_menu_item_mega' );
+					delete_post_meta( $id, 'pp_menu_item_mega' );
 				}
 
-				if ( in_array( 'megaStyle2', $keys ) ) {
-					update_post_meta( $id, 'tamm_menu_item_mega_style2', true );
+				if ( in_array( 'hide_text', $keys ) ) {
+					update_post_meta( $id, 'pp_menu_item_hide_text', true );
 				} else {
-					delete_post_meta( $id, 'tamm_menu_item_mega_style2' );
+					delete_post_meta( $id, 'pp_menu_item_hide_text' );
 				}
 
-				if ( in_array( 'hideText', $keys ) ) {
-					update_post_meta( $id, 'tamm_menu_item_hide_text', true );
+				if ( in_array( 'hide_desktop', $keys ) ) {
+					update_post_meta( $id, 'pp_menu_item_hide_desktop', true );
 				} else {
-					delete_post_meta( $id, 'tamm_menu_item_hide_text' );
+					delete_post_meta( $id, 'pp_menu_item_hide_desktop' );
 				}
 
-				if ( in_array( 'uppercaseText', $keys ) ) {
-					update_post_meta( $id, 'tamm_menu_item_uppercase_text', true );
+				if ( in_array( 'hide_mobile', $keys ) ) {
+					update_post_meta( $id, 'pp_menu_item_hide_mobile', true );
 				} else {
-					delete_post_meta( $id, 'tamm_menu_item_uppercase_text' );
+					delete_post_meta( $id, 'pp_menu_item_hide_mobile' );
+				}
+
+				if ( in_array( 'hide_img_desktop', $keys ) ) {
+					update_post_meta( $id, 'pp_menu_item_hide_img_desktop', true );
+				} else {
+					delete_post_meta( $id, 'pp_menu_item_hide_img_desktop' );
+				}
+
+				if ( in_array( 'hide_img_mobile', $keys ) ) {
+					update_post_meta( $id, 'pp_menu_item_hide_img_mobile', true );
+				} else {
+					delete_post_meta( $id, 'pp_menu_item_hide_img_mobile' );
+				}
+
+				if ( in_array( 'uppercase_text', $keys ) ) {
+					update_post_meta( $id, 'pp_menu_item_uppercase_text', true );
+				} else {
+					delete_post_meta( $id, 'pp_menu_item_uppercase_text' );
+				}
+
+				if ( in_array( 'disable_link', $keys ) ) {
+					update_post_meta( $id, 'pp_menu_item_disable_link', true );
+				} else {
+					delete_post_meta( $id, 'pp_menu_item_disable_link' );
 				}
 
 				if ( in_array( 'hot', $keys ) ) {
-					update_post_meta( $id, 'tamm_menu_item_hot', true );
+					update_post_meta( $id, 'pp_menu_item_hot', true );
 				} else {
-					delete_post_meta( $id, 'tamm_menu_item_hot' );
+					delete_post_meta( $id, 'pp_menu_item_hot' );
 				}
 
 				if ( in_array( 'new', $keys ) ) {
-					update_post_meta( $id, 'tamm_menu_item_new', true );
+					update_post_meta( $id, 'pp_menu_item_new', true );
 				} else {
-					delete_post_meta( $id, 'tamm_menu_item_new' );
+					delete_post_meta( $id, 'pp_menu_item_new' );
 				}
 
 				if ( in_array( 'trending', $keys ) ) {
-					update_post_meta( $id, 'tamm_menu_item_trending', true );
+					update_post_meta( $id, 'pp_menu_item_trending', true );
 				} else {
-					delete_post_meta( $id, 'tamm_menu_item_trending' );
+					delete_post_meta( $id, 'pp_menu_item_trending' );
+				}
+
+				if ( in_array( 'sale', $keys ) ) {
+					update_post_meta( $id, 'pp_menu_item_sale', true );
+				} else {
+					delete_post_meta( $id, 'pp_menu_item_sale' );
 				}
 			}
 
 			foreach ( $meta as $key => $value ) {
 				$key = str_replace( '-', '_', $key );
-				update_post_meta( $id, 'tamm_menu_item_' . $key, $value );
+				update_post_meta( $id, 'pp_menu_item_' . $key, $value );
 			}
 
 			$i ++;

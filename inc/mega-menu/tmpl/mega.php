@@ -1,29 +1,15 @@
-<div id="tamm-panel-mega" class="tamm-panel-mega tamm-panel">
-	<p class="mr-tamm-panel-box">
-		<label>
-			<input type="checkbox" name="<%= taMegaMenu.getFieldName( 'mega', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.mega ) { print( 'checked="checked"' ); } %> >
-			<?php esc_html_e( 'Mega Menu', 'mrbara' ) ?>
-		</label>
-	</p>
+<div id="inside-mega" class="inside-mega inside">
+	<ul class="inside-navbar">
+		<li class="pp-mega-menu-toggle-btn">
+			<span><?php esc_html_e( 'Enable Mega Menu', 'davis' ) ?></span>
+			<div class="onoffswitch">
+				<input type="checkbox" id="mega-menu-checkbox" class="onoffswitch-checkbox" name="<%= menuSettings.getFieldName( 'mega', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.mega ) { print( 'checked="checked"' ); } %> >
+				<label for="mega-menu-checkbox" class="onoffswitch-label"></label>
+			</div>
+		</li>
+	</ul>
 
-	<p class="mr-tamm-panel-box-wide">
-		<label>
-			<input type="checkbox" name="<%= taMegaMenu.getFieldName( 'megaStyle2', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.megaStyle2 ) { print( 'checked="checked"' ); } %> >
-			<?php esc_html_e( 'Mega Menu Style 2', 'mrbara' ) ?>
-			<span class="description">(<?php esc_html_e( 'Hover the parent menu item to display submenu items', 'mrbara' ) ?>)</span>
-		</label>
-	</p>
-
-	<p class="mr-tamm-panel-box-large">
-		<label>
-			<?php esc_html_e( 'Mega Width', 'mrbara' ) ?><br>
-			<input type="text" name="<%= taMegaMenu.getFieldName( 'mega_width', data['menu-item-db-id'] ) %>" placeholder="100%" value="<%= megaData.mega_width %>">
-		</label>
-	</p>
-
-	<hr>
-
-	<div id="tamm-mega-content" class="tamm-mega-content">
+	<ul id="pp-mega-content" class="pp-mega-content">
 		<%
 		var items = _.filter( children, function( item ) {
 		return item.subDepth == 0;
@@ -31,22 +17,24 @@
 		%>
 		<% _.each( items, function( item, index ) { %>
 
-		<div class="tamm-submenu-column" data-width="<%= item.megaData.width %>">
-			<ul>
-				<li class="menu-item menu-item-depth-<%= item.subDepth %>">
+		<li class="menu-item-container" data-width="<%= item.megaData.width %>">
+			<div class="menu-item-handle">
+				<span class="item-title">
 					<% if ( item.megaData.icon ) { %>
-					<i class="<%= item.megaData.icon %>"></i>
+						<i class="<%= item.megaData.icon %>"></i>
 					<% } %>
 					<%= item.data['menu-item-title'] %>
+				</span>
+				<span class="item-controls">
 					<% if ( item.subDepth == 0 ) { %>
-					<span class="tamm-column-handle tamm-resizable-e"><i class="dashicons dashicons-arrow-left-alt2"></i></span>
-					<span class="tamm-column-handle tamm-resizable-w"><i class="dashicons dashicons-arrow-right-alt2"></i></span>
-					<input type="hidden" name="<%= taMegaMenu.getFieldName( 'width', item.data['menu-item-db-id'] ) %>" value="<%= item.megaData.width %>" class="menu-item-width">
+						<span class="submenu-smaller"><i class="dashicons dashicons-arrow-left"></i></span>
+						<span class="submenu-bigger"><i class="dashicons dashicons-arrow-right"></i></span>
+						<input type="hidden" name="<%= menuSettings.getFieldName( 'width', item.data['menu-item-db-id'] ) %>" value="<%= item.megaData.width %>" class="menu-item-width">
 					<% } %>
-				</li>
-			</ul>
-		</div>
-		
+				</span>
+			</div>
+		</li>
+
 		<% } ) %>
-	</div>
+	</ul>
 </div>

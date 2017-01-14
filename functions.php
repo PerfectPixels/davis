@@ -17,6 +17,8 @@
     require get_template_directory() . '/inc/frontend/login.php';
     // Hooks for woocommerce
     require get_template_directory() . '/inc/frontend/woocommerce.php';
+    // Hooks for layout
+    require get_template_directory() . '/inc/frontend/layout.php';
     // Options for the customizer
     require get_template_directory() . '/inc/backend/theme_options/conf.php';
 
@@ -37,10 +39,6 @@
         require get_template_directory() . '/inc/functions/cart.php';
         require get_template_directory() . '/inc/functions/reviews.php';
         require get_template_directory() . '/inc/functions/wishlist.php';
-
-        // Frontend hooks related
-        require get_template_directory() . '/inc/frontend/layout.php';
-        require get_template_directory() . '/inc/frontend/menu-walker.php';
 
 	    require get_template_directory() . '/inc/mega-menu/class-mega-menu-walker.php';
 

@@ -1,7 +1,7 @@
 <?php
-class MrBara_Mega_Menu {
+class PP_Mega_Menu {
 	/**
-	 * MrBara_Mega_Menu constructor.
+	 * PP_Mega_Menu constructor.
 	 */
 	public function __construct() {
 
@@ -23,7 +23,7 @@ class MrBara_Mega_Menu {
 	 */
 	private function init() {
 		if ( is_admin() ) {
-			new MrBara_Mega_Menu_Edit();
+			new PP_Nav_Menu_Edit();
 		}
 	}
 
@@ -33,12 +33,12 @@ class MrBara_Mega_Menu {
 	 * @return string
 	 */
 	public function edit_nav_menu_walker() {
-		return 'MrBara_Mega_Menu_Walker_Edit';
+		return 'PP_Walker_Nav_Menu_Edit';
 	}
 }
 
 add_action( 'init', function() {
-	global $mrbara_mega_menu;
+	global $pp_mega_menu;
 
-	$mrbara_mega_menu = new MrBara_Mega_Menu();
+	$pp_mega_menu = new PP_Mega_Menu();
 } );
