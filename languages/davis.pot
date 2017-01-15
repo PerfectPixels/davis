@@ -46,62 +46,6 @@ msgstr ""
 msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
 
-#: inc/backend/nav-fields/checkbox.php:42, inc/mega-menu/tmpl/menus.php:3
-msgid "Mega Menu"
-msgstr ""
-
-#: inc/backend/nav-fields/checkbox.php:43
-msgid "Add Image"
-msgstr ""
-
-#: inc/backend/nav-fields/media.php:48
-msgid "Menu Image"
-msgstr ""
-
-#: inc/backend/nav-fields/media.php:173
-msgid "Change menu item image"
-msgstr ""
-
-#: inc/backend/nav-fields/media.php:173
-msgid "Set menu item image"
-msgstr ""
-
-#: inc/backend/nav-fields/media.php:173
-msgid "Set image"
-msgstr ""
-
-#: inc/backend/nav-fields/media.php:173
-msgid "Remove"
-msgstr ""
-
-#: inc/backend/nav-fields/media.php:205
-msgid "Chose menu image"
-msgstr ""
-
-#: inc/backend/nav-fields/media.php:206
-msgid "Select"
-msgstr ""
-
-#: inc/backend/nav-fields/select.php:31, inc/mega-menu/tmpl/background.php:23
-msgid "Image Type"
-msgstr ""
-
-#: inc/backend/nav-fields/select.php:41
-msgid "Icon Position"
-msgstr ""
-
-#: inc/backend/nav-fields/select.php:50, inc/backend/nav-fields/select.php:58
-msgid "Background Location"
-msgstr ""
-
-#: inc/backend/nav-fields/select.php:66, inc/mega-menu/tmpl/background.php:34
-msgid "Image Size"
-msgstr ""
-
-#: inc/backend/nav-fields/select.php:75
-msgid "Number of columns"
-msgstr ""
-
 #: inc/backend/single-variation.php:453
 msgid "DISPLAY OPTIONS"
 msgstr ""
@@ -290,7 +234,7 @@ msgstr ""
 msgid "Choose to have the top bar always at the top of the page whenever the user scroll the page or to let it move."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:68, inc/backend/theme_options/inc/header.php:531, inc/mega-menu/tmpl/background.php:109
+#: inc/backend/theme_options/inc/header.php:68, inc/backend/theme_options/inc/header.php:531, inc/mega-menu/tmpl/background.php:118
 msgid "Fixed"
 msgstr ""
 
@@ -307,7 +251,7 @@ msgid "User Action Icons"
 msgstr ""
 
 #: inc/backend/theme_options/inc/header.php:179, inc/backend/theme_options/inc/header.php:716
-msgid "Choose to show/hide the action icons (account, login, cart, wishlist...)"
+msgid "Choose to show/hide the action icons (account/login, cart, wishlist...)"
 msgstr ""
 
 #: inc/backend/theme_options/inc/header.php:192, inc/backend/theme_options/inc/header.php:729
@@ -330,11 +274,11 @@ msgstr ""
 msgid "Choose to display the social media icons on the left or the right of the top bar."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:253, inc/backend/theme_options/inc/header.php:398, inc/backend/theme_options/inc/shop.php:157, inc/mega-menu/tmpl/background.php:56, inc/mega-menu/tmpl/background.php:77
+#: inc/backend/theme_options/inc/header.php:253, inc/backend/theme_options/inc/header.php:398, inc/backend/theme_options/inc/shop.php:157, inc/mega-menu/tmpl/background.php:65, inc/mega-menu/tmpl/background.php:86
 msgid "Right"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:254, inc/backend/theme_options/inc/header.php:399, inc/backend/theme_options/inc/shop.php:156, inc/mega-menu/tmpl/background.php:64, inc/mega-menu/tmpl/background.php:75
+#: inc/backend/theme_options/inc/header.php:254, inc/backend/theme_options/inc/header.php:399, inc/backend/theme_options/inc/shop.php:156, inc/mega-menu/tmpl/background.php:73, inc/mega-menu/tmpl/background.php:84
 msgid "Left"
 msgstr ""
 
@@ -450,7 +394,7 @@ msgstr ""
 msgid "Icon Counter Hover Color"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:797, inc/mega-menu/tmpl/icon.php:17
+#: inc/backend/theme_options/inc/header.php:797, inc/mega-menu/tmpl/icon.php:21
 msgid "Search Icon"
 msgstr ""
 
@@ -490,15 +434,15 @@ msgstr ""
 msgid "Background Image"
 msgstr ""
 
-#: inc/backend/theme_options/inc/login.php:72, inc/backend/theme_options/inc/login.php:230, inc/mega-menu/tmpl/background.php:92
+#: inc/backend/theme_options/inc/login.php:72, inc/backend/theme_options/inc/login.php:230, inc/mega-menu/tmpl/background.php:101
 msgid "Background Repeat"
 msgstr ""
 
-#: inc/backend/theme_options/inc/login.php:78, inc/backend/theme_options/inc/login.php:236
+#: inc/backend/theme_options/inc/login.php:78, inc/backend/theme_options/inc/login.php:236, inc/mega-menu/tmpl/background.php:105
 msgid "Repeat"
 msgstr ""
 
-#: inc/backend/theme_options/inc/login.php:79, inc/backend/theme_options/inc/login.php:237, inc/mega-menu/tmpl/background.php:95
+#: inc/backend/theme_options/inc/login.php:79, inc/backend/theme_options/inc/login.php:237, inc/mega-menu/tmpl/background.php:104
 msgid "No Repeat"
 msgstr ""
 
@@ -731,58 +675,60 @@ msgid "Choose if you want a quick checkout available on all pages instead of the
 msgstr ""
 
 #: inc/frontend/cart.php:114, woocommerce/cart/mini-cart.php:22
-msgid "sprintfngettextYou have %d item in your cart"
-msgstr ""
+msgid "You have %d item in your cart"
+msgid_plural "You have %d items in your cart"
+msgstr[0] ""
+msgstr[1] ""
 
 #: inc/frontend/layout.php:61
 msgid "Continued"
 msgstr ""
 
-#: inc/frontend/login.php:64
+#: inc/frontend/login.php:68
 msgid "We cannot find any account with this email address"
 msgstr ""
 
-#: inc/frontend/login.php:66
+#: inc/frontend/login.php:70
 msgid "Your password is incorrect"
 msgstr ""
 
-#: inc/frontend/login.php:69
+#: inc/frontend/login.php:73
 msgid "You are now logged in"
 msgstr ""
 
-#: inc/frontend/login.php:89
+#: inc/frontend/login.php:93
 msgid "Please enter email address"
 msgstr ""
 
-#: inc/frontend/login.php:91
+#: inc/frontend/login.php:95
 msgid "Please enter password"
 msgstr ""
 
-#: inc/frontend/login.php:128
+#: inc/frontend/login.php:132
 msgid "Successfully registered! You are now logged in"
 msgstr ""
 
-#: inc/frontend/login.php:130
+#: inc/frontend/login.php:134
 msgid "Email address already registered"
 msgstr ""
 
-#: inc/frontend/login.php:151
+#: inc/frontend/login.php:155
 msgid "Enter an email address"
 msgstr ""
 
-#: inc/frontend/login.php:167, inc/frontend/login.php:172
+#: inc/frontend/login.php:171, inc/frontend/login.php:176
 msgid "Invalid email address"
 msgstr ""
 
-#: inc/frontend/login.php:185
+#: inc/frontend/login.php:189
 msgid "Password reset is not allowed for this user"
 msgstr ""
 
-#: inc/frontend/login.php:212
+#: inc/frontend/login.php:216
 msgid "Check your email for the confirmation link"
 msgstr ""
 
-#: inc/frontend/menu-walker.php:43, inc/mega-menu/class-mega-menu-walker.php:161
+#: inc/frontend/menu-walker.php:43, inc/mega-menu/class-mega-menu-walker.php:163
 msgid "Back"
 msgstr ""
 
@@ -836,23 +782,23 @@ msgstr ""
 msgid "Wishlist"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:347
+#: inc/mega-menu/class-mega-menu-walker.php:351
 msgid "Hot"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:353
+#: inc/mega-menu/class-mega-menu-walker.php:357
 msgid "New"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:359
+#: inc/mega-menu/class-mega-menu-walker.php:363
 msgid "Trending"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:365
+#: inc/mega-menu/class-mega-menu-walker.php:369
 msgid "Sale"
 msgstr ""
 
-#: inc/mega-menu/class-menu-edit.php:197, inc/mega-menu/tmpl/menus.php:12
+#: inc/mega-menu/class-menu-edit.php:223, inc/mega-menu/tmpl/menus.php:12
 msgid "Settings"
 msgstr ""
 
@@ -864,83 +810,87 @@ msgstr ""
 msgid "Image Source"
 msgstr ""
 
+#: inc/mega-menu/tmpl/background.php:23
+msgid "Image Type"
+msgstr ""
+
 #: inc/mega-menu/tmpl/background.php:27
 msgid "Image HTML Tag"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:43
+#: inc/mega-menu/tmpl/background.php:34
+msgid "Image Size"
+msgstr ""
+
+#: inc/mega-menu/tmpl/background.php:52
 msgid "Full Size (Original Size)"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:50
+#: inc/mega-menu/tmpl/background.php:59
 msgid "Image Absolute Position"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:52, inc/mega-menu/tmpl/background.php:83
+#: inc/mega-menu/tmpl/background.php:61, inc/mega-menu/tmpl/background.php:92
 msgid "Top"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:60, inc/mega-menu/tmpl/background.php:85
+#: inc/mega-menu/tmpl/background.php:69, inc/mega-menu/tmpl/background.php:94
 msgid "Bottom"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:71
+#: inc/mega-menu/tmpl/background.php:80
 msgid "Background Position"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:73
+#: inc/mega-menu/tmpl/background.php:82
 msgid "Horizontally"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:76
+#: inc/mega-menu/tmpl/background.php:85
 msgid "Center"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:81
+#: inc/mega-menu/tmpl/background.php:90
 msgid "Vertically"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:84
+#: inc/mega-menu/tmpl/background.php:93
 msgid "Middle"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:96
-msgid "Tile"
+#: inc/mega-menu/tmpl/background.php:106
+msgid "Repeat Horizontally"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:97
-msgid "Tile Horizontally"
+#: inc/mega-menu/tmpl/background.php:107
+msgid "Repeat Vertically"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:98
-msgid "Tile Vertically"
-msgstr ""
-
-#: inc/mega-menu/tmpl/background.php:105
+#: inc/mega-menu/tmpl/background.php:114
 msgid "Background Attachment"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:108
+#: inc/mega-menu/tmpl/background.php:117
 msgid "Scroll"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:115
+#: inc/mega-menu/tmpl/background.php:124
 msgid "Background Image Settings"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:118
+#: inc/mega-menu/tmpl/background.php:127
 msgid "Hide Image on Desktop"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:120
+#: inc/mega-menu/tmpl/background.php:129
 msgid "Hide the image for the desktop view."
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:125
+#: inc/mega-menu/tmpl/background.php:134
 msgid "Hide Image on Mobile"
 msgstr ""
 
-#: inc/mega-menu/tmpl/background.php:127
+#: inc/mega-menu/tmpl/background.php:136
 msgid "Hide the image for the mobile view."
 msgstr ""
 
@@ -1038,6 +988,10 @@ msgstr ""
 
 #: inc/mega-menu/tmpl/menus.php:3
 msgid "Mega Menu Content"
+msgstr ""
+
+#: inc/mega-menu/tmpl/menus.php:3
+msgid "Mega Menu"
 msgstr ""
 
 #: inc/mega-menu/tmpl/menus.php:7, inc/mega-menu/tmpl/menus.php:7

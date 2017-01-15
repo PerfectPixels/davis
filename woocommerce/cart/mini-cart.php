@@ -19,7 +19,7 @@ $the_cart 			= WC()->cart->get_cart();
 $content_cart_count	= WC()->cart->get_cart_contents_count();
 
 $cart_title		= esc_attr( get_theme_mod( 'checkout_cart_title', __( 'Cart Summary', 'davis' ) ) );
-$cart_subtitle	= __( sprintf( ngettext( 'You have %d item in your cart', 'You have %d items in your cart', $content_cart_count ), $content_cart_count ), 'davis' );
+$cart_subtitle	= __( sprintf( _n( 'You have %d item in your cart', 'You have %d items in your cart', $content_cart_count, 'davis' ), $content_cart_count ) );
 
 ?>
 
@@ -49,23 +49,23 @@ $cart_subtitle	= __( sprintf( ngettext( 'You have %d item in your cart', 'You ha
 	<div class="cart-wrapper">
 		<div id="checkout_cart" class="cart-content">
 			<ul class="cart_list product_list_widget <?php echo $args['list_class']; ?>">
-			
+
 				<?php if ( ! $empty_cart ) : ?>
-			
+
 					<?php
 						foreach ( $the_cart as $cart_item_key => $cart_item ) {
 							$counter++;
 							$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 							$product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
-			
+
 							if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
-			
+
 								$product_name  = apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key );
 								$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item['product_id'], $cart_item_key );
 								$product_price = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
 								?>
 								<li class="<?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?> icon-amp animation-delay-<?php echo $counter; ?>">
-									
+
 									<table>
 										<tbody>
 											<tr>
@@ -95,7 +95,7 @@ $cart_subtitle	= __( sprintf( ngettext( 'You have %d item in your cart', 'You ha
 													</div>
 												</td>
 												<td>
-												<?php 
+												<?php
 												echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
 													'<a href="%s" class="remove icon-bin" title="%s" data-product_id="%s" data-product_sku="%s"></a>',
 													esc_url( WC()->cart->get_remove_url( $cart_item_key ) ),
@@ -116,28 +116,28 @@ $cart_subtitle	= __( sprintf( ngettext( 'You have %d item in your cart', 'You ha
 							}
 						}
 					?>
-			
+
 				<?php else : ?>
-			
+
 					<li class="empty"><?php echo sprintf( __( 'Your shopping cart is empty. Browse our <a href="%s" class="primary-color">shop</a>', 'davis' ), get_permalink( woocommerce_get_page_id( 'shop' ) ) ); ?></li>
-			
+
 				<?php endif; ?>
-			
+
 			</ul><!-- end product list -->
-				
+
 			<?php wp_nonce_field( 'update-order-review', 'checkout_nonce' ); ?>
-			
+
 			<?php if ( ! $empty_cart ) : ?>
-			
+
 				<p class="total">
 					<small><?php _e( 'Subtotal', 'davis' ); ?>:</small>
 					<?php echo WC()->cart->get_cart_subtotal(); ?>
 				</p>
-				
+
 				<?php wp_nonce_field( 'pffwc-nonce' ); ?>
-			
+
 			<?php endif; ?>
-			
+
 			<?php do_action( 'woocommerce_after_mini_cart' ); ?>
 		</div>
 	</div>
@@ -157,14 +157,14 @@ $cart_subtitle	= __( sprintf( ngettext( 'You have %d item in your cart', 'You ha
 			</a>
 			<a href="#" class="icon-shopping-bag-check black button" id="place_order"><?php _e( 'Place Order', 'davis' ); ?></a>
 		</div>
-		
+
 		<div class="default-btn">
 			<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" data-url="<?php echo esc_url( wc_get_checkout_url() ); ?>" data-class="button checkout icon-checkout black" class="button black checkout icon-checkout wc-forward">
 				<span><?php _e( 'Proceed to Checkout', 'woocommerce' ); ?></span>
 			</a>
-		
+
 			<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
 		</div>
 	</div>
-	
+
 <?php endif; ?>

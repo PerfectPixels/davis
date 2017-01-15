@@ -126,6 +126,8 @@ html:not(.search-form-visible) .nav-header.transparent:not(.fixedsticky-on) { ba
 
 	a.sub-menu-link:empty { display: none; }
 
+	.sub-menu-item { position: static; }
+
 }
 
 .primary-nav {
@@ -616,38 +618,6 @@ support for no js
 	  	.mega-menu.is-hidden,
 	  	.cd-nav-gallery.is-hidden,
 	  	.cd-nav-icons.is-hidden { visibility: hidden; transform: scaleY(0.3); }
-
-	  	.column-1 .mega-menu > li { width: 100%; margin-right: 0; }
-
-	  	.column-2 .mega-menu {
-
-	  		> li { width: 50%; }
-
-	  	}
-
-	  	.column-3 .mega-menu {
-
-	  		> li { width: 33.33%; }
-
-	  	}
-
-	  	.column-4 .mega-menu {
-
-	  		> li { width: 25%; }
-
-	  	}
-
-	  	.column-5 .mega-menu {
-
-	  		> li { width: 20%; }
-
-	  	}
-
-	  	.column-6 .mega-menu {
-
-	  		> li { width: 16.66%; }
-
-	  	}
 
 	  	.mega-menu { border-top: 1px solid #ddd;
 

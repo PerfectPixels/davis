@@ -1021,26 +1021,64 @@
 
 				// Replace the top bar when login in
 				replaceTopBarMenu: function( $loginForm, $submitBtn, submitBtnTxt ){
-					$('ul.navbar-right').load(document.URL + ' ul.navbar-right > *', function(){
-						// Replace cart
-						$.ajax({
-							type:'POST',
-							url: '\/?wc-ajax=get_refreshed_fragments',
-							success:function(data){
-								$.each(data.fragments, function(name, value){
-									if ( name !== 'div.widget_shopping_cart_content' ){
-										$(name).replaceWith(value);
-									}
-								});
-							}
-						});
-						setTimeout(function(){
-			              	// Reset the login button
-			              	$submitBtn.removeAttr('disabled').html(submitBtnTxt).removeClass('message show');
-			            }, 500);
 
-		              	PP.obj.$body.addClass('logged-in');
-		           });
+					$.ajax({
+						type: 'POST',
+						url: woocommerce_params.ajax_url,
+						data: {
+							'action': 'get_header_icons'
+						},
+						success: function(data){
+							// Replace header icon if exist
+		 				   	if ( $('.nav-header .header-buttons .cart').length > 0 ){
+		 					   $('.nav-header .header-buttons').find('.cart, .wishlist, .account').remove();
+		 					   $(data).insertAfter('.nav-header .header-buttons .menu');
+		 				   	}
+
+						   	// Replace topbar if exist
+	   						if ( $('.navbar-top ul.navbar-right .cart').length > 0 ){
+								$('.navbar-top ul.navbar-right').find('.cart, .wishlist, .account').remove();
+ 		 					   $(data).prependTo('.navbar-top ul.navbar-right');
+							}
+						},
+						complete: function(){
+
+							// Replace cart
+							$.ajax({
+								type:'POST',
+								url: '\/?wc-ajax=get_refreshed_fragments',
+								success:function(data){
+									$.each(data.fragments, function(name, value){
+									   $(name).replaceWith(value);
+								   });
+							   },
+							   complete: function(){
+								   if ($('.offcanvas-cart .cart-wrapper .empty').length == 0){
+									   $('.offcanvas-cart').removeClass('empty');
+								   }
+							   }
+							});
+
+							// Change logout redirect url
+							$('.account ul.dropdown-menu li.icon-logout').each(function(){
+								var $el = $(this).find('a'),
+									url = $el.attr('href'),
+									newUrl = url.replace(/redirect_to=.*&_wpnonce/, 'redirect_to=' + window.location + '&_wpnonce');
+
+								$el.attr('href', newUrl );
+							});
+						}
+					});
+
+					setTimeout(function(){
+						// Hide modal
+						$loginForm.parents('.login-modal').modal('hide');
+
+						// Reset the login button
+						$submitBtn.removeAttr('disabled').html(submitBtnTxt).removeClass('message show');
+					}, 500);
+
+					PP.obj.$body.addClass('logged-in');
 				},
 
 				// Perform AJAX login on login form submit
@@ -1162,13 +1200,6 @@
 					                });
 				                }
 				            },
-							complete: function(){
-								if (ajax === 'popup'){
-									setTimeout(function(){
-										$('#login-modal').modal( 'hide' );
-									}, 100
-								}
-							},
 				            error: function(xhr, ajaxOptions, thrownError){
 					            $submitBtn.removeClass('load').addClass('message show error').html(xhr.responseText).attr('disabled', 'disabled');
 					            $loginForm.find('input').one('keyup', function(){
@@ -1191,7 +1222,7 @@
 				    	if ( PP.method.global.getUrlParameter('login') === 'true' && PP.method.global.getUrlParameter('redirect') !== '' ){
 					    	PP.method.login.ajaxLogin( $(this), false );
 				    	} else {
-					    	PP.method.login.ajaxLogin( $(this), 'popup' );
+					    	PP.method.login.ajaxLogin( $(this), true );
 						}
 
 				        return false;
@@ -1966,9 +1997,7 @@
 							view		= $btn.attr( 'href' );
 
 						// If clicked in the cart state - Open checkout and exit this function
-						if ( $btn.parents( '.expanded' ).length ===0 ){
-							window.location.hash = '#checkout';
-
+						if ( $btn.parents( '.expanded' ).length === 0 ){
 							return false;
 						}
 
@@ -2383,26 +2412,27 @@
 
 						// Add new button class / href / text
 						$quickBtn.addClass( btnAttr[1] ).attr( 'href', btnAttr[0] ).find( 'span' ).text( btnText );
+
+
+						// Animate titles out
+						$cartHeader.addClass( 'hide-title' );
+
+						// Wait for titles to be hidden
+						$cartTitle.one( 'animationend', function(){
+
+							//Change title
+							if ( view === 'cart' ){
+								$cartTitle.text( $cartTitle.data( 'text' ) );
+								$cartSubtitle.text( $cartSubtitle.data( 'text' ) );
+							} else {
+								$cartTitle.text( $viewHeader.find( 'h4' ).text() );
+								$cartSubtitle.text( $viewHeader.find( 'h6' ).text() );
+							}
+
+							// Animate titles in
+							$cartHeader.removeClass( 'hide-title' );
+						});
 					}
-
-					// Animate titles out
-					$cartHeader.addClass( 'hide-title' );
-
-					// Wait for titles to be hidden
-					$cartTitle.one( 'animationend', function(){
-
-						//Change title
-						if ( view === 'cart' ){
-							$cartTitle.text( $cartTitle.data( 'text' ) );
-							$cartSubtitle.text( $cartSubtitle.data( 'text' ) );
-						} else {
-							$cartTitle.text( $viewHeader.find( 'h4' ).text() );
-							$cartSubtitle.text( $viewHeader.find( 'h6' ).text() );
-						}
-
-						// Animate titles in
-						$cartHeader.removeClass( 'hide-title' );
-					});
 
 					// Move the correct section
 					$checkoutIframe.css( 'transform', 'translate3d(' + vwToMove + '%,0,0)' )
@@ -2936,15 +2966,12 @@
 				    }
 				},
 
-				// Tab Bootstrap
-				tabs: function(){
-				    $('.vc_tta-tabs-container a').click(function (e) {
-						e.preventDefault();
-						$(this).tab('show');
-					});
-					$('.vc_tta-tabs-container').each(function(){
-						$(this).find('a:first').tab('show');
-					});
+				// Get text between 2 delimiters
+				getStrBetween: function(str, delimStart, delimEnd){
+					var startPos = str.indexOf(delimStart) + 1,
+						endPos = test_str.indexOf(delimEnd, startPos);
+
+					return str.substring(startPos, endPos);
 				},
 
 				// Make the image retina using srcset with WP Retina plugin
@@ -2984,7 +3011,6 @@
 				init: function(){
 
 					this.centerModal();
-					this.tabs();
 					this.widgetUIMod();
 
 				},

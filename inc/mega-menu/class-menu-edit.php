@@ -292,8 +292,19 @@ class PP_Nav_Menu_Edit {
 				}
 			}
 
+			// Delete the image as post thumbnail
+			if ( !in_array( 'background', $keys ) ) {
+				delete_post_thumbnail( $id );
+			}
+
 			foreach ( $meta as $key => $value ) {
 				$key = str_replace( '-', '_', $key );
+
+				// Save the image as post thumbnail
+				if ($key == 'background' ) {
+					set_post_thumbnail( $value['image'], $id );
+				}
+
 				update_post_meta( $id, 'pp_menu_item_' . $key, $value );
 			}
 

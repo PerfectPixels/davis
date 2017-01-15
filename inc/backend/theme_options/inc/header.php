@@ -176,7 +176,7 @@ Kirki::add_field( 'pp_theme', array(
 Kirki::add_field( 'pp_theme', array(
 	'settings' => 'topbar_action_icons',
 	'label'    => __( 'User Action Icons', 'davis' ),
-    'description' => __( 'Choose to show/hide the action icons (account, login, cart, wishlist...)', 'davis' ),
+    'description' => __( 'Choose to show/hide the action icons (account/login, cart, wishlist...)', 'davis' ),
 	'section'  => 'top_bar',
 	'type'     => 'switch',
 	'priority' => 10,
@@ -713,7 +713,7 @@ Kirki::add_field( 'pp_theme', array(
 Kirki::add_field( 'pp_theme', array(
 	'settings' => 'header_action_icons',
 	'label'    => __( 'User Action Icons', 'davis' ),
-    'description' => __( 'Choose to show/hide the action icons (account, login, cart, wishlist...)', 'davis' ),
+    'description' => __( 'Choose to show/hide the action icons (account/login, cart, wishlist...)', 'davis' ),
 	'section'  => 'header_options',
 	'type'     => 'switch',
 	'priority' => 10,

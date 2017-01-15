@@ -21,11 +21,12 @@
     require get_template_directory() . '/inc/frontend/layout.php';
     // Options for the customizer
     require get_template_directory() . '/inc/backend/theme_options/conf.php';
+    // Global function for wishlist
+    require get_template_directory() . '/inc/functions/wishlist.php';
 
     if ( is_admin() ) {
         // Backend hooks related
         require get_template_directory() . '/inc/backend/register-plugins.php';
-        //require get_template_directory() . '/inc/backend/nav-custom-fields.php';
 
         // Plugins libs/init
         require get_template_directory() . '/inc/plugins/class-tgm-plugin-activation.php';
@@ -38,7 +39,6 @@
         require get_template_directory() . '/inc/functions/titles.php';
         require get_template_directory() . '/inc/functions/cart.php';
         require get_template_directory() . '/inc/functions/reviews.php';
-        require get_template_directory() . '/inc/functions/wishlist.php';
 
 	    require get_template_directory() . '/inc/mega-menu/class-mega-menu-walker.php';
 

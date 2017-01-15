@@ -111,7 +111,7 @@ class PP_Cart {
         	$redirect = false;
 
     	    // Text for the cart item subheadline
-    	    $cart_subheadline = '<h6>' . __( sprintf(ngettext('You have %d item in your cart', 'You have %d items in your cart', $items_cart_counter), $items_cart_counter), 'davis' ) . '</h6>';
+    	    $cart_subheadline = '<h6>' . __( sprintf( _n('You have %d item in your cart', 'You have %d items in your cart', $items_cart_counter, 'davis'), $items_cart_counter) ) . '</h6>';
 
     		$fragments = array(
             	'.widget_shopping_cart_content h6' => $cart_subheadline,

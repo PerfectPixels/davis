@@ -29,6 +29,10 @@ class PP_Login {
         // Redirect login
         add_action( 'template_redirect', array( $this, 'login_popup' ) );
 
+        // Get header icons
+        add_action( 'wp_ajax_nopriv_get_header_icons', array( $this, 'get_header_icons' ) );
+        add_action( 'wp_ajax_get_header_icons', array( $this, 'get_header_icons' ) );
+
         // Remove some actions to the thankyou page
         remove_action( 'woocommerce_thankyou', 'woocommerce_order_details_table', 10 );
     	add_filter( 'woocommerce_order_details', 'woocommerce_order_details_table', 10 );
@@ -229,6 +233,15 @@ class PP_Login {
     		}
     	}
     }
+
+    /**
+     * Add/Remove some filter from the thank you page
+     *
+     */
+     function get_header_icons(){
+         get_template_part( 'template-parts/header/header-icons' );
+         exit;
+     }
 
     /**
      * Add/Remove some filter from the thank you page
