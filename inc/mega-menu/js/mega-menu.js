@@ -66,17 +66,21 @@ var menuSettings;
 		},
 
 		render: function (menuItem) {
+			var _this = this;
+
 			// Render menu
 			options.$modal.find('.pp-mega-menu-item-setting-tabs').html(options.templates.menus(options.itemData));
 
-			var $activeMenu = options.$modal.find('.pp-mega-menu-item-setting-tabs .active-item-setting-tab');
+			var $menuPanels = options.$modal.find('.pp-mega-menu-item-setting-tabs .pp-mega-menu-to-content');
 
 			// Render title
 			var title = $(menuItem).parents('.menu-item-settings').find('input.edit-menu-item-title').val();
 			options.$modal.find('.pp-mega-menu-item-header-bar').html(options.templates.title({title: title}));
 
 			// Render content
-			this.openSettings($activeMenu.data('panel'));
+			$menuPanels.each(function(){
+				_this.openSettings($(this).data('panel'));
+			});
 		},
 
 		openSettings: function (panel) {
@@ -86,8 +90,13 @@ var menuSettings;
 			if ($panel.length) {
 				$panel.addClass('active').siblings().removeClass('active');
 			} else {
+				var $tabPanel = options.$modal.find('.pp-mega-menu-item-setting-tabs .pp-mega-menu-to-content[data-panel='+panel+']');
+
 				$content.append(options.templates[panel](options.itemData));
-				$content.children('#inside-' + panel).addClass('active').siblings().removeClass('active');
+
+				if ($tabPanel.hasClass('active-item-setting-tab')){
+					$content.children('#inside-' + panel).addClass('active').siblings().removeClass('active');
+				}
 
 				if ('mega' == panel) {
 					options.initMegaColumns();
@@ -191,11 +200,11 @@ var menuSettings;
 					$container = $el.parents('.inside-background');
 
 				if ('background' == $el.val()) {
-					$container.find('.background-position, .background-repeat, .background-attachment').removeClass('hidden');
-					$container.find('.image-position').addClass('hidden');
+					$container.find('.background-position, .background-repeat, .background-size').removeClass('hidden');
+					$container.find('.image-position, .image-margin').addClass('hidden');
 				} else {
-					$container.find('.background-position, .background-repeat, .background-attachment').addClass('hidden');
-					$container.find('.image-position').removeClass('hidden');
+					$container.find('.background-position, .background-repeat, .background-size').addClass('hidden');
+					$container.find('.image-position, .image-margin').removeClass('hidden');
 				}
 			});
 		},
@@ -264,12 +273,13 @@ var menuSettings;
 					img_type			: $menuData.data('img_type'),
 					img_size			: $menuData.data('img_size'),
 					img_pos				: $menuData.data('img_pos'),
+					img_no_margin  		: $menuData.data('img_no_margin'),
 					icon         		: $menuData.data('icon'),
 					hide_text     		: $menuData.data('hide_text'),
 					hide_desktop  		: $menuData.data('hide_desktop'),
 					hide_mobile   		: $menuData.data('hide_mobile'),
 					hide_img_desktop  	: $menuData.data('hide_img_desktop'),
-					hide_img_mobile  	 : $menuData.data('hide_img_mobile'),
+					hide_img_mobile  	: $menuData.data('hide_img_mobile'),
 					hot          		: $menuData.data('hot'),
 					uppercase_text		: $menuData.data('uppercase_text'),
 					new          		: $menuData.data('new'),
@@ -301,6 +311,7 @@ var menuSettings;
 							img_type		   	: $itemData.data('img_type'),
 							img_size		   	: $itemData.data('img_size'),
 							img_pos		   		: $itemData.data('img_pos'),
+							img_no_margin  		: $itemData.data('img_no_margin'),
 							icon         		: $itemData.data('icon'),
 							hide_text     		: $itemData.data('hide_text'),
 							hide_desktop  		: $itemData.data('hide_desktop'),
@@ -323,7 +334,7 @@ var menuSettings;
 		},
 
 		setItemData: function (item, data, depth) {
-			var checkboxes = ['mega', 'hide_text', 'uppercase_text', 'disable_link', 'hide_desktop', 'hide_mobile', 'hot', 'new', 'trending', 'sale', 'hide_img_desktop', 'hide_img_mobile'];
+			var checkboxes = ['mega', 'hide_text', 'uppercase_text', 'disable_link', 'img_no_margin', 'hide_desktop', 'hide_mobile', 'hot', 'new', 'trending', 'sale', 'hide_img_desktop', 'hide_img_mobile'];
 
 			// Set the checkboxes to false if does not exist in the data
 			$.each(checkboxes, function(index, value){
@@ -382,6 +393,8 @@ var menuSettings;
 				$spinner.removeClass('is-active');
 				options.closeModal();
 			});
+
+			return false;
 		}
 	};
 

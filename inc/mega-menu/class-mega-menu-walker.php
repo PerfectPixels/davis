@@ -15,10 +15,10 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 	private $curItem;
 
 	/**
-	 * Current item
+	 * Item mega menu
 	 *
 	 * @since 1.0.0
-	 * @var object
+	 * @var boolean
 	 */
 	private $mega;
 
@@ -48,10 +48,8 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 		// Get settings added
 		$icon            	= get_post_meta( $this->curItem->ID, 'pp_menu_item_icon', true );
 		$mega_menu       	= get_post_meta( $this->curItem->ID, 'pp_menu_item_mega', true );
-		$hide_text       	= get_post_meta( $this->curItem->ID, 'pp_menu_item_hide_text', true );
 		$hide_desktop    	= get_post_meta( $this->curItem->ID, 'pp_menu_item_hide_desktop', true );
 		$hide_mobile     	= get_post_meta( $this->curItem->ID, 'pp_menu_item_hide_mobile', true );
-		$uppercase_text  	= get_post_meta( $this->curItem->ID, 'pp_menu_item_uppercase_text', true );
 		$hot_badge       	= get_post_meta( $this->curItem->ID, 'pp_menu_item_hot', true );
 		$new_badge       	= get_post_meta( $this->curItem->ID, 'pp_menu_item_new', true );
 		$trend_badge     	= get_post_meta( $this->curItem->ID, 'pp_menu_item_trending', true );
@@ -66,6 +64,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 
         $style		= '';
         $bg_class 	= '';
+		$img = '';
 
         $classes = array(
             'sub-menu is-hidden',
@@ -75,15 +74,33 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
         $class_names = implode( ' ', $classes );
 
         if ( $img_background ){
-			$style = ' style="background: url(' . $img_background['image'] . ') ' . $img_background['position']['x'] . ' ' . $img_background['position']['y'] . ' ' . $img_background['repeat'] . ' ' . $img_background['attachment'];
-			$style .= ( isset($img_background['size'] ) ? ';' . ' background-size:' . $img_background['size'] . ';"' : ';"');
-			if ($img_hide_desktop && $img_hide_mobile){ $bg_class = ''; } else if ($img_hide_desktop){ $bg_class = ' bg-img-mobile'; } else if ($img_hide_mobile){ $bg_class = ' bg-img-desktop'; } else { $bg_class = ' bg-img-desktop-mobile'; }
-        }
+			$attachment_id = get_attachment_id( $img_background['image'] );
+			$img_src = wp_get_attachment_image_src( $attachment_id, $img_size, false );
+
+			if ( $img_type == 'background' ){
+				$style 	= ' style="background-image: url(' . $img_src[0] . ');';
+				$style .= ' background-position:'. $img_background['position']['x'] . ' ' . $img_background['position']['y'] . ';';
+				$style .= ' background-repeat:' . $img_background['repeat'] . ';';
+				$style .= ' background-size:' . $img_background['size'] . ';"';
+
+				if ($img_hide_desktop && $img_hide_mobile){
+					$bg_class = '';
+				} else if ($img_hide_desktop){
+					$bg_class = ' bg-img-mobile';
+				} else if ($img_hide_mobile){
+					$bg_class = ' bg-img-desktop';
+				} else {
+					$bg_class = ' bg-img-desktop-mobile';
+				}
+	        } else {
+				$img = wp_get_attachment_image( $attachment_id, $img_size, false, array('class' => 'menu-image', 'style' => 'top:'.$img_pos['top'].'; right:'.$img_pos['right'].'; bottom:'.$img_pos['bottom'].'; left:'.$img_pos['left'].';') );
+			}
+		}
 
         $back_btn = '<li class="go-back"><a href="#0">' . __( 'Back', 'davis' ) . '</a></li>';
 
         // Build HTML for output.
-        $output .= "\n" . $indent . '<ul class="' . $class_names . $bg_class . '"' . $style . '>' . $back_btn . "\n";
+        $output .= "\n" . $indent . '<ul class="' . $class_names . $bg_class . '"' . $style . '>' .$img . $back_btn . "\n";
     }
 
 	/**
@@ -118,6 +135,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$hide_desktop    	= get_post_meta( $item->ID, 'pp_menu_item_hide_desktop', true );
 		$hide_mobile     	= get_post_meta( $item->ID, 'pp_menu_item_hide_mobile', true );
 		$uppercase_text  	= get_post_meta( $item->ID, 'pp_menu_item_uppercase_text', true );
+		$disable_link	  	= get_post_meta( $item->ID, 'pp_menu_item_disable_link', true );
 		$hot_badge       	= get_post_meta( $item->ID, 'pp_menu_item_hot', true );
 		$new_badge       	= get_post_meta( $item->ID, 'pp_menu_item_new', true );
 		$trend_badge     	= get_post_meta( $item->ID, 'pp_menu_item_trending', true );
@@ -126,6 +144,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$img_type		  	= get_post_meta( $item->ID, 'pp_menu_item_img_type', true );
         $img_size 	     	= get_post_meta( $item->ID, 'pp_menu_item_img_size', true );
         $img_pos 	     	= get_post_meta( $item->ID, 'pp_menu_item_img_pos', true );
+        $img_no_margin     	= get_post_meta( $item->ID, 'pp_menu_item_img_no_margin', true );
 		$img_hide_desktop	= get_post_meta( $item->ID, 'pp_menu_item_hide_img_desktop', true );
 		$img_hide_mobile 	= get_post_meta( $item->ID, 'pp_menu_item_hide_img_mobile', true );
         $icon_pos 		 	= get_post_meta( $item->ID, 'pp_menu_item_icon_pos', true );
@@ -133,12 +152,13 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
         $style		= '';
         $bg_class 	= '';
 		$badge		= '';
-        $img 		= wp_get_attachment_image( $item->thumbnail_id, $img_size, false, "class=menu-image" );
-        $img_src	= wp_get_attachment_image_src( $item->thumbnail_id, $img_size, false );
+		$img		= '';
+		$img_src	= '';
 
 		// Save the parent post meta mega menu
 		if ( ! $depth ) {
 			$this->mega = $mega_menu;
+			$this->imgType = $img_type;
 		}
 
 		// Store mege menu panel's column
@@ -156,29 +176,57 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 			$this->column = $columns[$width];
 		}
 
-        // Depth-dependent classes
-        $depth_classes = array(
-            ( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
-            ( $depth == 1 ? $this->column : '' ),
-        	( $depth == 0 && !$this->mega ? 'simple-nav' : '' )
+        // List item classes
+        $li_classes = array(
+            $depth == 0 ? 'main-menu-item' : 'sub-menu-item',
+            $depth == 1 ? $this->column : '',
+        	$depth == 0 && !$this->mega ? 'simple-nav' : '',
+        	$img_hide_desktop ? 'hide-img-desktop' : '',
+        	$img_hide_mobile ? 'hide-img-mobile' : '',
         );
-        $depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
+        $li_class_names = esc_attr( implode( ' ', $li_classes ) );
 
-        if ( $img_background && $depth > 0 ){
-			$style = ' style="background: url(' . $img_src[0] . ') ' . $img_background['position']['x'] . ' ' . $img_background['position']['y'] . ' ' . $img_background['repeat'] . ' ' . $img_background['attachment'];
-			$style .= ( isset($img_background['size'] ) ? ';' . ' background-size:' . $img_background['size'] . ';"' : ';"');
-			if ($img_hide_desktop && $img_hide_mobile){ $bg_class = ''; } else if ($img_hide_desktop){ $bg_class = ' bg-img-mobile'; } else if ($img_hide_mobile){ $bg_class = ' bg-img-desktop'; } else { $bg_class = ' bg-img-desktop-mobile'; }
+		// Get image
+		if ( $img_background && $depth > 0 ){
+			$attachment_id 	= get_attachment_id( $img_background['image'] );
+	        $img 			= wp_get_attachment_image( $attachment_id, $img_size, false, "class=menu-image" );
+	        $img_src		= wp_get_attachment_image_src( $attachment_id, $img_size, false );
+		}
+
+        if ( $img_background && $depth > 0 && $img_type == 'background' ){
+			$style 	= ' style="background-image: url(' . $img_src[0] . ');';
+			$style .= ' background-position:'. $img_background['position']['x'] . ' ' . $img_background['position']['y'] . ';';
+			$style .= ' background-repeat:' . $img_background['repeat'] . ';';
+			$style .= ' background-size:' . $img_background['size'] . ';"';
+
+			if ($img_hide_desktop && $img_hide_mobile){
+				$bg_class = '';
+			} else if ($img_hide_desktop){
+				$bg_class = ' bg-img-mobile';
+			} else if ($img_hide_mobile){
+				$bg_class = ' bg-img-desktop';
+			} else {
+				$bg_class = ' bg-img-desktop-mobile';
+			}
         }
 
         // Build HTML.
-        $output .= $indent . '<li class="' . $depth_class_names . ' ' . $class_names . $bg_class . '"' . $style . '>';
+        $output .= $indent . '<li class="' . $li_class_names . ' ' . $class_names . $bg_class . '"' . $style . '>';
 
-        // Link attributes.
+		// Link attributes.
         $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
         $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
         $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
         $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-        $attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . ( $img_background ? ' has-img' : '' ) . ( $hide_text == 'img-no-text' ? ' img-tag' : '' ) . '"';
+		// Link classes
+        $attributes .= ' class="menu-link ';
+		$attributes .= ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' );
+		$attributes .= isset($img_background['image']) && $img_type == 'image' && $depth > 0 ? ' has-img' : '';
+		$attributes .= $hide_text ? ' text-hidden' : '';
+		$attributes .= $img_no_margin ? ' no-margin' : '';
+		$attributes .= $uppercase_text ? ' uppercase-text' : '';
+		$attributes .= $disable_link ? ' no-link' : '';
+		$attributes .= '"';
 
 		// Badges
 		if ( $hot_badge ) {
@@ -195,12 +243,13 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 		}
 
         // Build HTML output and pass through the proper filter.
-        $item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s%6$s%7$s%8$s<span></span></a>%9$s%10$s',
+        $item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s%6$s%7$s%8$s%9$s<span></span></a>%10$s%11$s',
             $args->before,
             $attributes,
             $args->link_before,
             ( $icon && ( $icon_pos == 'before' || $icon_pos == 'above' ) ? $img : '' ),
-            ( $img_background && $hide_text ? $img : apply_filters( 'the_title', $item->title, $item->ID ) ),
+            ( $hide_text ? '' : apply_filters( 'the_title', $item->title, $item->ID ) ),
+            ( $img_background && $img_type == 'image' ? $img : '' ),
             ( $img_background && $icon_pos == 'img-below-text' ? '<br>'.$img : '' ),
             ( $icon && ( $icon_pos == 'after' || $icon_pos == 'below' ) ? $img : '' ),
             $args->link_after,

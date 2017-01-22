@@ -23,6 +23,8 @@
     require get_template_directory() . '/inc/backend/theme_options/conf.php';
     // Global function for wishlist
     require get_template_directory() . '/inc/functions/wishlist.php';
+    // Global function for images
+    require get_template_directory() . '/inc/functions/images.php';
 
     if ( is_admin() ) {
         // Backend hooks related

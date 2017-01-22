@@ -36,3 +36,37 @@
 
      echo apply_filters( 'woocommerce_cart_totals_coupon_html', $value, $coupon );
  }
+
+ /**
+  * Check if is quick checkout is enable on the checkout page
+  *
+  * @access public
+  * @param boolean
+  */
+function is_quick_checkout(){
+    global $woocommerce;
+
+    $quick_checkout = get_theme_mod('quick_checkout', true);
+
+    if ( is_checkout() && $quick_checkout == true ){
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+ /**
+  * Check if should redirect the checkout page
+  *
+  * @access public
+  * @param boolean
+  */
+function is_checkout_redirect(){
+    if ( is_quick_checkout() && empty( $_GET['ajax_request'] ) && ! is_wc_endpoint_url() ){
+        return true;
+    } else {
+        return false;
+    }
+
+}

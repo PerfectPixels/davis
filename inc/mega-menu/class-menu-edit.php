@@ -44,6 +44,7 @@ class PP_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 		$img_type		  	= get_post_meta( $item->ID, 'pp_menu_item_img_type', true );
         $img_size 	     	= get_post_meta( $item->ID, 'pp_menu_item_img_size', true );
 		$img_pos		  	= get_post_meta( $item->ID, 'pp_menu_item_img_pos', true );
+		$img_no_margin	  	= get_post_meta( $item->ID, 'pp_menu_item_img_no_margin', true );
 		$img_hide_desktop	= get_post_meta( $item->ID, 'pp_menu_item_hide_img_desktop', true );
 		$img_hide_mobile 	= get_post_meta( $item->ID, 'pp_menu_item_hide_img_mobile', true );
         $icon_pos 		 	= get_post_meta( $item->ID, 'pp_menu-item-icon_pos', true );
@@ -53,7 +54,6 @@ class PP_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 			get_post_meta( $item->ID, 'pp_menu_item_background', true ),
 			array(
 				'image'      => '',
-				'attachment' => 'scroll',
 				'size'       => '',
 				'repeat'     => 'no-repeat',
 				'position'   => array(
@@ -89,6 +89,7 @@ class PP_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 		$data->setAttribute( 'data-img_type', esc_attr( $img_type ) );
 		$data->setAttribute( 'data-img_size', esc_attr( $img_size ) );
 		$data->setAttribute( 'data-img_pos', json_encode( $img_pos ) );
+		$data->setAttribute( 'data-img_no_margin', intval( $img_no_margin ) );
 		$data->setAttribute( 'data-hide_img_desktop', intval( $img_hide_desktop ) );
 		$data->setAttribute( 'data-hide_img_mobile', intval( $img_hide_mobile ) );
 		$data->setAttribute( 'data-icon', esc_attr( $icon ) );
@@ -191,7 +192,7 @@ class PP_Nav_Menu_Edit {
 		);
 
 		foreach ( $templates as $template ) {
-			$file = apply_filters( 'pp_js_template_path', plugin_dir_path( __FILE__ ) . 'tmpl/' . $template . '.php', $template );
+			$file = apply_filters( 'pp_js_template_path', plugin_dir_path( __FILE__ ) . 'options/' . $template . '.php', $template );
 			?>
 			<script type="text/template" id="pp-tmpl-<?php echo esc_attr( $template ) ?>">
 				<?php
@@ -267,6 +268,12 @@ class PP_Nav_Menu_Edit {
 					delete_post_meta( $id, 'pp_menu_item_disable_link' );
 				}
 
+				if ( in_array( 'img_no_margin', $keys ) ) {
+					update_post_meta( $id, 'pp_menu_item_img_no_margin', true );
+				} else {
+					delete_post_meta( $id, 'pp_menu_item_img_no_margin' );
+				}
+
 				if ( in_array( 'hot', $keys ) ) {
 					update_post_meta( $id, 'pp_menu_item_hot', true );
 				} else {
@@ -292,19 +299,8 @@ class PP_Nav_Menu_Edit {
 				}
 			}
 
-			// Delete the image as post thumbnail
-			if ( !in_array( 'background', $keys ) ) {
-				delete_post_thumbnail( $id );
-			}
-
 			foreach ( $meta as $key => $value ) {
 				$key = str_replace( '-', '_', $key );
-
-				// Save the image as post thumbnail
-				if ($key == 'background' ) {
-					set_post_thumbnail( $value['image'], $id );
-				}
-
 				update_post_meta( $id, 'pp_menu_item_' . $key, $value );
 			}
 

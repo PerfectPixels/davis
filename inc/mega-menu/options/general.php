@@ -4,10 +4,10 @@ global $wp_widget_factory;
 <div id="inside-general" class="inside-general inside">
 
 	<% if ( depth == 0 ) { %>
-	    <div class="element_label"><?php esc_html_e( 'Mega Width', 'davis' ) ?></div>
+	    <!-- <div class="element_label"><?php esc_html_e( 'Mega Width', 'davis' ) ?></div>
 	    <div class="edit_form_line">
 	        <input type="text" name="<%= menuSettings.getFieldName( 'mega_width', data['menu-item-db-id'] ) %>" placeholder="100%" value="<%= megaData.mega_width %>">
-	    </div>
+	    </div> -->
 	<% } %>
 
 
@@ -17,7 +17,7 @@ global $wp_widget_factory;
 	        <label>
 	            <span><?php esc_html_e( 'Hide Text', 'davis' ) ?></span>
 	            <input type="checkbox" name="<%= menuSettings.getFieldName( 'hide_text', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.hide_text == 1 ) { print( 'checked="checked"' ); } %> >
-	            <span class="description"><?php esc_html_e( 'Hide the menu item text. Useful if the menu item needs to be an image only.', 'davis' ) ?></span>
+	            <span class="description"><?php esc_html_e( 'Hide the menu item text.', 'davis' ) ?></span>
 	        </label>
 	    </div>
 	<% } %>
@@ -25,7 +25,7 @@ global $wp_widget_factory;
 	<% if ( depth == 1 ) { %>
 		<div class="edit_form_line">
 	        <label>
-	            <span><?php esc_html_e( 'Uppercase SubMenu', 'davis' ) ?></span>
+	            <span><?php esc_html_e( 'Uppercase Text', 'davis' ) ?></span>
 	            <input type="checkbox" name="<%= menuSettings.getFieldName( 'uppercase_text', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.uppercase_text ) { print( 'checked="checked"' ); } %> >
 	            <span class="description"><?php esc_html_e( 'Display the menu item text uppercased.', 'davis' ) ?></span>
 	        </label>

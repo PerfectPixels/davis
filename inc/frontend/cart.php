@@ -24,6 +24,9 @@ class PP_Cart {
 		// Define all hook
 		add_action( 'template_redirect', array( $this, 'initiate_hooks' ) );
 
+        // Redirect to checkout if cart is not empty
+        add_action('template_redirect', array( $this, 'redirection_to_checkout' ));
+
 		// Define all ajax cart functions
 		add_filter('add_to_cart_fragments', array( $this, 'pp_refresh_minicart' ));
 
@@ -65,9 +68,6 @@ class PP_Cart {
         add_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
         remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
         add_filter( 'woocommerce_checkout_order_payment', 'woocommerce_checkout_payment', 20 );
-
-        // Redirect to checkout if cart is not empty
-        add_action('template_redirect', array( $this, 'redirection_to_checkout' ));
     }
 
     /**
@@ -448,15 +448,13 @@ class PP_Cart {
     function redirection_to_checkout(){
     	global $wp, $woocommerce, $woocommerce_active;
 
-    	$quick_checkout = get_theme_mod('quick_checkout', true);
-
     	if ( $woocommerce_active ) {
 
     	    if ( is_cart() ){
     	    	wp_safe_redirect( get_home_url() . '#cart' );
     	    }
 
-    	    if ( is_checkout() && $quick_checkout == true && empty( $_GET['ajax_request'] ) && ! is_wc_endpoint_url() ){
+    	    if ( is_checkout_redirect() ){
     	    	if ( WC()->cart->cart_contents_count !== 0 ){
     			    if ( ! empty( $_GET['wc_paypal_express_clear_session'] ) ) {
     					do_action( 'wp', array( 'WC_PayPal_Express', 'cancel_express_checkout' ) );

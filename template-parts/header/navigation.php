@@ -117,7 +117,7 @@ if ( true == $search_field && ( $header_type == 'center_logo-left_menu' || $head
 
 	<div id="search" class="cd-main-search header-bg-color-bg">
 		<form method="get" action="<?php echo home_url(); ?>" class="header-text-color-txt-all">
-	        <input class="search-input" type="search" value="<?php echo esc_html($s, 1); ?>" name="s" id="s" placeholder="<?php echo sprintf( __( 'Search on %s', 'davis' ), get_bloginfo() ); ?>" />
+	        <input class="search-input" type="search" value="<?php echo esc_html($s, 1); ?>" name="s" id="s" placeholder="<?php _e( 'Search Products...', 'davis' ); ?>" title="<?php _e( 'Search for:', 'davis' ); ?>" />
 	        <?php if (class_exists('WooCommerce')) { ?>
 		        <div class="cd-select">
 					<span><?php _e( 'in', 'davis' ); ?></span>

@@ -57,21 +57,21 @@ if (get_theme_mod('fixed_top_bar', true) == true) {	$fixed_classes .= ' top-bar-
 		  </div>
 		<![endif]-->
 
-		<?php
+		<?php if ( !is_quick_checkout() ){
 
-		// Topbar
-		get_template_part( 'template-parts/header/topbar' );
+			// Topbar
+			get_template_part( 'template-parts/header/topbar' );
 
-		// Main Navigation
-		get_template_part( 'template-parts/header/navigation' );
+			// Main Navigation
+			get_template_part( 'template-parts/header/navigation' );
 
-		// Offcanvas Cart
-		get_template_part( 'template-parts/header/offcanvas-cart' );
+			// Offcanvas Cart
+			get_template_part( 'template-parts/header/offcanvas-cart' );
 
-		// Page Title
-		get_template_part( 'template-parts/header/page-title' );
+			// Page Title
+			get_template_part( 'template-parts/header/page-title' );
 
-		?>
+		} ?>
 
 		<div id="page-content" class="wrap <?php echo $fullwidth_class; ?>" role="document">
 

@@ -2,7 +2,7 @@
 
 <div id="inside-background" class="inside-background inside">
 
-	<div class="element_label"><?php esc_html_e( 'Background Image Type, Position & Size', 'davis' ) ?></div>
+	<div class="element_label"><?php esc_html_e( 'Image Type, Position & Size', 'davis' ) ?></div>
 	<div class="edit_form_line spacing">
         <label>
             <span><?php esc_html_e( 'Image Source', 'davis' ) ?></span>
@@ -54,27 +54,30 @@
 			</div>
         </label>
     </div>
-	<div class="edit_form_line spacing image-position <% if ( megaData.img_type == 'background' ) { print( 'hidden' ) } %>">
-        <label>
-            <span><?php esc_html_e( 'Image Absolute Position', 'davis' ) ?></span>
-			<div class="inner">
-				<p class="description"><?php esc_html_e( 'Top', 'davis' ) ?></p>
-				<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.top', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.top %>">
-			</div>
-			<div class="inner">
-				<p class="description"><?php esc_html_e( 'Right', 'davis' ) ?></p>
-				<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.right', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.right %>">
-			</div>
-			<div class="inner">
-				<p class="description"><?php esc_html_e( 'Bottom', 'davis' ) ?></p>
-				<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.bottom', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.bottom %>">
-			</div>
-			<div class="inner">
-				<p class="description"><?php esc_html_e( 'Left', 'davis' ) ?></p>
-				<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.left', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.left %>">
-			</div>
-        </label>
-    </div>
+
+	<% if ( depth == 0 ) { %>
+		<div class="edit_form_line spacing image-position <% if ( megaData.img_type == 'background' ) { print( 'hidden' ) } %>">
+	        <label>
+	            <span><?php esc_html_e( 'Image Absolute Position', 'davis' ) ?></span>
+				<div class="inner">
+					<p class="description"><?php esc_html_e( 'Top', 'davis' ) ?></p>
+					<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.top', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.top %>">
+				</div>
+				<div class="inner">
+					<p class="description"><?php esc_html_e( 'Right', 'davis' ) ?></p>
+					<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.right', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.right %>">
+				</div>
+				<div class="inner">
+					<p class="description"><?php esc_html_e( 'Bottom', 'davis' ) ?></p>
+					<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.bottom', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.bottom %>">
+				</div>
+				<div class="inner">
+					<p class="description"><?php esc_html_e( 'Left', 'davis' ) ?></p>
+					<input type="text" name="<%= menuSettings.getFieldName( 'img_pos.left', data['menu-item-db-id'] ) %>" value="<%= megaData.img_pos.left %>">
+				</div>
+	        </label>
+	    </div>
+	<% } %>
 	<div class="edit_form_line spacing background-position <% if ( megaData.img_type == 'image' ) { print( 'hidden' ) } %>">
         <label>
             <span><?php esc_html_e( 'Background Position', 'davis' ) ?></span>
@@ -109,32 +112,42 @@
 			</div>
         </label>
     </div>
-	<div class="edit_form_line spacing background-attachment <% if ( megaData.img_type == 'image' ) { print( 'hidden' ) } %>">
+	<div class="edit_form_line spacing background-size <% if ( megaData.img_type == 'image' ) { print( 'hidden' ) } %>">
         <label>
-            <span><?php esc_html_e( 'Background Attachment', 'davis' ) ?></span>
+            <span><?php esc_html_e( 'Background Size', 'davis' ) ?></span>
 			<div class="inner">
-				<select name="<%= menuSettings.getFieldName( 'background.attachment', itemId ) %>">
-					<option value="scroll" <% if ( megaData.background.attachment == 'scroll' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Scroll', 'davis' ) ?></option>
-					<option value="fixed" <% if ( megaData.background.attachment == 'fixed' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Fixed', 'davis' ) ?></option>
+				<select name="<%= menuSettings.getFieldName( 'background.size', itemId ) %>">
+					<option value="auto" <% if ( megaData.background.size == 'auto' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Auto', 'davis' ) ?></option>
+					<option value="cover" <% if ( megaData.background.size == 'cover' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Cover', 'davis' ) ?></option>
+					<option value="contain" <% if ( megaData.background.size == 'contain' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Contain', 'davis' ) ?></option>
 				</select>
 			</div>
         </label>
     </div>
 
-	<div class="element_label"><?php esc_html_e( 'Background Image Settings', 'davis' ) ?></div>
-	<div class="edit_form_line">
-        <label>
-            <span><?php esc_html_e( 'Hide Image on Desktop', 'davis' ) ?></span>
-            <input type="checkbox" name="<%= menuSettings.getFieldName( 'hide_img_desktop', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.hide_img_desktop ) { print( 'checked="checked"' ); } %> >
-            <span class="description"><?php esc_html_e( 'Hide the image for the desktop view.', 'davis' ) ?></span>
-        </label>
-    </div>
-	<div class="edit_form_line">
-        <label>
-            <span><?php esc_html_e( 'Hide Image on Mobile', 'davis' ) ?></span>
-            <input type="checkbox" name="<%= menuSettings.getFieldName( 'hide_img_mobile', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.hide_img_mobile ) { print( 'checked="checked"' ); } %> >
-            <span class="description"><?php esc_html_e( 'Hide the image for the mobile view.', 'davis' ) ?></span>
-        </label>
-    </div>
+	<% if ( depth > 0 ) { %>
+		<div class="element_label"><?php esc_html_e( 'Image Settings', 'davis' ) ?></div>
+		<div class="edit_form_line image-margin <% if ( megaData.img_type == 'background' ) { print( 'hidden' ) } %>">
+	        <label>
+	            <span><?php esc_html_e( 'No Margin', 'davis' ) ?></span>
+	            <input type="checkbox" name="<%= menuSettings.getFieldName( 'img_no_margin', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.img_no_margin ) { print( 'checked="checked"' ); } %> >
+	            <span class="description"><?php esc_html_e( 'Remove the spaces around the image.', 'davis' ) ?></span>
+	        </label>
+	    </div>
+		<div class="edit_form_line">
+	        <label>
+	            <span><?php esc_html_e( 'Hide Image on Desktop', 'davis' ) ?></span>
+	            <input type="checkbox" name="<%= menuSettings.getFieldName( 'hide_img_desktop', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.hide_img_desktop ) { print( 'checked="checked"' ); } %> >
+	            <span class="description"><?php esc_html_e( 'Hide the image for the desktop view.', 'davis' ) ?></span>
+	        </label>
+	    </div>
+		<div class="edit_form_line">
+	        <label>
+	            <span><?php esc_html_e( 'Hide Image on Mobile', 'davis' ) ?></span>
+	            <input type="checkbox" name="<%= menuSettings.getFieldName( 'hide_img_mobile', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.hide_img_mobile ) { print( 'checked="checked"' ); } %> >
+	            <span class="description"><?php esc_html_e( 'Hide the image for the mobile view.', 'davis' ) ?></span>
+	        </label>
+	    </div>
+	<% } %>
 
 </div>

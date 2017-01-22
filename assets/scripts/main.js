@@ -135,8 +135,8 @@
 					$( '.go-back' ).on( 'click' , function( event ){
 						event.preventDefault();
 						var $parent		= $( this ).parent( 'ul' ),
-							$prevMenu 	= $parent.parent( '.menu-item-has-children' ).parent( 'ul' ),
-							prevMenuH 	= parseInt( $prevMenu.attr( 'data-height' ) ) + 40,
+							$prevMenu 	= $parent.parent( '.menu-item-has-children' ).closest( 'ul' ),
+							prevMenuH 	= parseInt( $prevMenu.attr( 'data-height' ) ),
 							screenSize 	= PP.method.checkWindowWidth();
 
 						$parent.addClass( 'is-hidden' );
@@ -144,10 +144,10 @@
 
 						// Only for desktop
 						if ( screenSize === 'desktop' ) {
-							if ( $prevMenu.parents( '.mega-menu' ).length > 0 ){
-								$prevMenu.parents( '.mega-menu' ).children( '.menu-item-has-children' ).css( 'height', prevMenuH );
+							if ( $prevMenu.parents( '.row' ).length > 0 ){
+								$prevMenu.parents( '.row' ).css( 'height', prevMenuH + 100 );
 							} else {
-								$prevMenu.parents( '.main-menu-item' ).children( '.sub-menu' ).css( 'height', prevMenuH );
+								$prevMenu.parents('.simple-nav').find(' > .sub-menu' ).css( 'height', prevMenuH + 40 );
 							}
 						}
 					});
@@ -178,7 +178,7 @@
 				// Open the navigation
 				openMobileNav: function( $btn ){
 					var $container 	= $('#page-content'),
-						$els 		= $( 'nav.navbar-top, #header-slider, #page-content, .nav-button, .nav-header, .primary-nav, #footer' ),
+						$els 		= $( 'nav.navbar-top, section.cd-hero, #header-slider, .nav-button, .nav-header, .primary-nav, #footer' ),
 						$overlay 	= $('.nav-overlay');
 
 					if( $container.hasClass('nav-is-visible') ) {
@@ -195,23 +195,41 @@
 					}
 				},
 
+				// Calculate the height of the mega menu
+				megaMenuHeight: function(){
+					$('.mega-menu .row').each(function(){
+						var h = 0;
+
+						if ($(this).find('> li > ul.sub-menu').length > 0){
+							$(this).find('> li > ul.sub-menu').each(function(){
+								var currentH = parseInt( $(this).attr( 'data-height' ) );
+								if ( currentH > h ){
+									h = currentH;
+								}
+							});
+
+							$(this).css( 'height', h + 100 );
+						}
+					});
+				},
+
 				// Open the submenu
 				openSubmenu: function( selected ){
 
 					if( selected.next( 'ul' ).hasClass( 'is-hidden' ) ) {
 						var $nextMenu = selected.addClass( 'selected' ).next( 'ul' ),
-							nextMenuH = parseInt( $nextMenu.attr( 'data-height' ) ) + 40,
+							nextMenuH = parseInt( $nextMenu.attr( 'data-height' ) ),
 							screenSize 	= PP.method.checkWindowWidth();
 
 						// Desktop version only
-						$nextMenu.removeClass( 'is-hidden' ).end().parent( '.menu-item-has-children' ).parent( 'ul' ).addClass( 'moves-out' );
+						$nextMenu.removeClass( 'is-hidden' ).end().parent( '.menu-item-has-children' ).closest( 'ul' ).addClass( 'moves-out' );
 
 						// Change the height of the menu - Only for desktop
 						if ( screenSize === 'desktop' ) {
-							if ( $nextMenu.parents( '.mega-menu' ).length > 0 ){
-								$nextMenu.parents( '.mega-menu' ).children( '.menu-item-has-children' ).css( 'height', nextMenuH );
+							if ( $nextMenu.parents( '.row' ).length > 0 ){
+								$nextMenu.parents( '.row' ).css( 'height', nextMenuH + 100 );
 							} else {
-								$nextMenu.parents( '.main-menu-item' ).children( '.sub-menu' ).css( 'height', nextMenuH );
+								$nextMenu.parents('.simple-nav').find(' > .sub-menu' ).css( 'height', nextMenuH + 40 );
 							}
 						} else {
 							$( '#page-content' ).off().one( 'transitionend', function(){
@@ -222,7 +240,7 @@
 						selected.parent( '.menu-item-has-children' ).siblings( '.menu-item-has-children' ).children( 'ul' ).addClass( 'is-hidden' ).end().children( 'a' ).removeClass( 'selected' );
 						$( '.nav-overlay' ).addClass( 'is-visible' );
 					} else {
-						selected.removeClass( 'selected' ).next( 'ul' ).addClass( 'is-hidden' ).end().parent( '.menu-item-has-children' ).parent( 'ul' ).removeClass( 'moves-out' );
+						selected.removeClass( 'selected' ).next( 'ul' ).addClass( 'is-hidden' ).end().parent( '.menu-item-has-children' ).closest( 'ul' ).removeClass( 'moves-out' );
 						$( '.nav-overlay' ).removeClass( 'is-visible' );
 					}
 				},
@@ -230,7 +248,7 @@
 				// Close the navigation
 				closeNav: function(){
 					var $container 	= $('#page-content'),
-						$els 		= $( 'nav.navbar-top, #header-slider, .nav-button, .nav-header, .primary-nav, #footer' );
+						$els 		= $( 'nav.navbar-top, section.cd-hero, #header-slider, .nav-button, .nav-header, .primary-nav, #footer' );
 
 					$els.removeClass( 'nav-is-visible' );
 					$( '.menu-item-has-children ul' ).addClass( 'is-hidden' );
@@ -305,29 +323,43 @@
 
 				},
 
-				// Give a width to all simple submenus
-				calSubmenuWidth: function(){
+				// Wrap submenu column in a row div
+				wrapSubmenu: function(){
+					var counter = 0;
 
-					$( '.simple-nav > .sub-menu' ).each( function(){
+					$( '.menu-item-has-children > ul.mega-menu > li[class*="col-md"]' ).each( function(){
 						var $el = $( this ),
-							w = 0;
+							count = parseInt( PP.method.global.getStrBetween($el.attr('class'), 'col-md-', ' ') );
 
-						// Loop throught each submenu item to get the longest value
-						$el.find('.sub-menu-item > .sub-menu-link').not('.sub-menu-item ul li .sub-menu-link').each(function(){
-							var itemTxt = $(this).text();
-							var c = document.createElement("canvas");
-							var ctx = c.getContext("2d");
+						// Add the open wrapper element
+						if (counter == 0){
+							$('<span class="row" />').insertBefore($el);
+						}
 
-							ctx.font="13px Montserra";
+						counter += count;
 
-						    var txtW = ctx.measureText(itemTxt).width;
+						if ( counter < 12 ){
+							var $nextEl = $el.next('[class*="col-md"]');
 
-							if (txtW > w) {
-								w = txtW;
+							// Add the submenu in the wrapper
+							$el.appendTo( $el.prev('.row') );
+
+							// Check if the next element goes above 12
+							if ($nextEl.length > 0){
+								var nextCount = parseInt( PP.method.global.getStrBetween($nextEl.attr('class'), 'col-md-', ' ') );
+
+								if ( counter + nextCount > 12 ){
+									counter = 0;
+								}
+							} else {
+								counter = 0;
 							}
-						});
 
-						$el.css('width', w + 'px');
+						} else if ( counter == 12 ){
+							// Add the submenu in the wrapper
+							$el.appendTo( $el.prev('.row') );
+							counter = 0;
+						}
 					});
 
 				},
@@ -357,6 +389,8 @@
 
 					this.centerLogo();
 					this.calSubmenuHeight();
+					this.wrapSubmenu();
+					this.megaMenuHeight();
 					this.regEventHandlers();
 					this.moveNavigation();
 					this.navHorizontalScroll();
@@ -2500,7 +2534,6 @@
 								$( 'body' ).addClass( 'no-scroll' );
 
 								setTimeout(function(){
-
 									// Imitate the real cart
 									iframe.find( 'body' ).addClass( 'open' );
 
@@ -2968,8 +3001,8 @@
 
 				// Get text between 2 delimiters
 				getStrBetween: function(str, delimStart, delimEnd){
-					var startPos = str.indexOf(delimStart) + 1,
-						endPos = test_str.indexOf(delimEnd, startPos);
+					var startPos = str.indexOf(delimStart) + delimStart.length,
+						endPos = str.indexOf(delimEnd, startPos);
 
 					return str.substring(startPos, endPos);
 				},
