@@ -25,6 +25,7 @@ if ( in_array( 'paypal-express-checkout' ,get_body_class() ) ) {
 
 $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->get_checkout_url() );
 $the_cart = WC()->cart->get_cart();
+$content_cart_count	= WC()->cart->get_cart_contents_count();
 
 ?>
 
@@ -37,6 +38,17 @@ $the_cart = WC()->cart->get_cart();
 	<?php } ?>
 
 	<form name="checkout" method="post" class="checkout woocommerce-checkout customer-details-form" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+
+		<?php if ( is_quick_checkout() ){ ?>
+			<div id="checkout_cart" class="cart-content">
+				<header>
+					<h4><?php echo esc_attr( get_theme_mod( 'checkout_cart_title', __( 'Cart Summary', 'davis' ) ) ); ?></h4>
+					<h6><?php _e( sprintf( _n( 'You have %d item in your cart', 'You have %d items in your cart', $content_cart_count, 'davis' ), $content_cart_count ) ); ?></h6>
+				</header>
+
+				<?php get_template_part( 'woocommerce/cart/cart-content' ); ?>
+			</div>
+		<?php } ?>
 
 		<div id="checkout_details" class="col-md-4">
 

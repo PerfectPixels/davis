@@ -696,7 +696,7 @@
 						clearTimeout( PP.obj.upd );
 
 						// Set a timeout if click multiple time in a row
-						PP.obj.upd = setTimeout( function() {
+						PP.obj.upd = setTimeout( function() { console.log('hi');
 							PP.method.cart.updateCartQty( $el );
 						}, 600);
 					});
@@ -707,8 +707,8 @@
 				updateCartQty: function( $el ){
 					var item_hash 		= $el.attr('name').replace(/cart\[([\w]+)\]\[qty\]/g, "$1"),
 						currentVal 		= parseInt( $el.val() ),
-						$item 			= $el.parents('.mini_cart_item'),
-						$checkoutForm	= $item.parents('form.checkout'),
+						$item 			= $el.closest('.mini_cart_item'),
+						$checkoutForm	= $item.closest('form.checkout'),
 					    $cart 			= $item.parent();
 
 					// If quantity is 0, remove the item
@@ -745,29 +745,44 @@
 										parent.location.reload( true );
 									}
 								}
+
 								// Replace DOM elements
 								$(name).replaceWith(value);
+
+								// If cart in iframe, update the parent document
+								if ( $( '.offcanvas-cart', window.parent.document ).hasClass( 'expanded' ) ){
+
+									if ( name.indexOf('widget_shopping_cart') > 0 ){
+										// Remove parent class as it has change location
+										$( name.replace('.widget_shopping_cart ', 'form.checkout ') ).replaceWith(value);
+									}
+
+									$( window.parent.document ).find(name).replaceWith(value);
+
+								}
 							});
 
-							// Check if checkout page and update
-							if ( $checkoutForm.length > 0 ){
-								$( 'form.checkout .cart_list input[name="' + $el.attr( 'name' ) + '"]' ).val( currentVal );
-								$( 'body' ).trigger( 'updated_shipping_method' ).trigger( 'update_checkout' );
-							}
+							// Update number in the "cart cart" when quantity changed in the cart inside the checkout form
+							$( '.cart_list input[name="' + $el.attr( 'name' ) + '"]' ).each(function(){
+								var $input = $(this),
+									inputQty = parseInt($input.val());
+
+								if (inputQty !== currentVal) {
+									$input.val( currentVal );
+									$( 'body' ).trigger( 'updated_shipping_method' ).trigger( 'update_checkout' );
+								}
+
+							});
 
 							// Update all the pricing
-							$( '.cart_list' ).each( function(){
-								$( this ).find( '.mini_cart_item' ).each(function(){
-									var $item			= $( this ),
-										itemNb 			= parseInt( $item.find( 'input.qty' ).val() ),
-										symbol			= $item.find( '.item-details .amount .woocommerce-Price-currencySymbol' ).detach(),
-										itemPrice 		= parseFloat( $item.find( '.item-details .amount' ).html() ),
-										newItemPrice 	= itemPrice * itemNb;
+							var itemNb 			= parseInt( $item.find( 'input.qty' ).val() ),
+								symbol			= $item.find( '.item-details .amount .woocommerce-Price-currencySymbol' ).detach(),
+								itemPrice 		= parseFloat( $item.find( '.item-details .amount' ).html() ),
+								newItemPrice 	= itemPrice * itemNb;
 
-									$item.find( '.item-details .amount' ).prepend( symbol );
-									$item.find( '.price .amount' ).text( newItemPrice.toFixed(2) ).prepend( symbol.clone() );
-								});
-							});
+							$item.find( '.item-details .amount' ).prepend( symbol );
+							$item.find( '.price .amount' ).text( newItemPrice.toFixed(2) ).prepend( symbol.clone() );
+
 						},
 					    error: function (request, status, error) {
 					        alert(request.responseText);
@@ -2313,12 +2328,7 @@
 						$cartTitle		= $cartHeader.find( 'h4' ),
 						$cartSubtitle	= $cartHeader.find( 'h6' ),
 						$quickBtnCont	= $offcanvasCart.find( '.quick-btn' ),
-						$quickBtn 		= $quickBtnCont.find( 'a[href="' + view + '"]' ),
-						passed 			= true,
-						nextBtnAttr		= ( ( $quickBtn.data( 'next' ) ) ? $quickBtn.data( 'next' ).split( ',' ) : '' ),
-						prevBtnAttr		= ( ( $quickBtn.data( 'prev' ) ) ? $quickBtn.data( 'prev' ).split( ',' ) : '' ),
-						btnAttr			= nextBtnAttr,
-						btnText			= $cartTitle.data( 'text' );
+						passed 			= true;
 
 					// Remove the hash
 					view = view.replace( '#', '' );
@@ -2326,6 +2336,7 @@
 					var $checkoutIframe	= $offcanvasCart.find( '#iframe-checkout' ),
 						$checkoutForm	= $checkoutIframe.contents().find( 'form.checkout' ),
 						$viewToShow 	= $checkoutForm.find( '#checkout_' + view ),
+						$quickBtns 		= $quickBtnCont.find( 'a[data-' + view + ']' ),
 						$viewHeader 	= $viewToShow.find( 'header' );
 
 					// Exit if already in view
@@ -2359,67 +2370,29 @@
 
 					if ( passed ){
 						$cartNavParent.addClass( 'selected visited' );
-					}
-
-					// When loading the view for the first time add the buttons text
-					if ( ! $quickBtnCont.hasClass( 'loaded' ) ){
-						$quickBtnCont.find( 'a' ).each( function(){
-							var $btn	= $( this ),
-								btnHref = $btn.attr( 'href' ).replace( '#', '' ),
-								btnText = $checkoutForm.find( '#checkout_' + btnHref + ' header h4' ).text();
-
-							// Cart has different DOM
-							if ( btnHref === 'cart' ){
-								btnText = $offcanvasCart.find( '.cart-header h4' ).text();
-							}
-
-							$btn.find( 'span' ).text( btnText );
-						});
-
-						$quickBtnCont.addClass( 'loaded' )
+					} else {
+						return false;
 					}
 
 					// Get the number to move the views
 					switch( view ){
 						case 'cart':
 							// Move the buttons container
-							$quickBtnCont.addClass( 'to-right' );
-							btnText = $viewToShow.next().find( 'header h4' ).text();
+							$quickBtnCont.addClass( 'to-right' ).removeClass('to-left far-left');
 						break;
 						case 'details':
-							// Get the correct title  and attributes
-							if ( $quickBtnCont.hasClass( 'to-right' ) ){
-								btnAttr = prevBtnAttr;
-								// Move the buttons container
-								$quickBtnCont.removeClass( 'to-right' );
-							} else {
-								btnText = $viewToShow.next().find( 'header h4' ).text();
-								// Move the buttons container
-								$quickBtnCont.removeClass( 'to-left far-left' );
-							}
-
+							// Move the buttons container
+							$quickBtnCont.removeClass( 'to-right to-left far-left' );
 							vwToMove = -25;
 						break;
 						case 'shipping':
 							// Move the buttons container
-							if ( $quickBtnCont.hasClass( 'far-left' ) ){
-								btnText = $viewToShow.next().find( 'header h4' ).text();
-								$quickBtnCont.addClass( 'to-left' ).removeClass( 'far-left' );
-							} else {
-								btnAttr = prevBtnAttr;
-								btnText = $viewToShow.prev().find( 'header h4' ).text();
-								$quickBtnCont.addClass( 'to-left' );
-							}
-
-
+							$quickBtnCont.addClass( 'to-left' ).removeClass( 'far-left to-right' );
 							vwToMove = -50;
 						break;
 						case 'review':
-							// Move the buttons
-							$quickBtnCont.removeClass( 'to-left' ).addClass( 'far-left' );
-							btnAttr = prevBtnAttr;
-							btnText = $viewToShow.prev().find( 'header h4' ).text();
-
+							// Move the buttons container
+							$quickBtnCont.addClass( 'far-left' ).removeClass( 'to-left to-right' );
 							vwToMove = -75;
 
 							// Change the place order button text
@@ -2439,29 +2412,25 @@
 					}
 
 					if ( passed ){
-						// Remove the button class starting with icon
-						if ( $quickBtn.attr( 'class' ) ){
-							$quickBtn.attr( 'class', function(i, c){ return c.replace(/(^|\s)icon-\S+/g, ''); } );
-						}
+						// Change the buttons
+						$quickBtns.each(function(){
+							var $btn = $(this),
+								btnAttr = $btn.data( view ).split( ',' );
 
-						// Add new button class / href / text
-						$quickBtn.addClass( btnAttr[1] ).attr( 'href', btnAttr[0] ).find( 'span' ).text( btnText );
-
+							// Replace the button class starting with icon
+							$btn.attr( 'class', function(i, c){ return c.replace(/(^|\s)icon-\S+/g, btnAttr[1]); } );
+							// Add new button class / href / text
+							$btn.attr( 'href', btnAttr[0] ).find( 'span' ).text( btnAttr[2] );
+						});
 
 						// Animate titles out
 						$cartHeader.addClass( 'hide-title' );
 
 						// Wait for titles to be hidden
 						$cartTitle.one( 'animationend', function(){
-
 							//Change title
-							if ( view === 'cart' ){
-								$cartTitle.text( $cartTitle.data( 'text' ) );
-								$cartSubtitle.text( $cartSubtitle.data( 'text' ) );
-							} else {
-								$cartTitle.text( $viewHeader.find( 'h4' ).text() );
-								$cartSubtitle.text( $viewHeader.find( 'h6' ).text() );
-							}
+							$cartTitle.text( $viewHeader.find( 'h4' ).text() );
+							$cartSubtitle.text( $viewHeader.find( 'h6' ).text() );
 
 							// Animate titles in
 							$cartHeader.removeClass( 'hide-title' );
@@ -2527,15 +2496,15 @@
 								// Mark it when finished loaded
 								$( '.offcanvas-cart #iframe-checkout' ).addClass( 'loaded' );
 
-								// Move the cart in the form
-								$offcanvasCart.find( '#checkout_cart' ).detach().insertBefore( $container.find( '#checkout_details' ) );
-
-								// Cannot scroll page
-								$( 'body' ).addClass( 'no-scroll' );
+								// Hide the page cart
+								$offcanvasCart.find( '#checkout_cart' ).hide();
 
 								setTimeout(function(){
 									// Imitate the real cart
 									iframe.find( 'body' ).addClass( 'open' );
+
+									// Cannot scroll page
+									$( 'body' ).addClass( 'no-scroll' );
 
 							        // Expand the cart
 									$offcanvasCart.addClass( 'expanded open' );
@@ -2548,7 +2517,7 @@
 
 									// Functions for the checkout UI
 									PP.method.checkout.radioCheckboxAction();
-								}, 10);
+								}, 300);
 						    });
 						} else {
 							window.location.hash = '#';
@@ -2871,8 +2840,13 @@
 					// Remove set height
 					$cart.find( '.cart-container' ).removeAttr( 'style' );
 
-					// Move the cart out the form
-					$iframe.find( '#checkout_cart' ).detach().insertBefore( '.offcanvas-cart #iframe-checkout' );
+					// Copy cart content
+					$cart.find( '.cart-wrapper #checkout_cart .cart_list' ).html( $iframe.find( '#checkout_cart .cart_list' ).html() );
+
+					// Show the cart
+					$cart.find( '#checkout_cart' ).show();
+
+					// Remove the checkout DOM
 					$cart.find( '#iframe-checkout' ).remove();
 				},
 
