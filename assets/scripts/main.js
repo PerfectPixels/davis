@@ -635,7 +635,7 @@
 								}
 							}
 
-							$input.val(newVal).change();
+							$input.val(newVal).attr('value', newVal).change();
 						});
 					});
 				},
@@ -696,7 +696,7 @@
 						clearTimeout( PP.obj.upd );
 
 						// Set a timeout if click multiple time in a row
-						PP.obj.upd = setTimeout( function() { console.log('hi');
+						PP.obj.upd = setTimeout( function() {
 							PP.method.cart.updateCartQty( $el );
 						}, 600);
 					});
@@ -775,13 +775,19 @@
 							});
 
 							// Update all the pricing
-							var itemNb 			= parseInt( $item.find( 'input.qty' ).val() ),
-								symbol			= $item.find( '.item-details .amount .woocommerce-Price-currencySymbol' ).detach(),
-								itemPrice 		= parseFloat( $item.find( '.item-details .amount' ).html() ),
-								newItemPrice 	= itemPrice * itemNb;
+							$( '.cart_list' ).each( function(){
+								$( this ).find( '.mini_cart_item' ).each(function(){
+									var $item			= $( this ),
+										itemNb 			= parseInt( $item.find( 'input.qty' ).val() ),
+										symbol			= $item.find( '.item-details .amount .woocommerce-Price-currencySymbol' ).detach(),
+										itemPrice 		= parseFloat( $item.find( '.item-details .amount' ).html() ),
+										newItemPrice 	= itemPrice * itemNb;
 
-							$item.find( '.item-details .amount' ).prepend( symbol );
-							$item.find( '.price .amount' ).text( newItemPrice.toFixed(2) ).prepend( symbol.clone() );
+									$item.find( '.item-details .amount' ).prepend( symbol );
+									$item.find( '.price .amount' ).text( newItemPrice.toFixed(2) ).prepend( symbol.clone() );
+								});
+							});
+
 
 						},
 					    error: function (request, status, error) {
@@ -2122,7 +2128,16 @@
 					$( 'form.checkout' ).on( 'submit', function(){
 						if ( $( 'body' ).hasClass( 'offcanvas-cart' ) ){
 							$( document ).one('ajaxComplete', function( event, xhr, settings ) {
-								var response = $.parseJSON( xhr.responseText );
+								var response;
+
+								try {
+								 	response = $.parseJSON( xhr.responseText );
+								} catch(e) {
+									response = {
+										'result': xhr.responseText,
+										'messages': 'Unknown error, please try again using a different payment method.'
+									};
+								}
 
 								if ( response.result === 'success' ){
 									if ( -1 === response.redirect.indexOf( 'https://' ) || -1 === response.redirect.indexOf( 'http://' ) ) {
@@ -2158,47 +2173,67 @@
 							var $iframe	= $( '.offcanvas-cart #iframe-checkout' ).contents(),
 								$terms 	= $iframe.find( '#checkout_review input#terms' ),
 								$cart = $( '.offcanvas-cart' ),
-								strpInt	= null;
+								strpInt	= null,
+								proceed = true;
 
+							// Remove previous error message
+							$cart.find('.woocommerce-error').remove();
+
+							// If T&C's present, check if it is checked
 							if ( $terms.length > 0 ){
-
-								if ( $terms.is( ':checked' ) ){
-									$iframe.find( '.place-order input#place_order' ).trigger( 'click' );
-
-									// Hide the buttons and cart header
-									$cart.addClass( 'hide-actions' );
-
-									// If stripe is selected
-									if ( $iframe.find( '#payment_method_stripe' ).is( ':checked' ) && ( ! $iframe.find( 'input[name="wc-stripe-payment-token"]:checked' ).length || 'new' === $iframe.find( 'input[name="wc-stripe-payment-token"]:checked' ).val() ) ) {
-
-										// Hide the buttons and cart header
-										$cart.addClass( 'stripe' );
-										$iframe.find( 'body' ).addClass( 'stripe' );
-										PP.method.cart.cartMaxHeight();
-
-										strpInt = setInterval( checkStripe, 1000);
-
-										// Check if the stripe checkout iframe exists - Wait for it to be closed before running this
-										function checkStripe(){
-											if ( $iframe.find( '.stripe_checkout_app' ).length > 0 ){
-											    if( ! $iframe.find( '.stripe_checkout_app' ).is( ':visible' ) ){
-											    	$cart.removeClass( 'stripe' );
-													$iframe.find( 'body' ).removeClass( 'stripe' );
-													PP.method.cart.cartMaxHeight();
-													$iframe.find( '.stripe_checkout_app' ).remove();
-													clearInterval( strpInt );
-											    }
-											}
-										}
-									}
-
-								} else {
+								if ( !$terms.is( ':checked' ) ){
 									$terms.parent().addClass( 'error' );
 									$( '.offcanvas-cart .cart-container' ).scrollTo( $iframe.find( '.place-order' ), 400, {
 										axis: 'y',
 										offset: -30
 									} );
+									proceed = false;
 								}
+							}
+
+							if ( proceed ){
+								// Fake the real button click
+								$iframe.find( '.place-order input#place_order' ).trigger( 'click' );
+
+								// Check if there is an error
+								setTimeout(function(){
+									if ( $iframe.find('.woocommerce-error').length > 0 ){
+										// Move the error in the parent cart and scroll to it
+										$( '.offcanvas-cart .cart-container' ).prepend( $iframe.find('.woocommerce-error').detach() ).scrollTo( $( '.offcanvas-cart .cart-container .woocommerce-error' ), 400, {
+											axis: 'y',
+											offset: -30
+										} );
+									} else {
+
+										// Hide the buttons and cart header
+										$cart.addClass( 'hide-actions' );
+
+										// If stripe is selected
+										if ( $iframe.find( '#payment_method_stripe' ).is( ':checked' ) && ( ! $iframe.find( 'input[name="wc-stripe-payment-token"]:checked' ).length || 'new' === $iframe.find( 'input[name="wc-stripe-payment-token"]:checked' ).val() ) ) {
+
+											// Hide the buttons and cart header
+											$cart.addClass( 'stripe' );
+											$iframe.find( 'body' ).addClass( 'stripe' );
+											PP.method.cart.cartMaxHeight();
+
+											strpInt = setInterval( checkStripe, 1000);
+
+											// Check if the stripe checkout iframe exists - Wait for it to be closed before running this
+											function checkStripe(){
+												if ( $iframe.find( '.stripe_checkout_app' ).length > 0 ){
+												    if( ! $iframe.find( '.stripe_checkout_app' ).is( ':visible' ) ){
+												    	$cart.removeClass( 'stripe' );
+														$iframe.find( 'body' ).removeClass( 'stripe' );
+														PP.method.cart.cartMaxHeight();
+														$iframe.find( '.stripe_checkout_app' ).remove();
+														clearInterval( strpInt );
+												    }
+												}
+											}
+										}
+
+									}
+								}, 300);
 
 							}
 						} else {
@@ -2208,11 +2243,11 @@
 						return false;
 					});
 
-					// Show CVC location when input is focused in
-					$( 'body' ).on( 'focus', 'input.wc-credit-card-form-card-cvc', function(){
-						$( this ).parents( '.wc-credit-card-form' ).addClass( 'cvc-focus' );
-					}).on( 'blur', 'input.wc-credit-card-form-card-cvc', function(){
-						$( this ).parents( '.wc-credit-card-form' ).removeClass( 'cvc-focus' );
+					// Show CVC location when input is focused in for Stripe and Authorize.net
+					$( 'body' ).on( 'focus', 'input.wc-credit-card-form-card-cvc, input.js-sv-wc-payment-gateway-credit-card-form-csc', function(){
+						$( this ).parents( 'fieldset' ).addClass( 'cvc-focus' );
+					}).on( 'blur', 'input.wc-credit-card-form-card-cvc, input.js-sv-wc-payment-gateway-credit-card-form-csc', function(){
+						$( this ).parents( 'fieldset' ).removeClass( 'cvc-focus' );
 					});
 
 					// Re-run function on checkout update
@@ -2242,6 +2277,9 @@
 				validate: function( view ){
 					var $cart 	= $( '.offcanvas-cart #iframe-checkout' ).contents(),
 						passed	= true;
+
+					// Remove all input error before checking again
+					$cart.find('li.wc_payment_method .error' ).removeClass('error');
 
 					switch( view ){
 						case '#details':
@@ -2287,20 +2325,26 @@
 
 						break;
 						case '#shipping':
-							if ( $cart.find( 'input#payment_method_stripe' ).is( ':checked' ) ){
+							var $chosenMethod = $cart.find('li.wc_payment_method > input[type="radio"]:checked' ).closest('.wc_payment_method'),
+								$inputs		  = $chosenMethod.find('.woocommerce-validated input.input-text');
 
-								if ( $cart.find( '#wc-stripe-payment-token-new' ).length > 0 && $cart.find( '#wc-stripe-payment-token-new' ).is( ':checked' ) ){
-
-									$cart.find( '.wc-credit-card-form input[type="text"]' ).each( function(){
-										// If empty make it obvious
-										if ( $( this ).val() === '' ){
-											$( this ).parent().addClass( 'error' );
-											passed = false;
-										}
-									});
-
+							// If Stripes selected
+							if ( $cart.find('input#payment_method_stripe:checked').length > 0 ){
+								if ( $chosenMethod.find( '#wc-stripe-payment-token-new' ).is( ':checked' ) ){
+									$inputs = $chosenMethod.find( '.wc-credit-card-form input.input-text' );
+								} else {
+									break;
 								}
 							}
+
+							$inputs.each( function(){
+								// If empty make it obvious
+								if ( $( this ).val() === ''){
+									$( this ).parent().addClass( 'error' );
+									passed = false;
+								}
+							});
+
 						break;
 						case '#review':
 

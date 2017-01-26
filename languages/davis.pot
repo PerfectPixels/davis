@@ -1153,6 +1153,10 @@ msgstr ""
 msgid "in"
 msgstr ""
 
+#: template-parts/header/offcanvas-cart.php:19
+msgid "Processing Payment..."
+msgstr ""
+
 #: template-parts/header/page-title.php:64
 msgid "From your account dashboard you can view your recent orders, manage your shipping and billing addresses"
 msgstr ""

@@ -44,11 +44,11 @@
   * @param boolean
   */
 function is_quick_checkout(){
-    global $woocommerce;
+    global $wp, $woocommerce;
 
     $quick_checkout = get_theme_mod('quick_checkout', true);
 
-    if ( is_checkout() && $quick_checkout == true ){
+    if ( is_checkout() && !is_order_received_page() && $quick_checkout == true ){
         return true;
     } else {
         return false;

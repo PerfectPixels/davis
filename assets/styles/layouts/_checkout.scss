@@ -308,14 +308,16 @@ body.checkout {
 
 					input.wc-credit-card-form-card-cvc:focus { border-color: #028abf !important; box-shadow: inset 1px -1px 0 #028abf !important; }
 
-					input#stripe-card-number { background-image: url(../images/card.png); background-position: 99% 8px; background-repeat: no-repeat; background-size: 44px 28px; }
+					input#stripe-card-number { background-image: url(../images/card.png); background-position: 99% 8px; background-repeat: no-repeat; background-size: 44px 28px;
 
-					input#stripe-card-number.visa { background-image: url(../images/visa.png); }
-					input#stripe-card-number.mastercard { background-image: url(../images/mastercard.png); }
-					input#stripe-card-number.amex { background-image: url(../images/amex.png); }
-					input#stripe-card-number.discover { background-image: url(../images/discover.png); }
-					input#stripe-card-number.dinersclub { background-image: url(../images/dinersclub.png); }
-					input#stripe-card-number.jcb { background-image: url(../images/jcb.png); }
+						&.visa { background-image: url(../images/visa.png); }
+						&.mastercard { background-image: url(../images/mastercard.png); }
+						&.amex { background-image: url(../images/amex.png); }
+						&.discover { background-image: url(../images/discover.png); }
+						&.dinersclub { background-image: url(../images/dinersclub.png); }
+						&.jcb { background-image: url(../images/jcb.png); }
+
+					}
 
 					input[type=radio]+label { line-height: 1; }
 
@@ -361,6 +363,51 @@ body.checkout {
 
 				.form-row-first,
 				.form-row-last { width: 49%; padding: 0; }
+
+			}
+
+			.payment_method_authorize_net_aim {
+
+				img { width: 40px; }
+
+				.payment_box {
+
+					label[for=wc-authorize-net-aim-account-number]:before { background: #028abf; width: 2px; height: 0; position: absolute; right: calc( 1% + 9px); bottom: -84px; content: ""; transition: height .3s $cb; }
+
+					input { font-size: 12px; line-height: 1; background: #fff; border: none; padding: 15px 10px; margin: 0 !important; }
+
+					input.js-sv-wc-payment-gateway-credit-card-form-csc { width: 100% !important; }
+
+					input.js-sv-wc-payment-gateway-credit-card-form-csc:focus { border-color: #028abf !important; box-shadow: inset 1px -1px 0 #028abf !important; }
+
+					input#wc-authorize-net-aim-account-number { background-image: url(../images/card.png); background-position: 99% 8px; background-repeat: no-repeat; background-size: 44px 28px;
+
+						&.invalid-card-type { background-image: url(../images/card.png); }
+						&.visa { background-image: url(../images/visa.png); }
+						&.mastercard { background-image: url(../images/mastercard.png); }
+						&.amex { background-image: url(../images/amex.png); }
+						&.discover { background-image: url(../images/discover.png); }
+						&.dinersclub { background-image: url(../images/dinersclub.png); }
+						&.jcb { background-image: url(../images/jcb.png); }
+
+					}
+
+					input[type=radio]+label { line-height: 1; }
+
+					.cvc-focus {
+
+						input#wc-authorize-net-aim-account-number { background-image: url(../images/cvc.png) !important; }
+
+						label[for=wc-authorize-net-aim-account-number]:before { height: 51px; }
+
+					}
+
+				}
+
+				.form-row-first,
+				.form-row-last { width: 49%; padding: 0; margin: 0; }
+
+				.form-row-last { float: right; }
 
 			}
 
