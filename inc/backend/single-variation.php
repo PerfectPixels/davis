@@ -11,9 +11,9 @@ Text Domain: davis
 
 
 if(is_admin()) {
-    
+
     add_action( 'woocommerce_variation_options', 'add_variation_checkboxes', 10, 3 );
-    
+
     add_action( 'woocommerce_product_after_variable_attributes', 'add_variation_additional_fields', 10, 3 );
 
     add_action( 'woocommerce_save_product_variation', 'save_product_variation', 10, 2 );
@@ -28,7 +28,7 @@ if(is_admin()) {
     add_filter( 'woocommerce_shortcode_products_query', 'add_variations_to_shortcode_query', 10, 2 );
 
     add_filter( 'post_type_link', 'change_variation_permalink', 10, 2 );
-            
+
     add_filter( 'post_class', 'add_post_classes_in_loop' );
     add_filter( 'woocommerce_product_is_visible', 'filter_variation_visibility', 10, 2 );
 
@@ -53,21 +53,21 @@ add_filter( 'woocommerce_taxonomy_objects_product_cat','add_product_categories_t
     function add_variations_to_product_query( $q, $wc_query ) {
 
         if( !is_admin() && is_woocommerce() && $q->is_main_query() && isset( $q->query_vars['wc_query'] ) ) {
-			
+
 			// ADD BY DAVID
             global $_chosen_attributes, $wp_query;
-            
+
             // Has this page got any subcategories?
             $children = false;
 			$term 	  = $wp_query->get_queried_object();
-			
+
 			if ( is_tax() ){
 				$children = get_terms( $term->taxonomy, array(
 					'parent'    => $term->term_id,
 					'hide_empty' => false
 				) );
 			}
-			
+
 			if ( !$children ){
 				$tax_query = array(
 	            	array(
@@ -77,13 +77,13 @@ add_filter( 'woocommerce_taxonomy_objects_product_cat','add_product_categories_t
 						'operator'  => 'NOT IN'
 					)
 				);
-	
+
 				$q->set('tax_query',$tax_query);
 			}
 
             $post_type = (array) $q->get('post_type');
             $post_type[] = 'product_variation';
-            if( !in_array('product', $post_type) ) $post_type[] = 'product';
+            if( !in_array('product', $post_type) ) { $post_type[] = 'product'; }
             $q->set('post_type', $post_type );
 
             // update the meta query to include our variations
@@ -209,7 +209,7 @@ add_filter( 'woocommerce_taxonomy_objects_product_cat','add_product_categories_t
 		}
 
     }
-    
+
 /** =============================
     *
     * Helper: Update meta query
@@ -222,14 +222,14 @@ add_filter( 'woocommerce_taxonomy_objects_product_cat','add_product_categories_t
     ============================= */
 
     function update_meta_query( $meta_query ) {
-		
+
 		// ADD BY DAVID
         global $wp_query;
-    	
+
     	// Has this page got any subcategories?
     	$children = false;
 		$term 	  = $wp_query->get_queried_object();
-		
+
 		if ( is_tax() ){
 			$children = get_terms( $term->taxonomy, array(
 				'parent'    => $term->term_id,
@@ -410,7 +410,7 @@ add_filter( 'woocommerce_taxonomy_objects_product_cat','add_product_categories_t
 
         return $classes;
 
-    } 
+    }
 
 /** =============================
     *
@@ -433,7 +433,7 @@ add_filter( 'woocommerce_taxonomy_objects_product_cat','add_product_categories_t
 
 			<?php }
 		}
-	
+
 	}
 
 /** =============================
@@ -449,9 +449,9 @@ add_filter( 'woocommerce_taxonomy_objects_product_cat','add_product_categories_t
     function add_variation_additional_fields( $loop, $variation_data, $variation ) { ?>
 
 		<div class="davis-display-options" style="margin-top: 20px;">
-	
+
 		    <strong><?php _e('DISPLAY OPTIONS','davis'); ?></strong>
-		
+
 		    <div class="form-row form-row-full">
 		        <?php woocommerce_wp_text_input( array(
 		            'id' => "jck_wssv_display_title[$loop]",
@@ -460,7 +460,7 @@ add_filter( 'woocommerce_taxonomy_objects_product_cat','add_product_categories_t
 		            'value' => get_variation_title( $variation->ID )
 		        ) ); ?>
 		    </div>
-			
+
 			<?php // ADD BY DAVID ?>
 		    <div class="form-row form-row-full">
 		        <?php woocommerce_wp_text_input( array(
@@ -470,7 +470,7 @@ add_filter( 'woocommerce_taxonomy_objects_product_cat','add_product_categories_t
 		            'value' => get_variation_colors( $variation->ID )
 		        ) ); ?>
 		    </div>
-		
+
 		</div>
 
     <?php }
@@ -532,16 +532,16 @@ add_filter( 'woocommerce_taxonomy_objects_product_cat','add_product_categories_t
 
             wp_update_post( $variation_args );
         }
-        
-        
+
+
 		// set colors
 		/*
 if( $colors ){
     		update_post_meta( $variation_id, '_jck_product_colors', $colors );
-    		
+
     		$colors = explode(",", $colors);
-    		wp_set_object_terms( $variation_id, $colors, 'pa_colors' , false);    		
-    		
+    		wp_set_object_terms( $variation_id, $colors, 'pa_colors' , false);
+
     	}
 */
 
@@ -870,11 +870,11 @@ if( $colors ){
                     }
                 }
             }
-            
+
             // ADD BY DAVID
             $colors = isset( $_POST['jck_product_colors'] ) ? $_POST['jck_product_colors'][ $i ] : false;
 			$colors = explode(",", $colors);
-							
+
 			wp_set_object_terms( $variation_id, $colors, 'pa_colors');
 
         }

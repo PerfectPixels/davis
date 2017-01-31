@@ -274,11 +274,11 @@ msgstr ""
 msgid "Choose to display the social media icons on the left or the right of the top bar."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:253, inc/backend/theme_options/inc/header.php:398, inc/backend/theme_options/inc/shop.php:157, inc/mega-menu/options/background.php:67, inc/mega-menu/options/background.php:89
+#: inc/backend/theme_options/inc/header.php:253, inc/backend/theme_options/inc/header.php:398, inc/backend/theme_options/inc/shop.php:181, inc/mega-menu/options/background.php:67, inc/mega-menu/options/background.php:89
 msgid "Right"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:254, inc/backend/theme_options/inc/header.php:399, inc/backend/theme_options/inc/shop.php:156, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87
+#: inc/backend/theme_options/inc/header.php:254, inc/backend/theme_options/inc/header.php:399, inc/backend/theme_options/inc/shop.php:180, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87
 msgid "Left"
 msgstr ""
 
@@ -550,11 +550,11 @@ msgstr ""
 msgid "Choose if you want to display the product variations as a slider on the shop pages."
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:92, inc/backend/theme_options/inc/shop.php:107, inc/backend/theme_options/inc/shop.php:249
+#: inc/backend/theme_options/inc/shop.php:92, inc/backend/theme_options/inc/shop.php:107, inc/backend/theme_options/inc/shop.php:278
 msgid "Enable"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:93, inc/backend/theme_options/inc/shop.php:108, inc/backend/theme_options/inc/shop.php:250
+#: inc/backend/theme_options/inc/shop.php:93, inc/backend/theme_options/inc/shop.php:108, inc/backend/theme_options/inc/shop.php:279
 msgid "Disable"
 msgstr ""
 
@@ -599,78 +599,86 @@ msgid "Slideshow"
 msgstr ""
 
 #: inc/backend/theme_options/inc/shop.php:149
-msgid "Product Images Position"
+msgid "Image container background color"
 msgstr ""
 
 #: inc/backend/theme_options/inc/shop.php:150
+msgid "Color used on behind the images."
+msgstr ""
+
+#: inc/backend/theme_options/inc/shop.php:173
+msgid "Product Images Position"
+msgstr ""
+
+#: inc/backend/theme_options/inc/shop.php:174
 msgid "Select the which side you want the images to be displayed."
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:171
+#: inc/backend/theme_options/inc/shop.php:200
 msgid "The cart is being cached, make sure you empty the cache after updating any option in this section."
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:179
+#: inc/backend/theme_options/inc/shop.php:208
 msgid "Cart Title"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:183, woocommerce/cart/mini-cart.php:19, woocommerce/checkout/form-checkout.php:45
+#: inc/backend/theme_options/inc/shop.php:212, woocommerce/cart/mini-cart.php:19, woocommerce/checkout/form-checkout.php:45
 msgid "Cart Summary"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:188
+#: inc/backend/theme_options/inc/shop.php:217
 msgid "Details Title"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:192, woocommerce/cart/mini-cart.php:22, woocommerce/checkout/form-checkout.php:56
+#: inc/backend/theme_options/inc/shop.php:221, woocommerce/cart/mini-cart.php:22, woocommerce/checkout/form-checkout.php:56
 msgid "Customer Details"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:197
+#: inc/backend/theme_options/inc/shop.php:226
 msgid "Details Subtitle"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:201, woocommerce/checkout/form-checkout.php:57
+#: inc/backend/theme_options/inc/shop.php:230, woocommerce/checkout/form-checkout.php:57
 msgid "Fill in your details in the form bellow"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:206
+#: inc/backend/theme_options/inc/shop.php:235
 msgid "Shipping / Payment Title"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:210, woocommerce/cart/mini-cart.php:23, woocommerce/checkout/form-checkout.php:153
+#: inc/backend/theme_options/inc/shop.php:239, woocommerce/cart/mini-cart.php:23, woocommerce/checkout/form-checkout.php:153
 msgid "Shipping & Payment"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:215
+#: inc/backend/theme_options/inc/shop.php:244
 msgid "Shipping / Payment Subtitle"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:219, woocommerce/checkout/form-checkout.php:154
+#: inc/backend/theme_options/inc/shop.php:248, woocommerce/checkout/form-checkout.php:154
 msgid "Select your preferred shipping and payment methods"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:224
+#: inc/backend/theme_options/inc/shop.php:253
 msgid "Review Title"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:228, woocommerce/checkout/form-checkout.php:176
+#: inc/backend/theme_options/inc/shop.php:257, woocommerce/checkout/form-checkout.php:176
 msgid "Review Order"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:233
+#: inc/backend/theme_options/inc/shop.php:262
 msgid "Review Subtitle"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:237, woocommerce/checkout/form-checkout.php:177
+#: inc/backend/theme_options/inc/shop.php:266, woocommerce/checkout/form-checkout.php:177
 msgid "Confirm your cart content and the total of your order"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:242
+#: inc/backend/theme_options/inc/shop.php:271
 msgid "Quick Checkout"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:243
+#: inc/backend/theme_options/inc/shop.php:272
 msgid "Choose if you want a quick checkout available on all pages instead of the default Woocommerce checkout page. PLEASE NOTE: Quick checkout was not tested with all existing plugins that adds/modifies the checkout process or layout. If you find any issues while using it please disable it."
 msgstr ""
 

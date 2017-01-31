@@ -58,7 +58,7 @@ switch ($product_style) {
         $size = array(1270, 635);
         break;
     case 'fullwidth':
-        $data_slick = '{ "accessibility": true, "asNavFor": "#thumb-slider" }';
+        $data_slick = '{ "accessibility": true, "centerMode": true, "centerPadding": "0%", "asNavFor": "#thumb-slider", "arrows": false }';
         break;
     default:
         $data_slick = '{ "accessibility": true, "fade": true, "asNavFor": "#thumb-slider"  }';

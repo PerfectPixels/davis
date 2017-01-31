@@ -1,12 +1,23 @@
 .single-product .wrap { padding-top: 35px !important; }
 
-.woocommerce div.product { margin: 0;
+.woocommerce #content div.product { margin: 0;
 
 	.container {  position: relative; margin-top: 45px;
 
-		span.single-product-sale { background: $green; font-size: 13px; text-transform: uppercase; right: 55%; left: inherit; top: 0; padding: 4px 12px; letter-spacing: 0.0275em; min-height: 0; line-height: 1.5; z-index: 999; border-radius: 0;}
+		span.single-product-sale { background: $green; font-size: 13px; text-transform: uppercase; right: 55%; left: inherit; top: 0; padding: 4px 12px; letter-spacing: 0.0275em; min-height: 0; line-height: 1.5; z-index: 2; border-radius: 0;}
 
-		.summary { float: left !important; width: 45% !important; position: relative; padding: 0 0 40px 0; margin: 0 5% 0 0 !important; z-index: 2;
+		.woocommerce-product-rating { margin-bottom: -20px;
+
+			a { display: inline-block;
+
+				.star-rating { color: $yellow; font-size: 14px; letter-spacing: 0.15em; width: 5.8em; }
+				.star-rating:before { color: $yellow; }
+
+			}
+
+		}
+
+		.summary { float: left; width: 45%; position: relative; padding: 0 0 40px 0; margin: 0 5% 0 0; z-index: 2;
 
 			section {
 
@@ -15,17 +26,6 @@
 				h6 { margin: 0; color: #000; font-size: 11px; display: none;
 
 					* { color: #000; margin-bottom: 5px; }
-
-				}
-
-				.woocommerce-product-rating { margin-bottom: -20px;
-
-					a { display: inline-block;
-
-						.star-rating { color: $yellow; font-size: 14px; letter-spacing: 0.15em; width: 5.8em; }
-						.star-rating:before { color: $yellow; }
-
-					}
 
 				}
 
@@ -203,7 +203,7 @@
 
 		}
 
-		#main-slider { width: 45% !important; position: relative; text-align: center; padding: 0 0 40px; margin: 0 0 0 5% !important; overflow: hidden;
+		#main-slider { width: 45% !important; position: relative; text-align: center; padding: 0; margin: 0 0 40px 5% !important; overflow: hidden;
 
 			.item { text-align: center; opacity: 0; transition: opacity .3s $cb;
 
@@ -250,9 +250,9 @@
 
 				}
 
-				.thumb {  height: 100px; text-align: center; outline: none; position: relative; cursor: pointer;
+				.thumb { text-align: center; outline: none; position: relative; cursor: pointer;
 
-					img {  max-height: 100px; width: auto; display: inline-block; opacity: .3; padding: 5px 0; }
+					img {  max-height: 100px; width: auto; display: inline-block; opacity: .3; padding: 0; }
 
 					&.slick-current {
 
@@ -262,19 +262,19 @@
 
 					}
 
-					&:before { position: absolute; left: 0; right: -1px; bottom: 0; top: 0; content: ""; border: 1px solid #999; }
+					&:before { position: absolute; left: 0; right: -1px; bottom: 0; top: 0; content: ""; border: 1px solid #eee; }
 
 					&:after { position: absolute; left: 0; right: 0; bottom: 0; height: 0; content: ""; transition: height .3s $cb}
 
 				}
 
-				&.scrollable { border-right: 1px solid #999; }
+				&.scrollable { border-right: 1px solid #eee; }
 
 			}
 
 			&.images-left {
 
-				.summary { float: right !important; }
+				.summary { float: right; }
 
 				#main-slider { float: left; }
 
@@ -296,7 +296,7 @@
 
 					.thumb {
 
-						img { padding: 0; border: 1px solid #999; }
+						img { padding: 0; border: 1px solid #eee; }
 
 						&:before,
 						&:after { display: none; }
@@ -340,9 +340,9 @@
 
 				.thumb-image-container {
 
-					#main-slider { float: right !important; margin-left: 3% !important; margin-right: 0 !important; }
+					#main-slider { float: right; margin-left: 3% !important; margin-right: 0 !important; }
 
-					#thumb-slider {float: left !important; }
+					#thumb-slider {float: left; }
 
 				}
 
@@ -358,7 +358,7 @@
 
 		&.style-carousel {
 
-			.summary { margin: 0 !important;
+			.summary { margin: 0;
 
 				div[itemprop="description"] p { color: #555; }
 
@@ -410,7 +410,7 @@
 
 		&.style-slideshow { @extend .style-thumb; margin-top: 0;
 
-			.summary { float: none !important; width: 100% !important; overflow: hidden; padding-bottom: 35px;
+			.summary { float: none; width: 100%; overflow: hidden; padding-bottom: 35px;
 
 				> section { line-height: 40px;
 
@@ -430,7 +430,7 @@
 
 				form { margin: 0; float: right; /*width: 60%;*/ text-align: right; line-height: .7;
 
-					.variations { width: auto; display: inline-block; margin: 0 15px 0 0;
+					.variations { width: auto; display: inline-block; margin: 0 15px 0;
 
 						.value select { width: auto; min-width: auto; padding-right: 39px;}
 
@@ -492,7 +492,7 @@
 
 					.thumb { margin-right: 25px;
 
-						img { max-width: inherit; border: 1px solid; color: #999; padding: 0; }
+						img { max-width: inherit; border: 1px solid; color: #eee; padding: 0; }
 
 						&:before,
 						&:after { display: none !important; }
@@ -513,6 +513,56 @@
 					a { font-weight: normal; color: #000; margin: 0; }
 
 					a { cursor: pointer; }
+
+				}
+
+			}
+
+		}
+
+		&.style-fullwidth { @extend .style-slideshow; margin-top: -35px; max-width: none; padding-left: 0; padding-right: 0; text-align: center;
+
+			.title-wrap { margin-top: 35px; display: inline-block; position: relative;
+
+				h1 { margin: 0; }
+
+				h6 { display: none; }
+
+				.single-product-sale { right: inherit !important; left: 100%; transform: none; top: 8px; margin-left: 20px; }
+
+				.woocommerce-product-rating { text-align: center; margin: -0;
+
+					.star-rating { margin-right: 0; }
+
+				}
+
+			}
+
+			.thumb-image-container { max-width: 600px; margin: 30px auto 0;
+
+				#thumb-slider { position: static; margin: 30px 0;
+
+					.thumb { margin: 0; padding: 0 10px;
+
+						img { border: 0 none; max-width: 100%; }
+
+					}
+
+				}
+
+			}
+
+			.summary { text-align: center; float: none; margin: 0;
+
+				section { max-width: 1300px; margin: 0 auto;
+
+					form { float: none; text-align: center; }
+
+					.product_meta { margin: 60px 0 -30px;
+
+						span { display: inline-block; }
+
+					}
 
 				}
 

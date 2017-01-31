@@ -34,15 +34,17 @@ if ($page_product_style !== 'default'){
     $product_style = $page_product_style;
 }
 
+$product_arr = array('slideshow','fullwidth');
+
 // Add/Remove the quantity and cart button
-if ($product_style === 'slideshow' && !$in_form){
+if ( in_array($product_style, $product_arr) && !$in_form){
 	remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
 } else {
 	add_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
 }
 
 // Remove the empty single_variation_wrap div
-if ($product_style === 'slideshow' && $in_form){
+if ( in_array($product_style, $product_arr) && $in_form){
 	remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation', 10 );
 }
 
@@ -56,7 +58,7 @@ if ($product_style === 'slideshow' && $in_form){
 
 	?>
 
-	<?php if ($product_style === 'slideshow' && !$in_form || $product_style !== 'slideshow' && $in_form) : ?>
+	<?php if (in_array($product_style, $product_arr) && !$in_form || !in_array($product_style, $product_arr) && $in_form) : ?>
 		<div class="woocommerce-variation regular_price">
 			<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 

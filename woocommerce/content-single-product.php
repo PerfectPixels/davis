@@ -22,14 +22,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 
 $attachment_ids = $product->get_gallery_attachment_ids();
-$images_pos = 'right';
+$images_pos		= 'right';
+$product_images_bgcolor = '';
 
 // Change the position of the price
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 
 // Get the images style
-$product_style = get_theme_mod('product_style', 'thumb');
-$page_product_style = get_field('page_images_style');
+$product_style 			= get_theme_mod('product_style', 'thumb');
+$page_product_style 	= get_field('page_images_style');
 
 if ($page_product_style !== 'default'){
     $product_style = $page_product_style;
@@ -39,12 +40,20 @@ if ($page_product_style !== 'default'){
 if ($product_style === 'slideshow'){
 	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
 	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+} else if ($product_style === 'fullwidth'){
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+	add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 5 );
+	add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_rating', 10 );
+	$images_pos = 'left';
+	$product_images_bgcolor = 'style="background-color:'. get_field('product_images_background_color') .';"';
 }
 
 if ($product_style !== 'slideshow' && $product_style !== 'fullwidth'){
 	// Get the images position
-	$images_pos = get_theme_mod('product_images_position', 'right');
-	$page_images_position = get_field('page_product_images_position');
+	$images_pos 			= get_theme_mod('product_images_position', 'right');
+	$page_images_position 	= get_field('page_product_images_position');
 
 	if ($page_images_position !== 'default'){
 	    $images_pos = $page_images_position;
@@ -69,7 +78,7 @@ if ($product_style !== 'slideshow' && $product_style !== 'fullwidth'){
 
 <div itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<div class="container style-<?php echo $product_style; ?> images-<?php echo $images_pos; ?>">
+	<div class="container style-<?php echo $product_style; ?> images-<?php echo $images_pos; ?>" <?php echo $product_images_bgcolor; ?>>
 
 		<?php if ($images_pos === 'left'){
 			/**
@@ -103,6 +112,7 @@ if ($product_style !== 'slideshow' && $product_style !== 'fullwidth'){
 
 					wc_get_template( 'single-product/product-thumbs.php', array(
 				        'attachment_ids' => $attachment_ids,
+				        'product_style' => $product_style,
 				    ) );
 
 				} ?>

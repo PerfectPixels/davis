@@ -3,18 +3,8 @@
     "title": "Product Page Options",
     "fields": [
         {
-            "key": "field_5823469c02155",
-            "label": "Product Images Style",
-            "name": "page_images_style",
-            "type": "select",
-            "instructions": "Select the way the product is been showcased",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
+            "multiple": 0,
+            "allow_null": 0,
             "choices": {
                 "default": "Default",
                 "thumb": "Thumbnails below Summary",
@@ -28,14 +18,61 @@
             "default_value": [
                 "default"
             ],
-            "allow_null": 0,
-            "multiple": 0,
             "ui": 0,
             "ajax": 0,
+            "placeholder": "",
             "return_format": "value",
-            "placeholder": ""
+            "key": "field_5823469c02155",
+            "label": "Product Images Style",
+            "name": "page_images_style",
+            "type": "select",
+            "instructions": "Select the way the product is been showcased",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         },
         {
+            "default_value": "",
+            "key": "field_58908015d0a2b",
+            "label": "Product Images background color",
+            "name": "product_images_background_color",
+            "type": "color_picker",
+            "instructions": "Choose the background color behind the images",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5823469c02155",
+                        "operator": "==",
+                        "value": "fullwidth"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "multiple": 0,
+            "allow_null": 0,
+            "choices": {
+                "default": "Default",
+                "left": "Left",
+                "right": "Right"
+            },
+            "default_value": [
+                "default"
+            ],
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value",
             "key": "field_582349eb23320",
             "label": "Product Images Position",
             "name": "page_product_images_position",
@@ -55,23 +92,7 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "choices": {
-                "default": "Default",
-                "left": "Left",
-                "right": "Right"
-            },
-            "default_value": [
-                "default"
-            ],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "disabled": 0,
-            "readonly": 0,
-            "return_format": "value"
+            }
         }
     ],
     "location": [
@@ -91,5 +112,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Those options are for variable product only",
-    "modified": 1483619828
+    "modified": 1485865283
 }

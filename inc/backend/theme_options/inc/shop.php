@@ -143,6 +143,30 @@ Kirki::add_field( 'pp_theme', array(
 		'fullwidth'   => esc_attr__( 'Fullwidth', 'davis' ),
 	),
 ) );
+// Fullwidth background color
+Kirki::add_field( 'pp_theme', array(
+	'settings' => 'fullwidth_bgcolor',
+	'label'    => __( 'Image container background color', 'davis' ),
+	'description'    => __( 'Color used on behind the images.', 'davis' ),
+	'section'  => 'section_product_page',
+	'type'     => 'color',
+	'alpha'    => false,
+	'priority' => 10,
+	'default'  => '#fff',
+	'output' => array(
+		array(
+			'element'  => array( '.style-fullwidth' ),
+			'property' => 'background-color',
+		),
+	),
+	'active_callback'    => array(
+		array(
+			'setting'  => 'product_style',
+			'operator' => '==',
+			'value'    => 'fullwidth',
+		),
+	),
+) );
 // Product images position
 Kirki::add_field( 'pp_theme', array(
 	'settings'    => 'product_images_position',
@@ -161,6 +185,11 @@ Kirki::add_field( 'pp_theme', array(
 			'setting'  => 'product_style',
 			'operator' => '!=',
 			'value'    => 'slideshow',
+		),
+		array(
+			'setting'  => 'product_style',
+			'operator' => '!=',
+			'value'    => 'fullwidth',
 		),
 	),
 ) );
