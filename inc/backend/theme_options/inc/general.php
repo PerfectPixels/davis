@@ -196,7 +196,7 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'background-color',
 		),
 		array(
-			'element'  => array( '.ui-slider-range', '.page-numbers.current', '.rating-graph span' ),
+			'element'  => array( '.ui-slider-range', '.page-numbers.current' ),
 			'property' => 'background-color',
 			'suffix'   => '!important',
 		),

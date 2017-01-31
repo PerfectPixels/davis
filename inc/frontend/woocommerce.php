@@ -86,6 +86,32 @@ class PP_Woocommerce {
 
         // Number of columns in product archive
         add_filter('loop_shop_columns', array( $this, 'loop_columns' ));
+
+        // Change the position of the price in the product page
+        remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+
+        // Get the images style
+        $product_style 			= get_theme_mod('product_style', 'thumb');
+        $page_product_style 	= get_field('page_images_style');
+
+        if ($page_product_style !== 'default'){
+            $product_style = $page_product_style;
+        }
+
+        // Change the Summary elements position if it is the slideshow/fullwidth style for the product page
+        if ($product_style === 'slideshow'){
+        	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+        	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+        } else if ($product_style === 'fullwidth'){
+        	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+        	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
+        	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+        	add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 5 );
+        	add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_rating', 10 );
+        }
+
+		// Display social links
+		add_action( 'woocommerce_share', array( $this, 'share_links' ), 50 );
     }
 
     /**
@@ -337,5 +363,30 @@ class PP_Woocommerce {
     	}
     	wp_die();
     }
+
+    /**
+	 * Sharing links
+	 *
+	 * @since 1.0
+	 */
+	function share_links() {
+
+		if ( function_exists( 'social_links' ) ) {
+			global $product;
+
+			$image_id   = $product->get_image_id();
+			$image = '';
+			if ( $image_id ) {
+				$image = wp_get_attachment_url( $image_id );
+			} ?>
+
+            <div class="product_share">
+                <span><?php _e( 'Share:', 'davis' ); ?></span>
+                <?php echo social_links($product->get_title(), $product->get_permalink(), $image); ?>
+            </div>
+
+		<?php }
+
+	}
 
 }

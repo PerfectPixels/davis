@@ -498,7 +498,7 @@ msgstr ""
 msgid "Page Title"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:23, inc/functions/titles.php:28
+#: inc/backend/theme_options/inc/shop.php:23, inc/functions/entries.php:28
 msgid "Shop all products"
 msgstr ""
 
@@ -770,19 +770,23 @@ msgstr ""
 msgid "Edit %s"
 msgstr ""
 
-#: inc/frontend/woocommerce.php:295
+#: inc/frontend/woocommerce.php:321
 msgid "by"
 msgstr ""
 
-#: inc/functions/titles.php:23
+#: inc/frontend/woocommerce.php:384
+msgid "Share:"
+msgstr ""
+
+#: inc/functions/entries.php:23
 msgid "Latest Posts"
 msgstr ""
 
-#: inc/functions/titles.php:40
+#: inc/functions/entries.php:40
 msgid "Search Results for %s"
 msgstr ""
 
-#: inc/functions/titles.php:44
+#: inc/functions/entries.php:44
 msgid "Not Found"
 msgstr ""
 

@@ -38,7 +38,7 @@
 	    require get_template_directory() . '/inc/mega-menu/class-mega-menu.php';
     } else {
         // Global functions
-        require get_template_directory() . '/inc/functions/titles.php';
+        require get_template_directory() . '/inc/functions/entries.php';
         require get_template_directory() . '/inc/functions/cart.php';
         require get_template_directory() . '/inc/functions/reviews.php';
 

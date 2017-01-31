@@ -28,6 +28,7 @@ $product_images_bgcolor = '';
 // Change the position of the price
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 
+
 // Get the images style
 $product_style 			= get_theme_mod('product_style', 'thumb');
 $page_product_style 	= get_field('page_images_style');
@@ -36,16 +37,8 @@ if ($page_product_style !== 'default'){
     $product_style = $page_product_style;
 }
 
-// Change the Summary elements position if it is the slideshow style
-if ($product_style === 'slideshow'){
-	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
-	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
-} else if ($product_style === 'fullwidth'){
-	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
-	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
-	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
-	add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 5 );
-	add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_rating', 10 );
+// Specific styles for fullwidth layout
+if ($product_style === 'fullwidth'){
 	$images_pos = 'left';
 	$product_images_bgcolor = 'style="background-color:'. get_field('product_images_background_color') .';"';
 }

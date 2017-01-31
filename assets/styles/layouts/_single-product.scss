@@ -199,6 +199,20 @@
 
 				}
 
+				.product_share { @extend .product_meta; margin-top: 0;
+
+					span { display: inline-block;
+
+						a { color: #777;
+
+							&:before { font-size: 15px; vertical-align: middle; padding: 2px; }
+
+						}
+
+					}
+
+				}
+
 			}
 
 		}
@@ -505,7 +519,7 @@
 
 			}
 
-			.product_meta { margin: 10px 0 60px;
+			.product_meta { margin: 10px 0 60px; display: inline-block;
 
 				span { font-size: 12px; color: #000; font-weight: bold; margin-right: 10px;  display: inline-block;
 
@@ -515,6 +529,12 @@
 					a { cursor: pointer; }
 
 				}
+
+			}
+
+			.product_share {
+
+				span { margin-right: 0 !important; }
 
 			}
 
@@ -634,7 +654,12 @@
 
 					.number { font-size: 36px; line-height: 1; letter-spacing: -0.025em; margin: 30px 0 10px; display: block; }
 
-					.star-rating { text-align: center; float: none; margin: 0 auto 5px; font-size: 20px; width: 5.1em; }
+					.star-rating { text-align: center; float: none; margin: 0 auto 5px; font-size: 20px; width: 5.1em;
+
+						&:before,
+						span { color: $yellow; }
+
+					}
 
 					p { font-size: 14px; margin: 0; }
 
@@ -644,11 +669,11 @@
 
 					table { border-collapse: separate;
 
-						td.rating-number { padding: 0; margin: 0; border: 2px solid transparent; line-height: 1;
+						td.rating-number { padding: 0; margin: 0; border: 2px solid transparent; line-height: 1.4;
 
 							a { font-size: 14px; color: #000; text-decoration: none; display: inline-block; width: 8px; text-align: right;     vertical-align: top; }
 
-							.rating-star { font-size: 13px; vertical-align: middle; padding: 1px 0; }
+							.rating-star { font-size: 13px; vertical-align: middle; padding: 1px 0; color: $yellow; }
 
 						}
 
@@ -683,6 +708,8 @@
 					 	}
 
 					 	td.rating-graph { position: relative; width: auto;
+
+							span { background-color: $yellow; }
 
 						 	span.bar { height: 20px; display: inline-block; margin: 0; padding: 0; z-index: 1; }
 
