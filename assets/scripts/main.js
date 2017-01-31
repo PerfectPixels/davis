@@ -2678,10 +2678,22 @@
 				radioCheckboxAction: function() {
 					var $iframe = $( '.offcanvas-cart #iframe-checkout' ).contents();
 
-					$iframe.on( 'change', 'input[name="payment_method"], input[name="wc-stripe-payment-token"], input[name="ship_to_different_address"], input[name="createaccount"]', function(){
+					$iframe.on( 'change click', 'input[name="payment_method"], input[name="wc-stripe-payment-token"], input[name="ship_to_different_address"], input[name="createaccount"]', function(){
 						setTimeout(function(){
 							PP.method.checkout.viewHeight();
 						}, 400);
+					});
+
+					$iframe.on( 'click', '.js-sv-wc-payment-gateway-echeck-form-check-hint', function(){
+						setTimeout(function(){
+							PP.method.checkout.viewHeight();
+						}, 400);
+					});
+
+					$iframe.on( 'click', '.showcoupon-link', function(){
+						$(this).next().slideToggle( "fast", function() {
+							PP.method.checkout.viewHeight();
+						});
 					});
 				},
 

@@ -35,22 +35,27 @@ body.checkout {
 
 	.button.error { background: $red !important; }
 
-	a.showcoupon { font-size: 14px; font-weight: bold; text-transform: uppercase; color: #000; display: block; margin: 20px 0; }
-	a.showcoupon:hover { transition: all 0.3s; }
+	a.showcoupon-link { font-size: 14px; font-weight: bold; text-transform: uppercase; color: #000; display: block; margin: 20px 0;
 
-	.checkout_coupon { display: none; margin: 0 0 20px;
-		table.coupon { margin: 0; padding: 30px 20px; border: 3px dashed #ccc; width: 100%; border-collapse: separate;
-			th {
-				label { font-size: 14px; text-transform: uppercase; text-align: center; display: block; margin-bottom: 18px; }
-			}
-			td { text-align: right; padding: 0;
+		&:hover { transition: all 0.3s; }
 
-				input { width: 100%; margin: 0 !important; }
+	}
 
-				input:focus { border-right-color: transparent; }
+	#coupons { display: none;
+		.checkout_coupon { margin: 0 0 20px;
+			table.coupon { margin: 0; padding: 30px 20px; border: 3px dashed #ccc; width: 100%; border-collapse: separate;
+				th {
+					label { font-size: 14px; text-transform: uppercase; text-align: center; display: block; margin-bottom: 18px; }
+				}
+				td { text-align: right; padding: 0;
 
-				input.button { line-height: 1.1 !important; }
+					input { width: 100%; margin: 0 !important; }
 
+					input:focus { border-right-color: transparent; }
+
+					input.button { line-height: 1.1 !important; }
+
+				}
 			}
 		}
 	}
@@ -261,39 +266,6 @@ body.checkout {
 
 			}
 
-			.payment_method_authorize_net_aim {
-
-				.form-row-first { width: 44%; margin: 0 3% 0 0; padding: 0; }
-
-				.form-row-last { width: 25%; margin: 0 3% 0 0; padding: 0; float: left; clear: none;
-
-					select { width: 48% !important; }
-
-				}
-
-				.form-row:last-of-type { @extend .form-row-last; margin: 0;
-
-					input { width: 100% !important; }
-
-				}
-
-				.clear { display: none; }
-
-			}
-
-			.payment_method_authorize_net_aim_echeck { @extend .payment_method_authorize_net_aim;
-
-				.form-row-first,
-				.form-row-last { width: 35%; }
-
-				.form-row:last-of-type { width: 24%;
-
-					select { width: 100% !important; }
-
-				}
-
-			}
-
 			.payment_method_stripe {
 
 				img { width: 40px; }
@@ -368,7 +340,12 @@ body.checkout {
 
 			.payment_method_authorize_net_aim {
 
-				img { width: 40px; }
+				.form-row-first,
+				.form-row-last { width: 49%; padding: 0; margin: 0; }
+
+				.form-row-last { float: right; }
+
+				.clear { display: none; }
 
 				.payment_box {
 
@@ -404,10 +381,27 @@ body.checkout {
 
 				}
 
-				.form-row-first,
-				.form-row-last { width: 49%; padding: 0; margin: 0; }
 
-				.form-row-last { float: right; }
+			}
+
+			.payment_method_authorize_net_aim_echeck { @extend .payment_method_authorize_net_aim;
+
+				.form-row-first,
+				.form-row-last { width: 35%; float: left; }
+
+				.form-row-last { margin: 0 3%; }
+
+				.form-row:last-of-type { width: 24%; float: right; clear: none;
+
+					select { width: 100% !important; padding: 16px 10px 17px; margin: 0 !important; }
+
+				}
+
+				#wc-authorize-net-aim-echeck-account-type_field { position: relative;
+
+					&:after { content: ""; position: absolute; bottom: 16px; right: 10px; border: 5px solid transparent; border-top-color: #555; }
+
+				}
 
 			}
 

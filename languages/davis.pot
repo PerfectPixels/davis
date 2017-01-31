@@ -728,7 +728,7 @@ msgstr ""
 msgid "Check your email for the confirmation link"
 msgstr ""
 
-#: inc/frontend/menu-walker.php:43, inc/mega-menu/class-mega-menu-walker.php:197
+#: inc/frontend/menu-walker.php:43, inc/mega-menu/class-mega-menu-walker.php:177
 msgid "Back"
 msgstr ""
 
@@ -782,19 +782,19 @@ msgstr ""
 msgid "Wishlist"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:446
+#: inc/mega-menu/class-mega-menu-walker.php:406
 msgid "Hot"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:452
+#: inc/mega-menu/class-mega-menu-walker.php:412
 msgid "New"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:458
+#: inc/mega-menu/class-mega-menu-walker.php:418
 msgid "Trending"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:464
+#: inc/mega-menu/class-mega-menu-walker.php:424
 msgid "Sale"
 msgstr ""
 

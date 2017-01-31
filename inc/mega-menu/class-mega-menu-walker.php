@@ -82,16 +82,6 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 				$style .= ' background-position:'. $img_background['position']['x'] . ' ' . $img_background['position']['y'] . ';';
 				$style .= ' background-repeat:' . $img_background['repeat'] . ';';
 				$style .= ' background-size:' . $img_background['size'] . ';"';
-
-				if ($img_hide_desktop && $img_hide_mobile){
-					$bg_class = '';
-				} else if ($img_hide_desktop){
-					$bg_class = ' bg-img-mobile';
-				} else if ($img_hide_mobile){
-					$bg_class = ' bg-img-desktop';
-				} else {
-					$bg_class = ' bg-img-desktop-mobile';
-				}
 	        } else {
 				$img = wp_get_attachment_image( $attachment_id, $img_size, false, array('class' => 'menu-image', 'style' => 'top:'.$img_pos['top'].'; right:'.$img_pos['right'].'; bottom:'.$img_pos['bottom'].'; left:'.$img_pos['left'].';') );
 			}
@@ -198,16 +188,6 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 			$style .= ' background-position:'. $img_background['position']['x'] . ' ' . $img_background['position']['y'] . ';';
 			$style .= ' background-repeat:' . $img_background['repeat'] . ';';
 			$style .= ' background-size:' . $img_background['size'] . ';"';
-
-			if ($img_hide_desktop && $img_hide_mobile){
-				$bg_class = '';
-			} else if ($img_hide_desktop){
-				$bg_class = ' bg-img-mobile';
-			} else if ($img_hide_mobile){
-				$bg_class = ' bg-img-desktop';
-			} else {
-				$bg_class = ' bg-img-desktop-mobile';
-			}
         }
 
         // Build HTML.
@@ -230,20 +210,20 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 		// Badges
 		if ( $hot_badge ) {
-			$badge .= '<span class="hot-badge">' . esc_html__( 'Hot', 'davis' ) . '</span>';
+			$badge .= '<span class="hot badge">' . esc_html__( 'Hot', 'davis' ) . '</span>';
 		}
 		if ( $new_badge ) {
-			$badge .= '<span class="new-badge">' . esc_html__( 'New', 'davis' ) . '</span>';
+			$badge .= '<span class="new badge">' . esc_html__( 'New', 'davis' ) . '</span>';
 		}
 		if ( $trend_badge ) {
-			$badge .= '<span class="trending-badge">' . esc_html__( 'Trending', 'davis' ) . '</span>';
+			$badge .= '<span class="trending badge">' . esc_html__( 'Trending', 'davis' ) . '</span>';
 		}
 		if ( $sale_badge ) {
-			$badge .= '<span class="sale-badge">' . esc_html__( 'Sale', 'davis' ) . '</span>';
+			$badge .= '<span class="sale badge">' . esc_html__( 'Sale', 'davis' ) . '</span>';
 		}
 
         // Build HTML output and pass through the proper filter.
-        $item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s%6$s%7$s%8$s%9$s<span></span></a>%10$s%11$s',
+        $item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s%6$s%7$s%8$s%9$s<span class="mobile-arrow"></span>%10$s</a>%11$s',
             $args->before,
             $attributes,
             $args->link_before,
@@ -253,8 +233,8 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
             ( $img_background && $icon_pos == 'img-below-text' ? '<br>'.$img : '' ),
             ( $icon && ( $icon_pos == 'after' || $icon_pos == 'below' ) ? $img : '' ),
             $args->link_after,
-            $args->after,
-			$badge
+			$badge,
+            $args->after
         );
 
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );

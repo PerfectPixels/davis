@@ -260,7 +260,7 @@ $content_cart_count	= WC()->cart->get_cart_contents_count();
 				<?php wp_nonce_field( 'woocommerce-cart' ); ?>
 
 				<?php if ( WC()->cart->coupons_enabled() ) { ?>
-					<a href="javascript:void();" class="showcoupon"><?php _e( 'Have a discount voucher or gift code?', 'woocommerce' ); ?></a>
+					<a class="showcoupon-link"><?php _e( 'Have a discount voucher or gift code?', 'woocommerce' ); ?></a>
 					<div id="coupons">
 						<div class="checkout_coupon">
 							<table class="coupon">

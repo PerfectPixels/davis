@@ -288,7 +288,7 @@ support for no js
 
 			&.menu-item-has-children { height: auto !important; position: relative;
 
-				> a span { position: absolute; width: 50px; height: 100%; right: 0; top: 0; display: block; border-left: 1px solid #3a3f40;
+				> a span.mobile-arrow { position: absolute; width: 50px; height: 100%; right: 0; top: 0; display: block; border-left: 1px solid #3a3f40;
 
 					&:before,
 		  			&:after { background-color: #5F6667 !important; content: ''; display: block; height: 2px; width: 8px; position: absolute; right: 20px !important; top: 22px !important; transition: all .3s $cb; transform: rotate3d(0,0,1,45deg); opacity: 0.5; }
@@ -335,6 +335,8 @@ support for no js
 
 				}
 
+				span.badge { display: none;}
+
 			}
 
 			&.go-back {
@@ -347,11 +349,17 @@ support for no js
 
 			}
 
+			&.hide-img-mobile { background-image: none !important;
+
+				a img { display: none; }
+
+			}
+
 		}
 
 		#search { background-color: rgba(255,255,255,0.2) !important; padding: 15px 20px;
 
-			form { display: inline-block  }
+			form { display: inline-block }
 
 			input { background: none; color: #fff; }
 
@@ -367,8 +375,6 @@ support for no js
 
 
 	.brand { height: 50px; left: 2%; }
-
-	.bg-img-desktop { background-image: none !important; }
 
 	.header-buttons {
 
@@ -613,13 +619,11 @@ support for no js
 
 		.mega-menu,
 	  	.cd-nav-gallery,
-	  	.cd-nav-icons { top:100%; width: 100vw; margin: 0; }
+	  	.cd-nav-icons { top: 100%; width: 100vw; margin: 0; }
 
 	  	> .menu-item-has-children > a.main-menu-link:before { display: none; }
 
 	}
-
-	.bg-img-mobile { background-image: none !important; }
 
 	.primary-nav { position: static; padding: 0; list-style: none; text-align: center; height: auto; width: auto; overflow: visible; background-color: transparent;
 
@@ -631,20 +635,64 @@ support for no js
 
 		> li { display: inline-block; text-align: left;
 
-	  		> a { position: relative; display: inline-block; padding: 19px 10px; overflow: visible; border-bottom: none; transition: color 0.3s, box-shadow 0.3s; }
+	  		> a { position: relative; display: inline-block; padding: 19px 10px; overflow: visible; border-bottom: none; transition: color 0.3s, box-shadow 0.3s;
+
+				span.badge { position: absolute; top: 5px; right: 0; margin-left: 0;
+
+					&:before { border: 5px solid transparent; border-left-color: $red; left: 0; bottom: -4px; }
+
+					&.trending { background: $blue;
+						&:before { border-left-color: $blue; }
+					}
+
+					&.new { background: $green;
+						&:before { border-left-color: $green; }
+					}
+
+					&.sale { background: $yellow;
+						&:before { border-left-color: $yellow; }
+					}
+
+				}
+
+			}
 
 	  		> a:after { content: ""; position: absolute; left: 50%; right: 50% !important; bottom: 0; height: 2px; display: block; transition: all .3s $cb; z-index: 3; }
 
 	  		.go-back { display: none; }
 
-	  	}
+		  	&:hover,
+		  	&.current_page_item {
 
-	  	> li:hover,
-	  	> li.current_page_item {
+		  		> a:after { left: 0; right: 0 !important; }
 
-	  		> a:after { left: 0; right: 0 !important; }
+		  	}
 
-	  	}
+		}
+
+		span.badge { background: $red; color: #fff !important; text-transform: uppercase; font-size: 10px; position: relative; top: -2px; right: 0; border-radius: 0; margin-left: 10px;
+
+			&:before { border: 5px solid transparent; border-top-color: $red; content: ""; position: absolute; left: -4px; top: 0; bottom: inherit; }
+
+			&.trending { background: $blue;
+				&:before { border-top-color: $blue; }
+			}
+
+			&.new { background: $green;
+				&:before { border-top-color: $green; }
+			}
+
+			&.sale { background: $yellow;
+				&:before { border-top-color: $yellow; }
+			}
+
+		}
+
+		.hide-img-desktop { background-image: none !important;
+
+			a img { display: none; }
+
+		}
 
 	  	.mega-menu,
 	  	.cd-nav-gallery,
@@ -713,13 +761,13 @@ support for no js
 
 	  		}
 
-	  		a { line-height: 18px; padding: 1px 0 2px; border-bottom: none; font-size: 12px; opacity: 0.7; font-weight: normal !important; transition: transform 0.3s $cb, color 0.3s $cb;
+	  		a { display: inline-block; line-height: 18px; padding: 2px 0 1px; border-bottom: none; font-size: 12px; opacity: 0.7; font-weight: normal !important; transition: transform 0.3s $cb, color 0.3s $cb;
 
 		  		img { max-width: 100%; height: auto; }
 
 	  		}
 
-	  		ul { transform: translateZ(0); padding: 0 20px;
+	  		ul { transform: translateZ(0); padding: 0 20px; list-style: none;
 
 		  		ul { position: absolute; top: 0; left: 0; width: 100%;
 
@@ -731,7 +779,7 @@ support for no js
 
 	  		}
 
-	  		.moves-out > li > a { transform: translateX(-110%); }
+	  		.moves-out > li > a { transform: translateX(-200%); }
 
 	  	}
 
@@ -830,7 +878,7 @@ support for no js
 
 	  	.simple-nav.menu-item-has-children { position: relative;
 
-	  		> .sub-menu { @extend .mega-menu; display: block; width: 250px !important; left: 0; right: inherit; min-width: 100%; margin: 0 !important; overflow: hidden; border-top: 1px solid rgba(0,0,0,0.07); padding: 20px 0; opacity: 0;
+	  		> .sub-menu { @extend .mega-menu; display: block; width: 250px !important; left: 0; right: inherit; min-width: 100%; margin: 0 !important; overflow: hidden; border-top: 1px solid rgba(0,0,0,0.07); padding: 20px 0 13px; opacity: 0;
 
 		  		> li { float: none; width: auto; border: none;  height: auto;
 
@@ -846,9 +894,9 @@ support for no js
 		  		li.menu-item-has-children {
 
 			  		> a:before,
-		  			> a:after { content: ''; display: block; height: 2px; width: 8px; position: absolute; right: 20px; top: 14px; transition: all .3s $cb; transform: rotate3d(0,0,1,45deg); }
+		  			> a:after { content: ''; display: block; height: 2px; width: 8px; position: absolute; right: 0; top: 7px; transition: all .3s $cb; transform: rotate3d(0,0,1,45deg); }
 
-		  			> a:after { top: 19px; transform: rotate3d(0,0,1,-45deg); }
+		  			> a:after { top: 12px; transform: rotate3d(0,0,1,-45deg); }
 
 					.sub-menu-item {
 
