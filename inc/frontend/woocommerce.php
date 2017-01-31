@@ -51,7 +51,6 @@ class PP_Woocommerce {
         add_action( 'woocommerce_after_add_to_cart_button', create_function( '', 'echo do_shortcode( "[yith_wcwl_add_to_wishlist]" );' ), 10 );
 
         // Change the tax_query for last cat pages to only display single variation products
-
         if ( class_exists( 'JCK_WSSV' ) ) {
         	add_filter( 'pre_get_posts', array( 'pp_Exclude_Variable', 'apply_user_filters' ), 900000 );
         	remove_filter( 'pre_get_posts', array( 'BeRocket_AAPF', 'apply_user_filters' ), 900000 );

@@ -120,14 +120,15 @@ if ($product_style !== 'slideshow' && $product_style !== 'fullwidth'){
 			do_action( 'woocommerce_before_single_product_summary' );
 		} ?>
 
-	</div>
 
-	<?php if ($product_style === 'slideshow'){
-		// Add the meta details
-		wc_get_template( 'single-product/meta.php', array(
-			'attachment_ids' => $attachment_ids,
-		) );
-	} ?>
+		<?php if ($product_style === 'slideshow'){
+			// Add the meta details
+			wc_get_template( 'single-product/meta.php', array(
+				'attachment_ids' => $attachment_ids,
+			) );
+		} ?>
+
+	</div>
 
 	<?php if ( class_exists( 'WC_Product_Reviews_Pro' ) ){ ?>
 	  <div id="comments">

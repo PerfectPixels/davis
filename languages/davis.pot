@@ -762,7 +762,7 @@ msgstr ""
 msgid "Edit %s"
 msgstr ""
 
-#: inc/frontend/woocommerce.php:296
+#: inc/frontend/woocommerce.php:295
 msgid "by"
 msgstr ""
 

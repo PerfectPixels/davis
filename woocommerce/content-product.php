@@ -84,7 +84,7 @@ if ( $product->is_type( 'variable' ) ){
 
 // If it is a single variation product
 $single_variation_product	= false;
-print_r($product->variation_id);
+
 if ( ! $children && $product->variation_id ){
 	$variation_id = $product->variation_id;
 	$product_colors = get_post_meta($product->variation_id, '_jck_product_colors', true);
