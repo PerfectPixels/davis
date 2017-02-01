@@ -7,7 +7,7 @@ $transparent_icon  = get_field( 'transparent_header_icon_counter_color' );
 $header_bg		   = get_field( 'header_background_color' );
 $header_text	   = get_field( 'header_text_color' );
 $header_icon	   = get_field( 'header_icon_counter_color' );
-$header_type	   = get_theme_mod( 'header_type' );
+$header_type	   = get_theme_mod( 'header_type', 'left_logo-center_menu' );
 $search_field 	   = get_theme_mod( 'header_search_field', false );
 $has_search_field  = false;
 

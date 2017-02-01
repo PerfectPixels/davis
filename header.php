@@ -33,7 +33,7 @@ if (get_field('fullwidth') || is_product()) {
 }
 
 // Check if header is sticky
-if (get_theme_mod('fixed_header', false)) { $fixed_classes .= 'nav-is-fixed'; }
+if (get_theme_mod('fixed_header', false) == true) { $fixed_classes .= 'nav-is-fixed'; }
 // Check if top bar is sticky
 if (get_theme_mod('fixed_top_bar', true) == true) {	$fixed_classes .= ' top-bar-is-fixed'; }
 
