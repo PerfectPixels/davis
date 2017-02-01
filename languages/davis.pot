@@ -274,11 +274,11 @@ msgstr ""
 msgid "Choose to display the social media icons on the left or the right of the top bar."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:253, inc/backend/theme_options/inc/header.php:398, inc/backend/theme_options/inc/shop.php:181, inc/mega-menu/options/background.php:67, inc/mega-menu/options/background.php:89
+#: inc/backend/theme_options/inc/header.php:253, inc/backend/theme_options/inc/header.php:398, inc/backend/theme_options/inc/shop.php:181, inc/mega-menu/options/background.php:67, inc/mega-menu/options/background.php:89, inc/mega-menu/options/icon.php:51
 msgid "Right"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:254, inc/backend/theme_options/inc/header.php:399, inc/backend/theme_options/inc/shop.php:180, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87
+#: inc/backend/theme_options/inc/header.php:254, inc/backend/theme_options/inc/header.php:399, inc/backend/theme_options/inc/shop.php:180, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87, inc/mega-menu/options/icon.php:50
 msgid "Left"
 msgstr ""
 
@@ -736,7 +736,7 @@ msgstr ""
 msgid "Check your email for the confirmation link"
 msgstr ""
 
-#: inc/frontend/menu-walker.php:43, inc/mega-menu/class-mega-menu-walker.php:177
+#: inc/frontend/menu-walker.php:43, inc/mega-menu/class-mega-menu-walker.php:157
 msgid "Back"
 msgstr ""
 
@@ -794,19 +794,19 @@ msgstr ""
 msgid "Wishlist"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:406
+#: inc/mega-menu/class-mega-menu-walker.php:402
 msgid "Hot"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:412
+#: inc/mega-menu/class-mega-menu-walker.php:408
 msgid "New"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:418
+#: inc/mega-menu/class-mega-menu-walker.php:414
 msgid "Trending"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:424
+#: inc/mega-menu/class-mega-menu-walker.php:420
 msgid "Sale"
 msgstr ""
 
@@ -996,6 +996,22 @@ msgstr ""
 
 #: inc/mega-menu/options/general.php:169
 msgid "Add a sale badge next to the menu item."
+msgstr ""
+
+#: inc/mega-menu/options/icon.php:43
+msgid "Icon Settings"
+msgstr ""
+
+#: inc/mega-menu/options/icon.php:46
+msgid "Icon Position"
+msgstr ""
+
+#: inc/mega-menu/options/icon.php:49
+msgid "Above"
+msgstr ""
+
+#: inc/mega-menu/options/icon.php:52
+msgid "Icon Only"
 msgstr ""
 
 #: inc/mega-menu/options/mega.php:7

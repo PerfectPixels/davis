@@ -27,7 +27,6 @@ class PP_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 	 * @param int    $id     Not used.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		$icon            	= get_post_meta( $item->ID, 'pp_menu_item_icon', true );
 		$mega_menu       	= get_post_meta( $item->ID, 'pp_menu_item_mega', true );
 		$mega_menu_width 	= get_post_meta( $item->ID, 'pp_menu_item_mega_width', true );
 		$menu_item_width 	= get_post_meta( $item->ID, 'pp_menu_item_width', true );
@@ -47,7 +46,8 @@ class PP_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 		$img_no_margin	  	= get_post_meta( $item->ID, 'pp_menu_item_img_no_margin', true );
 		$img_hide_desktop	= get_post_meta( $item->ID, 'pp_menu_item_hide_img_desktop', true );
 		$img_hide_mobile 	= get_post_meta( $item->ID, 'pp_menu_item_hide_img_mobile', true );
-        $icon_pos 		 	= get_post_meta( $item->ID, 'pp_menu-item-icon_pos', true );
+		$icon            	= get_post_meta( $item->ID, 'pp_menu_item_icon', true );
+        $icon_pos 		 	= get_post_meta( $item->ID, 'pp_menu_item_icon_pos', true );
 		$content         	= get_post_meta( $item->ID, 'pp_menu_item_content', true );
 
 		$img_background = wp_parse_args(

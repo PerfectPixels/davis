@@ -670,7 +670,7 @@ Kirki::add_field( 'pp_theme', array(
 	'transport' => 'postMessage',
 	'output' => array(
 		array(
-			'element'  => array( '.nav-header a:hover', '.nav-header a:hover:before', '.nav-header a:hover:after', '.current_page_item > a' ),
+			'element'  => array( '.nav-header a:hover', '.nav-header a:hover i', '.nav-header a:hover:before', '.nav-header a:hover:after', '.current_page_item > a', '.current_page_item > a > i' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),

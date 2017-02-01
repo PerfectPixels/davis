@@ -24,7 +24,7 @@ html:not(.search-form-visible) .nav-header.transparent:not(.fixedsticky-on) { ba
 .nav-header.transparent,
 .scrolled .nav-header { box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
 
-.brand { width: 130px; left: 2%; height: 70px; margin: 0; display: inline-block; position: absolute; z-index: 4;
+.brand { width: 130px; left: 2%; height: 100%; margin: 0; display: inline-block; position: absolute; z-index: 4;
 
 	img { position: absolute; left: 0; top: 50%; transform: translate3d(0,-50%,0); display: block; height: 44px; opacity: 1; transition: opacity 0s  $cb; }
 
@@ -355,6 +355,8 @@ support for no js
 
 			}
 
+			&.hide-text-mobile { display: none; }
+
 		}
 
 		#search { background-color: rgba(255,255,255,0.2) !important; padding: 15px 20px;
@@ -655,6 +657,41 @@ support for no js
 
 				}
 
+				&.has-icon {
+
+					i { font-size: 23px; vertical-align: sub; transition: color .3s $cb; }
+
+				}
+				&.icon-pos-icon-only { padding: 19px 15px 18px;
+
+					i { font-size: 26px; }
+
+				}
+				&.icon-pos-above { padding-top: 8px; padding-bottom: 8px;
+
+					i { display: block; text-align: center; line-height: 12px; padding-top: 10px;
+						&:before { line-height: 12px; }
+					}
+
+				}
+				&.icon-pos-below { padding-top: 8px; padding-bottom: 8px;
+
+					i { display: block; text-align: center; line-height: 17px; padding-bottom: 5px;
+						&:before { line-height: 16px; }
+					}
+
+				}
+				&.icon-pos-left {
+
+					i { margin-right: 8px; }
+
+				}
+				&.icon-pos-right {
+
+					i { margin-left: 8px; }
+
+				}
+
 			}
 
 	  		> a:after { content: ""; position: absolute; left: 50%; right: 50% !important; bottom: 0; height: 2px; display: block; transition: all .3s $cb; z-index: 3; }
@@ -693,6 +730,8 @@ support for no js
 			a img { display: none; }
 
 		}
+
+		.hide-text-desktop { display: none; }
 
 	  	.mega-menu,
 	  	.cd-nav-gallery,

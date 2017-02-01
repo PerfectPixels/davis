@@ -39,4 +39,19 @@ $ion_icons = apply_filters( 'pp_icons', $ion_icons );
 
 		</div>
 	</div>
+
+	<div class="element_label"><?php esc_html_e( 'Icon Settings', 'davis' ) ?></div>
+	<div class="edit_form_line spacing">
+		<label>
+			<span><?php esc_html_e( 'Icon Position', 'davis' ) ?></span>
+			<div class="inner">
+				<select name="<%= menuSettings.getFieldName( 'icon_pos', data['menu-item-db-id'] ) %>">
+					<option value="above" <% if ( megaData.icon_pos == 'above' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Above', 'davis' ) ?></option>
+					<option value="left" <% if ( megaData.icon_pos == 'left' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Left', 'davis' ) ?></option>
+					<option value="right" <% if ( megaData.icon_pos == 'right' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Right', 'davis' ) ?></option>
+					<option value="icon-only" <% if ( megaData.icon_pos == 'icon-only' ) { print( 'selected="selected"' ) } %>><?php esc_html_e( 'Icon Only', 'davis' ) ?></option>
+				</select>
+			</div>
+		</label>
+	</div>
 </div>
