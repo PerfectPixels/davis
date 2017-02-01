@@ -492,7 +492,6 @@ Kirki::add_field( 'pp_theme', array(
 		),
 	),
 ) );
-
 // HEADER TYPE
 Kirki::add_section( 'header_options', array(
     'title'          => __( 'Header Options' ),
@@ -500,9 +499,10 @@ Kirki::add_section( 'header_options', array(
     'priority'       => 160,
     'capability'     => 'edit_theme_options',
 ) );
-// Show/Hide header
+// Header Style
 Kirki::add_field( 'pp_theme', array(
 	'settings' => 'header_type',
+    'label'    => __( 'Header Style', 'davis' ),
     'description' => __( 'Choose a layout between all the available ones.', 'davis' ),
 	'section'  => 'header_options',
 	'type'     => 'radio-image',
@@ -521,15 +521,15 @@ Kirki::add_field( 'pp_theme', array(
 // Fixed header
 Kirki::add_field( 'pp_theme', array(
 	'settings' => 'fixed_header',
-	'label'    => __( 'Fixed Header', 'davis' ),
-    'description' => __( 'Choose to have the header always at the top of the page whenever the user scroll the page or to let it move.', 'davis' ),
+	'label'    => __( 'Sticky Header', 'davis' ),
+    'description' => __( 'Have the header always at the top of the page.', 'davis' ),
 	'section'  => 'header_options',
 	'type'     => 'switch',
 	'priority' => 10,
 	'default'  => '0',
 	'choices'  => array(
-		'on'  => esc_attr__( 'Fixed', 'davis' ),
-		'off' => esc_attr__( 'Moving', 'davis' ),
+		'on'  => esc_attr__( 'Sticky', 'davis' ),
+		'off' => esc_attr__( 'Scrollable', 'davis' ),
 	),
 ) );
 // Transparent header

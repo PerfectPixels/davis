@@ -395,7 +395,9 @@
 					this.moveNavigation();
 					this.navHorizontalScroll();
 					// Make it sticky
-					$( '.nav-header' ).fixedsticky();
+					if ( $( '.nav-header' ).hasClass('nav-is-fixed') ){
+						$( '.nav-header' ).fixedsticky();
+					}
 
 				}
 

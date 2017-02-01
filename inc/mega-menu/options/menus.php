@@ -3,12 +3,12 @@
         <a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Mega Menu Content', 'davis' ) ?>"><?php esc_html_e( 'Mega Menu', 'davis' ) ?></a>
     </li>
 <% } else { %>
-    <li class="pp-mega-menu-item-setting-tab pp-mega-menu-to-content active-item-setting-tab" data-panel="content">
+    <!-- <li class="pp-mega-menu-item-setting-tab pp-mega-menu-to-content active-item-setting-tab" data-panel="content">
         <a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Menu Content', 'davis' ) ?>"><?php esc_html_e( 'Menu Content', 'davis' ) ?></a>
-    </li>
+    </li> -->
 <% } %>
 
-<li class="pp-mega-menu-item-setting-tab pp-mega-menu-to-content" data-panel="general">
+<li class="pp-mega-menu-item-setting-tab pp-mega-menu-to-content <% if ( depth > 0 ) { %>active-item-setting-tab <% } %>" data-panel="general">
     <a href="#" class="media-menu-item" data-title="<?php esc_attr_e( 'Menu Settings', 'davis' ) ?>"><?php esc_html_e( 'Settings', 'davis' ) ?></a>
 </li>
 <li class="pp-mega-menu-item-setting-tab pp-mega-menu-to-content" data-panel="background">
