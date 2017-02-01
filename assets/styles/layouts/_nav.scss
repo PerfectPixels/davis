@@ -382,7 +382,7 @@ support for no js
 
 	.brand { height: 50px; left: 2%; }
 
-	.header-buttons {
+	.header-buttons { right: 0;
 
 		> li { float: right; text-align: center;
 
@@ -393,8 +393,6 @@ support for no js
 			}
 
 		}
-
-		li.menu { margin-right: -15px; }
 
 		li.cart { font-size: 21px;
 
@@ -430,7 +428,7 @@ support for no js
 
 	}
 
-	.header-buttons.left { left: 4%; right: inherit; }
+	.header-buttons.left { left: 0; right: inherit; }
 
 	.nav-on-left {
 

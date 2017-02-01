@@ -36,7 +36,7 @@
 
 	}
 
-	ul.products {
+	ul.products { -webkit-padding-start: 0;
 
 		li.product { background: #fff;text-align: center; padding: 20px 20px 0; margin: 0 3.5% 30px 0; overflow: hidden;
 
@@ -487,18 +487,6 @@
 
 	}
 
-	.related,
-	.upsells {
-
-		ul.products.owl-carousel {
-
-			li.product,
-			li.product:nth-child(3n) { width: 100%; margin: 0; clear: none; }
-
-		}
-
-	}
-
 }
 
 
@@ -506,14 +494,14 @@
 /* Screen less than or equal to than 768 pixels */
 @media only screen and (max-width: 768px) {
 
-	ul.products li.product { width: 46.5% !important; }
+	.woocommerce ul.products li.product { width: 46.5% !important; }
 
 }
 
 /* Screen less than or equal to than 420 pixels */
 @media only screen and (max-width: 420px) {
 
-	ul.products {
+	.woocommerce ul.products {
 
 		li.product { width: 100% !important; margin-right: 0% !important; }
 
