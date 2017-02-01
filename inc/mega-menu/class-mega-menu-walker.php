@@ -222,7 +222,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 		// Icon
 		if ( $icon ) {
-			$icon 		= '<i class="'.$icon.'"></i>';
+			$icon = '<i class="'.$icon.'"></i>';
 		}
 
         // Build HTML output and pass through the proper filter.
@@ -231,7 +231,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
             $attributes,
             $args->link_before,
             ( $icon && ( $icon_pos == 'left' || $icon_pos == 'above' || $icon_pos == 'icon-only' ) ? $icon : '' ),
-            ( $hide_text || $icon_pos == 'icon-only' ? '' : $title ),
+            ( $hide_text ? '' : $title ),
             ( $img_background && $img_type == 'image' ? $img : '' ),
             ( $icon && ( $icon_pos == 'right' || $icon_pos == 'below' ) ? $icon : '' ),
             $args->link_after,

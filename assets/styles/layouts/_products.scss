@@ -265,7 +265,7 @@
 
 	ul.display-3-per-row {
 
-		li.product { width: 31%; margin-right: 3.5%; }
+		li.product { width: 31% !important; margin-right: 3.5%; }
 
 		li.product:nth-child(3n) { margin-right: 0; }
 
@@ -275,7 +275,7 @@
 
 	ul.display-4-per-row {
 
-		li.product { width: 22.75%; margin-right: 3%; }
+		li.product { width: 22.75% !important; margin-right: 3%; }
 
 		li.product:nth-child(4n) { margin-right: 0; }
 
@@ -283,7 +283,7 @@
 
 	ul.display-5-per-row {
 
-		li.product { width: 18%; margin-right: 2.5%; }
+		li.product { width: 18% !important; margin-right: 2.5%; }
 
 		li.product:nth-child(5n) { margin-right: 0; }
 
@@ -291,7 +291,7 @@
 
 	ul.display-6-per-row {
 
-		li.product { width: 15%; margin-right: 2%; }
+		li.product { width: 15% !important; margin-right: 2%; }
 
 		li.product:nth-child(6n) { margin-right: 0; }
 

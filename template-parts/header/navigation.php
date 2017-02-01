@@ -1,16 +1,15 @@
 <?php
 
 $megamenu_class    = '';
-$transparent 		   = get_field( 'transparent_header' );
+$transparent 	   = get_field( 'transparent_header' );
 $transparent_color = get_field( 'transparent_header_text_color' );
 $transparent_icon  = get_field( 'transparent_header_icon_counter_color' );
-$header_bg			   = get_field( 'header_background_color' );
-$header_text		   = get_field( 'header_text_color' );
-$header_icon		   = get_field( 'header_icon_counter_color' );
-$header_type		   = get_theme_mod( 'header_type' );
-
-$search_field = get_theme_mod( 'header_search_field', false );
-$has_search_field = false;
+$header_bg		   = get_field( 'header_background_color' );
+$header_text	   = get_field( 'header_text_color' );
+$header_icon	   = get_field( 'header_icon_counter_color' );
+$header_type	   = get_theme_mod( 'header_type' );
+$search_field 	   = get_theme_mod( 'header_search_field', false );
+$has_search_field  = false;
 
 if ( true == $search_field && ( $header_type == 'center_logo-left_menu' || $header_type == 'top_logo-center_menu' || $header_type == 'top_logo-left_menu' ) ) {
 	$has_search_field = true;

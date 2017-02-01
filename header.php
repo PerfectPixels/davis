@@ -11,7 +11,7 @@ global $woocommerce;
 $content_classes 	= 'col-xs-12';
 $fullwidth_class 	= 'container';
 $fixed_classes 		= '';
-$sidebar 					= (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mod('shop_sidebar', 'no');
+$sidebar 			= (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mod('shop_sidebar', 'no');
 $sidebar_class 		= '';
 
 if ((!get_field('hide_sidebar') && !is_checkout() && !is_product()) || ($sidebar && (is_shop() || is_product_category() || is_product_tag()))) {
@@ -31,8 +31,9 @@ if (get_field('fullwidth') || is_product()) {
 	$fullwidth_class = '';
 	$content_classes = '';
 }
+
 // Check if header is sticky
-if (get_theme_mod('fixed_header', false) == true) { $fixed_classes .= 'nav-is-fixed'; }
+if (get_theme_mod('fixed_header', false)) { $fixed_classes .= 'nav-is-fixed'; }
 // Check if top bar is sticky
 if (get_theme_mod('fixed_top_bar', true) == true) {	$fixed_classes .= ' top-bar-is-fixed'; }
 
