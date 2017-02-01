@@ -82,7 +82,7 @@ html:not(.search-form-visible) .nav-header.transparent:not(.fixedsticky-on) { ba
 
 	.dropdown-menu { border-radius: 0; box-shadow: none; display: block; }
 
-	.dropdown-hover .dropdown-menu { position: absolute; min-width: 100%; right: 0; left: inherit; top: calc(100% + 15px); margin: 0; padding: 10px 0; border: none; list-style: none; opacity: 0; transform: scaleY(0.3); z-index: -2; visibility: hidden; transform-origin: top left; transition: all 350ms $cb; box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+	.dropdown-hover .dropdown-menu { position: absolute; min-width: 100%; right: 0; left: inherit; top: calc(100% + 30px); margin: 0; padding: 10px 0; border: 1px solid #eee; list-style: none; opacity: 0; visibility: hidden; z-index: 4; transition: all .3s $cb; box-shadow: 0 4px 10px rgba(0,0,0,0.06);
 
 		li { position: relative; display: block; opacity: 0; transition: opacity 350ms $cb; transition-delay: 200ms;
 
@@ -96,13 +96,11 @@ html:not(.search-form-visible) .nav-header.transparent:not(.fixedsticky-on) { ba
 		}
 	}
 
-	.dropdown-hover > a:after { background-color: transparent !important; content: ""; display: block; width: 0; height: 0; position: absolute; bottom: 0; left: 0; border: 10px solid transparent; transform: translate3d(50%,0,0) scale3d(1,0,1); transform-origin: bottom; opacity: 0; transition: all 350ms $cb; }
-
 	.dropdown-hover:hover {
 
 		> a:after { transform: translate3d(50%,0,0) scale3d(1,1,1); opacity: 1; }
 
-		.dropdown-menu { opacity: 1; transform: scaleY(1); z-index: 4; visibility: visible;
+		.dropdown-menu { opacity: 1; visibility: visible; top: 100%;
 
 			li { opacity: 1; }
 
@@ -312,8 +310,14 @@ support for no js
 
 			a { color: #bbb !important; padding: 10px 20px;
 
+				i { color: #bbb !important; margin-right: 10px; font-size: 20px; vertical-align: sub; }
+
 				&:hover,
-				&.selected { color: #fff !important; }
+				&.selected { color: #fff !important;
+
+					i { color: #fff !important; }
+
+				}
 
 				&.has-img {
 
@@ -623,8 +627,6 @@ support for no js
 	  	.cd-nav-gallery,
 	  	.cd-nav-icons { top: 100%; width: 100vw; margin: 0; }
 
-	  	> .menu-item-has-children > a.main-menu-link:before { display: none; }
-
 	}
 
 	.primary-nav { position: static; padding: 0; list-style: none; text-align: center; height: auto; width: auto; overflow: visible; background-color: transparent;
@@ -635,7 +637,7 @@ support for no js
 
 		ul.moves-out > li > a { transform: translateX(0); }
 
-		> li { display: inline-block; text-align: left;
+		> li { display: inline-block; text-align: left; vertical-align: middle;
 
 	  		> a { position: relative; display: inline-block; padding: 19px 10px; overflow: visible; border-bottom: none; transition: color 0.3s, box-shadow 0.3s;
 
@@ -662,9 +664,9 @@ support for no js
 					i { font-size: 23px; vertical-align: sub; transition: color .3s $cb; }
 
 				}
-				&.icon-pos-icon-only { padding: 19px 15px 18px;
+				&.icon-pos-icon-only { padding: 19px 15px; font-size: 0 !important; color: transparent !important;
 
-					i { font-size: 26px; }
+					i { font-size: 26px; vertical-align: middle; }
 
 				}
 				&.icon-pos-above { padding-top: 8px; padding-bottom: 8px;
@@ -748,7 +750,7 @@ support for no js
 	  	.cd-nav-gallery.is-hidden,
 	  	.cd-nav-icons.is-hidden { visibility: hidden; top: 150%;}
 
-	  	.mega-menu { padding-top: 0;
+	  	.mega-menu { padding-top: 0; border: 1px solid #eee; border-top: none;
 
 			img.menu-image { position: absolute; }
 
@@ -861,8 +863,6 @@ support for no js
 
 	  	.menu-item-has-children:hover {
 
-	  		> a.main-menu-link:before { bottom: -15px; border-bottom-color: #fff; transition-delay: .2s; }
-
 		  	.mega-menu { opacity: 1 !important; top: 100%; visibility: visible !important;
 
 			  	> li {  }
@@ -875,9 +875,7 @@ support for no js
 
 		> .menu-item-has-children {
 
-			> a.main-menu-link:before { content: ""; display: block; width: 0; height: 0; position: absolute; bottom: -25px; left: 50%; margin: 0 0 0 -10px; border: 10px solid transparent; transition: all .3s 0s $cb; }
-
-	  		> a.selected:before,
+			> a.selected:before,
 	  		> a.selected:after { width: 14px; }
 
 	  	}
@@ -975,8 +973,6 @@ support for no js
 
 	.primary-nav.moves-out > li > a { transform: translateX(0); }
 
-	.nav-header.transparent:not(.fixedsticky-on) .primary-nav > .menu-item-has-children > a.main-menu-link:before { z-index: 4 }
-
 	.cd-search { height: 120px; top: 80px;
 
 		input { padding: 0 2em; font-size: 3.2rem; font-weight: 300; }
@@ -992,5 +988,24 @@ support for no js
 	.no-js .primary-nav { position: absolute; z-index: 3; display: inline-block; width: auto; top: 0; right: 150px; padding: 0; }
 
 	.no-js .nav-is-fixed .primary-nav { position: fixed; }
+
+
+	/* --------------------------------
+
+	Left Navigation
+
+	-------------------------------- */
+
+	.left-side-nav { padding-left: 300px;
+
+		main.main { padding: 0; overflow: hidden; }
+
+		.nav-header { position: fixed; left: 0; top: 0; bottom: 0; width: 300px; border-right: 1px solid #eee;
+
+
+
+		}
+
+	}
 
 }
