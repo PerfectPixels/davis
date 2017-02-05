@@ -21,20 +21,25 @@ if ($page_product_style !== 'default'){
     $product_style = $page_product_style;
 }
 
-$tn_id = get_post_thumbnail_id( $post->ID );
+$post_thumbnail_id = get_post_thumbnail_id( $post->ID );
+$full_size_image   = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
+$thumbnail_post    = get_post( $post_thumbnail_id );    
+$image_title       = $thumbnail_post->post_content;
+
 $use_variation_img = false;
 $size = 'shop_single';
 $slider_output = '';
 $no_thumb = array('thumb', 'no-thumb', 'carousel');
 
-$img = wp_get_attachment_image_src( $tn_id, 'shop_single' );
-$width = $img[1];
-$height = $img[2];
-
 // Count number of images
 $img_nb = sizeof($attachment_ids);
 $wrap = 'true';
 $nav = 'true';
+
+$class = '';
+// Lightbox enabled?
+if ( get_option( 'woocommerce_enable_lightbox' ) == "yes"){ $class = "product-zoom"; }
+
 
 if ( has_post_thumbnail() ){ $img_nb += 1; }
 
@@ -72,31 +77,24 @@ if (!in_array($product_style, $no_thumb)) : ?>
     <div class="thumb-image-container">
 <?php endif; ?>
 
-<div id="main-slider" data-slick='<?php echo $data_slick; ?>'>
+<div id="main-slider" class="<?php echo $class; ?>" data-slick='<?php echo $data_slick; ?>' itemscope itemtype="http://schema.org/ImageGallery">
 
 	<?php
 
-    // Lightbox enabled?
-    if (get_option( 'woocommerce_enable_lightbox' ) == "yes"){ $class = "zoom"; }
-
     // If product has a featured image
 	if ( has_post_thumbnail() ) :
-        //Get the Thumbnail URL
-        $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), false, '' );
-		$image_title = wp_prepare_attachment_for_js(get_post_thumbnail_id($post->ID))['title'];
-
-        $slider_output .= '<div class="item"><a href="' . $src[0] . '" class="' . $class . '" >' . get_the_post_thumbnail( $post->ID, $size, array('data-image-title'=>$image_title) ) . '</a></div>';
+        $slider_output .= '<figure class="item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"><a href="' . $full_size_image[0] . '" itemprop="contentUrl" data-size="'.$full_size_image[1].'x'.$full_size_image[2].'">' . get_the_post_thumbnail( $post->ID, $size, array( 'data-image-title' => $image_title ) ) . '</a></figure>';
     endif;
 
     if ( $attachment_ids ) :
         foreach ( $attachment_ids as $attachment_id ) {
             $image_link = wp_get_attachment_url( $attachment_id );
-			$image_title = wp_prepare_attachment_for_js($attachment_id)['title'];
+			$image_attr = wp_prepare_attachment_for_js($attachment_id);
 
             if ( ! $image_link )
                 continue;
 
-			$slider_output .= sprintf( '<div class="item"><a href="%s" class="%s">%s</a></div>', wp_get_attachment_url( $attachment_id ), $class, wp_get_attachment_image( $attachment_id, $size, false, array('data-image-title'=>$image_title) ) );
+			$slider_output .= '<figure class="item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"><a href="' . $image_link . '" itemprop="contentUrl" data-size="'.$image_attr['width'].'x'.$image_attr['height'].'">' . wp_get_attachment_image( $attachment_id, $size, false, array( 'data-image-title' => $image_attr['title'] ) ) . '</a></figure>';
         }
 	endif;
 

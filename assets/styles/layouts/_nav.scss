@@ -468,7 +468,7 @@ support for no js
 
 	.nav-header {
 
-		.header-buttons { top: 0; right: 2%; padding: 0; margin: 0;
+		.header-buttons { top: 0; right: 2%; padding: 0; margin: 0; z-index: 2;
 
 			.nav-button { display: none; }
 
@@ -566,8 +566,6 @@ support for no js
 		.nav-brand a:after { display: none; }
 
 		.header-buttons.left { left: 2%; right: inherit; z-index: 6;
-
-			.search .cd-search-trigger.search-form-visible { transform: translateX(30px); }
 
 			.dropdown-hover {
 

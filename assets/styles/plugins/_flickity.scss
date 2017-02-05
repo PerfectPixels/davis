@@ -51,15 +51,12 @@ http://flickity.metafizzy.co
   height: 44px;
   border: none;
   border-radius: 50%;
-  background: white;
-  background: hsla(0, 0%, 100%, 0.75);
+  background: transparent;
   cursor: pointer;
   /* vertically center */
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-
-.flickity-prev-next-button:hover { background: white; }
 
 .flickity-prev-next-button:focus {
   outline: none;

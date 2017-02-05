@@ -159,6 +159,14 @@ function assets() {
 	if ( $woocommerce_active ) {
 		if ( is_product() ){
 			wp_enqueue_script('sage/js', get_stylesheet_directory_uri() . '/assets/scripts/main.min.js', ['jquery', 'wc-add-to-cart-variation'], null, true);
+
+			if ( ! wc_version_check() ) {
+				wp_enqueue_style('photoswipe', get_stylesheet_directory_uri() . '/assets/styles/plugins/photoswipe.css', false, null);
+				wp_enqueue_style('photoswipe-ui-default', get_stylesheet_directory_uri() . '/assets/styles/plugins/default-skin/default-skin.css', false, null);
+				wp_enqueue_script('photoswipe', get_stylesheet_directory_uri() . '/assets/scripts/plugins/photoswipe.min.js', null, null, false);
+				wp_enqueue_script('photoswipe-ui-default', get_stylesheet_directory_uri() . '/assets/scripts/plugins/photoswipe-ui-default.min.js', null, null, false);
+			}
+
 		} else {
 			wp_enqueue_script('sage/js', get_stylesheet_directory_uri() . '/assets/scripts/main.min.js', ['jquery'], null, true);
 		}

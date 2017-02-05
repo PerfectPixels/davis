@@ -10,14 +10,14 @@
 
 @import "common/_global";
 @import "common/_typo";
-@import "components/_fixedsticky";
-@import "components/_slick";
-@import "components/_slick-slider";
-@import "components/_slick-theme";
+@import "plugins/_fixedsticky";
+@import "plugins/_slick";
+@import "plugins/_slick-slider";
+@import "plugins/_slick-theme";
+@import "plugins/_flickity";
 @import "components/_search";
 @import "components/_cart";
 @import "components/_carousel";
-@import "components/_flickity";
 @import "components/_buttons";
 @import "components/_tabs";
 @import "components/_comments";

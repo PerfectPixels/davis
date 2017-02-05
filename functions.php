@@ -11,6 +11,8 @@
 
     // Setup the theme
     require get_template_directory() . '/inc/setup.php';
+    // Functions for woocommerce
+    require get_template_directory() . '/inc/functions/woocommerce.php';
     // Hooks for the cart
     require get_template_directory() . '/inc/frontend/cart.php';
     // Hooks for the login

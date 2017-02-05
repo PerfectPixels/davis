@@ -99,6 +99,7 @@ $sidebar = (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mo
 			</div>
 		<?php } ?>
 	<?php } ?>
+
 <?php } ?>
 
 <?php wp_footer(); ?>

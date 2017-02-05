@@ -172,7 +172,7 @@ Kirki::add_field( 'pp_theme', array(
 	'settings'    => 'product_images_position',
 	'label'       => __( 'Product Images Position', 'davis' ),
 	'description' => __( 'Select the which side you want the images to be displayed.', 'davis' ),
-	'section'  => 'section_product_page',
+	'section'     => 'section_product_page',
 	'type'        => 'select',
 	'default'     => 'right',
 	'priority'    => 10,
@@ -190,6 +190,40 @@ Kirki::add_field( 'pp_theme', array(
 			'setting'  => 'product_style',
 			'operator' => '!=',
 			'value'    => 'fullwidth',
+		),
+	),
+) );
+// Hide Related Product
+Kirki::add_field( 'pp_theme', array(
+	'settings' => 'hide_related_product',
+	'label'    => __( 'Related Product', 'davis' ),
+	'section'  => 'section_product_page',
+	'type'     => 'switch',
+	'priority' => 10,
+	'default'  => '1',
+	'choices'  => array(
+		'on'  => esc_attr__( 'Show', 'davis' ),
+		'off' => esc_attr__( 'Hide', 'davis' ),
+	),
+) );
+// Related Products per row
+Kirki::add_field( 'pp_theme', array(
+	'settings' => 'related_product_per_page',
+	'label'    => __( 'Related Products', 'davis' ),
+	'section'  => 'section_product_page',
+	'type'     => 'slider',
+	'priority' => 10,
+	'default'  => get_theme_mod( 'product_per_row', '4' ),
+	'choices'     => array(
+		'min'  => '3',
+		'max'  => '12',
+		'step' => '1',
+	),
+	'active_callback'    => array(
+		array(
+			'setting'  => 'hide_related_product',
+			'operator' => '==',
+			'value'    => '1',
 		),
 	),
 ) );

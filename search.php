@@ -9,7 +9,10 @@
 
 get_header(); ?>
 
-	<?php	while ( have_posts() ) : the_post();
+	<?php if ( have_posts() ) : ?>
+
+
+		<?php	while ( have_posts() ) : the_post();
 
 			/**
 			 * Run the loop for the search to output the results.

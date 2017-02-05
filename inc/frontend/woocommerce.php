@@ -28,9 +28,7 @@ class PP_Woocommerce {
         add_action( 'wp_ajax_get_srcset', array( $this, 'pffwc_get_srcset_callback' ) );
         add_action( 'wp_ajax_nopriv_get_srcset', array( $this, 'pffwc_get_srcset_callback' ) );
 
-        /**
-         * Split the payment template and the review order
-         */
+        // Split the payment template and the review order
         add_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
         remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
         add_filter( 'woocommerce_checkout_order_payment', 'woocommerce_checkout_payment', 20 );
@@ -56,6 +54,9 @@ class PP_Woocommerce {
         	remove_filter( 'pre_get_posts', array( 'BeRocket_AAPF', 'apply_user_filters' ), 900000 );
         }
 
+        // Add Photoswipe
+        add_action( 'wp_footer', array( $this, 'woocommerce_photoswipe' ) );
+
 	}
 
     /**
@@ -65,6 +66,16 @@ class PP_Woocommerce {
 	 * @return void
 	 */
 	function initiate_hooks() {
+
+        // Hide related product
+        $hide_related_product = get_theme_mod('hide_related_product', true);
+        // Get the images style
+        $product_style      = get_theme_mod('product_style', 'thumb');
+        $page_product_style = get_field('page_images_style');
+
+        if ($page_product_style !== 'default'){
+            $product_style = $page_product_style;
+        }
 
         // Breadcrumbs
         add_action( 'woo_custom_breadcrumb', array( $this, 'pp_woocommerce_breadcrumb' ) );
@@ -90,14 +101,6 @@ class PP_Woocommerce {
         // Change the position of the price in the product page
         remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 
-        // Get the images style
-        $product_style 			= get_theme_mod('product_style', 'thumb');
-        $page_product_style 	= get_field('page_images_style');
-
-        if ($page_product_style !== 'default'){
-            $product_style = $page_product_style;
-        }
-
         // Change the Summary elements position if it is the slideshow/fullwidth style for the product page
         if ($product_style === 'slideshow'){
         	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
@@ -112,6 +115,11 @@ class PP_Woocommerce {
 
 		// Display social links
 		add_action( 'woocommerce_share', array( $this, 'share_links' ), 50 );
+
+        // Hide related product on single pages
+        if (!$hide_related_product){
+            remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+        }
     }
 
     /**
@@ -388,5 +396,16 @@ class PP_Woocommerce {
 		<?php }
 
 	}
+
+    /**
+     * Add Photoswipe if woocommerce is below version 2.7
+     *
+     * @since 1.0
+     */
+    function woocommerce_photoswipe() {
+        if ( ! wc_version_check() && ! function_exists( 'woocommerce_photoswipe' ) ) {
+            wc_get_template( 'single-product/photoswipe.php' );
+        }
+    }
 
 }

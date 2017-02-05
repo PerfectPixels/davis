@@ -1,4 +1,18 @@
-.single-product .wrap { padding-top: 35px !important; }
+.single-product {
+
+	.wrap { padding-top: 35px !important; }
+
+	.pp_woocommerce {
+
+		.pp_content_container { background: transparent; position: static; box-shadow: none;
+
+		}
+
+	}
+
+	.pp_overlay { background: #fff; opacity: 1 !important; }
+
+}
 
 .woocommerce #content div.product { margin: 0;
 
@@ -35,7 +49,7 @@
 					$desc-line-height: 1.7;
 					$lines-to-show: 4;
 
-					p { font-size: $desc-size; line-height: $desc-line-height; color: #777; margin: 0; display: block; display: -webkit-box; max-width: 100%; height: $desc-size*$desc-line-height*$lines-to-show; -webkit-line-clamp: $lines-to-show; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+					p { font-size: $desc-size; line-height: $desc-line-height; color: #777; margin: 0; display: block; display: -webkit-box; max-width: 100%; /*max-height: $desc-size*$desc-line-height*$lines-to-show; -webkit-line-clamp: $lines-to-show; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;*/ }
 
 					a { font-size: 13px; text-decoration: underline; color: #777; }
 
@@ -240,7 +254,7 @@
 
 			#main-slider { margin: 0 !important;
 
-				img { max-height: 525px; max-width: 470px; width: 100%; }
+				img { max-width: 470px; width: 100%; }
 
 				.slick-arrow { width: 30px; height: 30px; }
 
@@ -532,7 +546,7 @@
 
 			}
 
-			.product_share {
+			.product_share { display: none !important;
 
 				span { margin-right: 0 !important; }
 
@@ -559,6 +573,8 @@
 			}
 
 			.thumb-image-container { max-width: 600px; margin: 30px auto 0;
+
+				#main-slider .item img { max-width: 470px; }
 
 				#thumb-slider { position: static; margin: 30px 0;
 
@@ -1133,7 +1149,7 @@
 	}
 
 	.related,
-	.upsells {
+	.upsells { margin-bottom: 50px;
 
 		h2 { font-size: 3.2em; letter-spacing: -0.03em; line-height: 1; padding: 6px 0 0; margin:40px 0; color: #000; text-transform: uppercase; text-align: center; overflow: hidden; }
 
@@ -1143,6 +1159,22 @@
 			li.product:nth-child(3n) { width: 23.5%; margin: 0 2% 0 0; clear: none; }
 
 			li.product:nth-child(4n) { margin-right: 0; }
+
+			.flickity-prev-next-button {
+
+				&.previous {
+				    left: -10px;
+				}
+
+				&.next {
+				    right: -10px;
+				}
+
+				&:disabled {
+					opacity: 0;
+				}
+
+			}
 
 		}
 
