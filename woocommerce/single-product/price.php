@@ -35,17 +35,20 @@ if ($page_product_style !== 'default'){
 }
 
 $product_arr = array('slideshow','fullwidth');
+$quickview	 = ( isset($quickview) ? $quickview : false );
 
-// Add/Remove the quantity and cart button
-if ( in_array($product_style, $product_arr) && !$in_form){
-	remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
-} else {
-	add_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
-}
+if ( ! $quickview ){
+	// Add/Remove the quantity and cart button
+	if ( in_array($product_style, $product_arr) && !$in_form ){
+		remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
+	} else {
+		add_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
+	}
 
-// Remove the empty single_variation_wrap div
-if ( in_array($product_style, $product_arr) && $in_form){
-	remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation', 10 );
+	// Remove the empty single_variation_wrap div
+	if ( in_array($product_style, $product_arr) && $in_form ){
+		remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation', 10 );
+	}
 }
 
 ?>
@@ -58,7 +61,7 @@ if ( in_array($product_style, $product_arr) && $in_form){
 
 	?>
 
-	<?php if (in_array($product_style, $product_arr) && !$in_form || !in_array($product_style, $product_arr) && $in_form) : ?>
+	<?php if ( $quickview ||  in_array($product_style, $product_arr) && !$in_form || !in_array($product_style, $product_arr) && $in_form ) : ?>
 		<div class="woocommerce-variation regular_price">
 			<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 

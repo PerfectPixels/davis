@@ -13,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product, $single_variation;
 
+$quickview_enabled = get_theme_mod( 'quickview_enabled', true );
+
 ?>
 
 
@@ -22,7 +24,9 @@ global $product, $single_variation;
 
 		<?php echo do_shortcode( '[yith_wcwl_add_to_wishlist]' ); ?>
 
-		<a class="icon-eye-line" data-toggle="tooltip" data-placement="top" title="Preview item"></a>
+		<?php if ( $quickview_enabled ) { ?>
+			<a class="icon-eye-line quickview" data-product-id="<?php echo esc_attr( $product->id ); ?>" data-toggle="tooltip" data-placement="top" title="<?php _e('Quickview', 'davis'); ?>"></a>
+		<?php } ?>
 
 		<?php
 		if ( $product->is_type( 'variable' ) && ( get_field('variations_slider') === 'no' || get_field('variations_slider') === 'default' && !get_theme_mod('shop_variations_slider', false) ) ){

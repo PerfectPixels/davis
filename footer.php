@@ -28,6 +28,9 @@ if ( $woocommerce_active ) {
 		case 'all';
 			$footer_sidebar = true;
 			break;
+		case 'no';
+			$footer_sidebar = false;
+			break;
 	}
 }
 

@@ -25,8 +25,12 @@ class PP_Woocommerce {
 		add_action( 'template_redirect', array( $this, 'initiate_hooks' ) );
 
         // Get retina images
-        add_action( 'wp_ajax_get_srcset', array( $this, 'pffwc_get_srcset_callback' ) );
-        add_action( 'wp_ajax_nopriv_get_srcset', array( $this, 'pffwc_get_srcset_callback' ) );
+        add_action( 'wp_ajax_get_srcset', array( $this, 'pp_get_srcset_callback' ) );
+        add_action( 'wp_ajax_nopriv_get_srcset', array( $this, 'pp_get_srcset_callback' ) );
+
+        // Get quickview template
+        add_action('wp_ajax_pp_product_quickview', array( $this, 'pp_product_quickview') );
+        add_action('wp_ajax_nopriv_pp_product_quickview', array( $this, 'pp_product_quickview') );
 
         // Split the payment template and the review order
         add_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
@@ -114,7 +118,7 @@ class PP_Woocommerce {
         }
 
 		// Display social links
-		add_action( 'woocommerce_share', array( $this, 'share_links' ), 50 );
+		add_action( 'woocommerce_share', array( $this, 'pp_share_links' ), 50 );
 
         // Hide related product on single pages
         if (!$hide_related_product){
@@ -352,7 +356,7 @@ class PP_Woocommerce {
     /**
     * Retina Ajax call
      */
-    function pffwc_get_srcset_callback() {
+    function pp_get_srcset_callback() {
     	if ( ! wp_verify_nonce( $_POST['nonce'], 'pffwc-nonce') ) {
     		wp_die();
     	}
@@ -377,7 +381,7 @@ class PP_Woocommerce {
 	 *
 	 * @since 1.0
 	 */
-	function share_links() {
+	function pp_share_links() {
 
 		if ( function_exists( 'social_links' ) ) {
 			global $product;
@@ -406,6 +410,41 @@ class PP_Woocommerce {
         if ( ! wc_version_check() && ! function_exists( 'woocommerce_photoswipe' ) ) {
             wc_get_template( 'single-product/photoswipe.php' );
         }
+    }
+
+    /**
+     * Quickview
+     *
+     * @since 1.0
+     */
+    function pp_product_quickview() {
+        if( empty($_POST['product_id']) ) {
+            echo 'Error: Absent product id';
+            die();
+        }
+
+        if( class_exists('SmartProductPlugin') ){
+            remove_filter('woocommerce_single_product_image_html', array('SmartProductPlugin', 'wooCommerceImage'), 999, 2 );
+        }
+
+        $args = array(
+            'p' => (int) $_POST['product_id'],
+            'post_type' => 'product'
+        );
+
+
+        $query = new WP_Query( $args );
+
+        if ( $query->have_posts() ) {
+            while ( $query->have_posts() ) : $query->the_post();
+                wc_get_template( 'quickview.php' );
+            endwhile;
+            wp_reset_query();
+            wp_reset_postdata();
+        } else {
+            echo 'No posts were found!';
+        }
+        die();
     }
 
 }

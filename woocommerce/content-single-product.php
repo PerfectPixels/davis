@@ -25,10 +25,6 @@ $attachment_ids = $product->get_gallery_attachment_ids();
 $images_pos		= 'right';
 $product_images_bgcolor = '';
 
-// Change the position of the price
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
-
-
 // Get the images style
 $product_style 			= get_theme_mod('product_style', 'thumb');
 $page_product_style 	= get_field('page_images_style');

@@ -19,8 +19,11 @@ if ( ! woocommerce_products_will_display() )
 	return;
 
 ?>
+
 	
 <div class="products-header">
+
+	<?php do_action( 'woocommerce_before_shop_loop' ); ?>
 
 	<?php if ( get_theme_mod('shop_sidebar', 'no') === 'offcanvas' ){ ?>
 		
@@ -45,7 +48,5 @@ if ( ! woocommerce_products_will_display() )
 		}
 		?>
 	</p>
-	
-	<?php do_action( 'woocommerce_before_shop_loop' ); ?>
 
 </div>

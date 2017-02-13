@@ -1,15 +1,19 @@
-.modal-dialog { background: #fff; max-width: 1000px !important; padding: 0 !important; margin-top: 50px;
+.modal-dialog { background: #fff; max-width: 1000px !important; padding: 0 !important; margin: 0 auto; margin-top: 50px;
 	h2 { font-size: 40px; line-height: 40px; letter-spacing: 0.025em; text-transform: uppercase; }
 	h6 { font-size: 18px; margin-bottom: 0; }
 
-	a.icon-close { background: #fff; width: 50px; height: 50px; font-size: 43px; line-height: 44px; color: #000 !important; border-radius: 50%; position: absolute; top: -25px; left: 50%; margin-left: -25px; cursor: pointer; }
-	a.icon-close:before { position: absolute; left: 5px; top: 4px; }
+	a.icon-close { background: #fff; width: 50px; height: 50px; font-size: 44px; line-height: 44px; color: #000 !important; border-radius: 50%; position: absolute; top: -25px; left: 50%; margin-left: -25px; cursor: pointer; }
+	a.icon-close:before { position: absolute; left: 4px; top: 4px; }
 }
 
-#message-modal .modal-dialog { color: #000; max-width: 600px !important; padding: 40px 30px 40px 170px !important; margin-bottom: 0; box-shadow: 0 0 110px rgba(0,0,0,0.5); transition: margin 350ms cubic-bezier(0.7, 0, 0.3, 1);
+#message-modal .modal-dialog { color: #000; max-width: 600px !important; padding: 40px 30px 40px 170px !important; margin-bottom: 0; box-shadow: 0 0 110px rgba(0,0,0,0.5); transition: margin 350ms cubic-bezier(0.7, 0, 0.3, 1); z-index: 9999;
 	h4 { text-transform: uppercase; margin: 0 0 20px; }
 
-	p { text-transform: uppercase; letter-spacing: -0.03em; margin-bottom: 20px; }
+	p { text-transform: uppercase; letter-spacing: -0.03em; margin-bottom: 20px; 
+
+		a.button { display: none; }
+
+	}
 
 	ul { letter-spacing: -0.03em; margin: 0 0 20px; padding: 0; list-style: none; }
 
@@ -28,7 +32,13 @@
 
 	.woocommerce-message,
 	.woocommerce-error,
-	.woocommerce-info { background: #f2f3f3; position: relative; border: none; margin: 0 auto 30px !important; padding: 20px 50px 20px 77px!important; color: #000; max-width: 1300px; }
+	.woocommerce-info { background: #f2f3f3; position: relative; border: none; margin: 0 auto 30px !important; padding: 20px 50px 20px 77px!important; color: #000; max-width: 1300px; 
+
+		li { overflow: hidden; }
+
+		.button { font-size: 11px !important; padding: 8px 20px !important; margin: 0; color: #000; font-weight: normal; }
+
+	}
 
 	.woocommerce-message:before,
 	.woocommerce-error:before,
@@ -49,6 +59,7 @@
 	.modal .woocommerce-message,
 	.modal .woocommerce-error,
 	.modal .woocommerce-info { background: #f7f7fa; }
+
 }
 
 body #yith-wcwl-popup-message { display: none !important; }
