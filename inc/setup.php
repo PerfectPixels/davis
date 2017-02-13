@@ -168,7 +168,7 @@ function assets() {
 			}
 
 		} else {
-			wp_enqueue_script('sage/js', get_stylesheet_directory_uri() . '/assets/scripts/main.min.js', ['jquery'], null, true);
+			wp_enqueue_script('pp/js', get_stylesheet_directory_uri() . '/assets/scripts/main.min.js', ['jquery'], null, true);
 		}
 	}
 
@@ -180,7 +180,7 @@ function assets() {
 		    'current_url' => esc_url_raw( add_query_arg( array() ) ),
 		    'are_you_sure' => __( 'Are you sure?', 'wc_wishlist' ),
 		);
-		wp_localize_script( 'sage/js', 'wishlist_params', apply_filters( 'woocommerce_wishlist_params', $wishlist_params ) );
+		wp_localize_script( 'pp/js', 'wishlist_params', apply_filters( 'woocommerce_wishlist_params', $wishlist_params ) );
 	}
 
 	if ( $woocommerce_active ) {
@@ -193,9 +193,9 @@ function assets() {
 			'ajax_url'                     => WC()->ajax_url(),
 			'wc_ajax_url'                  => WC_AJAX::get_endpoint( "%%endpoint%%" ),
 			'update_shipping_method_nonce' => wp_create_nonce( "update-shipping-method" ),
-			'checkout_page'             => esc_url( wc_get_checkout_url() ),
+			'checkout_page'                => esc_url( wc_get_checkout_url() ),
 		);
-		wp_localize_script( 'sage/js', 'wc_cart_params', apply_filters( 'woocommerce_wc_cart_params', $wc_cart_params ) );
+		wp_localize_script( 'pp/js', 'wc_cart_params', apply_filters( 'woocommerce_wc_cart_params', $wc_cart_params ) );
 
 		// Some script needed for all pages except checkout and my account
 		if ( ! is_checkout() || ! is_account_page() ) {

@@ -25,6 +25,7 @@ $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
 $full_size_image   = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
 $thumbnail_post    = get_post( $post_thumbnail_id );    
 $image_title       = $thumbnail_post->post_content;
+$quickview         = ( isset($quickview) ? $quickview : false );
 
 $use_variation_img = false;
 $size = 'shop_single';
@@ -37,9 +38,10 @@ $wrap = 'true';
 $nav = 'true';
 
 $class = '';
-// Lightbox enabled?
-if ( get_option( 'woocommerce_enable_lightbox' ) == "yes"){ $class = "product-zoom"; }
 
+if ( $quickview ){ $product_style = "quickview"; }
+
+if ( get_option( 'woocommerce_enable_lightbox' ) == "yes"){ $class = "product-zoom"; }
 
 if ( has_post_thumbnail() ){ $img_nb += 1; }
 
@@ -65,6 +67,9 @@ switch ($product_style) {
     case 'fullwidth':
         $data_slick = '{ "accessibility": true, "centerMode": true, "centerPadding": "0%", "asNavFor": "#thumb-slider", "arrows": false }';
         break;
+    case 'quickview':
+        $data_slick = '{ "accessibility": true, "arrows": '.$nav.', "dots": '.$nav.' }';
+        break;
     default:
         $data_slick = '{ "accessibility": true, "fade": true, "asNavFor": "#thumb-slider"  }';
         break;
@@ -73,7 +78,7 @@ switch ($product_style) {
 ?>
 
 <?php // Add a container when product image has thumbnails
-if (!in_array($product_style, $no_thumb)) : ?>
+if ( ! in_array($product_style, $no_thumb) && ! $quickview ) : ?>
     <div class="thumb-image-container">
 <?php endif; ?>
 
@@ -105,7 +110,7 @@ if (!in_array($product_style, $no_thumb)) : ?>
 </div>
 
 <?php // Add thumbnails slider and closing div.thumb-image-container when product image has thumbnails
-if (!in_array($product_style, $no_thumb)) :
+if ( ! in_array($product_style, $no_thumb) && ! $quickview ) :
 
     wc_get_template( 'single-product/product-thumbs.php', array(
         'attachment_ids' => $attachment_ids,

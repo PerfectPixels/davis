@@ -243,10 +243,10 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 	}
 
 	/* Function to determine if the current item has children */
-    function display_element ($element, &$children_elements, $max_depth, $depth = 0, $args, &$output){
-        // check, whether there are children for the given ID and append it to the element with a (new) ID
-        $element->hasChildren = isset( $children_elements[$element->ID] ) && !empty( $children_elements[$element->ID] );
+    // function display_element ($element, &$children_elements, $max_depth, $depth = 0, $args, &$output){
+    //     // check, whether there are children for the given ID and append it to the element with a (new) ID
+    //     $element->hasChildren = isset( $children_elements[$element->ID] ) && !empty( $children_elements[$element->ID] );
 
-        return parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
-    }
+    //     return parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
+    // }
 }

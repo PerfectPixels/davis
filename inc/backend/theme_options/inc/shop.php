@@ -69,7 +69,7 @@ Kirki::add_field( 'pp_theme', array(
 Kirki::add_field( 'pp_theme', array(
 	'settings' => 'hide_product_details',
 	'label'    => __( 'Product Details', 'davis' ),
-    'description' => __( 'Choose if you want to create a clean style by only displaying the product. The details are display only on hover.', 'davis' ),
+    'description' => __( 'Choose if you want to display the product details on hover only.', 'davis' ),
 	'section'  => 'section_shop_page',
 	'type'     => 'switch',
 	'priority' => 10,
@@ -77,6 +77,34 @@ Kirki::add_field( 'pp_theme', array(
 	'choices'  => array(
 		'on'  => esc_attr__( 'Show', 'davis' ),
 		'off' => esc_attr__( 'Hide', 'davis' ),
+	),
+) );
+// Quickview 
+Kirki::add_field( 'pp_theme', array(
+	'settings' => 'quickview_enabled',
+	'label'    => __( 'Enable Quickview', 'davis' ),
+    'description' => __( 'Enable Quickview will display a icon in the product details to open a modal.', 'davis' ),
+	'section'  => 'section_shop_page',
+	'type'     => 'switch',
+	'priority' => 10,
+	'default'  => '1',
+	'choices'  => array(
+		'on'  => esc_attr__( 'Enable', 'davis' ),
+		'off' => esc_attr__( 'Disable', 'davis' ),
+	),
+) );
+// Quickview Layout
+Kirki::add_field( 'pp_theme', array(
+	'settings' => 'quickview_layout',
+	'label'    => __( 'Quickview Layout', 'davis' ),
+    'description' => __( 'Choose the way you want the image to be displayed.', 'davis' ),
+	'section'  => 'section_shop_page',
+	'type'     => 'select',
+	'priority' => 10,
+	'default'  => 'left',
+	'choices'  => array(
+		'left'  => esc_attr__( 'Image on the left', 'davis' ),
+		'top' => esc_attr__( 'Image at the top', 'davis' ),
 	),
 ) );
 // Variations Slider

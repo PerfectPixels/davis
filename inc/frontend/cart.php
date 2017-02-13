@@ -189,13 +189,16 @@ class PP_Cart {
     	ob_start();
 
     	$product_id 		= apply_filters( 'woocommerce_add_to_cart_product_id', absint( $_POST['product_id'] ) );
-    	$quantity 			= empty( $_POST['quantity'] ) ? 1 : apply_filters( 'woocommerce_stock_amount', $_POST['quantity'] );
+    	$quantity 			= $quantity = empty( $_POST['quantity'] ) ? 1 : wc_stock_amount( $_POST['quantity'] ); 
     	$variation_id 		= empty( $_POST['variation_id'] ) ? '' : $_POST['variation_id'];
     	$variation  		= empty( $_POST['variation'] ) ? '' : $_POST['variation'];
+        $product_status     = get_post_status( $product_id ); 
     	$passed_validation 	= apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
 
-    	if ( $passed_validation && WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $variation  ) ) {
-    		apply_filters('add_to_cart_fragments', array());
+        if ( $passed_validation && false !== WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $variation ) && 'publish' === $product_status ) { 
+ 
+            do_action( 'woocommerce_ajax_added_to_cart', $product_id ); 
+    	    apply_filters('add_to_cart_fragments', array());
 
     		if ( get_option( 'woocommerce_cart_redirect_after_add' ) == 'yes' ) {
     			wc_add_to_cart_message( $product_id );
@@ -204,14 +207,15 @@ class PP_Cart {
     		// Return fragments
     		$this->pp_get_refreshed_fragments( true );
     	} else {
-    		$this->json_headers();
 
     		// If there was an error adding to the cart, redirect to the product page to show any errors
     		$data = array(
-    			'error' => true,
-    			'product_url' => apply_filters( 'woocommerce_cart_redirect_after_error', get_permalink( $product_id ), $product_id )
+    			'error'       => true,
+    			'product_url' => apply_filters( 'woocommerce_cart_redirect_after_error', get_permalink( $product_id ), $product_id ),
+                'message'     => wc_get_notices('error')[0]
     			);
-    		echo json_encode( $data );
+
+    		wp_send_json( $data );
     	}
     	die();
     }
