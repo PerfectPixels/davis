@@ -197,13 +197,6 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#000000',
 	'transport' => 'postMessage',
-	'js_vars'   => array(
-		array(
-			'element'  => array( '.navbar-top .item-counter' ),
-			'function' => 'css',
-			'property' => 'color',
-		),
-	),
 	'output' => array(
 		array(
 			'element'  => array( 'body .navbar-top a span.item-counter' ),
@@ -624,35 +617,18 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#000000',
 	'transport' => 'postMessage',
-	'js_vars'   => array(
-		array(
-			'element'  => array( '.nav-header *', '.header-text-color-txt-all *' ),
-			'function' => 'css',
-			'property' => 'color',
-		),
-		array(
-			'element'  => array( '.primary-nav ul li a' ),
-			'property' => 'color',
-			'suffix'   => '!important',
-		),
-		array(
-			'element'  => array( '.header-text-color-bg', '.header-text-color-bg-speudo:before', '.header-text-color-bg-speudo:after', '.menu-link:before', '.menu-link:after', '.go-back a:before', '.go-back a:after' ),
-			'function' => 'css',
-			'property' => 'background-color',
-		),
-	),
 	'output' => array(
 		array(
 			'element'  => array( '.nav-header *', '.header-text-color-txt-all *' ),
 			'property' => 'color',
 		),
 		array(
-			'element'  => array( '.primary-nav .ul li a' ),
+			'element'  => array( '.primary-nav .ul li a','.cd-main-search .select2-container .select2-choice' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.header-text-color-bg', '.header-text-color-bg-speudo:before', '.header-text-color-bg-speudo:after', '.menu-link:before', '.menu-link:after', '.go-back a:before', '.go-back a:after' ),
+			'element'  => array( '.header-text-color-bg', '.header-text-color-bg-speudo:before', '.header-text-color-bg-speudo:after', '.menu-link:before', '.menu-link:after', '.go-back a:before', '.go-back a:after', '.cd-main-search .select2-container .select2-choice:before', '.cd-main-search .select2-container .select2-choice:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -734,12 +710,6 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#ffffff',
 	'transport' => 'postMessage',
-	'js_vars'   => array(
-		array(
-			'element'  => array( '.nav-header .item-counter' ),
-			'property' => 'color',
-		),
-	),
 	'active_callback'  => array(
 		array(
 			'setting'  => 'header_action_icons',
@@ -771,12 +741,6 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#000000',
 	'transport' => 'postMessage',
-	'js_vars'   => array(
-		array(
-			'element'  => array( '.nav-header a:hover .item-counter' ),
-			'property' => 'color',
-		),
-	),
 	'output' => array(
 		array(
 			'element'  => array( '.nav-header a:hover .item-counter' ),
@@ -804,6 +768,13 @@ Kirki::add_field( 'pp_theme', array(
 		'on'  => esc_attr__( 'Show', 'davis' ),
 		'off' => esc_attr__( 'Hide', 'davis' ),
 	),
+	'active_callback'  => array(
+		array(
+			'setting'  => 'header_type',
+			'operator' => 'contains',
+			'value'    => array( 'left_logo-center_menu', 'left_logo-left_menu', 'left_logo-right_menu', 'center_logo-center_menu' ),
+		),
+	),
 ) );
 // Search Field
 Kirki::add_field( 'pp_theme', array(
@@ -824,6 +795,20 @@ Kirki::add_field( 'pp_theme', array(
 			'operator' => 'contains',
 			'value'    => array( 'top_logo-center_menu', 'top_logo-left_menu', 'center_logo-left_menu' ),
 		),
+	),
+) );
+// Ajax Search 
+Kirki::add_field( 'pp_theme', array(
+	'settings' => 'ajax_search',
+	'label'    => __( 'Ajax Search', 'davis' ),
+    'description' => __( 'Enable/Disable the ajax search.', 'davis' ),
+	'section'  => 'header_options',
+	'type'     => 'switch',
+	'priority' => 10,
+	'default'  => '1',
+	'choices'  => array(
+		'on'  => esc_attr__( 'Enable', 'davis' ),
+		'off' => esc_attr__( 'Disable', 'davis' ),
 	),
 ) );
 

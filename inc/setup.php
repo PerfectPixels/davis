@@ -59,6 +59,7 @@ function setup() {
     // Initialize
 	new PP_Cart;
     new PP_Layout;
+    new PP_Search;
     new PP_Login;
     new PP_Woocommerce;
 

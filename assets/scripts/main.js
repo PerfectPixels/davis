@@ -38,6 +38,7 @@
 			prevIconColor		: '',
 			upd					: null,
 			productDesc			: null,
+			searchRequest		: false,
 		},
 		// Methods
 		'method': {
@@ -279,7 +280,7 @@
 				closeSearchForm: function() {
 					PP.obj.$html.removeClass( 'search-form-visible' );
 					PP.obj.$searchTrigger.removeClass( 'search-form-visible' );
-					PP.obj.$searchForm.removeClass( 'is-visible' );
+					PP.obj.$searchForm.removeClass( 'is-visible' ).find( '.open' ).removeClass( 'open' );
 					PP.obj.$coverLayer.removeClass( 'search-form-visible' );
 				},
 
@@ -399,6 +400,9 @@
 					if ( $( 'body' ).hasClass('nav-is-fixed') ){
 						$( '.nav-header' ).fixedsticky();
 					}
+					$( '#product_cat' ).select2({ 
+						dropdownAutoWidth: true 
+					});
 
 				}
 
@@ -601,6 +605,19 @@
 			// Everything related to forms (input field, checkbox, spinners...)
 			'forms':{
 
+				regEventHandlers: function(){
+					var _this = this;
+
+					$( 'form.product-search:not(.no-ajax)' ).on('keyup', 'input[type="search"]', function(e) {
+						_this.ajaxSearch( $(this).parents( 'form.product-search' ) );
+					});
+
+					$( 'form.product-search:not(.no-ajax)' ).on( 'change', 'select#product_cat', function(){
+						_this.ajaxSearch( $(this).parents( 'form.product-search' ) );
+					});
+
+				},
+
 				// Create a Plus/Minus button to update input
 				spinner: function(){
 					$('[data-spinner]').each(function(){
@@ -670,10 +687,49 @@
 					});
 				},
 
+				ajaxSearch: function($form, request){
+
+	                var results = $form.next().find('.results'),
+	                    search = $form.find('input[type="search"]').val(),
+	                    cat = $form.find('select[name="product_cat"]').val();
+
+	                if ( search.length < 3 ) {
+	                    results.html('').hide();
+	                    return;
+	                }
+
+	                PP.obj.searchRequest && PP.obj.searchRequest.abort();
+
+	                PP.obj.searchRequest = $.ajax({
+	                    url: wc_cart_fragments_params.ajax_url,
+	                    method: 'POST',
+	                    data: {
+	                        'action': 'pp_search_product',
+	                        's': search,
+	                        'product_cat': cat
+	                    },
+	                    dataType: 'json',
+	                    beforeSend: function() {
+	                    	PP.method.global.loading( $form.next(), 'open' );
+	                    	$form.next().addClass( 'open' );
+	                    },
+	                    complete: function() {
+	                    	PP.method.global.loading( $form.next(), 'close' );
+	                    },
+	                    success: function(response){
+	                        results.html(response).show();
+	                    },
+	                    error: function() {
+	                    }
+	                });
+
+				},
+
 				init: function(){
 
 					this.spinner();
 					this.animInput();
+					this.regEventHandlers();
 
 				},
 
@@ -3475,6 +3531,11 @@
 					$popup.removeClass( 'open' ).find( '.content' );
 				}
 
+				// Close the search result
+		    	if ( ! $( '.product-search' ).parent().is( e.target ) && $( '.product-search' ).parent().has( e.target ).length === 0 ) {
+					$( '.cd-search-suggestions' ).removeClass( 'open' );
+				}
+
 				// Close quickview
 				if( $(e.target).is('.cd-close') || $(e.target).is('body.overlay-layer')) {
 					PP.method.product.closeQuickView( PP.obj.sliderFinalWidth, PP.obj.maxQuickWidth);
@@ -3561,7 +3622,7 @@
 				PP.method.cart.cartMaxHeight();
 				PP.method.navigation.navHorizontalScroll();
 
-				if($('.cd-quick-view').hasClass('is-visible')){
+				if ( $('.cd-quick-view').hasClass('is-visible') ){
 					window.requestAnimationFrame(PP.method.product.resizeQuickView);
 				}
 

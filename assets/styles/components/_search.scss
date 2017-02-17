@@ -54,17 +54,23 @@ Patterns - reusable parts of our design
 		form { position: relative; display: block; border-radius: 3px; border: 1px solid #ddd;
 		
 			.cd-select { display: inline-block; position: relative; height: 40px; top: 20px; float: left; width: auto; transform: translateY(-50%); color: #555; font-size: 1.4rem; overflow: hidden; border-right: 1px solid #ddd;
-		  
+		    
+        .in { display: none; }
+
 				select { position: absolute; left: 0; top: 50%; bottom: auto; transform: translateY(-50%); opacity: 0; color: transparent; }
 		  
 				select:focus { outline: none; }
 		  
-				.selected-value { color: #555; position: relative; display: inline-block; pointer-events: none; transition: background-color 0.3s; padding: .5em 2.7em .5em .8em; font-size: 1.4rem; border-radius: 3px; }
-		 
-				.selected-value:before,
-				.selected-value:after { background-color: #555; content: ''; display: block; height: 2px; width: 8px; position: absolute; right: 17px; top: 50%; margin-top: -1px; transition: all .3s $cb; transform: rotate3d(0,0,1,45deg); }
-		  
-				.selected-value:after { right: 12px; transform: rotate3d(0,0,1,-45deg); }
+				.select2-container .select2-choice { color: #555; position: relative; display: block; margin: 0; padding: 12px 5px 16px 12px; text-transform: none; border: none !important; box-shadow: none !important; transition: background-color 0.3s; font-size: 1.4rem; border-radius: 3px; 
+
+          .select2-arrow { display: none; }
+     
+          &:before,
+          &:after { background-color: #555; content: ''; display: block; height: 2px; width: 8px; position: absolute; right: 17px; top: 50%; margin-top: -3px; transition: all .3s $cb; transform: rotate3d(0,0,1,45deg); }
+        
+          &:after { right: 12px; transform: rotate3d(0,0,1,-45deg); }
+
+        }
 		  
 			}
 			
@@ -81,6 +87,8 @@ Patterns - reusable parts of our design
 			button:before { font-size: 24px; line-height: 37px; }
 			
 		}
+
+    .cd-search-suggestions { width: 100%; margin: -2px 0 0; }
 		
 	}
 	
@@ -91,6 +99,24 @@ Patterns - reusable parts of our design
 .center_logo-left_menu .search-box { left: 58%; width: 30%; }
 	
 .top_logo-left_menu .search-box { left: 17%; width: 64%; }
+
+.top_logo-center_menu,
+.center_logo-left_menu {
+
+    .search-box .results ul { max-height: 422px !important;
+
+      li { flex: 1 50% !important; padding: 10px !important;
+
+        a .meta span.variation { display: none !important; }
+
+        &:nth-child(3n+0) { border-right: 1px solid rgba(0, 0, 0, 0.07) !important; }
+        &:nth-child(2n+0) { border-right: none; }
+
+      }
+
+    }
+
+}
 
 /* -------------------------------- 
 
@@ -144,6 +170,9 @@ Search Form
     /* 116px (margin right) takes into account the space occupied by the a.cd-search-trigger and a.close */
     margin: 0 calc(5% + 116px) 0 calc(3% + 170px);
   }
+  .cd-main-search .search-input {
+    height: 100%;
+  }
   .cd-main-search input[type="search"] {
     font-size: 2.4rem;
     height: 100%;
@@ -162,7 +191,7 @@ Search Form
     font-size: 1.4rem;
     overflow: hidden;
   }
-  .cd-main-search span {
+  .cd-main-search span.in {
     display: inline-block;
     opacity: 0.4;
   }
@@ -184,50 +213,51 @@ Search Form
   .cd-main-search select:focus {
     outline: none;
   }
-  .cd-main-search .selected-value {
-  	position: relative;
-    opacity: 1;
-    /* clicking on this element will open the <select> drop-down list */
-    pointer-events: none;
-    -webkit-transition: background-color 0.3s;
-    -moz-transition: background-color 0.3s;
-    transition: background-color 0.3s;
+  .cd-main-search .select2-container {
+    display: inline-block !important;
+    width: auto !important;
+
+    .select2-choice {
+      text-transform: none;
+      border: none !important;
+      padding: 0.5em 1.7em 0.5em .3em;
+      font-size: 1.4rem;
+      box-shadow: none !important;
+      font-weight: normal;
+      vertical-align: middle;
+      display: inline-block;
+      margin: 0;
+
+      span {
+        opacity: 1;
+        margin: 0;
+      }
+
+      .select2-arrow {
+        display: none;
+      }
+
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 8px;
+        position: absolute;
+        right: 7px;
+        top: 50%;
+        margin-top: -1px;
+        transition: all .3s $cb;
+        transform: rotate3d(0,0,1,45deg);
+      }
+      &:after {
+        right: 2px;
+        transform: rotate3d(0,0,1,-45deg);
+      }
+
+    }
   }
-  .cd-main-search .selected-value:before,
-  .cd-main-search .selected-value:after {
-  	content: '';
-  	display: block;
-  	height: 2px;
-  	width: 8px;
-  	position: absolute;
-  	right: 7px;
-  	top: 50%;
-  	margin-top: -1px;
-  	transition: all .3s $cb;
-  	transform: rotate3d(0,0,1,45deg);
-  }
-  .cd-main-search .selected-value:after {
-  	right: 2px;
-  	transform: rotate3d(0,0,1,-45deg);
-  }
-  .cd-main-search select, .cd-main-search .selected-value {
-    padding: 0.5em 1.7em 0.5em .3em;
-    font-size: 1.4rem;
-    border-radius: 3px;
-  }
-  .no-pointerevents .cd-main-search .selected-value {
-    /* if the browser doesn't support the pointer-events property, hide the .selected-value element */
-    display: none;
-  }
-  .no-pointerevents .cd-main-search select {
-    /* if the browser doesn't support the pointer-events property, show the <select> element */
-    position: relative;
-    color: #ffffff;
-    transform: translateY(0);
-  }
-  .no-pointerevents .cd-main-search select:focus {
-    background-color: #3d3f4e;
-  }
+  
   .cd-main-search .close {
     /* 'X' icon - used to close the search form */
     display: inline-block;
@@ -254,6 +284,24 @@ Search Form
   .cd-main-search .close::after {
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
+
+  .cd-main-search button {
+      background: none;
+      border: none;
+      font-size: 23px;
+      line-height: 12px;
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      opacity: 0.5;
+      transform: translateY(-50%);
+      transition: opacity .3s $cb;
+  }
+
+  .cd-main-search button:hover {
+    opacity: 1;
+  }
+
   .cd-main-search.is-visible {
     /* search form open */
     opacity: 1;
@@ -289,121 +337,95 @@ Search Form
     top: 100%;
     left: 0;
     width: calc( 92% - 286px);
-    padding: 2em;
+    min-height: 66px;
+    max-height: 516px;
     /* same margin of <form> element */
     margin: 0 calc(5% + 116px) 0 calc(3% + 170px);
     background-color: #ffffff;
     box-shadow:  0 4px 10px rgba(0,0,0,0.06);
-  }
-  .cd-search-suggestions::after {
-    clear: both;
-    content: "";
-    display: table;
-  }
-  .cd-search-suggestions .quick-links, .cd-search-suggestions .news {
-    display: inline-block;
-  }
-  .cd-search-suggestions .quick-links {
-    float: right;
-    width: 140px;
-    text-align: right;
-  }
-  .cd-search-suggestions .news {
-    float: left;
-    width: calc(100% - 140px);
-  }
-  .cd-search-suggestions h3 {
-    margin-bottom: 1.5em;
-    text-transform: uppercase;
-    color: #7a7c86;
-    font-size: 1.2rem;
-    font-weight: bold;
-    letter-spacing: .1em;
-  }
-  .cd-search-suggestions h4 {
-    font-weight: bold;
-    font-size: 1.4rem;
-  }
-  .cd-search-suggestions h4 a {
-    /* prevent the text from wrapping */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    padding: .2em 0;
-  }
-  .cd-search-suggestions a {
-    display: inline-block;
-    color: #333545;
-  }
-  .no-touch .cd-search-suggestions a:hover {
-    opacity: .8;
-  }
-  .cd-search-suggestions time {
-    font-size: 1.2rem;
-    color: #70727d;
-  }
-  .cd-search-suggestions .news li {
-    position: relative;
-    padding: 0.625em 0.75em 0.75em 4em;
-    margin-bottom: 0.25em;
-  }
-  .cd-search-suggestions .news li:last-of-type {
-    margin-bottom: 0;
-  }
-  .cd-search-suggestions .image-wrapper {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-  }
-  .cd-search-suggestions .image-wrapper img {
-    display: block;
-  }
-  .cd-search-suggestions .quick-links a {
-    padding: .5em 0;
-    font-size: 1.4rem;
-    line-height: 1.2;
+    transform: perspective(1000px) rotateX(-90deg);
+    transform-origin: center top;
+    backface-visibility: hidden;
+    transition: transform .4s $cb;
+  
+    .results { border: 1px solid rgba(0, 0, 0, 0.07);
+
+      ul { margin: 0; list-style: none; -webkit-padding-start: 0; display: flex; flex-flow: row wrap; max-height: 400px; overflow-y: auto; padding-bottom: 49px;
+
+        li { margin-bottom: 10px; padding: 20px; margin: 0; border-bottom: 1px solid rgba(0, 0, 0, 0.07); border-right: 1px solid rgba(0, 0, 0, 0.07); flex: 1 33%;
+
+          a { color: #000; height: 60px; display: table; overflow: hidden; cursor: pointer; transition: color 350ms ease; position: relative; top: 50%; transform: translateY(-50%);
+
+            figure { width: 60px; display: table-cell; vertical-align: middle;
+
+              img { width: 100px; margin: 0; }
+
+            }
+
+            .meta { float: none; color: #999; padding: 0 0 0 7px; position: relative; display: table-cell; vertical-align: middle;
+
+              span.product-title,
+              span.amount,
+              span.variation,
+              span.reviewer { font-size: 12px; font-weight: normal; letter-spacing: -0.01em; display: block; line-height: 1; }
+
+              span { color: #999; }
+
+              span.amount,
+              span.variation,
+              span.reviewer { display: inline; }
+
+              span.variation { border-left: 1px solid; padding: 0 0 0 10px; margin: 0 0 0 5px; }
+
+              span.amount,
+              span.reviewer { padding: 0 3px; }
+
+              span.product-title { text-transform: uppercase; font-size: 11px; color: #000; padding: 0 3px 3px; transition: all 500ms cubic-bezier(0.7, 0, 0.3, 1); }
+
+                .star-rating { margin: 0 0 2px 3px; color: $yellow; }
+
+              del { color: $red; padding: 0; margin-bottom: -12px; display: block;
+
+                span { padding: 0 !important; }
+
+                span.amount,
+                span.amount span { color: $red; }
+
+              }
+
+              ins { color: #999; text-decoration: none; padding: 0 3px 0 0;
+
+                span { padding: 0 !important; }
+
+              }
+
+            }
+
+            &:hover { text-decoration: none;  }
+
+          }
+
+          &:last-child,
+          &:nth-child(3n + 0) { border-right: none; }
+
+        }
+
+      }
+
+      .no-results { padding: 20px; margin: 0; text-align: center; font-size: 1.6rem; }
+
+      .view-all { background: #fff; font-size: 1.3rem; text-align: center; text-transform: uppercase; display: block; border: 1px solid rgba(0, 0, 0, 0.07); padding: 13px 0; position: absolute; bottom: 0; left: 0; width: 100%; }
+
+    }
+
+    &.open {
+      transform: perspective(1000px) translateY(0);
+    }
+
   }
   
 }
 
-.nav-header.animate-search .is-visible .cd-search-suggestions {
-	/* trigger the dropdown animation if <header> has the .animate-search class */
-	transform-origin: center top;
-	transform: translateZ(0);
-	backface-visibility: hidden;
-	animation: cd-3d-rotation 0.5s 0.3s;
-	animation-fill-mode: backwards;
-}
-
-@-webkit-keyframes cd-3d-rotation {
-  0% {
-    -webkit-transform: perspective(1000px) rotateX(-90deg);
-  }
-  100% {
-    -webkit-transform: perspective(1000px) translateY(0);
-  }
-}
-@-moz-keyframes cd-3d-rotation {
-  0% {
-    -moz-transform: perspective(1000px) rotateX(-90deg);
-  }
-  100% {
-    -moz-transform: perspective(1000px) translateY(0);
-  }
-}
-@keyframes cd-3d-rotation {
-  0% {
-    transform: perspective(1000px) rotateX(-90deg);
-  }
-  100% {
-    transform: perspective(1000px) translateY(0);
-  }
-}
 .cd-search-trigger {
   /* trigger serach form visibility - hidden on small devices */
   display: none;
@@ -412,6 +434,8 @@ Search Form
 @media only screen and (max-width: 1099px) {
 
 	.nav-header .cd-main-search form { margin: 0 calc(5% + 70px) 0 calc(3% + 70px); }
+
+  .nav-header .cd-main-search button { right: -38px; }
 
 	.nav-header .cd-search-suggestions { width: calc(92% - 140px); margin: 0 calc(5% + 70px) 0 calc(3% + 70px); }
 	
@@ -506,7 +530,4 @@ JavaScript Disabled
 }
 .no-js .cd-main-search select:focus {
   background-color: #3d3f4e;
-}
-.no-js .cd-main-search .selected-value {
-  display: none;
 }

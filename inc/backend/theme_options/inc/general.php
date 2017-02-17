@@ -192,7 +192,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( 'body a:after', '.custom.tp-bullets .tp-bullet.selected', '.primary-bg-color-hover:hover', '.woocommerce-MyAccount-navigation li.is-active a', '#thumb-slider .thumb:after' ),
+			'element'  => array( '.custom.tp-bullets .tp-bullet.selected', '.primary-bg-color-hover:hover', '.woocommerce-MyAccount-navigation li.is-active a', '#thumb-slider .thumb:after' ),
 			'property' => 'background-color',
 		),
 		array(

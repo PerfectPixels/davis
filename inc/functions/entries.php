@@ -23,21 +23,21 @@ function title() {
       return __('Latest Posts', 'davis' );
     }
 
-  } else if ( is_shop() ) {
+  } else if ( is_search() ) {
 
-  	return get_theme_mod( 'shop_page_title', __( 'Shop all products', 'davis' ) );
+    return sprintf( __( 'Search Results for %s', 'davis' ), get_search_query() );
 
   } else if ( is_product_category() ) {
 
-  	return single_cat_title( '', false );
+    return single_cat_title( '', false );
+
+  } else if ( is_shop() ) {
+
+    return get_theme_mod( 'shop_page_title', __( 'Shop all products', 'davis' ) );
 
   } else if ( is_archive() ) {
 
     return get_the_archive_title();
-
-  } else if ( is_search() ) {
-
-    return sprintf( __( 'Search Results for %s', 'davis' ), get_search_query() );
 
   } else if ( is_404() ) {
 

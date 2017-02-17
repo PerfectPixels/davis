@@ -13,24 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-// Has this page got any subcategories?
-$term 		= get_queried_object();
-$children 	= false;
-
-
-if ( is_tax() ){
-	$children = get_terms( $term->taxonomy, array(
-		'parent'    => $term->term_id,
-		'hide_empty' => false
-	) );
-}
-
-if ( !$children ) {
-	$template_name = 'last-product';
-} else {
-	$template_name = 'product';
-}
-
 ?>
 
 <? get_header( 'shop' ); ?>

@@ -20,14 +20,6 @@ if ( ! $product || ! $product->is_visible() ) {
 	return;
 }
 
-// Check if it has children
-$children = false;
-$term 	  = get_queried_object();
-
-if ( is_tax() ){
-	$children = get_term_children( $term->term_id, 'product_cat' );
-}
-
 // Get the permalink
 $url = get_permalink();
 
@@ -85,7 +77,7 @@ if ( $product->is_type( 'variable' ) ){
 // If it is a single variation product
 $single_variation_product	= false;
 
-if ( ! $children && $product->variation_id ){
+if ( $product->variation_id ){
 	$variation_id = $product->variation_id;
 	$product_colors = get_post_meta($product->variation_id, '_jck_product_colors', true);
     $product = wc_get_product($product->parent->id);

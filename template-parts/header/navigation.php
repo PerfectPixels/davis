@@ -63,27 +63,7 @@ if ( true == $search_field && ( $header_type == 'center_logo-left_menu' || $head
 
 	<?php if ( $has_search_field ) { ?>
 		<div class="search-box">
-			<form method="get" action="<?php echo home_url(); ?>" class="header-text-color-txt-all">
-		        <?php if ( class_exists('WooCommerce') ) { ?>
-			        <div class="cd-select">
-						<select>
-							<option value="all"><?php _e( 'All', 'davis' ); ?></option>
-
-							<?php
-							$product_cat = get_terms( 'product_cat' );
-
-							foreach ( $product_cat as $cat ) {
-						        echo '<option value="' . $cat->term_id . '">' . $cat->name . '</option>';
-						    }
-							?>
-
-						</select>
-						<span class="selected-value header-text-color-bg-speudo"><?php _e( 'All', 'davis' ); ?></span>
-					</div>
-				<?php } ?>
-		        <button name="button" type="submit" class="icon-android-search"></button>
-		        <div class="search-input"><input type="search" value="<?php echo esc_html($s, 1); ?>" name="s" id="s" /></div>
-		    </form>
+			<?php get_template_part( 'template-parts/header/search-form' ); ?>
 		</div>
 	<?php } ?>
 
@@ -104,61 +84,20 @@ if ( true == $search_field && ( $header_type == 'center_logo-left_menu' || $head
 		<li class="menu">
 			<a class="nav-button" href="#"><span class="header-text-color-bg header-text-color-bg-speudo"></span></a>
 		</li>
-		<?php if ( true == get_theme_mod( 'header_action_icons', true ) ) : ?>
+		<?php if ( true == get_theme_mod( 'header_action_icons', true ) ) { ?>
 			<?php get_template_part( 'template-parts/header/header-icons' ); ?>
-		<?php endif; ?>
-		<?php if ( true == get_theme_mod( 'header_search_icons', true ) ) : ?>
+		<?php } ?>
+		<?php if ( true == get_theme_mod( 'header_search_icons', true ) ) { ?>
 			<li class="search">
 				<a class="search-button cd-search-trigger icon-android-search" href="#"></a>
 			</li>
-		<?php endif; ?>
+		<?php } ?>
 	</ul>
 
-	<div id="search" class="cd-main-search header-bg-color-bg">
-		<form method="get" action="<?php echo home_url(); ?>" class="header-text-color-txt-all">
-	        <input class="search-input" type="search" value="<?php echo esc_html($s, 1); ?>" name="s" id="s" placeholder="<?php _e( 'Search Products...', 'davis' ); ?>" title="<?php _e( 'Search for:', 'davis' ); ?>" />
-	        <?php if (class_exists('WooCommerce')) { ?>
-		        <div class="cd-select">
-					<span><?php _e( 'in', 'davis' ); ?></span>
-					<select>
-						<option value="all"><?php _e( 'All', 'davis' ); ?></option>
-
-						<?php
-						$product_cat = get_terms( 'product_cat' );
-
-						foreach ( $product_cat as $cat ) {
-					        echo '<option value="' . $cat->term_id . '">' . $cat->name . '</option>';
-					    }
-						?>
-
-					</select>
-					<span class="selected-value header-text-color-bg-speudo"><?php _e( 'All', 'davis' ); ?></span>
-				</div>
-			<?php } ?>
-	    </form>
-
-		<!--
-<div class="cd-search-suggestions">
-			<div class="news">
-				<h3>News</h3>
-				<ul>
-					<li>
-						<a class="image-wrapper" href="#0"><img src="assests/images/placeholder.png" alt="News image"></a>
-						<h4><a class="cd-nowrap" href="#0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h4>
-						<time datetime="2016-01-12">Feb 03, 2016</time>
-					</li>
-
-				</ul>
-
-			<div class="quick-links">
-				<h3>Quick Links</h3>
-				<ul>
-					<li><a href="#0">Find a store</a></li>
-				</ul>
-			</div>
+	<?php if ( true == get_theme_mod( 'header_search_icons', true ) ) { ?>
+		<div id="search" class="cd-main-search header-bg-color-bg">
+			<?php get_template_part( 'template-parts/header/search-form' ); ?>
+			<a href="#0" class="close cd-text-replace header-text-color-bg-speudo">Close Search</a>
 		</div>
--->
-
-		<a href="#0" class="close cd-text-replace header-text-color-bg-speudo">Close Form</a>
-	</div>
+	<?php } ?>
 </header>

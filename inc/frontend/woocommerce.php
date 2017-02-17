@@ -124,6 +124,7 @@ class PP_Woocommerce {
         if (!$hide_related_product){
             remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
         }
+
     }
 
     /**

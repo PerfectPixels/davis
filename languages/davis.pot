@@ -110,11 +110,11 @@ msgstr ""
 msgid "Choose if you want to display or remove the bottom sidebar in the footer."
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:50, inc/backend/theme_options/inc/footer.php:123, inc/backend/theme_options/inc/header.php:54, inc/backend/theme_options/inc/header.php:185, inc/backend/theme_options/inc/header.php:232, inc/backend/theme_options/inc/header.php:377, inc/backend/theme_options/inc/header.php:722, inc/backend/theme_options/inc/header.php:804, inc/backend/theme_options/inc/header.php:818, inc/backend/theme_options/inc/shop.php:78, inc/backend/theme_options/inc/shop.php:233
+#: inc/backend/theme_options/inc/footer.php:50, inc/backend/theme_options/inc/footer.php:123, inc/backend/theme_options/inc/header.php:54, inc/backend/theme_options/inc/header.php:185, inc/backend/theme_options/inc/header.php:225, inc/backend/theme_options/inc/header.php:370, inc/backend/theme_options/inc/header.php:698, inc/backend/theme_options/inc/header.php:768, inc/backend/theme_options/inc/header.php:789, inc/backend/theme_options/inc/shop.php:78, inc/backend/theme_options/inc/shop.php:233
 msgid "Show"
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:51, inc/backend/theme_options/inc/footer.php:124, inc/backend/theme_options/inc/header.php:55, inc/backend/theme_options/inc/header.php:186, inc/backend/theme_options/inc/header.php:233, inc/backend/theme_options/inc/header.php:378, inc/backend/theme_options/inc/header.php:723, inc/backend/theme_options/inc/header.php:805, inc/backend/theme_options/inc/header.php:819, inc/backend/theme_options/inc/shop.php:79, inc/backend/theme_options/inc/shop.php:234
+#: inc/backend/theme_options/inc/footer.php:51, inc/backend/theme_options/inc/footer.php:124, inc/backend/theme_options/inc/header.php:55, inc/backend/theme_options/inc/header.php:186, inc/backend/theme_options/inc/header.php:226, inc/backend/theme_options/inc/header.php:371, inc/backend/theme_options/inc/header.php:699, inc/backend/theme_options/inc/header.php:769, inc/backend/theme_options/inc/header.php:790, inc/backend/theme_options/inc/shop.php:79, inc/backend/theme_options/inc/shop.php:234
 msgid "Hide"
 msgstr ""
 
@@ -134,7 +134,7 @@ msgstr ""
 msgid "© 2016 ThemeConcept Ltd. All Rights Reserved."
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:116, inc/backend/theme_options/inc/header.php:225
+#: inc/backend/theme_options/inc/footer.php:116, inc/backend/theme_options/inc/header.php:218
 msgid "Display Social Media"
 msgstr ""
 
@@ -142,47 +142,47 @@ msgstr ""
 msgid "Choose if you want to display or remove the social media."
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:130, inc/backend/theme_options/inc/header.php:260, inc/backend/theme_options/inc/social-media.php:14
+#: inc/backend/theme_options/inc/footer.php:130, inc/backend/theme_options/inc/header.php:253, inc/backend/theme_options/inc/social-media.php:14
 msgid "Facebook"
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:131, inc/backend/theme_options/inc/header.php:261
+#: inc/backend/theme_options/inc/footer.php:131, inc/backend/theme_options/inc/header.php:254
 msgid "Make sure you have added the Facebook URL to the "
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:131, inc/backend/theme_options/inc/footer.php:148, inc/backend/theme_options/inc/footer.php:165, inc/backend/theme_options/inc/footer.php:182, inc/backend/theme_options/inc/footer.php:199, inc/backend/theme_options/inc/header.php:261, inc/backend/theme_options/inc/header.php:283, inc/backend/theme_options/inc/header.php:305, inc/backend/theme_options/inc/header.php:327, inc/backend/theme_options/inc/header.php:349
+#: inc/backend/theme_options/inc/footer.php:131, inc/backend/theme_options/inc/footer.php:148, inc/backend/theme_options/inc/footer.php:165, inc/backend/theme_options/inc/footer.php:182, inc/backend/theme_options/inc/footer.php:199, inc/backend/theme_options/inc/header.php:254, inc/backend/theme_options/inc/header.php:276, inc/backend/theme_options/inc/header.php:298, inc/backend/theme_options/inc/header.php:320, inc/backend/theme_options/inc/header.php:342
 msgid "Social Media section"
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:147, inc/backend/theme_options/inc/header.php:282, inc/backend/theme_options/inc/social-media.php:23
+#: inc/backend/theme_options/inc/footer.php:147, inc/backend/theme_options/inc/header.php:275, inc/backend/theme_options/inc/social-media.php:23
 msgid "Twitter"
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:148, inc/backend/theme_options/inc/header.php:283
+#: inc/backend/theme_options/inc/footer.php:148, inc/backend/theme_options/inc/header.php:276
 msgid "Make sure you have added the Twitter URL to the "
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:164, inc/backend/theme_options/inc/header.php:304, inc/backend/theme_options/inc/social-media.php:32
+#: inc/backend/theme_options/inc/footer.php:164, inc/backend/theme_options/inc/header.php:297, inc/backend/theme_options/inc/social-media.php:32
 msgid "Google Plus"
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:165, inc/backend/theme_options/inc/header.php:305
+#: inc/backend/theme_options/inc/footer.php:165, inc/backend/theme_options/inc/header.php:298
 msgid "Make sure you have added the Google Plus URL to the "
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:181, inc/backend/theme_options/inc/header.php:326, inc/backend/theme_options/inc/social-media.php:41
+#: inc/backend/theme_options/inc/footer.php:181, inc/backend/theme_options/inc/header.php:319, inc/backend/theme_options/inc/social-media.php:41
 msgid "Instagram"
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:182, inc/backend/theme_options/inc/header.php:327
+#: inc/backend/theme_options/inc/footer.php:182, inc/backend/theme_options/inc/header.php:320
 msgid "Make sure you have added the Instagram URL to the "
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:198, inc/backend/theme_options/inc/header.php:348, inc/backend/theme_options/inc/social-media.php:50
+#: inc/backend/theme_options/inc/footer.php:198, inc/backend/theme_options/inc/header.php:341, inc/backend/theme_options/inc/social-media.php:50
 msgid "Pinterest"
 msgstr ""
 
-#: inc/backend/theme_options/inc/footer.php:199, inc/backend/theme_options/inc/header.php:349
+#: inc/backend/theme_options/inc/footer.php:199, inc/backend/theme_options/inc/header.php:342
 msgid "Make sure you have added the Pinterest URL to the "
 msgstr ""
 
@@ -246,180 +246,196 @@ msgstr ""
 msgid "Hover Text Color"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:178, inc/backend/theme_options/inc/header.php:715
+#: inc/backend/theme_options/inc/header.php:178, inc/backend/theme_options/inc/header.php:691
 msgid "User Action Icons"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:179, inc/backend/theme_options/inc/header.php:716
+#: inc/backend/theme_options/inc/header.php:179, inc/backend/theme_options/inc/header.php:692
 msgid "Choose to show/hide the action icons (account/login, cart, wishlist...)"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:192, inc/backend/theme_options/inc/header.php:729
+#: inc/backend/theme_options/inc/header.php:192, inc/backend/theme_options/inc/header.php:705
 msgid "Icon Counter Color"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:193, inc/backend/theme_options/inc/header.php:730
+#: inc/backend/theme_options/inc/header.php:193, inc/backend/theme_options/inc/header.php:706
 msgid "Select the color of the text counter inside the action icons (cart and wishlist)."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:226
+#: inc/backend/theme_options/inc/header.php:219
 msgid "Choose to show/hide the social media icons."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:246
+#: inc/backend/theme_options/inc/header.php:239
 msgid "Social media location"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:247
+#: inc/backend/theme_options/inc/header.php:240
 msgid "Choose to display the social media icons on the left or the right of the top bar."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:253, inc/backend/theme_options/inc/header.php:398, inc/backend/theme_options/inc/shop.php:209, inc/mega-menu/options/background.php:67, inc/mega-menu/options/background.php:89
+#: inc/backend/theme_options/inc/header.php:246, inc/backend/theme_options/inc/header.php:391, inc/backend/theme_options/inc/shop.php:209, inc/mega-menu/options/background.php:67, inc/mega-menu/options/background.php:89
 msgid "Right"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:254, inc/backend/theme_options/inc/header.php:399, inc/backend/theme_options/inc/shop.php:208, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87, inc/mega-menu/options/icon.php:50
+#: inc/backend/theme_options/inc/header.php:247, inc/backend/theme_options/inc/header.php:392, inc/backend/theme_options/inc/shop.php:208, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87, inc/mega-menu/options/icon.php:50
 msgid "Left"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:370
+#: inc/backend/theme_options/inc/header.php:363
 msgid "Display Message Box"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:371
+#: inc/backend/theme_options/inc/header.php:364
 msgid "Choose to show/hide the message box."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:391
+#: inc/backend/theme_options/inc/header.php:384
 msgid "Message location"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:392
+#: inc/backend/theme_options/inc/header.php:385
 msgid "Choose to display the message box on the left or the right of the top bar."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:405
+#: inc/backend/theme_options/inc/header.php:398
 msgid "Message Text"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:409, template-parts/header/topbar.php:5
+#: inc/backend/theme_options/inc/header.php:402, template-parts/header/topbar.php:5
 msgid "Free shipping and returns on all orders"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:426
+#: inc/backend/theme_options/inc/header.php:419
 msgid "Message text Color"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:462
+#: inc/backend/theme_options/inc/header.php:455
 msgid "Message Box Color"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:505
+#: inc/backend/theme_options/inc/header.php:498
 msgid "Header Style"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:506
+#: inc/backend/theme_options/inc/header.php:499
 msgid "Choose a layout between all the available ones."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:524
+#: inc/backend/theme_options/inc/header.php:517
 msgid "Sticky Header"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:525
+#: inc/backend/theme_options/inc/header.php:518
 msgid "Have the header always at the top of the page."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:531
+#: inc/backend/theme_options/inc/header.php:524
 msgid "Sticky"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:532
+#: inc/backend/theme_options/inc/header.php:525
 msgid "Scrollable"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:539
+#: inc/backend/theme_options/inc/header.php:532
 msgid "Top Page Transparent Header"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:540
+#: inc/backend/theme_options/inc/header.php:533
 msgid "Choose to have a transparent header when at the top page. ( Ideal if you have a slideshow underneath a sticky header )"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:546, woocommerce/single-product/contributions/actions.php:18
+#: inc/backend/theme_options/inc/header.php:539, woocommerce/single-product/contributions/actions.php:18
 msgid "Yes"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:547, woocommerce/single-product/contributions/actions.php:20
+#: inc/backend/theme_options/inc/header.php:540, woocommerce/single-product/contributions/actions.php:20
 msgid "No"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:553
+#: inc/backend/theme_options/inc/header.php:546
 msgid "Transparent Header Text Color"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:585
+#: inc/backend/theme_options/inc/header.php:578
 msgid "Header Background Color"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:620
+#: inc/backend/theme_options/inc/header.php:613
 msgid "Header Text Color"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:664
+#: inc/backend/theme_options/inc/header.php:640
 msgid "Header Hover Text Color"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:687
+#: inc/backend/theme_options/inc/header.php:663
 msgid "Logo Selection"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:688
+#: inc/backend/theme_options/inc/header.php:664
 msgid "Select the logo type you want to display depending on the header color."
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:694
+#: inc/backend/theme_options/inc/header.php:670
 msgid "Light"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:695
+#: inc/backend/theme_options/inc/header.php:671
 msgid "Dark"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:701
+#: inc/backend/theme_options/inc/header.php:677
 msgid "Mega Menu Style"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:702
+#: inc/backend/theme_options/inc/header.php:678
 msgid "Choose to have the submenu fullwidth or boxed"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:708, inc/backend/theme_options/inc/shop.php:171
+#: inc/backend/theme_options/inc/header.php:684, inc/backend/theme_options/inc/shop.php:171
 msgid "Fullwidth"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:709
+#: inc/backend/theme_options/inc/header.php:685
 msgid "Boxed"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:767
+#: inc/backend/theme_options/inc/header.php:737
 msgid "Icon Counter Hover Color"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:797, inc/mega-menu/options/icon.php:21
+#: inc/backend/theme_options/inc/header.php:761, inc/mega-menu/options/icon.php:21
 msgid "Search Icon"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:798
+#: inc/backend/theme_options/inc/header.php:762
 msgid "Choose to show/hide the search icon"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:811
+#: inc/backend/theme_options/inc/header.php:782
 msgid "Search Input Field"
 msgstr ""
 
-#: inc/backend/theme_options/inc/header.php:812
+#: inc/backend/theme_options/inc/header.php:783
 msgid "Choose to show/hide the search input field."
+msgstr ""
+
+#: inc/backend/theme_options/inc/header.php:803
+msgid "Ajax Search"
+msgstr ""
+
+#: inc/backend/theme_options/inc/header.php:804
+msgid "Enable/Disable the ajax search."
+msgstr ""
+
+#: inc/backend/theme_options/inc/header.php:810, inc/backend/theme_options/inc/shop.php:92, inc/backend/theme_options/inc/shop.php:120, inc/backend/theme_options/inc/shop.php:135, inc/backend/theme_options/inc/shop.php:340
+msgid "Enable"
+msgstr ""
+
+#: inc/backend/theme_options/inc/header.php:811, inc/backend/theme_options/inc/shop.php:93, inc/backend/theme_options/inc/shop.php:121, inc/backend/theme_options/inc/shop.php:136, inc/backend/theme_options/inc/shop.php:341
+msgid "Disable"
 msgstr ""
 
 #: inc/backend/theme_options/inc/login.php:6
@@ -510,7 +526,7 @@ msgstr ""
 msgid "Page Title"
 msgstr ""
 
-#: inc/backend/theme_options/inc/shop.php:23, inc/functions/entries.php:28
+#: inc/backend/theme_options/inc/shop.php:23, inc/functions/entries.php:36
 msgid "Shop all products"
 msgstr ""
 
@@ -560,14 +576,6 @@ msgstr ""
 
 #: inc/backend/theme_options/inc/shop.php:86
 msgid "Enable Quickview will display a icon in the product details to open a modal."
-msgstr ""
-
-#: inc/backend/theme_options/inc/shop.php:92, inc/backend/theme_options/inc/shop.php:120, inc/backend/theme_options/inc/shop.php:135, inc/backend/theme_options/inc/shop.php:340
-msgid "Enable"
-msgstr ""
-
-#: inc/backend/theme_options/inc/shop.php:93, inc/backend/theme_options/inc/shop.php:121, inc/backend/theme_options/inc/shop.php:136, inc/backend/theme_options/inc/shop.php:341
-msgid "Disable"
 msgstr ""
 
 #: inc/backend/theme_options/inc/shop.php:99
@@ -784,6 +792,14 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
+#: inc/frontend/search.php:88, woocommerce/myaccount/dashboard.php:48
+msgid "View all"
+msgstr ""
+
+#: inc/frontend/search.php:94
+msgid "No results was found"
+msgstr ""
+
 #: inc/frontend/template-tags.php:28
 msgctxt "post date"
 msgid "Posted on %s"
@@ -814,11 +830,11 @@ msgstr ""
 msgid "Edit %s"
 msgstr ""
 
-#: inc/frontend/woocommerce.php:333
+#: inc/frontend/woocommerce.php:334
 msgid "by"
 msgstr ""
 
-#: inc/frontend/woocommerce.php:396
+#: inc/frontend/woocommerce.php:397
 msgid "Share:"
 msgstr ""
 
@@ -826,7 +842,7 @@ msgstr ""
 msgid "Latest Posts"
 msgstr ""
 
-#: inc/functions/entries.php:40
+#: inc/functions/entries.php:28
 msgid "Search Results for %s"
 msgstr ""
 
@@ -1126,23 +1142,23 @@ msgstr ""
 msgid "Footer Navigation"
 msgstr ""
 
-#: inc/setup.php:73
+#: inc/setup.php:74
 msgid "Primary"
 msgstr ""
 
-#: inc/setup.php:94
+#: inc/setup.php:95
 msgid "Footer Top"
 msgstr ""
 
-#: inc/setup.php:112
+#: inc/setup.php:113
 msgid "Footer Bottom"
 msgstr ""
 
-#: inc/setup.php:268
+#: inc/setup.php:269
 msgid "Theme Options"
 msgstr ""
 
-#: inc/setup.php:274
+#: inc/setup.php:275
 msgid "Header Options"
 msgstr ""
 
@@ -1209,22 +1225,6 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: template-parts/header/navigation.php:70, template-parts/header/navigation.php:81, template-parts/header/navigation.php:124, template-parts/header/navigation.php:135
-msgid "All"
-msgstr ""
-
-#: template-parts/header/navigation.php:119
-msgid "Search Products..."
-msgstr ""
-
-#: template-parts/header/navigation.php:119
-msgid "Search for:"
-msgstr ""
-
-#: template-parts/header/navigation.php:122
-msgid "in"
-msgstr ""
-
 #: template-parts/header/offcanvas-cart.php:19
 msgid "Processing Payment..."
 msgstr ""
@@ -1243,6 +1243,18 @@ msgstr ""
 
 #: template-parts/header/page-title.php:82, template-parts/header/page-title.php:88
 msgid "Thank you!"
+msgstr ""
+
+#: template-parts/header/search-form.php:20
+msgid "All"
+msgstr ""
+
+#: template-parts/header/search-form.php:34
+msgid "in"
+msgstr ""
+
+#: template-parts/header/search-form.php:41
+msgid "Search here"
 msgstr ""
 
 #: woocommerce/cart/cart-content.php:80
@@ -1323,10 +1335,6 @@ msgstr ""
 
 #: woocommerce/myaccount/dashboard.php:26
 msgid "Recent Orders"
-msgstr ""
-
-#: woocommerce/myaccount/dashboard.php:48
-msgid "View all"
 msgstr ""
 
 #: woocommerce/myaccount/form-login.php:85, woocommerce/myaccount/form-login.php:110
