@@ -1,0 +1,315 @@
+.header-builder {
+	position: fixed;
+    bottom: 0;
+    left: 300px;
+    right: 0;
+    transform: translateY(100%);
+    transition: transform .3s ease;
+
+    .customize-pane-child {
+		border-top: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+
+		.customize-section-title {
+			border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+			margin: 0;
+    		text-align: center;
+
+    		h3 {
+    			font-size: 20px;
+			    font-weight: 200;
+			    line-height: 26px;
+			    display: block;
+			    overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+
+			    span {
+			    	display: none;
+			    }
+    		}
+		}
+
+		.wp-full-overlay-footer {
+			background: transparent;
+			position: static;
+		    width: auto;
+		    height: auto;
+		    border: none;
+		
+			.collapse-builder {
+				background: none;
+				border: none;
+				position: absolute;
+				left: 0;
+				top: -45px;
+				z-index: 1;
+				padding: 9px 0 12px 10px;
+		    	height: 49px;
+		    	outline: none !important;
+		    	box-shadow: none;
+		    	border-radius: none;
+		    	transition: top .3s ease;
+				
+				.collapse-sidebar-arrow {
+					transform: rotate(90deg);
+					transition: transform .3s ease;
+				}
+			
+				.collapse-sidebar-label {
+					opacity: 0;
+					transition: opacity .3s ease;
+				}
+
+			}
+
+			.devices {
+				background: none;
+				position: absolute;
+				right: 0;
+				top: 0;
+				box-shadow: none;
+
+				button {
+					margin: 0;
+				    padding: 2px 3px;
+				    height: 49px;
+				    background: none !important;
+				}
+			}
+
+		}
+	}
+
+	.customize-pane-content {
+		background: #eee;
+		padding: 15px 10px;
+
+		> ul {
+			display: flex;
+			flex-flow: row nowrap;
+			margin: 0 0 7px;
+
+			> li {
+				background: #fff;
+				flex: 1;
+				padding: 2px;
+				margin: 0 3px;
+				min-height: 5px;
+
+				&.center {
+					text-align: center;
+				}
+
+				&.right {
+					text-align: right;
+				}
+
+				&#logo {
+					max-width: 75px;
+    				padding: 0 10px 0 20px;
+
+    				h3 {
+    					margin: 9px 0;
+
+    					i { margin-left: 5px; }
+    				}
+				}
+			}
+
+			&.unused {
+				margin-bottom: 0;
+				display: block;
+
+				h4 {
+					text-align: left;
+					margin: 5px 3px;
+				}
+
+				> li {
+					background: repeating-linear-gradient(-55deg, #eee, #eee 5px, #fff 5px, #fff 11px);
+					border: 1px solid #ccc;
+					padding: 2px;
+
+					span i { display: none; padding: 0 6px; }
+				}
+			}
+
+			&.main-header {
+
+				> li {
+					padding-top: 5px;
+					padding-bottom: 5px;
+				}
+
+			}
+
+		}
+
+		.elements {
+			margin: 2px;
+			padding: 0 5px;
+			cursor: move;
+			height: 24px;
+			line-height: 20px;
+			outline: none !important;
+			border-color: #999 !important;
+			box-shadow: none !important;
+			transform: none !important;
+
+			i {
+				margin-left: 5px;
+				cursor: pointer;
+				width: 18px;
+			    height: 18px;
+			    font-size: 18px;
+			    line-height: 21px;
+			}
+		}
+
+		&.center-logo {
+
+			.main-header {
+
+				.left {
+					order: 1;
+				}
+
+				#logo {
+					order: 2;
+				}
+
+				.right {
+					order: 3;
+				}
+
+			}
+
+		}
+	}
+
+	#header-desktop,
+	#header-tablet,
+	#header-mobile {
+		display: none;
+	}
+}
+
+.header-builder.open {
+	transform: translateY(0);
+
+	.wp-full-overlay-footer {
+
+		.collapse-builder {
+			top: 0;
+
+			.collapse-sidebar-arrow {
+				transform: rotate(-90deg);
+			}
+
+			.collapse-sidebar-label {
+				opacity: 1;
+			}
+
+		}
+
+	}
+}
+
+.collapsed .header-builder {
+	transform: translateY(100%);
+}
+
+.preview-desktop .header-builder {
+
+	h3 span.desktop {
+		display: inline-block;
+	}
+
+	.devices button.preview-desktop {
+		border-bottom-color: #191e23;
+	}
+
+	#header-desktop {
+		display: block;
+	}
+
+}
+
+.preview-tablet .header-builder {
+
+	h3 span.tablet {
+		display: inline-block;
+	}
+
+	.devices button.preview-tablet {
+		border-bottom-color: #191e23;
+	}
+
+	#header-tablet {
+		display: block;
+	}
+
+	.button[data-type=main_menu]{
+		display: none;
+	}
+
+}
+
+.preview-mobile .header-builder {
+
+	h3 span.mobile {
+		display: inline-block;
+	}
+
+	.devices button.preview-mobile {
+		border-bottom-color: #191e23;
+	}
+
+	#header-mobile {
+		display: block;
+	}
+
+	.button[data-type=main_menu]{
+		display: none;
+	}
+
+}
+
+.section_title {
+    background: #fff;
+	margin: 0 -12px;
+    border-top: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    font-size: 15px !important;
+    font-weight: 200;
+    line-height: 26px;
+    color: #555d66;
+    display: block;
+    padding: 12px;
+
+    &.in-panel {
+    	margin: 12px 0; 
+    }
+}
+
+#customize-control-offcanvas_menu_elements .items {
+
+	.item {
+		width: calc( 100% - 12px );
+		position: relative;
+		margin-right: 0;
+		cursor: move;
+
+		.remove {
+			position: absolute;
+		    right: 5px;
+		    text-decoration: none;
+		    font-size: 18px;
+		}	
+	}
+}
+
+#accordion-section-header_builder {
+	display: none !important;
+}

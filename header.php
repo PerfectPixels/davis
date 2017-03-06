@@ -33,9 +33,9 @@ if (get_field('fullwidth') || is_product()) {
 }
 
 // Check if header is sticky
-if (get_theme_mod('fixed_header', false) == true) { $fixed_classes .= 'nav-is-fixed'; }
+if (get_theme_mod('fixed_header', true) == true) { $fixed_classes .= 'nav-is-fixed'; }
 // Check if top bar is sticky
-if (get_theme_mod('fixed_top_bar', true) == true) {	$fixed_classes .= ' top-bar-is-fixed'; }
+if (get_theme_mod('fixed_top_bar', false) == true) {	$fixed_classes .= ' top-bar-is-fixed'; }
 
 ?>
 
@@ -60,11 +60,14 @@ if (get_theme_mod('fixed_top_bar', true) == true) {	$fixed_classes .= ' top-bar-
 
 		<?php if ( !is_quick_checkout() ){
 
-			// Topbar
-			get_template_part( 'template-parts/header/topbar' );
+			// Top Bar
+			get_template_part( 'template-parts/header/top-bar' );
 
 			// Main Navigation
 			get_template_part( 'template-parts/header/navigation' );
+
+			// Botton Bar
+			get_template_part( 'template-parts/header/bottom-bar' );
 
 			// Offcanvas Cart
 			get_template_part( 'template-parts/header/offcanvas-cart' );

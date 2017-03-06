@@ -1,0 +1,53 @@
+.nav-header {
+	padding: 0 15px;
+
+	&.center_logo_split_menu {
+
+		.flex-left {
+
+			.dropdown-hover {
+
+				.dropdown-menu { right: inherit; left: 0; }
+
+			}
+
+		}
+
+	}
+
+	&.left_content {
+		.logo {
+			margin-right: 50px;
+		}
+	}
+	
+	&.center_content {
+		.logo {
+			margin-right: auto;
+		}
+		.flex-left {
+			margin: 0 auto;
+			text-align: center;
+		}
+		.flex-right {
+			text-align: right;
+		}
+	}
+	
+	&.right_content {
+		justify-content: flex-end;
+
+		.logo {
+			margin-right: auto;
+		}
+		.flex-left {
+			margin-left: auto;
+		}
+		.flex-right {
+			margin-left: 50px;
+		}
+	}
+
+	&:after { clear: both; content: ""; display: table; }
+
+}

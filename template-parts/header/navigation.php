@@ -1,84 +1,24 @@
-<?php
+<header class="nav-header flex-grid <?php pp_get_classes( 'main-header' ); ?>" style="<?php pp_get_styles( 'main-header-style' ); ?>" data-fixed-sticky-position='{"top": true, "bottom":false}'>
 
-$megamenu_class    = '';
-$transparent 	   = get_field( 'transparent_header' );
-$transparent_color = get_field( 'transparent_header_text_color' );
-$transparent_icon  = get_field( 'transparent_header_icon_counter_color' );
-$header_bg		   = get_field( 'header_background_color' );
-$header_text	   = get_field( 'header_text_color' );
-$header_icon	   = get_field( 'header_icon_counter_color' );
-$header_type	   = get_theme_mod( 'header_type', 'left_logo-center_menu' );
-$search_field 	   = get_theme_mod( 'header_search_field', false );
-$has_search_field  = false;
+	<?php pp_get_styles( 'main-header-css' ); ?>
 
-if ( true == $search_field && ( $header_type == 'center_logo-left_menu' || $header_type == 'top_logo-center_menu' || $header_type == 'top_logo-left_menu' ) ) {
-	$has_search_field = true;
-}
+	<div class="logo">
+		<?php get_template_part( 'template-parts/header/elements/logo' ); ?>
+	</div>
 
-?>
+	<ul class="flex-left primary-nav is-fixed <?php pp_get_classes( 'megamenu' ); ?>">
+		<?php pp_get_header_elements( 'main_header_left_area' ); ?>
+	</ul>
 
-<header class="nav-header animate-search <?php echo $header_type; ?> <?php if ( $transparent ) { ?>transparent<?php } ?> <?php if ( $has_search_field ){ ?>has-search-field<?php } ?>" style="<?php if ( $header_bg ) { echo 'background-color:' . $header_bg . ';'; } ?>" data-fixed-sticky-position='{"top": true, "bottom":false}'>
+	<ul class="flex-right">
+		<?php pp_get_header_elements( 'main_header_right_area' ); ?>
+	</ul>
 
-	<?php
-
-		if ( $header_text || $header_bg || $transparent ) {
-			echo '<style>';
-
-				if ( $header_text ){
-					echo '.nav-header * { color:' . $header_text . '; }
-						.header-text-color-bg,
-						.header-text-color-bg-speudo:before,
-						.header-text-color-bg-speudo:after,
-						.menu-link:before,
-						.menu-link:after,
-						.go-back a:before,
-						.go-back a:after { background-color: ' . $header_text . '; }
-						.nav-header .item-counter { color:' . $header_icon . ' !important; }';
-				}
-
-				if ( $header_bg ) {
-					echo '.header-bg-color-bg,
-						.primary-nav .mega-menu,
-						.primary-nav .simple-nav .sub-menu { background-color:' . $header_bg . '; }';
-				}
-
-				if ( $transparent ) {
-					echo '.nav-header.transparent:not(.fixedsticky-on) nav > ul > li > a,
-						.nav-header.transparent:not(.fixedsticky-on) .header-buttons > li > a { color: ' . $transparent_color .'; }
-						.nav-header.transparent:not(.fixedsticky-on) .nav-button span,
-						.nav-header.transparent:not(.fixedsticky-on) .nav-button span:before,
-						.nav-header.transparent:not(.fixedsticky-on) .nav-button span:after { background-color: ' . $transparent_color . '; }
-						.nav-heaver.transparent .item-counter { color:' . $transparent_icon . '; }';
-				}
-
-			echo '</style>';
-		}
-
-	?>
-
-	<a class="brand" href="<?= esc_url( home_url( '/' ) ); ?>">
-		<img class="default" src="<?php if ( get_field( 'header_logo_selection' ) ){ echo esc_url( get_theme_mod( get_field( 'header_logo_selection' ) . '_logo' ) ); } else { echo esc_url( get_theme_mod( get_theme_mod( 'logo_selection', 'dark' ) . '_logo' ) ); } ?>" />
-		<img class="for-transparent-header" src="<?php echo esc_url( get_theme_mod( get_field( 'transparent_header_logo_selection' ) . '_logo' ) ); ?>" />
-	</a>
-
-	<?php if ( $has_search_field ) { ?>
+	<!-- <?php if ( $has_search_field ) { ?>
 		<div class="search-box">
 			<?php get_template_part( 'template-parts/header/search-form' ); ?>
 		</div>
 	<?php } ?>
-
-	<?php if ( true == get_theme_mod( 'megamenu_fullwidth', false ) ) { $megamenu_class = ' fullwidth'; } ?>
-
-	<nav class="nav-primary">
-		<?php if ( has_nav_menu( 'primary_navigation' ) ){
-			wp_nav_menu( [
-				'theme_location' 	=> 'primary_navigation',
-				'container'			=> '',
-				'menu_class' 		=> 'primary-nav is-fixed' . $megamenu_class,
-				'walker' 			=> new PP_Walker_Nav_Menu()
-			] );
-		} ?>
-    </nav>
 
 	<ul class="header-buttons<?php echo $megamenu_class; ?>">
 		<li class="menu">
@@ -99,5 +39,5 @@ if ( true == $search_field && ( $header_type == 'center_logo-left_menu' || $head
 			<?php get_template_part( 'template-parts/header/search-form' ); ?>
 			<a href="#0" class="close cd-text-replace header-text-color-bg-speudo">Close Search</a>
 		</div>
-	<?php } ?>
+	<?php } ?> -->
 </header>

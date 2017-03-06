@@ -152,7 +152,7 @@ class PP_Nav_Menu_Edit {
 		wp_register_style( 'pp-mega-menu', get_template_directory_uri() . '/inc/mega-menu/css/mega-menu.css', array( 'media-views', 'wp-color-picker', 'pp-mega-font-awesome' ), '20160530' );
 		wp_enqueue_style( 'pp-mega-menu' );
 
-		wp_register_script( 'pp-mega-menu', get_template_directory_uri() . '/inc/mega-menu/js/mega-menu.js', array( 'jquery', 'jquery-ui-resizable', 'backbone', 'underscore', 'wp-color-picker' ), '20160530', true );
+		wp_register_script( 'pp-mega-menu', get_template_directory_uri() . '/inc/mega-menu/js/mega-menu.min.js', array( 'jquery', 'jquery-ui-resizable', 'backbone', 'underscore', 'wp-color-picker' ), '20160530', true );
 		wp_enqueue_media();
 		wp_enqueue_script( 'pp-mega-menu' );
 	}

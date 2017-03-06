@@ -1,0 +1,50 @@
+.flex-grid {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: row nowrap;
+	align-items: center;
+	width: 100%;
+
+	.flex-col {
+		flex: 1;
+		float: none !important;
+	}
+
+	.flex-left {
+		margin-right: auto;
+	}
+
+	.flex-center {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.flex-right {
+		margin-left: auto;
+	}
+
+	&.2-col {
+		.flex-col {
+			width: 49%;
+		}
+	}
+	
+	&.3-col {
+		.flex-col {
+			width: 32%;
+		}
+	}
+	
+	&.4-col {
+		.flex-col {
+			width: 24%;
+		}
+	}
+
+	&.5-col {
+		.flex-col {
+			width: 19%;
+		}
+	}
+
+}

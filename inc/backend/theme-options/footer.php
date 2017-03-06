@@ -2,9 +2,13 @@
 
 // FOOTER PANET DECLARATION
 Kirki::add_panel( 'panel_footer', array(
-    'priority'    => 11,
+    'priority'    => 13,
     'title'       => __( 'Footer', 'davis' ),
 ) );
+
+foreach ( glob( get_template_directory() . '/inc/backend/theme-options/footer/*.php' ) as $filename ){
+    include_once $filename;
+}
 
 // TOP SIDEBAR SECTION
 Kirki::add_section( 'section_sidebar_footer_top', array(
@@ -15,6 +19,7 @@ Kirki::add_section( 'section_sidebar_footer_top', array(
 ) );
 // Sidebar
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' 		=> 'footer_sidebar',
 	'label'    		=> __( 'Sidebar display options', 'davis' ),
     'description' 	=> __( 'Choose where to display the footer sidebar.', 'davis' ),
@@ -39,6 +44,7 @@ Kirki::add_section( 'section_sidebar_footer_bottom', array(
 ) );
 // Hide/Show
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'footer_sidebar_bottom',
 	'label'    => __( 'Display Bottom Sidebar', 'davis' ),
     'description' => __( 'Choose if you want to display or remove the bottom sidebar in the footer.', 'davis' ),
@@ -53,6 +59,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Background color
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'footer_bg_color',
 	'label'    => __( 'Background Color', 'davis' ),
 	'section'  => 'section_sidebar_footer_bottom',
@@ -73,6 +80,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Text color
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'footer_txt_color',
 	'label'    => __( 'Text Color', 'davis' ),
 	'section'  => 'section_sidebar_footer_bottom',
@@ -103,6 +111,7 @@ Kirki::add_section( 'section_footer_copyright', array(
 ) );
 // Copyright text
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'copyright_text',
 	'label'    => __( 'Copyright Text', 'davis' ),
 	'section'  => 'section_footer_copyright',
@@ -112,6 +121,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Hide/Show Social media
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'footer_social',
 	'label'    => __( 'Display Social Media', 'davis' ),
     'description' => __( 'Choose if you want to display or remove the social media.', 'davis' ),
@@ -126,6 +136,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Facebook
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'facebook_footer',
 	'label'    => __( 'Facebook', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Facebook URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -143,6 +154,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Twitter
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'twitter_footer',
 	'label'    => __( 'Twitter', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Twitter URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -160,6 +172,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Google PLus
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'google_footer',
 	'label'    => __( 'Google Plus', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Google Plus URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -177,6 +190,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Instagram
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'instagram_footer',
 	'label'    => __( 'Instagram', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Instagram URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -194,6 +208,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Pinterest
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'pinterest_footer',
 	'label'    => __( 'Pinterest', 'davis' ),
     'description' => sprintf( '%s <a href="%s">%s</a>', __( 'Make sure you have added the Pinterest URL to the ', 'davis' ), admin_url( 'customize.php?autofocus[section]=social_media' ), __( 'Social Media section', 'davis' ) ),
@@ -211,6 +226,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Background color
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'copyright_bg_color',
 	'label'    => __( 'Background Color', 'davis' ),
 	'section'  => 'section_footer_copyright',
@@ -227,6 +243,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Text color
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'copyright_txt_color',
 	'label'    => __( 'Text Color', 'davis' ),
 	'section'  => 'section_footer_copyright',

@@ -3,7 +3,7 @@
 /**
  * Class menu walker
  *
- * @package MrBara
+ * @package Davis
  */
 class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 	/**

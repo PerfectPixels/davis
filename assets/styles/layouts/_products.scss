@@ -558,6 +558,14 @@
 
 	}
 
+	&.columns-3,
+	&.columns-2,
+	&.columns-1 {
+
+		.product-style-1 div.product-slider .slick-arrow svg { display: none !important; }
+	
+	}
+
 }
 
 

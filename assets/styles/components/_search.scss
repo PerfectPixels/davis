@@ -303,15 +303,13 @@ Search Form
   }
 
   .cd-main-search.is-visible {
-    /* search form open */
     opacity: 1;
     visibility: visible;
-  }
-  .cd-main-search.is-visible .close {
-    transform: translateY(-50%) scale(1);
-  }
-  .animate-search .cd-main-search.is-visible {
     animation: cd-slide-in 0.3s;
+
+    .close {
+      transform: translateY(-50%) scale(1);
+    }
   }
   
 }
@@ -358,7 +356,7 @@ Search Form
 
             figure { width: 60px; display: table-cell; vertical-align: middle;
 
-              img { width: 100px; margin: 0; }
+              img { width: 100px; height: auto; margin: 0; }
 
             }
 

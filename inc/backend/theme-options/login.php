@@ -2,9 +2,13 @@
 
 // LOGIN PANET DECLARATION
 Kirki::add_panel( 'panel_login', array(
-    'priority'    => 11,
+    'priority'    => 15,
     'title'       => __( 'Login Popup', 'davis' ),
 ) );
+
+foreach ( glob( get_template_directory() . '/inc/backend/theme-options/login/*.php' ) as $filename ){
+    include_once $filename;
+}
 
 // LOGIN SECTION
 Kirki::add_section( 'section_login', array(
@@ -16,6 +20,7 @@ Kirki::add_section( 'section_login', array(
 // Login popup
 if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 	Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 		'settings' 		=> 'login_style',
 		'label'    		=> __( 'Login Popup Style', 'davis' ),
 	    'description' 	=> __( 'Choose which style you can to display the login popup.', 'davis' ),
@@ -32,6 +37,7 @@ endif;
 
 // Login background color
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'login_bg_color',
 	'label'    => __( 'Background Color', 'davis' ),
 	'section'  => 'section_login',
@@ -53,6 +59,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Login background image
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings'    => 'login_bg_img',
 	'label'       => __( 'Background Image', 'davis' ),
 	'section'     => 'section_login',
@@ -68,6 +75,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Login background repeat
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' 		=> 'login_bg_img_repeat',
 	'label'    		=> __( 'Background Repeat', 'davis' ),
 	'section'  		=> 'section_login',
@@ -94,6 +102,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Login background size
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' 		=> 'login_bg_img_size',
 	'label'    		=> __( 'Background Size', 'davis' ),
 	'section'  		=> 'section_login',
@@ -120,6 +129,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Login text color
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'login_txt_color',
 	'label'    => __( 'Text Color', 'davis' ),
 	'section'  => 'section_login',
@@ -136,6 +146,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Login button color
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'login_btn_color',
 	'label'    => __( 'Button Color', 'davis' ),
 	'section'  => 'section_login',
@@ -153,6 +164,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Login Title
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'login_title',
 	'label'    => __( 'Title', 'davis' ),
 	'section'  => 'section_login',
@@ -162,6 +174,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Login Subtitle
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'login_subtitle',
 	'label'    => __( 'Title', 'davis' ),
 	'section'  => 'section_login',
@@ -171,6 +184,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Login Button
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 	'settings' => 'login_btn',
 	'label'    => __( 'Button', 'davis' ),
 	'section'  => 'section_login',
@@ -190,6 +204,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 	) );
 	// Registration background color
 	Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 		'settings' => 'registration_bg_color',
 		'label'    => __( 'Background Color', 'davis' ),
 		'section'  => 'section_registration',
@@ -211,6 +226,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 	) );
 	// Registration background image
 	Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 		'settings'    => 'registration_bg_img',
 		'label'       => __( 'Background Image', 'davis' ),
 		'section'     => 'section_registration',
@@ -226,6 +242,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 	) );
 	// Registration background repeat
 	Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 		'settings' 		=> 'registration_bg_img_repeat',
 		'label'    		=> __( 'Background Repeat', 'davis' ),
 		'section'  		=> 'section_registration',
@@ -252,6 +269,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 	) );
 	// Registration background size
 	Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 		'settings' 		=> 'registration_bg_img_size',
 		'label'    		=> __( 'Background Size', 'davis' ),
 		'section'  		=> 'section_registration',
@@ -278,6 +296,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 	) );
 	// Registration text color
 	Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 		'settings' => 'registration_txt_color',
 		'label'    => __( 'Text Color', 'davis' ),
 		'section'  => 'section_registration',
@@ -294,6 +313,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 	) );
 	// Registration button color
 	Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 		'settings' => 'registration_btn_color',
 		'label'    => __( 'Button Color', 'davis' ),
 		'section'  => 'section_registration',
@@ -311,6 +331,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 	) );
 	// Registration Title
 	Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 		'settings' => 'registration_title',
 		'label'    => __( 'Title', 'davis' ),
 		'section'  => 'section_registration',
@@ -320,6 +341,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 	) );
 	// Registration Subtitle
 	Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 		'settings' => 'registration_subtitle',
 		'label'    => __( 'Title', 'davis' ),
 		'section'  => 'section_registration',
@@ -329,6 +351,7 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 	) );
 	// Registration Button
 	Kirki::add_field( 'pp_theme', array(
+	'transport'	  => $transport,
 		'settings' => 'registration_btn',
 		'label'    => __( 'Button', 'davis' ),
 		'section'  => 'section_registration',

@@ -160,7 +160,7 @@
 				centerLogo: function(){
 
 					// Center the nav and logo
-					if ( $( '.center_logo-center_menu' ).length > 0 ){
+					if ( $( '.center_logo_split_menu' ).length > 0 ){
 						var $brand			= $( '.brand' ),
 							brandW			= $brand.outerWidth(),
 							$navBrand		= $brand.clone().css( 'width', brandW ),
@@ -171,7 +171,7 @@
 						$( '.primary-nav > li:nth-child(' + breakpoint + ')' ).after( '<li class="nav-brand"></li>' );
 						$( '.nav-brand' ).html( $navBrand );
 
-						$( '.center_logo-center_menu' ).prepend( '<ul class="header-buttons left"></ul>' );
+						$( '.center_logo_split_menu' ).prepend( '<ul class="header-buttons left"></ul>' );
 						$headerBtns.find( 'li.search, li.account' ).detach().appendTo( '.header-buttons.left' );
 					}
 
@@ -394,7 +394,7 @@
 					this.wrapSubmenu();
 					this.megaMenuHeight();
 					this.regEventHandlers();
-					this.moveNavigation();
+					//this.moveNavigation();
 					this.navHorizontalScroll();
 					// Make it sticky
 					if ( $( 'body' ).hasClass('nav-is-fixed') ){
@@ -1608,10 +1608,10 @@
 				productSlider: function(){
 					var $sliders = $('.product-slider'),
 						$productsList = $sliders.parents( 'ul.products' ),
-						sliderP = '22%';
-
-					if ($productsList.hasClass('product-style-2') || !$productsList.hasClass('display-3-per-row')) {
 						sliderP = '0px';
+
+					if ( $productsList.hasClass('product-style-1') && ( $productsList.hasClass('display-3-per-row') || $productsList.parent().hasClass('columns-3') || $productsList.parent().hasClass('columns-2') || $productsList.parent().hasClass('columns-1') ) ) {
+						sliderP = '22%';
 					}
 
 					$sliders.slick({
