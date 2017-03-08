@@ -1,5 +1,7 @@
 <?php
 
+global $transport, $primary_color;
+
 // TOP BAR
 Kirki::add_section( 'top_bar', array(
     'title'          => __( 'Top Bar', 'davis' ),
@@ -53,14 +55,14 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'js_vars'   => array(
 		array(
-			'element'  => array( '.navbar-top', '.nav-topbar ul.sub-menu', '.navbar-top .dropdown-hover .dropdown-menu' ),
+			'element'  => array( '.navbar-top', '.navbar-top ul.sub-menu', '.navbar-top .dropdown-hover .dropdown-menu' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => array( '.navbar-top', '.nav-topbar ul.sub-menu', '.navbar-top .dropdown-hover .dropdown-menu' ),
+			'element'  => array( '.navbar-top', '.navbar-top ul.sub-menu', '.navbar-top .dropdown-hover .dropdown-menu' ),
 			'property' => 'background-color',
 		),
 	),
@@ -90,7 +92,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.nav-topbar .menu-item-has-children > a:before', '.nav-topbar .menu-item-has-children > a:after' ),
+			'element'  => array( '.navbar-top .menu-item-has-children > a:before', '.navbar-top .menu-item-has-children > a:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -102,7 +104,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.nav-topbar .menu-item-has-children > a:before', '.nav-topbar .menu-item-has-children > a:after' ),
+			'element'  => array( '.navbar-top .menu-item-has-children > a:before', '.navbar-top .menu-item-has-children > a:after' ),
 			'property' => 'background-color',
 		),
 	),
@@ -132,13 +134,13 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( 'body .navbar-top  ul.sub-menu a:after', '.navbar-top .dropdown-menu a:after' ),
+			'element'  => array( 'body .navbar-top ul.sub-menu a:after', '.navbar-top .dropdown-menu a:after', '.navbar-top .menu-item-has-children:hover > a:before', '.navbar-top .menu-item-has-children:hover > a:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-top .nav>li ul.sub-menu:before', '.navbar-top .dropdown-menu:before' ),
+			'element'  => array( '.navbar-top ul.sub-menu:before', '.navbar-top .dropdown-menu:before' ),
 			'function' => 'css',
 			'property' => 'border-color',
 			'suffix'   => '!important',
@@ -151,12 +153,12 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( 'body .navbar-top  ul.sub-menu a:after', '.navbar-top .dropdown-menu a:after' ),
+			'element'  => array( 'body .navbar-top ul.sub-menu a:after', '.navbar-top .dropdown-menu a:after', '.navbar-top .menu-item-has-children:hover  > a:before', '.navbar-top .menu-item-has-children:hover > a:after' ),
 			'property' => 'background-color',
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-top .nav>li ul.sub-menu:before', '.navbar-top .dropdown-menu:before' ),
+			'element'  => array( '.navbar-top ul.sub-menu:before', '.navbar-top .dropdown-menu:before' ),
 			'property' => 'border-color',
 			'suffix'   => '!important',
 		),

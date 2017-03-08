@@ -1,5 +1,7 @@
 <?php
 
+global $transport, $primary_color, $header_options;
+
 // HEADER TYPE
 Kirki::add_section( 'main_header', array(
     'title'          => __( 'Main Header', 'davis' ),
@@ -68,7 +70,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // OffCanvas Menu background color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'offcanvas_menu_bg_color',
 	'label'    => __( 'OffCanvas Menu Background Color', 'davis' ),
 	'section'  => 'main_header',
@@ -77,7 +78,7 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#2e3233',
 	'transport' => 'postMessage',
-	'js_vars'   => array(
+	'js_varss'   => array(
 		array(
 			'element'  => array( '' ),
 			'function' => 'css',
@@ -93,7 +94,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // OffCanvas Menu text color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'offcanvas_menu_txt_color',
 	'label'    => __( 'OffCanvas Menu Text Color', 'davis' ),
 	'section'  => 'main_header',
@@ -102,7 +102,7 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#bbb',
 	'transport' => 'postMessage',
-	'js_vars'   => array(
+	'js_varss'   => array(
 		array(
 			'element'  => array( '' ),
 			'function' => 'css',
@@ -165,7 +165,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Header background color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'header_bg_color',
 	'label'    => __( 'Header Background Color', 'davis' ),
 	'section'  => 'main_header',
@@ -174,9 +173,9 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#ffffff',
 	'transport' => 'postMessage',
-	'js_vars'   => array(
+	'js_varss'   => array(
 		array(
-			'element'  => array( '.nav-header', '.nav-header .dropdown-menu', '.header-bg-color-bg', '.header-bg-color-bg-speudo:before', '.header-bg-color-bg-speudo:after', '.primary-nav .mega-menu', '.primary-nav .simple-nav .sub-menu' ),
+			'element'  => array( '.nav-header', '.nav-header .dropdown-menu', '.header-bg-color-bg', '.header-bg-color-bg-speudo:before', '.header-bg-color-bg-speudo:after', '.nav-header .sub-menu' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -189,7 +188,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'output' => array(
 		array(
-			'element'  => array( '.nav-header', '.nav-header .dropdown-menu', '.header-bg-color-bg', '.header-bg-color-bg-speudo:before', '.header-bg-color-bg-speudo:after', '.primary-nav .mega-menu', '.primary-nav .simple-nav .sub-menu' ),
+			'element'  => array( '.nav-header', '.nav-header .dropdown-menu', '.header-bg-color-bg', '.header-bg-color-bg-speudo:before', '.header-bg-color-bg-speudo:after', '.nav-header .sub-menu' ),
 			'property' => 'background-color',
 		),
 		array(
@@ -201,7 +200,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Header text color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'header_text_color',
 	'label'    => __( 'Header Text Color', 'davis' ),
 	'section'  => 'main_header',
@@ -210,7 +208,7 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#000000',
 	'transport' => 'postMessage',
-	'js_var' => array(
+	'js_vars' => array(
 		array(
 			'element'  => array( '.nav-header *', '.header-text-color-txt-all *' ),
 			'function' => 'css',
@@ -246,7 +244,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Header hover text color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'header_hover_text_color',
 	'label'    => __( 'Header Hover Text Color', 'davis' ),
 	'section'  => 'main_header',
@@ -255,7 +252,7 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => $primary_color,
 	'transport' => 'postMessage',
-	'js_var' => array(
+	'js_vars' => array(
 		array(
 			'element'  => array( '.nav-header a:hover', '.nav-header a:hover i', '.nav-header a:hover:before', '.nav-header a:hover:after', '.current_page_item > a', '.current_page_item > a > i' ),
 			'function' => 'css',
@@ -292,7 +289,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Header Icon color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'header_icon_color',
 	'label'    => __( 'Icon Color', 'davis' ),
 	'section'  => 'main_header',
@@ -301,16 +297,21 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#000',
 	'transport' => 'postMessage',
+	'js_vars' => array(
+		array(
+			'element'  => array( '.nav-header > li.icon > a:before' ),
+			'property' => 'color',
+		),
+	),
 	'output' => array(
 		array(
-			'element'  => array( '.header-buttons > li > a:before' ),
+			'element'  => array( '.nav-header > li.icon > a:before' ),
 			'property' => 'color',
 		),
 	),
 ) );
 // Header Icon Hover color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'header_icon_color',
 	'label'    => __( 'Icon Hover Color', 'davis' ),
 	'section'  => 'main_header',
@@ -319,16 +320,21 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => $primary_color,
 	'transport' => 'postMessage',
+	'js_vars' => array(
+		array(
+			'element'  => array( '.nav-header > li.icon > a:hover:before' ),
+			'property' => 'color',
+		),
+	),
 	'output' => array(
 		array(
-			'element'  => array( '.header-buttons > li > a:hover:before' ),
+			'element'  => array( '.nav-header > li.icon > a:hover:before' ),
 			'property' => 'color',
 		),
 	),
 ) );
 // Header Icon text color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'header_icon_text_color',
 	'label'    => __( 'Icon Text Color', 'davis' ),
 	'section'  => 'main_header',
@@ -337,16 +343,21 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#ffffff',
 	'transport' => 'postMessage',
+	'js_vars' => array(
+		array(
+			'element'  => array( '.nav-header > li.icon .item-counter' ),
+			'property' => 'color',
+		),
+	),
 	'output' => array(
 		array(
-			'element'  => array( '.nav-header .item-counter' ),
+			'element'  => array( '.nav-header > li.icon .item-counter' ),
 			'property' => 'color',
 		),
 	),
 ) );
 // Header Icon hover text color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'header_icon_hover_text_color',
 	'label'    => __( 'Icon Hover Text Color', 'davis' ),
 	'section'  => 'main_header',
@@ -355,9 +366,15 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#000000',
 	'transport' => 'postMessage',
+	'js_vars' => array(
+		array(
+			'element'  => array( '.nav-header > li.icon a:hover .item-counter' ),
+			'property' => 'color',
+		),
+	),
 	'output' => array(
 		array(
-			'element'  => array( '.nav-header a:hover .item-counter' ),
+			'element'  => array( '.nav-header > li.icon a:hover .item-counter' ),
 			'property' => 'color',
 		),
 	),

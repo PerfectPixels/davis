@@ -7,23 +7,29 @@ body.admin-bar .navbar-fixed-top { top: 32px; }
 		margin: 0;
 		-webkit-padding-start: 0;
 
-		li { 
+		> li {
 			float: none; 
 			display: inline-block;
-			vertical-align: top;
+			vertical-align: middle;
+			margin: 0 5px;
 
-			a { padding: 15px 15px 14px; transition: color 350ms $cb; cursor: pointer;
+			a {
+				padding: 7px 15px;
+				cursor: pointer;
+				line-height: 26px;
+				display: inline-block;
+				transition: color 350ms $cb;
+				position: relative;
 
 				span { transition: color 350ms $cb; }
 
-				&:hover { background-color: transparent !important; }
-				&:focus { background-color: transparent !important; }
+				&.header-button {
+					padding: 3px 15px;
+				}
 
 			}
 
-			&.social-media { 
-				padding-right: 10px; 
-				margin-left: -10px;
+			&.social-media {
 
 				a { 
 					font-size: 14px; 
@@ -43,11 +49,17 @@ body.admin-bar .navbar-fixed-top { top: 32px; }
 				position: relative;
 
 				> a { 
-					padding: 6px 30px 8px 15px;
+					padding-right: 30px;
+					padding-left: 12px;
 					display: block;
 
 					&:before,
-					&:after { height: 2px; width: 6px; right: 15px; transform-origin: 50% -1px; }
+					&:after {
+						height: 2px;
+						width: 6px;
+						right: 15px;
+						transform-origin: 50% -1px;
+					}
 				}
 
 				.sub-menu { 
@@ -128,17 +140,35 @@ body.admin-bar .navbar-fixed-top { top: 32px; }
 
 				}
 
-				&:after { background: $dark-grey-divider; width: 1px; position: absolute; top: 15px; right: 0; bottom: 15px; content: ""; }
-				
-				&:last-child:after { display: none; }
+				+ li.menu-item {
+					margin-left: -5px;
 
+					&:before {
+						background: $dark-grey-divider;
+						width: 1px;
+						position: absolute;
+						top: 15px;
+						left: 0;
+						bottom: 15px;
+						content: "";
+					}
+
+				}
+
+			}
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:last-child {
+				margin-right: 0;
 			}
 
 		}
 
 	}
 
-	li.message-box { letter-spacing: -0.03em; padding: 15px 15px 14px; margin: 0 15px; line-height: 1;}
 
 	.navbar-right {
 
@@ -198,31 +228,4 @@ body.admin-bar .navbar-fixed-top { top: 32px; }
 			}
 		}
 	}
-}
-
-
-// MEDIA QUERIES
-/* Screen less than or equal to than 1099 pixels */
-@media only screen and (max-width: 1099px) {
-
-	.navbar-top {
-
-		.navbar-right {
-
-			> li {
-
-				> a { height: 40px; width: 40px; display: block; padding: 0;
-
-					span { display: none; }
-
-				}
-
-			}
-
-			.dropdown-hover .dropdown-menu { left: inherit; right: 0; }
-
-		}
-
-	}
-
 }

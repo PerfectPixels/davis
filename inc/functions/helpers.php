@@ -14,26 +14,28 @@
 function pp_get_header_elements( $section ){
 	$options = get_theme_mod( $section );
 
-	foreach ( $options as $key => $value) {
+	if ( is_array($options) ) {
+		foreach ( $options as $key => $value ) {
 
-		if ( $value === 'topbar_nav_1' ){
-			pp_get_menu( 'topbar_navigation_1' );
-		} else if ( $value === 'topbar_nav_2' ){
-			pp_get_menu( 'topbar_navigation_2' );
-		} else if( $value === 'main_menu' ){
-			pp_get_menu( 'primary_navigation' );
-		} else if( $value == 'divider' || $value == 'divider_2' || $value == 'divider_3' || $value == 'divider_4' || $value == 'divider_5' ){
-		 	echo '<li class="header-divider"></li>';
-		} else if($value == 'html' || $value == 'html-2' || $value == 'html-3' || $value == 'html-4' || $value == 'html-5'){
-		  	echo flatsome_get_header_html_element($value);
-		} else if ($value == 'wpml'){
-			get_template_part('template-parts/header/partials/element-languages', $type);
-		} else { 
-			get_template_part( 'template-parts/header/elements/' . str_replace( '_', '-', $value ) );
+			if ( $value === 'topbar_nav_1' ) {
+				pp_get_menu( 'topbar_navigation_1' );
+			} else if ( $value === 'topbar_nav_2' ) {
+				pp_get_menu( 'topbar_navigation_2' );
+			} else if ( $value === 'main_menu' ) {
+				pp_get_menu( 'primary_navigation' );
+			} else if ( $value == 'divider' || $value == 'divider_2' || $value == 'divider_3' || $value == 'divider_4' || $value == 'divider_5' ) {
+				echo '<li class="header-divider"></li>';
+			} else if ( $value == 'html' || $value == 'html-2' || $value == 'html-3' || $value == 'html-4' || $value == 'html-5' ) {
+				echo flatsome_get_header_html_element( $value );
+			} else if ( $value == 'wpml' ) {
+				get_template_part( 'template-parts/header/partials/element-languages', $type );
+			} else {
+				get_template_part( 'template-parts/header/elements/' . str_replace( '_', '-', $value ) );
+			}
+
+			//do_action( 'pp_get_header_elements', $value );
+
 		}
-
-		//do_action( 'pp_get_header_elements', $value );
-
 	}
 }
 
@@ -47,7 +49,7 @@ function pp_get_menu( $location ){
 	$args = array();
 
 	if ( $location === 'primary_navigation' ){
-		$args = array( 'walker' => new PP_Walker_Nav_Menu() ); 
+		$args = array( 'walker' => new PP_Walker_Nav_Menu() );
 	}
 
 	$defaults = array(
@@ -88,6 +90,11 @@ function pp_get_classes( $element ){
 		case 'megamenu':
 			if ( get_theme_mod( 'megamenu_fullwidth', false ) == true ) { $header_classes[] = 'fullwidth'; }
 			break;
+
+		case 'button_1':
+			if ( get_theme_mod( 'button_1_outlined', false ) == true ) { $header_classes[] = 'outlined'; }
+			$header_classes[] = get_theme_mod( 'button_1_type', 'rounded' );
+			break;
 	}
 
 	echo implode( ' ', $header_classes );
@@ -100,13 +107,11 @@ function pp_get_classes( $element ){
   * @param string $element
   */
 function pp_get_styles( $element ){
+	global $primary_color;
+
 	$style = '';
 
 	switch ( $element ) {
-		case 'main-header-style':
-			if ( get_field( 'header_background_color' ) ) { $style = 'background-color:' . get_field( 'header_background_color' ) . ';'; }
-			break;
-
 		case 'main-header-css':
 			$transparent 	   = get_field( 'transparent_header' );
 			$transparent_color = get_field( 'transparent_header_text_color' );

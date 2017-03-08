@@ -1,4 +1,4 @@
-<header class="nav-header flex-grid <?php pp_get_classes( 'main-header' ); ?>" style="<?php pp_get_styles( 'main-header-style' ); ?>" data-fixed-sticky-position='{"top": true, "bottom":false}'>
+<header class="nav-header flex-grid <?php pp_get_classes( 'main-header' ); ?>" data-fixed-sticky-position='{"top": true, "bottom":false}'>
 
 	<?php pp_get_styles( 'main-header-css' ); ?>
 

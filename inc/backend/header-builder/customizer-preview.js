@@ -78,7 +78,7 @@
 
 		goToSetting: function(){
 
-			$( 'i[data-section]' ).on( 'click', function(){
+			$( '[data-section]' ).on( 'click', function(){
 				var section = $( this ).data( 'section' );
 
 				if ( api.section( section ) ){

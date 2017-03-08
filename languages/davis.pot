@@ -49,15 +49,15 @@ msgstr ""
 msgid "Header Builder"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:5, inc/backend/theme-options/general/site-identity.php:53, inc/backend/theme-options/header/main-header.php:16
+#: inc/backend/header-builder/template.php:5, inc/backend/theme-options/general/site-identity.php:68, inc/backend/theme-options/header/main-header.php:18
 msgid "Desktop"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:6, inc/backend/theme-options/general/site-identity.php:77
+#: inc/backend/header-builder/template.php:6, inc/backend/theme-options/general/site-identity.php:92
 msgid "Tablet"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:7, inc/backend/theme-options/general/site-identity.php:101
+#: inc/backend/header-builder/template.php:7, inc/backend/theme-options/general/site-identity.php:116
 msgid "Mobile"
 msgstr ""
 
@@ -77,15 +77,27 @@ msgstr ""
 msgid "Hide Builder"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:36, inc/backend/header-builder/template.php:66, inc/backend/header-builder/template.php:90, inc/backend/theme-options/header/main-header.php:138
+#: inc/backend/header-builder/template.php:33, inc/backend/header-builder/template.php:66, inc/backend/header-builder/template.php:92
+msgid "Edit Top Bar"
+msgstr ""
+
+#: inc/backend/header-builder/template.php:37, inc/backend/header-builder/template.php:70, inc/backend/header-builder/template.php:96, inc/backend/theme-options/header/main-header.php:138
 msgid "Logo"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:47, inc/backend/header-builder/template.php:72, inc/backend/header-builder/template.php:100
+#: inc/backend/header-builder/template.php:41, inc/backend/header-builder/template.php:74, inc/backend/header-builder/template.php:100
+msgid "Edit Main Header"
+msgstr ""
+
+#: inc/backend/header-builder/template.php:47
+msgid "Edit Bottom Header"
+msgstr ""
+
+#: inc/backend/header-builder/template.php:50, inc/backend/header-builder/template.php:77, inc/backend/header-builder/template.php:107
 msgid "Inactive Elements"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:96
+#: inc/backend/header-builder/template.php:103
 msgid "Bottom Bar Elements"
 msgstr ""
 
@@ -121,11 +133,11 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: inc/backend/theme-options.php:8, inc/backend/theme-options/header/element-button.php:15
+#: inc/backend/theme-options.php:8, inc/backend/theme-options/header/element-button.php:17
 msgid "Button 1"
 msgstr ""
 
-#: inc/backend/theme-options.php:9, inc/backend/theme-options/header/element-button.php:77
+#: inc/backend/theme-options.php:9, inc/backend/theme-options/header/element-button.php:176
 msgid "Button 2"
 msgstr ""
 
@@ -181,15 +193,15 @@ msgstr ""
 msgid "Social Icons"
 msgstr ""
 
-#: inc/backend/theme-options.php:26, inc/backend/theme-options/header/element-text.php:15
+#: inc/backend/theme-options.php:26, inc/backend/theme-options/header/element-text.php:17
 msgid "Text 1"
 msgstr ""
 
-#: inc/backend/theme-options.php:27, inc/backend/theme-options/header/element-text.php:81
+#: inc/backend/theme-options.php:27, inc/backend/theme-options/header/element-text.php:85
 msgid "Text 2"
 msgstr ""
 
-#: inc/backend/theme-options.php:28, inc/backend/theme-options/header/element-text.php:147
+#: inc/backend/theme-options.php:28, inc/backend/theme-options/header/element-text.php:153
 msgid "Text 3"
 msgstr ""
 
@@ -249,11 +261,11 @@ msgstr ""
 msgid "Hide"
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:64, inc/backend/theme-options/footer.php:231, inc/backend/theme-options/header/bottom-header.php:26, inc/backend/theme-options/header/top-bar.php:41, inc/backend/theme-options/login.php:42, inc/backend/theme-options/login.php:209
+#: inc/backend/theme-options/footer.php:64, inc/backend/theme-options/footer.php:231, inc/backend/theme-options/header/bottom-header.php:26, inc/backend/theme-options/header/element-button.php:136, inc/backend/theme-options/header/element-button.php:295, inc/backend/theme-options/header/top-bar.php:43, inc/backend/theme-options/login.php:42, inc/backend/theme-options/login.php:209
 msgid "Background Color"
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:85, inc/backend/theme-options/footer.php:248, inc/backend/theme-options/header/bottom-header.php:50, inc/backend/theme-options/header/top-bar.php:72, inc/backend/theme-options/login.php:134, inc/backend/theme-options/login.php:301
+#: inc/backend/theme-options/footer.php:85, inc/backend/theme-options/footer.php:248, inc/backend/theme-options/header/bottom-header.php:50, inc/backend/theme-options/header/element-button.php:106, inc/backend/theme-options/header/element-button.php:265, inc/backend/theme-options/header/top-bar.php:74, inc/backend/theme-options/login.php:134, inc/backend/theme-options/login.php:301
 msgid "Text Color"
 msgstr ""
 
@@ -353,19 +365,19 @@ msgstr ""
 msgid "Dark Logo"
 msgstr ""
 
-#: inc/backend/theme-options/general/site-identity.php:36
+#: inc/backend/theme-options/general/site-identity.php:37
 msgid "Logo Width"
 msgstr ""
 
-#: inc/backend/theme-options/general/site-identity.php:60, inc/backend/theme-options/general/site-identity.php:84, inc/backend/theme-options/general/site-identity.php:108
+#: inc/backend/theme-options/general/site-identity.php:75, inc/backend/theme-options/general/site-identity.php:99, inc/backend/theme-options/general/site-identity.php:123
 msgid "Logo Position"
 msgstr ""
 
-#: inc/backend/theme-options/general/site-identity.php:66, inc/backend/theme-options/general/site-identity.php:90, inc/backend/theme-options/general/site-identity.php:114, inc/backend/theme-options/header/main-header.php:54, inc/backend/theme-options/shop.php:224, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87, inc/mega-menu/options/icon.php:50
+#: inc/backend/theme-options/general/site-identity.php:81, inc/backend/theme-options/general/site-identity.php:105, inc/backend/theme-options/general/site-identity.php:129, inc/backend/theme-options/header/main-header.php:56, inc/backend/theme-options/shop.php:224, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87, inc/mega-menu/options/icon.php:50
 msgid "Left"
 msgstr ""
 
-#: inc/backend/theme-options/general/site-identity.php:67, inc/backend/theme-options/general/site-identity.php:91, inc/backend/theme-options/general/site-identity.php:115, inc/backend/theme-options/header/main-header.php:55, inc/mega-menu/options/background.php:88
+#: inc/backend/theme-options/general/site-identity.php:82, inc/backend/theme-options/general/site-identity.php:106, inc/backend/theme-options/general/site-identity.php:130, inc/backend/theme-options/header/main-header.php:57, inc/mega-menu/options/background.php:88
 msgid "Center"
 msgstr ""
 
@@ -401,7 +413,7 @@ msgstr ""
 msgid "Height"
 msgstr ""
 
-#: inc/backend/theme-options/header/bottom-header.php:76, inc/backend/theme-options/header/top-bar.php:114
+#: inc/backend/theme-options/header/bottom-header.php:76, inc/backend/theme-options/header/top-bar.php:116
 msgid "Hover Text Color"
 msgstr ""
 
@@ -445,39 +457,63 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-button.php:4
+#: inc/backend/theme-options/header/element-button.php:6
 msgid "Buttons"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-button.php:21
+#: inc/backend/theme-options/header/element-button.php:23
 msgid "Button 1 Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-button.php:23, inc/backend/theme-options/header/element-button.php:85, inc/backend/theme-options/login.php:189, inc/backend/theme-options/login.php:356
+#: inc/backend/theme-options/header/element-button.php:25, inc/backend/theme-options/header/element-button.php:184, inc/backend/theme-options/login.php:189, inc/backend/theme-options/login.php:356
 msgid "Button"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-button.php:31, inc/backend/theme-options/header/element-button.php:93
+#: inc/backend/theme-options/header/element-button.php:33, inc/backend/theme-options/header/element-button.php:192
+msgid "Button Type"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-button.php:38, inc/backend/theme-options/header/element-button.php:197
+msgid "Squared"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-button.php:39, inc/backend/theme-options/header/element-button.php:198
+msgid "Rounded"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-button.php:40, inc/backend/theme-options/header/element-button.php:199
+msgid "Circle"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-button.php:41, inc/backend/theme-options/header/element-button.php:200
+msgid "Link"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-button.php:47, inc/backend/theme-options/header/element-button.php:206
+msgid "Outlined"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-button.php:64, inc/backend/theme-options/header/element-button.php:223
 msgid "Link Type"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-button.php:36, inc/backend/theme-options/header/element-button.php:98
+#: inc/backend/theme-options/header/element-button.php:69, inc/backend/theme-options/header/element-button.php:228
 msgid "Internal Page"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-button.php:37, inc/backend/theme-options/header/element-button.php:99
+#: inc/backend/theme-options/header/element-button.php:70, inc/backend/theme-options/header/element-button.php:229
 msgid "External Link"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-button.php:44, inc/backend/theme-options/header/element-button.php:106
+#: inc/backend/theme-options/header/element-button.php:77, inc/backend/theme-options/header/element-button.php:236
 msgid "URL"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-button.php:59, inc/backend/theme-options/header/element-button.php:121
+#: inc/backend/theme-options/header/element-button.php:92, inc/backend/theme-options/header/element-button.php:251
 msgid "Page"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-button.php:83
+#: inc/backend/theme-options/header/element-button.php:182
 msgid "Button 2 Label"
 msgstr ""
 
@@ -545,47 +581,55 @@ msgstr ""
 msgid "Social Media"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-text.php:4
+#: inc/backend/theme-options/header/element-text.php:6
 msgid "Texts"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-text.php:22
+#: inc/backend/theme-options/header/element-text.php:24
 msgid "Message Text 1"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-text.php:26, inc/backend/theme-options/header/element-text.php:92, inc/backend/theme-options/header/element-text.php:158
-msgid "Free shipping and returns on all orders"
+#: inc/backend/theme-options/header/element-text.php:28
+msgid "Message 1"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-text.php:32
+#: inc/backend/theme-options/header/element-text.php:34
 msgid "Text 1 Font Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-text.php:55
+#: inc/backend/theme-options/header/element-text.php:58
 msgid "Text 1 Background Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-text.php:88
+#: inc/backend/theme-options/header/element-text.php:92
 msgid "Message Text 2"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-text.php:98
+#: inc/backend/theme-options/header/element-text.php:97
+msgid "Message 2"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-text.php:103
 msgid "Text 2 Font Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-text.php:121
+#: inc/backend/theme-options/header/element-text.php:127
 msgid "Text 2 Background Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-text.php:154
+#: inc/backend/theme-options/header/element-text.php:160
 msgid "Message Text 3"
 msgstr ""
 
 #: inc/backend/theme-options/header/element-text.php:164
+msgid "Message 3"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-text.php:170
 msgid "Text 3 Font Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-text.php:187
+#: inc/backend/theme-options/header/element-text.php:194
 msgid "Text 3 Background Color"
 msgstr ""
 
@@ -689,43 +733,43 @@ msgstr ""
 msgid "Mobile Bottom Bar Area"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:5
+#: inc/backend/theme-options/header/main-header.php:7
 msgid "Main Header"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:23
+#: inc/backend/theme-options/header/main-header.php:25
 msgid "Sticky Header"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:24
+#: inc/backend/theme-options/header/main-header.php:26
 msgid "Have the header always at the top of the page."
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:34
+#: inc/backend/theme-options/header/main-header.php:36
 msgid "Mega Menu Width"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:40, inc/backend/theme-options/shop.php:185
+#: inc/backend/theme-options/header/main-header.php:42, inc/backend/theme-options/shop.php:185
 msgid "Fullwidth"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:41
+#: inc/backend/theme-options/header/main-header.php:43
 msgid "Boxed"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:48
+#: inc/backend/theme-options/header/main-header.php:50
 msgid "Content Position"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:56, inc/backend/theme-options/shop.php:225, inc/mega-menu/options/background.php:67, inc/mega-menu/options/background.php:89
+#: inc/backend/theme-options/header/main-header.php:58, inc/backend/theme-options/shop.php:225, inc/mega-menu/options/background.php:67, inc/mega-menu/options/background.php:89
 msgid "Right"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:66
+#: inc/backend/theme-options/header/main-header.php:68
 msgid "Mobile/Tablet"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:73
+#: inc/backend/theme-options/header/main-header.php:74
 msgid "OffCanvas Menu Background Color"
 msgstr ""
 
@@ -753,51 +797,51 @@ msgstr ""
 msgid "Dark"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:170
+#: inc/backend/theme-options/header/main-header.php:169
 msgid "Header Background Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:206
+#: inc/backend/theme-options/header/main-header.php:204
 msgid "Header Text Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:251
+#: inc/backend/theme-options/header/main-header.php:248
 msgid "Header Hover Text Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:290
+#: inc/backend/theme-options/header/main-header.php:287
 msgid "Icons Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:297
+#: inc/backend/theme-options/header/main-header.php:293
 msgid "Icon Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:315
+#: inc/backend/theme-options/header/main-header.php:316
 msgid "Icon Hover Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:333, inc/backend/theme-options/header/top-bar.php:169
+#: inc/backend/theme-options/header/main-header.php:339, inc/backend/theme-options/header/top-bar.php:171
 msgid "Icon Text Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:351
+#: inc/backend/theme-options/header/main-header.php:362
 msgid "Icon Hover Text Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/top-bar.php:5
+#: inc/backend/theme-options/header/top-bar.php:7
 msgid "Top Bar"
 msgstr ""
 
-#: inc/backend/theme-options/header/top-bar.php:6
+#: inc/backend/theme-options/header/top-bar.php:8
 msgid "Layout"
 msgstr ""
 
-#: inc/backend/theme-options/header/top-bar.php:14
+#: inc/backend/theme-options/header/top-bar.php:16
 msgid "Display Top Bar"
 msgstr ""
 
-#: inc/backend/theme-options/header/top-bar.php:24
+#: inc/backend/theme-options/header/top-bar.php:26
 msgid "Sticky Top Bar"
 msgstr ""
 
@@ -1217,7 +1261,7 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
-#: inc/functions/helpers.php:64
+#: inc/functions/helpers.php:66
 msgid "Assign a menu in Theme Options > Menus"
 msgstr ""
 

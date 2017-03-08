@@ -31,6 +31,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Width
 Kirki::add_field( 'pp_theme', array(
+	'transport'	  => 'postMessage',
 	'type'        => 'slider',
 	'settings'    => 'logo_width',
 	'label'       => esc_attr__( 'Logo Width', 'davis' ),
@@ -41,6 +42,20 @@ Kirki::add_field( 'pp_theme', array(
 		'min'  => '40',
 		'max'  => '200',
 		'step' => '1',
+	),
+	'js_vars' => array(
+		array(
+			'element'  => array( '.logo a.brand' ),
+			'property' => 'width',
+			'units' => 'px',
+		),
+	),
+	'output' => array(
+		array(
+			'element'  => array( '.logo a.brand' ),
+			'property' => 'width',
+			'units' => 'px',
+		),
 	),
 ) );
 

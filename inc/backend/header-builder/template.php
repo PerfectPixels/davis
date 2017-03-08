@@ -30,6 +30,7 @@
 			<li class="left sortable" data-setting="top_bar_left_area"></li>
 			<li class="center sortable" data-setting="top_bar_center_area"></li>
 			<li class="right sortable" data-setting="top_bar_right_area"></li>
+            <span data-section="top_bar"><?php _e( 'Edit Top Bar', 'davis' ); ?></span>
 		</ul>
 		<ul class="main-header">
 			<li id="logo">
@@ -37,11 +38,13 @@
 			</li>
 			<li class="left sortable" data-setting="main_header_left_area"></li>
 			<li class="right sortable" data-setting="main_header_right_area"></li>
+            <span data-section="main_header"><?php _e( 'Edit Main Header', 'davis' ); ?></span>
 		</ul>
 		<ul class="bottom-header">
 			<li class="left sortable" data-setting="bottom_header_left_area"></li>
 			<li class="center sortable" data-setting="bottom_header_center_area"></li>
 			<li class="right sortable" data-setting="bottom_header_right_area"></li>
+            <span data-section="bottom_header"><?php _e( 'Edit Bottom Header', 'davis' ); ?></span>
 		</ul>
 		<ul class="unused">
 			<h4><?php _e('Inactive Elements', 'davis'); ?></h4>
@@ -60,6 +63,7 @@
 		<ul class="top-bar">
 			<li class="left sortable" data-setting="tablet_top_bar_left_area"></li>
 			<li class="right sortable" data-setting="tablet_top_bar_right_area"></li>
+            <span data-section="top_bar"><?php _e( 'Edit Top Bar', 'davis' ); ?></span>
 		</ul>
 		<ul class="main-header">
 			<li id="logo">
@@ -67,6 +71,7 @@
 			</li>
 			<li class="left sortable" data-setting="tablet_main_header_left_area"></li>
 			<li class="right sortable" data-setting="tablet_main_header_right_area"></li>
+            <span data-section="main_header"><?php _e( 'Edit Main Header', 'davis' ); ?></span>
 		</ul>
 		<ul class="unused">
 			<h4><?php _e('Inactive Elements', 'davis'); ?></h4>
@@ -84,6 +89,7 @@
 	<div id="header-mobile" class="customize-pane-content <?php echo get_theme_mod( 'logo_position_mobile', 'center' ) . '-logo'; ?>">
 		<ul class="top-bar">
 			<li class="center sortable" data-setting="mobile_top_bar_area"></li>
+            <span data-section="top_bar"><?php _e( 'Edit Top Bar', 'davis' ); ?></span>
 		</ul>
 		<ul class="main-header">
 			<li id="logo">
@@ -91,6 +97,7 @@
 			</li>
 			<li class="left sortable" data-setting="mobile_main_header_left_area"></li>
 			<li class="right sortable" data-setting="mobile_main_header_right_area"></li>
+            <span data-section="main_header"><?php _e( 'Edit Main Header', 'davis' ); ?></span>
 		</ul>
 		<ul class="bottom-bar">
 			<h4><?php _e('Bottom Bar Elements', 'davis'); ?></h4>

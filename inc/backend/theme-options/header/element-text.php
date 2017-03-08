@@ -1,5 +1,7 @@
 <?php
 
+global $transport, $primary_color;
+
 Kirki::add_section( 'texts_element', array(
     'title'          => __( 'Texts', 'davis' ),
     'panel'          => 'panel_header',
@@ -23,7 +25,7 @@ Kirki::add_field( 'pp_theme', array(
 	'section'  => 'texts_element',
 	'type'     => 'textarea',
 	'priority' => 10,
-	'default'  => __( 'Free shipping and returns on all orders', 'davis' ),
+	'default'  => __( 'Message 1', 'davis' ),
 ) );
 // Text color
 Kirki::add_field( 'pp_theme', array(
@@ -33,17 +35,18 @@ Kirki::add_field( 'pp_theme', array(
 	'section'  => 'texts_element',
 	'type'     => 'color',
 	'priority' => 10,
+	'default'   => '#fff',
 	'transport' => 'postMessage',
 	'js_vars'   => array(
 		array(
-			'element'  => '.navbar-top .message-box-1, .nav-header .message-box-1, .navbar-bottom .message-box-1',
+			'element'  => '#message-box-1',
 			'function' => 'css',
 			'property' => 'color',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => '.navbar-top .message-box-1, .nav-header .message-box-1, .navbar-bottom .message-box-1',
+			'element'  => '#message-box-1',
 			'property' => 'color',
 		),
 	),
@@ -56,17 +59,18 @@ Kirki::add_field( 'pp_theme', array(
 	'section'  => 'texts_element',
 	'type'     => 'color',
 	'priority' => 10,
+	'default'   => $primary_color,
 	'transport' => 'postMessage',
 	'js_vars'   => array(
 		array(
-			'element'  => '.navbar-top .message-box-1, .nav-header .message-box-1, .navbar-bottom .message-box-1',
+			'element'  => '#message-box-1',
 			'function' => 'css',
 			'property' => 'background-color',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => '.navbar-top .message-box-1, .nav-header .message-box-1, .navbar-bottom .message-box-1',
+			'element'  => '#message-box-1',
 			'property' => 'background-color',
 		),
 	),
@@ -89,7 +93,8 @@ Kirki::add_field( 'pp_theme', array(
 	'section'  => 'texts_element',
 	'type'     => 'textarea',
 	'priority' => 10,
-	'default'  => __( 'Free shipping and returns on all orders', 'davis' ),
+	'default'   => '#fff',
+	'default'  => __( 'Message 2', 'davis' ),
 ) );
 // Text color
 Kirki::add_field( 'pp_theme', array(
@@ -99,17 +104,18 @@ Kirki::add_field( 'pp_theme', array(
 	'section'  => 'texts_element',
 	'type'     => 'color',
 	'priority' => 10,
+	'default'   => $primary_color,
 	'transport' => 'postMessage',
 	'js_vars'   => array(
 		array(
-			'element'  => '.navbar-top .message-box-2, .nav-header .message-box-2, .navbar-bottom .message-box-2',
+			'element'  => '#message-box-2',
 			'function' => 'css',
 			'property' => 'color',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => '.navbar-top .message-box-2, .nav-header .message-box-2, .navbar-bottom .message-box-2',
+			'element'  => '#message-box-2',
 			'property' => 'color',
 		),
 	),
@@ -125,14 +131,14 @@ Kirki::add_field( 'pp_theme', array(
 	'transport' => 'postMessage',
 	'js_vars'   => array(
 		array(
-			'element'  => '.navbar-top .message-box-2, .nav-header .message-box-2, .navbar-bottom .message-box-2',
+			'element'  => '#message-box-2',
 			'function' => 'css',
 			'property' => 'background-color',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => '.navbar-top .message-box-2, .nav-header .message-box-2, .navbar-bottom .message-box-2',
+			'element'  => '#message-box-2',
 			'property' => 'background-color',
 		),
 	),
@@ -155,7 +161,7 @@ Kirki::add_field( 'pp_theme', array(
 	'section'  => 'texts_element',
 	'type'     => 'textarea',
 	'priority' => 10,
-	'default'  => __( 'Free shipping and returns on all orders', 'davis' ),
+	'default'  => __( 'Message 3', 'davis' ),
 ) );
 // Text color
 Kirki::add_field( 'pp_theme', array(
@@ -165,17 +171,18 @@ Kirki::add_field( 'pp_theme', array(
 	'section'  => 'texts_element',
 	'type'     => 'color',
 	'priority' => 10,
+	'default'   => '#fff',
 	'transport' => 'postMessage',
 	'js_vars'   => array(
 		array(
-			'element'  => '.navbar-top .message-box-3, .nav-header .message-box-3, .navbar-bottom .message-box-3',
+			'element'  => '#message-box-3',
 			'function' => 'css',
 			'property' => 'color',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => '.navbar-top .message-box-3, .nav-header .message-box-3, .navbar-bottom .message-box-3',
+			'element'  => '#message-box-3',
 			'property' => 'color',
 		),
 	),
@@ -188,17 +195,18 @@ Kirki::add_field( 'pp_theme', array(
 	'section'  => 'texts_element',
 	'type'     => 'color',
 	'priority' => 10,
+	'default'   => $primary_color,
 	'transport' => 'postMessage',
 	'js_vars'   => array(
 		array(
-			'element'  => '.navbar-top .message-box-3, .nav-header .message-box-3, .navbar-bottom .message-box-3',
+			'element'  => '#message-box-3',
 			'function' => 'css',
 			'property' => 'background-color',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => '.navbar-top .message-box-3, .nav-header .message-box-3, .navbar-bottom .message-box-3',
+			'element'  => '#message-box-3',
 			'property' => 'background-color',
 		),
 	),

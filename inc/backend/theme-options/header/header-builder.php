@@ -1,6 +1,6 @@
 <?php
 
-global $header_options;
+global $header_options, $transport;
 
 // Add the Header panel
 Kirki::add_section( 'header_builder', array(
@@ -72,7 +72,7 @@ Kirki::add_field( 'pp_theme', array(
 	'settings'    => 'main_header_left_area',
 	'label'       => __( 'Main Header Left Area', 'davis' ),
 	'section'     => 'header_builder',
-	'default'     => '',
+	'default'     => array('main_menu'),
 	'priority'    => 10,
 	'multiple'    => 999,
 	'choices'     => $header_options,
