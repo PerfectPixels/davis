@@ -27,20 +27,21 @@ if ( taxonomy_exists( 'product_cat' ) ) {
 $ajax = get_theme_mod( 'ajax_search', true );
 
 ?>
+<li>
+    <form class="product-search header-text-color-txt-all <?php if ( ! $ajax ) { echo 'no-ajax'; } ?>" method="get" action="<?php echo home_url(); ?>">
+        <?php if ( class_exists('WooCommerce') ) { ?>
+            <div class="cd-select">
+                <span class="in"><?php _e( 'in', 'davis' ); ?></span>
+                <?php echo $cat ?>
+            </div>
+            <input type="hidden" name="post_type" value="product">
+        <?php } ?>
 
-<form class="product-search <?php if ( ! $ajax ) { echo 'no-ajax'; } ?>" method="get" action="<?php echo home_url(); ?>" class="header-text-color-txt-all">
-    <?php if ( class_exists('WooCommerce') ) { ?>
-        <div class="cd-select">
-        	<span class="in"><?php _e( 'in', 'davis' ); ?></span>
-			<?php echo $cat ?>
-		</div>
-		<input type="hidden" name="post_type" value="product">
-	<?php } ?>
-
-    <button type="submit" class="icon-android-search"></button>
-    <div class="search-input"><input type="search" autocomplete="off" value="<?php echo esc_html($s, 1); ?>" name="s" id="s" placeholder="<?php _e( 'Search here', 'davis' ); ?>" /></div>
-</form>
-<div class="cd-search-suggestions">
-	<div class="results">
-	</div>
-</div>
+        <button type="submit" class="icon-android-search"></button>
+        <div class="search-input"><input type="search" autocomplete="off" value="<?php echo esc_html($s, 1); ?>" name="s" id="s" placeholder="<?php _e( 'Search here', 'davis' ); ?>" /></div>
+    </form>
+    <div class="cd-search-suggestions">
+        <div class="results">
+        </div>
+    </div>
+</li>

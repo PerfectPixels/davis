@@ -141,7 +141,7 @@ msgstr ""
 msgid "Button 2"
 msgstr ""
 
-#: inc/backend/theme-options.php:10, inc/backend/theme-options/header/element-cart.php:5, inc/backend/theme-options/header/element-cart.php:53, template-parts/header/header-icons.php:10
+#: inc/backend/theme-options.php:10, inc/backend/theme-options/header/element-cart.php:5, inc/backend/theme-options/header/element-cart.php:53, template-parts/header/elements/cart.php:8
 msgid "Cart"
 msgstr ""
 
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Checkout Button"
 msgstr ""
 
-#: inc/backend/theme-options.php:12, inc/backend/theme-options/header/element-contact.php:5
+#: inc/backend/theme-options.php:12, inc/backend/theme-options/header/element-contact.php:7
 msgid "Contact"
 msgstr ""
 
@@ -421,19 +421,19 @@ msgstr ""
 msgid "Elements"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:15, inc/backend/theme-options/header/element-cart.php:14, inc/backend/theme-options/header/element-contact.php:14
+#: inc/backend/theme-options/header/element-account.php:15, inc/backend/theme-options/header/element-cart.php:14, inc/backend/theme-options/header/element-contact.php:16
 msgid "Style"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:20, inc/backend/theme-options/header/element-cart.php:19, inc/backend/theme-options/header/element-contact.php:19, inc/mega-menu/options/icon.php:51
+#: inc/backend/theme-options/header/element-account.php:20, inc/backend/theme-options/header/element-cart.php:19, inc/backend/theme-options/header/element-contact.php:21, inc/mega-menu/options/icon.php:51
 msgid "Icon Only"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:21, inc/backend/theme-options/header/element-cart.php:20, inc/backend/theme-options/header/element-contact.php:20
+#: inc/backend/theme-options/header/element-account.php:21, inc/backend/theme-options/header/element-cart.php:20, inc/backend/theme-options/header/element-contact.php:22
 msgid "Icon with Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:22, inc/backend/theme-options/header/element-cart.php:21, inc/backend/theme-options/header/element-contact.php:21
+#: inc/backend/theme-options/header/element-account.php:22, inc/backend/theme-options/header/element-cart.php:21, inc/backend/theme-options/header/element-contact.php:23
 msgid "Label Only"
 msgstr ""
 
@@ -445,7 +445,7 @@ msgstr ""
 msgid "Logged In Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:54, template-parts/header/header-icons.php:35
+#: inc/backend/theme-options/header/element-account.php:54, template-parts/header/elements/account.php:11
 msgid "My Account"
 msgstr ""
 
@@ -453,7 +453,7 @@ msgstr ""
 msgid "Logged Out Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:71, template-parts/header/header-icons.php:37, woocommerce/myaccount/form-login.php:80, woocommerce/myaccount/form-login.php:95
+#: inc/backend/theme-options/header/element-account.php:71, template-parts/header/elements/account.php:13, woocommerce/myaccount/form-login.php:80, woocommerce/myaccount/form-login.php:95
 msgid "Login"
 msgstr ""
 
@@ -521,11 +521,11 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-contact.php:28
+#: inc/backend/theme-options/header/element-contact.php:30
 msgid "Phone"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-contact.php:37
+#: inc/backend/theme-options/header/element-contact.php:38
 msgid "Email"
 msgstr ""
 
@@ -1261,7 +1261,7 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
-#: inc/functions/helpers.php:66
+#: inc/functions/helpers.php:68
 msgid "Assign a menu in Theme Options > Menus"
 msgstr ""
 
@@ -1608,16 +1608,20 @@ msgstr ""
 msgid "By"
 msgstr ""
 
-#: template-parts/header/header-icons.php:27
-msgid "Wishlists"
-msgstr ""
-
-#: template-parts/header/header-icons.php:44
+#: template-parts/header/elements/account.php:20
 msgid "Account Settings"
 msgstr ""
 
-#: template-parts/header/header-icons.php:45
+#: template-parts/header/elements/account.php:21
 msgid "Logout"
+msgstr ""
+
+#: template-parts/header/elements/cart.php:14
+msgid "Woocommerce plugin needed"
+msgstr ""
+
+#: template-parts/header/elements/whishlist.php:22
+msgid "Wishlists"
 msgstr ""
 
 #: template-parts/header/offcanvas-cart.php:19

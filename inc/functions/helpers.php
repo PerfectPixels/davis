@@ -23,12 +23,14 @@ function pp_get_header_elements( $section ){
 				pp_get_menu( 'topbar_navigation_2' );
 			} else if ( $value === 'main_menu' ) {
 				pp_get_menu( 'primary_navigation' );
-			} else if ( $value == 'divider' || $value == 'divider_2' || $value == 'divider_3' || $value == 'divider_4' || $value == 'divider_5' ) {
-				echo '<li class="header-divider"></li>';
+			} else if ( $value === 'search_form' ) {
+                get_template_part( 'template-parts/header/search-form' );
+            } else if ( $value == 'separator_1' || $value == 'separator_2' || $value == 'separator_3' || $value == 'separator_4' ) {
+				echo '<hr>';
 			} else if ( $value == 'html' || $value == 'html-2' || $value == 'html-3' || $value == 'html-4' || $value == 'html-5' ) {
 				echo flatsome_get_header_html_element( $value );
 			} else if ( $value == 'wpml' ) {
-				get_template_part( 'template-parts/header/partials/element-languages', $type );
+				get_template_part( 'template-parts/header/element/languages' );
 			} else {
 				get_template_part( 'template-parts/header/elements/' . str_replace( '_', '-', $value ) );
 			}
@@ -95,6 +97,10 @@ function pp_get_classes( $element ){
 			if ( get_theme_mod( 'button_1_outlined', false ) == true ) { $header_classes[] = 'outlined'; }
 			$header_classes[] = get_theme_mod( 'button_1_type', 'rounded' );
 			break;
+
+        case 'contact':
+            $header_classes[] = get_theme_mod( 'contact_style', 'icon_label' );
+            break;
 	}
 
 	echo implode( ' ', $header_classes );
