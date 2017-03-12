@@ -1,0 +1,15 @@
+.contact-details {
+
+  a,
+  span {
+    text-transform: none;
+    border-right: 1px solid;
+    padding: 0 7px 0 5px !important;
+    line-height: 12px !important;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+}

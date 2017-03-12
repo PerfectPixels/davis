@@ -43,7 +43,7 @@ Kirki::add_field( 'pp_theme', array(
 	'label'    => __( 'Background Color', 'davis' ),
 	'section'  => 'top_bar',
 	'type'     => 'color',
-	'alpha'    => false,
+	'alpha'    => true,
 	'priority' => 10,
 	'default'  => '#000000',
 	'active_callback'  => array(
@@ -128,7 +128,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'js_vars' => array(
 		array(
-			'element'  => array( 'body .navbar-top a:hover', 'body .navbar-top a:hover span' ),
+			'element'  => array( 'body .navbar-top a:hover', 'body .navbar-top .action-button a:hover span' ),
 			'function' => 'css',
 			'property' => 'color',
 			'suffix'   => '!important',
@@ -148,7 +148,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'output' => array(
 		array(
-			'element'  => array( 'body .navbar-top a:hover', 'body .navbar-top a:hover span' ),
+			'element'  => array( 'body .navbar-top a:hover', 'body .navbar-top .action-button a:hover span' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
@@ -183,7 +183,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'js_vars' => array(
 		array(
-			'element'  => array( 'body .navbar-top a span.item-counter' ),
+			'element'  => array( 'body .navbar-top .action-button a span.item-counter' ),
 			'function' => 'css',
 			'property' => 'color',
 			'suffix'   => '!important',
@@ -191,7 +191,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'output' => array(
 		array(
-			'element'  => array( 'body .navbar-top a span.item-counter' ),
+			'element'  => array( 'body .navbar-top .action-button a span.item-counter' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),

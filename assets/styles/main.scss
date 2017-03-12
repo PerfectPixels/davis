@@ -1,3 +1,6 @@
+@import "mixins/_hide-text";
+@import "mixins/_square";
+
 @import "common/_variables";
 @import "common/_fonts";
 @import "common/_animations";
@@ -12,9 +15,13 @@
 @import "common/_global";
 @import "common/_typo";
 
-@import "elements/_logo";
 @import "elements/_button";
+@import "elements/_contact";
+@import "elements/_logo";
 @import "elements/_message";
+@import "elements/_input";
+@import "elements/_select";
+@import "elements/_action-button";
 
 @import "plugins/_fixedsticky";
 @import "plugins/_slick";
@@ -25,7 +32,6 @@
 @import "components/_search";
 @import "components/_cart";
 @import "components/_carousel";
-@import "components/_buttons";
 @import "components/_tabs";
 @import "components/_comments";
 @import "components/_login";
@@ -33,6 +39,7 @@
 @import "components/_main-header";
 @import "components/_main-menu";
 @import "components/_top-bar";
+@import "components/_bottom-bar";
 @import "components/_forms";
 @import "components/_grid";
 @import "components/_wp-classes";

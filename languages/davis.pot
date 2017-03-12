@@ -129,7 +129,7 @@ msgstr ""
 msgid "Featured"
 msgstr ""
 
-#: inc/backend/theme-options.php:7, inc/backend/theme-options/header/element-account.php:5
+#: inc/backend/theme-options.php:7, inc/backend/theme-options/header/element-account.php:7
 msgid "Account"
 msgstr ""
 
@@ -261,11 +261,11 @@ msgstr ""
 msgid "Hide"
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:64, inc/backend/theme-options/footer.php:231, inc/backend/theme-options/header/bottom-header.php:26, inc/backend/theme-options/header/element-button.php:136, inc/backend/theme-options/header/element-button.php:295, inc/backend/theme-options/header/top-bar.php:43, inc/backend/theme-options/login.php:42, inc/backend/theme-options/login.php:209
+#: inc/backend/theme-options/footer.php:64, inc/backend/theme-options/footer.php:231, inc/backend/theme-options/header/bottom-header.php:44, inc/backend/theme-options/header/element-button.php:136, inc/backend/theme-options/header/element-button.php:295, inc/backend/theme-options/header/top-bar.php:43, inc/backend/theme-options/login.php:42, inc/backend/theme-options/login.php:209
 msgid "Background Color"
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:85, inc/backend/theme-options/footer.php:248, inc/backend/theme-options/header/bottom-header.php:50, inc/backend/theme-options/header/element-button.php:106, inc/backend/theme-options/header/element-button.php:265, inc/backend/theme-options/header/top-bar.php:74, inc/backend/theme-options/login.php:134, inc/backend/theme-options/login.php:301
+#: inc/backend/theme-options/footer.php:85, inc/backend/theme-options/footer.php:248, inc/backend/theme-options/header/bottom-header.php:68, inc/backend/theme-options/header/element-button.php:106, inc/backend/theme-options/header/element-button.php:265, inc/backend/theme-options/header/top-bar.php:74, inc/backend/theme-options/login.php:134, inc/backend/theme-options/login.php:301
 msgid "Text Color"
 msgstr ""
 
@@ -405,55 +405,55 @@ msgstr ""
 msgid "Transparent Header Text Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/bottom-header.php:5
+#: inc/backend/theme-options/header/bottom-header.php:7
 msgid "Bottom Header"
 msgstr ""
 
-#: inc/backend/theme-options/header/bottom-header.php:13
+#: inc/backend/theme-options/header/bottom-header.php:16
 msgid "Height"
 msgstr ""
 
-#: inc/backend/theme-options/header/bottom-header.php:76, inc/backend/theme-options/header/top-bar.php:116
+#: inc/backend/theme-options/header/bottom-header.php:94, inc/backend/theme-options/header/top-bar.php:116
 msgid "Hover Text Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:6
+#: inc/backend/theme-options/header/element-account.php:8
 msgid "Elements"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:15, inc/backend/theme-options/header/element-cart.php:14, inc/backend/theme-options/header/element-contact.php:16
+#: inc/backend/theme-options/header/element-account.php:17, inc/backend/theme-options/header/element-cart.php:14, inc/backend/theme-options/header/element-contact.php:16, inc/backend/theme-options/header/element-wishlist.php:16
 msgid "Style"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:20, inc/backend/theme-options/header/element-cart.php:19, inc/backend/theme-options/header/element-contact.php:21, inc/mega-menu/options/icon.php:51
+#: inc/backend/theme-options/header/element-account.php:22, inc/backend/theme-options/header/element-cart.php:19, inc/backend/theme-options/header/element-contact.php:21, inc/backend/theme-options/header/element-wishlist.php:21, inc/mega-menu/options/icon.php:51
 msgid "Icon Only"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:21, inc/backend/theme-options/header/element-cart.php:20, inc/backend/theme-options/header/element-contact.php:22
+#: inc/backend/theme-options/header/element-account.php:23, inc/backend/theme-options/header/element-cart.php:20, inc/backend/theme-options/header/element-contact.php:22, inc/backend/theme-options/header/element-wishlist.php:22
 msgid "Icon with Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:22, inc/backend/theme-options/header/element-cart.php:21, inc/backend/theme-options/header/element-contact.php:23
+#: inc/backend/theme-options/header/element-account.php:24, inc/backend/theme-options/header/element-cart.php:21, inc/backend/theme-options/header/element-contact.php:23, inc/backend/theme-options/header/element-wishlist.php:23
 msgid "Label Only"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:30, inc/backend/theme-options/header/element-cart.php:29, inc/backend/theme-options/header/element-search.php:13
+#: inc/backend/theme-options/header/element-account.php:32, inc/backend/theme-options/header/element-cart.php:29, inc/backend/theme-options/header/element-search.php:15, inc/backend/theme-options/header/element-wishlist.php:31
 msgid "Icon Type"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:52
+#: inc/backend/theme-options/header/element-account.php:54
 msgid "Logged In Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:54, template-parts/header/elements/account.php:11
+#: inc/backend/theme-options/header/element-account.php:56
 msgid "My Account"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:69
+#: inc/backend/theme-options/header/element-account.php:71
 msgid "Logged Out Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:71, template-parts/header/elements/account.php:13, woocommerce/myaccount/form-login.php:80, woocommerce/myaccount/form-login.php:95
+#: inc/backend/theme-options/header/element-account.php:73, woocommerce/myaccount/form-login.php:80, woocommerce/myaccount/form-login.php:95
 msgid "Login"
 msgstr ""
 
@@ -517,7 +517,7 @@ msgstr ""
 msgid "Button 2 Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-cart.php:51
+#: inc/backend/theme-options/header/element-cart.php:51, inc/backend/theme-options/header/element-wishlist.php:53
 msgid "Label"
 msgstr ""
 
@@ -553,27 +553,31 @@ msgstr ""
 msgid "HTML 2 Content"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-search.php:4
+#: inc/backend/theme-options/header/element-search.php:6
 msgid "Search"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-search.php:27
+#: inc/backend/theme-options/header/element-search.php:29
+msgid "Width"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-search.php:57
 msgid "Input Pleaceholder"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-search.php:29, template-parts/header/search-form.php:41
+#: inc/backend/theme-options/header/element-search.php:59, template-parts/header/search-form.php:42
 msgid "Search here"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-search.php:36
+#: inc/backend/theme-options/header/element-search.php:66
 msgid "Category Filter"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-search.php:45
+#: inc/backend/theme-options/header/element-search.php:75
 msgid "Ajax Search"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-search.php:46
+#: inc/backend/theme-options/header/element-search.php:76
 msgid "Enable/Disable the ajax search."
 msgstr ""
 
@@ -631,6 +635,14 @@ msgstr ""
 
 #: inc/backend/theme-options/header/element-text.php:194
 msgid "Text 3 Background Color"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-wishlist.php:7, inc/functions/wishlist.php:54
+msgid "Wishlist"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-wishlist.php:55
+msgid "My Favorites"
 msgstr ""
 
 #: inc/backend/theme-options/header/header-builder.php:19
@@ -1261,12 +1273,8 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
-#: inc/functions/helpers.php:68
+#: inc/functions/helpers.php:89
 msgid "Assign a menu in Theme Options > Menus"
-msgstr ""
-
-#: inc/functions/wishlist.php:54
-msgid "Wishlist"
 msgstr ""
 
 #: inc/mega-menu/class-mega-menu-walker.php:421
@@ -1608,11 +1616,11 @@ msgstr ""
 msgid "By"
 msgstr ""
 
-#: template-parts/header/elements/account.php:20
+#: template-parts/header/elements/account.php:28
 msgid "Account Settings"
 msgstr ""
 
-#: template-parts/header/elements/account.php:21
+#: template-parts/header/elements/account.php:29
 msgid "Logout"
 msgstr ""
 
@@ -1648,7 +1656,7 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: template-parts/header/search-form.php:34
+#: template-parts/header/search-form.php:35
 msgid "in"
 msgstr ""
 

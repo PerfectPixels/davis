@@ -23,9 +23,7 @@ function pp_get_header_elements( $section ){
 				pp_get_menu( 'topbar_navigation_2' );
 			} else if ( $value === 'main_menu' ) {
 				pp_get_menu( 'primary_navigation' );
-			} else if ( $value === 'search_form' ) {
-                get_template_part( 'template-parts/header/search-form' );
-            } else if ( $value == 'separator_1' || $value == 'separator_2' || $value == 'separator_3' || $value == 'separator_4' ) {
+			} else if ( $value == 'separator_1' || $value == 'separator_2' || $value == 'separator_3' || $value == 'separator_4' ) {
 				echo '<hr>';
 			} else if ( $value == 'html' || $value == 'html-2' || $value == 'html-3' || $value == 'html-4' || $value == 'html-5' ) {
 				echo flatsome_get_header_html_element( $value );
@@ -39,6 +37,29 @@ function pp_get_header_elements( $section ){
 
 		}
 	}
+}
+
+/**
+ * Check if can display the element
+ *
+ * @access public
+ * @param string $element
+ * @return boolean
+ */
+function pp_can_display( $element ){
+    $output = false;
+
+    if ( $element === 'bottom_header' ){
+        if ( get_theme_mod( 'bottom_header_left_area' ) || get_theme_mod( 'bottom_header_center_area' ) || get_theme_mod( 'bottom_header_right_area' ) ){
+            $output = true;
+        }
+    } else if ( $element === 'mobile_bottom' ){
+        if ( get_theme_mod( 'mobile_bottom_bar_area' ) ){
+            $output = true;
+        }
+    }
+
+    return $output;
 }
 
 /**
@@ -149,7 +170,7 @@ function pp_get_styles( $element ){
 
 					if ( $transparent ) {
 						$style .= '.nav-header.transparent:not(.fixedsticky-on) nav > ul > li > a,
-							.nav-header.transparent:not(.fixedsticky-on) .header-buttons > li > a { color: ' . $transparent_color .'; }
+							.nav-header.transparent:not(.fixedsticky-on) .header-button > a { color: ' . $transparent_color .'; }
 							.nav-header.transparent:not(.fixedsticky-on) .nav-button span,
 							.nav-header.transparent:not(.fixedsticky-on) .nav-button span:before,
 							.nav-header.transparent:not(.fixedsticky-on) .nav-button span:after { background-color: ' . $transparent_color . '; }

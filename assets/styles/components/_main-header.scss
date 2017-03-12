@@ -21,6 +21,27 @@
 				margin: 0;
 			}
 
+			&.message-box {
+				padding: 13px 15px;
+			}
+
+			&.action-button {
+
+				> a {
+
+					span.item-counter {
+						top: 8px;
+					}
+
+					&.icon-shopping-bag {
+						span.item-counter {
+							top: 10px;
+						}
+					}
+				}
+
+			}
+
 			&:first-child {
 				margin-left: 0;
 			}

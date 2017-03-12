@@ -1,5 +1,7 @@
 <?php
 
+global $transport;
+
 Kirki::add_section( 'search_element', array(
     'title'          => __( 'Search', 'davis' ),
     'panel'          => 'panel_header',
@@ -19,6 +21,34 @@ Kirki::add_field( 'pp_theme', array(
 		'style2'   => get_template_directory_uri() . '/assets/images/admin/header1.jpg',
 		'style3'   => get_template_directory_uri() . '/assets/images/admin/header1.jpg',
 	),
+) );
+Kirki::add_field( 'pp_theme', array(
+    'transport'	  => 'postMessage',
+    'type'        => 'slider',
+    'settings'    => 'search_box_width',
+    'label'       => esc_attr__( 'Width', 'davis' ),
+    'section'     => 'search_element',
+    'default'     => 20,
+    'priority' => 150,
+    'choices'     => array(
+        'min'  => '15',
+        'max'  => '100',
+        'step' => '1',
+    ),
+    'js_vars' => array(
+        array(
+            'element'  => array( '.search-box' ),
+            'property' => 'width',
+            'units' => 'vw',
+        ),
+    ),
+    'output' => array(
+        array(
+            'element'  => array( '.search-box' ),
+            'property' => 'width',
+            'units' => 'vw',
+        ),
+    ),
 ) );
 Kirki::add_field( 'pp_theme', array(
 	'transport'	  => $transport,

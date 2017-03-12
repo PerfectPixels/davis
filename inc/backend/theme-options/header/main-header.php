@@ -254,7 +254,7 @@ Kirki::add_field( 'pp_theme', array(
 	'transport' => 'postMessage',
 	'js_vars' => array(
 		array(
-			'element'  => array( '.nav-header a:hover', '.nav-header a:hover i', '.nav-header a:hover:before', '.nav-header a:hover:after', '.current_page_item > a', '.current_page_item > a > i' ),
+			'element'  => array( '.nav-header a:hover', '.nav-header a:hover i', '.nav-header a:hover:before', '.nav-header a:hover:after', '.nav-header .action-button a:hover span', '.current_page_item > a', '.current_page_item > a > i' ),
 			'function' => 'css',
 			'property' => 'color',
 			'suffix'   => '!important',
@@ -267,7 +267,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'output' => array(
 		array(
-			'element'  => array( '.nav-header a:hover', '.nav-header a:hover i', '.nav-header a:hover:before', '.nav-header a:hover:after', '.current_page_item > a', '.current_page_item > a > i' ),
+			'element'  => array( '.nav-header a:hover', '.nav-header a:hover i', '.nav-header a:hover:before', '.nav-header a:hover:after', '.nav-header .action-button a:hover span', '.current_page_item > a', '.current_page_item > a > i' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
@@ -299,13 +299,13 @@ Kirki::add_field( 'pp_theme', array(
 	'transport' => 'postMessage',
 	'js_vars' => array(
 		array(
-			'element'  => array( '.nav-header > li.icon > a:before' ),
+			'element'  => array( '.nav-header li.action-button > a:before' ),
 			'property' => 'color',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => array( '.nav-header > li.icon > a:before' ),
+			'element'  => array( '.nav-header li.action-button > a:before' ),
 			'property' => 'color',
 		),
 	),
@@ -322,13 +322,13 @@ Kirki::add_field( 'pp_theme', array(
 	'transport' => 'postMessage',
 	'js_vars' => array(
 		array(
-			'element'  => array( '.nav-header > li.icon > a:hover:before' ),
+			'element'  => array( '.nav-header li.action-button > a:hover:before' ),
 			'property' => 'color',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => array( '.nav-header > li.icon > a:hover:before' ),
+			'element'  => array( '.nav-header li.action-button > a:hover:before' ),
 			'property' => 'color',
 		),
 	),
@@ -345,13 +345,13 @@ Kirki::add_field( 'pp_theme', array(
 	'transport' => 'postMessage',
 	'js_vars' => array(
 		array(
-			'element'  => array( '.nav-header > li.icon .item-counter' ),
+			'element'  => array( '.nav-header li.action-button .item-counter' ),
 			'property' => 'color',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => array( '.nav-header > li.icon .item-counter' ),
+			'element'  => array( '.nav-header li.action-button .item-counter' ),
 			'property' => 'color',
 		),
 	),
@@ -368,14 +368,16 @@ Kirki::add_field( 'pp_theme', array(
 	'transport' => 'postMessage',
 	'js_vars' => array(
 		array(
-			'element'  => array( '.nav-header > li.icon a:hover .item-counter' ),
+			'element'  => array( '.nav-header li.action-button a:hover .item-counter' ),
 			'property' => 'color',
+			'suffix'   => '!important',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => array( '.nav-header > li.icon a:hover .item-counter' ),
+			'element'  => array( '.nav-header li.action-button a:hover .item-counter' ),
 			'property' => 'color',
+			'suffix'   => '!important',
 		),
 	),
 ) );

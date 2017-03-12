@@ -172,7 +172,7 @@
 
 			}
 
-          &:hover {
+          &:hover:not(.unused) {
               box-shadow: 0 0 2px 0 #007cb2;
 
             > span {

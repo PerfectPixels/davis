@@ -157,6 +157,125 @@ body.admin-bar .navbar-fixed-top { top: 32px; }
 
 			}
 
+			&.search-box {
+				padding: 0;
+
+				form {
+					height: 32px;
+				}
+			}
+
+			// MY ACCOUNT MENU && MY FAVORITES MENU
+			&.dropdown-hover {
+
+				.dropdown-menu {
+					position: absolute;
+					min-width: 100%;
+					left: 0;
+					right: inherit;
+					display: block;
+					top: 100%;
+					margin: 0;
+					padding: 10px 0;
+					border: none;
+					border-radius: 0;
+					box-shadow: none;
+					list-style: none;
+					opacity: 0;
+					transform: scaleY(0);
+					z-index: -2;
+					transform-origin: top left;
+					transition: all 350ms $cb;
+
+					li {
+						position: relative;
+						opacity: 0;
+						transition: opacity 350ms $cb;
+						transition-delay: 200ms;
+
+						a {
+							font-size: 1.15rem;
+							padding: 4px 20px;
+
+							&:hover {
+								background: transparent !important;
+							}
+
+							&:after {
+								bottom: 0;
+								left: 10%;
+								right: 90%;
+								height: 1px;
+								width: inherit;
+								position: absolute;
+								content: "";
+								transition: right 200ms $cb, left 400ms $cb;
+							}
+
+							&:hover:after {
+								right: 9%;
+								left: 91%
+							}
+						}
+					}
+
+					&:before {
+						position: absolute;
+						content: "";
+						display: block;
+						border-bottom: 2px solid;
+						top: -2px;
+						left: 50%;
+						right: 50%;
+						z-index: 4;
+						transition: all 150ms $cb;
+						transition-delay: 0ms;
+					}
+					
+				}
+
+				&:hover .dropdown-menu {
+					margin-top: 2px;
+					opacity: 1;
+					transform: scaleY(1);
+					z-index: 4;
+
+					li {
+						opacity: 1;
+					}
+
+					&:before {
+						left: 0;
+						right: 0;
+						transition-delay: 250ms;
+					}
+
+				}
+			}
+
+			&.favorites .dropdown-menu {
+				li a {
+					padding-left: 15px;
+					position: relative;
+
+					.wishlist-counter {
+						width: 15px;
+						height: 15px;
+						padding: 2px 0;
+						line-height: 1;
+						font-size: 12px;
+						letter-spacing: -.01em;
+						text-align: center;
+						color: #fff !important;
+						display: block;
+						position: absolute;
+						right: 15px;
+						top: 50%;
+						margin-top: -7px;
+					}
+				}
+			}
+
 			&:first-child {
 				margin-left: 0;
 			}
@@ -169,63 +288,4 @@ body.admin-bar .navbar-fixed-top { top: 32px; }
 
 	}
 
-
-	.navbar-right {
-
-		> li { float: right;
-
-			> a { background: none !important; border: none !important; position: relative; padding: 10px 13px 10px 44px; }
-			> a:before { font-size: 24px; position: absolute; left: 12px; top: 50%; margin-top: -11px; }
-
-		}
-
-		> li.cart { margin-right: -15px;
-
-			> a { padding-left: 43px; }
-			> a:before { font-size: 19px; left: 14px; }
-
-			> a span.item-counter { padding: 2px 0; line-height: 1; font-size: 11px; letter-spacing: -0.01em; text-align: center; display: block; position: absolute; left: 14px; top: 15px; width: 19px; }
-
-		}
-
-		> li.wishlist {
-
-			> a span.item-counter { padding: 2px 0; line-height: 1; font-size: 11px; letter-spacing: -0.01em; text-align: center; display: block; position: absolute; left: 14px; top: 14px; width: 20px; }
-
-		}
-
-		> li.account {
-
-			> a { padding-left: 39px; }
-			> a:before { font-size: 27px; margin-top: -13px; left: 8px; }
-
-		}
-
-		// MY ACCOUNT MENU && MY FAVORITES MENU
-		.dropdown-hover .dropdown-menu { position: absolute; min-width: 100%; left: 0; right: inherit; display: block; top: 100%; margin: 0; padding: 10px 0; border: none; border-radius: 0; box-shadow: none; list-style: none; opacity: 0; transform: scaleY(0); z-index: -2; transform-origin: top left; transition: all 350ms $cb;
-
-			li { position: relative; opacity: 0; transition: opacity 350ms $cb; transition-delay: 200ms; }
-
-			li a { font-size: 1.15rem; padding: 8px 20px; }
-			li a:after { bottom: 0; left: 10%; right: 90%; height: 1px; width: inherit; position: absolute; content: ""; transition: right 200ms $cb, left 400ms $cb; }
-			li a:hover:after { right: 9%; left: 91% }
-		}
-
-		.dropdown-hover .dropdown-menu:before { position: absolute; content: ""; display: block; border-bottom: 2px solid; top: -2px; left: 50%; right: 50%; z-index: 4; transition: all 150ms $cb; transition-delay: 0ms; }
-		.dropdown-hover:hover .dropdown-menu:before { left: 0; right: 0; transition-delay: 250ms; }
-
-		.dropdown-hover:hover .dropdown-menu { margin-top: 2px; opacity: 1; transform: scaleY(1); z-index: 4;
-
-			li { opacity: 1; }
-
-		}
-
-
-		// MY FAVORITES MENU
-		.favorites .dropdown-menu {
-			li a { padding-left: 15px; position: relative;
-				.wishlist-counter { width: 15px; height: 15px; padding: 2px 0; line-height: 1; font-size: 12px; letter-spacing: -.01em; text-align: center; color: #fff!important; display: block; position: absolute; right: 15px; top: 50%; margin-top: -7px; }
-			}
-		}
-	}
 }

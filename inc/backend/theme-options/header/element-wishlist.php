@@ -3,9 +3,8 @@
 global $transport;
 
 // ACCOUNT
-Kirki::add_section( 'account_element', array(
-    'title'          => __( 'Account', 'davis' ),
-    'description'	 => __( 'Elements', 'davis' ),
+Kirki::add_section( 'wishlist_element', array(
+    'title'          => __( 'Wishlist', 'davis' ),
     'panel'          => 'panel_header',
     'priority'       => 10,
 ) );
@@ -13,9 +12,9 @@ Kirki::add_section( 'account_element', array(
 Kirki::add_field( 'pp_theme', array(
 	'transport'	  => $transport,
 	'type'        => 'radio-buttonset',
-	'settings'    => 'account_style',
+	'settings'    => 'wishlist_style',
 	'label'       => __( 'Style', 'davis' ),
-	'section'     => 'account_element',
+	'section'     => 'wishlist_element',
 	'default'     => 'icon_label',
 	'priority'    => 10,
 	'choices'     => array(
@@ -28,9 +27,9 @@ Kirki::add_field( 'pp_theme', array(
 Kirki::add_field( 'pp_theme', array(
 	'transport'	  => $transport,
 	'type'        => 'radio-image',
-	'settings'    => 'account_icon_style',
+	'settings'    => 'wishlist_icon_style',
 	'label'       => esc_html__( 'Icon Type', 'davis' ),
-	'section'     => 'account_element',
+	'section'     => 'wishlist_element',
 	'default'     => 'style1',
 	'priority'    => 10,
 	'choices'     => array(
@@ -40,7 +39,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'active_callback'    => array(
 		array(
-			'setting'  => 'account_style',
+			'setting'  => 'wishlist_style',
 			'operator' => '!=',
 			'value'    => 'label',
 		),
@@ -50,31 +49,14 @@ Kirki::add_field( 'pp_theme', array(
 Kirki::add_field( 'pp_theme', array(
 	'transport'	  => $transport,
 	'type'     => 'text',
-	'settings' => 'account_in_label',
-	'label'    => __( 'Logged In Label', 'davis' ),
-	'section'  => 'account_element',
-	'default'  => esc_attr__( 'My Account', 'davis' ),
+	'settings' => 'wishlist_label',
+	'label'    => __( 'Label', 'davis' ),
+	'section'  => 'wishlist_element',
+	'default'  => esc_attr__( 'My Favorites', 'davis' ),
 	'priority' => 10,
 	'active_callback'    => array(
 		array(
-			'setting'  => 'account_style',
-			'operator' => '!=',
-			'value'    => 'icon',
-		),
-	),
-) );
-// Label when logged out
-Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
-	'type'     => 'text',
-	'settings' => 'account_out_label',
-	'label'    => __( 'Logged Out Label', 'davis' ),
-	'section'  => 'account_element',
-	'default'  => esc_attr__( 'Login', 'davis' ),
-	'priority' => 10,
-	'active_callback'    => array(
-		array(
-			'setting'  => 'account_style',
+			'setting'  => 'wishlist_style',
 			'operator' => '!=',
 			'value'    => 'icon',
 		),
