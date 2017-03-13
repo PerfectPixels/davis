@@ -16,7 +16,7 @@
 
     <div class="icon-search header-bg-color-bg">
         <?php get_template_part( 'template-parts/header/search-form' ); ?>
-        <a href="#0" class="close cd-text-replace header-text-color-bg-speudo">Close Search</a>
+        <a href="#0" class="close header-text-color-bg-speudo">Close Search</a>
     </div>
 
 </header>

@@ -11,10 +11,12 @@
 
 global $woocommerce_active;
 
-if ( $woocommerce_active ) {
-	$footer_sidebar = get_theme_mod('footer_sidebar', 'products_pages');
+$footer_sidebar = false;
 
-	switch($footer_sidebar){
+if ( $woocommerce_active ) {
+	$footer_sidebar_type = get_theme_mod('footer_sidebar', 'products_pages');
+
+	switch( $footer_sidebar_type ){
 		case 'products_pages';
 			if ( is_shop() || is_product_category() || is_product() ){
 				$footer_sidebar = true;

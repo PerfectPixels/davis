@@ -3,7 +3,6 @@
 
   > a {
     padding: 7px 0 !important;
-    margin-left: 10px;
     cursor: pointer;
     line-height: 26px;
     display: inline-block;
@@ -27,7 +26,7 @@
       position: absolute;
       margin: 0;
       top: 7px;
-      left: 0;
+      left: 5px;
       width: 28px;
     }
 
@@ -35,6 +34,7 @@
 
       &:before {
         font-size: 32px;
+        padding: 0;
       }
 
       span {
@@ -56,24 +56,57 @@
 
     }
 
+    &.icon-android-search {
+
+      &:before {
+        font-size: 25px;
+        padding: 0;
+      }
+    }
+
     &:before {
       font-size: 28px;
       line-height: 25px;
+      padding: 0 5px;
       vertical-align: middle;
       display: inline-block;
     }
 
   }
 
-  &.icon {
-    > a span:not(.item-counter) {
-      display: none;
+  &.icon-only {
+    > a {
+      span:not(.item-counter) {
+        display: none;
+      }
     }
   }
 
-  &.label {
-    > a:before {
-      display: none;
+  &.label-only {
+    > a {
+
+      &:before {
+        display: none;
+      }
+
+      span.item-counter {
+        display: inline-block;
+        left: inherit;
+        right: 0;
+        top: 50%;
+        border-radius: 50%;
+        line-height: 20px;
+        transform: translateY(-50%);
+        @include square(20px);
+      }
+
+    }
+
+    &.wishlist,
+    &.cart {
+      > a {
+        padding-right: 25px !important;
+      }
     }
   }
 
@@ -82,8 +115,7 @@
     .dropdown-menu {
       position: absolute;
       min-width: 100%;
-      right: 0;
-      left: inherit;
+      left: -20px;
       top: calc(100% + 30px);
       margin: 0;
       padding: 10px 0;
@@ -94,6 +126,7 @@
       visibility: hidden;
       z-index: 4;
       transition: all .3s $cb;
+      border-radius: 0 !important;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 
       li {
@@ -105,7 +138,7 @@
 
         a {
           background: none;
-          font-size: 12px;
+          font-size: 11px;
           text-transform: uppercase;
           padding: 8px 20px;
           transition: color 350ms $cb;

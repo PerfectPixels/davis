@@ -28,8 +28,12 @@ if ( class_exists('Kirki') ) :
 		array( 'text_3', __( 'Text 3', 'davis' ), 'texts_element' ),
 		array( 'topbar_nav_1', __( 'Top Bar Nav 1', 'davis' ) ),
 		array( 'topbar_nav_2', __( 'Top Bar Nav 2', 'davis' ) ),
-		array( 'whishlist', __( 'Whishlist', 'davis' ), 'whishlist_element' ),
 	);
+
+	// If wishlist plugin is activated
+	if ( class_exists('WC_Wishlists_wishlist') || class_exists('YITH_WCWL') ) {
+		$header_elements[] = array( 'wishlist', __( 'Wishlist', 'davis' ), 'wishlist_element' );
+	}
 
 	// Parse to output the correct options in customizer
 	$header_options = array();

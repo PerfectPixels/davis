@@ -169,23 +169,11 @@ body.admin-bar .navbar-fixed-top { top: 32px; }
 			&.dropdown-hover {
 
 				.dropdown-menu {
-					position: absolute;
-					min-width: 100%;
-					left: 0;
-					right: inherit;
-					display: block;
 					top: 100%;
-					margin: 0;
-					padding: 10px 0;
 					border: none;
-					border-radius: 0;
-					box-shadow: none;
-					list-style: none;
-					opacity: 0;
 					transform: scaleY(0);
 					z-index: -2;
 					transform-origin: top left;
-					transition: all 350ms $cb;
 
 					li {
 						position: relative;
@@ -284,6 +272,18 @@ body.admin-bar .navbar-fixed-top { top: 32px; }
 				margin-right: 0;
 			}
 
+		}
+
+		&.flex-right {
+			.dropdown-hover:last-child .dropdown-menu {
+				left: inherit;
+				right: -20px;
+			}
+
+			> li.menu-item:last-child .sub-menu {
+				left: inherit;
+				right: 0;
+			}
 		}
 
 	}

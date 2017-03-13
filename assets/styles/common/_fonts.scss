@@ -1,10 +1,10 @@
 @font-face {
   font-family: "fonticon";
-  src:url($icon-font-path+"davis.eot");
-  src:url($icon-font-path+"davis.eot?#iefix") format("embedded-opentype"),
-    url($icon-font-path+"davis.woff") format("woff"),
-    url($icon-font-path+"davis.ttf") format("truetype"),
-    url($icon-font-path+"davis.svg#davis") format("svg");
+  src:url($icon-font-path + "davis.eot");
+  src:url($icon-font-path + "davis.eot?#iefix") format("embedded-opentype"),
+    url($icon-font-path + "davis.woff") format("woff"),
+    url($icon-font-path + "davis.ttf") format("truetype"),
+    url($icon-font-path + "davis.svg#davis") format("svg");
   font-weight: normal;
   font-style: normal;
 
@@ -80,12 +80,6 @@
 }
 .icon-user-3-outline:before {
   content: "\70";
-}
-.icon-user-alt-outline:before {
-  content: "\71";
-}
-.icon-user-alt:before {
-  content: "\6d";
 }
 .icon-user-3:before {
   content: "\72";
@@ -188,4 +182,64 @@
 }
 .icon-linkedin:before {
   content: "\59";
+}
+.icon-user-5:before {
+  content: "\5a";
+}
+.icon-basket-1:before {
+  content: "\30";
+}
+.icon-basket-2:before {
+  content: "\31";
+}
+.icon-basket-3:before {
+  content: "\32";
+}
+.icon-basket-add:before {
+  content: "\33";
+}
+.icon-basket-minus:before {
+  content: "\34";
+}
+.icon-cart-4:before {
+  content: "\35";
+}
+.icon-cart-3:before {
+  content: "\36";
+}
+.icon-cart-2:before {
+  content: "\37";
+}
+.icon-cart-3-1:before {
+  content: "\39";
+}
+.icon-cart-4-1:before {
+  content: "\21";
+}
+.icon-shopping-1:before {
+  content: "\38";
+}
+.icon-basket-1-1:before {
+  content: "\22";
+}
+.icon-basket-2-1:before {
+  content: "\23";
+}
+.icon-basket-3-1:before {
+  content: "\24";
+}
+.icon-basket-add-1:before {
+  content: "\25";
+}
+.icon-basket-minus-1:before {
+  content: "\26";
+}
+.icon-cart-2-1:before {
+  content: "\27";
+}
+.icon-user-alt:before {
+  content: "\6d";
+}
+.icon-user-alt-outline:before {
+  content: "\71";
 }

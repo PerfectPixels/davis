@@ -19,9 +19,9 @@ Kirki::add_field( 'pp_theme', array(
 	'default'     => 'icon_label',
 	'priority'    => 10,
 	'choices'     => array(
-		'icon'   	 => esc_attr__( 'Icon Only', 'davis' ),
-		'icon_label' => esc_attr__( 'Icon with Label', 'davis' ),
-		'label'  	 => esc_attr__( 'Label Only', 'davis' ),
+		'icon-only'   	 => esc_attr__( 'Icon Only', 'davis' ),
+		'icon-label' => esc_attr__( 'Icon with Label', 'davis' ),
+		'label-only'  	 => esc_attr__( 'Label Only', 'davis' ),
 	),
 ) );
 // Icon style
@@ -42,7 +42,7 @@ Kirki::add_field( 'pp_theme', array(
 		array(
 			'setting'  => 'account_style',
 			'operator' => '!=',
-			'value'    => 'label',
+			'value'    => 'label-only',
 		),
 	),
 ) );
@@ -59,7 +59,7 @@ Kirki::add_field( 'pp_theme', array(
 		array(
 			'setting'  => 'account_style',
 			'operator' => '!=',
-			'value'    => 'icon',
+			'value'    => 'icon-only',
 		),
 	),
 ) );
@@ -76,7 +76,7 @@ Kirki::add_field( 'pp_theme', array(
 		array(
 			'setting'  => 'account_style',
 			'operator' => '!=',
-			'value'    => 'icon',
+			'value'    => 'icon-only',
 		),
 	),
 ) );

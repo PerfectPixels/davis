@@ -92,7 +92,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-top .menu-item-has-children > a:before', '.navbar-top .menu-item-has-children > a:after' ),
+			'element'  => array( '.navbar-top .menu-item-has-children > a:before', '.navbar-top .menu-item-has-children > a:after', '.navbar-top li.action-button.label-only > a span.item-counter' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -104,7 +104,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-top .menu-item-has-children > a:before', '.navbar-top .menu-item-has-children > a:after' ),
+			'element'  => array( '.navbar-top .menu-item-has-children > a:before', '.navbar-top .menu-item-has-children > a:after', '.navbar-top li.action-button.label-only > a span.item-counter' ),
 			'property' => 'background-color',
 		),
 	),
@@ -134,7 +134,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( 'body .navbar-top ul.sub-menu a:after', '.navbar-top .dropdown-menu a:after', '.navbar-top .menu-item-has-children:hover > a:before', '.navbar-top .menu-item-has-children:hover > a:after' ),
+			'element'  => array( 'body .navbar-top ul.sub-menu a:after', '.navbar-top .dropdown-menu a:after', '.navbar-top .menu-item-has-children:hover > a:before', '.navbar-top .menu-item-has-children:hover > a:after', '.navbar-top li.action-button.label-only > a:hover span.item-counter' ),
 			'function' => 'css',
 			'property' => 'background-color',
 			'suffix'   => '!important',
@@ -153,7 +153,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( 'body .navbar-top ul.sub-menu a:after', '.navbar-top .dropdown-menu a:after', '.navbar-top .menu-item-has-children:hover  > a:before', '.navbar-top .menu-item-has-children:hover > a:after' ),
+			'element'  => array( 'body .navbar-top ul.sub-menu a:after', '.navbar-top .dropdown-menu a:after', '.navbar-top .menu-item-has-children:hover  > a:before', '.navbar-top .menu-item-has-children:hover > a:after', '.navbar-top li.action-button.label-only > a:hover span.item-counter' ),
 			'property' => 'background-color',
 			'suffix'   => '!important',
 		),

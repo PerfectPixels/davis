@@ -1,5 +1,7 @@
 <?php
 
+global $transport;
+
 // Add the Header panel
 Kirki::add_section( 'social_media', array(
     'title'          => __( 'Social Media', 'davis' ),

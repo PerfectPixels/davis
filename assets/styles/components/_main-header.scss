@@ -4,6 +4,7 @@
 	> ul {
 		list-style: none;
 		margin: 0;
+		position: relative;
 		-webkit-padding-start: 0;
 
 		> li {
@@ -26,20 +27,15 @@
 			}
 
 			&.action-button {
+				padding: 15px 0;
 
 				> a {
-
-					span.item-counter {
-						top: 8px;
-					}
-
-					&.icon-shopping-bag {
-						span.item-counter {
-							top: 10px;
-						}
-					}
+					font-size: 12px;
 				}
 
+				&.search {
+					padding: 0;
+				}
 			}
 
 			&:first-child {
@@ -48,6 +44,18 @@
 
 			&:last-child {
 				margin-right: 0;
+			}
+		}
+
+		&.flex-right {
+			.dropdown-hover:last-child .dropdown-menu {
+				left: inherit;
+				right: -20px;
+			}
+
+			> li.menu-item:last-child .sub-menu {
+				left: inherit;
+				right: 0;
 			}
 		}
 

@@ -215,13 +215,13 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'color',
 		),
 		array(
-			'element'  => array( '.primary-nav .ul li a','.cd-main-search .select2-container .select2-choice' ),
+			'element'  => array( '.primary-nav .ul li a','.icon-search .select2-container .select2-choice' ),
 			'function' => 'css',
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.header-text-color-bg', '.header-text-color-bg-speudo:before', '.header-text-color-bg-speudo:after', '.menu-link:before', '.menu-link:after', '.go-back a:before', '.go-back a:after', '.cd-main-search .select2-container .select2-choice:before', '.cd-main-search .select2-container .select2-choice:after' ),
+			'element'  => array( '.header-text-color-bg', '.header-text-color-bg-speudo:before', '.header-text-color-bg-speudo:after', '.menu-link:before', '.menu-link:after', '.go-back a:before', '.go-back a:after', '.icon-search .select2-container .select2-choice:before', '.icon-search .select2-container .select2-choice:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -232,12 +232,12 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'color',
 		),
 		array(
-			'element'  => array( '.primary-nav .ul li a','.cd-main-search .select2-container .select2-choice' ),
+			'element'  => array( '.primary-nav .ul li a','.icon-search .select2-container .select2-choice' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.header-text-color-bg', '.header-text-color-bg-speudo:before', '.header-text-color-bg-speudo:after', '.menu-link:before', '.menu-link:after', '.go-back a:before', '.go-back a:after', '.cd-main-search .select2-container .select2-choice:before', '.cd-main-search .select2-container .select2-choice:after' ),
+			'element'  => array( '.header-text-color-bg', '.header-text-color-bg-speudo:before', '.header-text-color-bg-speudo:after', '.menu-link:before', '.menu-link:after', '.go-back a:before', '.go-back a:after', '.icon-search .select2-container .select2-choice:before', '.icon-search .select2-container .select2-choice:after' ),
 			'property' => 'background-color',
 		),
 	),
@@ -302,17 +302,25 @@ Kirki::add_field( 'pp_theme', array(
 			'element'  => array( '.nav-header li.action-button > a:before' ),
 			'property' => 'color',
 		),
+		array(
+			'element'  => array( '.nav-header li.action-button.label-only > a span.item-counter' ),
+			'property' => 'background-color',
+		),
 	),
 	'output' => array(
 		array(
 			'element'  => array( '.nav-header li.action-button > a:before' ),
 			'property' => 'color',
 		),
+		array(
+			'element'  => array( '.nav-header li.action-button.label-only > a span.item-counter' ),
+			'property' => 'background-color',
+		),
 	),
 ) );
 // Header Icon Hover color
 Kirki::add_field( 'pp_theme', array(
-	'settings' => 'header_icon_color',
+	'settings' => 'header_icon_hover_color',
 	'label'    => __( 'Icon Hover Color', 'davis' ),
 	'section'  => 'main_header',
 	'type'     => 'color',
@@ -325,11 +333,19 @@ Kirki::add_field( 'pp_theme', array(
 			'element'  => array( '.nav-header li.action-button > a:hover:before' ),
 			'property' => 'color',
 		),
+		array(
+			'element'  => array( '.nav-header li.action-button.label-only > a:hover span.item-counter' ),
+			'property' => 'background-color',
+		),
 	),
 	'output' => array(
 		array(
 			'element'  => array( '.nav-header li.action-button > a:hover:before' ),
 			'property' => 'color',
+		),
+		array(
+			'element'  => array( '.nav-header li.action-button.label-only > a:hover span.item-counter' ),
+			'property' => 'background-color',
 		),
 	),
 ) );

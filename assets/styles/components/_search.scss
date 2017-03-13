@@ -351,59 +351,59 @@
 /*
 ** Hidden search form for the icon search
  */
-.icon-search {
-  background-color: rgba(255,255,255,0.2) !important;
-  display: block;
-  line-height: 32px;
-  padding: 15px 20px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
-  border-bottom: 1px solid #3a3f40;
-  transform: translateZ(0);
-  transition: transform 0.3s ease, color 0.3s $cb;
-
-  form {
-    display: inline-block;
-
-    input {
-      background: none;
-      color: #fff;
-    }
-
-    .cd-select {
-      /* hide select element on small devices */
-      display: none;
-    }
-
-    .close {
-      display: none;
-    }
-
-    input[type="search"] {
-      width: 100%;
-    }
-  }
-
-  &:before {
-    font-family: "fonticon" !important;
-    font-size: 20px;
-    color: #fff;
-    float: left;
-    padding: 7px 5px 7px 0;
-    display: inline-block;
-    content: "\77";
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-}
+//.icon-search {
+//  background-color: rgba(255,255,255,0.2) !important;
+//  display: block;
+//  line-height: 32px;
+//  padding: 15px 20px;
+//  -webkit-font-smoothing: antialiased;
+//  -moz-osx-font-smoothing: grayscale;
+//  overflow: hidden;
+//  border-bottom: 1px solid #3a3f40;
+//  transform: translateZ(0);
+//  transition: transform 0.3s ease, color 0.3s $cb;
+//
+//  form {
+//    display: inline-block;
+//
+//    input {
+//      background: none;
+//      color: #fff;
+//    }
+//
+//    .cd-select {
+//      /* hide select element on small devices */
+//      display: none;
+//    }
+//
+//    .close {
+//      display: none;
+//    }
+//
+//    input[type="search"] {
+//      width: 100%;
+//    }
+//  }
+//
+//  &:before {
+//    font-family: "fonticon" !important;
+//    font-size: 20px;
+//    color: #fff;
+//    float: left;
+//    padding: 7px 5px 7px 0;
+//    display: inline-block;
+//    content: "\77";
+//    font-style: normal;
+//    font-weight: normal;
+//    font-variant: normal;
+//    text-transform: none;
+//    speak: none;
+//    line-height: 1;
+//    -webkit-font-smoothing: antialiased;
+//    -moz-osx-font-smoothing: grayscale;
+//  }
+//
+//}
 
 
   /*
@@ -424,111 +424,114 @@
     position: relative;
     height: 100%;
     margin: 0 calc(5% + 116px) 0 calc(3% + 170px);
-  }
 
-  .search-input {
-    height: 100%;
-  }
+    .search-input {
+      height: 100%;
 
-  .input[type="search"] {
-    font-size: 2.4rem;
-    height: 100%;
-    background-color: transparent;
-    /* don't overlap <select> element */
-    padding-right: 170px;
-  }
-
-  .cd-select {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-    color: #5c5d6a !important;
-    font-size: 1.4rem;
-    overflow: hidden;
-  }
-
-  .in {
-    display: inline-block;
-    opacity: 0.4;
-  }
-
-  select {
-    /* the <select> element is not visible (if the list of options is not open) -  it is covered by the .selected-value element */
-    position: absolute;
-    right: 0;
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-    opacity: 0;
-    color: transparent;
-
-    &:focus {
-      outline: none;
+      input[type="search"] {
+        font-size: 2.4rem;
+        font-weight: bold;
+        height: 100%;
+        background-color: transparent;
+        padding-right: 170px;
+      }
     }
-  }
 
-  .select2-container {
-    display: inline-block !important;
-    width: auto !important;
-
-    .select2-choice {
-      text-transform: none;
-      border: none !important;
-      padding: 0.5em 1.7em 0.5em .3em;
-      font-size: 1.4rem;
-      box-shadow: none !important;
-      font-weight: normal;
-      vertical-align: middle;
+    .cd-select {
       display: inline-block;
-      margin: 0;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+      color: #5c5d6a !important;
+      font-size: 1.4rem;
+      overflow: hidden;
+    }
 
-      span {
-        opacity: 1;
+    .in {
+      display: inline-block;
+      opacity: 0.4;
+    }
+
+    select {
+      /* the <select> element is not visible (if the list of options is not open) -  it is covered by the .selected-value element */
+      position: absolute;
+      right: 0;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+      opacity: 0;
+      color: transparent;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .select2-container {
+      display: inline-block !important;
+      width: auto !important;
+
+      .select2-choice {
+        text-transform: none;
+        border: none !important;
+        padding: 0.5em 1.7em 0.5em .3em;
+        font-size: 1.4rem;
+        box-shadow: none !important;
+        font-weight: normal;
+        vertical-align: middle;
+        display: inline-block;
         margin: 0;
-      }
 
-      .select2-arrow {
-        display: none;
-      }
+        span {
+          opacity: 1;
+          margin: 0;
+        }
 
-      &:before,
-      &:after {
-        content: '';
-        display: block;
-        height: 2px;
-        width: 8px;
-        position: absolute;
-        right: 7px;
-        top: 50%;
-        margin-top: -1px;
-        transition: all .3s $cb;
-        transform: rotate3d(0, 0, 1, 45deg);
-      }
-      &:after {
-        right: 2px;
-        transform: rotate3d(0, 0, 1, -45deg);
-      }
+        .select2-arrow {
+          display: none;
+        }
 
+        &:hover {
+          box-shadow: none !important;
+        }
+
+        &:before,
+        &:after {
+          content: '';
+          display: block;
+          height: 2px;
+          width: 8px;
+          position: absolute;
+          right: 7px;
+          top: 50%;
+          margin-top: -1px;
+          transition: all .3s $cb;
+          transform: rotate3d(0, 0, 1, 45deg);
+        }
+        &:after {
+          right: 2px;
+          transform: rotate3d(0, 0, 1, -45deg);
+        }
+
+      }
     }
   }
 
   .close {
-    /* 'X' icon - used to close the search form */
     display: inline-block;
     position: absolute;
     right: 5%;
     top: 50%;
     height: 40px;
     width: 40px;
+    @include hide-text();
     transform: translateY(-50%) scale(0);
     transition: transform 0.3s;
 
     &:before,
     &:after {
-      /* used to create the 'X' icon in css */
       content: '';
       position: absolute;
       height: 20px;
@@ -563,7 +566,7 @@
     }
   }
 
-  .is-visible {
+  &.is-visible {
     opacity: 1;
     visibility: visible;
     animation: cd-slide-in 0.3s;

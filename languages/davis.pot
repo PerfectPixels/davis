@@ -141,7 +141,7 @@ msgstr ""
 msgid "Button 2"
 msgstr ""
 
-#: inc/backend/theme-options.php:10, inc/backend/theme-options/header/element-cart.php:5, inc/backend/theme-options/header/element-cart.php:53, template-parts/header/elements/cart.php:8
+#: inc/backend/theme-options.php:10, inc/backend/theme-options/header/element-cart.php:7, inc/backend/theme-options/header/element-cart.php:55, template-parts/header/elements/cart.php:8
 msgid "Cart"
 msgstr ""
 
@@ -213,8 +213,8 @@ msgstr ""
 msgid "Top Bar Nav 2"
 msgstr ""
 
-#: inc/backend/theme-options.php:31
-msgid "Whishlist"
+#: inc/backend/theme-options.php:35, inc/backend/theme-options/header/element-wishlist.php:7, inc/functions/wishlist.php:54
+msgid "Wishlist"
 msgstr ""
 
 #: inc/backend/theme-options/footer.php:6
@@ -285,7 +285,7 @@ msgstr ""
 msgid "Choose if you want to display or remove the social media."
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:141, inc/backend/theme-options/header/element-social-media.php:14
+#: inc/backend/theme-options/footer.php:141, inc/backend/theme-options/header/element-social-media.php:16
 msgid "Facebook"
 msgstr ""
 
@@ -297,7 +297,7 @@ msgstr ""
 msgid "Social Media section"
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:159, inc/backend/theme-options/header/element-social-media.php:24
+#: inc/backend/theme-options/footer.php:159, inc/backend/theme-options/header/element-social-media.php:26
 msgid "Twitter"
 msgstr ""
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Make sure you have added the Twitter URL to the "
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:177, inc/backend/theme-options/header/element-social-media.php:34
+#: inc/backend/theme-options/footer.php:177, inc/backend/theme-options/header/element-social-media.php:36
 msgid "Google Plus"
 msgstr ""
 
@@ -313,7 +313,7 @@ msgstr ""
 msgid "Make sure you have added the Google Plus URL to the "
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:195, inc/backend/theme-options/header/element-social-media.php:44
+#: inc/backend/theme-options/footer.php:195, inc/backend/theme-options/header/element-social-media.php:46
 msgid "Instagram"
 msgstr ""
 
@@ -321,7 +321,7 @@ msgstr ""
 msgid "Make sure you have added the Instagram URL to the "
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:213, inc/backend/theme-options/header/element-social-media.php:54
+#: inc/backend/theme-options/footer.php:213, inc/backend/theme-options/header/element-social-media.php:56
 msgid "Pinterest"
 msgstr ""
 
@@ -421,23 +421,23 @@ msgstr ""
 msgid "Elements"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:17, inc/backend/theme-options/header/element-cart.php:14, inc/backend/theme-options/header/element-contact.php:16, inc/backend/theme-options/header/element-wishlist.php:16
+#: inc/backend/theme-options/header/element-account.php:17, inc/backend/theme-options/header/element-cart.php:16, inc/backend/theme-options/header/element-contact.php:16, inc/backend/theme-options/header/element-wishlist.php:16
 msgid "Style"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:22, inc/backend/theme-options/header/element-cart.php:19, inc/backend/theme-options/header/element-contact.php:21, inc/backend/theme-options/header/element-wishlist.php:21, inc/mega-menu/options/icon.php:51
+#: inc/backend/theme-options/header/element-account.php:22, inc/backend/theme-options/header/element-cart.php:21, inc/backend/theme-options/header/element-contact.php:21, inc/backend/theme-options/header/element-wishlist.php:21, inc/mega-menu/options/icon.php:51
 msgid "Icon Only"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:23, inc/backend/theme-options/header/element-cart.php:20, inc/backend/theme-options/header/element-contact.php:22, inc/backend/theme-options/header/element-wishlist.php:22
+#: inc/backend/theme-options/header/element-account.php:23, inc/backend/theme-options/header/element-cart.php:22, inc/backend/theme-options/header/element-contact.php:22, inc/backend/theme-options/header/element-wishlist.php:22
 msgid "Icon with Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:24, inc/backend/theme-options/header/element-cart.php:21, inc/backend/theme-options/header/element-contact.php:23, inc/backend/theme-options/header/element-wishlist.php:23
+#: inc/backend/theme-options/header/element-account.php:24, inc/backend/theme-options/header/element-cart.php:23, inc/backend/theme-options/header/element-contact.php:23, inc/backend/theme-options/header/element-wishlist.php:23
 msgid "Label Only"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:32, inc/backend/theme-options/header/element-cart.php:29, inc/backend/theme-options/header/element-search.php:15, inc/backend/theme-options/header/element-wishlist.php:31
+#: inc/backend/theme-options/header/element-account.php:32, inc/backend/theme-options/header/element-cart.php:31, inc/backend/theme-options/header/element-search.php:15, inc/backend/theme-options/header/element-wishlist.php:31
 msgid "Icon Type"
 msgstr ""
 
@@ -517,7 +517,7 @@ msgstr ""
 msgid "Button 2 Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-cart.php:51, inc/backend/theme-options/header/element-wishlist.php:53
+#: inc/backend/theme-options/header/element-cart.php:53, inc/backend/theme-options/header/element-wishlist.php:53
 msgid "Label"
 msgstr ""
 
@@ -581,7 +581,7 @@ msgstr ""
 msgid "Enable/Disable the ajax search."
 msgstr ""
 
-#: inc/backend/theme-options/header/element-social-media.php:5
+#: inc/backend/theme-options/header/element-social-media.php:7
 msgid "Social Media"
 msgstr ""
 
@@ -637,12 +637,8 @@ msgstr ""
 msgid "Text 3 Background Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-wishlist.php:7, inc/functions/wishlist.php:54
-msgid "Wishlist"
-msgstr ""
-
 #: inc/backend/theme-options/header/element-wishlist.php:55
-msgid "My Favorites"
+msgid "Favorites"
 msgstr ""
 
 #: inc/backend/theme-options/header/header-builder.php:19
@@ -829,15 +825,15 @@ msgstr ""
 msgid "Icon Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:316
+#: inc/backend/theme-options/header/main-header.php:324
 msgid "Icon Hover Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:339, inc/backend/theme-options/header/top-bar.php:171
+#: inc/backend/theme-options/header/main-header.php:355, inc/backend/theme-options/header/top-bar.php:171
 msgid "Icon Text Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:362
+#: inc/backend/theme-options/header/main-header.php:378
 msgid "Icon Hover Text Color"
 msgstr ""
 
@@ -1626,10 +1622,6 @@ msgstr ""
 
 #: template-parts/header/elements/cart.php:14
 msgid "Woocommerce plugin needed"
-msgstr ""
-
-#: template-parts/header/elements/whishlist.php:22
-msgid "Wishlists"
 msgstr ""
 
 #: template-parts/header/offcanvas-cart.php:19

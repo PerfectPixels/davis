@@ -18,9 +18,9 @@ Kirki::add_field( 'pp_theme', array(
 	'default'     => 'icon_label',
 	'priority'    => 10,
 	'choices'     => array(
-		'icon'   	 => esc_attr__( 'Icon Only', 'davis' ),
-		'icon_label' => esc_attr__( 'Icon with Label', 'davis' ),
-		'label'  	 => esc_attr__( 'Label Only', 'davis' ),
+		'icon-only'   	 => esc_attr__( 'Icon Only', 'davis' ),
+		'icon-label' => esc_attr__( 'Icon with Label', 'davis' ),
+		'label-only'  	 => esc_attr__( 'Label Only', 'davis' ),
 	),
 ) );
 // Icon style
@@ -41,7 +41,7 @@ Kirki::add_field( 'pp_theme', array(
 		array(
 			'setting'  => 'wishlist_style',
 			'operator' => '!=',
-			'value'    => 'label',
+			'value'    => 'label-only',
 		),
 	),
 ) );
@@ -52,13 +52,13 @@ Kirki::add_field( 'pp_theme', array(
 	'settings' => 'wishlist_label',
 	'label'    => __( 'Label', 'davis' ),
 	'section'  => 'wishlist_element',
-	'default'  => esc_attr__( 'My Favorites', 'davis' ),
+	'default'  => esc_attr__( 'Favorites', 'davis' ),
 	'priority' => 10,
 	'active_callback'    => array(
 		array(
 			'setting'  => 'wishlist_style',
 			'operator' => '!=',
-			'value'    => 'icon',
+			'value'    => 'icon-only',
 		),
 	),
 ) );

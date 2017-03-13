@@ -33,8 +33,7 @@
 			cartDismiss			: true,
 			last_src			: $( 'div.images img:eq(0)' ).attr( 'src' ),
 			$searchTrigger		: $( '.cd-search-trigger' ),
-			$searchForm			: $('.cd-main-search'),
-			$coverLayer			: $('.cd-cover-layer'),
+			$searchForm			: $('.icon-search'),
 			prevIconColor		: '',
 			upd					: null,
 			productDesc			: null,
@@ -114,11 +113,6 @@
 					// Close search form
 					PP.obj.$searchForm.on( 'click', '.close', function( event ){
 						event.preventDefault();
-						$this.closeSearchForm();
-					});
-
-					// Close search form when clicked on the overlay
-					PP.obj.$coverLayer.on( 'click', function(){
 						$this.closeSearchForm();
 					});
 
@@ -269,7 +263,6 @@
 					} else {
 						PP.obj.$html.addClass( 'search-form-visible' );
 						PP.obj.$searchTrigger.addClass( 'search-form-visible' );
-						PP.obj.$coverLayer.addClass( 'search-form-visible' );
 						PP.obj.$searchForm.addClass( 'is-visible' ).one( 'transitionend', function(){
 							PP.obj.$searchForm.find( 'input[type="search"]' ).focus().end().off( 'transitionend' );
 						});
@@ -281,7 +274,6 @@
 					PP.obj.$html.removeClass( 'search-form-visible' );
 					PP.obj.$searchTrigger.removeClass( 'search-form-visible' );
 					PP.obj.$searchForm.removeClass( 'is-visible' ).find( '.open' ).removeClass( 'open' );
-					PP.obj.$coverLayer.removeClass( 'search-form-visible' );
 				},
 
 				// Move navigation in order to make it responsive
