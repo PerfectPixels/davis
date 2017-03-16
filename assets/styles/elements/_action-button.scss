@@ -185,4 +185,81 @@
 
   }
 
+  &.menu {
+
+    .nav-button {
+      position: relative;
+      display: block;
+      white-space: nowrap;
+      width: 20px;
+      height: 20px;
+      padding: 0 5px !important;
+      box-sizing: content-box;
+
+      span {
+        height: 2px;
+        width: 20px;
+        top: 50%;
+        left: 5px;
+        margin: -1px 0 0;
+        display: block !important;
+        position: absolute;
+        border-radius: 2px;
+        backface-visibility: hidden;
+        transform-origin: 50% 50%;
+        transition: width .3s $cb;
+
+        &:before,
+        &:after {
+          position: absolute;
+          display: inline-block;
+          height: 2px;
+          width: 20px;
+          top: -5px;
+          left: 0;
+          border-radius: 2px;
+          content: '';
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          transform-origin: 0% 50%;
+          transition: transform 0.3s 0.3s;
+        }
+
+        &:after {
+          top: 5px;
+        }
+      }
+
+      &.nav-is-visible {
+
+        span {
+          width: 0;
+
+          &:before {
+            transform: translateX(4px) translateY(-2px) rotate(45deg);
+          }
+
+          &:after {
+            transform: translateX(4px) translateY(2px) rotate(-45deg);
+          }
+
+        }
+
+      }
+    }
+
+    &:last-of-type {
+      .nav-button {
+        padding-right: 0 !important;
+      }
+    }
+
+  }
+
+  &:last-child {
+    > a:before,
+    .nav-button {
+      padding-right: 0 !important;
+    }
+  }
 }

@@ -51,7 +51,7 @@
 			<li class="sortable">
 				<?php foreach ( $header_elements as $element ) {
                 	echo '<span class="button elements" data-type="' . $element[0] . '">' . $element[1];
-                		if ( $element[2] ){
+                		if ( isset($element[2]) ){
 	                		echo '<i class="dashicons dashicons-admin-generic" data-section="' . $element[2] . '"></i>';
     					}
                 	echo '</span>';
@@ -78,7 +78,7 @@
 			<li class="sortable">
 				<?php foreach ( $header_elements as $element ) {
                 	echo '<span class="button elements" data-type="' . $element[0] . '">' . $element[1];
-                		if ( $element[2] ){
+                		if ( isset($element[2]) ){
 	                		echo '<i class="dashicons dashicons-admin-generic" data-section="' . $element[2] . '"></i>';
     					}
                 	echo '</span>';
@@ -108,7 +108,7 @@
 			<li class="sortable">
 				<?php foreach ( $header_elements as $element ) {
                 	echo '<span class="button elements" data-type="' . $element[0] . '">' . $element[1];
-                		if ( $element[2] ){
+                		if ( isset($element[2]) ){
 	                		echo '<i class="dashicons dashicons-admin-generic" data-section="' . $element[2] . '"></i>';
     					}
                 	echo '</span>';

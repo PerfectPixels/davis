@@ -26,3 +26,14 @@ $orange:				#ff5c1e;
 $purple:				#bb3a6b;
 $blue:					#3c5a96;
 $yellow:				#e8a848;
+
+// Responsive
+$mobile-width:          600px;
+$tablet-width:          1100px;
+$desktop-width:         1440px;
+
+$screens:               desktop tablet mobile;
+
+// Element to animate for the offcanvas menu
+$main_elements:         '#page-content, section.cd-hero, #header-slider, .nav-header';
+$main_elements_visible: '.navbar-top.nav-is-visible, section.cd-hero.nav-is-visible, #page-content.nav-is-visible, #header-slider.nav-is-visible, .nav-header.nav-is-visible';

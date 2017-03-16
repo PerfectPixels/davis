@@ -1,0 +1,109 @@
+p.loading,
+.blockUI:not(.blockOverlay) {
+  margin: -6px 0 0 -6px !important;
+  height: 12px !important;
+  width: 12px !important;
+  animation: animation-rotate 1000ms linear infinite;
+  z-index: 900 !important;
+
+  &,
+  &:before,
+  &:after {
+    background: none !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-left-color: rgba(0, 0, 0, .8) !important;
+    border-radius: 50% !important;
+    transition: border 350ms;
+    display: block !important;
+    z-index: 901;
+  }
+
+  &:before {
+    content: "";
+    margin: -8px 0 0 -8px !important;
+    height: 16px !important;
+    width: 16px !important;
+    animation: animation-rotate 1000ms linear infinite;
+  }
+
+  &:after {
+    content: "";
+    margin: -10px 0 0 -10px !important;
+    height: 20px !important;
+    width: 20px !important;
+    animation: animation-rotate 2000ms linear infinite;
+  }
+
+}
+
+.black p.loading {
+
+  &,
+  &:before,
+  &:after {
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-left-color: rgba(255, 255, 255, .8) !important;
+  }
+
+}
+
+div.loading-overlay,
+.blockUI.blockOverlay {
+  background: rgba(255, 255, 255, 0.7) !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  opacity: 1 !important;
+  z-index: 900 !important;
+}
+
+.blockUI.blockOverlay:before,
+.blockUI.blockOverlay:after {
+  background: none !important;
+}
+
+.berocket_aapf_widget_loading .berocket_aapf_widget_loading_image {
+
+  &,
+  &:before,
+  &:after {
+    background: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-left-color: rgba(0, 0, 0, .8);
+    border-radius: 999px;
+    transition: border 350ms;
+  }
+
+  &:before {
+    content: "";
+    margin: -13px 0 0 -13px;
+    height: 26px;
+    width: 26px;
+    animation: animation-rotate 1000ms linear infinite;
+  }
+
+  &:after {
+    content: "";
+    margin: -15px 0 0 -15px;
+    height: 30px;
+    width: 30px;
+    animation: animation-rotate 2000ms linear infinite;
+  }
+
+  & {
+    margin: -11px 0 0 -11px;
+    height: 22px;
+    width: 22px;
+    animation: animation-rotate 1000ms linear infinite;
+  }
+
+}

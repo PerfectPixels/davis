@@ -12,7 +12,7 @@ if ( class_exists('Kirki') ) :
 		array( 'contact', __( 'Contact', 'davis' ), 'contact_element' ),
 		array( 'language_switcher', __( 'Language Menu', 'davis' ) ),
 		array( 'main_menu', __( 'Main Menu', 'davis' ) ),
-		array( 'menu_icon', __( 'Main Menu Icon', 'davis' ) ),
+		array( 'menu_icon', __( 'Offcanvas Main Menu', 'davis' ), 'offcanvas_main_menu_element' ),
 		// array( 'newsletter', __( 'Newsletter', 'davis' ), 'newsletter_element' ),
 		array( 'html_1', __( 'Raw HTML 1', 'davis' ), 'raw_html_element' ),
 		array( 'html_2', __( 'Raw HTML 2', 'davis' ), 'raw_html_element' ),

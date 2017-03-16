@@ -169,11 +169,12 @@ function pp_get_styles( $element ){
 					}
 
 					if ( $transparent ) {
-						$style .= '.nav-header.transparent:not(.fixedsticky-on) nav > ul > li > a,
-							.nav-header.transparent:not(.fixedsticky-on) .header-button > a { color: ' . $transparent_color .'; }
-							.nav-header.transparent:not(.fixedsticky-on) .nav-button span,
-							.nav-header.transparent:not(.fixedsticky-on) .nav-button span:before,
-							.nav-header.transparent:not(.fixedsticky-on) .nav-button span:after { background-color: ' . $transparent_color . '; }
+						$style .= '.nav-header.transparent:not(.sticky) > ul > li > a,
+							.nav-header.transparent:not(.sticky) .action-button > a,
+							 .nav-header.transparent:not(.sticky) .action-button > a:before { color: ' . $transparent_color .'; }
+							.nav-header.transparent:not(.sticky) .nav-button span,
+							.nav-header.transparent:not(.sticky) .nav-button span:before,
+							.nav-header.transparent:not(.sticky) .nav-button span:after { background-color: ' . $transparent_color . '; }
 							.nav-heaver.transparent .item-counter { color:' . $transparent_icon . '; }';
 					}
 

@@ -254,14 +254,13 @@
 }
 
 /* Screen greater than or equal to than 1100 pixels */
-@media only screen and (min-width: 1100px) {
+@include media-query('desktop'){
 
 	.woocommerce-page .woocommerce-MyAccount-navigation ul { width: auto !important; }
 
 }
 
-/* Screen less than or equal to than 1099 pixels */
-@media only screen and (max-width: 1099px) {
+@include media-query('tablet-and-down'){
 
 	.woocommerce-page {
 

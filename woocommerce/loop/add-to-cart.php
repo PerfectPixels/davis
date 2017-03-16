@@ -22,7 +22,7 @@ $quickview_enabled = get_theme_mod( 'quickview_enabled', true );
 	<div>
 		<?php if ( class_exists( 'WC_Wishlists_Plugin' ) ){ echo WC_Wishlists_Plugin::add_to_wishlist_button(); } ?>
 
-		<?php echo do_shortcode( '[yith_wcwl_add_to_wishlist]' ); ?>
+		<?php if ( class_exists('YITH_WCWL') ){ echo do_shortcode( '[yith_wcwl_add_to_wishlist]' ); } ?>
 
 		<?php if ( $quickview_enabled ) { ?>
 			<a class="icon-eye-line quickview" data-product-id="<?php echo esc_attr( $product->id ); ?>" data-toggle="tooltip" data-placement="top" title="<?php _e('Quickview', 'davis'); ?>"></a>

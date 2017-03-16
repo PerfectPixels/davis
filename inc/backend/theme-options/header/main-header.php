@@ -59,76 +59,6 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 
-// Mobile/Tablet
-Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
-	'type'        => 'custom',
-	'settings'    => 'main_header_title_2',
-	'section'     => 'main_header',
-	'default'     => '<h3 class="section_title">' . esc_html__( 'Mobile/Tablet', 'davis' ) . '</h3>',
-	'priority'    => 10,
-) );
-// OffCanvas Menu background color
-Kirki::add_field( 'pp_theme', array(
-	'settings' => 'offcanvas_menu_bg_color',
-	'label'    => __( 'OffCanvas Menu Background Color', 'davis' ),
-	'section'  => 'main_header',
-	'type'     => 'color',
-	'alpha'    => true,
-	'priority' => 10,
-	'default'  => '#2e3233',
-	'transport' => 'postMessage',
-	'js_varss'   => array(
-		array(
-			'element'  => array( '' ),
-			'function' => 'css',
-			'property' => 'background-color',
-		),
-	),
-	'output' => array(
-		array(
-			'element'  => array( '' ),
-			'property' => 'background-color',
-		),
-	),
-) );
-// OffCanvas Menu text color
-Kirki::add_field( 'pp_theme', array(
-	'settings' => 'offcanvas_menu_txt_color',
-	'label'    => __( 'OffCanvas Menu Text Color', 'davis' ),
-	'section'  => 'main_header',
-	'type'     => 'color',
-	'alpha'    => true,
-	'priority' => 10,
-	'default'  => '#bbb',
-	'transport' => 'postMessage',
-	'js_varss'   => array(
-		array(
-			'element'  => array( '' ),
-			'function' => 'css',
-			'property' => 'color',
-		),
-	),
-	'output' => array(
-		array(
-			'element'  => array( '' ),
-			'property' => 'color',
-		),
-	),
-) );
-// OffCanvas Menu Content
-Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
-	'type'        => 'select',
-	'settings'    => 'offcanvas_menu_elements',
-	'label'       => __( 'OffCanvas Menu Content', 'davis' ),
-	'section'     => 'main_header',
-	'default'     => array( 'main_menu', 'account', 'social_media' ),
-	'priority'    => 10,
-	'multiple'    => 999,
-	'choices'     => $header_options,
-) );
-
 // Logo
 Kirki::add_field( 'pp_theme', array(
 	'transport'	  => $transport,
@@ -173,7 +103,7 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '#ffffff',
 	'transport' => 'postMessage',
-	'js_varss'   => array(
+	'js_vars'   => array(
 		array(
 			'element'  => array( '.nav-header', '.nav-header .dropdown-menu', '.header-bg-color-bg', '.header-bg-color-bg-speudo:before', '.header-bg-color-bg-speudo:after', '.nav-header .sub-menu' ),
 			'function' => 'css',
@@ -260,9 +190,10 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.search-box button', '.cd-marker', '.cd-search-trigger.search-form-visible:after', '.primary-nav > li > a:after', '.dropdown-menu li a:after', '.menu-link:hover:before', '.menu-link:hover:after', '.go-back a:hover:before', '.go-back a:hover:after' ),
+			'element'  => array( '.search-box button', '.cd-marker', '.cd-search-trigger.search-form-visible:after', '.primary-nav > li > a:after', '.dropdown-menu li a:after', '.menu-link:hover:before', '.menu-link:hover:after', '.go-back a:hover:before', '.go-back a:hover:after','a:hover .header-text-color-bg', 'a:hover .header-text-color-bg-speudo:before', 'a:hover .header-text-color-bg-speudo:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
+            'suffix'   => '!important',
 		),
 	),
 	'output' => array(
@@ -272,8 +203,9 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.search-box button', '.cd-marker', '.cd-search-trigger.search-form-visible:after', '.primary-nav > li > a:after', '.dropdown-menu li a:after', '.menu-link:hover:before', '.menu-link:hover:after', '.go-back a:hover:before', '.go-back a:hover:after' ),
+			'element'  => array( '.search-box button', '.cd-marker', '.cd-search-trigger.search-form-visible:after', '.primary-nav > li > a:after', '.dropdown-menu li a:after', '.menu-link:hover:before', '.menu-link:hover:after', '.go-back a:hover:before', '.go-back a:hover:after','a:hover .header-text-color-bg', 'a:hover .header-text-color-bg-speudo:before', 'a:hover .header-text-color-bg-speudo:after' ),
 			'property' => 'background-color',
+            'suffix'   => '!important',
 		),
 	),
 ) );
@@ -300,7 +232,7 @@ Kirki::add_field( 'pp_theme', array(
 	'js_vars' => array(
 		array(
 			'element'  => array( '.nav-header li.action-button > a:before' ),
-			'property' => 'color',
+			'property' => 'color', // @TODO: The icons are not geeting the correct color
 		),
 		array(
 			'element'  => array( '.nav-header li.action-button.label-only > a span.item-counter' ),
@@ -310,7 +242,7 @@ Kirki::add_field( 'pp_theme', array(
 	'output' => array(
 		array(
 			'element'  => array( '.nav-header li.action-button > a:before' ),
-			'property' => 'color',
+			'property' => 'color', // @TODO: The icons are not geeting the correct color
 		),
 		array(
 			'element'  => array( '.nav-header li.action-button.label-only > a span.item-counter' ),

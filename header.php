@@ -77,6 +77,10 @@ if (get_theme_mod('fixed_top_bar', false) == true) {	$fixed_classes .= ' top-bar
 
 		} ?>
 
+        <nav class="primary-nav offcanvas">
+			<?php pp_get_header_elements( 'offcanvas_main_menu_elements' ); ?>
+        </nav>
+
 		<div id="page-content" class="wrap <?php echo $fullwidth_class; ?>" role="document">
 
 			<?php do_action( 'main_result_count' ); ?>

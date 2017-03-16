@@ -3,8 +3,12 @@
 
 global $woocommerce_wishlist, $add_to_wishlist_args, $product;
 
-$icon_class = 'icon-heart-line ';
+$icon_class = 'icon-heart-alt-outline ';
 $tooltip = ' data-toggle="tooltip" data-placement="top" title="Add to Favorites"';
+
+if ( ( $key = array_search( 'button' , $add_to_wishlist_args['btn_class'] ))  !== false ) {
+    unset( $add_to_wishlist_args['btn_class'][$key] );
+}
 
 ?>
 <input type="hidden" name="wlid" id="wlid" />
@@ -22,7 +26,7 @@ $tooltip = ' data-toggle="tooltip" data-placement="top" title="Add to Favorites"
 		$count++;
 	}
 
-	$icon_class = 'icon-heart '; 
+	$icon_class = 'icon-heart-alt ';
 	$tooltip = ' data-toggle="tooltip" data-placement="top" title="'. __('Saved in: ', 'wc_wishlist') . $lists .'"';
 	
 endif; ?>

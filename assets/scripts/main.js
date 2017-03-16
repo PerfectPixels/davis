@@ -69,16 +69,12 @@
 				// Attach all handlers
 				regEventHandlers: function(){
 					var $overlay 	= $('.nav-overlay'),
-						swipeEvent	= 'swiperight',
+						swipeEvent	= 'swiperight click',
 						$this		= this;
 
 					if ( $( '.nav-on-left' ).length > 0 ){
-						swipeEvent = 'swipeleft';
+						swipeEvent = 'swipeleft click';
 					}
-
-					PP.obj.$window.on('resize', function(){
-						( !window.requestAnimationFrame ) ? setTimeout( $this.moveNavigation, 300 ) : window.requestAnimationFrame( $this.moveNavigation );
-					});
 
 					// Open lateral menu clicking on the menu icon
 					PP.obj.$mobileNavBtn.on('click', function( event ){
@@ -88,7 +84,7 @@
 
 					// Close lateral menu on mobile
 					$overlay.on( swipeEvent, function(){
-						if( $( '.primary-nav' ).hasClass( 'nav-is-visible' ) ) {
+						if( $( '.primary-nav.offcanvas' ).hasClass( 'nav-is-visible' ) ) {
 							$this.closeNav();
 							$overlay.removeClass( 'is-visible' );
 						}
@@ -122,10 +118,18 @@
 					});
 
 					// Open submenu for submenu item
-					$( '.sub-menu-item.menu-item-has-children' ).children( 'a' ).on( 'click', function( event ){
+					$( '.primary-nav:not(.offcanvas) .sub-menu-item.menu-item-has-children' ).children( 'a' ).on( 'click', function( event ){
 						event.preventDefault();
 						$this.openSubmenu( $( this ) );
 					});
+
+                    // For mobile - Bind click on main menu item
+                    $( '.primary-nav.offcanvas .menu-item-has-children' ).children( 'a' ).on( 'click', function( event ){
+                        if ( $(event.target).is('span') ){ console.log('click');
+                            event.preventDefault();
+                            PP.method.navigation.openSubmenu( $( this ) );
+                        }
+                    });
 
 					//submenu items - go back link
 					$( '.go-back' ).on( 'click' , function( event ){
@@ -174,7 +178,7 @@
 				// Open the navigation
 				openMobileNav: function( $btn ){
 					var $container 	= $('#page-content'),
-						$els 		= $( 'nav.navbar-top, section.cd-hero, #header-slider, .nav-button, .nav-header, .primary-nav, #footer' ),
+						$els 		= $( '.navbar-top, section.cd-hero, #header-slider, .nav-button, .nav-header, .primary-nav.offcanvas, #footer' ),
 						$overlay 	= $('.nav-overlay');
 
 					if( $container.hasClass('nav-is-visible') ) {
@@ -234,17 +238,15 @@
 						}
 
 						selected.parent( '.menu-item-has-children' ).siblings( '.menu-item-has-children' ).children( 'ul' ).addClass( 'is-hidden' ).end().children( 'a' ).removeClass( 'selected' );
-						$( '.nav-overlay' ).addClass( 'is-visible' );
 					} else {
 						selected.removeClass( 'selected' ).next( 'ul' ).addClass( 'is-hidden' ).end().parent( '.menu-item-has-children' ).closest( 'ul' ).removeClass( 'moves-out' );
-						$( '.nav-overlay' ).removeClass( 'is-visible' );
 					}
 				},
 
 				// Close the navigation
 				closeNav: function(){
 					var $container 	= $('#page-content'),
-						$els 		= $( 'nav.navbar-top, section.cd-hero, #header-slider, .nav-button, .nav-header, .primary-nav, #footer' );
+						$els 		= $( '.navbar-top, section.cd-hero, #header-slider, .nav-button, .nav-header, .primary-nav.offcanvas, #footer' );
 
 					$els.removeClass( 'nav-is-visible' );
 					$( '.menu-item-has-children ul' ).addClass( 'is-hidden' );
@@ -274,36 +276,6 @@
 					PP.obj.$html.removeClass( 'search-form-visible' );
 					PP.obj.$searchTrigger.removeClass( 'search-form-visible' );
 					PP.obj.$searchForm.removeClass( 'is-visible' ).find( '.open' ).removeClass( 'open' );
-				},
-
-				// Move navigation in order to make it responsive
-				moveNavigation: function(){
-					var navigation 	= $( '.nav-primary' ),
-			  			screenSize 	= PP.method.checkWindowWidth();
-
-			        if ( screenSize === 'desktop' ) {
-						navigation.detach().insertAfter( '.nav-header .brand' );
-						navigation.find('.cd-search-wrapper' ).remove();
-
-						// For mobile - Unbind click on main menu item
-						$( '.main-menu-item.menu-item-has-children' ).children( 'a' ).off( 'click' );
-					} else {
-						$( '.cd-search-wrapper' ).remove();
-
-						var newListItem = $('<li class="cd-search-wrapper"></li>');
-
-						navigation.detach().insertAfter( '#page-content' );
-						PP.obj.$searchForm.clone().appendTo( newListItem );
-						newListItem.appendTo( navigation.find( 'ul' ) );
-
-						// For mobile - Bind click on main menu item
-						$( '.main-menu-item.menu-item-has-children' ).children( 'a' ).on( 'click', function( event ){
-							if ( $(event.target).is('span') ){
-								event.preventDefault();
-								PP.method.navigation.openSubmenu( $( this ) );
-							}
-						});
-					}
 				},
 
 				// Give a height to all submenus
@@ -378,6 +350,19 @@
 
 				},
 
+				stickyHeader: function(){
+
+                    if ( $( 'body' ).hasClass('nav-is-fixed') ) {
+                        var $header = $('.nav-header');
+
+						if ( $(window).scrollTop() > 40 ) {
+							$header.addClass('sticky');
+						} else {
+							$header.removeClass('sticky');
+						}
+                    }
+				},
+
 				// Call all functions to initiate
 				init: function(){
 
@@ -386,12 +371,11 @@
 					this.wrapSubmenu();
 					this.megaMenuHeight();
 					this.regEventHandlers();
-					//this.moveNavigation();
 					this.navHorizontalScroll();
-					// Make it sticky
-					if ( $( 'body' ).hasClass('nav-is-fixed') ){
-						$( '.nav-header' ).fixedsticky();
-					}
+					this.stickyHeader( true );
+
+                    $('.nav-header').fixedsticky();
+
 					$( '#product_cat' ).select2({ 
 						dropdownAutoWidth: true 
 					});
@@ -601,7 +585,9 @@
 					var _this = this;
 
 					$( 'form.product-search:not(.no-ajax)' ).on('keyup', 'input[type="search"]', function(e) {
-						_this.ajaxSearch( $(this).parents( 'form.product-search' ) );
+						if ( $(this).parents( '.offcanvas' ).length == 0 ) {
+                            _this.ajaxSearch($(this).parents('form.product-search'));
+                        }
 					});
 
 					$( 'form.product-search:not(.no-ajax)' ).on( 'change', 'select#product_cat', function(){
@@ -1140,16 +1126,9 @@
 						},
 						success: function(data){
 							// Replace header icon if exist
-		 				   	if ( $('.nav-header .header-buttons .cart').length > 0 ){
-		 					   $('.nav-header .header-buttons').find('.cart, .wishlist, .account').remove();
-		 					   $(data).insertAfter('.nav-header .header-buttons .menu');
-		 				   	}
-
-						   	// Replace topbar if exist
-	   						if ( $('.navbar-top ul.navbar-right .cart').length > 0 ){
-								$('.navbar-top ul.navbar-right').find('.cart, .wishlist, .account').remove();
- 		 					   $(data).prependTo('.navbar-top ul.navbar-right');
-							}
+                            $.each(data, function(name, value){
+                                $( '.action-button.' + name ).replaceWith( value );
+                            });
 						},
 						complete: function(){
 
@@ -1160,7 +1139,7 @@
 								success:function(data){
 									$.each(data.fragments, function(name, value){
 									   $(name).replaceWith(value);
-								   });
+								   	});
 							   },
 							   complete: function(){
 								   if ($('.offcanvas-cart .cart-wrapper .empty').length == 0){
@@ -1563,8 +1542,8 @@
 							}
 
 							// Replace the header wishlist icon
-							if ( $('.nav-header .header-buttons .wishlist').length > 0 ){
-								$('.nav-header .header-buttons .wishlist').load(document.URL + ' .nav-header .header-buttons .wishlist > *', function(){
+							if ( $('.nav-header .action-button.wishlist').length > 0 ){
+								$('.nav-header .action-button.wishlist').load(document.URL + ' .nav-header .action-button.wishlist > *', function(){
 									PP.method.global.loading($container, 'close');
 								});
 							}
@@ -3512,7 +3491,7 @@
 					PP.method.cart.popupCart( $( '.offcanvas-cart' ), 'close' );
 				}
 
-				// Close the product overlay (variations/favorites)
+                // Close the product overlay (variations/favorites)
 		    	if ( ! $( '.product-overlay.open .content' ).is( e.target ) && ! $( '.loading-overlay.open' ).is( e.target ) && $( '.product-overlay.open .content' ).has( e.target ).length === 0 ) {
 		    		var $popup = $( '.product-overlay.open' );
 
@@ -3540,6 +3519,7 @@
 			PP.obj.$window.scroll( function(){
 
 				PP.method.global.scrollClass();
+				PP.method.navigation.stickyHeader( false )
 
 			});
 		},
@@ -3578,7 +3558,7 @@
 					var $target = $( hash ),
 						parentID = $target.parents( '.panel' ).attr( 'id' ),
 						$container = $( '#contributions-list'),
-						offsetTop = ( $( 'body' ).hasClass('nav-is-fixed') ? $( 'nav.navbar-top' ).outerHeight() : 0 ) + $( 'header.nav-header' ).outerHeight() + 30;
+						offsetTop = ( $( 'body' ).hasClass('nav-is-fixed') ? $( '.navbar-top' ).outerHeight() : 0 ) + $( '.nav-header' ).outerHeight() + 30;
 
 					// Open the correct tab
 					$( '.wc-tabs a[href="#' + parentID + '"]' ).click();

@@ -160,6 +160,7 @@
 					background: repeating-linear-gradient(-55deg, #eee, #eee 5px, #fff 5px, #fff 11px);
 					border: 1px solid #ccc;
 					padding: 2px;
+					white-space: normal;
 
 					span i {
                       display: none;
@@ -336,7 +337,7 @@
     }
 }
 
-#customize-control-offcanvas_menu_elements .items {
+#customize-control-offcanvas_main_menu_elements .items {
 
 	.item {
 		width: calc( 100% - 12px );
@@ -350,6 +351,17 @@
 		    text-decoration: none;
 		    font-size: 18px;
 		}	
+	}
+}
+
+#customize-control-offcanvas_main_menu_elements {
+	div[data-value=menu_icon],
+	div[data-value=search_icon],
+	div[data-value=separator_1],
+	div[data-value=separator_2],
+	div[data-value=separator_3],
+	div[data-value=separator_4] {
+		display: none;
 	}
 }
 
