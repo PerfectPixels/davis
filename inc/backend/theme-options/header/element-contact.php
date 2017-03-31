@@ -48,13 +48,13 @@ Kirki::add_field( 'pp_theme', array(
 	'default'     => '',
 	'priority' => 10,
 ) );
-Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
-	'type'     => 'text',
-	'settings' => 'contact_details_label',
-	'label'    => __( 'Contact Details', 'davis' ),
-	'section'  => 'contact_element',
-	'priority' => 10,
-) );
+//Kirki::add_field( 'pp_theme', array(
+//	'transport'	  => $transport,
+//	'type'     => 'text',
+//	'settings' => 'contact_details_label',
+//	'label'    => __( 'Contact Details', 'davis' ),
+//	'section'  => 'contact_element',
+//	'priority' => 10,
+//) );
 
 ?>

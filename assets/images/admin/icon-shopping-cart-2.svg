@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="20px" viewBox="0 0 24 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-shopping-cart-2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-shopping-cart-2" fill-rule="nonzero" fill="#000000">
+            <g id="Filled_Icon">
+                <g id="Group">
+                    <circle id="Oval" cx="6" cy="18" r="2"></circle>
+                    <circle id="Oval" cx="17" cy="18" r="2"></circle>
+                    <path d="M23.5,0 L20.941,0 C20.438,0 20.011,0.377 19.948,0.877 L19.613,3.563 C19.582,3.812 19.368,4 19.117,4 L2,4 C1.367,4 0.764,4.305 0.388,4.815 C0.012,5.327 -0.098,5.993 0.091,6.595 L1.654,11.595 C1.915,12.436 2.682,13 3.563,13 L18,13 C18.275,13 18.5,13.225 18.5,13.5 C18.5,13.776 18.275,14 18,14 L4,14 C3.724,14 3.5,14.224 3.5,14.5 C3.5,14.776 3.724,15 4,15 L18,15 C18.805,15 19.458,14.362 19.493,13.566 C19.493,13.563 19.496,13.56 19.496,13.556 L19.496,13.556 L19.497,13.553 L19.497,13.553 L19.498,13.538 L20.605,3.685 L20.941,1 L23.5,1 C23.775,1 24,0.776 24,0.5 C24,0.224 23.775,0 23.5,0 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

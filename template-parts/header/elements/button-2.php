@@ -5,4 +5,4 @@ $label = get_theme_mod( 'button_2_label', 'Button' );
 
 ?>
 
-<li><a href="<?php echo $url; ?>" id="button-2" class="header-button <?php pp_get_classes( 'button_2' ); ?>"><?php echo $label; ?></a></li>
+<li class="button-element button-2 border-bottom"><a href="<?php echo $url; ?>" id="button-2" class="header-button <?php pp_get_classes( 'button_2' ); ?>"><?php echo $label; ?></a></li>

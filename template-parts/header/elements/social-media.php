@@ -1,4 +1,4 @@
-<li class="social-media">
+<li class="social-media border-bottom">
 	<?php if ( get_theme_mod( 'facebook' ) ){ ?><a href="<?php echo get_theme_mod( 'facebook' ); ?>" class="icon-facebook"></a><?php } ?>
 	<?php if ( get_theme_mod( 'twitter' ) ){ ?><a href="<?php echo get_theme_mod( 'twitter' ); ?>" class="icon-twitter"></a><?php } ?>
 	<?php if ( get_theme_mod( 'google' ) ){ ?><a href="<?php echo get_theme_mod( 'google' ); ?>" class="icon-google-plus"></a><?php } ?>

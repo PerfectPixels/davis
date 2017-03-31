@@ -23,6 +23,8 @@ $details_title 	= esc_attr( get_theme_mod( 'checkout_details_title', __( 'Custom
 $shipping_title	= esc_attr( get_theme_mod( 'checkout_shipping_title', __( 'Shipping & Payment', 'davis' ) ) );
 $review_title	= esc_attr( get_theme_mod( 'checkout_review_title', __( 'Order Review', 'davis' ) ) );
 
+$cart_icon = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) );
+
 ?>
 
 <?php do_action( 'woocommerce_before_mini_cart' ); ?>
@@ -58,7 +60,7 @@ $review_title	= esc_attr( get_theme_mod( 'checkout_review_title', __( 'Order Rev
 <?php if ( ! $empty_cart ) : ?>
 	<div class="cart-btn-container">
 		<div class="quick-btn">
-			<a href="#cart" class="icon-checkout left black button" data-cart="#details,icon-details,<?php echo $details_title; ?>" data-details="#cart,icon-checkout,<?php echo $cart_title; ?>">
+			<a href="#cart" class="<?php echo $cart_icon; ?> left black button" data-cart="#details,icon-details,<?php echo $details_title; ?>" data-details="#cart,<?php echo $cart_icon; ?>,<?php echo $cart_title; ?>">
 				<span><?php echo $cart_title; ?></span>
 			</a>
 			<a href="#shipping" class="icon-payment right black button" data-shipping="#details,icon-details,<?php echo $details_title; ?>" data-details="#shipping,icon-payment,<?php echo $shipping_title; ?>">
@@ -67,11 +69,11 @@ $review_title	= esc_attr( get_theme_mod( 'checkout_review_title', __( 'Order Rev
 			<a href="#review" class="icon-receipt last black button" data-shipping="#review,icon-receipt,<?php echo $review_title; ?>" data-review="#shipping,icon-payment,<?php echo $shipping_title; ?>">
 				<span><?php echo $review_title; ?></span>
 			</a>
-			<a href="#" class="icon-shopping-bag-check black button" id="place_order"><?php _e( 'Place Order', 'davis' ); ?></a>
+			<a href="#" class="<?php echo $cart_icon . '-checkout'; ?> black button" id="place_order"><?php _e( 'Place Order', 'davis' ); ?></a>
 		</div>
 
 		<div class="default-btn">
-			<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" data-url="<?php echo esc_url( wc_get_checkout_url() ); ?>" data-class="button checkout icon-checkout black" class="button black checkout icon-checkout wc-forward">
+			<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" data-url="<?php echo esc_url( wc_get_checkout_url() ); ?>" data-class="button checkout <?php echo $cart_icon . '-checkout'; ?> black" class="button black checkout <?php echo $cart_icon . '-checkout'; ?> wc-forward">
 				<span><?php _e( 'Proceed to Checkout', 'woocommerce' ); ?></span>
 			</a>
 

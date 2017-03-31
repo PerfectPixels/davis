@@ -36,4 +36,4 @@ $screens:               desktop tablet mobile;
 
 // Element to animate for the offcanvas menu
 $main_elements:         '#page-content, section.cd-hero, #header-slider, .nav-header';
-$main_elements_visible: '.navbar-top.nav-is-visible, section.cd-hero.nav-is-visible, #page-content.nav-is-visible, #header-slider.nav-is-visible, .nav-header.nav-is-visible';
+$main_elements_visible: '.navbar-bottom, .navbar-top, section.cd-hero, #page-content, #header-slider, .nav-header';

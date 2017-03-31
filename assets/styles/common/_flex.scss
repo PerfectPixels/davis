@@ -4,6 +4,7 @@
 	flex-flow: row nowrap;
 	align-items: center;
 	width: 100%;
+    backface-visibility: hidden;
 
 	.flex-col {
 		flex: 1;
@@ -12,16 +13,23 @@
 
 	.flex-left {
 		margin-right: auto;
+		text-align: left !important;
 	}
 
 	.flex-center {
 		margin-right: auto;
 		margin-left: auto;
+		text-align: center !important;
 	}
 
 	.flex-right {
 		margin-left: auto;
+		text-align: right !important;
 	}
+
+  > ul > li {
+    text-align: left;
+  }
 
 	&.2-col {
 		.flex-col {

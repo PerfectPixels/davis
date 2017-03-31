@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="22px" viewBox="0 0 25 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-shopping-basket-outline</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-shopping-basket-outline" fill-rule="nonzero" fill="#000000">
+            <g id="Outline_Icons">
+                <g id="Group">
+                    <path d="M23.507,8 L0.507,8 C0.231,8 0.007,8.224 0.007,8.5 L0.007,10.5 C0.007,10.776 0.231,11 0.507,11 L1.089,11 L3.015,21.589 C3.059,21.827 3.266,22 3.507,22 L20.507,22 C20.748,22 20.955,21.827 20.999,21.589 L22.925,11 L23.507,11 C23.783,11 24.007,10.776 24.007,10.5 L24.007,8.5 C24.007,8.224 23.783,8 23.507,8 Z M20.09,21 L3.924,21 L2.105,11 L21.908,11 L20.09,21 Z M23.007,10 L22.507,10 L1.507,10 L1.007,10 L1.007,9 L23.007,9 L23.007,10 Z" id="Shape"></path>
+                    <path d="M3.507,7 C3.635,7 3.763,6.951 3.86,6.854 L9.86,0.854 C10.055,0.659 10.055,0.342 9.86,0.147 C9.665,-0.048 9.348,-0.048 9.153,0.147 L3.153,6.147 C2.958,6.342 2.958,6.659 3.153,6.854 C3.251,6.951 3.379,7 3.507,7 Z" id="Shape"></path>
+                    <path d="M20.153,6.854 C20.251,6.951 20.379,7 20.507,7 C20.635,7 20.763,6.951 20.861,6.854 C21.056,6.659 21.056,6.342 20.861,6.147 L14.861,0.147 C14.666,-0.048 14.349,-0.048 14.154,0.147 C13.959,0.342 13.959,0.659 14.154,0.854 L20.153,6.854 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

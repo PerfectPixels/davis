@@ -1,6 +1,6 @@
 <?php
 
-global $transport;
+global $primary_color;
 
 Kirki::add_section( 'search_element', array(
     'title'          => __( 'Search', 'davis' ),
@@ -9,17 +9,61 @@ Kirki::add_section( 'search_element', array(
 ) );
 // Icon style
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'radio-image',
 	'settings'    => 'search_style',
 	'label'       => esc_html__( 'Icon Type', 'davis' ),
 	'section'     => 'search_element',
-	'default'     => 'style1',
+	'default'     => 'icon-search-1',
 	'priority'    => 10,
 	'choices'     => array(
-		'style1'   => get_template_directory_uri() . '/assets/images/admin/header1.jpg',
-		'style2'   => get_template_directory_uri() . '/assets/images/admin/header1.jpg',
-		'style3'   => get_template_directory_uri() . '/assets/images/admin/header1.jpg',
+		'icon-search-1'   => get_template_directory_uri() . '/assets/images/admin/icon-search-1.svg',
+		'icon-search-2'   => get_template_directory_uri() . '/assets/images/admin/icon-search-2.svg',
+		'icon-search-3'   => get_template_directory_uri() . '/assets/images/admin/icon-search-3.svg',
+		'icon-search-4'   => get_template_directory_uri() . '/assets/images/admin/icon-search-4.svg',
+	),
+) );
+Kirki::add_field( 'pp_theme', array(
+	'transport'	  => 'postMessage',
+	'settings' => 'search_icon_color',
+	'label'    => __( 'Button Icon Color', 'davis' ),
+	'section'  => 'search_element',
+	'type'     => 'color',
+	'priority' => 10,
+	'default'  => '#ffffff',
+	'js_vars'  => array(
+		array(
+			'element'  => array( 'li.search-box .product-search button' ),
+			'function' => 'css',
+			'property' => 'color',
+		),
+	),
+	'output' => array(
+		array(
+			'element'  => array( 'li.search-box .product-search button' ),
+			'property' => 'color',
+		),
+	),
+) );
+Kirki::add_field( 'pp_theme', array(
+	'transport'	  => 'postMessage',
+	'settings' => 'search_color',
+	'label'    => __( 'Button Background Color', 'davis' ),
+	'section'  => 'search_element',
+	'type'     => 'color',
+	'priority' => 10,
+	'default'  => $primary_color,
+	'js_vars'  => array(
+		array(
+			'element'  => array( 'li.search-box .product-search button' ),
+			'function' => 'css',
+			'property' => 'background-color',
+		),
+	),
+	'output' => array(
+		array(
+			'element'  => array( 'li.search-box .product-search button' ),
+			'property' => 'background-color',
+		),
 	),
 ) );
 Kirki::add_field( 'pp_theme', array(
@@ -51,7 +95,6 @@ Kirki::add_field( 'pp_theme', array(
     ),
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'     => 'text',
 	'settings' => 'search_placeholder',
 	'label'    => __( 'Input Pleaceholder', 'davis' ),
@@ -60,7 +103,6 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'     => 'toggle',
 	'settings' => 'search_cat',
 	'label'    => __( 'Category Filter', 'davis' ),
@@ -70,7 +112,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Ajax Search 
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'ajax_search',
 	'label'    => __( 'Ajax Search', 'davis' ),
     'description' => __( 'Enable/Disable the ajax search.', 'davis' ),

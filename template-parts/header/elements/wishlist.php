@@ -20,6 +20,11 @@ if ( $woocommerce_active ) {
 
         <li class="action-button wishlist <?php echo $dropdown; ?> <?php echo get_theme_mod( 'wishlist_style', 'icon_label' ); ?>">
             <a href="<?php echo $wishlists_url; ?>" class="icon-heart-alt" role="button" aria-haspopup="true" aria-expanded="false"><span><?php echo get_theme_mod( 'wishlist_label', 'Favorites' ); ?></span><span class="item-counter"><?php echo get_wishlist_items('total_items'); ?></span></a>
+
+            <?php if ( $dropdown !== '' ) { ?>
+                <span class="mobile-arrow"></span>
+            <?php } ?>
+
             <?php echo get_wishlist_items(''); ?>
         </li>
 

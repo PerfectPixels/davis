@@ -60,4 +60,20 @@ Kirki::add_field( 'pp_theme', array(
 	'default'  => '',
 ) );
 
+function pp_social_media_partials( WP_Customize_Manager $wp_customize ) {
+	// Abort if selective refresh is not available.
+	if ( ! isset( $wp_customize->selective_refresh ) ) {
+		return;
+	}
+
+	$wp_customize->selective_refresh->add_partial( 'social_media', array(
+		'selector' => 'li.social-media',
+		'settings' => array( 'facebook', 'twitter', 'google', 'instagram', 'pinterest' ),
+		'render_callback' => function() {
+			return get_template_part( 'template-parts/header/elements/social-media' );
+		},
+	) );
+}
+add_action( 'customize_register', 'pp_social_media_partials' );
+
 ?>

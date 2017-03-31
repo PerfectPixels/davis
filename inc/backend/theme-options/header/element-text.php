@@ -29,7 +29,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Text color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'message_text_1_color',
 	'label'    => __( 'Text 1 Font Color', 'davis' ),
 	'section'  => 'texts_element',
@@ -42,18 +41,19 @@ Kirki::add_field( 'pp_theme', array(
 			'element'  => '#message-box-1',
 			'function' => 'css',
 			'property' => 'color',
+			'suffix'   => '!important',
 		),
 	),
 	'output' => array(
 		array(
 			'element'  => '#message-box-1',
 			'property' => 'color',
+			'suffix'   => '!important',
 		),
 	),
 ) );
 // Box color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'message_text_1_bgcolor',
 	'label'    => __( 'Text 1 Background Color', 'davis' ),
 	'section'  => 'texts_element',
@@ -66,12 +66,14 @@ Kirki::add_field( 'pp_theme', array(
 			'element'  => '#message-box-1',
 			'function' => 'css',
 			'property' => 'background-color',
+			'suffix'   => '!important',
 		),
 	),
 	'output' => array(
 		array(
 			'element'  => '#message-box-1',
 			'property' => 'background-color',
+			'suffix'   => '!important',
 		),
 	),
 ) );
@@ -93,12 +95,10 @@ Kirki::add_field( 'pp_theme', array(
 	'section'  => 'texts_element',
 	'type'     => 'textarea',
 	'priority' => 10,
-	'default'   => '#fff',
 	'default'  => __( 'Message 2', 'davis' ),
 ) );
 // Text color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'message_text_2_color',
 	'label'    => __( 'Text 2 Font Color', 'davis' ),
 	'section'  => 'texts_element',
@@ -111,12 +111,14 @@ Kirki::add_field( 'pp_theme', array(
 			'element'  => '#message-box-2',
 			'function' => 'css',
 			'property' => 'color',
+			'suffix'   => '!important',
 		),
 	),
 	'output' => array(
 		array(
 			'element'  => '#message-box-2',
 			'property' => 'color',
+			'suffix'   => '!important',
 		),
 	),
 ) );
@@ -128,18 +130,19 @@ Kirki::add_field( 'pp_theme', array(
 	'section'  => 'texts_element',
 	'type'     => 'color',
 	'priority' => 10,
-	'transport' => 'postMessage',
 	'js_vars'   => array(
 		array(
 			'element'  => '#message-box-2',
 			'function' => 'css',
 			'property' => 'background-color',
+			'suffix'   => '!important',
 		),
 	),
 	'output' => array(
 		array(
 			'element'  => '#message-box-2',
 			'property' => 'background-color',
+			'suffix'   => '!important',
 		),
 	),
 ) );
@@ -165,7 +168,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Text color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'message_text_3_color',
 	'label'    => __( 'Text 3 Font Color', 'davis' ),
 	'section'  => 'texts_element',
@@ -178,18 +180,19 @@ Kirki::add_field( 'pp_theme', array(
 			'element'  => '#message-box-3',
 			'function' => 'css',
 			'property' => 'color',
+			'suffix'   => '!important',
 		),
 	),
 	'output' => array(
 		array(
 			'element'  => '#message-box-3',
 			'property' => 'color',
+			'suffix'   => '!important',
 		),
 	),
 ) );
 // Box color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'message_text_3_bgcolor',
 	'label'    => __( 'Text 3 Background Color', 'davis' ),
 	'section'  => 'texts_element',
@@ -202,12 +205,14 @@ Kirki::add_field( 'pp_theme', array(
 			'element'  => '#message-box-3',
 			'function' => 'css',
 			'property' => 'background-color',
+			'suffix'   => '!important',
 		),
 	),
 	'output' => array(
 		array(
 			'element'  => '#message-box-3',
 			'property' => 'background-color',
+			'suffix'   => '!important',
 		),
 	),
 ) );

@@ -36,9 +36,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-shopping-bag:before {
-  content: "\61";
-}
 .icon-youtube:before {
   content: "\62";
 }
@@ -66,7 +63,7 @@
 .icon-facebook:before {
   content: "\6a";
 }
-.icon-user:before {
+.icon-user-2:before {
   content: "\6b";
 }
 .icon-heart:before {
@@ -75,13 +72,10 @@
 .icon-heart-line:before {
   content: "\6e";
 }
-.icon-shopping-bag-alt:before {
-  content: "\6f";
-}
-.icon-user-3-outline:before {
+.icon-user-4-outline:before {
   content: "\70";
 }
-.icon-user-3:before {
+.icon-user-4:before {
   content: "\72";
 }
 .icon-heart-alt:before {
@@ -93,19 +87,19 @@
 .icon-options:before {
   content: "\75";
 }
-.icon-android-search:before {
+.icon-search-1:before {
   content: "\77";
 }
 .icon-eye:before {
   content: "\78";
 }
-.icon-user-outline:before {
+.icon-user-2-outline:before {
   content: "\76";
 }
-.icon-user-4-outline:before {
+.icon-user-5-outline:before {
   content: "\79";
 }
-.icon-user-4:before {
+.icon-user-5:before {
   content: "\7a";
 }
 .icon-heart-3:before {
@@ -113,12 +107,6 @@
 }
 .icon-heart-3-outline:before {
   content: "\42";
-}
-.icon-shopping-bag-add:before {
-  content: "\43";
-}
-.icon-shopping-bag-check:before {
-  content: "\44";
 }
 .icon-eye-line:before {
   content: "\45";
@@ -143,9 +131,6 @@
 }
 .icon-receipt:before {
   content: "\4c";
-}
-.icon-checkout:before {
-  content: "\4d";
 }
 .icon-success:before {
   content: "\4e";
@@ -183,63 +168,112 @@
 .icon-linkedin:before {
   content: "\59";
 }
-.icon-user-5:before {
+.icon-user-6:before {
   content: "\5a";
 }
-.icon-basket-1:before {
-  content: "\30";
-}
-.icon-basket-2:before {
-  content: "\31";
-}
-.icon-basket-3:before {
-  content: "\32";
-}
-.icon-basket-add:before {
-  content: "\33";
-}
-.icon-basket-minus:before {
-  content: "\34";
-}
-.icon-cart-4:before {
-  content: "\35";
-}
-.icon-cart-3:before {
-  content: "\36";
-}
-.icon-cart-2:before {
-  content: "\37";
-}
-.icon-cart-3-1:before {
-  content: "\39";
-}
-.icon-cart-4-1:before {
-  content: "\21";
-}
-.icon-shopping-1:before {
-  content: "\38";
-}
-.icon-basket-1-1:before {
-  content: "\22";
-}
-.icon-basket-2-1:before {
-  content: "\23";
-}
-.icon-basket-3-1:before {
-  content: "\24";
-}
-.icon-basket-add-1:before {
-  content: "\25";
-}
-.icon-basket-minus-1:before {
-  content: "\26";
-}
-.icon-cart-2-1:before {
-  content: "\27";
-}
-.icon-user-alt:before {
+.icon-user-1:before {
   content: "\6d";
 }
-.icon-user-alt-outline:before {
+.icon-user-1-outline:before {
   content: "\71";
 }
+.icon-search-3:before {
+  content: "\2a";
+}
+.icon-search-2:before {
+  content: "\29";
+}
+.icon-search-4:before {
+  content: "\2b";
+}
+.icon-user-3:before {
+  content: "\28";
+}
+.icon-user-3-outline:before {
+  content: "\2c";
+}
+.icon-shopping-bag:before {
+  content: "\61";
+}
+.icon-shopping-cart-outline:before {
+  content: "\6f";
+}
+.icon-shopping-bag-2:before {
+  content: "\43";
+}
+.icon-shopping-bag-2-add:before {
+  content: "\44";
+}
+.icon-shopping-bag-2-checkout:before {
+  content: "\4d";
+}
+.icon-shopping-bag-2-outline:before {
+  content: "\30";
+}
+.icon-shopping-bag-3:before {
+  content: "\31";
+}
+.icon-shopping-bag-3-add:before {
+  content: "\32";
+}
+.icon-shopping-bag-3-outline:before {
+  content: "\34";
+}
+.icon-shopping-bag-add:before {
+  content: "\35";
+}
+.icon-shopping-bag-checkout:before {
+  content: "\36";
+}
+.icon-shopping-bag-outline:before {
+  content: "\37";
+}
+.icon-shopping-basket-2-checkout:before {
+  content: "\39";
+}
+.icon-shopping-basket-2-outline:before {
+  content: "\21";
+}
+.icon-shopping-basket-add:before {
+  content: "\22";
+}
+.icon-shopping-basket-checkout:before {
+  content: "\23";
+}
+.icon-shopping-basket-outline:before {
+  content: "\24";
+}
+.icon-shopping-cart:before {
+  content: "\25";
+}
+.icon-shopping-cart-2:before {
+  content: "\26";
+}
+.icon-shopping-cart-2-add:before {
+  content: "\27";
+}
+.icon-shopping-cart-2-checkout:before {
+  content: "\2d";
+}
+.icon-shopping-cart-2-outline:before {
+  content: "\2e";
+}
+.icon-shopping-basket-2:before {
+  content: "\2f";
+}
+.icon-shopping-basket:before {
+  content: "\3a";
+}
+.icon-shopping-cart-add:before {
+  content: "\3b";
+}
+.icon-shopping-cart-checkout:before {
+  content: "\3c";
+}
+.icon-shopping-basket-2-add:before {
+  content: "\38";
+}
+.icon-shopping-bag-3-checkout:before {
+  content: "\33";
+}
+

@@ -211,16 +211,19 @@
 			}
 		}
 
-		&.center-logo {
+		&.center_logo,
+		&.center_logo_split_menu {
 
 			.main-header {
 
 				.left {
 					order: 1;
+					margin-left: 0;
 				}
 
 				#logo {
 					order: 2;
+					margin-left: 3px;
 				}
 
 				.right {
@@ -229,6 +232,14 @@
 
 			}
 
+		}
+		
+		&.center_logo_split_menu {
+
+			span[data-type=main_menu] {
+				display: none;
+			}
+			
 		}
 	}
 
@@ -360,11 +371,42 @@
 	div[data-value=separator_1],
 	div[data-value=separator_2],
 	div[data-value=separator_3],
-	div[data-value=separator_4] {
+	div[data-value=separator_4],
+	div[data-value=topbar_nav_1],
+	div[data-value=topbar_nav_2] {
 		display: none;
 	}
 }
 
 #accordion-section-header_builder {
 	display: none !important;
+}
+
+.customize-control-kirki-radio-image {
+
+  .image {
+
+    label {
+      padding: 0 5px;
+
+      img {
+        padding: 5px;
+      }
+
+    }
+
+    &#input_account_icon_style label {
+      padding: 0 10px  ;
+    }
+
+    &#input_cart_icon_style label {
+      padding: 0 1px;
+    }
+  }
+
+  input:checked + label img {
+    background: #fff;
+    border: none !important;
+  }
+
 }

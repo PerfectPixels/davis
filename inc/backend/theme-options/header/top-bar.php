@@ -9,16 +9,6 @@ Kirki::add_section( 'top_bar', array(
     'panel'          => 'panel_header',
     'priority'       => 2,
 ) );
-// Show/Hide top bar
-Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
-	'settings' => 'display_top_bar',
-	'label'    => __( 'Display Top Bar', 'davis' ),
-	'section'  => 'top_bar',
-	'type'     => 'toggle',
-	'priority' => 10,
-	'default'  => '1',
-) );
 // Fixed top bar
 Kirki::add_field( 'pp_theme', array(
 	'transport'	  => $transport,
@@ -28,13 +18,6 @@ Kirki::add_field( 'pp_theme', array(
 	'type'     => 'toggle',
 	'priority' => 10,
 	'default'  => '0',
-	'active_callback'  => array(
-		array(
-			'setting'  => 'display_top_bar',
-			'operator' => '==',
-			'value'    => 1,
-		),
-	),
 ) );
 // Top Bar color
 Kirki::add_field( 'pp_theme', array(
@@ -46,13 +29,6 @@ Kirki::add_field( 'pp_theme', array(
 	'alpha'    => true,
 	'priority' => 10,
 	'default'  => '#000000',
-	'active_callback'  => array(
-		array(
-			'setting'  => 'display_top_bar',
-			'operator' => '==',
-			'value'    => 1,
-		),
-	),
 	'js_vars'   => array(
 		array(
 			'element'  => array( '.navbar-top', '.navbar-top ul.sub-menu', '.navbar-top .dropdown-hover .dropdown-menu' ),
@@ -77,35 +53,39 @@ Kirki::add_field( 'pp_theme', array(
 	'alpha'    => false,
 	'priority' => 10,
 	'default'  => '#ffffff',
-	'active_callback'  => array(
-		array(
-			'setting'  => 'display_top_bar',
-			'operator' => '==',
-			'value'    => 1,
-		),
-	),
 	'js_vars' => array(
 		array(
-			'element'  => '.navbar-top *',
+			'element'  => array( '.navbar-top *', '.navbar-top .menu-item:hover > a.no-link' ),
 			'function' => 'css',
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-top .menu-item-has-children > a:before', '.navbar-top .menu-item-has-children > a:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-top .go-back > a:before', '.navbar-top .go-back > a:after', '.navbar-top .menu-item-has-children > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .icon-badge span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
+		),
+		array(
+			'element'  => array( '.navbar-top .menu-item > a:before', '.navbar-top .menu-item > a:after' ),
+			'function' => 'css',
+			'property' => 'background-color',
+			'suffix'   => '!important',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => '.navbar-top *',
+			'element'  => array( '.navbar-top *', '.navbar-top .menu-item:hover > a.no-link' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-top .menu-item-has-children > a:before', '.navbar-top .menu-item-has-children > a:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-top .go-back > a:before', '.navbar-top .go-back > a:after', '.navbar-top .menu-item-has-children > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .icon-badge span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
 			'property' => 'background-color',
+		),
+		array(
+			'element'  => array( '.navbar-top .menu-item > a:before', '.navbar-top .menu-item > a:after' ),
+			'property' => 'background-color',
+			'suffix'   => '!important',
 		),
 	),
 ) );
@@ -119,22 +99,15 @@ Kirki::add_field( 'pp_theme', array(
 	'alpha'    => false,
 	'priority' => 10,
 	'default'  => $primary_color,
-	'active_callback'  => array(
-		array(
-			'setting'  => 'display_top_bar',
-			'operator' => '==',
-			'value'    => 1,
-		),
-	),
 	'js_vars' => array(
 		array(
-			'element'  => array( 'body .navbar-top a:hover', 'body .navbar-top .action-button a:hover span' ),
+			'element'  => array( '.navbar-top a:hover', '.navbar-top a:hover span', '.navbar-top .menu-item:hover > a', '.navbar-top .current_page_item > a', '.navbar-top .current_page_item > a > i' ),
 			'function' => 'css',
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( 'body .navbar-top ul.sub-menu a:after', '.navbar-top .dropdown-menu a:after', '.navbar-top .menu-item-has-children:hover > a:before', '.navbar-top .menu-item-has-children:hover > a:after', '.navbar-top li.action-button.label-only > a:hover span.item-counter', '.navbar-top a:hover .header-text-color-bg', '.navbar-top a:hover .header-text-color-bg-speudo:before', '.navbar-top a:hover .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-top ul.sub-menu li:hover > a:before', '.navbar-top ul.sub-menu li:hover > a:after', '.navbar-top .dropdown-menu a:after', '.navbar-top .menu-item-has-children:hover > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children:hover > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a:hover span.item-counter', '.navbar-top .icon-badge:hover span.item-counter', '.navbar-top a:hover .header-text-color-bg', '.navbar-top a:hover .header-text-color-bg-speudo:before', '.navbar-top a:hover .header-text-color-bg-speudo:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
 			'suffix'   => '!important',
@@ -148,12 +121,12 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'output' => array(
 		array(
-			'element'  => array( 'body .navbar-top a:hover', 'body .navbar-top .action-button a:hover span' ),
+			'element'  => array( '.navbar-top a:hover', '.navbar-top a:hover span', '.navbar-top .menu-item:hover > a', '.navbar-top .current_page_item > a', '.navbar-top .current_page_item > a > i' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( 'body .navbar-top ul.sub-menu a:after', '.navbar-top .dropdown-menu a:after', '.navbar-top .menu-item-has-children:hover  > a:before', '.navbar-top .menu-item-has-children:hover > a:after', '.navbar-top li.action-button.label-only > a:hover span.item-counter', '.navbar-top a:hover .header-text-color-bg', '.navbar-top a:hover .header-text-color-bg-speudo:before', '.navbar-top a:hover .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-top ul.sub-menu li:hover > a:before', '.navbar-top ul.sub-menu li:hover > a:after', '.navbar-top .dropdown-menu a:after', '.navbar-top .menu-item-has-children:hover > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children:hover > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a:hover span.item-counter', '.navbar-top .icon-badge:hover span.item-counter', '.navbar-top a:hover .header-text-color-bg', '.navbar-top a:hover .header-text-color-bg-speudo:before', '.navbar-top a:hover .header-text-color-bg-speudo:after' ),
 			'property' => 'background-color',
 			'suffix'   => '!important',
 		),
@@ -174,16 +147,9 @@ Kirki::add_field( 'pp_theme', array(
 	'alpha'    => false,
 	'priority' => 10,
 	'default'  => '#000000',
-	'active_callback'  => array(
-		array(
-			'setting'  => 'display_top_bar',
-			'operator' => '==',
-			'value'    => 1,
-		),
-	),
 	'js_vars' => array(
 		array(
-			'element'  => array( 'body .navbar-top .action-button a span.item-counter' ),
+			'element'  => array( '.navbar-top .action-button a:not(.icon-outline) span.item-counter', '.navbar-top .action-button a.icon-outline.icon-badge span.item-counter' ),
 			'function' => 'css',
 			'property' => 'color',
 			'suffix'   => '!important',
@@ -191,7 +157,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'output' => array(
 		array(
-			'element'  => array( 'body .navbar-top .action-button a span.item-counter' ),
+			'element'  => array( '.navbar-top .action-button a:not(.icon-outline) span.item-counter', '.navbar-top .action-button a.icon-outline.icon-badge span.item-counter' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),

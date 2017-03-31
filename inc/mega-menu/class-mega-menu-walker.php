@@ -53,8 +53,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$img_pos		  	= get_post_meta( $this->curItem->ID, 'pp_menu_item_img_pos', true );
 
         $style		= '';
-        $bg_class 	= '';
-		$img = '';
+		$img        = '';
 
         $classes = array(
             'sub-menu is-hidden',
@@ -77,10 +76,10 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 			}
 		}
 
-        $back_btn = '<li class="go-back"><a href="#0">' . __( 'Back', 'davis' ) . '</a></li>';
+		$back_btn = '<li class="go-back"><a href="#0">' . __('Back', 'davis') . '</a></li>';
 
         // Build HTML for output.
-        $output .= "\n" . $indent . '<ul class="' . $class_names . $bg_class . '"' . $style . '>' .$img . $back_btn . "\n";
+        $output .= "\n" . $indent . '<ul class="' . $class_names . '"' . $style . '>' .$img . $back_btn . "\n";
     }
 
 	/**
@@ -96,8 +95,6 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param int    $id     Current item ID.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		global $wp_query;
-
 		$this->curItem = $item;
 
 		$class = '';
@@ -130,7 +127,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
         $icon_pos 		 	= get_post_meta( $item->ID, 'pp_menu_item_icon_pos', true );
 
         $style		= '';
-        $bg_class 	= '';
+        $li_class 	= '';
 		$badge		= '';
 		$img		= '';
 		$img_src	= '';
@@ -157,16 +154,14 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 		}
 
         // List item classes
-        $li_classes = array(
-            $depth == 0 ? 'main-menu-item' : 'sub-menu-item',
-            $depth == 1 ? $this->column : '',
-        	$depth == 0 && !$this->mega ? 'simple-nav' : '',
-        	$img_hide_desktop ? 'hide-img-desktop' : '',
-        	$img_hide_mobile ? 'hide-img-mobile' : '',
-        	$hide_desktop ? 'hide-text-desktop' : '',
-        	$hide_mobile ? 'hide-text-mobile' : '',
-        );
-        $li_class_names = esc_attr( implode( ' ', $li_classes ) );
+        $li_class .= $depth == 0 ? 'main-menu-item primary-nav-item ' : 'sub-menu-item ';
+        $li_class .= $depth == 1 ? $this->column . ' ' : '';
+        $li_class .= $depth == 0 && !$this->mega ? 'simple-nav ' : '';
+        $li_class .= $depth == 0 && $this->mega ? 'mega-nav ' : '';
+        $li_class .= $img_hide_desktop ? 'hide-img-desktop ' : '';
+        $li_class .= $img_hide_mobile ? 'hide-img-mobile ' : '';
+        $li_class .= $hide_desktop ? 'hide-text-desktop ' : '';
+        $li_class .= $hide_mobile ? 'hide-text-mobile ' : '';
 
 		// Get image
 		if ( $img_background && $depth > 0 ){
@@ -183,7 +178,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
         }
 
         // Build HTML.
-        $output .= $indent . '<li class="' . $li_class_names . ' ' . $class_names . $bg_class . '"' . $style . '>';
+        $output .= $indent . '<li class="' . $li_class . $class_names . '"' . $style . '>';
 
 		// Title
 		$title = apply_filters( 'the_title', $item->title, $item->ID );
@@ -241,12 +236,64 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
+}
 
-	/* Function to determine if the current item has children */
-    // function display_element ($element, &$children_elements, $max_depth, $depth = 0, $args, &$output){
-    //     // check, whether there are children for the given ID and append it to the element with a (new) ID
-    //     $element->hasChildren = isset( $children_elements[$element->ID] ) && !empty( $children_elements[$element->ID] );
+/**
+ * Class menu walker
+ *
+ * @package Davis
+ */
+class PP_Walker_Other_Menu extends Walker_Nav_Menu {
 
-    //     return parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
-    // }
+
+	/**
+	 * Start the element output.
+	 * Display item description text and classes
+	 *
+	 * @see   Walker::start_el()
+	 *
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @param object $item   Menu item data object.
+	 * @param int    $depth  Depth of menu item. Used for padding.
+	 * @param array  $args   An array of arguments. @see wp_nav_menu()
+	 * @param int    $id     Current item ID.
+	 */
+	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
+
+		// Passed classes.
+		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
+
+		// List item classes
+		$li_class = 'simple-menu-item ';
+
+		// Title
+		$title = apply_filters( 'the_title', $item->title, $item->ID );
+
+		// Link attributes.
+		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+		// Link classes
+		$attributes .= ' class="menu-link ';
+		$attributes .= ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' );
+		$attributes .= '"';
+
+		// Build HTML.
+		$output .= $indent . '<li class="' . $li_class . $class_names . '">';
+
+		// Build HTML output and pass through the proper filter.
+		$item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s<span class="mobile-arrow"></span></a>%5$s',
+			$args->before,
+			$attributes,
+			$args->link_before,
+			$title,
+			$args->link_after,
+			$args->after
+		);
+
+		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+	}
 }

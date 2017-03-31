@@ -49,6 +49,13 @@ a:focus {
   z-index: 9999;
 }
 
-#{$main_elements} { position: relative; transition: transform 0.3s; }
+#{$main_elements} {
+  position: relative;
+  transition: transform 0.3s;
+}
 
-#{$main_elements_visible} { transform: translateX(-260px) !important;   }
+.nav-is-visible {
+  #{$main_elements_visible} {
+    transform: translateX(-260px) !important;
+  }
+}

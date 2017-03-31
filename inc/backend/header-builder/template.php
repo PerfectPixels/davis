@@ -25,7 +25,7 @@
 			</button>
 		</div>
 	</div>
-	<div id="header-desktop" class="customize-pane-content <?php echo get_theme_mod( 'logo_position_desktop', 'left' ) . '-logo'; ?>">
+	<div id="header-desktop" class="customize-pane-content <?php echo get_theme_mod( 'logo_position_desktop', 'left_logo' ); ?>">
 		<ul class="top-bar">
 			<li class="left sortable" data-setting="top_bar_left_area"></li>
 			<li class="center sortable" data-setting="top_bar_center_area"></li>
@@ -59,7 +59,7 @@
 			</li>
 		</ul>
 	</div>
-	<div id="header-tablet" class="customize-pane-content <?php echo get_theme_mod( 'logo_position_tablet', 'left' ) . '-logo'; ?>">
+	<div id="header-tablet" class="customize-pane-content <?php echo get_theme_mod( 'logo_position_tablet', 'left_logo_tablet' ); ?>">
 		<ul class="top-bar">
 			<li class="left sortable" data-setting="tablet_top_bar_left_area"></li>
 			<li class="right sortable" data-setting="tablet_top_bar_right_area"></li>
@@ -86,7 +86,7 @@
 			</li>
 		</ul>
 	</div>
-	<div id="header-mobile" class="customize-pane-content <?php echo get_theme_mod( 'logo_position_mobile', 'center' ) . '-logo'; ?>">
+	<div id="header-mobile" class="customize-pane-content <?php echo get_theme_mod( 'logo_position_mobile', 'center_logo_mobile' ); ?>">
 		<ul class="top-bar">
 			<li class="center sortable" data-setting="mobile_top_bar_area"></li>
             <span data-section="top_bar"><?php _e( 'Edit Top Bar', 'davis' ); ?></span>

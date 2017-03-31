@@ -11,29 +11,35 @@
   * @access public
   * @param string $section
   */
-function pp_get_header_elements( $section ){
-	$options = get_theme_mod( $section );
+function pp_get_header_elements( $section, $default = '' ){
+	$options = get_theme_mod( $section, $default );
 
 	if ( is_array($options) ) {
-		foreach ( $options as $key => $value ) {
+		foreach ( $options as $key => $val ) {
 
-			if ( $value === 'topbar_nav_1' ) {
+			if ( $val === 'topbar_nav_1' ) {
 				pp_get_menu( 'topbar_navigation_1' );
-			} else if ( $value === 'topbar_nav_2' ) {
+			} else if ( $val === 'topbar_nav_2' ) {
 				pp_get_menu( 'topbar_navigation_2' );
-			} else if ( $value === 'main_menu' ) {
-				pp_get_menu( 'primary_navigation' );
-			} else if ( $value == 'separator_1' || $value == 'separator_2' || $value == 'separator_3' || $value == 'separator_4' ) {
-				echo '<hr>';
-			} else if ( $value == 'html' || $value == 'html-2' || $value == 'html-3' || $value == 'html-4' || $value == 'html-5' ) {
-				echo flatsome_get_header_html_element( $value );
-			} else if ( $value == 'wpml' ) {
+			} else if ( $val === 'main_menu' ) {
+			    if ( $section === 'offcanvas_main_menu_elements' ) {
+                    echo '<ul class="main-menu">';
+			        pp_get_menu('primary_navigation');
+                    echo '</ul>';
+                } else {
+                    pp_get_menu('primary_navigation');
+                }
+            } else if ( $val == 'separator_1' || $val == 'separator_2' || $val == 'separator_3' || $val == 'separator_4' ) {
+				echo '<span class="sep"></span>';
+			} else if ( $val == 'html' || $val == 'html-2' || $val == 'html-3' || $val == 'html-4' || $val == 'html-5' ) {
+				echo pp_get_html_element( $val );
+			} else if ( $val == 'wpml' ) {
 				get_template_part( 'template-parts/header/element/languages' );
 			} else {
-				get_template_part( 'template-parts/header/elements/' . str_replace( '_', '-', $value ) );
+				get_template_part( 'template-parts/header/elements/' . str_replace( '_', '-', $val ) );
 			}
 
-			//do_action( 'pp_get_header_elements', $value );
+			//do_action( 'pp_get_header_elements', $val );
 
 		}
 	}
@@ -57,6 +63,10 @@ function pp_can_display( $element ){
         if ( get_theme_mod( 'mobile_bottom_bar_area' ) ){
             $output = true;
         }
+    } else if ( $element === 'top_bar' ){
+	    if ( get_theme_mod( 'top_bar_left_area' ) || get_theme_mod( 'top_bar_center_area' ) || get_theme_mod( 'top_bar_right_area' ) || get_theme_mod( 'tablet_top_bar_left_area' ) || get_theme_mod( 'tablet_top_bar_right_area' ) || get_theme_mod( 'mobile_top_bar_area' ) ){
+		    $output = true;
+	    }
     }
 
     return $output;
@@ -73,12 +83,15 @@ function pp_get_menu( $location ){
 
 	if ( $location === 'primary_navigation' ){
 		$args = array( 'walker' => new PP_Walker_Nav_Menu() );
+	} else {
+		$args = array( 'walker' => new PP_Walker_Other_Menu() );
 	}
 
 	$defaults = array(
 		'theme_location' 	=> $location,
 		'container'			=> '',
 		'items_wrap'      	=> '%3$s',
+		'walker' => new PP_Walker_Nav_Menu()
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -97,34 +110,77 @@ function pp_get_menu( $location ){
   * @param string $element
   */
 function pp_get_classes( $element ){
-	$header_classes = array();
+	$classes = array();
 
 	switch ( $element ) {
 		case 'top_bar':
-			if ( get_theme_mod( 'fixed_top_bar', true ) == true ) { $header_classes[] = 'navbar-fixed-top'; }
+			if ( get_theme_mod( 'fixed_top_bar', true ) == true ) { $classes[] = 'navbar-fixed-top'; }
 			break;
-		
+
 		case 'main-header':
-			if ( get_theme_mod( 'logo_pos', 'left' ) == 'split_menu' ) { $header_classes[] = 'center_logo_split_menu'; }
-			if ( get_field( 'transparent_header' ) ) { $header_classes[] = 'transparent'; }
-			$header_classes[] = get_theme_mod( 'content_pos', 'left' ) . '_content';
+			if ( get_field( 'transparent_header' ) ) { $classes[] = 'transparent'; }
+			$classes[] = get_theme_mod( 'content_pos', 'left' ) . '_content';
+			$classes[] = get_theme_mod( 'logo_position_desktop', 'left' );
 			break;
 
 		case 'megamenu':
-			if ( get_theme_mod( 'megamenu_fullwidth', false ) == true ) { $header_classes[] = 'fullwidth'; }
+			if ( get_theme_mod( 'megamenu_fullwidth', false ) == true ) { $classes[] = 'fullwidth'; }
 			break;
 
-		case 'button_1':
-			if ( get_theme_mod( 'button_1_outlined', false ) == true ) { $header_classes[] = 'outlined'; }
-			$header_classes[] = get_theme_mod( 'button_1_type', 'rounded' );
-			break;
+        case 'button_1':
+            if ( get_theme_mod( 'button_1_outlined', false ) == true ) { $classes[] = 'outlined'; }
+            $classes[] = get_theme_mod( 'button_1_type', 'rounded' );
+            break;
+
+        case 'button_2':
+            if ( get_theme_mod( 'button_2_outlined', false ) == true ) { $classes[] = 'outlined'; }
+            $classes[] = get_theme_mod( 'button_2_type', 'rounded' );
+            break;
 
         case 'contact':
-            $header_classes[] = get_theme_mod( 'contact_style', 'icon_label' );
+            $classes[] = get_theme_mod( 'contact_style', 'icon_label' );
+            break;
+
+        case 'cart-icon':
+        	$icon = get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' );
+        	$badge = array( 'icon-shopping-basket', 'icon-shopping-basket-outline', 'icon-shopping-basket-2', 'icon-shopping-basket-2-outline', 'icon-shopping-cart', 'icon-shopping-cart-outline', 'icon-shopping-cart-2', 'icon-shopping-cart-2-outline' );
+
+            if ( in_array( $icon, $badge ) ){ $classes[] = 'icon-badge'; }
+	        if ( strpos($icon, 'outline') !== false ) { $classes[] = 'icon-outline'; }
             break;
 	}
 
-	echo implode( ' ', $header_classes );
+	echo implode( ' ', $classes );
+}
+
+/**
+ * Get theme option
+ *
+ * @access public
+ * @param string $name
+ */
+function pp_get_option( $name ){
+    $output = '';
+
+    switch ( $name ) {
+        case 'cart_icon':
+            $output = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) );
+            break;
+
+        case 'cart_icon_add':
+            $output = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) ) . '-add';
+            break;
+
+        case 'cart_icon_outline':
+            $output = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) ) . '-outline';
+            break;
+
+        case 'cart_icon_checkout':
+            $output = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) ) . '-checkout';
+            break;
+    }
+
+    return $output;
 }
 
 /**

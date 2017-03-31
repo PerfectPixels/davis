@@ -37,8 +37,8 @@
 		},
 
 		updateCustomizer: function( ui ){
-			var $container = $( ui.item ).parent(),
-				setting = $container.data( 'setting' ),
+            var $container = ( ui.item !== null ) ? $( ui.item ).parent() : ui.container,
+                setting = $container.data( 'setting' ),
 				val = [];
 			
 			if ( ui.sender !== null ) {
@@ -50,10 +50,8 @@
 				$container.find( 'span.button' ).each( function(){
 					val.push( $( this ).data( 'type' ) );
 				});
-				
-				$( '[data-customize-setting-link=' + setting + ']' ).selectize()[0].selectize.setValue( val, !0 );
-				
-				api.instance( setting ).set( val );
+
+                HB.updateSetting( setting, val );
 			}
 
 			// Display/Hide Menu Positon option from customizer
@@ -63,6 +61,21 @@
 			// }
 	
 		},
+
+		updateSetting: function(setting, val){
+            $( '[data-customize-setting-link=' + setting + ']' ).selectize()[0].selectize.setValue( val, !0 );
+            api.instance( setting ).set( val );
+		},
+
+        updateAllArea: function( $view ){
+            $view.find( '.sortable' ).each( function() {
+                var $container = $( this ),
+                    setting = $container.data( 'setting' ),
+                    ui = { container: $container, item: null, sender: null };
+
+                HB.updateCustomizer( ui );
+            });
+        },
 
 		addTitlePanel: function(){
 			var sections = ['accordion-section-top_bar', 'accordion-section-account_element'];
@@ -93,7 +106,7 @@
 			$( '.header-builder .devices button' ).on( 'click', function(){
 				var device = $( this ).data( 'device' );
 
-				$( '#customize-controls button.preview-' + device ).click();
+				$( '#customize-controls').find( 'button.preview-' + device ).click();
 			});
 
 		},
@@ -117,14 +130,15 @@
 
 			devices.forEach( function( device ){
 				api( 'logo_position_' + device, function( value ){
-		            value.bind( function( newval ) {
+					value.bind( function( newval ) {
 		            	var $headerSection = $( '#header-' + device );
 
-		                if ( newval === 'center' ){ 
-		                	$headerSection.addClass( 'center-logo' ); 
-		                } else {
-		                	$headerSection.removeClass( 'center-logo' ); 
-		                }
+                        $headerSection.removeClass( 'center_logo_split_menu center_logo left_logo' ).addClass( newval );
+
+                        if ( newval === 'center_logo_split_menu' && device === 'desktop' ){
+                            $headerSection.find( '.unused .sortable').append( $headerSection.find( '[data-type=main_menu]' ) );
+                            HB.updateAllArea( $headerSection );
+						}
 		            });
 		        });
 		    });

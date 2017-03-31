@@ -9,10 +9,12 @@ if ( $woocommerce_active ) { ?>
     <li class="action-button account dropdown-hover <?php echo get_theme_mod( 'account_style', 'icon_label' ); ?>">
 
         <?php if ( is_user_logged_in() ) { ?>
-            <a href="<?php echo get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?>" class="icon-user-alt" role="button" aria-haspopup="true" aria-expanded="false"><span><?php echo get_theme_mod( 'account_in_label', 'My Account' ); ?></span></a>
+            <a href="<?php echo get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?>" class="<?php echo get_theme_mod( 'account_icon_style', 'icon-user-1' ); ?>" role="button" aria-haspopup="true" aria-expanded="false"><span><?php echo get_theme_mod( 'account_in_label', 'My Account' ); ?></span></a>
         <?php } else { ?>
-            <a class="icon-user-alt" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#login-modal"><span><?php echo get_theme_mod( 'account_out_label', 'Login' ); ?></span></a>
+            <a class="<?php echo get_theme_mod( 'account_icon_style', 'icon-user-1' ); ?>" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#login-modal"><span><?php echo get_theme_mod( 'account_out_label', 'Login' ); ?></span></a>
         <?php } ?>
+
+        <span class="mobile-arrow"></span>
 
         <ul class="dropdown-menu">
 

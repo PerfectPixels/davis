@@ -213,12 +213,33 @@
 			a.right:after,
 			a.last:after { border-left-color: #fff; right: 23px; }
 
-			#place_order { padding-left: 72px; right: -200%; margin-right: 15px; }
+			#place_order {
+              padding-left: 72px;
+              right: -200%;
+              margin-right: 15px;
 
-			#place_order:before { top: 14px; left: 30px; height: auto; width: auto; line-height: 1; }
+              &:before {
+                top: 50%;
+                left: 30px;
+                height: auto;
+                width: auto;
+                line-height: 1;
+                transform: translateY(-50%);
+              }
 
-			#place_order.paypal:before { top: 15px; left: 30px; height: 26px; width: 22px; line-height: 1; background: url(../images/paypal-logo.png) no-repeat; background-size: 22px 26px; background-position: 0 50%; display: inline-block; content: ""; }
-
+              &.paypal:before {
+                top: 15px;
+                left: 30px;
+                height: 26px;
+                width: 22px;
+                line-height: 1;
+                background: url(../images/paypal-logo.png) no-repeat;
+                background-size: 22px 26px;
+                background-position: 0 50%;
+                display: inline-block;
+                content: "";
+              }
+            }
 		}
 
 		.quick-btn.to-left { transform: translate3d(-100%,0,0);
@@ -335,6 +356,10 @@
 	#iframe-checkout { background: none; padding: 0; margin: 0; border: none; opacity: 0; width: 400%; height: 100%; transition: transform .8s $cb; transform: translate3d(0,0,0); }
 
 	#iframe-checkout.loaded { opacity: 1; }
+
+	&.admin-bar {
+		margin-top: -32px;
+	}
 
 }
 

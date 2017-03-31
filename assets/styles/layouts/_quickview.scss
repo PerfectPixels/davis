@@ -204,7 +204,14 @@
 
                 .item { text-align: center; opacity: 0; transition: opacity .3s $cb;
 
-                    a { display: inline-block; pointer-events: none; cursor: default; }
+                    a { display: inline-block; pointer-events: none; cursor: default;
+
+                      img {
+                        width: 100%;
+                        height: auto;
+                      }
+
+                    }
 
                     &.slick-active,
                     &.slick-center { opacity: 1 !important; }

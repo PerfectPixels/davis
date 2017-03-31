@@ -61,7 +61,6 @@ Kirki::add_field( 'pp_theme', array(
 
 // Desktop
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'custom',
 	'settings'    => 'title_tagline_title_1',
 	'section'     => 'title_tagline',
@@ -78,8 +77,9 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 160,
 	'default'  => 'left',
 	'choices'  => array(
-		'left'  => esc_attr__( 'Left', 'davis' ),
-		'center' => esc_attr__( 'Center', 'davis' ),
+		'left_logo'  => esc_attr__( 'Left', 'davis' ),
+		'center_logo' => esc_attr__( 'Center', 'davis' ),
+		'center_logo_split_menu' => esc_attr__( 'Center and Split Menu', 'davis' ),
 	),
 ) );
 
@@ -102,8 +102,8 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 160,
 	'default'  => 'left',
 	'choices'  => array(
-		'left'  => esc_attr__( 'Left', 'davis' ),
-		'center' => esc_attr__( 'Center', 'davis' ),
+		'left_logo_tablet'  => esc_attr__( 'Left', 'davis' ),
+		'center_logo_tablet' => esc_attr__( 'Center', 'davis' ),
 	),
 ) );
 
@@ -126,8 +126,8 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 160,
 	'default'  => 'center',
 	'choices'  => array(
-		'left'  => esc_attr__( 'Left', 'davis' ),
-		'center' => esc_attr__( 'Center', 'davis' ),
+		'left_logo_mobile'  => esc_attr__( 'Left', 'davis' ),
+		'center_logo_mobile' => esc_attr__( 'Center', 'davis' ),
 	),
 ) );
 

@@ -215,31 +215,17 @@ Kirki::add_field( 'pp_theme', array(
 	'default'     => '<h3 class="section_title">' . esc_html__( 'Tob Bar | Mobile', 'davis' ) . '</h3>',
 	'priority'    => 10,
 ) );
-// Mobile Top Bar - Left Area
+// Mobile Top Bar
 Kirki::add_field( 'pp_theme', array(
 	'transport'	  => $transport,
 	'type'        => 'select',
-	'settings'    => 'mobile_top_bar_left_area',
+	'settings'    => 'mobile_top_bar_area',
 	'label'       => __( 'Mobile Top Bar Left Area', 'davis' ),
 	'section'     => 'header_builder',
-	'default'     => array('text_1'),
 	'priority'    => 10,
 	'multiple'    => 999,
 	'choices'     => $header_options,
 ) );
-// Mobile Top Bar - Right Area
-Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
-	'type'        => 'select',
-	'settings'    => 'mobile_top_bar_right_area',
-	'label'       => __( 'Mobile Top Bar Right Area', 'davis' ),
-	'section'     => 'header_builder',
-	'default'     => array('account', 'cart'),
-	'priority'    => 10,
-	'multiple'    => 999,
-	'choices'     => $header_options,
-) );
-
 // Mobile Main Header
 Kirki::add_field( 'pp_theme', array(
 	'transport'	  => $transport,
@@ -283,7 +269,7 @@ Kirki::add_field( 'pp_theme', array(
 	'default'     => '<h3 class="section_title">' . esc_html__( 'Bottom Bar | Mobile', 'davis' ) . '</h3>',
 	'priority'    => 10,
 ) );
-// Mobile Main Header - Left Area
+// Mobile Bottom Bar
 Kirki::add_field( 'pp_theme', array(
 	'transport'	  => $transport,
 	'type'        => 'select',

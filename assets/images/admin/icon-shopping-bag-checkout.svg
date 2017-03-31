@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="23px" viewBox="0 0 24 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-shopping-bag-checkout</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-shopping-bag-checkout" fill-rule="nonzero" fill="#000000">
+            <g id="Filled_Icon">
+                <g id="Group">
+                    <g>
+                        <path d="M5.998,6.984 L6,5 L2.75,5 C2.628,5 2.51,5.045 2.418,5.127 L0.328,6.985 L5.998,6.985 L5.998,6.984 Z" id="Shape"></path>
+                        <rect id="Rectangle-path" x="9" y="5" width="5.998" height="1.984"></rect>
+                        <path d="M8,6.984 L8,5 C8,2.794 9.794,1 12,1 C14.206,1 16,2.794 16,5 L16,6.984 L17,6.984 L17,5 C17,2.243 14.757,0 12,0 C9.243,0 7,2.243 7,5 L7,6.984 L8,6.984 Z" id="Shape"></path>
+                        <path d="M23.682,6.984 L21.718,5.135 C21.625,5.049 21.502,5 21.375,5 L18.002,5 L18,6.984 L23.682,6.984 Z" id="Shape"></path>
+                    </g>
+                    <path d="M0,8 L0,22.5 C0,22.776 0.224,23 0.5,23 L23.5,23 C23.776,23 24,22.776 24,22.5 L24,8 L0,8 Z M16.528,12.674 L11.479,18.458 C11.297,18.667 11.037,18.791 10.76,18.801 L10.726,18.801 C10.461,18.801 10.206,18.696 10.019,18.508 L7.519,16.008 C7.128,15.617 7.128,14.985 7.519,14.594 C7.91,14.203 8.543,14.203 8.933,14.594 L10.676,16.337 L15.022,11.359 C15.385,10.943 16.017,10.901 16.432,11.263 C16.849,11.626 16.892,12.258 16.528,12.674 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

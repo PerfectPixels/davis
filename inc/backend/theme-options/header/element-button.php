@@ -1,6 +1,6 @@
 <?php 
 
-global $transport, $primary_color;
+global $primary_color;
 
 Kirki::add_section( 'buttons_element', array(
     'title'          => __( 'Buttons', 'davis' ),
@@ -10,7 +10,6 @@ Kirki::add_section( 'buttons_element', array(
 
 // BUTTON 1
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'custom',
 	'settings'    => 'button_title_1',
 	'section'     => 'buttons_element',
@@ -18,16 +17,22 @@ Kirki::add_field( 'pp_theme', array(
 	'priority'    => 10,
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'button_1_label',
 	'label'    => __( 'Button 1 Label', 'davis' ),
 	'section'  => 'buttons_element',
 	'default'  => esc_html__( 'Button', 'davis' ),
 	'type'     => 'text',
 	'priority' => 10,
+	'js_vars'   => array(
+		array(
+			'element'  => '#button-1',
+			'function' => 'html',
+		),
+	)
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'button_1_type',
 	'label'       => __( 'Button Type', 'davis' ),
@@ -42,7 +47,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'button_1_outlined',
 	'label'    => __( 'Outlined', 'davis' ),
 	'section'  => 'buttons_element',
@@ -58,7 +63,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'radio-buttonset',
 	'settings'    => 'button_1_link_type',
 	'label'       => __( 'Link Type', 'davis' ),
@@ -71,7 +76,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'     => 'text',
 	'settings' => 'button_1_url',
 	'label'    => __( 'URL', 'davis' ),
@@ -86,7 +91,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'     => 'dropdown-pages',
 	'settings' => 'button_1_page',
 	'label'    => __( 'Page', 'davis' ),
@@ -152,7 +157,8 @@ Kirki::add_field( 'pp_theme', array(
 		),
 		array(
 			'element'  => array( '#button-1' ),
-			'property' => 'outline-color',
+			'property' => 'border-color',
+			'suffix'   => '!important',
 		),
 	),
 	'output' => array(
@@ -162,14 +168,14 @@ Kirki::add_field( 'pp_theme', array(
 		),
 		array(
 			'element'  => array( '#button-1' ),
-			'property' => 'outline-color',
+			'property' => 'border-color',
+			'suffix'   => '!important',
 		),
 	),
 ) );
 
 // BUTTON 2
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'custom',
 	'settings'    => 'button_title_2',
 	'section'     => 'buttons_element',
@@ -177,16 +183,22 @@ Kirki::add_field( 'pp_theme', array(
 	'priority'    => 10,
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'button_2_label',
 	'label'    => __( 'Button 2 Label', 'davis' ),
 	'section'  => 'buttons_element',
 	'default'  => esc_html__( 'Button', 'davis' ),
 	'type'     => 'text',
 	'priority' => 10,
+	'js_vars'   => array(
+		array(
+			'element'  => '#button-2',
+			'function' => 'html',
+		),
+	)
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'button_2_type',
 	'label'       => __( 'Button Type', 'davis' ),
@@ -201,7 +213,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'button_2_outlined',
 	'label'    => __( 'Outlined', 'davis' ),
 	'section'  => 'buttons_element',
@@ -217,7 +229,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'radio-buttonset',
 	'settings'    => 'button_2_link_type',
 	'label'       => __( 'Link Type', 'davis' ),
@@ -230,7 +242,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'     => 'text',
 	'settings' => 'button_2_url',
 	'label'    => __( 'URL', 'davis' ),
@@ -245,7 +257,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'     => 'dropdown-pages',
 	'settings' => 'button_2_page',
 	'label'    => __( 'Page', 'davis' ),
@@ -311,7 +323,8 @@ Kirki::add_field( 'pp_theme', array(
 		),
 		array(
 			'element'  => array( '#button-2' ),
-			'property' => 'outline-color',
+			'property' => 'border-color',
+			'suffix'   => '!important',
 		),
 	),
 	'output' => array(
@@ -321,9 +334,38 @@ Kirki::add_field( 'pp_theme', array(
 		),
 		array(
 			'element'  => array( '#button-2' ),
-			'property' => 'outline-color',
+			'property' => 'border-color',
+			'suffix'   => '!important',
 		),
 	),
 ) );
+
+
+function pp_element_buttons_partials( WP_Customize_Manager $wp_customize ) {
+    // Abort if selective refresh is not available.
+    if ( ! isset( $wp_customize->selective_refresh ) ) {
+        return;
+    }
+
+    $wp_customize->selective_refresh->add_partial( 'buttons_element-1', array(
+        'selector' => 'li.button-element.button-1',
+        'container_inclusive' => true,
+        'settings' => array( 'button_1_type', 'button_1_outlined', 'button_1_link_type', 'button_1_url', 'button_1_page' ),
+        'render_callback' => function() {
+            return get_template_part( 'template-parts/header/elements/button-1' );
+        },
+    ) );
+
+    $wp_customize->selective_refresh->add_partial( 'buttons_element-2', array(
+        'selector' => 'li.button-element.button-2',
+        'container_inclusive' => true,
+        'settings' => array( 'button_2_type', 'button_2_outlined', 'button_2_link_type', 'button_2_url', 'button_2_page' ),
+        'render_callback' => function() {
+            return get_template_part( 'template-parts/header/elements/button-2' );
+        },
+    ) );
+}
+add_action( 'customize_register', 'pp_element_buttons_partials' );
+
 
 ?>

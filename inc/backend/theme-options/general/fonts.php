@@ -8,7 +8,7 @@ Kirki::add_section( 'section_fonts', array(
 ) );
 // Header font
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'typography',
 	'settings'    => 'header_font',
 	'label'       => esc_attr__( 'Header & Nav Font', 'kirki' ),
@@ -20,15 +20,20 @@ Kirki::add_field( 'pp_theme', array(
 		'letter-spacing' => '-0.02em',
 	),
 	'priority'    => 10,
+	'js_vars'      => array(
+		array(
+			'element' => array( '.navbar-top > ul', '.nav-header', '.navbar-bottom > ul' ),
+		),
+	),
 	'output'      => array(
 		array(
-			'element' => array( '.navbar-top', '.nav-header' ),
+			'element' => array( '.navbar-top > ul', '.nav-header', '.navbar-bottom > ul' ),
 		),
 	),
 ) );
 // H1 font
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'typography',
 	'settings'    => 'h1_font',
 	'label'       => esc_attr__( 'H1 Font', 'kirki' ),
@@ -38,6 +43,11 @@ Kirki::add_field( 'pp_theme', array(
 		'variant'        => 'regular',
 	),
 	'priority'    => 10,
+	'js_vars'      => array(
+		array(
+			'element' => 'h1',
+		),
+	),
 	'output'      => array(
 		array(
 			'element' => 'h1',
@@ -46,7 +56,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // H2 font
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'typography',
 	'settings'    => 'h2_font',
 	'label'       => esc_attr__( 'H2 Font', 'kirki' ),
@@ -56,6 +66,11 @@ Kirki::add_field( 'pp_theme', array(
 		'variant'        => 'regular',
 	),
 	'priority'    => 10,
+	'js_vars'      => array(
+		array(
+			'element' => 'h2',
+		),
+	),
 	'output'      => array(
 		array(
 			'element' => 'h2',
@@ -64,7 +79,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // H3 font
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'typography',
 	'settings'    => 'h3_font',
 	'label'       => esc_attr__( 'H3 Font', 'kirki' ),
@@ -74,6 +89,11 @@ Kirki::add_field( 'pp_theme', array(
 		'variant'        => 'regular',
 	),
 	'priority'    => 10,
+	'js_vars'      => array(
+		array(
+			'element' => 'h3',
+		),
+	),
 	'output'      => array(
 		array(
 			'element' => 'h3',
@@ -82,7 +102,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // H4 font
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'typography',
 	'settings'    => 'h4_font',
 	'label'       => esc_attr__( 'H4 Font', 'kirki' ),
@@ -92,6 +112,11 @@ Kirki::add_field( 'pp_theme', array(
 		'variant'        => 'regular',
 	),
 	'priority'    => 10,
+	'js_vars'      => array(
+		array(
+			'element' => 'h4',
+		),
+	),
 	'output'      => array(
 		array(
 			'element' => 'h4',
@@ -100,7 +125,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // H5 font
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'typography',
 	'settings'    => 'h5_font',
 	'label'       => esc_attr__( 'H5 Font', 'kirki' ),
@@ -110,6 +135,11 @@ Kirki::add_field( 'pp_theme', array(
 		'variant'        => 'regular',
 	),
 	'priority'    => 10,
+	'js_vars'      => array(
+		array(
+			'element' => 'h5',
+		),
+	),
 	'output'      => array(
 		array(
 			'element' => 'h5',
@@ -118,7 +148,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // H6 font
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'typography',
 	'settings'    => 'h6_font',
 	'label'       => esc_attr__( 'H6 Font', 'kirki' ),
@@ -133,10 +163,15 @@ Kirki::add_field( 'pp_theme', array(
 			'element' => 'h6',
 		),
 	),
+	'js_vars'      => array(
+		array(
+			'element' => 'h6',
+		),
+	),
 ) );
 // Body font
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'typography',
 	'settings'    => 'body_font',
 	'label'       => esc_attr__( 'Body Font', 'kirki' ),
@@ -148,6 +183,11 @@ Kirki::add_field( 'pp_theme', array(
 		'letter-spacing' => '-0.02em',
 	),
 	'priority'    => 10,
+	'js_vars'      => array(
+		array(
+			'element' => 'body',
+		),
+	),
 	'output'      => array(
 		array(
 			'element' => 'body',
@@ -155,7 +195,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'typography',
 	'settings'    => 'body_font_bold',
 	'label'       => esc_attr__( 'Body Font - Bold', 'kirki' ),

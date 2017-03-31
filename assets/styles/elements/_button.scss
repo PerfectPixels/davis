@@ -1,8 +1,9 @@
 .header-button {
-  padding: 10px 15px;
+  padding: 8px 15px;
   cursor: pointer;
   opacity: 1;
   font-weight: normal;
+  border: 2px solid !important;
   transition: opacity .3s $cb !important;
 
   &.rounded {
@@ -15,6 +16,7 @@
 
   &.link {
     background-color: transparent !important;
+    border: none !important;
     padding-left: 0;
     padding-right: 0;
 
@@ -24,8 +26,6 @@
   }
 
   &.outlined {
-    outline: 2px solid;
-    outline-offset: -2px;
     background-color: transparent !important;
   }
 

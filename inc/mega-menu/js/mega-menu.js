@@ -8,6 +8,7 @@ var menuSettings;
 		init: function () {
 			options.$body = $('body');
 			options.$modal = $('#menu-modal');
+			options.$primaryCheckbox = $('#locations-primary_navigation');
 			options.itemData = {};
 			options.templates = {
 				menus     : _.template($('#pp-tmpl-menus').html()),
@@ -37,6 +38,21 @@ var menuSettings;
 				.on('click', '.pp-mega-menu-item-setting-tab a', this.switchPanel)
 				.on('click', '.item-controls span', this.resizeMegaColumn)
 				.on('click', '.pp-button-save', this.saveChanges);
+
+            options.$primaryCheckbox
+                .on( 'change', function(){
+                    if ( !$( this ).is( ':checked' ) ){
+                        options.$body.addClass( 'hide-settings' );
+                    } else {
+                        options.$body.removeClass( 'hide-settings' );
+                    }
+                });
+
+			if ( !options.$primaryCheckbox.is( ':checked' ) ){
+                options.$body.addClass( 'hide-settings' );
+            } else {
+                options.$body.removeClass( 'hide-settings' );
+            }
 		},
 
 		openModal: function () {

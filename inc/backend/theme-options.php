@@ -60,10 +60,6 @@ if ( class_exists('Kirki') ) :
 	$secondary_color = '#ffffff';
 	$transport = 'refresh';
 
-	if ( ! isset( $wp_customize->selective_refresh ) ) {
-	  $transport = 'refresh';
-	}
-
 	// Include all files
 	foreach ( glob( get_template_directory() . '/inc/backend/theme-options/*.php' ) as $filename ){
 	    include_once $filename;
