@@ -66,23 +66,11 @@
 .icon-user-2:before {
   content: "\6b";
 }
-.icon-heart:before {
-  content: "\6c";
-}
-.icon-heart-line:before {
-  content: "\6e";
-}
 .icon-user-4-outline:before {
   content: "\70";
 }
 .icon-user-4:before {
   content: "\72";
-}
-.icon-heart-alt:before {
-  content: "\73";
-}
-.icon-heart-alt-outline:before {
-  content: "\74";
 }
 .icon-options:before {
   content: "\75";
@@ -101,12 +89,6 @@
 }
 .icon-user-5:before {
   content: "\7a";
-}
-.icon-heart-3:before {
-  content: "\41";
-}
-.icon-heart-3-outline:before {
-  content: "\42";
 }
 .icon-eye-line:before {
   content: "\45";
@@ -276,4 +258,27 @@
 .icon-shopping-bag-3-checkout:before {
   content: "\33";
 }
-
+.icon-heart:before {
+  content: "\6c";
+}
+.icon-heart-circle:before {
+  content: "\6e";
+}
+.icon-heart-circle-outline:before {
+  content: "\73";
+}
+.icon-heart-outline:before {
+  content: "\74";
+}
+.icon-star:before {
+  content: "\41";
+}
+.icon-star-circle:before {
+  content: "\42";
+}
+.icon-star-circle-outline:before {
+  content: "\3d";
+}
+.icon-star-outline:before {
+  content: "\3e";
+}

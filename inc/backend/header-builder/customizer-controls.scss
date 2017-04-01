@@ -402,6 +402,10 @@
     &#input_cart_icon_style label {
       padding: 0 1px;
     }
+
+    &#input_wishlist_icon_style label {
+      padding: 0 12px;
+    }
   }
 
   input:checked + label img {

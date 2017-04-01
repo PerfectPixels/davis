@@ -11,4 +11,4 @@ global $product;
 
 ?>
 
-<a href="<?php echo esc_url( add_query_arg( 'add_to_wishlist', $product_id ) ); ?>" rel="nofollow" data-product-id="<?php echo $product_id; ?>" data-product-type="<?php echo $product_type; ?>" class="icon-heart-alt-outline <?php echo $link_classes; ?>" data-toggle="tooltip" data-placement="top" title="<?php echo $label; ?>"></a>
+<a href="<?php echo esc_url( add_query_arg( 'add_to_wishlist', $product_id ) ); ?>" rel="nofollow" data-product-id="<?php echo $product_id; ?>" data-product-type="<?php echo $product_type; ?>" class="<?php echo pp_get_option( 'wishlist_icon_outline' ) . ' ' . $link_classes; ?>" data-toggle="tooltip" data-placement="top" title="<?php echo $label; ?>"></a>

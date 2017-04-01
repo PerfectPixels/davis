@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-star-circle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-star-circle" fill-rule="nonzero" fill="#000000">
+            <g id="Filled_Icons">
+                <path d="M12,0 C5.383,0 0,5.383 0,12 C0,18.617 5.383,24 12,24 C18.616,24 24,18.617 24,12 C24,5.383 18.616,0 12,0 Z M19.329,9.876 L15.564,13.17 L16.982,18.368 C17.039,18.576 16.956,18.796 16.777,18.916 C16.692,18.972 16.596,19 16.5,19 C16.391,19 16.282,18.964 16.192,18.895 L12,15.634 L7.807,18.895 C7.637,19.027 7.402,19.036 7.223,18.916 C7.043,18.796 6.961,18.576 7.018,18.368 L8.435,13.17 L4.67,9.876 C4.514,9.739 4.459,9.519 4.531,9.324 C4.606,9.129 4.791,9 5,9 L9.661,9 L11.535,4.314 C11.611,4.124 11.795,4 12,4 C12.204,4 12.388,4.124 12.464,4.314 L14.338,9 L19,9 C19.208,9 19.395,9.129 19.468,9.324 C19.541,9.519 19.485,9.739 19.329,9.876 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

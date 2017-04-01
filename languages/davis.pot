@@ -213,7 +213,7 @@ msgstr ""
 msgid "Top Bar Nav 2"
 msgstr ""
 
-#: inc/backend/theme-options.php:35, inc/backend/theme-options/header/element-wishlist.php:7, inc/functions/wishlist.php:54
+#: inc/backend/theme-options.php:35, inc/backend/theme-options/header/element-wishlist.php:5, inc/functions/wishlist.php:54
 msgid "Wishlist"
 msgstr ""
 
@@ -433,23 +433,23 @@ msgstr ""
 msgid "Elements"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:15, inc/backend/theme-options/header/element-cart.php:16, inc/backend/theme-options/header/element-contact.php:16, inc/backend/theme-options/header/element-wishlist.php:16
+#: inc/backend/theme-options/header/element-account.php:15, inc/backend/theme-options/header/element-cart.php:16, inc/backend/theme-options/header/element-contact.php:16, inc/backend/theme-options/header/element-wishlist.php:14
 msgid "Style"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:20, inc/backend/theme-options/header/element-cart.php:21, inc/backend/theme-options/header/element-contact.php:21, inc/backend/theme-options/header/element-wishlist.php:21, inc/mega-menu/options/icon.php:51
+#: inc/backend/theme-options/header/element-account.php:20, inc/backend/theme-options/header/element-cart.php:21, inc/backend/theme-options/header/element-contact.php:21, inc/backend/theme-options/header/element-wishlist.php:19, inc/mega-menu/options/icon.php:51
 msgid "Icon Only"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:21, inc/backend/theme-options/header/element-cart.php:22, inc/backend/theme-options/header/element-contact.php:22, inc/backend/theme-options/header/element-wishlist.php:22
+#: inc/backend/theme-options/header/element-account.php:21, inc/backend/theme-options/header/element-cart.php:22, inc/backend/theme-options/header/element-contact.php:22, inc/backend/theme-options/header/element-wishlist.php:20
 msgid "Icon with Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:22, inc/backend/theme-options/header/element-cart.php:23, inc/backend/theme-options/header/element-contact.php:23, inc/backend/theme-options/header/element-wishlist.php:23
+#: inc/backend/theme-options/header/element-account.php:22, inc/backend/theme-options/header/element-cart.php:23, inc/backend/theme-options/header/element-contact.php:23, inc/backend/theme-options/header/element-wishlist.php:21
 msgid "Label Only"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:30, inc/backend/theme-options/header/element-cart.php:31, inc/backend/theme-options/header/element-search.php:14, inc/backend/theme-options/header/element-wishlist.php:31
+#: inc/backend/theme-options/header/element-account.php:30, inc/backend/theme-options/header/element-cart.php:31, inc/backend/theme-options/header/element-search.php:14, inc/backend/theme-options/header/element-wishlist.php:29
 msgid "Icon Type"
 msgstr ""
 
@@ -529,7 +529,7 @@ msgstr ""
 msgid "Button 2 Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-cart.php:79, inc/backend/theme-options/header/element-wishlist.php:53
+#: inc/backend/theme-options/header/element-cart.php:79, inc/backend/theme-options/header/element-wishlist.php:56
 msgid "Label"
 msgstr ""
 
@@ -685,7 +685,7 @@ msgstr ""
 msgid "Text 3 Background Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-wishlist.php:55
+#: inc/backend/theme-options/header/element-wishlist.php:58
 msgid "Favorites"
 msgstr ""
 

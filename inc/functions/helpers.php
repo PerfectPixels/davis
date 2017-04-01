@@ -141,13 +141,21 @@ function pp_get_classes( $element ){
             $classes[] = get_theme_mod( 'contact_style', 'icon_label' );
             break;
 
-        case 'cart-icon':
-        	$icon = get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' );
-        	$badge = array( 'icon-shopping-basket', 'icon-shopping-basket-outline', 'icon-shopping-basket-2', 'icon-shopping-basket-2-outline', 'icon-shopping-cart', 'icon-shopping-cart-outline', 'icon-shopping-cart-2', 'icon-shopping-cart-2-outline' );
+		case 'cart-icon':
+			$icon = get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' );
+			$badge = array( 'icon-shopping-basket', 'icon-shopping-basket-outline', 'icon-shopping-basket-2', 'icon-shopping-basket-2-outline', 'icon-shopping-cart', 'icon-shopping-cart-outline', 'icon-shopping-cart-2', 'icon-shopping-cart-2-outline' );
 
-            if ( in_array( $icon, $badge ) ){ $classes[] = 'icon-badge'; }
-	        if ( strpos($icon, 'outline') !== false ) { $classes[] = 'icon-outline'; }
-            break;
+			if ( in_array( $icon, $badge ) ){ $classes[] = 'icon-badge'; }
+			if ( strpos($icon, 'outline') !== false ) { $classes[] = 'icon-outline'; }
+			break;
+
+		case 'wishlist-icon':
+			$icon = get_theme_mod( 'wishlist_icon_style', 'icon-heart' );
+			$badge = array( 'icon-heart-circle', 'icon-star', 'icon-star-circle', 'icon-heart-circle-outline', 'icon-star-outline', 'icon-star-circle-outline' );
+
+			if ( in_array( $icon, $badge ) ){ $classes[] = 'icon-badge'; }
+			if ( strpos($icon, 'outline') !== false ) { $classes[] = 'icon-outline'; }
+			break;
 	}
 
 	echo implode( ' ', $classes );
@@ -160,27 +168,35 @@ function pp_get_classes( $element ){
  * @param string $name
  */
 function pp_get_option( $name ){
-    $output = '';
+    $output = array();
 
     switch ( $name ) {
         case 'cart_icon':
-            $output = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) );
+            $output[] = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) );
             break;
 
         case 'cart_icon_add':
-            $output = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) ) . '-add';
+            $output[] = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) ) . '-add';
             break;
 
         case 'cart_icon_outline':
-            $output = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) ) . '-outline';
+            $output[] = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) ) . '-outline';
             break;
 
         case 'cart_icon_checkout':
-            $output = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) ) . '-checkout';
+            $output[] = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'icon-shopping-bag' ) ) . '-checkout';
+            break;
+
+        case 'wishlist_icon':
+            $output[] = str_replace( '-outline', '', get_theme_mod( 'wishlist_icon_style', 'icon-heart' ) );
+            break;
+
+        case 'wishlist_icon_outline':
+            $output[] = str_replace( '-outline', '', get_theme_mod( 'wishlist_icon_style', 'icon-heart' ) ) . '-outline';
             break;
     }
 
-    return $output;
+    return implode( ' ', $output );
 }
 
 /**
