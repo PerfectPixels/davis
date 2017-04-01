@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="21px" viewBox="0 0 24 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-phone-4</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-phone-4" fill-rule="nonzero" fill="#000000">
+            <g id="Filled_Icons">
+                <g id="Group">
+                    <path d="M15.724,9 L8.275,9 C7.623,9.898 6.602,10.5 5.5,10.5 L4,10.5 L4,18.5 C4,19.878 5.122,21 6.5,21 L16.5,21 C17.878,21 19,19.878 19,18.5 L19,10.5 L18.5,10.5 C17.397,10.5 16.375,9.898 15.724,9 Z M9,17 L8,17 L8,16 L9,16 L9,17 Z M9,15 L8,15 L8,14 L9,14 L9,15 Z M9,13 L8,13 L8,12 L9,12 L9,13 Z M12,17 L11,17 L11,16 L12,16 L12,17 Z M12,15 L11,15 L11,14 L12,14 L12,15 Z M12,13 L11,13 L11,12 L12,12 L12,13 Z M15,17 L14,17 L14,16 L15,16 L15,17 Z M15,15 L14,15 L14,14 L15,14 L15,15 Z M15,13 L14,13 L14,12 L15,12 L15,13 Z" id="Shape"></path>
+                    <path d="M23.355,2.881 C22.831,2.155 22.03,1.609 21.1,1.42 C15.213,0.223 8.966,0.183 2.9,1.42 C2.383,1.525 1.906,1.741 1.494,2.036 C0.589,2.685 -0.001,3.72 0,4.819 L0,6.319 C0,7.747 1.168,9 2.5,9 L4.5,9 L5.5,9 C6.832,9 7.999,7.747 8,6.319 L8,5.774 C8,5.774 10.701,5.598 12,5.598 C13.302,5.598 16,5.774 16,5.774 L16,6.319 C16,7.747 17.169,9 18.5,9 L21.5,9 C22.831,9 24,7.747 24,6.319 L24,4.819 C24,4.119 23.762,3.445 23.355,2.881 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

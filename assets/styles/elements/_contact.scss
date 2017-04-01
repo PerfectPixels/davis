@@ -2,13 +2,33 @@
 
   a,
   span {
+    font-size: 12px;
+    font-weight: normal;
     text-transform: none;
-    border-right: 1px solid;
-    padding: 0 7px 0 5px !important;
+    padding: 11px 7px !important;
     line-height: 12px !important;
+    position: relative;
 
-    &:last-child {
-      border-right: none;
+    &:before {
+      font-size: 18px;
+      line-height: 12px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    &:after {
+      width: 1px;
+      height: 10px;
+      position: absolute;
+      top: 50%;
+      right: 0 !important;
+      content: "";
+      transform: translateY(-50%);
+      opacity: .3;
+    }
+
+    &:last-child:after {
+      display: none;
     }
   }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-phone-5</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-phone-5" fill-rule="nonzero" fill="#000000">
+            <g id="Filled_Icons">
+                <path d="M21.999,16.691 L19.546,14.238 C19.062,13.754 18.419,13.487 17.734,13.487 C17.049,13.487 16.406,13.754 15.921,14.238 L15.264,14.895 C12.694,12.769 10.226,10.301 8.105,7.735 L8.762,7.078 C9.761,6.079 9.761,4.453 8.762,3.454 L6.309,1.001 C5.825,0.517 5.181,0.25 4.497,0.25 C3.812,0.25 3.168,0.517 2.684,1.001 L1.338,2.347 C0.095,3.589 -0.102,5.558 0.868,7.027 C4.802,12.974 10.025,18.197 15.973,22.131 C16.584,22.535 17.294,22.749 18.026,22.749 C19.019,22.749 19.952,22.362 20.652,21.661 L21.998,20.315 C22.482,19.832 22.749,19.188 22.749,18.503 C22.749,17.818 22.483,17.175 21.999,16.691 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

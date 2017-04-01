@@ -366,6 +366,3 @@ function pp_element_buttons_partials( WP_Customize_Manager $wp_customize ) {
     ) );
 }
 add_action( 'customize_register', 'pp_element_buttons_partials' );
-
-
-?>

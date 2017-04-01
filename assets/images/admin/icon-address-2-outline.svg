@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="24px" viewBox="0 0 15 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-address-2-outline</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-address-2-outline" fill-rule="nonzero" fill="#000000">
+            <g id="Outline_Icons">
+                <g id="Group">
+                    <path d="M7.5,0 C2.986,0 0.5,2.486 0.5,7 C0.5,9.468 2.268,12.118 3.978,14.68 C5.532,17.01 7,19.21 7,21 L7,23.5 C7,23.776 7.224,24 7.5,24 C7.776,24 8,23.776 8,23.5 L8,21 C8,19.21 9.468,17.01 11.022,14.68 C12.732,12.118 14.5,9.468 14.5,7 C14.5,2.486 12.014,0 7.5,0 Z M10.19,14.125 C9.119,15.73 8.087,17.277 7.5,18.74 C6.912,17.277 5.88,15.73 4.81,14.125 C3.183,11.687 1.5,9.165 1.5,7 C1.5,3.019 3.519,1 7.5,1 C11.481,1 13.5,3.019 13.5,7 C13.5,9.165 11.817,11.687 10.19,14.125 Z" id="Shape"></path>
+                    <path d="M7.5,3 C5.294,3 3.5,4.794 3.5,7 C3.5,9.206 5.294,11 7.5,11 C9.706,11 11.5,9.206 11.5,7 C11.5,4.794 9.706,3 7.5,3 Z M7.5,10 C5.846,10 4.5,8.654 4.5,7 C4.5,5.346 5.846,4 7.5,4 C9.154,4 10.5,5.346 10.5,7 C10.5,8.654 9.154,10 7.5,10 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

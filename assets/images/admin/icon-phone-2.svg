@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="24px" viewBox="0 0 14 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-phone-2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-phone-2" fill-rule="nonzero" fill="#000000">
+            <g id="Filled_Icons">
+                <g id="Group">
+                    <rect id="Rectangle-path" x="0" y="5" width="14" height="14"></rect>
+                    <path d="M14,4 L14,2.5 C14,1.121 12.879,0 11.5,0 L2.5,0 C1.122,0 0,1.121 0,2.5 L0,4 L14,4 Z M7,1.5 C7.551,1.5 8,1.948 8,2.5 C8,3.052 7.551,3.5 7,3.5 C6.449,3.5 6,3.052 6,2.5 C6,1.948 6.449,1.5 7,1.5 Z" id="Shape"></path>
+                    <path d="M0.001,20 L0.001,21.5 C0.001,22.879 1.123,24 2.501,24 L11.501,24 C12.879,24 14.001,22.879 14.001,21.5 L14.001,20 L0.001,20 Z M9.5,22 L4.5,22 C4.224,22 4,21.776 4,21.5 C4,21.224 4.224,21 4.5,21 L9.5,21 C9.776,21 10,21.224 10,21.5 C10,21.776 9.777,22 9.5,22 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -149,7 +149,7 @@ msgstr ""
 msgid "Checkout Button"
 msgstr ""
 
-#: inc/backend/theme-options.php:12, inc/backend/theme-options/header/element-contact.php:7
+#: inc/backend/theme-options.php:12, inc/backend/theme-options/header/element-contact.php:5
 msgid "Contact"
 msgstr ""
 
@@ -433,19 +433,19 @@ msgstr ""
 msgid "Elements"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:15, inc/backend/theme-options/header/element-cart.php:16, inc/backend/theme-options/header/element-contact.php:16, inc/backend/theme-options/header/element-wishlist.php:14
+#: inc/backend/theme-options/header/element-account.php:15, inc/backend/theme-options/header/element-cart.php:16, inc/backend/theme-options/header/element-contact.php:14, inc/backend/theme-options/header/element-wishlist.php:14
 msgid "Style"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:20, inc/backend/theme-options/header/element-cart.php:21, inc/backend/theme-options/header/element-contact.php:21, inc/backend/theme-options/header/element-wishlist.php:19, inc/mega-menu/options/icon.php:51
+#: inc/backend/theme-options/header/element-account.php:20, inc/backend/theme-options/header/element-cart.php:21, inc/backend/theme-options/header/element-contact.php:19, inc/backend/theme-options/header/element-wishlist.php:19, inc/mega-menu/options/icon.php:51
 msgid "Icon Only"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:21, inc/backend/theme-options/header/element-cart.php:22, inc/backend/theme-options/header/element-contact.php:22, inc/backend/theme-options/header/element-wishlist.php:20
+#: inc/backend/theme-options/header/element-account.php:21, inc/backend/theme-options/header/element-cart.php:22, inc/backend/theme-options/header/element-contact.php:20, inc/backend/theme-options/header/element-wishlist.php:20
 msgid "Icon with Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-account.php:22, inc/backend/theme-options/header/element-cart.php:23, inc/backend/theme-options/header/element-contact.php:23, inc/backend/theme-options/header/element-wishlist.php:21
+#: inc/backend/theme-options/header/element-account.php:22, inc/backend/theme-options/header/element-cart.php:23, inc/backend/theme-options/header/element-contact.php:21, inc/backend/theme-options/header/element-wishlist.php:21
 msgid "Label Only"
 msgstr ""
 
@@ -533,20 +533,28 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-contact.php:30
+#: inc/backend/theme-options/header/element-contact.php:29
+msgid "Phone Icon Type"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-contact.php:59
 msgid "Phone"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-contact.php:38
+#: inc/backend/theme-options/header/element-contact.php:76
+msgid "Email Icon Type"
+msgstr ""
+
+#: inc/backend/theme-options/header/element-contact.php:102
 msgid "Email"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-contact.php:46
-msgid "Address"
+#: inc/backend/theme-options/header/element-contact.php:119
+msgid "Address Icon Type"
 msgstr ""
 
-#: inc/backend/theme-options/header/element-contact.php:55
-msgid "Contact Details"
+#: inc/backend/theme-options/header/element-contact.php:147
+msgid "Address"
 msgstr ""
 
 #: inc/backend/theme-options/header/element-offcanvas-main-menu.php:7

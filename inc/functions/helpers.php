@@ -257,7 +257,3 @@ function pp_get_styles( $element ){
 
 	echo $style;
 }
-
-
-
- ?>

@@ -328,7 +328,8 @@
     }
 
     &.flex-right {
-      .dropdown-hover:last-child .dropdown-menu {
+      .dropdown-hover:last-child .dropdown-menu,
+      .dropdown-hover.icon-only:nth-last-child(2) .dropdown-menu {
         left: inherit;
         right: -20px;
       }
