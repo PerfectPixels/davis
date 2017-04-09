@@ -46,6 +46,9 @@ if (get_field('fullwidth') || is_product()) {
 			// Main Navigation
 			get_template_part( 'template-parts/header/navigation' );
 
+			// Botton Header
+			get_template_part( 'template-parts/header/bottom-header' );
+
 			// Botton Bar
 			get_template_part( 'template-parts/header/bottom-bar' );
 

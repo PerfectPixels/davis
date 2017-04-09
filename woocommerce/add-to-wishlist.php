@@ -28,7 +28,7 @@ global $product;
 	    </div>
 
 	    <div class="yith-wcwl-wishlistexistsbrowse <?php echo ( $exists && ! $available_multi_wishlist ) ? 'show' : 'hide' ?>" style="display:<?php echo ( $exists && ! $available_multi_wishlist ) ? 'block' : 'none' ?>">
-	        <a href="<?php echo esc_url( $wishlist_url ); ?>" rel="nofollow" class="<?php echo pp_get_option( 'wishlist_icon_outline' ); ?>" data-toggle="tooltip" data-placement="top" title="<?php echo $already_in_wishslist_text; ?>"></a>
+	        <a href="<?php echo esc_url( $wishlist_url ); ?>" rel="nofollow" class="<?php echo pp_get_option( 'wishlist_icon' ); ?>" data-toggle="tooltip" data-placement="top" title="<?php echo $already_in_wishslist_text; ?>"></a>
 	    </div>
 	    
 	<?php else: ?>

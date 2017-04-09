@@ -53,7 +53,7 @@
 						height: auto;
 						position: absolute;
 						top: 27px;
-						right: -5px !important;
+						right: 0 !important;
 						bottom: 27px;
 						content: "";
 						transform: none;
@@ -384,11 +384,9 @@
 		display: table;
 	}
 
-}
-
-.nav-header.transparent,
-.scrolled .nav-header {
-	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    &.hide-shadow-top {
+      box-shadow: none !important;
+    }
 }
 
 .nav-is-fixed .nav-header {

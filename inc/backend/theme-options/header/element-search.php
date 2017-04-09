@@ -120,5 +120,3 @@ Kirki::add_field( 'pp_theme', array(
 	'priority' => 10,
 	'default'  => '1',
 ) );
-
-?>

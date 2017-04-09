@@ -140,6 +140,8 @@
 
           img.menu-image {
             margin-bottom: 10px;
+            width: 100%;
+            height: auto;
           }
 
         }
@@ -175,6 +177,11 @@
 
         a img {
           display: none;
+        }
+
+        .text-hidden {
+          padding: 0;
+          border-bottom: none;
         }
 
       }
@@ -222,6 +229,7 @@
 
         a {
           padding: 10px 15px !important;
+          width: 100%;
 
           span {
             display: inline-block !important;
@@ -543,18 +551,18 @@ support for no js
 
         }
 
-      }
+        &:after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          right: 50% !important;
+          bottom: 0;
+          height: 2px;
+          display: block;
+          transition: all .3s $cb;
+          z-index: 3;
+        }
 
-      > a:after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        right: 50% !important;
-        bottom: 0;
-        height: 2px;
-        display: block;
-        transition: all .3s $cb;
-        z-index: 3;
       }
 
       &:hover,

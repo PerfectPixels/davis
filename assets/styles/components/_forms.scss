@@ -79,10 +79,10 @@ span.select2-container {
 div.select2-container { width: 100% !important;
 
 	a.select2-choice,
-	a.select2-selection { background: #fff; color: #000; border:1px solid #cbcaca !important; box-shadow: inset 1px -1px 0 #cbcaca; border: none; border-radius: 0 !important; font-size: 12px; font-weight: bold; line-height: 1; height: auto; padding: 22px 10px; margin-bottom: 10px; text-transform: uppercase; text-align: left;
+	a.select2-selection { background: #fff; color: #000; border:1px solid #cbcaca !important; box-shadow: inset 1px -1px 0 #cbcaca; border-radius: 0 !important; font-size: 12px; font-weight: bold; line-height: 1; height: auto; padding: 22px 10px; margin-bottom: 10px; text-transform: uppercase; text-align: left;
 
 		.select2-arrow,
-		.select2-selection__arrow { background: none; border: none; width: 0; height: 0; border:6px solid transparent; border-top-color: #ccc; right: 10px; top: 25px; border-radius: 0; margin: 0;
+		.select2-selection__arrow { background: none;  width: 0; height: 0; border:6px solid transparent; border-top-color: #ccc; right: 10px; top: 25px; border-radius: 0; margin: 0;
 
 			b { display: none; }
 
@@ -116,9 +116,7 @@ div.select2-container-active {
 
 }
 
-div.select2-drop {  margin-top: -2px; }
-
-div.select2-drop.select2-drop-active { border-color: #000 !important; border-left-width: 2px !important;
+div.select2-drop.select2-drop-active { border: none!important; margin: -1px 0 0 -1px; box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2);
 
 	.select2-search { padding: 5px;
 
@@ -126,32 +124,43 @@ div.select2-drop.select2-drop-active { border-color: #000 !important; border-lef
 
 	}
 
+    .select2-results { background: #fff; padding: 0;
+
+      .select2-result {
+
+        .select2-result-label { font-size: 13px; color: #999; text-transform: capitalize; padding: 1px 10px; }
+
+      }
+
+      .select2-highlighted { border-radius: 0;
+
+        .select2-result-label { color: #000; }
+
+      }
+
+    }
+
 }
 
 body.archive {
 
-	div.select2-drop.select2-drop-active { border-color: #ccc !important; border-left-width: 1px !important; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; width: auto !important;
+  div.select2-drop.select2-drop-active { margin: 0; min-width: 180px;
 
-		.select2-results { background: #fff; padding: 0;
+    .select2-results {
 
-			.select2-highlighted { border-radius: 0;
+      .select2-result {
 
-				.select2-result-label { color: #000; }
+        .select2-result-label { font-size: 12px; }
 
-			}
+      }
 
-			.select2-result {
+    }
 
-				.select2-result-label { font-size: 13px; color: #999; text-transform: capitalize; padding: 5px 15px; }
-
-			}
-
-		}
-
-
-	}
+  }
 
 }
+
+
 
 input[type=checkbox] { display: none !important; }
 input[type=checkbox] + label:not(.berocket_label_widgets)  { position: relative; display: inline-block; }

@@ -18,9 +18,9 @@ Kirki::add_field( 'pp_theme', array(
 	'default'     => 'icon',
 	'priority'    => 10,
 	'choices'     => array(
-		'icon-only'   	 => esc_attr__( 'Icon Only', 'davis' ),
-		'icon-label' => esc_attr__( 'Icon with Label', 'davis' ),
-		'label-only'  	 => esc_attr__( 'Label Only', 'davis' ),
+		'icon-only'   	=> esc_attr__( 'Icon Only', 'davis' ),
+		'icon-label'    => esc_attr__( 'Icon with Label', 'davis' ),
+		'label-only'  	=> esc_attr__( 'Label Only', 'davis' ),
 	),
 ) );
 // Icon style

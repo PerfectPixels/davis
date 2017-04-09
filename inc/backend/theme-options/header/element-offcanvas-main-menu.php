@@ -1,6 +1,6 @@
 <?php
 
-global $header_options, $transport;
+global $header_options;
 
 // ACCOUNT
 Kirki::add_section( 'offcanvas_main_menu_element', array(
@@ -175,7 +175,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // OffCanvas Menu Content
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'select',
 	'settings'    => 'offcanvas_main_menu_elements',
 	'label'       => __( 'Content', 'davis' ),

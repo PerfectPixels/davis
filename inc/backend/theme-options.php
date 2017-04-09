@@ -11,7 +11,7 @@ if ( class_exists('Kirki') ) :
 		// array( 'checkout_button', __( 'Checkout Button', 'davis' ) ),
 		array( 'contact', __( 'Contact', 'davis' ), 'contact_element' ),
 		array( 'language_switcher', __( 'Language Menu', 'davis' ) ),
-		array( 'main_menu', __( 'Main Menu', 'davis' ) ),
+		array( 'main_menu', __( 'Main Menu', 'davis' ), 'main_menu' ),
 		array( 'menu_icon', __( 'Offcanvas Main Menu', 'davis' ), 'offcanvas_main_menu_element' ),
 		// array( 'newsletter', __( 'Newsletter', 'davis' ), 'newsletter_element' ),
 		array( 'html_1', __( 'Raw HTML 1', 'davis' ), 'raw_html_element' ),

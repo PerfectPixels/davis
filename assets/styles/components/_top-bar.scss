@@ -7,8 +7,14 @@
 
     > li {
       vertical-align: top !important;
+
+      &.sep {
+        vertical-align: middle !important;
+      }
     }
+
   }
+
 }
 
 .top-bar-is-fixed .navbar-top.navbar-fixed-top {

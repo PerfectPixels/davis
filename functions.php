@@ -12,6 +12,7 @@
 // Setup the theme
 require get_template_directory() . '/inc/setup.php';
 // Functions for woocommerce
+require get_template_directory() . '/inc/functions/helpers.php';
 require get_template_directory() . '/inc/functions/woocommerce.php';
 // Hooks for the cart
 require get_template_directory() . '/inc/frontend/cart.php';
@@ -50,7 +51,6 @@ if ( is_admin() ) {
     require get_template_directory() . '/inc/functions/entries.php';
     require get_template_directory() . '/inc/functions/cart.php';
     require get_template_directory() . '/inc/functions/reviews.php';
-    require get_template_directory() . '/inc/functions/helpers.php';
 
     require get_template_directory() . '/inc/mega-menu/class-mega-menu-walker.php';
 

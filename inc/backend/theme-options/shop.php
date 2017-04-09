@@ -19,17 +19,22 @@ Kirki::add_section( 'section_shop_page', array(
 ) );
 // Page Title
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'shop_page_title',
 	'label'    => __( 'Page Title', 'davis' ),
 	'section'  => 'section_shop_page',
 	'type'     => 'text',
 	'priority' => 10,
 	'default'  => __( 'Shop all products', 'davis' ),
+	'js_vars'   => array(
+		array(
+			'element'  => '.post-type-archive-product .cd-hero-slider h1',
+			'function' => 'html',
+		),
+	)
 ) );
 // Products per row
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'product_per_row',
 	'label'    => __( 'Products per row', 'davis' ),
 	'section'  => 'section_shop_page',
@@ -44,7 +49,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Sidebar
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'shop_sidebar',
 	'label'    => __( 'Shop Sidebar', 'davis' ),
     'description' => __( 'Choose if you want to display the sidebar on the product page and select the type.', 'davis' ),
@@ -60,7 +64,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Product card style
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'product_card_style',
 	'label'    => __( 'Product Card Style', 'davis' ),
     'description' => __( 'Choose between the different product design style.', 'davis' ),
@@ -75,7 +78,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Hide Product details
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'hide_product_details',
 	'label'    => __( 'Product Details', 'davis' ),
     'description' => __( 'Choose if you want to display the product details on hover only.', 'davis' ),
@@ -90,7 +92,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Quickview 
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'quickview_enabled',
 	'label'    => __( 'Enable Quickview', 'davis' ),
     'description' => __( 'Enable Quickview will display a icon in the product details to open a modal.', 'davis' ),
@@ -105,7 +106,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Quickview Layout
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'quickview_layout',
 	'label'    => __( 'Quickview Layout', 'davis' ),
     'description' => __( 'Choose the way you want the image to be displayed.', 'davis' ),
@@ -120,7 +120,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Variations Slider
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'shop_variations_slider',
 	'label'    => __( 'Variations Slider', 'davis' ),
     'description' => __( 'Choose if you want to display the product variations as a slider on the shop pages.', 'davis' ),
@@ -136,7 +135,7 @@ Kirki::add_field( 'pp_theme', array(
 // Last category single variation as product
 /*
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'single_variation_product',
 	'label'    => __( 'Single Variation Product', 'davis' ),
     'description' => __( 'Separate the variations as single standalone products on category pages without subcategories. This is ideal for customers to have the variations slider on the top categories and see all variations at glance when filtering down.', 'davis' ),
@@ -167,7 +166,6 @@ Kirki::add_section( 'section_product_page', array(
 ) );
 // Product images style
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings'    => 'product_style',
 	'label'       => __( 'Product Images Style', 'davis' ),
 	'description' => __( 'Select the way the product is been showcased. (can be overwritten in the product option itself)', 'davis' ),
@@ -187,7 +185,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Fullwidth background color
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'fullwidth_bgcolor',
 	'label'    => __( 'Image container background color', 'davis' ),
 	'description'    => __( 'Color used on behind the images.', 'davis' ),
@@ -212,7 +210,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Product images position
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings'    => 'product_images_position',
 	'label'       => __( 'Product Images Position', 'davis' ),
 	'description' => __( 'Select the which side you want the images to be displayed.', 'davis' ),
@@ -239,7 +236,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Hide Related Product
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'hide_related_product',
 	'label'    => __( 'Related Product', 'davis' ),
 	'section'  => 'section_product_page',
@@ -253,7 +249,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Related Products per row
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'related_product_per_page',
 	'label'    => __( 'Related Products', 'davis' ),
 	'section'  => 'section_product_page',
@@ -284,17 +279,22 @@ Kirki::add_section( 'section_checkout', array(
 ) );
 // Cart Title
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'checkout_cart_title',
 	'label'    => __( 'Cart Title', 'davis' ),
 	'section'  => 'section_checkout',
 	'type'     => 'text',
 	'priority' => 10,
 	'default'  => __( 'Cart Summary', 'davis' ),
+	'js_vars'   => array(
+		array(
+			'element'  => 'aside.offcanvas-cart .cart-header h4',
+			'function' => 'html',
+		),
+	)
 ) );
 // Details Title
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'checkout_details_title',
 	'label'    => __( 'Details Title', 'davis' ),
 	'section'  => 'section_checkout',
@@ -304,7 +304,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Details Subtitle
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'checkout_details_subtitle',
 	'label'    => __( 'Details Subtitle', 'davis' ),
 	'section'  => 'section_checkout',
@@ -314,7 +313,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Shipping Title
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'checkout_shipping_title',
 	'label'    => __( 'Shipping / Payment Title', 'davis' ),
 	'section'  => 'section_checkout',
@@ -324,7 +322,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Shipping Subtitle
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'checkout_shipping_subtitle',
 	'label'    => __( 'Shipping / Payment Subtitle', 'davis' ),
 	'section'  => 'section_checkout',
@@ -334,7 +331,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Review Title
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'checkout_review_title',
 	'label'    => __( 'Review Title', 'davis' ),
 	'section'  => 'section_checkout',
@@ -344,7 +340,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Review Subtitle
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'checkout_review_subtitle',
 	'label'    => __( 'Review Subtitle', 'davis' ),
 	'section'  => 'section_checkout',
@@ -354,7 +349,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Quick Checkout
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'quick_checkout',
 	'label'    => __( 'Quick Checkout', 'davis' ),
     'description' => __( 'Choose if you want a quick checkout available on all pages instead of the default Woocommerce checkout page. PLEASE NOTE: Quick checkout was not tested with all existing plugins that adds/modifies the checkout process or layout. If you find any issues while using it please disable it.', 'davis' ),
@@ -367,5 +361,3 @@ Kirki::add_field( 'pp_theme', array(
 		'off' => esc_attr__( 'Disable', 'davis' ),
 	),
 ) );
-
-?>

@@ -279,4 +279,21 @@ function toolbar_link_to_options( $wp_admin_bar ) {
 }
 add_action( 'admin_bar_menu', 'toolbar_link_to_options', 40 );
 
-?>
+
+/**
+ * Add some style option to head
+ */
+function hook_css() {
+	$header_border = hex2rgba( get_theme_mod( 'header_text_color', '#000000' ), 0.1 );
+	$top_bar_border = hex2rgba( get_theme_mod( 'top_bar_text_color', '#ffffff' ), 0.1 );
+	$bottom_header_border = hex2rgba( get_theme_mod( 'bottom_header_text_color', '#000000' ), 0.1 );
+
+	echo '<style id="options">';
+	echo '.nav-header .menu-item-has-children > .sub-menu, .nav-header .square-border.mega-nav.menu-item-has-children .mega-menu > .row > li, .nav-header .line-border.mega-nav.menu-item-has-children .mega-menu > .row > li:after, .nav-header .dropdown-hover .dropdown-menu { border-color: ' . $header_border . ' !important; }';
+	echo '.navbar-top .main-menu-item > .sub-menu, .navbar-top .square-border.mega-nav.menu-item-has-children .mega-menu > .row > li, .navbar-top .line-border.mega-nav.menu-item-has-children .mega-menu > .row > li:after, .navbar-top .dropdown-hover .dropdown-menu { border-color: ' . $top_bar_border . ' !important; }';
+	echo '.navbar-bottom .main-menu-item > .sub-menu, .navbar-bottom .square-border.mega-nav.menu-item-has-children .mega-menu > .row > li, .navbar-bottom .line-border.mega-nav.menu-item-has-children .mega-menu > .row > li:after, .navbar-bottom .dropdown-hover .dropdown-menu { border-color: ' . $bottom_header_border . ' !important; }';
+	echo '</style>';
+}
+add_action('wp_head', 'hook_css');
+
+

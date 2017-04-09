@@ -139,17 +139,31 @@
 					//submenu items - go back link
 					$( '.go-back' ).on( 'click' , function( event ){
 						event.preventDefault();
+
 						var $parent		= $( this ).parent( 'ul' ),
 							$prevMenu 	= $parent.parent( '.menu-item-has-children' ).closest( 'ul' ),
-							prevMenuH 	= parseInt( $prevMenu.attr( 'data-height' ) ),
-							screenSize 	= PP.method.checkWindowWidth();
+							prevMenuH 	= parseInt( $prevMenu.attr( 'data-height' ) );
 
-						$parent.addClass( 'is-hidden' ).prev().removeClass('selected');
-						$prevMenu.removeClass( 'moves-out' );
+						$parent.addClass( 'is-hidden' ).removeClass('is-visible').prev().removeClass('selected');
+						$prevMenu.removeClass( 'moves-out' ).addClass( 'is-visible' );
 
-						// Only for desktop
+						if ( isNaN( prevMenuH ) ){
+                            prevMenuH = 'auto';
+                        }
+
 						if ( $prevMenu.parents( '.row' ).length > 0 ){
-							$prevMenu.parents( '.row' ).css( 'height', prevMenuH + 100 );
+                            var $row = $prevMenu.parents( '.row' ),
+                                changeH = true;
+
+                            $row.find( '.sub-menu.is-visible' ).each( function() {
+                                var thisH = $( this ).data( 'height' );
+
+                                if ( thisH > prevMenuH ) {
+                                    prevMenuH = thisH;
+                                }
+                            });
+
+                            $row.css('height', prevMenuH + 40);
 						} else {
 							$prevMenu.parents('.simple-nav').find(' > .sub-menu' ).css( 'height', prevMenuH + 40 );
 						}
@@ -213,7 +227,7 @@
 								}
 							});
 
-							$(this).css( 'height', h + 100 );
+							$(this).css( 'height', h + 40 );
 						}
 					});
 				},
@@ -225,11 +239,21 @@
 						var $nextMenu = selected.addClass( 'selected' ).next( 'ul' ),
 							nextMenuH = parseInt( $nextMenu.attr( 'data-height' ) );
 
-						$nextMenu.removeClass( 'is-hidden' ).end().parent( '.menu-item-has-children' ).closest( 'ul' ).addClass( 'moves-out' );
+						$nextMenu.removeClass( 'is-hidden' ).addClass( 'is-visible' ).end().parent( '.menu-item-has-children' ).closest( 'ul' ).addClass( 'moves-out' ).removeClass( 'is-visible' );
 
-						// Change the height of the menu - Only for desktop
+						// Change the height of the menu
 						if ( $nextMenu.parents( '.row' ).length > 0 ){
-							$nextMenu.parents( '.row' ).css( 'height', nextMenuH + 100 );
+                            var $row = $nextMenu.parents( '.row' );
+
+                            $row.find( '.sub-menu.is-visible' ).each( function() {
+                                var thisH = $( this ).data( 'height' );
+
+                                if ( thisH > nextMenuH ) {
+                                    nextMenuH = thisH;
+                                }
+                            });
+
+                            $row.css('height', nextMenuH + 40);
 						} else {
 							$nextMenu.parents('.simple-nav').find(' > .sub-menu' ).css( 'height', nextMenuH + 40 );
 						}
@@ -281,10 +305,20 @@
 				// Give a height to all submenus
 				calSubmenuHeight: function(){
 
-					$( '.menu-item-has-children ul .sub-menu' ).each( function(){
-						var $el = $( this );
+					$( '.navbar-top, .nav-header, .navbar-bottom' ).find( '.menu-item-has-children ul .sub-menu' ).each( function(){
+						var $el = $( this ),
+                            $colTitle = $el.parents( '.row' ).find( '> li > a.menu-link'),
+                            submenuH = 0;
 
-						$el.attr( 'data-height', $el.outerHeight() );
+						if ( $colTitle.length > 0 ){
+						    submenuH = $colTitle.outerHeight();
+
+						    if ( $colTitle.find( 'img').length > 0 ){
+						        submenuH += $colTitle.find( 'img').outerHeight();
+                            }
+                        }
+
+						$el.attr( 'data-height', submenuH + $el.outerHeight() );
 					});
 
 				},
@@ -293,13 +327,13 @@
 				wrapSubmenu: function(){
 					var counter = 0;
 
-					$( '.menu-item-has-children > ul.mega-menu > li[class*="col-md"]' ).each( function(){
+					$( '.navbar-top, .nav-header, .navbar-bottom' ).find( '.menu-item-has-children > ul.mega-menu > li[class*="col-md"]' ).each( function(){
 						var $el = $( this ),
-							count = parseInt( PP.method.global.getStrBetween($el.attr('class'), 'col-md-', ' ') );
+							count = parseInt( PP.method.global.getStrBetween( $el.attr('class'), 'col-md-', ' ' ) );
 
 						// Add the open wrapper element
 						if (counter == 0){
-							$('<span class="row" />').insertBefore($el);
+							$('<span class="row" />').insertBefore( $el );
 						}
 
 						counter += count;
@@ -312,7 +346,7 @@
 
 							// Check if the next element goes above 12
 							if ($nextEl.length > 0){
-								var nextCount = parseInt( PP.method.global.getStrBetween($nextEl.attr('class'), 'col-md-', ' ') );
+								var nextCount = parseInt( PP.method.global.getStrBetween( $nextEl.attr('class'), 'col-md-', ' ' ) );
 
 								if ( counter + nextCount > 12 ){
 									counter = 0;
@@ -368,11 +402,12 @@
 
 					this.centerLogo();
                     this.wrapSubmenu();
-					this.calSubmenuHeight();
-					this.megaMenuHeight();
 					this.regEventHandlers();
 					this.navHorizontalScroll();
 					this.stickyHeader( true );
+
+                    PP.method.navigation.calSubmenuHeight();
+                    PP.method.navigation.megaMenuHeight();
 
                     $('.nav-is-fixed .nav-header, .bottom-bar-is-fixed header.bottom').fixedsticky();
 
@@ -1535,7 +1570,7 @@
 
 							// Replace the top bar wishlist icon
 							if ( $wl.length > 0 ){
-                                $wl.load(document.URL + ' li.action-button.wishlist > *', function(){
+                                $wl.html().load(document.URL + ' li.action-button.wishlist > *', function(){
 									PP.method.global.loading($container, 'close');
 								});
 							}
@@ -3651,7 +3686,7 @@
 			finalize: function() {
 				// JavaScript to be fired on the home page, after the init JS
 			}
-		},
+		}
 	};
 
 	// The routing fires all common scripts, followed by the page specific scripts.

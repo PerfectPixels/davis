@@ -1,6 +1,6 @@
 <?php
 
-global $transport, $primary_color;
+global $primary_color;
 
 // TOP BAR
 Kirki::add_section( 'top_bar', array(
@@ -11,7 +11,6 @@ Kirki::add_section( 'top_bar', array(
 ) );
 // Fixed top bar
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'settings' => 'fixed_top_bar',
 	'label'    => __( 'Sticky Top Bar', 'davis' ),
 	'section'  => 'top_bar',
@@ -31,14 +30,14 @@ Kirki::add_field( 'pp_theme', array(
 	'default'  => '#000000',
 	'js_vars'   => array(
 		array(
-			'element'  => array( '.navbar-top', '.navbar-top ul.sub-menu', '.navbar-top .dropdown-hover .dropdown-menu' ),
+			'element'  => array( '.navbar-top', '.navbar-top > ul > li > .sub-menu', '.navbar-top .dropdown-hover .dropdown-menu' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
 	),
 	'output' => array(
 		array(
-			'element'  => array( '.navbar-top', '.navbar-top ul.sub-menu', '.navbar-top .dropdown-hover .dropdown-menu' ),
+			'element'  => array( '.navbar-top', '.navbar-top > ul > li > .sub-menu', '.navbar-top .dropdown-hover .dropdown-menu' ),
 			'property' => 'background-color',
 		),
 	),
@@ -61,7 +60,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-top .contact-details a:after', '.navbar-top .go-back > a:before', '.navbar-top .go-back > a:after', '.navbar-top .menu-item-has-children > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .icon-badge span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-top .sep', '.navbar-top .contact-details a:after', '.navbar-top .go-back > a:before', '.navbar-top .go-back > a:after', '.navbar-top .menu-item-has-children > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .icon-badge span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -79,7 +78,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-top .contact-details a:after', '.navbar-top .go-back > a:before', '.navbar-top .go-back > a:after', '.navbar-top .menu-item-has-children > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .icon-badge span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-top .sep', '.navbar-top .contact-details a:after', '.navbar-top .go-back > a:before', '.navbar-top .go-back > a:after', '.navbar-top .menu-item-has-children > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .icon-badge span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
 			'property' => 'background-color',
 		),
 		array(
@@ -164,4 +163,20 @@ Kirki::add_field( 'pp_theme', array(
 	),
 ) );
 
-?>
+function pp_element_top_bar_partials( WP_Customize_Manager $wp_customize ) {
+	// Abort if selective refresh is not available.
+	if ( ! isset( $wp_customize->selective_refresh ) ) {
+		return;
+	}
+
+	$wp_customize->selective_refresh->add_partial( 'top_bar', array(
+		'selector' => '#options',
+		'settings' => array( 'top_bar_text_color' ),
+		'render_callback' => function() {
+			$rgba_color = hex2rgba( get_theme_mod( 'top_bar_text_color', '#ffffff' ), 0.1 );
+
+			return '.navbar-top .main-menu-item > .sub-menu, .navbar-top .square-border.mega-nav.menu-item-has-children .mega-menu > .row > li, .navbar-top .line-border.mega-nav.menu-item-has-children .mega-menu > .row > li:after, .navbar-top .dropdown-hover .dropdown-menu { border-color: ' . $rgba_color . ' !important; }';
+		},
+	) );
+}
+add_action( 'customize_register', 'pp_element_top_bar_partials' );

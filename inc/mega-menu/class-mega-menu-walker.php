@@ -57,8 +57,9 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 
         $classes = array(
             'sub-menu is-hidden',
+	        ( get_theme_mod( 'megamenu_fullwidth', false ) == true ? 'fullwidth' : ''),
             ( $depth == 0 && $mega_menu ? 'mega-menu' : ''),
-            ( $depth > 2 && $mega_menu ? 'is-hidden' : '' )
+            ( $depth == 1 ? 'is-visible' : '')
         );
         $class_names = implode( ' ', $classes );
 
@@ -72,14 +73,17 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 				$style .= ' background-repeat:' . $img_background['repeat'] . ';';
 				$style .= ' background-size:' . $img_background['size'] . ';"';
 	        } else {
-				$img = wp_get_attachment_image( $attachment_id, $img_size, false, array('class' => 'menu-image', 'style' => 'top:'.$img_pos['top'].'; right:'.$img_pos['right'].'; bottom:'.$img_pos['bottom'].'; left:'.$img_pos['left'].';') );
+				$img_style = '';
+				if ( $img_pos ){ $img_style = 'top:'.$img_pos['top'].'; right:'.$img_pos['right'].'; bottom:'.$img_pos['bottom'].'; left:'.$img_pos['left'].';'; }
+
+				$img = wp_get_attachment_image( $attachment_id, $img_size, false, array('class' => 'menu-image', 'style' => $img_style) );
 			}
 		}
 
 		$back_btn = '<li class="go-back"><a href="#0">' . __('Back', 'davis') . '</a></li>';
 
         // Build HTML for output.
-        $output .= "\n" . $indent . '<ul class="' . $class_names . '"' . $style . '>' .$img . $back_btn . "\n";
+        $output .= "\n" . $indent . '<ul class="' . $class_names . '"' . $style . '>' . $back_btn . "\n";
     }
 
 	/**
@@ -154,7 +158,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 		}
 
         // List item classes
-        $li_class .= $depth == 0 ? 'main-menu-item primary-nav-item ' : 'sub-menu-item ';
+        $li_class .= $depth == 0 ? 'main-menu-item primary-nav-item ' . get_theme_mod( 'submenu_border_style', 'square' ) . '-border ' . ' ' : 'sub-menu-item ';
         $li_class .= $depth == 1 ? $this->column . ' ' : '';
         $li_class .= $depth == 0 && !$this->mega ? 'simple-nav ' : '';
         $li_class .= $depth == 0 && $this->mega ? 'mega-nav ' : '';

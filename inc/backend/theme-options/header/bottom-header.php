@@ -59,7 +59,7 @@ Kirki::add_field( 'pp_theme', array(
 	'default'  => '#ffffff',
 	'js_vars'  => array(
 		array(
-			'element'  => array( '.navbar-bottom', '.navbar-bottom ul.sub-menu', '.navbar-bottom .dropdown-hover .dropdown-menu' ),
+			'element'  => array( '.navbar-bottom', '.navbar-bottom > ul > li > .sub-menu', '.navbar-bottom .dropdown-hover .dropdown-menu' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -72,7 +72,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'output' => array(
 		array(
-			'element'  => array( '.navbar-bottom', '.navbar-bottom ul.sub-menu', '.navbar-bottom .dropdown-hover .dropdown-menu' ),
+			'element'  => array( '.navbar-bottom', '.navbar-bottom > ul > li > .sub-menu', '.navbar-bottom .dropdown-hover .dropdown-menu' ),
 			'property' => 'background-color',
 		),
 		array(
@@ -101,7 +101,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-bottom .sep', '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -119,7 +119,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-bottom .sep', '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
 			'property' => 'background-color',
 		),
 		array(
@@ -203,3 +203,21 @@ Kirki::add_field( 'pp_theme', array(
 		),
 	),
 ) );
+
+function pp_element_bottom_header_partials( WP_Customize_Manager $wp_customize ) {
+	// Abort if selective refresh is not available.
+	if ( ! isset( $wp_customize->selective_refresh ) ) {
+		return;
+	}
+
+	$wp_customize->selective_refresh->add_partial( 'bottom_header', array(
+		'selector' => '#options',
+		'settings' => array( 'bottom_header_text_color' ),
+		'render_callback' => function() {
+			$rgba_color = hex2rgba( get_theme_mod( 'bottom_header_text_color', '#000000' ), 0.1 );
+
+			return '.navbar-bottom .main-menu-item > .sub-menu, .navbar-bottom .square-border.mega-nav.menu-item-has-children .mega-menu > .row > li, .navbar-bottom .line-border.mega-nav.menu-item-has-children .mega-menu > .row > li:after, .navbar-bottom .dropdown-hover .dropdown-menu { border-color: ' . $rgba_color . ' !important; }';
+		},
+	) );
+}
+add_action( 'customize_register', 'pp_element_bottom_header_partials' );

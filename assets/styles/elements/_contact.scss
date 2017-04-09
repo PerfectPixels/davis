@@ -32,4 +32,17 @@
     }
   }
 
+  &.label-only {
+
+    a,
+    span {
+
+      &:before {
+        display: none;
+      }
+
+    }
+
+  }
+
 }

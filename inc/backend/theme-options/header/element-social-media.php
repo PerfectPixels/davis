@@ -1,7 +1,5 @@
 <?php
 
-global $transport;
-
 // Add the Header panel
 Kirki::add_section( 'social_media', array(
     'title'          => __( 'Social Media', 'davis' ),
@@ -11,7 +9,7 @@ Kirki::add_section( 'social_media', array(
 
 // Facebook
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'facebook',
 	'label'    => __( 'Facebook', 'davis' ),
 	'section'  => 'social_media',
@@ -21,7 +19,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Twitter
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'twitter',
 	'label'    => __( 'Twitter', 'davis' ),
 	'section'  => 'social_media',
@@ -31,7 +29,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Facebook
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'google',
 	'label'    => __( 'Google Plus', 'davis' ),
 	'section'  => 'social_media',
@@ -41,7 +39,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Facebook
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'instagram',
 	'label'    => __( 'Instagram', 'davis' ),
 	'section'  => 'social_media',
@@ -51,7 +49,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Facebook
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'settings' => 'pinterest',
 	'label'    => __( 'Pinterest', 'davis' ),
 	'section'  => 'social_media',
@@ -75,5 +73,3 @@ function pp_social_media_partials( WP_Customize_Manager $wp_customize ) {
 	) );
 }
 add_action( 'customize_register', 'pp_social_media_partials' );
-
-?>

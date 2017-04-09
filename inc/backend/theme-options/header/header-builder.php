@@ -1,6 +1,6 @@
 <?php
 
-global $header_options, $transport;
+global $header_options;
 
 // Add the Header panel
 Kirki::add_section( 'header_builder', array(
@@ -12,7 +12,6 @@ Kirki::add_section( 'header_builder', array(
 
 // Desktop Top Bar
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'custom',
 	'settings'    => 'header_builder_title_1',
 	'section'     => 'header_builder',
@@ -21,7 +20,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Desktop Top Bar - Left Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'top_bar_left_area',
 	'label'       => __( 'Top Bar Left Area', 'davis' ),
@@ -33,7 +32,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Desktop Top Bar - Center Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'top_bar_center_area',
 	'label'       => __( 'Top Bar Center Area', 'davis' ),
@@ -45,7 +44,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Desktop Top Bar - Right Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'top_bar_right_area',
 	'label'       => __( 'Top Bar Right Area', 'davis' ),
@@ -58,7 +57,6 @@ Kirki::add_field( 'pp_theme', array(
 
 // Desktop Main Header
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'custom',
 	'settings'    => 'header_builder_title_2',
 	'section'     => 'header_builder',
@@ -67,7 +65,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Desktop Main Header - Left Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'main_header_left_area',
 	'label'       => __( 'Main Header Left Area', 'davis' ),
@@ -79,7 +77,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Desktop Main Header - Right Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'main_header_right_area',
 	'label'       => __( 'Main Header Right Area', 'davis' ),
@@ -92,7 +90,6 @@ Kirki::add_field( 'pp_theme', array(
 
 // Desktop Bottom Header
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'custom',
 	'settings'    => 'header_builder_title_3',
 	'section'     => 'header_builder',
@@ -101,7 +98,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Desktop Bottom Header - Left Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'bottom_header_left_area',
 	'label'       => __( 'Bottom Header Left Area', 'davis' ),
@@ -113,7 +110,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Desktop Bottom Header - Center Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'bottom_header_center_area',
 	'label'       => __( 'Bottom Header Center Area', 'davis' ),
@@ -125,7 +122,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Desktop Bottom Header - Right Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'bottom_header_right_area',
 	'label'       => __( 'Bottom Header Right Area', 'davis' ),
@@ -139,7 +136,6 @@ Kirki::add_field( 'pp_theme', array(
 
 // Tablet Top Bar
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'custom',
 	'settings'    => 'header_builder_title_4',
 	'section'     => 'header_builder',
@@ -148,7 +144,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Tablet Top Bar - Left Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'tablet_top_bar_left_area',
 	'label'       => __( 'Tablet Top Bar Left Area', 'davis' ),
@@ -160,7 +156,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Tablet Top Bar - Right Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'tablet_top_bar_right_area',
 	'label'       => __( 'Tablet Top Bar Right Area', 'davis' ),
@@ -173,7 +169,6 @@ Kirki::add_field( 'pp_theme', array(
 
 // Tablet Main Header
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'custom',
 	'settings'    => 'header_builder_title_5',
 	'section'     => 'header_builder',
@@ -182,7 +177,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Tablet Main Header - Left Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'tablet_main_header_left_area',
 	'label'       => __( 'Tablet Main Header Left Area', 'davis' ),
@@ -194,7 +189,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Tablet Main Header - Right Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'tablet_main_header_right_area',
 	'label'       => __( 'Tablet Main Header Right Area', 'davis' ),
@@ -208,7 +203,6 @@ Kirki::add_field( 'pp_theme', array(
 
 // Mobile Top Bar
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'custom',
 	'settings'    => 'header_builder_title_6',
 	'section'     => 'header_builder',
@@ -217,7 +211,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Mobile Top Bar
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'mobile_top_bar_area',
 	'label'       => __( 'Mobile Top Bar Left Area', 'davis' ),
@@ -228,7 +222,6 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Mobile Main Header
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'custom',
 	'settings'    => 'header_builder_title_7',
 	'section'     => 'header_builder',
@@ -237,7 +230,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Mobile Main Header - Left Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'mobile_main_header_left_area',
 	'label'       => __( 'Mobile Main Header Left Area', 'davis' ),
@@ -249,7 +242,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Mobile Main Header - Right Area
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'mobile_main_header_right_area',
 	'label'       => __( 'Mobile Main Header Right Area', 'davis' ),
@@ -262,7 +255,6 @@ Kirki::add_field( 'pp_theme', array(
 
 // Mobile Bottom Bar
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
 	'type'        => 'custom',
 	'settings'    => 'header_builder_title_8',
 	'section'     => 'header_builder',
@@ -271,7 +263,7 @@ Kirki::add_field( 'pp_theme', array(
 ) );
 // Mobile Bottom Bar
 Kirki::add_field( 'pp_theme', array(
-	'transport'	  => $transport,
+	'transport'	  => 'postMessage',
 	'type'        => 'select',
 	'settings'    => 'mobile_bottom_bar_area',
 	'label'       => __( 'Mobile Bottom Bar Area', 'davis' ),
@@ -282,4 +274,47 @@ Kirki::add_field( 'pp_theme', array(
 	'choices'     => $header_options,
 ) );
 
-?>
+
+function pp_header_builder_partials( WP_Customize_Manager $wp_customize ) {
+	// Abort if selective refresh is not available.
+	if ( ! isset( $wp_customize->selective_refresh ) ) {
+		return;
+	}
+
+	$wp_customize->selective_refresh->add_partial( 'top_bar_builder', array(
+		'selector' => '.navbar-top',
+		'container_inclusive' => true,
+		'settings' => array( 'top_bar_left_area', 'top_bar_center_area', 'top_bar_right_area', 'tablet_top_bar_left_area', 'tablet_top_bar_right_area', 'mobile_top_bar_area' ),
+		'render_callback' => function() {
+			return get_template_part( 'template-parts/header/top-bar' );
+		},
+	) );
+
+	$wp_customize->selective_refresh->add_partial( 'main_header_builder', array(
+		'selector' => '.nav-header ',
+		'container_inclusive' => true,
+		'settings' => array( 'main_header_left_area', 'main_header_right_area', 'tablet_main_header_left_area', 'tablet_main_header_right_area', 'mobile_main_header_left_area', 'mobile_main_header_right_area' ),
+		'render_callback' => function() {
+			return get_template_part( 'template-parts/header/navigation' );
+		},
+	) );
+
+	$wp_customize->selective_refresh->add_partial( 'bottom_header_builder', array(
+		'selector' => 'header.bottom',
+		'container_inclusive' => true,
+		'settings' => array( 'bottom_header_left_area', 'bottom_header_center_area', 'bottom_header_right_area' ),
+		'render_callback' => function() {
+			return get_template_part( 'template-parts/header/bottom-header' );
+		},
+	) );
+
+	$wp_customize->selective_refresh->add_partial( 'bottom_bar_builder', array(
+		'selector' => '.navbar-mobile-bottom',
+		'container_inclusive' => true,
+		'settings' => array( 'mobile_bottom_bar_area' ),
+		'render_callback' => function() {
+			return get_template_part( 'template-parts/header/bottom-bar' );
+		},
+	) );
+}
+add_action( 'customize_register', 'pp_header_builder_partials' );

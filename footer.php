@@ -9,105 +9,67 @@
  * @package Davis
  */
 
-global $woocommerce_active;
-
-$footer_sidebar = false;
-
-if ( $woocommerce_active ) {
-	$footer_sidebar_type = get_theme_mod('footer_sidebar', 'products_pages');
-
-	switch( $footer_sidebar_type ){
-		case 'products_pages';
-			if ( is_shop() || is_product_category() || is_product() ){
-				$footer_sidebar = true;
-			}
-			break;
-		case 'product';
-			if ( is_product() ){
-				$footer_sidebar = true;
-			}
-			break;
-		case 'all';
-			$footer_sidebar = true;
-			break;
-		case 'no';
-			$footer_sidebar = false;
-			break;
-	}
-}
-
 $sidebar = (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mod('shop_sidebar', 'no');
 
 ?>
 
-	</main>
+        </main>
 
-	<?php if (display_sidebar() && $sidebar) : ?>
-		<?php get_sidebar(); ?>
-	<?php endif; ?>
+        <?php if (display_sidebar() && $sidebar) : ?>
+            <?php get_sidebar(); ?>
+        <?php endif; ?>
 
-</div>
+    </div>
 
-<?php if ( !is_quick_checkout() ){ ?>
+    <?php if ( !is_quick_checkout() ){
 
-	<?php if ($footer_sidebar) :
-		get_template_part("template-parts/sidebar-footer");
-	endif; ?>
+	    pp_can_display( 'sidebar_footer' ); ?>
 
-	<footer id="footer">
+        <footer id="footer">
 
-		<?php if (  get_theme_mod('footer_sidebar_bottom', true) == true ){ ?>
-			<aside class="bottom-widgets">
-				<div class="container">
-				    <?php dynamic_sidebar('sidebar-footer-bottom'); ?>
-				</div>
-			</aside>
-		<?php } ?>
+            <?php if (  get_theme_mod('footer_sidebar_bottom', true) == true ){ ?>
+                <aside class="bottom-widgets">
+                    <div class="container">
+                        <?php dynamic_sidebar('sidebar-footer-bottom'); ?>
+                    </div>
+                </aside>
+            <?php } ?>
 
-	    <div class="container-fluid footer_bottom">
-	        <div class="container">
-	            <div class="col-md-4 footer_copyrights">
-	                <p><?php echo get_theme_mod('copyright_text'); ?></p>
-	            </div>
-				<div class="col-md-8 footer_nav">
-	                <?php if ( get_theme_mod('footer_social', false) == true ) { ?>
-	                	<ul id="footer-social">
-				    		<?php get_template_part( 'template-parts/social', 'icons' ); ?>
-	                	</ul>
-					<?php } ?>
+            <div class="container-fluid footer_bottom">
+                <div class="container">
+                    <div class="col-md-4 footer_copyrights">
+                        <p><?php echo get_theme_mod('copyright_text'); ?></p>
+                    </div>
+                    <div class="col-md-8 footer_nav">
+                        <?php if ( get_theme_mod('footer_social', false) == true ) { ?>
+                            <ul id="footer-social">
+                                <?php get_template_part( 'template-parts/header/elements/social-media' ); ?>
+                            </ul>
+                        <?php } ?>
 
-		        	<?php if ( has_nav_menu('footer_navigation') ) {
-				    	wp_nav_menu(['theme_location' => 'footer_navigation']);
-					} ?>
-				</div>
-	        </div>
+                        <?php if ( has_nav_menu('footer_navigation') ) {
+                            wp_nav_menu(['theme_location' => 'footer_navigation']);
+                        } ?>
+                    </div>
+                </div>
 
-	    </div>
-	</footer>
+            </div>
+        </footer>
 
-	<div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-labelledby="message-modal">
-		<div class="modal-dialog container" role="document">
-			<div class="content"></div>
-			<a class="button" data-dismiss="modal">OK</a>
-		</div>
-	</div>
+        <div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-labelledby="message-modal">
+            <div class="modal-dialog container" role="document">
+                <div class="content"></div>
+                <a class="button" data-dismiss="modal">OK</a>
+            </div>
+        </div>
 
-	<div class="nav-overlay"></div>
+        <div class="nav-overlay"></div>
 
-	<?php if ( $woocommerce_active ) { ?>
-		<?php if ( !is_user_logged_in() ) { ?>
-			<div class="modal fade login-modal" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal">
-				<div class="modal-dialog container <?php echo get_theme_mod('login_style', 'left_img'); ?>" role="document">
-					<?php wc_get_template( 'myaccount/form-login.php' ); ?>
-					<a class="icon-close" data-dismiss="modal"></a>
-				</div>
-			</div>
-		<?php } ?>
-	<?php } ?>
+        <?php wc_get_template_part( 'template-parts/login-modal' ); ?>
 
-<?php } ?>
+    <?php } ?>
 
-<?php wp_footer(); ?>
+    <?php wp_footer(); ?>
 
-</body>
+    </body>
 </html>

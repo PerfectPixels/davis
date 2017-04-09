@@ -1,6 +1,6 @@
 <?php
 
-// ACCOUNT
+// CONTACT
 Kirki::add_section( 'contact_element', array(
     'title'          => __( 'Contact', 'davis' ),
     'panel'          => 'panel_header',
@@ -16,9 +16,9 @@ Kirki::add_field( 'pp_theme', array(
 	'default'     => 'icon_label',
 	'priority'    => 10,
 	'choices'     => array(
-		'icon'   	 => esc_attr__( 'Icon Only', 'davis' ),
+		'icon-only'  => esc_attr__( 'Icon Only', 'davis' ),
 		'icon_label' => esc_attr__( 'Icon with Label', 'davis' ),
-		'label'  	 => esc_attr__( 'Label Only', 'davis' ),
+		'label-only' => esc_attr__( 'Label Only', 'davis' ),
 	),
 ) );
 // Icon style

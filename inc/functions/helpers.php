@@ -30,9 +30,7 @@ function pp_get_header_elements( $section, $default = '' ){
                     pp_get_menu('primary_navigation');
                 }
             } else if ( $val == 'separator_1' || $val == 'separator_2' || $val == 'separator_3' || $val == 'separator_4' ) {
-				echo '<span class="sep"></span>';
-			} else if ( $val == 'html' || $val == 'html-2' || $val == 'html-3' || $val == 'html-4' || $val == 'html-5' ) {
-				echo pp_get_html_element( $val );
+				echo '<li class="sep"></li>';
 			} else if ( $val == 'wpml' ) {
 				get_template_part( 'template-parts/header/element/languages' );
 			} else {
@@ -66,6 +64,37 @@ function pp_can_display( $element ){
     } else if ( $element === 'top_bar' ){
 	    if ( get_theme_mod( 'top_bar_left_area' ) || get_theme_mod( 'top_bar_center_area' ) || get_theme_mod( 'top_bar_right_area' ) || get_theme_mod( 'tablet_top_bar_left_area' ) || get_theme_mod( 'tablet_top_bar_right_area' ) || get_theme_mod( 'mobile_top_bar_area' ) ){
 		    $output = true;
+	    }
+    } else if ( $element === 'sidebar_footer' ){
+	    global $woocommerce_active;
+
+	    $footer_sidebar = false;
+
+	    if ( $woocommerce_active ) {
+		    $footer_sidebar_type = get_theme_mod('footer_sidebar', 'products_pages');
+
+		    switch( $footer_sidebar_type ){
+			    case 'products_pages';
+				    if ( is_shop() || is_product_category() || is_product() ){
+					    $footer_sidebar = true;
+				    }
+				    break;
+			    case 'product';
+				    if ( is_product() ){
+					    $footer_sidebar = true;
+				    }
+				    break;
+			    case 'all';
+				    $footer_sidebar = true;
+				    break;
+			    case 'no';
+				    $footer_sidebar = false;
+				    break;
+		    }
+	    }
+
+	    if ($footer_sidebar) {
+		    $output = get_template_part( "template-parts/sidebar-footer" );
 	    }
     }
 
@@ -119,12 +148,10 @@ function pp_get_classes( $element ){
 
 		case 'main-header':
 			if ( get_field( 'transparent_header' ) ) { $classes[] = 'transparent'; }
+			if ( get_theme_mod( 'main_header_border', true ) == true ) { $classes[] = 'shadow'; }
+			if ( get_theme_mod( 'main_header_hide_border', true ) == true ) { $classes[] = 'hide-shadow-top'; }
 			$classes[] = get_theme_mod( 'content_pos', 'left' ) . '_content';
 			$classes[] = get_theme_mod( 'logo_position_desktop', 'left' );
-			break;
-
-		case 'megamenu':
-			if ( get_theme_mod( 'megamenu_fullwidth', false ) == true ) { $classes[] = 'fullwidth'; }
 			break;
 
         case 'button_1':
@@ -135,10 +162,6 @@ function pp_get_classes( $element ){
         case 'button_2':
             if ( get_theme_mod( 'button_2_outlined', false ) == true ) { $classes[] = 'outlined'; }
             $classes[] = get_theme_mod( 'button_2_type', 'rounded' );
-            break;
-
-        case 'contact':
-            $classes[] = get_theme_mod( 'contact_style', 'icon_label' );
             break;
 
 		case 'cart-icon':
@@ -256,4 +279,50 @@ function pp_get_styles( $element ){
 	}
 
 	echo $style;
+}
+
+/**
+ * Get header styles
+ *
+ * @access public
+ * @param string $color
+ * @param mixed $opacity
+ * @return string $output
+ */
+function hex2rgba($color, $opacity = false) {
+
+	$default = 'rgb(0,0,0)';
+
+	//Return default if no color provided
+	if(empty($color))
+		return $default;
+
+	//Sanitize $color if "#" is provided
+	if ($color[0] == '#' ) {
+		$color = substr( $color, 1 );
+	}
+
+	//Check if color has 6 or 3 characters and get values
+	if (strlen($color) == 6) {
+		$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+	} elseif ( strlen( $color ) == 3 ) {
+		$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+	} else {
+		return $default;
+	}
+
+	//Convert hexadec to rgb
+	$rgb =  array_map('hexdec', $hex);
+
+	//Check if opacity is set(rgba or rgb)
+	if($opacity){
+		if(abs($opacity) > 1)
+			$opacity = 1.0;
+		$output = 'rgba('.implode(",",$rgb).','.$opacity.')';
+	} else {
+		$output = 'rgb('.implode(",",$rgb).')';
+	}
+
+	//Return rgb(a) color string
+	return $output;
 }
