@@ -63,7 +63,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
         );
         $class_names = implode( ' ', $classes );
 
-        if ( $img_background ){
+        if ( ! empty($img_background['image']) ){
 			$attachment_id = get_attachment_id( $img_background['image'] );
 			$img_src = wp_get_attachment_image_src( $attachment_id, $img_size, false );
 
@@ -74,7 +74,10 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 				$style .= ' background-size:' . $img_background['size'] . ';"';
 	        } else {
 				$img_style = '';
-				if ( $img_pos ){ $img_style = 'top:'.$img_pos['top'].'; right:'.$img_pos['right'].'; bottom:'.$img_pos['bottom'].'; left:'.$img_pos['left'].';'; }
+
+				if ( $img_pos ){
+				    $img_style = 'top:'.$img_pos['top'].'; right:'.$img_pos['right'].'; bottom:'.$img_pos['bottom'].'; left:'.$img_pos['left'].';';
+				}
 
 				$img = wp_get_attachment_image( $attachment_id, $img_size, false, array('class' => 'menu-image', 'style' => $img_style) );
 			}
@@ -83,7 +86,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$back_btn = '<li class="go-back"><a href="#0">' . __('Back', 'davis') . '</a></li>';
 
         // Build HTML for output.
-        $output .= "\n" . $indent . '<ul class="' . $class_names . '"' . $style . '>' . $back_btn . "\n";
+        $output .= "\n" . $indent . '<ul class="' . $class_names . '"' . $style . '>' . $img . $back_btn . "\n";
     }
 
 	/**
@@ -134,7 +137,6 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
         $li_class 	= '';
 		$badge		= '';
 		$img		= '';
-		$img_src	= '';
 
 		// Save the parent post meta mega menu
 		if ( ! $depth ) {
@@ -168,18 +170,19 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
         $li_class .= $hide_mobile ? 'hide-text-mobile ' : '';
 
 		// Get image
-		if ( $img_background && $depth > 0 ){
+		if ( ! empty($img_background['image']) && $depth > 0 ){
 			$attachment_id 	= get_attachment_id( $img_background['image'] );
 	        $img 			= wp_get_attachment_image( $attachment_id, $img_size, false, "class=menu-image" );
 	        $img_src		= wp_get_attachment_image_src( $attachment_id, $img_size, false );
-		}
 
-        if ( $img_background && $depth > 0 && $img_type == 'background' ){
-			$style 	= ' style="background-image: url(' . $img_src[0] . ');';
-			$style .= ' background-position:'. $img_background['position']['x'] . ' ' . $img_background['position']['y'] . ';';
-			$style .= ' background-repeat:' . $img_background['repeat'] . ';';
-			$style .= ' background-size:' . $img_background['size'] . ';"';
-        }
+			if ( $img_type == 'background' ){
+				$style 	= ' style="background-image: url(' . $img_src[0] . ');';
+				$style .= ' background-position:'. $img_background['position']['x'] . ' ' . $img_background['position']['y'] . ';';
+				$style .= ' background-repeat:' . $img_background['repeat'] . ';';
+				$style .= ' background-size:' . $img_background['size'] . ';"';
+			}
+
+		}
 
         // Build HTML.
         $output .= $indent . '<li class="' . $li_class . $class_names . '"' . $style . '>';
@@ -195,7 +198,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
 		// Link classes
         $attributes .= ' class="menu-link ';
 		$attributes .= ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' );
-		$attributes .= isset($img_background['image']) && $img_type == 'image' && $depth > 0 ? ' has-img' : '';
+		$attributes .= ! empty($img_background['image']) && $img_type == 'image' && $depth > 0 ? ' has-img' : '';
 		$attributes .= $hide_text ? ' text-hidden' : '';
 		$attributes .= $img_no_margin ? ' no-margin' : '';
 		$attributes .= $uppercase_text ? ' uppercase-text' : '';
@@ -231,10 +234,10 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
             $args->link_before,
             ( $icon && ( $icon_pos == 'left' || $icon_pos == 'above' || $icon_pos == 'icon-only' ) ? $icon : '' ),
             ( $hide_text ? '' : $title ),
-            ( $img_background && $img_type == 'image' ? $img : '' ),
+            ( ! empty($img_background['image']) && $img_type == 'image' ? $img : '' ),
             ( $icon && ( $icon_pos == 'right' || $icon_pos == 'below' ) ? $icon : '' ),
             $args->link_after,
-			$badge,
+            $badge,
             $args->after
         );
 

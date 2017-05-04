@@ -17,6 +17,10 @@
 		<?php pp_get_header_elements( 'main_header_right_area' ); ?>
 	</ul>
 
+    <div class="logo visible-tablet primary-nav">
+		<?php get_template_part( 'template-parts/header/elements/logo' ); ?>
+    </div>
+
     <ul class="flex-left visible-tablet primary-nav">
         <?php pp_get_header_elements( 'tablet_main_header_left_area' ); ?>
     </ul>
@@ -24,6 +28,10 @@
     <ul class="flex-right visible-tablet primary-nav">
         <?php pp_get_header_elements( 'tablet_main_header_right_area' ); ?>
     </ul>
+
+    <div class="logo visible-mobile primary-nav">
+		<?php get_template_part( 'template-parts/header/elements/logo' ); ?>
+    </div>
 
     <ul class="flex-left visible-mobile primary-nav">
         <?php pp_get_header_elements( 'mobile_main_header_left_area' ); ?>
@@ -33,7 +41,7 @@
         <?php pp_get_header_elements( 'mobile_main_header_right_area' ); ?>
     </ul>
 
-    <div class="icon-search visible-desktop header-bg-color-bg">
+    <div class="icon-search header-bg-color-bg">
         <?php get_template_part( 'template-parts/header/search-form' ); ?>
         <a href="#0" class="close header-text-color-bg-speudo">Close Search</a>
     </div>

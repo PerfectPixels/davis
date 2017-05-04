@@ -173,12 +173,6 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'border-bottom-color',
 			'suffix'   => '!important',
 		),
-		array(
-			'element'  => array( '.nav-header .search-box button' ),
-			'function' => 'css',
-			'property' => 'color',
-			'suffix'   => '!important',
-		),
 	),
 	'output' => array(
 		array(
@@ -188,11 +182,6 @@ Kirki::add_field( 'pp_theme', array(
 		array(
 			'element'  => array( '.nav-header .dropdown-hover > a:after' ),
 			'property' => 'border-bottom-color',
-			'suffix'   => '!important',
-		),
-		array(
-			'element'  => array( '.nav-header .search-box button' ),
-			'property' => 'color',
 			'suffix'   => '!important',
 		),
 	),
@@ -259,7 +248,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:before', '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:after', '.nav-header .search-box button', '.nav-header .cd-search-trigger.search-form-visible:after', '.primary-nav > li > a:after', '.nav-header .dropdown-menu li a:after', '.nav-header .menu-item:not(.simple-menu-item) > a:hover:before', '.nav-header .menu-item:not(.simple-menu-item) > a:hover:after', '.nav-header .go-back a:hover:before', '.nav-header .go-back a:hover:after','.nav-header a:hover .header-text-color-bg', '.nav-header a:hover .header-text-color-bg-speudo:before', '.nav-header a:hover .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:before', '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:after', '.nav-header .cd-search-trigger.search-form-visible:after', '.primary-nav > li > a:after', '.nav-header .dropdown-menu li a:after', '.nav-header .menu-item:not(.simple-menu-item) > a:hover:before', '.nav-header .menu-item:not(.simple-menu-item) > a:hover:after', '.nav-header .go-back a:hover:before', '.nav-header .go-back a:hover:after','.nav-header a:hover .header-text-color-bg', '.nav-header a:hover .header-text-color-bg-speudo:before', '.nav-header a:hover .header-text-color-bg-speudo:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
             'suffix'   => '!important',
@@ -272,7 +261,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
         array(
-            'element'  => array( '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:before', '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:after','.nav-header .search-box button', '.nav-header .cd-search-trigger.search-form-visible:after', '.primary-nav > li > a:after', '.nav-header .dropdown-menu  li a:after', '.nav-header .menu-item:not(.simple-menu-item) > a:hover:before', '.nav-header :not(.simple-menu-item) > a:hover:after', '.nav-header .go-back a:hover:before', '.nav-header .go-back a:hover:after','.nav-header a:hover .header-text-color-bg', '.nav-header a:hover .header-text-color-bg-speudo:before', '.nav-header a:hover .header-text-color-bg-speudo:after' ),
+            'element'  => array( '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:before', '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:after', '.nav-header .cd-search-trigger.search-form-visible:after', '.primary-nav > li > a:after', '.nav-header .dropdown-menu  li a:after', '.nav-header .menu-item:not(.simple-menu-item) > a:hover:before', '.nav-header :not(.simple-menu-item) > a:hover:after', '.nav-header .go-back a:hover:before', '.nav-header .go-back a:hover:after','.nav-header a:hover .header-text-color-bg', '.nav-header a:hover .header-text-color-bg-speudo:before', '.nav-header a:hover .header-text-color-bg-speudo:after' ),
             'property' => 'background-color',
             'suffix'   => '!important',
         ),
@@ -482,7 +471,7 @@ function pp_element_main_header_partials( WP_Customize_Manager $wp_customize ) {
 	$wp_customize->selective_refresh->add_partial( 'main_header_element', array(
 		'selector' => '.nav-header',
 		'container_inclusive' => true,
-		'settings' => array( 'content_pos', 'logo_selection', 'main_header_hide_border' ),
+		'settings' => array( 'content_pos', 'logo_selection', 'main_header_border', 'main_header_hide_border' ),
 		'render_callback' => function() {
 			return get_template_part( 'template-parts/header/navigation' );
 		},

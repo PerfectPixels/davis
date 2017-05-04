@@ -135,11 +135,12 @@
         display: inline-block;
         left: inherit;
         right: 0;
-        top: 50%;
+        top: 50% !important;
+        width: 20px !important;
+        height: 20px !important;
         border-radius: 50%;
         line-height: 20px;
         transform: translateY(-50%);
-        @include square(20px);
       }
 
     }
@@ -298,17 +299,39 @@
 
       &.icon-shopping-bag {
 
+        &,
+        &-outline {
+
+          &:before {
+            margin-top: -5px;
+          }
+
+          span.item-counter {
+            top: 9px;
+          }
+
+        }
+
         &-2,
         &-2-outline {
 
+          &:before {
+            margin-top: -5px;
+          }
+
           span.item-counter {
             width: 21px;
+            top: 9px;
           }
 
         }
 
         &-3,
         &-3-outline {
+
+          &:before {
+            margin-top: -2px;
+          }
 
           span.item-counter {
             padding-left: 6px;
@@ -334,6 +357,18 @@
       span.item-counter {
         width: 22px;
         top: 9px;
+      }
+
+      &.icon-heart,
+      &.icon-heart-outline {
+
+        span.item-counter {
+          font-size: 12px;
+          letter-spacing: -0.07em;
+          width: 24px;
+          top: 7px;
+        }
+
       }
 
     }

@@ -77,11 +77,17 @@ $content_cart_count	= WC()->cart->get_cart_contents_count();
 							<div class="panel-body" id="loginform" action="ajaxlogin">
 								<input type="text" class="email" tabindex="1" autocapitalize="off" autocorrect="off" placeholder="<?php _e( 'Email Address', 'woocommerce' ); ?>*">
 								<input type="password" id="login-password-checkout" class="password" tabindex="2" autocapitalize="off" autocorrect="off"  placeholder="<?php _e( 'Password', 'woocommerce' ); ?>*">
-								<a tabindex="4" data-message="Please wait" class="button black submit submit-login"><?php _e( 'Login', 'woocommerce' ); ?></button>
+								<a data-message="Please wait" class="button black submit submit-login"><?php _e( 'Login', 'woocommerce' ); ?></a>
 						        <a href="<?php echo wp_lostpassword_url( $get_checkout_url ); ?>" class="lost" ><?php _e( 'Lost your password?', 'woocommerce' ); ?></a>
 						        <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
 								<input type="hidden" name="redirect_to" value="<?php echo $redirect; ?>">
 							</div>
+                            <div id="checkout-lost-pwd" class="panel-body hide">
+                                <input type="email" id="lost-email" class="email" tabindex="1" autocapitalize="off" autocorrect="off" required="required" placeholder="<?php _e( 'Username or Email Address*', 'davis' ); ?>">
+                                <a type="submit" tabindex="2" data-message="<?php _e( 'Sending email', 'davis' ); ?>" class="button black submit"><?php _e( 'Reset Password', 'davis' ); ?></a>
+                                <a class="lost"><?php _e( 'Cancel', 'davis' ); ?></a>
+                                <?php wp_nonce_field( 'ajax-forgot-nonce', 'security' ); ?>
+                            </div>
 						</div>
 					</div>
 

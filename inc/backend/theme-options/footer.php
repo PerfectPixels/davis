@@ -141,7 +141,7 @@ Kirki::add_field( 'pp_theme', array(
 	'section'  => 'section_footer_copyright',
 	'type'     => 'textarea',
 	'priority' => 10,
-	'default'  => __( '© 2016 ThemeConcept Ltd. All Rights Reserved.', 'davis' ),
+	'default'  => __( '© 2016 Perfect Pixels. All Rights Reserved.', 'davis' ),
 	'js_vars'   => array(
 		array(
 			'element'  => '.footer_copyrights p',

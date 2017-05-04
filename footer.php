@@ -38,7 +38,7 @@ $sidebar = (get_theme_mod('shop_sidebar', 'no') === 'no') ? false : get_theme_mo
             <div class="container-fluid footer_bottom">
                 <div class="container">
                     <div class="col-md-4 footer_copyrights">
-                        <p><?php echo get_theme_mod('copyright_text'); ?></p>
+                        <p><?php echo get_theme_mod('copyright_text', '© 2016 Perfect Pixels. All Rights Reserved.'); ?></p>
                     </div>
                     <div class="col-md-8 footer_nav">
                         <?php if ( get_theme_mod('footer_social', false) == true ) { ?>

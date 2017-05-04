@@ -45,60 +45,68 @@ msgstr ""
 msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
 
-#: inc/backend/header-builder/template.php:4, inc/backend/theme-options/header/header-builder.php:7
+#: inc/backend/header-builder/template.php:10, inc/backend/theme-options/header/header-builder.php:7
 msgid "Header Builder"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:5, inc/backend/theme-options/general/site-identity.php:67, inc/backend/theme-options/header/main-header.php:17
+#: inc/backend/header-builder/template.php:11, inc/backend/theme-options/general/site-identity.php:67, inc/backend/theme-options/header/main-header.php:17
 msgid "Desktop"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:6, inc/backend/theme-options/general/site-identity.php:92
+#: inc/backend/header-builder/template.php:12, inc/backend/theme-options/general/site-identity.php:90
 msgid "Tablet"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:7, inc/backend/theme-options/general/site-identity.php:116
+#: inc/backend/header-builder/template.php:13, inc/backend/theme-options/general/site-identity.php:112
 msgid "Mobile"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:13
+#: inc/backend/header-builder/template.php:17
+msgid "Presets"
+msgstr ""
+
+#: inc/backend/header-builder/template.php:20
 msgid "Enter desktop preview mode"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:16
+#: inc/backend/header-builder/template.php:23
 msgid "Enter tablet preview mode"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:19
+#: inc/backend/header-builder/template.php:26
 msgid "Enter mobile preview mode"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:22, inc/backend/header-builder/template.php:24
+#: inc/backend/header-builder/template.php:29, inc/backend/header-builder/template.php:31
 msgid "Hide Builder"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:33, inc/backend/header-builder/template.php:66, inc/backend/header-builder/template.php:92
+#: inc/backend/header-builder/template.php:40, inc/backend/header-builder/template.php:73, inc/backend/header-builder/template.php:99
 msgid "Edit Top Bar"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:37, inc/backend/header-builder/template.php:70, inc/backend/header-builder/template.php:96, inc/backend/theme-options/header/main-header.php:127
+#: inc/backend/header-builder/template.php:44, inc/backend/header-builder/template.php:77, inc/backend/header-builder/template.php:103, inc/backend/theme-options/header/main-header.php:127
 msgid "Logo"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:41, inc/backend/header-builder/template.php:74, inc/backend/header-builder/template.php:100
+#: inc/backend/header-builder/template.php:48, inc/backend/header-builder/template.php:81, inc/backend/header-builder/template.php:107
 msgid "Edit Main Header"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:47
+#: inc/backend/header-builder/template.php:54
 msgid "Edit Bottom Header"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:50, inc/backend/header-builder/template.php:77, inc/backend/header-builder/template.php:107
+#: inc/backend/header-builder/template.php:57, inc/backend/header-builder/template.php:84, inc/backend/header-builder/template.php:115
 msgid "Inactive Elements"
 msgstr ""
 
-#: inc/backend/header-builder/template.php:103
+#: inc/backend/header-builder/template.php:110
 msgid "Bottom Bar Elements"
+msgstr ""
+
+#: inc/backend/header-builder/template.php:112
+msgid "Edit Bottom Bar"
 msgstr ""
 
 #: inc/backend/single-variation.php:453
@@ -213,7 +221,7 @@ msgstr ""
 msgid "Top Bar Nav 2"
 msgstr ""
 
-#: inc/backend/theme-options.php:35, inc/backend/theme-options/header/element-wishlist.php:5, inc/functions/wishlist.php:54
+#: inc/backend/theme-options.php:51, inc/backend/theme-options/header/element-wishlist.php:5, inc/functions/wishlist.php:54
 msgid "Wishlist"
 msgstr ""
 
@@ -261,11 +269,11 @@ msgstr ""
 msgid "Hide"
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:62, inc/backend/theme-options/footer.php:261, inc/backend/theme-options/header/bottom-header.php:54, inc/backend/theme-options/header/element-button.php:141, inc/backend/theme-options/header/element-button.php:307, inc/backend/theme-options/header/top-bar.php:25, inc/backend/theme-options/login.php:41, inc/backend/theme-options/login.php:208
+#: inc/backend/theme-options/footer.php:62, inc/backend/theme-options/footer.php:261, inc/backend/theme-options/header/bottom-bar.php:25, inc/backend/theme-options/header/bottom-header.php:62, inc/backend/theme-options/header/element-button.php:141, inc/backend/theme-options/header/element-button.php:307, inc/backend/theme-options/header/top-bar.php:25, inc/backend/theme-options/login.php:41, inc/backend/theme-options/login.php:208
 msgid "Background Color"
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:95, inc/backend/theme-options/footer.php:285, inc/backend/theme-options/header/bottom-header.php:90, inc/backend/theme-options/header/element-button.php:111, inc/backend/theme-options/header/element-button.php:277, inc/backend/theme-options/header/top-bar.php:49, inc/backend/theme-options/login.php:133, inc/backend/theme-options/login.php:300
+#: inc/backend/theme-options/footer.php:95, inc/backend/theme-options/footer.php:285, inc/backend/theme-options/header/bottom-bar.php:61, inc/backend/theme-options/header/bottom-header.php:98, inc/backend/theme-options/header/element-button.php:111, inc/backend/theme-options/header/element-button.php:277, inc/backend/theme-options/header/top-bar.php:49, inc/backend/theme-options/login.php:133, inc/backend/theme-options/login.php:300
 msgid "Text Color"
 msgstr ""
 
@@ -274,7 +282,7 @@ msgid "Copyright Text"
 msgstr ""
 
 #: inc/backend/theme-options/footer.php:144
-msgid "© 2016 ThemeConcept Ltd. All Rights Reserved."
+msgid "© 2016 Perfect Pixels. All Rights Reserved."
 msgstr ""
 
 #: inc/backend/theme-options/footer.php:156
@@ -333,7 +341,7 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: inc/backend/theme-options/general/colors.php:7, inc/backend/theme-options/header/main-header.php:151
+#: inc/backend/theme-options/general/colors.php:7, inc/backend/theme-options/header/bottom-header.php:55, inc/backend/theme-options/header/main-header.php:151
 msgid "Colors"
 msgstr ""
 
@@ -369,19 +377,19 @@ msgstr ""
 msgid "Logo Width"
 msgstr ""
 
-#: inc/backend/theme-options/general/site-identity.php:74, inc/backend/theme-options/general/site-identity.php:99, inc/backend/theme-options/general/site-identity.php:123
+#: inc/backend/theme-options/general/site-identity.php:73, inc/backend/theme-options/general/site-identity.php:96, inc/backend/theme-options/general/site-identity.php:118
 msgid "Logo Position"
 msgstr ""
 
-#: inc/backend/theme-options/general/site-identity.php:80, inc/backend/theme-options/general/site-identity.php:105, inc/backend/theme-options/general/site-identity.php:129, inc/backend/theme-options/header/main-header.php:116, inc/backend/theme-options/shop.php:221, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87, inc/mega-menu/options/icon.php:50
+#: inc/backend/theme-options/general/site-identity.php:79, inc/backend/theme-options/general/site-identity.php:102, inc/backend/theme-options/general/site-identity.php:124, inc/backend/theme-options/header/main-header.php:116, inc/backend/theme-options/shop.php:221, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87, inc/mega-menu/options/icon.php:50
 msgid "Left"
 msgstr ""
 
-#: inc/backend/theme-options/general/site-identity.php:81, inc/backend/theme-options/general/site-identity.php:106, inc/backend/theme-options/general/site-identity.php:130, inc/backend/theme-options/header/main-header.php:117, inc/mega-menu/options/background.php:88
+#: inc/backend/theme-options/general/site-identity.php:80, inc/backend/theme-options/general/site-identity.php:103, inc/backend/theme-options/general/site-identity.php:125, inc/backend/theme-options/header/main-header.php:117, inc/mega-menu/options/background.php:88
 msgid "Center"
 msgstr ""
 
-#: inc/backend/theme-options/general/site-identity.php:82
+#: inc/backend/theme-options/general/site-identity.php:81
 msgid "Center and Split Menu"
 msgstr ""
 
@@ -409,24 +417,56 @@ msgstr ""
 msgid "Transparent Header Text Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/bottom-header.php:7
-msgid "Bottom Header"
+#: inc/backend/theme-options/header/bottom-bar.php:7
+msgid "Bottom Bar"
 msgstr ""
 
-#: inc/backend/theme-options/header/bottom-header.php:15
+#: inc/backend/theme-options/header/bottom-bar.php:15, inc/backend/theme-options/header/bottom-header.php:15
 msgid "Sticky Bottom Bar"
+msgstr ""
+
+#: inc/backend/theme-options/header/bottom-bar.php:107, inc/backend/theme-options/header/bottom-header.php:131, inc/backend/theme-options/header/top-bar.php:95
+msgid "Hover Text Color"
+msgstr ""
+
+#: inc/backend/theme-options/header/bottom-bar.php:155, inc/backend/theme-options/header/bottom-header.php:187, inc/backend/theme-options/header/main-header.php:336, inc/backend/theme-options/header/top-bar.php:143
+msgid "Icon Text Color"
+msgstr ""
+
+#: inc/backend/theme-options/header/bottom-bar.php:179, inc/backend/theme-options/header/bottom-header.php:246, inc/backend/theme-options/header/main-header.php:421
+msgid "Border Color"
+msgstr ""
+
+#: inc/backend/theme-options/header/bottom-header.php:7
+msgid "Bottom Header"
 msgstr ""
 
 #: inc/backend/theme-options/header/bottom-header.php:26, inc/backend/theme-options/header/main-header.php:35
 msgid "Height"
 msgstr ""
 
-#: inc/backend/theme-options/header/bottom-header.php:136, inc/backend/theme-options/header/top-bar.php:95
-msgid "Hover Text Color"
+#: inc/backend/theme-options/header/bottom-header.php:180
+msgid "Icons"
 msgstr ""
 
-#: inc/backend/theme-options/header/bottom-header.php:184, inc/backend/theme-options/header/main-header.php:347, inc/backend/theme-options/header/top-bar.php:143
-msgid "Icon Text Color"
+#: inc/backend/theme-options/header/bottom-header.php:214, inc/backend/theme-options/header/main-header.php:389
+msgid "Bottom Border"
+msgstr ""
+
+#: inc/backend/theme-options/header/bottom-header.php:220, inc/backend/theme-options/header/main-header.php:395
+msgid "Display Border"
+msgstr ""
+
+#: inc/backend/theme-options/header/bottom-header.php:221
+msgid "Add a bottom border"
+msgstr ""
+
+#: inc/backend/theme-options/header/bottom-header.php:230, inc/backend/theme-options/header/main-header.php:405
+msgid "Hide Border at Top"
+msgstr ""
+
+#: inc/backend/theme-options/header/bottom-header.php:231, inc/backend/theme-options/header/main-header.php:406
+msgid "Hide the border when the page has not been scrolled"
 msgstr ""
 
 #: inc/backend/theme-options/header/element-account.php:6
@@ -857,52 +897,32 @@ msgstr ""
 msgid "Header Background Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:203
+#: inc/backend/theme-options/header/main-header.php:192
 msgid "Header Text Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:247
+#: inc/backend/theme-options/header/main-header.php:236
 msgid "Header Hover Text Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:287
+#: inc/backend/theme-options/header/main-header.php:276
 msgid "Icons Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:293
+#: inc/backend/theme-options/header/main-header.php:282
 msgid "Icon Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:324
+#: inc/backend/theme-options/header/main-header.php:313
 msgid "Icon Hover Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:371
+#: inc/backend/theme-options/header/main-header.php:360
 msgid "Icon Hover Text Color"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:400
-msgid "Bottom Border"
-msgstr ""
-
-#: inc/backend/theme-options/header/main-header.php:406
-msgid "Display Border"
-msgstr ""
-
-#: inc/backend/theme-options/header/main-header.php:407
+#: inc/backend/theme-options/header/main-header.php:396
 msgid "Add a bottom border to the header"
-msgstr ""
-
-#: inc/backend/theme-options/header/main-header.php:416
-msgid "Hide Border at Top"
-msgstr ""
-
-#: inc/backend/theme-options/header/main-header.php:417
-msgid "Hide the border when the page has not been scrolled"
-msgstr ""
-
-#: inc/backend/theme-options/header/main-header.php:432
-msgid "Border Color"
 msgstr ""
 
 #: inc/backend/theme-options/header/top-bar.php:7
@@ -1185,7 +1205,7 @@ msgstr ""
 msgid "Shipping / Payment Title"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:321, woocommerce/cart/mini-cart.php:23, woocommerce/checkout/form-checkout.php:153
+#: inc/backend/theme-options/shop.php:321, woocommerce/cart/mini-cart.php:23, woocommerce/checkout/form-checkout.php:159
 msgid "Shipping & Payment"
 msgstr ""
 
@@ -1193,7 +1213,7 @@ msgstr ""
 msgid "Shipping / Payment Subtitle"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:330, woocommerce/checkout/form-checkout.php:154
+#: inc/backend/theme-options/shop.php:330, woocommerce/checkout/form-checkout.php:160
 msgid "Select your preferred shipping and payment methods"
 msgstr ""
 
@@ -1201,7 +1221,7 @@ msgstr ""
 msgid "Review Title"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:339, woocommerce/checkout/form-checkout.php:176
+#: inc/backend/theme-options/shop.php:339, woocommerce/checkout/form-checkout.php:182
 msgid "Review Order"
 msgstr ""
 
@@ -1209,7 +1229,7 @@ msgstr ""
 msgid "Review Subtitle"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:348, woocommerce/checkout/form-checkout.php:177
+#: inc/backend/theme-options/shop.php:348, woocommerce/checkout/form-checkout.php:183
 msgid "Confirm your cart content and the total of your order"
 msgstr ""
 
@@ -1275,7 +1295,7 @@ msgstr ""
 msgid "Check your email for the confirmation link"
 msgstr ""
 
-#: inc/frontend/menu-walker.php:43, inc/mega-menu/class-mega-menu-walker.php:165
+#: inc/frontend/menu-walker.php:43, inc/mega-menu/class-mega-menu-walker.php:171
 msgid "Back"
 msgstr ""
 
@@ -1341,19 +1361,19 @@ msgstr ""
 msgid "Assign a menu in Theme Options > Menus"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:419
+#: inc/mega-menu/class-mega-menu-walker.php:425
 msgid "Hot"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:425
+#: inc/mega-menu/class-mega-menu-walker.php:431
 msgid "New"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:431
+#: inc/mega-menu/class-mega-menu-walker.php:437
 msgid "Trending"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-walker.php:437
+#: inc/mega-menu/class-mega-menu-walker.php:443
 msgid "Sale"
 msgstr ""
 
@@ -1748,19 +1768,35 @@ msgstr ""
 msgid "Click here to login"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:93
+#: woocommerce/checkout/form-checkout.php:86, woocommerce/myaccount/form-login.php:85, woocommerce/myaccount/form-login.php:110
+msgid "Username or Email Address*"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:87, woocommerce/myaccount/form-login.php:112
+msgid "Sending email"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:87, woocommerce/myaccount/form-login.php:112
+msgid "Reset Password"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:88, woocommerce/myaccount/form-login.php:113, woocommerce/single-product/form-flag-contribution.php:45
+msgid "Cancel"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:99
 msgid "Login/Register with Social Media"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:100, woocommerce/myaccount/form-login.php:164
+#: woocommerce/checkout/form-checkout.php:106, woocommerce/myaccount/form-login.php:164
 msgid "We would never post anything without your permission."
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:157
+#: woocommerce/checkout/form-checkout.php:163
 msgid "Shipping Method"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:164
+#: woocommerce/checkout/form-checkout.php:170
 msgid "Payment Method"
 msgstr ""
 
@@ -1800,10 +1836,6 @@ msgstr ""
 msgid "Recent Orders"
 msgstr ""
 
-#: woocommerce/myaccount/form-login.php:85, woocommerce/myaccount/form-login.php:110
-msgid "Username or Email Address*"
-msgstr ""
-
 #: woocommerce/myaccount/form-login.php:88, woocommerce/myaccount/form-login.php:138
 msgid "Password*"
 msgstr ""
@@ -1826,18 +1858,6 @@ msgstr ""
 
 #: woocommerce/myaccount/form-login.php:108
 msgid "Please enter your username or email address. You will receive a link to create a new password via email."
-msgstr ""
-
-#: woocommerce/myaccount/form-login.php:112
-msgid "Sending email"
-msgstr ""
-
-#: woocommerce/myaccount/form-login.php:112
-msgid "Reset Password"
-msgstr ""
-
-#: woocommerce/myaccount/form-login.php:113, woocommerce/single-product/form-flag-contribution.php:45
-msgid "Cancel"
 msgstr ""
 
 #: woocommerce/myaccount/form-login.php:122

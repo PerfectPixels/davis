@@ -187,13 +187,13 @@
 
 					// Center the nav and logo
 					if ( $( '.center_logo_split_menu' ).length > 0 ){
-						var $navChild = $( '.nav-header' ).find( 'li.primary-nav-item' ),
+						var $navChild = $( '.nav-header' ).find( '.visible-desktop li.primary-nav-item' ),
 							breakpoint = Math.ceil( $navChild.length / 2 );
 
-                        $( '.nav-header .logo .brand' ).wrap( '<li class="primary-nav-item menu-item logo-menu"></li>' );
-                        $( '.nav-header .logo-menu' ).insertAfter( '.nav-header li.primary-nav-item:nth-child(' + breakpoint + ')' );
+                        $( '.nav-header .logo.visible-desktop .brand' ).wrap( '<li class="primary-nav-item menu-item logo-menu"></li>' );
+                        $( '.nav-header .logo-menu' ).insertAfter( '.nav-header .visible-desktop li.primary-nav-item:nth-child(' + breakpoint + ')' );
                         setTimeout(function() {
-                            $('.nav-header .logo').addClass('loaded');
+                            $('.nav-header .logo.visible-desktop').addClass('loaded');
                         }, 300);
 					}
 
@@ -387,7 +387,7 @@
 				stickyHeader: function(){
 
                     if ( $( 'body' ).hasClass('nav-is-fixed') ) {
-                        var $header = $('.nav-header');
+                        var $header = $('.nav-is-fixed .nav-header, .bottom-bar-is-fixed .navbar-bottom');
 
 						if ( $(window).scrollTop() > 40 ) {
 							$header.addClass('sticky');
@@ -409,7 +409,7 @@
                     PP.method.navigation.calSubmenuHeight();
                     PP.method.navigation.megaMenuHeight();
 
-                    $('.nav-is-fixed .nav-header, .bottom-bar-is-fixed header.bottom').fixedsticky();
+                    $('.nav-is-fixed .nav-header, .bottom-bar-is-fixed header.bottom, .navbar-mobile-bottom').fixedsticky();
 
 					$( '#product_cat' ).select2({ 
 						dropdownAutoWidth: true 
@@ -2798,7 +2798,9 @@
 							}
 
 						});
-					} else if ( $cartNavParent.next().hasClass( 'selected' ) ) {
+					}
+
+					if ( $cartNavParent.next().hasClass( 'selected' ) ) {
 						$cartNavParent.nextAll().removeClass( 'selected' );
 					}
 
@@ -3267,7 +3269,9 @@
 						$iframe	= $cart.find( '#iframe-checkout' ).contents();
 
 					// Change the view back to cart
-					this.views( '#cart' );
+                    if ( $cart.hasClass( 'expanded' ) ) {
+                        this.views('#cart');
+                    }
 
 					// Remove the loader from the "Proceed Checkout" btn
 					$( '.cart-btn-container .checkout' ).removeClass( 'load' ).find( '.loading' ).remove();
@@ -3326,14 +3330,22 @@
 
 							e.preventDefault();
 						}
-					})
-                    .on( 'click', '#loginform a.lost', function(){
-						$( '#login-modal' ).find( 'form#login a.lost' ).click();
-						$( 'nav.navbar .account a[data-target="#login-modal"]' ).click();
+					}).on( 'click', '#collapse-login-customer a.lost', function(){
+                        var $el = $( this ),
+                            $parent = $el.parent(),
+                            $sibling = $parent.siblings( '.panel-body' );
+
+                        $parent.toggleClass( 'hide' );
+                        $sibling.toggleClass( 'hide' );
 
 						return false;
 					});
 				},
+
+                checkoutLostPwd: function(){
+				    //TODO: checkout lost password
+                    //PP.method.login.ajaxLogin( $(this), true );
+                },
 
 				init: function(){
 
@@ -3343,6 +3355,7 @@
 					this.paymentCardIcon();
 					this.removeCoupon();
 					this.checkoutLogin();
+					this.checkoutLostPwd();
 					this.regEventHandlers();
 
 				}

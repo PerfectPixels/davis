@@ -47,6 +47,14 @@ Kirki::add_field( 'pp_theme', array(
         ),
     ),
 ) );
+// Colors
+Kirki::add_field( 'pp_theme', array(
+	'type'        => 'custom',
+	'settings'    => 'bottom_header_title_1',
+	'section'     => 'bottom_header',
+	'default'     => '<h3 class="section_title">' . esc_html__( 'Colors', 'davis' ) . '</h3>',
+	'priority'    => 10,
+) );
 // Bottom Header color
 Kirki::add_field( 'pp_theme', array(
 	'transport'	  => 'postMessage',
@@ -98,34 +106,21 @@ Kirki::add_field( 'pp_theme', array(
 			'element'  => array( '.navbar-bottom *', '.navbar-bottom .menu-item:hover > a.no-link' ),
 			'function' => 'css',
 			'property' => 'color',
-			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-bottom .sep', '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-bottom .menu-item > a:before', '.navbar-bottom .menu-item > a:after', '.navbar-bottom .sep', '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
-		),
-		array(
-			'element'  => array( '.navbar-bottom .menu-item > a:before', '.navbar-bottom .menu-item > a:after' ),
-			'function' => 'css',
-			'property' => 'background-color',
-			'suffix'   => '!important',
 		),
 	),
 	'output' => array(
 		array(
 			'element'  => array( '.navbar-bottom *', '.navbar-bottom .menu-item:hover > a.no-link' ),
 			'property' => 'color',
-			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-bottom .sep', '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-bottom .menu-item > a:before', '.navbar-bottom .menu-item > a:after', '.navbar-bottom .sep', '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
 			'property' => 'background-color',
-		),
-		array(
-			'element'  => array( '.navbar-bottom .menu-item > a:before', '.navbar-bottom .menu-item > a:after' ),
-			'property' => 'background-color',
-			'suffix'   => '!important',
 		),
 	),
 ) );
@@ -177,6 +172,14 @@ Kirki::add_field( 'pp_theme', array(
 		),
 	),
 ) );
+// Icon
+Kirki::add_field( 'pp_theme', array(
+	'type'        => 'custom',
+	'settings'    => 'bottom_header_title_2',
+	'section'     => 'bottom_header',
+	'default'     => '<h3 class="section_title">' . esc_html__( 'Icons', 'davis' ) . '</h3>',
+	'priority'    => 10,
+) );
 // Bottom Header Icon text color
 Kirki::add_field( 'pp_theme', array(
 	'transport'	  => 'postMessage',
@@ -203,12 +206,101 @@ Kirki::add_field( 'pp_theme', array(
 		),
 	),
 ) );
+// Border
+Kirki::add_field( 'pp_theme', array(
+	'type'        => 'custom',
+	'settings'    => 'bottom_header_title_3',
+	'section'     => 'bottom_header',
+	'default'     => '<h3 class="section_title">' . esc_html__( 'Bottom Border', 'davis' ) . '</h3>',
+	'priority'    => 10,
+) );
+Kirki::add_field( 'pp_theme', array(
+	'transport' => 'postMessage',
+	'settings' => 'bottom_header_border',
+	'label'    => __( 'Display Border', 'davis' ),
+	'description' => __( 'Add a bottom border', 'davis' ),
+	'section'  => 'bottom_header',
+	'type'     => 'toggle',
+	'priority' => 10,
+	'default'  => '1',
+) );
+Kirki::add_field( 'pp_theme', array(
+	'transport' => 'postMessage',
+	'settings' => 'bottom_header_hide_border',
+	'label'    => __( 'Hide Border at Top', 'davis' ),
+	'description' => __( 'Hide the border when the page has not been scrolled', 'davis' ),
+	'section'  => 'bottom_header',
+	'type'     => 'toggle',
+	'priority' => 10,
+	'default'  => '1',
+	'active_callback'    => array(
+		array(
+			'setting'  => 'main_header_border',
+			'operator' => '==',
+			'value'    => true,
+		),
+	),
+) );
+Kirki::add_field( 'pp_theme', array(
+	'settings' => 'bottom_header_border_color',
+	'label'    => __( 'Border Color', 'davis' ),
+	'section'  => 'bottom_header',
+	'type'     => 'color',
+	'alpha'    => true,
+	'priority' => 10,
+	'default'  => 'rgba(0, 0, 0, 0.1)',
+	'transport' => 'postMessage',
+	'active_callback'    => array(
+		array(
+			'setting'  => 'bottom_header_border',
+			'operator' => '==',
+			'value'    => true,
+		),
+	),
+	'js_vars' => array(
+		array(
+			'element'         => array( '.navbar-bottom.shadow' ),
+			'property'        => 'box-shadow',
+			'function'        => 'css',
+			'value_pattern'   => '0 1px 0 $',
+		),
+		array(
+			'element'         => array( '.scrolled .navbar-bottom.shadow.hide-shadow-top' ),
+			'property'        => 'box-shadow',
+			'function'        => 'css',
+			'value_pattern'   => '0 1px 0 $',
+			'suffix'          => '!important',
+		),
+	),
+	'output' => array(
+		array(
+			'element'         => array( '.navbar-bottom.shadow' ),
+			'property'        => 'box-shadow',
+			'value_pattern'   => '0 1px 0 $',
+		),
+		array(
+			'element'         => array( '.scrolled .navbar-bottom.shadow.hide-shadow-top' ),
+			'property'        => 'box-shadow',
+			'value_pattern'   => '0 1px 0 $',
+			'suffix'          => '!important',
+		),
+	),
+) );
 
 function pp_element_bottom_header_partials( WP_Customize_Manager $wp_customize ) {
 	// Abort if selective refresh is not available.
 	if ( ! isset( $wp_customize->selective_refresh ) ) {
 		return;
 	}
+
+	$wp_customize->selective_refresh->add_partial( 'bottom_header_element', array(
+		'selector' => '.nav-header',
+		'container_inclusive' => true,
+		'settings' => array( 'bottom_header_hide_border' ),
+		'render_callback' => function() {
+			return get_template_part( 'template-parts/header/bottom-header' );
+		},
+	) );
 
 	$wp_customize->selective_refresh->add_partial( 'bottom_header', array(
 		'selector' => '#options',

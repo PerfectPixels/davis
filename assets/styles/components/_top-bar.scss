@@ -1,5 +1,5 @@
 .navbar-top {
-  @extend %header_bars; // Located in _bottom-bar.scss
+  @extend %header_bars; // Located in _bottom-header.scss
   z-index: 6 !important;
 
   > ul {

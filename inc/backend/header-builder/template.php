@@ -1,3 +1,9 @@
+<?php
+
+global $header_elements, $header_presets;
+
+?>
+
 <aside class="header-builder active">
 	<div class="customize-pane-child">
 		<div class="customize-section-title">
@@ -8,6 +14,7 @@
 			</h3>
 		</div>
 		<div class="wp-full-overlay-footer">
+            <button class="button presets-button" type="button"><?php _e('Presets', 'davis'); ?></button>
 			<div class="devices">
 				<button type="button" class="preview-desktop" aria-pressed="true" data-device="desktop">
 					<span class="screen-reader-text"><?php _e('Enter desktop preview mode', 'davis'); ?></span>
@@ -59,7 +66,7 @@
 			</li>
 		</ul>
 	</div>
-	<div id="header-tablet" class="customize-pane-content <?php echo get_theme_mod( 'logo_position_tablet', 'left_logo_tablet' ); ?>">
+	<div id="header-tablet" class="customize-pane-content <?php echo get_theme_mod( 'logo_position_tablet', 'center_logo_tablet' ); ?>">
 		<ul class="top-bar">
 			<li class="left sortable" data-setting="tablet_top_bar_left_area"></li>
 			<li class="right sortable" data-setting="tablet_top_bar_right_area"></li>
@@ -102,6 +109,7 @@
 		<ul class="bottom-bar">
 			<h4><?php _e('Bottom Bar Elements', 'davis'); ?></h4>
 			<li class="center sortable" data-setting="mobile_bottom_bar_area"></li>
+            <span data-section="bottom_bar"><?php _e( 'Edit Bottom Bar', 'davis' ); ?></span>
 		</ul>
 		<ul class="unused">
 			<h4><?php _e('Inactive Elements', 'davis'); ?></h4>
@@ -116,4 +124,9 @@
 			</li>
 		</ul>
 	</div>
+    <div id="header-presets" class="customize-pane-content">
+        <?php foreach ( $header_presets as $preset ) {
+            echo '<img src="'. get_template_directory_uri() .'/assets/images/admin/'. $preset[0] .'.jpg" data-elements="' . $preset[1] . '" data-logo="' . $preset[2] . '" data-content-pos="' . $preset[3] . '" data-options="' . $preset[4] . '" />';
+        } ?>
+    </div>
 </aside>

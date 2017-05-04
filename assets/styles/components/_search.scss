@@ -598,6 +598,19 @@
         margin: 0;
       }
     }
+
+  .center_logo_tablet,
+  .center_logo_mobile {
+
+    .icon-search {
+      z-index: 6;
+
+      form .search-input input[type="search"] {
+        padding: 0;
+      }
+    }
+
+  }
 }
 
 @include media-query('desktop'){

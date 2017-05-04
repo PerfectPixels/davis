@@ -106,7 +106,7 @@
 			h4 { color: #000; font-family: 18px; text-transform: uppercase; margin: 0 0 5px; }
 			h6 { color: #999; font-size: 12px; margin: 0; }
 
-			.cart-nav { background: #ccc; list-style: none; height: 2px; max-width: 425px; margin: 30px auto 0; padding: 0; animation: cartStepsShow .4s both $cb;
+			.cart-nav { background: #ccc; list-style: none; height: 2px; width: 90%; max-width: 425px; margin: 30px auto 0; padding: 0; animation: cartStepsShow .4s both $cb;
 
 				li { float: left; width: 33%; height: 2px; display: block; position: relative;
 
@@ -514,4 +514,108 @@ body.offcanvas-cart.open {
 		visibility: visible;
 		transform: translate3d(0, 0, 0);
 	}
+}
+
+
+@include media-query('mobile') {
+
+  .offcanvas-cart {
+
+    &.open .close-cart {
+      transform: rotate3d(0, 0, 1, 180deg);
+      opacity: 1;
+      top: 10px;
+      right: 10px;
+
+      &:before {
+        transform: rotate3d(0, 0, 1, 45deg);
+      }
+      &:after {
+        transform: rotate3d(0, 0, 1, 135deg);
+      }
+
+    }
+
+    &.expanded {
+
+      .cart-container .cart-wrapper,
+      .cart-btn-container {
+        width: 100%;
+      }
+
+      .cart-btn-container .quick-btn {
+
+        a {
+          font-size: 12px;
+
+          &.left {
+            padding-right: 15px;
+            padding-left: 37px;
+
+            &:after {
+              left: 8px;
+            }
+          }
+
+          &.last,
+          &.right {
+            padding-left: 15px;
+            padding-right: 37px;
+
+            &:after {
+              right: 8px;
+            }
+          }
+
+        }
+
+        &.to-right a {
+
+          &.left {
+            padding-left: 15px;
+            padding-right: 37px;
+            left: -15px;
+
+            &:after {
+              right: 8px;
+              left: auto;
+            }
+          }
+
+        }
+
+        &.to-left a {
+
+          &.right {
+            padding-right: 15px;
+            padding-left: 37px;
+
+            &:after {
+              left: 8px;
+              right: auto;
+            }
+          }
+
+        }
+
+        &.far-left a{
+
+          &.last {
+            padding-right: 15px;
+            padding-left: 37px;
+
+            &:after {
+              left: 8px;
+              right: auto;
+            }
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
 }

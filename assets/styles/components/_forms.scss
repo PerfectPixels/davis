@@ -188,7 +188,7 @@ input[type=password],
 input[type=url],
 input[type=tel],
 input[type=date],
-textarea { background: #fff; color: #000; border:1px solid #dbdbdb !important; font-size: 12px; font-weight: bold; letter-spacing: -0.02em; line-height: 12px !important; text-transform: uppercase; padding: 21px 10px 20px; margin-bottom: 10px !important; width: 100%; -webkit-appearance: none; outline: none !important; transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1); box-shadow: inset 1px -1px 0 #dbdbdb !important; }
+textarea { background: #fff; color: #000; border:1px solid #dbdbdb !important; font-size: 13px; font-weight: normal; letter-spacing: -0.02em; line-height: 12px !important; padding: 20px 10px; margin-bottom: 10px !important; width: 100%; -webkit-appearance: none; outline: none !important; transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1); box-shadow: inset 1px -1px 0 #dbdbdb !important; }
 
 textarea { min-height: 150px; }
 
