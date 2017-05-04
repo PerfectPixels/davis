@@ -24,17 +24,16 @@
 		'obj': {
 			$window				: $(window),
 			$document			: $(document),
-			$html				: $('html'),
-			$head				: $('head'),
-			$body				: $('body'),
-			lang				: $('html').attr('lang'),
+			$html				: $( 'html' ),
+			$head				: $( 'head' ),
+			$body				: $( 'body' ),
+			lang				: $( 'html' ).attr( 'lang' ),
 			devicePixelRatio	: window.devicePixelRatio || 1,
 			$mobileNavBtn		: $('.nav-button'),
 			cartDismiss			: true,
 			last_src			: $( 'div.images img:eq(0)' ).attr( 'src' ),
 			$searchTrigger		: $( '.cd-search-trigger' ),
-			$searchForm			: $('.cd-main-search'),
-			$coverLayer			: $('.cd-cover-layer'),
+			$searchForm			: $('.icon-search'),
 			prevIconColor		: '',
 			upd					: null,
 			productDesc			: null,
@@ -45,8 +44,10 @@
 
 			// Check the screen / device type
 			checkWindowWidth: function() {
-				if ( $( '.nav-header' ).length > 0 ){
-					var mq = window.getComputedStyle( $( '.nav-header' ).get(0), ':before' ).getPropertyValue( 'content' ).replace( /"/g, '' ).replace( /'/g, "" );
+			    var $navH = $( '.nav-header' );
+
+				if ( $navH.length > 0 ){
+					var mq = window.getComputedStyle( $navH.get(0), ':before' ).getPropertyValue( 'content' ).replace( /"/g, '' ).replace( /'/g, "" );
 					return mq;
 				}
 			},
@@ -70,28 +71,23 @@
 				// Attach all handlers
 				regEventHandlers: function(){
 					var $overlay 	= $('.nav-overlay'),
-						swipeEvent	= 'swiperight',
+						swipeEvent	= 'swiperight click',
 						$this		= this;
 
 					if ( $( '.nav-on-left' ).length > 0 ){
-						swipeEvent = 'swipeleft';
+						swipeEvent = 'swipeleft click';
 					}
-
-					PP.obj.$window.on('resize', function(){
-						( !window.requestAnimationFrame ) ? setTimeout( $this.moveNavigation, 300 ) : window.requestAnimationFrame( $this.moveNavigation );
-					});
 
 					// Open lateral menu clicking on the menu icon
 					PP.obj.$mobileNavBtn.on('click', function( event ){
 						event.preventDefault();
-						$this.openMobileNav( $( this ) );
+						$this.openMobileNav();
 					});
 
 					// Close lateral menu on mobile
 					$overlay.on( swipeEvent, function(){
-						if( $( '.primary-nav' ).hasClass( 'nav-is-visible' ) ) {
+						if( $( 'body' ).hasClass( 'nav-is-visible' ) ) {
 							$this.closeNav();
-							$overlay.removeClass( 'is-visible' );
 						}
 					});
 
@@ -117,41 +113,71 @@
 						$this.closeSearchForm();
 					});
 
-					// Close search form when clicked on the overlay
-					PP.obj.$coverLayer.on( 'click', function(){
-						$this.closeSearchForm();
-					});
-
 					// Close search form on escape key
 					PP.obj.$document.keyup(function( event ){
 						if( event.which=='27' ){ $this.closeSearchForm(); }
 					});
 
 					// Open submenu for submenu item
-					$( '.sub-menu-item.menu-item-has-children' ).children( 'a' ).on( 'click', function( event ){
+					$( '.navbar-top, .nav-header, .navbar-bottom' ).find( '.primary-nav-item .sub-menu-item.menu-item-has-children' ).children( 'a' ).on( 'click', function( event ){
 						event.preventDefault();
 						$this.openSubmenu( $( this ) );
 					});
 
+                    // For mobile - Bind click on main menu item
+                    $( '.primary-nav.offcanvas .menu-item-has-children' ).children( 'a' ).on( 'click', function( event ){
+                        if ( $( event.target ).is( 'span' ) ){
+                            event.preventDefault();
+                            PP.method.navigation.openSubmenu( $( this ) );
+                        }
+                    });
+
+                    $( '.primary-nav.offcanvas .dropdown-hover .mobile-arrow' ).on( 'click', function( event ){
+                        $( this ).parent().toggleClass( 'open' );
+                    });
+
 					//submenu items - go back link
 					$( '.go-back' ).on( 'click' , function( event ){
 						event.preventDefault();
+
 						var $parent		= $( this ).parent( 'ul' ),
 							$prevMenu 	= $parent.parent( '.menu-item-has-children' ).closest( 'ul' ),
-							prevMenuH 	= parseInt( $prevMenu.attr( 'data-height' ) ),
-							screenSize 	= PP.method.checkWindowWidth();
+							prevMenuH 	= parseInt( $prevMenu.attr( 'data-height' ) );
 
-						$parent.addClass( 'is-hidden' );
-						$prevMenu.removeClass( 'moves-out' );
+						$parent.addClass( 'is-hidden' ).removeClass('is-visible').prev().removeClass('selected');
+						$prevMenu.removeClass( 'moves-out' ).addClass( 'is-visible' );
 
-						// Only for desktop
-						if ( screenSize === 'desktop' ) {
-							if ( $prevMenu.parents( '.row' ).length > 0 ){
-								$prevMenu.parents( '.row' ).css( 'height', prevMenuH + 100 );
-							} else {
-								$prevMenu.parents('.simple-nav').find(' > .sub-menu' ).css( 'height', prevMenuH + 40 );
-							}
+						if ( isNaN( prevMenuH ) ){
+                            prevMenuH = 'auto';
+                        }
+
+						if ( $prevMenu.parents( '.row' ).length > 0 ){
+                            var $row = $prevMenu.parents( '.row' ),
+                                changeH = true;
+
+                            $row.find( '.sub-menu.is-visible' ).each( function() {
+                                var thisH = $( this ).data( 'height' );
+
+                                if ( thisH > prevMenuH ) {
+                                    prevMenuH = thisH;
+                                }
+                            });
+
+                            $row.css('height', prevMenuH + 40);
+						} else {
+							$prevMenu.parents('.simple-nav').find(' > .sub-menu' ).css( 'height', prevMenuH + 40 );
 						}
+
+                        if ( $parent.parents( '.offcanvas' ).length > 0 ){
+							var newH = $prevMenu.outerHeight();
+
+							if ( $prevMenu.hasClass( 'main-menu' ) ){
+                                newH = 'auto';
+							}
+
+                            $( '.primary-nav.offcanvas .main-menu' ).css( 'height', newH );
+                        }
+
 					});
 
 				},
@@ -160,40 +186,31 @@
 				centerLogo: function(){
 
 					// Center the nav and logo
-					if ( $( '.center_logo-center_menu' ).length > 0 ){
-						var $brand			= $( '.brand' ),
-							brandW			= $brand.outerWidth(),
-							$navBrand		= $brand.clone().css( 'width', brandW ),
-							$navChild		= $( '.primary-nav' ).children( 'li' ),
-							breakpoint		= Math.ceil( $navChild.length / 2 ),
-							$headerBtns		= $( '.header-buttons' );
+					if ( $( '.center_logo_split_menu' ).length > 0 ){
+						var $navChild = $( '.nav-header' ).find( '.visible-desktop li.primary-nav-item' ),
+							breakpoint = Math.ceil( $navChild.length / 2 );
 
-						$( '.primary-nav > li:nth-child(' + breakpoint + ')' ).after( '<li class="nav-brand"></li>' );
-						$( '.nav-brand' ).html( $navBrand );
-
-						$( '.center_logo-center_menu' ).prepend( '<ul class="header-buttons left"></ul>' );
-						$headerBtns.find( 'li.search, li.account' ).detach().appendTo( '.header-buttons.left' );
+                        $( '.nav-header .logo.visible-desktop .brand' ).wrap( '<li class="primary-nav-item menu-item logo-menu"></li>' );
+                        $( '.nav-header .logo-menu' ).insertAfter( '.nav-header .visible-desktop li.primary-nav-item:nth-child(' + breakpoint + ')' );
+                        setTimeout(function() {
+                            $('.nav-header .logo.visible-desktop').addClass('loaded');
+                        }, 300);
 					}
 
 				},
 
 				// Open the navigation
-				openMobileNav: function( $btn ){
-					var $container 	= $('#page-content'),
-						$els 		= $( 'nav.navbar-top, section.cd-hero, #header-slider, .nav-button, .nav-header, .primary-nav, #footer' ),
-						$overlay 	= $('.nav-overlay');
-
-					if( $container.hasClass('nav-is-visible') ) {
+				openMobileNav: function(){
+					if( PP.obj.$body.hasClass('nav-is-visible') ) {
 						this.closeNav();
-						$overlay.removeClass('is-visible');
 					} else {
-						$btn.addClass( 'nav-is-visible' );
-						$els.addClass( 'nav-is-visible' );
-						$container.addClass('nav-is-visible').one( 'transitionend', function(){
+						PP.obj.$body.addClass( 'nav-is-visible' );
+
+                        $('#page-content').one( 'transitionend', function(){
 							PP.obj.$body.addClass( 'overflow-hidden' );
 						});
+
 						this.closeSearchForm();
-						$overlay.addClass( 'is-visible' );
 					}
 				},
 
@@ -210,7 +227,7 @@
 								}
 							});
 
-							$(this).css( 'height', h + 100 );
+							$(this).css( 'height', h + 40 );
 						}
 					});
 				},
@@ -220,43 +237,46 @@
 
 					if( selected.next( 'ul' ).hasClass( 'is-hidden' ) ) {
 						var $nextMenu = selected.addClass( 'selected' ).next( 'ul' ),
-							nextMenuH = parseInt( $nextMenu.attr( 'data-height' ) ),
-							screenSize 	= PP.method.checkWindowWidth();
+							nextMenuH = parseInt( $nextMenu.attr( 'data-height' ) );
 
-						// Desktop version only
-						$nextMenu.removeClass( 'is-hidden' ).end().parent( '.menu-item-has-children' ).closest( 'ul' ).addClass( 'moves-out' );
+						$nextMenu.removeClass( 'is-hidden' ).addClass( 'is-visible' ).end().parent( '.menu-item-has-children' ).closest( 'ul' ).addClass( 'moves-out' ).removeClass( 'is-visible' );
 
-						// Change the height of the menu - Only for desktop
-						if ( screenSize === 'desktop' ) {
-							if ( $nextMenu.parents( '.row' ).length > 0 ){
-								$nextMenu.parents( '.row' ).css( 'height', nextMenuH + 100 );
-							} else {
-								$nextMenu.parents('.simple-nav').find(' > .sub-menu' ).css( 'height', nextMenuH + 40 );
-							}
+						// Change the height of the menu
+						if ( $nextMenu.parents( '.row' ).length > 0 ){
+                            var $row = $nextMenu.parents( '.row' );
+
+                            $row.find( '.sub-menu.is-visible' ).each( function() {
+                                var thisH = $( this ).data( 'height' );
+
+                                if ( thisH > nextMenuH ) {
+                                    nextMenuH = thisH;
+                                }
+                            });
+
+                            $row.css('height', nextMenuH + 40);
 						} else {
-							$( '#page-content' ).off().one( 'transitionend', function(){
-								$( window ).resize();
-							});
+							$nextMenu.parents('.simple-nav').find(' > .sub-menu' ).css( 'height', nextMenuH + 40 );
+						}
+
+						if ( $nextMenu.parents('.offcanvas' ).length > 0 ){
+							$( '.primary-nav.offcanvas .main-menu' ).css( 'height', $nextMenu.outerHeight() )
 						}
 
 						selected.parent( '.menu-item-has-children' ).siblings( '.menu-item-has-children' ).children( 'ul' ).addClass( 'is-hidden' ).end().children( 'a' ).removeClass( 'selected' );
-						$( '.nav-overlay' ).addClass( 'is-visible' );
 					} else {
 						selected.removeClass( 'selected' ).next( 'ul' ).addClass( 'is-hidden' ).end().parent( '.menu-item-has-children' ).closest( 'ul' ).removeClass( 'moves-out' );
-						$( '.nav-overlay' ).removeClass( 'is-visible' );
 					}
 				},
 
 				// Close the navigation
 				closeNav: function(){
-					var $container 	= $('#page-content'),
-						$els 		= $( 'nav.navbar-top, section.cd-hero, #header-slider, .nav-button, .nav-header, .primary-nav, #footer' );
+					PP.obj.$body.removeClass( 'nav-is-visible' );
 
-					$els.removeClass( 'nav-is-visible' );
-					$( '.menu-item-has-children ul' ).addClass( 'is-hidden' );
-					$( '.menu-item-has-children a' ).removeClass( 'selected' );
-					$( '.moves-out' ).removeClass( 'moves-out' );
-					$container.removeClass( 'nav-is-visible' ).one( 'transitionend', function(){
+					$( '.offcanvas .menu-item-has-children ul' ).addClass( 'is-hidden' );
+					$( '.offcanvas .menu-item-has-children a' ).removeClass( 'selected' );
+					$( '.offcanvas .moves-out' ).removeClass( 'moves-out' );
+
+					$('#page-content').one( 'transitionend', function(){
 						PP.obj.$body.removeClass( 'overflow-hidden' );
 					});
 				},
@@ -269,7 +289,6 @@
 					} else {
 						PP.obj.$html.addClass( 'search-form-visible' );
 						PP.obj.$searchTrigger.addClass( 'search-form-visible' );
-						PP.obj.$coverLayer.addClass( 'search-form-visible' );
 						PP.obj.$searchForm.addClass( 'is-visible' ).one( 'transitionend', function(){
 							PP.obj.$searchForm.find( 'input[type="search"]' ).focus().end().off( 'transitionend' );
 						});
@@ -281,46 +300,25 @@
 					PP.obj.$html.removeClass( 'search-form-visible' );
 					PP.obj.$searchTrigger.removeClass( 'search-form-visible' );
 					PP.obj.$searchForm.removeClass( 'is-visible' ).find( '.open' ).removeClass( 'open' );
-					PP.obj.$coverLayer.removeClass( 'search-form-visible' );
-				},
-
-				// Move navigation in order to make it responsive
-				moveNavigation: function(){
-					var navigation 	= $( '.nav-primary' ),
-			  			screenSize 	= PP.method.checkWindowWidth();
-
-			        if ( screenSize === 'desktop' ) {
-						navigation.detach().insertAfter( '.nav-header .brand' );
-						navigation.find('.cd-search-wrapper' ).remove();
-
-						// For mobile - Unbind click on main menu item
-						$( '.main-menu-item.menu-item-has-children' ).children( 'a' ).off( 'click' );
-					} else {
-						$( '.cd-search-wrapper' ).remove();
-
-						var newListItem = $('<li class="cd-search-wrapper"></li>');
-
-						navigation.detach().insertAfter( '#page-content' );
-						PP.obj.$searchForm.clone().appendTo( newListItem );
-						newListItem.appendTo( navigation.find( 'ul' ) );
-
-						// For mobile - Bind click on main menu item
-						$( '.main-menu-item.menu-item-has-children' ).children( 'a' ).on( 'click', function( event ){
-							if ( $(event.target).is('span') ){
-								event.preventDefault();
-								PP.method.navigation.openSubmenu( $( this ) );
-							}
-						});
-					}
 				},
 
 				// Give a height to all submenus
 				calSubmenuHeight: function(){
 
-					$( '.menu-item-has-children ul .sub-menu' ).each( function(){
-						var $el = $( this );
+					$( '.navbar-top, .nav-header, .navbar-bottom' ).find( '.menu-item-has-children ul .sub-menu' ).each( function(){
+						var $el = $( this ),
+                            $colTitle = $el.parents( '.row' ).find( '> li > a.menu-link'),
+                            submenuH = 0;
 
-						$el.attr( 'data-height', $el.outerHeight() );
+						if ( $colTitle.length > 0 ){
+						    submenuH = $colTitle.outerHeight();
+
+						    if ( $colTitle.find( 'img').length > 0 ){
+						        submenuH += $colTitle.find( 'img').outerHeight();
+                            }
+                        }
+
+						$el.attr( 'data-height', submenuH + $el.outerHeight() );
 					});
 
 				},
@@ -329,13 +327,13 @@
 				wrapSubmenu: function(){
 					var counter = 0;
 
-					$( '.menu-item-has-children > ul.mega-menu > li[class*="col-md"]' ).each( function(){
+					$( '.navbar-top, .nav-header, .navbar-bottom' ).find( '.menu-item-has-children > ul.mega-menu > li[class*="col-md"]' ).each( function(){
 						var $el = $( this ),
-							count = parseInt( PP.method.global.getStrBetween($el.attr('class'), 'col-md-', ' ') );
+							count = parseInt( PP.method.global.getStrBetween( $el.attr('class'), 'col-md-', ' ' ) );
 
 						// Add the open wrapper element
 						if (counter == 0){
-							$('<span class="row" />').insertBefore($el);
+							$('<span class="row" />').insertBefore( $el );
 						}
 
 						counter += count;
@@ -348,7 +346,7 @@
 
 							// Check if the next element goes above 12
 							if ($nextEl.length > 0){
-								var nextCount = parseInt( PP.method.global.getStrBetween($nextEl.attr('class'), 'col-md-', ' ') );
+								var nextCount = parseInt( PP.method.global.getStrBetween( $nextEl.attr('class'), 'col-md-', ' ' ) );
 
 								if ( counter + nextCount > 12 ){
 									counter = 0;
@@ -386,20 +384,33 @@
 
 				},
 
+				stickyHeader: function(){
+
+                    if ( $( 'body' ).hasClass('nav-is-fixed') ) {
+                        var $header = $('.nav-is-fixed .nav-header, .bottom-bar-is-fixed .navbar-bottom');
+
+						if ( $(window).scrollTop() > 40 ) {
+							$header.addClass('sticky');
+						} else {
+							$header.removeClass('sticky');
+						}
+                    }
+				},
+
 				// Call all functions to initiate
 				init: function(){
 
 					this.centerLogo();
-					this.calSubmenuHeight();
-					this.wrapSubmenu();
-					this.megaMenuHeight();
+                    this.wrapSubmenu();
 					this.regEventHandlers();
-					this.moveNavigation();
 					this.navHorizontalScroll();
-					// Make it sticky
-					if ( $( 'body' ).hasClass('nav-is-fixed') ){
-						$( '.nav-header' ).fixedsticky();
-					}
+					this.stickyHeader( true );
+
+                    PP.method.navigation.calSubmenuHeight();
+                    PP.method.navigation.megaMenuHeight();
+
+                    $('.nav-is-fixed .nav-header, .bottom-bar-is-fixed header.bottom, .navbar-mobile-bottom').fixedsticky();
+
 					$( '#product_cat' ).select2({ 
 						dropdownAutoWidth: true 
 					});
@@ -415,12 +426,9 @@
 				regEventHandlers: function(){
 					var slidesWrapper 	= $( '.cd-hero-slider' ),
 						sliderNav 		= $( '.cd-slider-nav' ),
-						navMarker 		= $( '.cd-marker' ),
 						slidesNumber 	= slidesWrapper.children( 'li' ).length,
 						visibleSlidePos	= 0,
-						autoPlayId,
 						autoPlayDelay 	= 5000,
-						windowH 		= PP.obj.$window.height() - ( ( $( '.navbar-top' ).length > 0 ) ? $( '.navbar-top' ).outerHeight() : 0 ),
 						$this 			= this;
 
 					// Change visible slide
@@ -444,7 +452,7 @@
 							visibleSlidePos = selectedPosition;
 
 							$this.updateSliderNavigation( sliderNav, selectedPosition );
-							$this.updateNavigationMarker( navMarker, selectedPosition + 1 );
+							//$this.updateNavigationMarker( navMarker, selectedPosition + 1 );
 							//reset autoplay
 							$this.setAutoplay( slidesWrapper, slidesNumber, autoPlayDelay ) ;
 						}
@@ -609,10 +617,11 @@
 					var _this = this;
 
 					$( 'form.product-search:not(.no-ajax)' ).on('keyup', 'input[type="search"]', function(e) {
-						_this.ajaxSearch( $(this).parents( 'form.product-search' ) );
-					});
-
-					$( 'form.product-search:not(.no-ajax)' ).on( 'change', 'select#product_cat', function(){
+						if ( $(this).parents( '.offcanvas' ).length == 0 ) {
+                            _this.ajaxSearch($(this).parents('form.product-search'));
+                        }
+					})
+                    .on( 'change', 'select#product_cat', function(){
 						_this.ajaxSearch( $(this).parents( 'form.product-search' ) );
 					});
 
@@ -667,8 +676,8 @@
 					});
 					$('span.input input').on('focus', function(){
 						$(this).parent().addClass('focus');
-					});
-					$('span.input input').on('blur', function(){
+					})
+					.on('blur', function(){
 						var $el = $(this),
 							inputVal = $el.val();
 
@@ -731,7 +740,7 @@
 					this.animInput();
 					this.regEventHandlers();
 
-				},
+				}
 
 			},
 
@@ -976,7 +985,6 @@
 
 								$modal.find('.content').html('<p>'+data.message+'</p>');
 								$modal.addClass('error').modal('show');
-								$container.find('a.cart_button').removeClass('icon-cart').addClass('icon-cart-line');
 							} else {
 								var cart_hash = data.cart_hash;
 
@@ -1028,10 +1036,10 @@
 				addToCart: function(){
 					$('.add_to_cart_button').off().on('click', function(){
 						var $el = $(this),
+							$icon = $el.data( 'icon' ),
 							$container = $el.parents( 'li.product' ),
 							$item = $container.find( '.slick-track .slick-active a' ),
-							url = $el.attr( 'href' ),
-							url = url.split( '?' ),
+							url = $el.attr( 'href' ).split( '?' ),
 							param = ( ( url[1] !== undefined ) ? url[1].split( '&' ) : '' ),
 							variation = {},
 							variationId = '',
@@ -1083,10 +1091,9 @@
 										var $input = $(this);
 
 										if( $input.is(':checked') ) {
-											var key = $input.attr('name').replace('attribute_pa_', '').replace('attribute_', '').replace('pa_', ''),
-												val = $input.val();
+											var key = $input.attr('name').replace('attribute_pa_', '').replace('attribute_', '').replace('pa_', '');
 
-											variation[ key ] = val;
+											variation[ key ] = $input.val();
 
 											selected = true;
 
@@ -1104,7 +1111,7 @@
 								});
 
 								if (selected) {
-									$el.removeClass('icon-shopping-bag-add').addClass('icon-shopping-bag');
+									$el.removeClass( $icon + '-add' ).addClass( $icon );
 									$options.removeClass('open');
 									PP.method.cart.ajaxToCart($container, productId, productSku, variationId, variation, 1);
 								}
@@ -1112,7 +1119,7 @@
 								return false;
 							});
 						} else {
-							$el.removeClass('icon-shopping-bag-add').addClass('icon-shopping-bag');
+							$el.removeClass( $icon + '-add' ).addClass( $icon );
 							PP.method.cart.ajaxToCart($container, productId, productSku, variationId, variation, 1);
 						}
 
@@ -1131,7 +1138,7 @@
 						PP.method.global.retinaImg( $(this), false );
 					});
 
-				},
+				}
 			},
 
 			// Functions related to login ( display popup, AJAX call, replace parts... )
@@ -1148,16 +1155,9 @@
 						},
 						success: function(data){
 							// Replace header icon if exist
-		 				   	if ( $('.nav-header .header-buttons .cart').length > 0 ){
-		 					   $('.nav-header .header-buttons').find('.cart, .wishlist, .account').remove();
-		 					   $(data).insertAfter('.nav-header .header-buttons .menu');
-		 				   	}
-
-						   	// Replace topbar if exist
-	   						if ( $('.navbar-top ul.navbar-right .cart').length > 0 ){
-								$('.navbar-top ul.navbar-right').find('.cart, .wishlist, .account').remove();
- 		 					   $(data).prependTo('.navbar-top ul.navbar-right');
-							}
+                            $.each(data, function(name, value){
+                                $( '.action-button.' + name ).replaceWith( value );
+                            });
 						},
 						complete: function(){
 
@@ -1168,7 +1168,7 @@
 								success:function(data){
 									$.each(data.fragments, function(name, value){
 									   $(name).replaceWith(value);
-								   });
+								   	});
 							   },
 							   complete: function(){
 								   if ($('.offcanvas-cart .cart-wrapper .empty').length == 0){
@@ -1251,7 +1251,7 @@
 											   		$( '#checkout_details' ).html( $( data ).find( '#checkout_details' ).html() );
 
 											   		// Replace the nonce to make everything work
-											   		$( '#checkout_review .place-order #_wpnonce' ).replaceWith( $( data ).find( '#checkout_review .place-order #_wpnonce' ) );
+											   		$( '#checkout_review' ).find( '.place-order #_wpnonce' ).replaceWith( $( data ).find( '#checkout_review .place-order #_wpnonce' ) );
 
 											   		// We are now logged in, say it
 											   		$( 'body' ).addClass( 'logged-in' );
@@ -1267,7 +1267,7 @@
 												   }
 
 												   // Update the variable nonce in order to update_checkout to work
-												   wc_checkout_params.update_order_review_nonce = $( '#checkout_details #_wpnonce' ).val();
+												   wc_checkout_params.update_order_review_nonce = $( '#checkout_details' ).find( '#_wpnonce' ).val();
 
 													// Functions for the checkout UI
 													PP.method.checkout.shippingCountry();
@@ -1352,9 +1352,10 @@
 					// Toggle between forms
 					$('a.toggle-btn').on('click', function(){
 						var $toggleBtn = $(this),
-							$modalParent = $toggleBtn.parents( '.login-modal' )
+							$modalParent = $toggleBtn.parents( '.login-modal' ),
 							target = $toggleBtn.attr('data-target'),
-							switchPanel = $toggleBtn.attr('data-switch');
+							switchPanel = $toggleBtn.attr('data-switch'),
+                            $loginTabs = $('#login-tabs');
 
 						// Hide all
 						$modalParent.find('.wrap-form form').addClass('hide');
@@ -1371,9 +1372,9 @@
 						}
 
 						// If it is the tabs style popup
-						if ( $('#login-tabs').length > 0 ){
-							$('#login-tabs a.toggle-btn').removeClass('active');
-							$('#login-tabs a.toggle-btn[data-target='+target+']').addClass('active');
+						if ( $loginTabs.length > 0 ){
+                            $loginTabs.find( 'a.toggle-btn').removeClass('active');
+                            $loginTabs.find( 'a.toggle-btn[data-target='+target+']').addClass('active');
 						}
 
 						return false;
@@ -1400,10 +1401,8 @@
 						setTimeout(function(){
 							$('#login-modal').addClass('open').find('form:not(.hide) input.email').focus();
 						}, 300);
-					});
-
-					// Once the modal is closed
-					$('#login-modal').on('hide.bs.modal', function (e) {
+					})
+                    .on('hide.bs.modal', function (e) {
 						$(this).removeClass('open');
 					});
 				},
@@ -1413,7 +1412,7 @@
 					this.loginRegisterForms();
 					this.modalForm();
 
-				},
+				}
 
 			},
 
@@ -1445,7 +1444,7 @@
 						_this.addToFav($container);
 					});
 
-					$( 'body' ).on('click', 'a.quickview, .product-nav a', function(){
+					PP.obj.$body.on('click', 'a.quickview, .product-nav a', function(){
 						var $el = $(this),
 							productId = $el.attr('data-product-id'),
 							$product = $el.parents('li.product'),
@@ -1455,7 +1454,6 @@
 							$product = $('li.product.post-' + productId);
 							$container = $el.parents( '.modal-dialog' );
 						}
-						console.log(productId);
 
 						PP.method.product.quickviewDOM( productId, $product, $container);
 
@@ -1470,7 +1468,7 @@
 
 				},
 
-				quickviewDOM: function(productId, $product, $container){ console.log(productId);
+				quickviewDOM: function(productId, $product, $container){
 					$.ajax({
 						type: 'POST',
 						url: wc_cart_params.ajax_url,
@@ -1483,25 +1481,25 @@
 							PP.method.global.loading($container, 'open');
 						},
 						success: function( data ) {
-							if ( $('#quickview-modal').length > 0 && $('#quickview-modal').hasClass( 'in' ) ){
-								$('#quickview-modal .content').replaceWith( $( data ).find( '.content' ) );
-							} else if ( $('#quickview-modal').length > 0 && ! $('#quickview-modal').hasClass( 'in' ) ){
-								$('#quickview-modal').replaceWith( data );
-								$( '#quickview-modal' ).modal('show');
+						    var $qvModal = $('#quickview-modal');
+
+							if ( $qvModal.length > 0 && $qvModal.hasClass( 'in' ) ){
+                                $qvModal.find('.content').replaceWith( $( data ).find( '.content' ) );
+							} else if ( $qvModal.length > 0 && ! $qvModal.hasClass( 'in' ) ){
+                                $qvModal.replaceWith( data );
+                                $qvModal.modal('show');
 							} else {
 								$('body').append(data);
-								$( '#quickview-modal' ).modal('show');
+                                $('#quickview-modal').modal('show');
 							}
 
 							PP.method.product.quickviewNav( $product );
 						},
 						complete: function(){
-							var $qvModal = $( '#quickview-modal' );
-
 							PP.method.global.loading($container, 'close');
 
 							setTimeout(function(){
-								$qvModal.find( 'form.variations_form' ).wc_variation_form();
+                                $( '#quickview-modal' ).find( 'form.variations_form' ).wc_variation_form();
 							   	PP.method.product.selectProductVariation( true );
 							   	PP.method.forms.spinner();
 							}, 300);
@@ -1512,12 +1510,15 @@
 				quickviewNav: function( $product ){
 					var $nextProduct = $product.next( '.product' ),
 						$prevProduct = $product.prev( '.product' ),
-						$nextLink = $( '#quickview-modal .product-nav .next' ),
-						$prevLink = $( '#quickview-modal .product-nav .prev' );
+                        $qvModal = $('#quickview-modal'),
+						$nextLink = $qvModal.find( '.product-nav .next' ),
+						$prevLink = $qvModal.find( '.product-nav .prev' ),
+                        title = '',
+                        imgSrc = '';
 
 					if ( $nextProduct.length > 0 ){
-						var title = $nextProduct.find( 'h3 > a' ),
-							imgSrc = $nextProduct.find( 'a.img img' ).attr( 'src' );
+						title = $nextProduct.find( 'h3 > a' );
+						imgSrc = $nextProduct.find( 'a.img img' ).attr( 'src' );
 
 						if ( $nextProduct.find( '.product-slider' ).length > 0 ){
 							imgSrc = $nextProduct.find( '.slick-current a.img img' ).attr( 'src' );
@@ -1526,7 +1527,8 @@
 						$nextLink.attr({
 							'href': title.attr( 'href' ) ,
 							'data-product-id': $nextProduct.find( 'a.quickview' ).data( 'product-id' )
-						}).find('h3').html( title.text() );
+						})
+                        .find('h3').html( title.text() );
 						$nextLink.find('img').attr( 'src', imgSrc );
 						$nextLink.show();
 					} else {
@@ -1534,8 +1536,8 @@
 					}
 
 					if ( $prevProduct.length > 0 ){
-						var title = $prevProduct.find( 'h3 > a' ),
-							imgSrc = $prevProduct.find( 'a.img img' ).attr( 'src' );
+						title = $prevProduct.find( 'h3 > a' );
+						imgSrc = $prevProduct.find( 'a.img img' ).attr( 'src' );
 
 						if ( $prevProduct.find( '.product-slider' ).length > 0 ){
 							imgSrc = $prevProduct.find( '.slick-current a.img img' ).attr( 'src' );
@@ -1544,7 +1546,8 @@
 						$prevLink.attr({
 							'href': title.attr( 'href' ) ,
 							'data-product-id': $prevProduct.find( 'a.quickview' ).data( 'product-id' )
-						}).find('h3').html( title.text() );
+						})
+                        .find('h3').html( title.text() );
 						$prevLink.find('img').attr( 'src', imgSrc );
 						$prevLink.show();
 					} else {
@@ -1563,16 +1566,11 @@
 						var response = $.parseJSON( xhr.responseText );
 
 						if ( response.result === 'true' ){
-							// Replace the top bar wishlist icon
-							if ( $('ul.navbar-right .wishlist').length > 0 ){
-								$('ul.navbar-right .wishlist').load(document.URL + ' ul.navbar-right .wishlist > *', function(){
-									PP.method.global.loading($container, 'close');
-								});
-							}
+						    var $wl = $('li.action-button.wishlist');
 
-							// Replace the header wishlist icon
-							if ( $('.nav-header .header-buttons .wishlist').length > 0 ){
-								$('.nav-header .header-buttons .wishlist').load(document.URL + ' .nav-header .header-buttons .wishlist > *', function(){
+							// Replace the top bar wishlist icon
+							if ( $wl.length > 0 ){
+                                $wl.html().load(document.URL + ' li.action-button.wishlist > *', function(){
 									PP.method.global.loading($container, 'close');
 								});
 							}
@@ -1608,10 +1606,10 @@
 				productSlider: function(){
 					var $sliders = $('.product-slider'),
 						$productsList = $sliders.parents( 'ul.products' ),
-						sliderP = '22%';
-
-					if ($productsList.hasClass('product-style-2') || !$productsList.hasClass('display-3-per-row')) {
 						sliderP = '0px';
+
+					if ( $productsList.hasClass('product-style-1') && ( $productsList.hasClass('display-3-per-row') || $productsList.parent().hasClass('columns-3') || $productsList.parent().hasClass('columns-2') || $productsList.parent().hasClass('columns-1') ) ) {
+						sliderP = '22%';
 					}
 
 					$sliders.slick({
@@ -1658,14 +1656,15 @@
 						priceHtml 		 = $currentSlide.find( '.price' ).html(),
 						$item 			 = $currentSlide.find( 'a' ),
 						$cartBtn 		 = $container.find('nav.buttons a.cart_button'),
+						$icon 			 = $cartBtn.data( 'icon' ),
 						addCartUrl 		 = $item.attr('href'),
 						inStock 		 = $item.data( 'stock-class' ),
 						variationCounter = $item.data( 'attr-counter' );
 
 					if ( inStock === false ){
-						$cartBtn.removeClass( 'icon-shopping-bag-add select-options' ).addClass( 'icon-shopping-bag out-of-stock' ).attr( 'data-original-title', $cartBtn.data( 'nostock-text' ) );
+						$cartBtn.removeClass( $icon + '-add select-options' ).addClass( $icon + ' out-of-stock' ).attr( 'data-original-title', $cartBtn.data( 'nostock-text' ) );
 					} else {
-						$cartBtn.removeClass( 'icon-shopping-bag out-of-stock' ).addClass( 'icon-shopping-bag-add' ).attr( 'data-original-title', $cartBtn.data( 'stock-text' ) );
+						$cartBtn.removeClass( $icon + ' out-of-stock' ).addClass( $icon + '-add' ).attr( 'data-original-title', $cartBtn.data( 'stock-text' ) );
 
 						if ( variationCounter > 1 ) {
 							$cartBtn.addClass( 'select-options' );
@@ -1975,6 +1974,10 @@
 						}
 
 						if ( selected ){
+							var $btn = $container.find( '.single_add_to_cart_button' ),
+								icon = $btn.data( 'icon' );
+
+							$btn.removeClass( icon + '-add' ).addClass( icon );
 							PP.method.cart.ajaxToCart($container, productId, productSku, variationId, variation, qty);
 						}
 
@@ -2028,13 +2031,15 @@
 
 							// Change the description if a variation has one
 							if (variation.variation_description !== ''){
-								if ( $('.summary div[itemprop="description"]').length > 0 ){
+							    var $desc = $('.summary div[itemprop="description"]');
+
+								if ( $desc.length > 0 ){
 									// Save global description
 									if (PP.obj.productDesc === null){
-										PP.obj.productDesc = $('.summary div[itemprop="description"]').html();
+										PP.obj.productDesc = $desc.html();
 									}
 
-									$('.summary div[itemprop="description"]').html(variation.variation_description);
+                                    $desc.html(variation.variation_description);
 								} else {
 									// Save global description
 									if (PP.obj.productDesc === null){
@@ -2044,7 +2049,7 @@
 								}
 							} else {
 								if (PP.obj.productDesc !== null){
-									$('.summary div[itemprop="description"]').html(PP.obj.productDesc);
+                                    $desc.html(PP.obj.productDesc);
 								}
 							}
 
@@ -2142,6 +2147,8 @@
 
 				// Interaction for the product review pro plugin
 				productReviewAction: function(){
+				    var $tabQ = $( '#tab-questions' );
+
 					// Close the flag form
 					$( '.contribution-flag-form button.cancel' ).on( 'click', function(){
 						$( this ).parents( '.contribution-flag-form' ).slideUp( 250 );
@@ -2158,12 +2165,12 @@
 					});
 
 					// Remove the unrelated comments
-					$( '#tab-reviews li.question' ).remove();
-					$( '#tab-questions li.review' ).remove();
+					$( '#tab-reviews' ).find( 'li.question' ).remove();
+                    $tabQ.find( 'li.review' ).remove();
 
 					// Rename the form for the question tab
-					$( '#tab-questions .form-contribution_comment #contribution_comment_comment' ).attr( 'placeholder', $( '.answer-placeholder' ).val() );
-					$( '#tab-questions .form-contribution_comment button.button' ).text( $( '.answer-button' ).val() );
+                    $tabQ.find( '.form-contribution_comment #contribution_comment_comment' ).attr( 'placeholder', $( '.answer-placeholder' ).val() );
+                    $tabQ.find( '.form-contribution_comment button.button' ).text( $( '.answer-button' ).val() );
 
 					// Answer question form
 					$( 'a.open_answer_form' ).on( 'click', function(){
@@ -2384,7 +2391,6 @@
 				        // After slides change
 						gallery.listen('afterChange', function() {
 							$( '#main-slider' ).slick( 'slickGoTo', $(this.currItem.el).attr('data-slick-index'), true );
-							console.log($(this.currItem.el));
 						});
 				    };
 
@@ -2468,28 +2474,6 @@
 						return false;
 					});
 
-					// Close checkout button
-					$( '.offcanvas-cart' ).on( 'click', '.close-cart', function(){
-						PP.method.checkout.closeQuickCheckout( false );
-					});
-
-					// Create account checkout
-					$( '.offcanvas-cart' ).on( 'change', 'input#createaccount', function(){
-						var $el  = $( this ),
-							$box = $el.parent().next();
-
-						if ( $el.is( ':checked' ) ){
-							$box.slideDown( 300, function(){
-								PP.method.checkout.viewHeight();
-							});
-						} else {
-							$box.slideUp( 300, function(){
-								PP.method.checkout.viewHeight();
-							});
-						}
-
-					});
-
 					// Re-shuffle the layout when address selected
 					$( 'a.js-show-address-fields' ).on( 'click', function(){
 						$( 'select#billing_country' ).select2();
@@ -2504,15 +2488,6 @@
 						if ( $input.val() !== '' ){
 							$input.parent().removeClass( 'error' );
 						}
-					});
-
-					// Clicking on "returning customer" change the view height
-					$( '.offcanvas-cart' ).on( 'click', '#heading-login-customer a, .showcoupon', function(){
-
-						setTimeout(function(){
-							PP.method.checkout.viewHeight();
-						}, 500);
-
 					});
 
 					// When submit the checkout form - Listen to the Ajax response once complete and reload or show message from the iframe
@@ -2632,17 +2607,41 @@
 						}
 
 						return false;
-					});
+					})
+                    .on( 'click', '.close-cart', function(){
+                        PP.method.checkout.closeQuickCheckout( false );
+                    })
+                    .on( 'change', 'input#createaccount', function(){
+                        var $el  = $( this ),
+                            $box = $el.parent().next();
+
+                        if ( $el.is( ':checked' ) ){
+                            $box.slideDown( 300, function(){
+                                PP.method.checkout.viewHeight();
+                            });
+                        } else {
+                            $box.slideUp( 300, function(){
+                                PP.method.checkout.viewHeight();
+                            });
+                        }
+
+                    })
+                    .on( 'click', '#heading-login-customer a, .showcoupon', function(){
+
+                        setTimeout(function(){
+                            PP.method.checkout.viewHeight();
+                        }, 500);
+
+                    });
 
 					// Show CVC location when input is focused in for Stripe and Authorize.net
-					$( 'body' ).on( 'focus', 'input.wc-credit-card-form-card-cvc, input.js-sv-wc-payment-gateway-credit-card-form-csc', function(){
+					PP.obj.$body.on( 'focus', 'input.wc-credit-card-form-card-cvc, input.js-sv-wc-payment-gateway-credit-card-form-csc', function(){
 						$( this ).parents( 'fieldset' ).addClass( 'cvc-focus' );
-					}).on( 'blur', 'input.wc-credit-card-form-card-cvc, input.js-sv-wc-payment-gateway-credit-card-form-csc', function(){
+					})
+                    .on( 'blur', 'input.wc-credit-card-form-card-cvc, input.js-sv-wc-payment-gateway-credit-card-form-csc', function(){
 						$( this ).parents( 'fieldset' ).removeClass( 'cvc-focus' );
-					});
-
-					// Re-run function on checkout update
-					$( 'body' ).on( 'update_checkout', function(){
+					})
+                    .on( 'update_checkout', function(){
 						// Save selected payment method
 						var selectedPayment = $( '.payment_methods input[name="payment_method"]:checked' ).val(),
 							cardChosen		= $( 'input[name="wc-stripe-payment-token"]:checked' ).val(),
@@ -2799,7 +2798,9 @@
 							}
 
 						});
-					} else if ( $cartNavParent.next().hasClass( 'selected' ) ) {
+					}
+
+					if ( $cartNavParent.next().hasClass( 'selected' ) ) {
 						$cartNavParent.nextAll().removeClass( 'selected' );
 					}
 
@@ -2907,59 +2908,61 @@
 				},
 
 				// Load the checkout form
-				loadCheckoutDOM: function(){
-					var $offcanvasCart	= $( '.offcanvas-cart' );
+                loadCheckoutDOM: function(){
+                    var $offcanvasCart	= $( '.offcanvas-cart' );
 
-					if ( $offcanvasCart.hasClass( 'quick-checkout' ) ){
-						// Expand the cart container
-						if ( ! $offcanvasCart.hasClass( 'expanded' ) && ! $offcanvasCart.hasClass( 'empty' ) ){
-							var newIframe = $( '<iframe id="iframe-checkout" name="iframe-checkout" src="' + wc_cart_params.checkout_page + '?ajax_request=true" scrolling="no">' );
+                    if ( $offcanvasCart.hasClass( 'quick-checkout' ) ){
+                        // Expand the cart container
+                        if ( ! $offcanvasCart.hasClass( 'expanded' ) && ! $offcanvasCart.hasClass( 'empty' ) ){
+                            var newIframe = $( '<iframe id="iframe-checkout" name="iframe-checkout" src="' + wc_cart_params.checkout_page + '?ajax_request=true" scrolling="no">' ),
+                                $oldIframe = $( '.offcanvas-cart #iframe-checkout' );
 
-							if ( $( '.offcanvas-cart #iframe-checkout' ).length > 0 ){
-								$( '.offcanvas-cart #iframe-checkout' ).replaceWith( newIframe );
-							} else {
-								$( newIframe ).insertAfter( '.offcanvas-cart .cart-content' );
-							}
+                            if ( $oldIframe.length > 0 ){
+                                $oldIframe.replaceWith( newIframe );
+                            } else {
+                                $( newIframe ).insertAfter( '.offcanvas-cart .cart-content' );
+                            }
 
-							$( newIframe ).on('load', function(){
-								var iframe   = $( '.offcanvas-cart #iframe-checkout' ).contents(),
-								    $container = iframe.find( '#checkout-container' );
+                            $( newIframe ).on('load', function(){
+                                var $iframe = $( '.offcanvas-cart #iframe-checkout' ),
+                                    iframeContent   = $iframe.contents(),
+                                    $container = iframeContent.find( '#checkout-container' );
 
-								// Keep only the checkout form
-								iframe.find( 'body' ).addClass( 'woocommerce offcanvas-cart' ).html( $container );
+                                // Keep only the checkout form
+                                iframeContent.find( 'body' ).addClass( 'woocommerce offcanvas-cart' ).html( $container );
 
-								// Mark it when finished loaded
-								$( '.offcanvas-cart #iframe-checkout' ).addClass( 'loaded' );
+                                // Mark it when finished loaded
+                                $iframe.addClass( 'loaded' );
 
-								// Hide the page cart
-								$offcanvasCart.find( '#checkout_cart' ).hide();
+                                // Hide the page cart
+                                $offcanvasCart.find( '#checkout_cart' ).hide();
 
-								setTimeout(function(){
-									// Imitate the real cart
-									iframe.find( 'body' ).addClass( 'open' );
+                                setTimeout(function(){
+                                    // Imitate the real cart
+                                    iframeContent.find( 'body' ).addClass( 'open' );
 
-									// Cannot scroll page
-									$( 'body' ).addClass( 'no-scroll' );
+                                    // Cannot scroll page
+                                    $( 'body' ).addClass( 'no-scroll' );
 
-							        // Expand the cart
-									$offcanvasCart.addClass( 'expanded open' );
+                                    // Expand the cart
+                                    $offcanvasCart.addClass( 'expanded open' );
 
-									// Call the correct view
-									PP.method.checkout.views( '#details' );
+                                    // Call the correct view
+                                    PP.method.checkout.views( '#details' );
 
-									// Make sure the cart is not longer than the screen
-									PP.method.cart.cartMaxHeight();
+                                    // Make sure the cart is not longer than the screen
+                                    PP.method.cart.cartMaxHeight();
 
-									// Functions for the checkout UI
-									PP.method.checkout.radioCheckboxAction();
-								}, 300);
-						    });
-						} else {
-							window.location.hash = '#';
-						}
-					}
+                                    // Functions for the checkout UI
+                                    PP.method.checkout.radioCheckboxAction();
+                                }, 300);
+                            });
+                        } else {
+                            window.location.hash = '#';
+                        }
+                    }
 
-				},
+                },
 
 				// Ajax call to reload the shipping methods
 				calShipping: function( $container ){
@@ -2990,7 +2993,6 @@
 
 								$modal.find('.content').html('<h4>'+data.title+'</h4><p>'+data.message+'</p>');
 								$modal.addClass('error').modal('show');
-								$container.find('a.cart_button').removeClass('icon-cart').addClass('icon-cart-line');
 							} else {
 								// Replace the NEW CONTENT
 								$.ajax({
@@ -3145,8 +3147,7 @@
 				// Change the view height
 				viewHeight: function(){
 					// Add the content height to the parent element
-					var $iframe = $( '.offcanvas-cart #iframe-checkout' );
-					$iframe.css( 'height', $iframe.contents().find( 'div.in-view' ).outerHeight( true ) + 50 );
+					$( '.offcanvas-cart #iframe-checkout' ).css( 'height', $( '.offcanvas-cart #iframe-checkout' ).contents().find( 'div.in-view' ).outerHeight( true ) + 50 );
 				},
 
 				// Submit the coupon input field or by clicking on it
@@ -3268,7 +3269,9 @@
 						$iframe	= $cart.find( '#iframe-checkout' ).contents();
 
 					// Change the view back to cart
-					this.views( '#cart' );
+                    if ( $cart.hasClass( 'expanded' ) ) {
+                        this.views('#cart');
+                    }
 
 					// Remove the loader from the "Proceed Checkout" btn
 					$( '.cart-btn-container .checkout' ).removeClass( 'load' ).find( '.loading' ).remove();
@@ -3277,7 +3280,7 @@
 					$( 'body' ).removeClass( 'no-scroll' );
 
 					// Shrink it back to cart format
-					$cart.removeClass( 'expanded ' )
+					$cart.removeClass( 'expanded ' );
 
 					// Close it
 					if ( ! cart ){
@@ -3299,7 +3302,7 @@
 
 				// Make an AJAX request when login on checkout page
 				checkoutLogin: function(){
-					$( 'body' ).on( 'click', '#loginform a.submit-login', function(){
+					PP.obj.$body.on( 'click', '#loginform a.submit-login', function(){
 						var $form = $( this ).parent(),
 							error = false;
 
@@ -3320,23 +3323,29 @@
 						}
 
 				        return false;
-					});
-
-					$( 'body' ).on( 'keydown', '#loginform .email, #loginform .password', function( e ){
+					})
+                    .on( 'keydown', '#loginform .email, #loginform .password', function( e ){
 						if (e.which === 13) {
-							$( '#loginform a.submit-login' ).click();
+							$( '#loginform' ).find( 'a.submit-login' ).click();
 
 							e.preventDefault();
 						}
-					});
+					}).on( 'click', '#collapse-login-customer a.lost', function(){
+                        var $el = $( this ),
+                            $parent = $el.parent(),
+                            $sibling = $parent.siblings( '.panel-body' );
 
-					$( 'body' ).on( 'click', '#loginform a.lost', function(){
-						$( '#login-modal form#login a.lost' ).click();
-						$( 'nav.navbar .account a[data-target="#login-modal"]' ).click();
+                        $parent.toggleClass( 'hide' );
+                        $sibling.toggleClass( 'hide' );
 
 						return false;
 					});
 				},
+
+                checkoutLostPwd: function(){
+				    //TODO: checkout lost password
+                    //PP.method.login.ajaxLogin( $(this), true );
+                },
 
 				init: function(){
 
@@ -3346,9 +3355,10 @@
 					this.paymentCardIcon();
 					this.removeCoupon();
 					this.checkoutLogin();
+					this.checkoutLostPwd();
 					this.regEventHandlers();
 
-				},
+				}
 
 			},
 
@@ -3475,7 +3485,7 @@
 					this.centerModal();
 					this.widgetUIMod();
 
-				},
+				}
 
 			},
 
@@ -3509,7 +3519,7 @@
 					$( this ).tooltip( 'hide' );
 				});
 
-			},
+			}
 		},
 
 		// On body click
@@ -3520,7 +3530,7 @@
 					PP.method.cart.popupCart( $( '.offcanvas-cart' ), 'close' );
 				}
 
-				// Close the product overlay (variations/favorites)
+                // Close the product overlay (variations/favorites)
 		    	if ( ! $( '.product-overlay.open .content' ).is( e.target ) && ! $( '.loading-overlay.open' ).is( e.target ) && $( '.product-overlay.open .content' ).has( e.target ).length === 0 ) {
 		    		var $popup = $( '.product-overlay.open' );
 
@@ -3548,6 +3558,7 @@
 			PP.obj.$window.scroll( function(){
 
 				PP.method.global.scrollClass();
+				PP.method.navigation.stickyHeader( false )
 
 			});
 		},
@@ -3567,11 +3578,12 @@
 			});
 
 			function conditions( hash ){
+                var $target, offsetTop;
 
 				if ( hash === '#tab-description' || hash === '#tab-reviews' ) {
 
-					var $target = $( hash ),
-						offsetTop = ( $( 'nav.navbar-fixed-top' ).length > 0 ? $( 'nav.navbar-fixed-top' ).outerHeight() : 0 ) + $( 'header.banner' ).outerHeight() + 120;
+					$target = $( hash );
+					offsetTop = ( $( 'nav.navbar-fixed-top' ).length > 0 ? $( 'nav.navbar-fixed-top' ).outerHeight() : 0 ) + $( 'header.banner' ).outerHeight() + 120;
 
 					// Open the correct tab
 					$( '.wc-tabs a[href="' + hash + '"]' ).click();
@@ -3583,10 +3595,11 @@
 
 				} else if ( hash.indexOf( 'comment-' ) > -1 && $( 'body' ).hasClass( 'single-product' ) ){
 
-					var $target = $( hash ),
-						parentID = $target.parents( '.panel' ).attr( 'id' ),
-						$container = $( '#contributions-list'),
-						offsetTop = ( $( 'body' ).hasClass('nav-is-fixed') ? $( 'nav.navbar-top' ).outerHeight() : 0 ) + $( 'header.nav-header' ).outerHeight() + 30;
+					var	parentID = $target.parents( '.panel' ).attr( 'id' ),
+						$container = $( '#contributions-list');
+
+                    $target = $( hash );
+                    offsetTop = ( $( 'body' ).hasClass('nav-is-fixed') ? $( '.navbar-top' ).outerHeight() : 0 ) + $( '.nav-header' ).outerHeight() + 30;
 
 					// Open the correct tab
 					$( '.wc-tabs a[href="#' + parentID + '"]' ).click();
@@ -3648,7 +3661,7 @@
 			    PP.bodyClick(e);
 
 				// Make the recommended products a slider - Located on the thankyou page
-				$( '#recommended-products .related > ul.products' ).slick();
+				$( '#recommended-products ').find( '.related > ul.products' ).slick();
 				// $( '#recommended-products .related > ul.products' ).owlCarousel({
 				// 	items: 3,
 				// 	margin: 1,
@@ -3686,7 +3699,7 @@
 			finalize: function() {
 				// JavaScript to be fired on the home page, after the init JS
 			}
-		},
+		}
 	};
 
 	// The routing fires all common scripts, followed by the page specific scripts.
@@ -3705,6 +3718,8 @@
 			}
 		},
 		loadEvents: function(e) {
+            "use strict";
+
 			// Fire common init JS
 			UTIL.fire('common', 'init', e);
 

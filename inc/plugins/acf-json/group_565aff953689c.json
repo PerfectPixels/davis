@@ -3,6 +3,7 @@
     "title": "Header Options",
     "fields": [
         {
+            "default_value": "#ffffff",
             "key": "field_5741b65b8d543",
             "label": "Background Color",
             "name": "header_background_color",
@@ -14,10 +15,10 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "default_value": "#ffffff"
+            }
         },
         {
+            "default_value": "#000000",
             "key": "field_5741b72b8d544",
             "label": "Text Color",
             "name": "header_text_color",
@@ -29,10 +30,10 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "default_value": "#000000"
+            }
         },
         {
+            "default_value": "#ffffff",
             "key": "field_5752b8ea8d14c",
             "label": "Icon Counter Color",
             "name": "header_icon_counter_color",
@@ -44,10 +45,23 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "default_value": "#ffffff"
+            }
         },
         {
+            "multiple": 0,
+            "allow_null": 0,
+            "choices": {
+                "default": "Default",
+                "light": "Light",
+                "dark": "Dark"
+            },
+            "default_value": [
+                "default"
+            ],
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value",
             "key": "field_5744708d004d3",
             "label": "Logo Selection",
             "name": "header_logo_selection",
@@ -59,23 +73,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "choices": {
-                "light": "Light",
-                "dark": "Dark"
-            },
-            "default_value": [
-                "dark"
-            ],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "disabled": 0,
-            "readonly": 0
+            }
         },
         {
+            "default_value": 0,
+            "message": "",
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
             "key": "field_5741b81e8d545",
             "label": "Transparent Header",
             "name": "transparent_header",
@@ -87,11 +92,10 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "message": "",
-            "default_value": 0
+            }
         },
         {
+            "default_value": "#ffffff",
             "key": "field_5741b8578d546",
             "label": "Transparent Header Text Color",
             "name": "transparent_header_text_color",
@@ -111,10 +115,10 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "default_value": "#ffffff"
+            }
         },
         {
+            "default_value": "#ffffff",
             "key": "field_5752b9dd8d14d",
             "label": "Transparent Icon Counter Color",
             "name": "transparent_header_icon_counter_color",
@@ -134,10 +138,22 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "default_value": "#ffffff"
+            }
         },
         {
+            "multiple": 0,
+            "allow_null": 0,
+            "choices": {
+                "light": "Light",
+                "dark": "Dark"
+            },
+            "default_value": [
+                "light"
+            ],
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value",
             "key": "field_574213818847b",
             "label": "Transparent Header Logo Selection",
             "name": "transparent_header_logo_selection",
@@ -158,18 +174,6 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "light": "Light",
-                "dark": "Dark"
-            },
-            "default_value": [
-                "light"
-            ],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
             "disabled": 0,
             "readonly": 0
         }
@@ -205,5 +209,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Overwrite the header theme options to have a specific style on this page.",
-    "modified": 1465601301
+    "modified": 1488575606
 }

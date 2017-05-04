@@ -41,8 +41,8 @@ function setup() {
 	// Register wp_nav_menu() menus
 	register_nav_menus([
 		'primary_navigation' => __('Primary Navigation', 'davis'),
-		'left_topbar_navigation' => __('Left Top Bar Navigation', 'davis' ),
-		'right_topbar_navigation' => __('Right Top Bar Navigation', 'davis' ),
+		'topbar_navigation_1' => __('Top Bar Navigation 1', 'davis' ),
+		'topbar_navigation_2' => __('Top Bar Navigation 2', 'davis' ),
 		'account_navigation' => __('Account Navigation', 'davis' ),
 		'footer_navigation' => __('Footer Navigation', 'davis' )
 	]);
@@ -147,7 +147,7 @@ function assets() {
 
 	$quick_checkout = get_theme_mod('quick_checkout', true);
 
-	wp_enqueue_style('sage/css', get_stylesheet_directory_uri() . '/assets/styles/main.css', false, null);
+	wp_enqueue_style('pp/css', get_stylesheet_directory_uri() . '/assets/styles/main.css', false, null);
 
 	//wp_dequeue_style( 'wc-product-reviews-pro-frontend');
 
@@ -159,7 +159,7 @@ function assets() {
 
 	if ( $woocommerce_active ) {
 		if ( is_product() ){
-			wp_enqueue_script('sage/js', get_stylesheet_directory_uri() . '/assets/scripts/main.min.js', ['jquery', 'wc-add-to-cart-variation'], null, true);
+			wp_enqueue_script('pp/js', get_stylesheet_directory_uri() . '/assets/scripts/main.min.js', ['jquery', 'wc-add-to-cart-variation'], null, true);
 
 			if ( ! wc_version_check() ) {
 				wp_enqueue_style('photoswipe', get_stylesheet_directory_uri() . '/assets/styles/plugins/photoswipe.css', false, null);
@@ -279,4 +279,21 @@ function toolbar_link_to_options( $wp_admin_bar ) {
 }
 add_action( 'admin_bar_menu', 'toolbar_link_to_options', 40 );
 
-?>
+
+/**
+ * Add some style option to head
+ */
+function hook_css() {
+	$header_border = hex2rgba( get_theme_mod( 'header_text_color', '#000000' ), 0.1 );
+	$top_bar_border = hex2rgba( get_theme_mod( 'top_bar_text_color', '#ffffff' ), 0.1 );
+	$bottom_header_border = hex2rgba( get_theme_mod( 'bottom_header_text_color', '#000000' ), 0.1 );
+
+	echo '<style id="options">';
+	echo '.nav-header .menu-item-has-children > .sub-menu, .nav-header .square-border.mega-nav.menu-item-has-children .mega-menu > .row > li, .nav-header .line-border.mega-nav.menu-item-has-children .mega-menu > .row > li:after, .nav-header .dropdown-hover .dropdown-menu { border-color: ' . $header_border . ' !important; }';
+	echo '.navbar-top .main-menu-item > .sub-menu, .navbar-top .square-border.mega-nav.menu-item-has-children .mega-menu > .row > li, .navbar-top .line-border.mega-nav.menu-item-has-children .mega-menu > .row > li:after, .navbar-top .dropdown-hover .dropdown-menu { border-color: ' . $top_bar_border . ' !important; }';
+	echo '.navbar-bottom .main-menu-item > .sub-menu, .navbar-bottom .square-border.mega-nav.menu-item-has-children .mega-menu > .row > li, .navbar-bottom .line-border.mega-nav.menu-item-has-children .mega-menu > .row > li:after, .navbar-bottom .dropdown-hover .dropdown-menu { border-color: ' . $bottom_header_border . ' !important; }';
+	echo '</style>';
+}
+add_action('wp_head', 'hook_css');
+
+

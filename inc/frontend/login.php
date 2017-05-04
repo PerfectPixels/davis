@@ -239,8 +239,30 @@ class PP_Login {
      *
      */
      function get_header_icons(){
-         get_template_part( 'template-parts/header/header-icons' );
-         exit;
+	     ob_start();
+	     get_template_part( 'template-parts/header/elements/cart' );
+	     $cart = ob_get_contents();
+	     ob_end_clean();
+
+	     ob_start();
+	     get_template_part( 'template-parts/header/elements/account' );
+	     $account = ob_get_contents();
+	     ob_end_clean();
+
+	     ob_start();
+	     get_template_part( 'template-parts/header/elements/wishlist' );
+	     $wishlist = ob_get_contents();
+	     ob_end_clean();
+
+         $output = array(
+            'cart' => $cart,
+            'account' => $account,
+            'wishlist' => $wishlist
+         );
+
+
+
+	     wp_send_json( $output );
      }
 
     /**

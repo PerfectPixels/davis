@@ -1,66 +1,61 @@
-html { height: 100%; }
+html {
+  height: 100%;
+}
 
-body { font-size: 14px; color: #000; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+body {
+  font-size: 14px;
+  color: #000;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 
-body.no-scroll { overflow: hidden; }
-
-::selection { background: rgba(232,168,72,0.3); color: #fff; }
-::-moz-selection { background: rgba(232,168,72,0.3); color: #fff; }
-
-a:hover,
-a:focus { outline: none !important; text-decoration: none; }
-
-.col-md-2-4 { width: 20%; float: left; position: relative; min-height: 1px; padding-left: 15px; padding-right: 15px; }
-
-.clearfix { display: block; clear: both; }
-
-.custom.tp-bullets {
-
-	.tp-bullet { background: #b2b2b2; width: 50px; height: 4px; }
-
-	.tp-bullet:first-child:last-child { display: none; }
+  &.no-scroll {
+    overflow: hidden;
+  }
 
 }
 
-div.tooltip .tooltip-inner { text-transform: uppercase; font-size: 8px; line-height: 8px; padding: 7px 7px 5px; background: rgba(0,0,0,0.6) !important; border-radius: 2px !important; }
-div.tooltip.top .tooltip-arrow { border-top-color: rgba(0,0,0,0.6) !important; }
-div.tooltip.left .tooltip-arrow { border-left-color: rgba(0,0,0,0.6) !important; }
+::selection,
+::-moz-selection {
+  background: rgba(232, 168, 72, 0.3);
+  color: #fff;
+}
 
-.select2-container--open { z-index: 9999; }
+a:hover,
+a:focus {
+  outline: none !important;
+  text-decoration: none;
+}
 
-p.loading,
-p.loading:before,
-p.loading:after,
-.blockUI:not(.blockOverlay),
-.blockUI:not(.blockOverlay):before,
-.blockUI:not(.blockOverlay):after { background: none !important; position: absolute!important; top: 50%!important; left: 50%!important; border: 1px solid rgba(0, 0, 0, 0.2) !important; border-left-color: rgba(0, 0, 0, .8) !important; border-radius: 999px!important; transition: border 350ms; display: block !important; z-index: 901; }
-.black p.loading,
-.black p.loading:before,
-.black p.loading:after { border: 1px solid rgba(255, 255, 255, 0.2) !important; border-left-color: rgba(255, 255, 255, .8) !important; }
+.clearfix {
+  display: block;
+  clear: both;
+}
 
-p.loading,
-.blockUI:not(.blockOverlay) { margin: -6px 0 0 -6px !important; height: 12px !important; width: 12px!important; animation: animation-rotate 1000ms linear infinite; z-index:900 !important; }
-p.loading:before,
-.blockUI:not(.blockOverlay):before { content: ""; margin: -8px 0 0 -8px !important; height: 16px !important; width: 16px !important; animation: animation-rotate 1000ms linear infinite; }
-p.loading:after,
-.blockUI:not(.blockOverlay):after { content: ""; margin: -10px 0 0 -10px !important; height: 20px !important; width: 20px !important; animation: animation-rotate 2000ms linear infinite; }
+.custom.tp-bullets {
 
-div.loading-overlay,
-.blockUI.blockOverlay { background: rgba(255,255,255,0.7) !important; position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: 0; opacity: 1 !important; z-index: 900 !important; }
-.blockUI.blockOverlay:before,
-.blockUI.blockOverlay:after { background: none !important; }
+  .tp-bullet {
+    background: #b2b2b2;
+    width: 50px;
+    height: 4px;
+  }
 
-.berocket_aapf_widget_loading .berocket_aapf_widget_loading_image,
-.berocket_aapf_widget_loading .berocket_aapf_widget_loading_image:before,
-.berocket_aapf_widget_loading .berocket_aapf_widget_loading_image:after { background: none; position: absolute; top: 50%; left: 50%; border: 1px solid rgba(0, 0, 0, 0.2); border-left-color: rgba(0, 0, 0, .8); border-radius: 999px; transition: border 350ms; }
+  .tp-bullet:first-child:last-child {
+    display: none;
+  }
 
-.berocket_aapf_widget_loading .berocket_aapf_widget_loading_image { margin: -11px 0 0 -11px; height: 22px; width: 22px; animation: animation-rotate 1000ms linear infinite; }
-.berocket_aapf_widget_loading .berocket_aapf_widget_loading_image:before { content: ""; margin: -13px 0 0 -13px; height: 26px; width: 26px; animation: animation-rotate 1000ms linear infinite; }
-.berocket_aapf_widget_loading .berocket_aapf_widget_loading_image:after { content: ""; margin: -15px 0 0 -15px; height: 30px; width: 30px; animation: animation-rotate 2000ms linear infinite; }
+}
 
+.select2-container--open {
+  z-index: 9999;
+}
 
-@keyframes animation-rotate {
-  100% {
-    transform: rotate(360deg);
+#{$main_elements} {
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.nav-is-visible {
+  #{$main_elements_visible} {
+    transform: translateX(-260px) !important;
   }
 }

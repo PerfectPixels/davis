@@ -147,7 +147,7 @@ endif;
 
 					<button name="register" type="submit" tabindex="3" data-message="<?php _e( 'Registering', 'davis' ); ?>" class="button black submit"><?php _e( 'Register', 'davis' ); ?></button>
 					<input type="submit" name="register" tabindex="3" data-message="<?php _e( 'Registering', 'davis' ); ?>" class="button black submit" value="<?php _e( 'Register', 'davis' ); ?>">
-					<spam class="lost"></span>
+					<span class="lost"></span>
 
 			        <?php wp_nonce_field( 'ajax-registration-nonce', 'security' ); ?>
 					<?php wp_nonce_field( 'woocommerce-register' ); ?>

@@ -1,7 +1,6 @@
 <?php 
 
 $product_cat = '';
-$selected = '';
 $cat = '';
 
 if (isset($_GET['product_cat'])) {
@@ -19,28 +18,31 @@ if ( taxonomy_exists( 'product_cat' ) ) {
 			'echo'            => 0,
 			'show_option_all' => __('All', 'davis'),
 			'selected'		  => $product_cat,
-			'value_field'	  => 'slug'
+			'value_field'	  => 'slug',
+            'hide_if_empty'   => true
 		)
 	);
 }
 
 $ajax = get_theme_mod( 'ajax_search', true );
+$filter = get_theme_mod( 'search_cat', true );
 
 ?>
 
-<form class="product-search <?php if ( ! $ajax ) { echo 'no-ajax'; } ?>" method="get" action="<?php echo home_url(); ?>" class="header-text-color-txt-all">
-    <?php if ( class_exists('WooCommerce') ) { ?>
+<form class="product-search <?php if ( ! $ajax ) { echo 'no-ajax'; } ?>" method="get" action="<?php echo home_url(); ?>">
+    <?php if ( class_exists('WooCommerce') && $cat !== '' && $filter ) { ?>
         <div class="cd-select">
-        	<span class="in"><?php _e( 'in', 'davis' ); ?></span>
-			<?php echo $cat ?>
-		</div>
-		<input type="hidden" name="post_type" value="product">
-	<?php } ?>
+            <span class="in"><?php _e( 'in', 'davis' ); ?></span>
+            <?php echo $cat ?>
+        </div>
+        <input type="hidden" name="post_type" value="product">
+    <?php } ?>
 
-    <button type="submit" class="icon-android-search"></button>
-    <div class="search-input"><input type="search" autocomplete="off" value="<?php echo esc_html($s, 1); ?>" name="s" id="s" placeholder="<?php _e( 'Search here', 'davis' ); ?>" /></div>
+    <button type="submit" class="<?php echo get_theme_mod( 'search_style', 'icon-search-1' ); ?>"></button>
+    <div class="search-input"><input type="search" autocomplete="off" value="<?php echo esc_html($s, 1); ?>" name="s" id="s" placeholder="<?php echo get_theme_mod( 'search_placeholder', 'Search here' ); ?>" /></div>
 </form>
+
 <div class="cd-search-suggestions">
-	<div class="results">
-	</div>
+    <div class="results">
+    </div>
 </div>

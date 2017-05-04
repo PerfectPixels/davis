@@ -72,7 +72,7 @@ if ( ! $product->is_purchasable() ) {
 
 			 	<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 
-			 	<button type="submit" class="cart_button button icon-shopping-bag single_add_to_cart_button"><?php _e('Add to cart', 'davis'); ?></button>
+			 	<button type="submit" class="cart_button button single_add_to_cart_button <?php echo pp_get_option( 'cart_icon_add' ); ?>" data-icon="<?php echo pp_get_option( 'cart_icon' ); ?>"><?php _e('Add to cart', 'davis'); ?></button>
 			</div>
 
 	 	</div>

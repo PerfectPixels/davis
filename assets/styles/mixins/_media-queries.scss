@@ -1,0 +1,32 @@
+@mixin retina {
+  @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+// Media query mixin for @each loop
+@mixin media-query($screen) {
+  @if $screen == 'mobile' {
+    @media (max-width: #{$mobile-width - 1px}) {
+      @content;
+    }
+  } @elseif $screen == 'tablet-and-down' {
+    @media (max-width: #{$tablet-width - 1px}) {
+      @content;
+    }
+  } @elseif $screen == 'tablet' {
+    @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
+      @content;
+    }
+  } @elseif $screen == 'desktop' {
+    @media (min-width: #{$tablet-width}) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+div.tooltip .tooltip-inner {
+  text-transform: uppercase;
+  font-size: 8px;
+  line-height: 8px;
+  padding: 7px 7px 5px;
+  background: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 2px !important;
+}
+
+div.tooltip.top .tooltip-arrow {
+  border-top-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+div.tooltip.left .tooltip-arrow {
+  border-left-color: rgba(0, 0, 0, 0.6) !important;
+}
+

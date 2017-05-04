@@ -3,8 +3,12 @@
 
 global $woocommerce_wishlist, $add_to_wishlist_args, $product;
 
-$icon_class = 'icon-heart-line ';
+$icon_class = pp_get_option( 'wishlist_icon_outline' );
 $tooltip = ' data-toggle="tooltip" data-placement="top" title="Add to Favorites"';
+
+if ( ( $key = array_search( 'button' , $add_to_wishlist_args['btn_class'] ))  !== false ) {
+    unset( $add_to_wishlist_args['btn_class'][$key] );
+}
 
 ?>
 <input type="hidden" name="wlid" id="wlid" />
@@ -22,12 +26,12 @@ $tooltip = ' data-toggle="tooltip" data-placement="top" title="Add to Favorites"
 		$count++;
 	}
 
-	$icon_class = 'icon-heart '; 
+	$icon_class = pp_get_option( 'wishlist_icon' );
 	$tooltip = ' data-toggle="tooltip" data-placement="top" title="'. __('Saved in: ', 'wc_wishlist') . $lists .'"';
 	
 endif; ?>
 
-<a data-productid="<?php echo $product->id; ?>" data-listid="<?php echo $add_to_wishlist_args['single_id']; ?>" class="<?php echo $icon_class . implode(' ', $add_to_wishlist_args['btn_class']); ?>" <?php echo $tooltip; ?>></a>
+<a data-productid="<?php echo $product->id; ?>" data-listid="<?php echo $add_to_wishlist_args['single_id']; ?>" class="<?php echo $icon_class . ' ' . implode(' ', $add_to_wishlist_args['btn_class']); ?>" <?php echo $tooltip; ?>></a>
 
 <?php if ($product->product_type != 'external') : ?>
 	<script type="text/javascript">

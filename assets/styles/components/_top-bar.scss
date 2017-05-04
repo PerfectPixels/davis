@@ -1,0 +1,27 @@
+.navbar-top {
+  @extend %header_bars; // Located in _bottom-header.scss
+  z-index: 6 !important;
+
+  > ul {
+    line-height: 40px !important;
+
+    > li {
+      vertical-align: top !important;
+
+      &.sep {
+        vertical-align: middle !important;
+      }
+    }
+
+  }
+
+}
+
+.top-bar-is-fixed .navbar-top.navbar-fixed-top {
+  top: 0;
+  position: fixed;
+}
+
+.admin-bar.top-bar-is-fixed .navbar-top.navbar-fixed-top {
+  top: 32px;
+}

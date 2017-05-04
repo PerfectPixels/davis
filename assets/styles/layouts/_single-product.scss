@@ -145,7 +145,7 @@
 
 							.single_add_to_cart_button { background: rgba(0,0,0,0.8); color: #fff; font-size: 11px !important; text-transform: uppercase; text-decoration: none; line-height: 1; float: right; display: inline-block; border: none; padding: 15px 15px 14px 45px !important; margin: 0 !important; position: relative; outline: none; vertical-align: top;
 
-								&:before { position: absolute; left: 15px; top: 8px; font-size: 20px; }
+								&:before { position: absolute; left: 15px; top: 50%; font-size: 21px; transform: translateY(-50%); }
 
 							}
 

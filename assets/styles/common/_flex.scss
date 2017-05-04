@@ -1,0 +1,58 @@
+.flex-grid {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: row nowrap;
+	align-items: center;
+	width: 100%;
+    backface-visibility: hidden;
+
+	.flex-col {
+		flex: 1;
+		float: none !important;
+	}
+
+	.flex-left {
+		margin-right: auto;
+		text-align: left !important;
+	}
+
+	.flex-center {
+		margin-right: auto;
+		margin-left: auto;
+		text-align: center !important;
+	}
+
+	.flex-right {
+		margin-left: auto;
+		text-align: right !important;
+	}
+
+    > ul > li {
+      text-align: left;
+    }
+
+	&.2-col {
+		.flex-col {
+			width: 49%;
+		}
+	}
+	
+	&.3-col {
+		.flex-col {
+			width: 32%;
+		}
+	}
+	
+	&.4-col {
+		.flex-col {
+			width: 24%;
+		}
+	}
+
+	&.5-col {
+		.flex-col {
+			width: 19%;
+		}
+	}
+
+}

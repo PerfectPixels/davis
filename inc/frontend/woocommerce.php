@@ -239,7 +239,7 @@ class PP_Woocommerce {
     				$output .= '<a href="' . $variation_url . '" class="img"' .$stock_class . ' data-colors="'. $product_colors .'" data-variation-id="'.$variation['variation_id'].'" data-product-id="' . $post->ID .'"' . $data_attr . ' data-attr-counter="' . $data_counter . '">' . /* wp_get_attachment_image( $post->ID, $size, $thumb_attr ); */ '<img src="' .esc_url( $img_src ) . '" class="attachment-'.$size.'" srcset="' . esc_attr( $img_srcset ) . '" sizes="' .$img_sizes .'" title="' .$variation['image_title'] . '">';
 
     				// If it has another variation image
-    				if ( count( $image_ids > 0 ) ) {
+    				if ( count( $image_ids ) > 0 ) {
     					foreach( $image_ids as $id ) {
     						$thumb_attr = array(
     							'class'	=> "additional-img",
@@ -271,7 +271,7 @@ class PP_Woocommerce {
 
     		} else {
 
-    			$output .= '<a href="' . get_permalink() . '" class="img" data-colors="'. $product_colors .'"><img class="" src="'. woocommerce_placeholder_img_src() .'" alt="Placeholder" width="' . $placeholder_width . '" height="' . $placeholder_height . '" /></a>	';
+    			$output .= '<a href="' . get_permalink() . '" class="img" data-colors="'. $product_colors .'"><img class="" src="'. wc_placeholder_img_src() .'" alt="Placeholder" width="' . $placeholder_width . '" height="' . $placeholder_height . '" /></a>	';
 
     		}
     	}

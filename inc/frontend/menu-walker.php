@@ -70,7 +70,7 @@ class PP_Walker_Nav_Menu extends Walker_Nav_Menu {
         $depth_classes = array(
             ( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
             ( get_post_meta( $item->ID, 'menu-item-megamenu-columns', true ) ),
-        	( $depth == 0 && !get_post_meta( $item->ID, 'menu-item-mega-menu', true ) ? 'simple-nav' : '' )
+        	( $depth == 0 && !get_post_meta( $item->ID, 'menu-item-mega-menu', true ) ? 'simple-nav' : 'mega-nav' )
         );
         $depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
 

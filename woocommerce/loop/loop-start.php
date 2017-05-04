@@ -9,9 +9,8 @@
 
 $product_per_row = '';
 
-if ( is_shop() ){
-    $product_per_row = 'display-' . get_theme_mod( 'product_per_row', '4' ) . '-per-row';
-}
+$product_per_row = 'display-' . get_theme_mod( 'product_per_row', '4' ) . '-per-row';
+
 
 ?>
 

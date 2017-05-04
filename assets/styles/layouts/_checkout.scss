@@ -94,19 +94,23 @@ body.checkout {
 
 				.panel-body { border: none; padding: 0 0 20px; }
 
+				#checkout-lost-pwd {
+
+				}
+
 			}
 
 		}
 
 		.panel-default:before { background: #b2b2b2; width: 50px; height: 4px; position: absolute; left: 0; bottom: -4px; content: ""; display: block; }
 
-		#loginform {
+		#collapse-login-customer {
 
 			input { width: 100% !important; margin-bottom: 10px; }
 
 			label.rememberme { display: block; margin-bottom: 15px; }
 
-			a.submit-login { text-align: center; width: auto; min-width: 30%;
+			a.submit { text-align: center; width: auto; min-width: 30%;
 
 				p.loading { left: 20px !important; }
 

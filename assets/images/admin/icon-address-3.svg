@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="24px" viewBox="0 0 16 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-address-3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-address-3" fill-rule="nonzero" fill="#000000">
+            <g id="Filled_Icons">
+                <path d="M8,0.006 C3.589,0.006 0,3.594 0,8.006 C0,12.25 7.273,23.313 7.583,23.781 C7.675,23.92 7.832,24.006 8,24.006 C8.168,24.006 8.324,23.921 8.417,23.781 C8.727,23.313 16,12.25 16,8.006 C16,3.595 12.411,0.006 8,0.006 Z M8,11.506 C6.07,11.506 4.5,9.935 4.5,8.006 C4.5,6.077 6.07,4.506 8,4.506 C9.93,4.506 11.5,6.077 11.5,8.006 C11.5,9.935 9.93,11.506 8,11.506 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

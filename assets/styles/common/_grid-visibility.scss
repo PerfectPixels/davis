@@ -1,0 +1,23 @@
+.visible-desktop,
+.visible-tablet,
+.visible-mobile {
+  display: none !important;
+}
+
+@include media-query('desktop'){
+  .visible-desktop {
+    display: block !important;
+  }
+}
+
+@include media-query('tablet'){
+  .visible-tablet {
+    display: block !important;
+  }
+}
+
+@include media-query('mobile'){
+  .visible-mobile {
+    display: block !important;
+  }
+}

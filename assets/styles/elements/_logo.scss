@@ -1,0 +1,62 @@
+.logo { 
+
+	.brand {
+		height: auto;
+		max-height: 100%;
+		margin: 0;
+		display: block;
+		position: relative;
+		z-index: 6;
+
+		img {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translate3d(0, -50%, 0);
+			display: block;
+			width: 100%;
+			opacity: 1;
+			transition: opacity .3s $cb;
+		}
+
+		img.for-transparent-header {
+			opacity: 0;
+		}
+
+	}
+
+}
+
+html:not(.search-form-visible) .nav-header.transparent:not(.sticky) {
+	background-color: rgba(0, 0, 0, 0.02) !important;
+
+	.brand {
+
+		img.default {
+			opacity: 0;
+		}
+
+		img.for-transparent-header {
+			opacity: 1;
+		}
+
+	}
+
+}
+
+@include media-query('tablet-and-down'){
+
+	.nav-header.center_logo_split_menu {
+
+		.brand {
+			opacity: 1;
+			z-index: 3;
+		}
+
+	}
+
+	.brand {
+		height: 50px;
+	}
+
+}

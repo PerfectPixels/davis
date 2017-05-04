@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="21px" viewBox="0 0 24 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-shopping-cart-outline</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-shopping-cart-outline" fill-rule="nonzero" fill="#000000">
+            <g id="Outline_Icons">
+                <path d="M20.975,15.658 L23.975,6.658 C24.026,6.506 24,6.338 23.906,6.207 C23.812,6.077 23.661,6 23.5,6 L5.808,6 L4.486,0.385 C4.434,0.16 4.232,0 4,0 L0.5,0 C0.224,0 0,0.224 0,0.5 C0,0.776 0.224,1 0.5,1 L3.604,1 L7.394,17.104 C6.589,17.363 6,18.11 6,19 C6,20.103 6.897,21 8,21 C9.103,21 10,20.103 10,19 C10,18.634 9.895,18.295 9.722,18 L17.279,18 C17.105,18.295 17,18.634 17,19 C17,20.103 17.897,21 19,21 C20.103,21 21,20.103 21,19 C21,17.897 20.103,17 19,17 L8.396,17 L8.161,16 L20.5,16 C20.715,16 20.906,15.862 20.975,15.658 Z M9,19 C9,19.551 8.552,20 8,20 C7.448,20 7,19.551 7,19 C7,18.449 7.448,18 8,18 C8.552,18 9,18.449 9,19 Z M20,19 C20,19.551 19.552,20 19,20 C18.448,20 18,19.551 18,19 C18,18.449 18.448,18 19,18 C19.552,18 20,18.449 20,19 Z M7.926,15 L6.043,7 L22.807,7 L20.14,15 L7.926,15 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

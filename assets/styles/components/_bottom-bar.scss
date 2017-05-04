@@ -1,0 +1,28 @@
+.navbar-mobile-bottom {
+  @extend %header_bars; // Located in _bottom-header.scss
+  padding: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+
+  > ul {
+    text-align: center;
+    justify-content: center;
+    height: 50px;
+
+    > li:not(.sep) {
+      flex: 1 1 25%;
+
+      &.dropdown-hover {
+
+        .dropdown-menu {
+          display: none;
+        }
+
+      }
+    }
+
+  }
+
+}

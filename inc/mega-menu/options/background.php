@@ -56,7 +56,7 @@
     </div>
 
 	<% if ( depth == 0 ) { %>
-		<div class="edit_form_line spacing image-position <% if ( megaData.img_type == 'background' ) { print( 'hidden' ) } %>">
+		<div class="edit_form_line spacing image-position <% if ( megaData.img_type != 'image' ) { print( 'hidden' ) } %>">
 	        <label>
 	            <span><?php esc_html_e( 'Image Absolute Position', 'davis' ) ?></span>
 				<div class="inner">
@@ -127,7 +127,7 @@
 
 	<% if ( depth > 0 ) { %>
 		<div class="element_label"><?php esc_html_e( 'Image Settings', 'davis' ) ?></div>
-		<div class="edit_form_line image-margin <% if ( megaData.img_type == 'background' ) { print( 'hidden' ) } %>">
+		<div class="edit_form_line image-margin <% if ( megaData.img_type != 'image' ) { print( 'hidden' ) } %>">
 	        <label>
 	            <span><?php esc_html_e( 'No Margin', 'davis' ) ?></span>
 	            <input type="checkbox" name="<%= menuSettings.getFieldName( 'img_no_margin', data['menu-item-db-id'] ) %>" value="1" <% if ( megaData.img_no_margin ) { print( 'checked="checked"' ); } %> >
