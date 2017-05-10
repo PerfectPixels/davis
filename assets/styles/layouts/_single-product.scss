@@ -896,13 +896,13 @@
 
 								h3.star-title { float: left; }
 
-								p { font-size: 11px; color: #000; margin: 0;
+								p { font-size: 12px; color: #000; margin: 0; clear: both;
 
 									.contribution-admin-badge { background: $yellow; border-radius: 0; margin: 0; }
 
 									time { padding: 0 5px 0 0; }
 
-									.verified { color: $yellow; padding: 1px 7px; font-style: normal; border-left: 1px solid #000; }
+									.verified { color: $green; padding: 1px 7px; font-style: normal; border-left: 1px solid #000; }
 
 								}
 

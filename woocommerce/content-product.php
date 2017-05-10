@@ -77,9 +77,9 @@ if ( $product->is_type( 'variable' ) ){
 // If it is a single variation product
 $single_variation_product	= false;
 
-if ( $product->variation_id ){
-	$variation_id = $product->variation_id;
-	$product_colors = get_post_meta($product->variation_id, '_jck_product_colors', true);
+if ( $product->get_type() === 'variation' ){
+	$variation_id = $product->get_id();
+	$product_colors = get_post_meta($variation_id, '_jck_product_colors', true);
     $product = wc_get_product($product->parent->id);
     $available_variations = $product->get_available_variations();
     $single_variation_product = true;

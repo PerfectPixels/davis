@@ -235,8 +235,9 @@ class PP_Woocommerce {
 
     			if ( !$exist && $variation['variation_is_visible'] == 1 && $variation['is_purchasable'] == 1 && $variations_slider ){
     				$output .= '<div>' . $sales . $variation['price_html'];
+    				$img_title = ( isset( $variation['image_title'] ) ? $variation['image_title'] : '' );
 
-    				$output .= '<a href="' . $variation_url . '" class="img"' .$stock_class . ' data-colors="'. $product_colors .'" data-variation-id="'.$variation['variation_id'].'" data-product-id="' . $post->ID .'"' . $data_attr . ' data-attr-counter="' . $data_counter . '">' . /* wp_get_attachment_image( $post->ID, $size, $thumb_attr ); */ '<img src="' .esc_url( $img_src ) . '" class="attachment-'.$size.'" srcset="' . esc_attr( $img_srcset ) . '" sizes="' .$img_sizes .'" title="' .$variation['image_title'] . '">';
+    				$output .= '<a href="' . $variation_url . '" class="img"' .$stock_class . ' data-colors="'. $product_colors .'" data-variation-id="'.$variation['variation_id'].'" data-product-id="' . $post->ID .'"' . $data_attr . ' data-attr-counter="' . $data_counter . '">' . /* wp_get_attachment_image( $post->ID, $size, $thumb_attr ); */ '<img src="' .esc_url( $img_src ) . '" class="attachment-'. $size. '" srcset="' . esc_attr( $img_srcset ) . '" sizes="' . $img_sizes . '" title="' . $img_title . '">';
 
     				// If it has another variation image
     				if ( count( $image_ids ) > 0 ) {
@@ -244,7 +245,7 @@ class PP_Woocommerce {
     						$thumb_attr = array(
     							'class'	=> "additional-img",
     							'alt'	=> get_post_meta( get_post_thumbnail_id( $id ) , '_wp_attachment_image_alt', true),
-    							'title'	=> $variation['image_title'],
+    							'title'	=> $img_title,
     						);
 
     						$output .= wp_get_attachment_image( $id, $size, false, $thumb_attr );
@@ -321,7 +322,7 @@ class PP_Woocommerce {
     		$archive_link = '';
 
     		if ( $taxonomy && ! is_wp_error( $taxonomy ) ) {
-    			$terms = wp_get_post_terms( $product->id, $attribute_name );
+    			$terms = wp_get_post_terms( $product->get_id(), $attribute_name );
 
     	        if ( ! empty( $terms ) ) {
     		        foreach ( $terms as $term ) {
@@ -341,7 +342,7 @@ class PP_Woocommerce {
 
     	$by_brand .= '</div>';
 
-    	echo '<h3><a href="' . get_permalink($product->id) . '">' . get_the_title() . '</a>' . $by_brand . '</h3>';
+    	echo '<h3><a href="' . get_permalink($product->get_id()) . '">' . get_the_title() . '</a>' . $by_brand . '</h3>';
 
     }
 

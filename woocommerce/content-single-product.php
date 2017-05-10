@@ -12,7 +12,7 @@
  * @see 	    http://docs.woothemes.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     1.6.4
+ * @version     3.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
-$attachment_ids = $product->get_gallery_attachment_ids();
+$attachment_ids = $product->get_gallery_image_ids();
 $images_pos		= 'right';
 $product_images_bgcolor = '';
 
@@ -65,7 +65,7 @@ if ($product_style !== 'slideshow' && $product_style !== 'fullwidth'){
 	}
 ?>
 
-<div itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
+<div id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<div class="container style-<?php echo $product_style; ?> images-<?php echo $images_pos; ?>" <?php echo $product_images_bgcolor; ?>>
 

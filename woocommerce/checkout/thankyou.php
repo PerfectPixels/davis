@@ -110,7 +110,7 @@ if ( $order ){ ?>
 					foreach( $order->get_items() as $item_id => $item ) {
 							$product = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $item ), $item );
 
-							$related = array_merge( $related, $product->get_related( 30 ) );
+							$related = array_merge( $related, wc_get_related_products( $product->get_id(), 30 ) );
 
 					} ?>
 
@@ -125,7 +125,7 @@ if ( $order ){ ?>
 								'posts_per_page'       => $posts_per_page,
 								'orderby'              => $orderby,
 								'post__in'             => $related,
-								'post__not_in'         => array( $product->id )
+								'post__not_in'         => array( $product->get_id() )
 							) );
 
 							$products = new WP_Query( $args );
@@ -160,17 +160,17 @@ if ( $order ){ ?>
 
 					<div id="customer-details" class="col-md-12">
 						<div class="container">
-							<?php wc_get_template( 'order/order-details.php', array( 'order_id' =>  $order->id, 'thankyou' => true ) ); ?>
+							<?php wc_get_template( 'order/order-details.php', array( 'order_id' =>  $order->get_id(), 'thankyou' => true ) ); ?>
 						</div>
 					</div>
 
-					<?php $id = $order->id;
-						$post = get_page($id);
+					<?php $id = $order->get_id();
+						$post = get_post($id);
 						$content = apply_filters('the_content', $post->post_content);
 						echo $content;
 					?>
 
-					<?php do_action( 'woocommerce_thankyou', $order->id ); ?>
+					<?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>
 				</div>
 			</section>
 
@@ -179,8 +179,8 @@ if ( $order ){ ?>
 					<h3><?php _e( 'Order Summary', 'davis' ); ?></h3>
 					<ul class="order-summary">
 						<?php foreach( $order->get_items() as $item_id => $item ) {
-							$product = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $item ), $item );
-							$purchase_note = get_post_meta( $product->id, '_purchase_note', true ); ?>
+							$product = apply_filters( 'woocommerce_order_item_product', $item->get_product(), $item );
+							$purchase_note = get_post_meta( $product->get_id(), '_purchase_note', true ); ?>
 
 							<li>
 								<table>
@@ -200,7 +200,7 @@ if ( $order ){ ?>
 							<?php if ( get_theme_mod( 'display_order_date', false ) ){ ?>
 								<tr class="date">
 									<th><?php _e( 'Date', 'woocommerce' ); ?></th>
-									<td><?php echo date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ); ?></td>
+									<td><?php echo date_i18n( get_option( 'date_format' ), strtotime( wc_get_order( $id ) ) ); ?></td>
 								</tr>
 							<?php } ?>
 							<?php if ( $order->payment_method_title && get_theme_mod( 'display_payment_method', false ) ){ ?>
@@ -219,7 +219,7 @@ if ( $order ){ ?>
 
 				<?php if ( class_exists( 'WC_Social_Checkout' ) ){ ?>
 					<article id="share-purchase" class="container">
-						<?php do_action( 'woocommerce_share_purchase', $order->id ); ?>
+						<?php do_action( 'woocommerce_share_purchase', $order->get_id() ); ?>
 					</article>
 				<?php } ?>
 			</aside>

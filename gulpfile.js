@@ -148,8 +148,8 @@ gulp.task('makepot', function () {
 
 gulp.task('browserSync', function() {
   browserSync({
-    proxy: 'http://localhost/',
-    port: 8080,
+    proxy: 'http://davis.localhost/',
+    port: 8081,
     open: true,
     notify: false
   });

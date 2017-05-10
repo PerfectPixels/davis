@@ -58,7 +58,7 @@ $current_rating = isset( $filters['rating'] ) ? $filters['rating'] : null;
 	<?php else : ?>
 
 		<p class="woocommerce-noreviews">
-			<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->id ) ) : ?>
+			<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 				
 				<?php if ( $comment_type === 'review' ){ ?>
 					<?php _e( 'There are no reviews yet. Be the first to review this product.', 'davis' ); ?>	

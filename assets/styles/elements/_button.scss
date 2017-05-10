@@ -149,3 +149,40 @@ button.message {
     background: $red !important;
   }
 }
+
+%close-cross {
+  width: 30px;
+  height: 30px;
+  display: block;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+  transform: rotate3d(0, 0, 1, 180deg);
+  opacity: 1;
+  transition: transform 1s $cb, opacity .4s $cb;
+
+  &:before,
+  &:after {
+    background: #000;
+    width: 30px;
+    height: 3px;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -1px 0 0 -15px;
+    transform: rotate3d(0, 0, 1, 45deg);
+    transition: transform .8s $cb;
+  }
+
+  &:after {
+    transform: rotate3d(0, 0, 1, 135deg);
+  }
+
+}
+
+.close-cross {
+  @extend %close-cross;
+}

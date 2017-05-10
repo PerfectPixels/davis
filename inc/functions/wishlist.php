@@ -17,48 +17,48 @@
       $total_items = 0;
       $counter = 0;
 
-      if ( class_exists('WC_Wishlists_wishlist') ) :
-          $lists = WC_Wishlists_User::get_wishlists();
+      if ( class_exists('WC_Wishlists_wishlist') ) {
+	      $lists = WC_Wishlists_User::get_wishlists();
 
-          foreach ( $lists as $list ) {
-              $items = WC_Wishlists_Wishlist_Item_Collection::get_items( $list->id );
-              $wishlist_items = sizeof($items);
-              $counter++;
+	      foreach ( $lists as $list ) {
+		      $items          = WC_Wishlists_Wishlist_Item_Collection::get_items( $list->id );
+		      $wishlist_items = sizeof( $items );
+		      $counter ++;
 
-              $wishlist_menu .= '<li class="animation-delay-'.$counter.'"><a href="' .$list->post->guid.$list->post->ID. '">' .$list->post->post_title. '<span class="wishlist-counter">' .$wishlist_items. '</span></a></li>';
+		      $wishlist_menu .= '<li class="animation-delay-' . $counter . '"><a href="' . $list->post->guid . $list->post->ID . '">' . $list->post->post_title . '<span class="wishlist-counter">' . $wishlist_items . '</span></a></li>';
 
-              $total_items += $wishlist_items;
-          }
+		      $total_items += $wishlist_items;
+	      }
 
-      elseif ( class_exists('YITH_WCWL') ) :
+      } else if ( class_exists('YITH_WCWL') ) {
 
-          if ( ! class_exists('YITH_WCWL_Premium') && $type !== 'total_items' ) {
-              return;
-          }
+	      if ( ! class_exists( 'YITH_WCWL_Premium' ) && $type !== 'total_items' ) {
+		      return;
+	      }
 
-          $lists = YITH_WCWL()->get_wishlists();
-          $token = false;
+	      $lists = YITH_WCWL()->get_wishlists();
+	      $token = false;
 
-          foreach ( $lists as $list ) {
+	      foreach ( $lists as $list ) {
 
-              if ( is_user_logged_in() ){
-                  $token = $list['wishlist_token'];
-              }
+		      if ( is_user_logged_in() ) {
+			      $token = $list['wishlist_token'];
+		      }
 
-              $wishlist_items = YITH_WCWL()->count_products( $token );
-              $counter++;
-              $wl_name = $list['wishlist_name'];
-              $wl_url = '';
+		      $wishlist_items = YITH_WCWL()->count_products( $token );
+		      $counter ++;
+		      $wl_name = $list['wishlist_name'];
+		      $wl_url  = '';
 
-              if ($wl_name == '' || $wl_name == null){
-                  $wl_name = __('Wishlist', 'davis');
-              }
+		      if ( $wl_name == '' || $wl_name == null ) {
+			      $wl_name = __( 'Wishlist', 'davis' );
+		      }
 
-              $wishlist_menu .= '<li class="animation-delay-'.$counter.'"><a href="' .$wl_url. '">' .$wl_name. '<span class="wishlist-counter">' .$wishlist_items. '</span></a></li>';
+		      $wishlist_menu .= '<li class="animation-delay-' . $counter . '"><a href="' . $wl_url . '">' . $wl_name . '<span class="wishlist-counter">' . $wishlist_items . '</span></a></li>';
 
-              $total_items += $wishlist_items;
-          }
-      endif;
+		      $total_items += $wishlist_items;
+	      }
+      }
 
       $wishlist_menu .= '</ul>';
 

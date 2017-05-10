@@ -1337,7 +1337,7 @@
 				loginRegisterForms: function(){
 				    $('div.wrap-form form').on('submit', function(){
 
-				    	if ( PP.method.global.getUrlParameter('login') === 'true' && PP.method.global.getUrlParameter('redirect') !== '' ){
+				    	if ( PP.method.global.getUrlParameter( 'login' ) === 'true' && PP.method.global.getUrlParameter( 'redirect' ) !== '' ){
 					    	PP.method.login.ajaxLogin( $(this), false );
 				    	} else {
 					    	PP.method.login.ajaxLogin( $(this), true );
@@ -1566,13 +1566,15 @@
 						var response = $.parseJSON( xhr.responseText );
 
 						if ( response.result === 'true' ){
-						    var $wl = $('li.action-button.wishlist');
+						    var $wl = $('.action-button.wishlist');
 
-							// Replace the top bar wishlist icon
+							// Replace the wishlist icon
 							if ( $wl.length > 0 ){
-                                $wl.html().load(document.URL + ' li.action-button.wishlist > *', function(){
-									PP.method.global.loading($container, 'close');
-								});
+                                $wl.each( function() {
+                                    $( this ).html().load(document.URL + ' .action-button.wishlist > *', function () {
+                                        PP.method.global.loading($container, 'close');
+                                    });
+                                });
 							}
 						}
 					});
@@ -2024,8 +2026,8 @@
 						// Check if a variation is selected
 						if (variation) {
 							// Find the image with the same title as the variation selected
-							if (variation.image_title !== ''){
-								$slideVar = $mainSlider.find('img[data-image-title="'+ variation.image_title +'"]'),
+							if (variation.image.title !== ''){
+								$slideVar = $mainSlider.find('img[data-image-title="'+ variation.image.title +'"]'),
 								slideIndex = $slideVar.parents('.item').attr('data-slick-index');
 							}
 
@@ -2935,27 +2937,29 @@
                                 $iframe.addClass( 'loaded' );
 
                                 // Hide the page cart
-                                $offcanvasCart.find( '#checkout_cart' ).hide();
+                                $offcanvasCart.find( '#checkout_cart' ).hide( 0, function() {
 
-                                setTimeout(function(){
-                                    // Imitate the real cart
-                                    iframeContent.find( 'body' ).addClass( 'open' );
+                                    setTimeout(function () {
+                                        // Imitate the real cart
+                                        iframeContent.find('body').addClass('open');
 
-                                    // Cannot scroll page
-                                    $( 'body' ).addClass( 'no-scroll' );
+                                        // Cannot scroll page
+                                        $('body').addClass('no-scroll');
 
-                                    // Expand the cart
-                                    $offcanvasCart.addClass( 'expanded open' );
+                                        // Expand the cart
+                                        $offcanvasCart.addClass('expanded open');
 
-                                    // Call the correct view
-                                    PP.method.checkout.views( '#details' );
+                                        // Call the correct view
+                                        PP.method.checkout.views('#details');
 
-                                    // Make sure the cart is not longer than the screen
-                                    PP.method.cart.cartMaxHeight();
+                                        // Make sure the cart is not longer than the screen
+                                        PP.method.cart.cartMaxHeight();
 
-                                    // Functions for the checkout UI
-                                    PP.method.checkout.radioCheckboxAction();
-                                }, 300);
+                                        // Functions for the checkout UI
+                                        PP.method.checkout.radioCheckboxAction();
+                                    }, 300);
+
+                                });
                             });
                         } else {
                             window.location.hash = '#';
@@ -3280,7 +3284,7 @@
 					$( 'body' ).removeClass( 'no-scroll' );
 
 					// Shrink it back to cart format
-					$cart.removeClass( 'expanded ' );
+					$cart.removeClass( 'expanded' );
 
 					// Close it
 					if ( ! cart ){
@@ -3298,6 +3302,8 @@
 
 					// Remove the checkout DOM
 					$cart.find( '#iframe-checkout' ).remove();
+
+					window.location.hash = '#';
 				},
 
 				// Make an AJAX request when login on checkout page
@@ -3343,8 +3349,12 @@
 				},
 
                 checkoutLostPwd: function(){
-				    //TODO: checkout lost password
-                    //PP.method.login.ajaxLogin( $(this), true );
+				    $( '#checkout-lost-pwd' ).on( 'click', '.submit', function(){
+                        var $el = $( this ),
+                            $parent = $el.parent();
+
+                        PP.method.login.ajaxLogin( $parent, true );
+                    });
                 },
 
 				init: function(){

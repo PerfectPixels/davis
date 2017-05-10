@@ -74,7 +74,7 @@ $content_cart_count	= WC()->cart->get_cart_contents_count();
 							</div>
 						</div>
 						<div id="collapse-login-customer" class="panel-collapse collapse form" role="tabpanel" aria-labelledby="heading-login-customer" style="height:0;">
-							<div class="panel-body" id="loginform" action="ajaxlogin">
+							<div id="loginform" class="panel-body" action="ajaxlogin">
 								<input type="text" class="email" tabindex="1" autocapitalize="off" autocorrect="off" placeholder="<?php _e( 'Email Address', 'woocommerce' ); ?>*">
 								<input type="password" id="login-password-checkout" class="password" tabindex="2" autocapitalize="off" autocorrect="off"  placeholder="<?php _e( 'Password', 'woocommerce' ); ?>*">
 								<a data-message="Please wait" class="button black submit submit-login"><?php _e( 'Login', 'woocommerce' ); ?></a>
@@ -82,7 +82,7 @@ $content_cart_count	= WC()->cart->get_cart_contents_count();
 						        <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
 								<input type="hidden" name="redirect_to" value="<?php echo $redirect; ?>">
 							</div>
-                            <div id="checkout-lost-pwd" class="panel-body hide">
+                            <div id="checkout-lost-pwd" class="panel-body hide" action="lost_pass">
                                 <input type="email" id="lost-email" class="email" tabindex="1" autocapitalize="off" autocorrect="off" required="required" placeholder="<?php _e( 'Username or Email Address*', 'davis' ); ?>">
                                 <a type="submit" tabindex="2" data-message="<?php _e( 'Sending email', 'davis' ); ?>" class="button black submit"><?php _e( 'Reset Password', 'davis' ); ?></a>
                                 <a class="lost"><?php _e( 'Cancel', 'davis' ); ?></a>

@@ -45,8 +45,8 @@ if ( $product->is_type( 'variable' ) && (get_field('variations_slider') === 'yes
 									$attribute = isset( $product_attributes[ $attr ] ) ? $product_attributes[ $attr ] : $product_attributes[ 'pa_' . $attr ];
 
 									if ( $attribute['is_taxonomy'] ) {
-										$terms = wc_get_product_terms( $product->id, $attribute['name'], array( 'fields' => 'slugs' ) );
-										$name = wc_get_product_terms( $product->id, $attribute['name'], array( 'fields' => 'names' ) );
+										$terms = wc_get_product_terms( $product->get_id(), $attribute['name'], array( 'fields' => 'slugs' ) );
+										$name = wc_get_product_terms( $product->get_id(), $attribute['name'], array( 'fields' => 'names' ) );
 										$has_slug = true;
 									} else {
 										$terms = explode(' | ', $attribute['value']);

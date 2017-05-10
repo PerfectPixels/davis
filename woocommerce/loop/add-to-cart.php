@@ -25,7 +25,7 @@ $quickview_enabled = get_theme_mod( 'quickview_enabled', true );
 		<?php if ( class_exists('YITH_WCWL') ){ echo do_shortcode( '[yith_wcwl_add_to_wishlist]' ); } ?>
 
 		<?php if ( $quickview_enabled ) { ?>
-			<a class="icon-eye-line quickview" data-product-id="<?php echo esc_attr( $product->id ); ?>" data-toggle="tooltip" data-placement="top" title="<?php _e('Quickview', 'davis'); ?>"></a>
+			<a class="icon-eye-line quickview" data-product-id="<?php echo esc_attr( $product->get_id() ); ?>" data-toggle="tooltip" data-placement="top" title="<?php _e('Quickview', 'davis'); ?>"></a>
 		<?php } ?>
 
 		<?php
@@ -33,7 +33,7 @@ $quickview_enabled = get_theme_mod( 'quickview_enabled', true );
 			echo apply_filters( 'woocommerce_loop_add_to_cart_link',
 				sprintf( '<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" data-quantity="%s" data-toggle="tooltip" data-placement="top"  title="%s" class="cart_button go-to-page %s"></a>',
 					esc_url( $product->add_to_cart_url() ),
-					esc_attr( $product->id ),
+					esc_attr( $product->get_id() ),
 					esc_attr( $product->get_sku() ),
 					esc_attr( isset( $quantity ) ? $quantity : 1 ),
 					esc_html( $product->add_to_cart_text() ),
@@ -44,7 +44,7 @@ $quickview_enabled = get_theme_mod( 'quickview_enabled', true );
 			echo apply_filters( 'woocommerce_loop_add_to_cart_link',
 				sprintf( '<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" data-quantity="%s" data-toggle="tooltip" data-placement="top"  title="%s" data-stock-text="%s" data-nostock-text="%s" data-icon="%s" class="cart_button %s product_type_%s"></a>',
 					esc_url( $product->add_to_cart_url() ),
-					esc_attr( $product->id ),
+					esc_attr( $product->get_id() ),
 					esc_attr( $product->get_sku() ),
 					esc_attr( isset( $quantity ) ? $quantity : 1 ),
 					$product->is_purchasable() && $product->is_in_stock() && !$single_variation || $single_variation['is_in_stock'] ? __('Add to Cart', 'davis' ) : __('Out of stock', 'davis' ),

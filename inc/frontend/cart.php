@@ -28,7 +28,7 @@ class PP_Cart {
         add_action('template_redirect', array( $this, 'redirection_to_checkout' ));
 
 		// Define all ajax cart functions
-		add_filter('add_to_cart_fragments', array( $this, 'pp_refresh_minicart' ));
+		add_filter('woocommerce_add_to_cart_fragments', array( $this, 'pp_refresh_minicart' ));
 
         add_action('wp_ajax_qty_cart', array( $this, 'pp_qty_cart' ));
         add_action('wp_ajax_nopriv_qty_cart', array( $this, 'pp_qty_cart' ));
@@ -198,7 +198,7 @@ class PP_Cart {
         if ( $passed_validation && false !== WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $variation ) && 'publish' === $product_status ) { 
  
             do_action( 'woocommerce_ajax_added_to_cart', $product_id ); 
-    	    apply_filters('add_to_cart_fragments', array());
+    	    apply_filters('woocommerce_add_to_cart_fragments', array());
 
     		if ( get_option( 'woocommerce_cart_redirect_after_add' ) == 'yes' ) {
     			wc_add_to_cart_message( $product_id );
@@ -232,7 +232,7 @@ class PP_Cart {
         }
 
         /*
-    if ($product->variation_id){
+    if ( $product->get_type() === 'variation' ){
     	    $product = get_product($product->parent->id);
     	    $single_variation_product = true;
         }
@@ -248,7 +248,7 @@ class PP_Cart {
         wc_get_template( 'loop/variable.php', array(
             'available_variations' => $get_variations ? $product->get_available_variations() : false,
             'attributes'         => $product->get_variation_attributes(),
-            'selected_attributes' => $product->get_variation_default_attributes(),
+            'selected_attributes' => $product->get_default_attributes(),
             'single_variation_product' => $single_variation_product
         ) );
     }

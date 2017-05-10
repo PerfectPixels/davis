@@ -68,7 +68,7 @@ if ( ! $product->is_purchasable() ) {
 			 		}
 			 	?>
 
-			 	<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
+			 	<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" />
 
 			 	<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 

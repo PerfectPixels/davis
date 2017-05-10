@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $post, $woocommerce, $product;
 
-$attachment_ids = $product->get_gallery_attachment_ids();
+$attachment_ids = $product->get_gallery_image_ids();
 
 // Get the images style
 $product_style = get_theme_mod('product_style', 'thumb');
@@ -24,7 +24,7 @@ if ($page_product_style !== 'default'){
 $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
 $full_size_image   = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
 $thumbnail_post    = get_post( $post_thumbnail_id );    
-$image_title       = $thumbnail_post->post_content;
+$image_title       = apply_filters( 'the_title', $thumbnail_post->post_title );
 $quickview         = ( isset($quickview) ? $quickview : false );
 
 $use_variation_img = false;

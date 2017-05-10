@@ -14,6 +14,12 @@
  * @package 	WooCommerce/Templates
  * @version     2.3.2
  */
+
+/**
+ * Summary sidebar is display only when there is a rating. WC settings "Enable ratings on reviews" and.
+ * "Ratings are required to leave a review" should be selected in order to display the summary rating.
+ */
+
 global $product;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -81,7 +87,7 @@ $average = $product->get_average_rating();
 
 				<div id="review_form_wrapper" class="contribution-form-wrapper active">
 
-					<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) !== 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->id ) ) : ?>
+					<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) !== 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 
 						<a class="leave-review button" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#review-modal"><?php _e('Leave a review', 'davis' ); ?></a>
 
@@ -112,7 +118,7 @@ $average = $product->get_average_rating();
 						echo '</nav>';
 					endif; ?>
 
-					<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) !== 'no' && $total_rating_count === 0  || wc_customer_bought_product( '', get_current_user_id(), $product->id ) && $total_rating_count === 0 ) : ?>
+					<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) !== 'no' && $total_rating_count === 0  || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) && $total_rating_count === 0 ) : ?>
 
 						<p class="woocommerce-noreviews">
 							<a class="leave-review button" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#review-modal"><?php _e('Leave a review', 'davis' ); ?></a>
@@ -123,7 +129,7 @@ $average = $product->get_average_rating();
 				<?php else : ?>
 
 					<p class="woocommerce-noreviews">
-						<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) !== 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->id ) ) : ?>
+						<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) !== 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 
 							<?php _e( 'There are no reviews yet. Be the first to review this product.', 'woocommerce' ); ?>
 							<a class="leave-review button" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#review-modal"><?php _e('Leave a review', 'davis' ); ?></a>
@@ -143,7 +149,7 @@ $average = $product->get_average_rating();
 
 				<?php if ( has_post_thumbnail() ) {
 
-					echo '<div class="review-thumb">' . get_the_post_thumbnail( $product->ID, 'shop_catalog' ) . '</div>';
+					echo '<div class="review-thumb">' . get_the_post_thumbnail( $product->get_id(), 'shop_catalog' ) . '</div>';
 
 				} else {
 					$image_size = wc_get_image_size( 'shop_catalog' );

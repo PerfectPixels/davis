@@ -60,7 +60,7 @@ if ( 'contribution_comment' == $type ) {
 			
 			<?php if ( has_post_thumbnail() ) {
 			
-				echo '<div class="review-thumb">' . get_the_post_thumbnail( $product->ID, 'shop_catalog' ) . '</div>'; 
+				echo '<div class="review-thumb">' . get_the_post_thumbnail( $product->get_id(), 'shop_catalog' ) . '</div>';
 				
 			} else {
 				$image_size = wc_get_image_size( 'shop_catalog' );

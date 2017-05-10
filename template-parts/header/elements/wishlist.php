@@ -12,7 +12,9 @@ if ( $woocommerce_active ) {
     // Compatibility with YITH Wishlist
     } else if ( class_exists('YITH_WCWL') ) {
         $dropdown = '';
-        if ( class_exists('YITH_WCWL_Premium') ){ $dropdown = 'dropdown-hover'; }
+        if ( class_exists('YITH_WCWL_Premium') && get_option( 'yith_wcwl_multi_wishlist_enable', 'no' ) !== 'no' ){
+            $dropdown = 'dropdown-hover';
+        }
         $wishlists_url = YITH_WCWL()->get_wishlist_url();
     }
 

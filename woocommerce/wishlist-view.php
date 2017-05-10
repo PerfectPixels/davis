@@ -139,7 +139,7 @@ $remove_after_cart = get_option( 'yith_wcwl_remove_after_add_to_cart' ) == 'yes'
                     <tr id="yith-wcwl-row-<?php echo $item['prod_id'] ?>" class="product" data-row-id="<?php echo $item['prod_id'] ?>">
 	                    <?php if( $show_cb ) : ?>
 		                    <td class="product-checkbox">
-			                    <input type="checkbox" value="<?php echo esc_attr( $item['prod_id'] ) ?>" name="add_to_cart[]" <?php echo ( $product->product_type != 'simple' ) ? 'disabled="disabled"' : '' ?>/>
+                                <input type="checkbox" value="<?php echo esc_attr( $item['prod_id'] ) ?>" name="add_to_cart[]" <?php echo ( ! $product->is_type( 'simple' ) ) ? 'disabled="disabled"' : '' ?>/>
 		                    </td>
 	                    <?php endif ?>
 
@@ -169,7 +169,7 @@ $remove_after_cart = get_option( 'yith_wcwl_remove_after_add_to_cart' ) == 'yes'
 		                                echo wc_price( $product->min_price );
 	                                }
                                 }
-                                elseif( $product->price != '0' ) {
+                                elseif( $product->get_price() != '0' ) {
 	                                echo $product->get_price_html();
                                 }
                                 else {

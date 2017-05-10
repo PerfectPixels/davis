@@ -42,7 +42,7 @@ if ( ! function_exists( 'pp_variable_add_to_cart_quickview' ) ) {
     wc_get_template( 'single-product/add-to-cart/variable.php', array(
       'available_variations' => $get_variations ? $product->get_available_variations() : false,
       'attributes'           => $product->get_variation_attributes(),
-      'selected_attributes'  => $product->get_variation_default_attributes(),
+      'selected_attributes'  => $product->get_default_attributes(),
       'quickview'            => true
     ) );
   }

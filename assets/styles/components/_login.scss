@@ -2,6 +2,12 @@
 
 	.modal-dialog { display: flex; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; transition: all 350ms $cb;
 
+      .woocommerce-message,
+      .woocommerce-error,
+      .woocommerce-info {
+        display: none;
+      }
+
 		> div { padding: 0 0;
 
 			h2 { font-weight: bold; letter-spacing: -0.035em; }

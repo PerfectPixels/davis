@@ -72,7 +72,7 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'background-color',
 		),
 		array(
-			'element'  => array( '.navbar-bottom .search-box button' ),
+			'element'  => array( '.navbar-bottom .wishlist-counter', '.navbar-bottom .search-box button' ),
 			'function' => 'css',
 			'property' => 'color',
 			'suffix'   => '!important',
@@ -84,7 +84,7 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'background-color',
 		),
 		array(
-			'element'  => array( '.navbar-bottom .search-box button' ),
+			'element'  => array( '.navbar-bottom .wishlist-counter', '.navbar-bottom .search-box button' ),
 			'function' => 'css',
 			'property' => 'color',
 			'suffix'   => '!important',
@@ -108,7 +108,7 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'color',
 		),
 		array(
-			'element'  => array( '.navbar-bottom .menu-item > a:before', '.navbar-bottom .menu-item > a:after', '.navbar-bottom .sep', '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-bottom .wishlist-counter', '.navbar-bottom .menu-item > a:before', '.navbar-bottom .menu-item > a:after', '.navbar-bottom .sep', '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -119,7 +119,7 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'color',
 		),
 		array(
-			'element'  => array( '.navbar-bottom .menu-item > a:before', '.navbar-bottom .menu-item > a:after', '.navbar-bottom .sep', '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-bottom .wishlist-counter', '.navbar-bottom .menu-item > a:before', '.navbar-bottom .menu-item > a:after', '.navbar-bottom .sep', '.navbar-bottom .contact-details a:after', '.navbar-bottom .go-back > a:before', '.navbar-bottom .go-back > a:after', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:before', '.navbar-bottom .menu-item-has-children > a span.mobile-arrow:after', '.navbar-bottom li.action-button.label-only > a span.item-counter', '.navbar-bottom .icon-badge span.item-counter', '.navbar-bottom .header-text-color-bg', '.navbar-bottom .header-text-color-bg-speudo:before', '.navbar-bottom .header-text-color-bg-speudo:after' ),
 			'property' => 'background-color',
 		),
 	),

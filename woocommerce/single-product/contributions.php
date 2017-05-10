@@ -57,7 +57,7 @@ $comment_type = 'review';
 					<span style="width:<?php echo ( ( $average / 5 ) * 100 ); ?>%"></span>
 				</div>
 
-				<?php $reviews_count = wc_product_reviews_pro_get_comments_number( $product->id, 'review' ); ?>
+				<?php $reviews_count = wc_product_reviews_pro_get_comments_number( $product->get_id(), 'review' ); ?>
 				<p><?php printf( _nx( '%d review', '%d reviews', $reviews_count, 'noun', 'woocommerce-product-reviews-pro' ), $reviews_count ); ?></p>
 			</div>
 			<div class="product-rating-details">
@@ -102,7 +102,7 @@ $comment_type = 'review';
 		
 					<div id="<?php echo esc_attr( $type ); ?>_form_wrapper" class="contribution-form-wrapper active">
 					
-						<?php if ( 'review' != $type || get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->id ) ) : ?>
+						<?php if ( 'review' != $type || get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 						
 							<a class="leave-review button" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#review-modal"><?php _e('Leave a review', 'davis' ); ?></a>
 							

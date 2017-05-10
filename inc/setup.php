@@ -22,6 +22,9 @@ function setup() {
 
 	// Enable Woocommerce support
 	add_theme_support('woocommerce');
+	// Enable new Woocommerce plugins for product page
+	add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
 
 	// Enable default logo support
 	add_theme_support( 'site-logo', array(

@@ -51,7 +51,7 @@ foreach ( $items as $item_id => $item ) :
 
 				// File URLs
 				if ( $show_download_links ) {
-					$order->display_item_downloads( $item );
+					wc_display_item_downloads( $item );
 				}
 
 				// allow other plugins to add additional product information here

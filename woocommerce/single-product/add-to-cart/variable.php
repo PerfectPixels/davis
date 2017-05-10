@@ -33,7 +33,7 @@ $quickview      = ( isset($quickview) ? $quickview : false );
 
 do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
-<form class="variations_form cart" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint( $product->id ); ?>" data-product_variations="<?php echo htmlspecialchars( json_encode( $available_variations ) ) ?>">
+<form class="variations_form cart" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint( $product->get_id() ); ?>" data-product_variations="<?php echo htmlspecialchars( json_encode( $available_variations ) ) ?>">
 
 	<?php if ( ( $product_style === 'slideshow' || $product_style === 'fullwidth' ) && ! $quickview ) :
 		wc_get_template( 'single-product/price.php', array(

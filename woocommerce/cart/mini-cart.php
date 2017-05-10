@@ -46,7 +46,7 @@ $cart_icon = str_replace( '-outline', '', get_theme_mod( 'cart_icon_style', 'ico
 			<a href="#review" data-toggle="tooltip" data-placement="top" title="<?php echo $review_title; ?>"></a>
 		</li>
 	</ul>
-	<span class="close-cart"></span>
+	<span class="close-cart close-cross"></span>
 </header>
 
 <section class="cart-container">

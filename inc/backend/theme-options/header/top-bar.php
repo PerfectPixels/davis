@@ -34,11 +34,20 @@ Kirki::add_field( 'pp_theme', array(
 			'function' => 'css',
 			'property' => 'background-color',
 		),
+		array(
+			'element'  => array( '.navbar-top .wishlist-counter' ),
+			'function' => 'css',
+			'property' => 'color',
+		),
 	),
 	'output' => array(
 		array(
 			'element'  => array( '.navbar-top', '.navbar-top > ul > li > .sub-menu', '.navbar-top .dropdown-hover .dropdown-menu' ),
 			'property' => 'background-color',
+		),
+		array(
+			'element'  => array( '.navbar-top .wishlist-counter' ),
+			'property' => 'color',
 		),
 	),
 ) );
@@ -60,7 +69,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-top .sep', '.navbar-top .contact-details a:after', '.navbar-top .go-back > a:before', '.navbar-top .go-back > a:after', '.navbar-top .menu-item-has-children > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .icon-badge span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-top .wishlist-counter', '.navbar-top .sep', '.navbar-top .contact-details a:after', '.navbar-top .go-back > a:before', '.navbar-top .go-back > a:after', '.navbar-top .menu-item-has-children > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .icon-badge span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -78,7 +87,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.navbar-top .sep', '.navbar-top .contact-details a:after', '.navbar-top .go-back > a:before', '.navbar-top .go-back > a:after', '.navbar-top .menu-item-has-children > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .icon-badge span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
+			'element'  => array( '.navbar-top .wishlist-counter', '.navbar-top .sep', '.navbar-top .contact-details a:after', '.navbar-top .go-back > a:before', '.navbar-top .go-back > a:after', '.navbar-top .menu-item-has-children > a span.mobile-arrow:before', '.navbar-top .menu-item-has-children > a span.mobile-arrow:after', '.navbar-top li.action-button.label-only > a span.item-counter', '.navbar-top .icon-badge span.item-counter', '.navbar-top .header-text-color-bg', '.navbar-top .header-text-color-bg-speudo:before', '.navbar-top .header-text-color-bg-speudo:after' ),
 			'property' => 'background-color',
 		),
 		array(

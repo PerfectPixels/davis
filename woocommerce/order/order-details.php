@@ -46,7 +46,7 @@ $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_cu
 				</th>
 				<th class="order-date">
 					<span><?php _e('Order Placed', 'davis'); ?></span>
-					<small><time datetime="<?php echo date( 'Y-m-d', strtotime( $order->order_date ) ); ?>" title="<?php echo esc_attr( strtotime( $order->order_date ) ); ?>"><?php echo date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ); ?></time></small>
+					<small><time datetime="<?php echo date( 'Y-m-d', strtotime( $order->get_date_created() ) ); ?>" title="<?php echo esc_attr( strtotime( $order->get_date_created() ) ); ?>"><?php echo date_i18n( get_option( 'date_format' ), strtotime( $order->get_date_created() ) ); ?></time></small>
 				</th>
 				<th class="order-total">
 					<span><?php _e('Total', 'davis'); ?></span>
@@ -92,14 +92,14 @@ $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_cu
 		<tbody>
 			<?php
 				foreach( $order->get_items() as $item_id => $item ) {
-					$product = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $item ), $item );
+					$product = apply_filters( 'woocommerce_order_item_product', $item->get_product(), $item );
 	
 					wc_get_template( 'order/order-details-item.php', array(
 						'order'			     => $order,
 						'item_id'		     => $item_id,
 						'item'			     => $item,
 						'show_purchase_note' => $show_purchase_note,
-						'purchase_note'	     => $product ? get_post_meta( $product->id, '_purchase_note', true ) : '',
+						'purchase_note'	     => $product ? get_post_meta( $product->get_id(), '_purchase_note', true ) : '',
 						'product'	         => $product,
 					) );
 				}

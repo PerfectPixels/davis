@@ -173,6 +173,11 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'border-bottom-color',
 			'suffix'   => '!important',
 		),
+		array(
+			'element'  => array( '.nav-header .wishlist-counter' ),
+			'function' => 'css',
+			'property' => 'color',
+		),
 	),
 	'output' => array(
 		array(
@@ -183,6 +188,10 @@ Kirki::add_field( 'pp_theme', array(
 			'element'  => array( '.nav-header .dropdown-hover > a:after' ),
 			'property' => 'border-bottom-color',
 			'suffix'   => '!important',
+		),
+		array(
+			'element'  => array( '.nav-header .wishlist-counter' ),
+			'property' => 'color',
 		),
 	),
 ) );
@@ -209,7 +218,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.nav-header .sep', '.nav-header .contact-details a:after', '.nav-header .menu-item-has-children > a span.mobile-arrow:before', '.nav-header .menu-item-has-children > a span.mobile-arrow:after', '.nav-header .header-text-color-bg', '.nav-header .header-text-color-bg-speudo:before', '.nav-header .header-text-color-bg-speudo:after', '.nav-header .menu-link:before', '.nav-header .menu-link:after', '.nav-header .go-back a:before', '.nav-header .go-back a:after', '.nav-header .icon-search .select2-container .select2-choice:before', '.nav-header .icon-search .select2-container .select2-choice:after' ),
+			'element'  => array( '.nav-header .wishlist-counter', '.nav-header .sep', '.nav-header .contact-details a:after', '.nav-header .menu-item-has-children > a span.mobile-arrow:before', '.nav-header .menu-item-has-children > a span.mobile-arrow:after', '.nav-header .header-text-color-bg', '.nav-header .header-text-color-bg-speudo:before', '.nav-header .header-text-color-bg-speudo:after', '.nav-header .menu-link:before', '.nav-header .menu-link:after', '.nav-header .go-back a:before', '.nav-header .go-back a:after', '.nav-header .icon-search .select2-container .select2-choice:before', '.nav-header .icon-search .select2-container .select2-choice:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -225,7 +234,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.nav-header .sep', '.nav-header .contact-details a:after', '.nav-header .menu-item-has-children > a span.mobile-arrow:before', '.nav-header .menu-item-has-children > a span.mobile-arrow:after', '.nav-header .header-text-color-bg', '.nav-header .header-text-color-bg-speudo:before', '.nav-header .header-text-color-bg-speudo:after', '.nav-header .menu-link:before', '.nav-header .menu-link:after', '.nav-header .go-back a:before', '.nav-header .go-back a:after', '.nav-header .icon-search .select2-container .select2-choice:before', '.nav-header .icon-search .select2-container .select2-choice:after' ),
+			'element'  => array( '.nav-header .wishlist-counter', '.nav-header .sep', '.nav-header .contact-details a:after', '.nav-header .menu-item-has-children > a span.mobile-arrow:before', '.nav-header .menu-item-has-children > a span.mobile-arrow:after', '.nav-header .header-text-color-bg', '.nav-header .header-text-color-bg-speudo:before', '.nav-header .header-text-color-bg-speudo:after', '.nav-header .menu-link:before', '.nav-header .menu-link:after', '.nav-header .go-back a:before', '.nav-header .go-back a:after', '.nav-header .icon-search .select2-container .select2-choice:before', '.nav-header .icon-search .select2-container .select2-choice:after' ),
 			'property' => 'background-color',
 		),
 	),
@@ -242,7 +251,7 @@ Kirki::add_field( 'pp_theme', array(
 	'transport' => 'postMessage',
 	'js_vars' => array(
 		array(
-			'element'  => array( '.nav-header .dropdown-hover .dropdown-menu a', '.nav-header .simple-menu-item > .sub-menu:before', '.nav-header .simple-menu-item:hover > a','.nav-header a:hover', '.nav-header a:hover i', '.nav-header .action-button a:hover span', '.nav-header .current_page_item > a', '.nav-header .current_page_item > a > i' ),
+			'element'  => array( '.nav-header .dropdown-hover .dropdown-menu a:hover', '.nav-header .simple-menu-item > .sub-menu:before', '.nav-header .simple-menu-item:hover > a','.nav-header a:hover', '.nav-header a:hover i', '.nav-header .action-button a:hover span', '.nav-header .current_page_item > a', '.nav-header .current_page_item > a > i' ),
 			'function' => 'css',
 			'property' => 'color',
 			'suffix'   => '!important',
@@ -256,7 +265,7 @@ Kirki::add_field( 'pp_theme', array(
 	),
 	'output' => array(
 		array(
-			'element'  => array( '.nav-header .simple-menu-item > .sub-menu:before', '.nav-header .simple-menu-item:hover > a', '.nav-header a:hover', '.nav-header a:hover i', '.nav-header .action-button a:hover span', '.nav-header .current_page_item > a', '.nav-header .current_page_item > a > i' ),
+			'element'  => array( '.nav-header .dropdown-hover .dropdown-menu a:hover', '.nav-header .simple-menu-item > .sub-menu:before', '.nav-header .simple-menu-item:hover > a', '.nav-header a:hover', '.nav-header a:hover i', '.nav-header .action-button a:hover span', '.nav-header .current_page_item > a', '.nav-header .current_page_item > a > i' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),

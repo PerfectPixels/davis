@@ -583,7 +583,7 @@ if( $colors ){
 
         $variation = wc_get_product( absint( $variation_id ), array( 'product_type' => 'variable' ) );
         $variation_title = ( $variation->get_title() != "Auto Draft" ) ? $variation->get_title() : "";
-        $variation_custom_title = get_post_meta($variation->variation_id, '_jck_wssv_display_title', true);
+        $variation_custom_title = get_post_meta($variation->get_id(), '_jck_wssv_display_title', true);
 
         return ( $variation_custom_title ) ? $variation_custom_title : $variation_title;
 
@@ -604,7 +604,7 @@ if( $colors ){
             return "";
 
         $variation = wc_get_product( absint( $variation_id ), array( 'product_type' => 'variable' ) );
-        $variation_colors = get_post_meta($variation->variation_id, '_jck_product_colors', true);
+        $variation_colors = get_post_meta($variation->get_id(), '_jck_product_colors', true);
 
         return $variation_colors;
 
@@ -647,9 +647,9 @@ if( $colors ){
 
         $url = "";
 
-        if( $variation->variation_id ) {
+        if( $variation->get_id() ) {
 
-            $variation_data = array_filter( wc_get_product_variation_attributes( $variation->variation_id ) );
+            $variation_data = array_filter( wc_get_product_variation_attributes( $variation->get_id() ) );
             $parent_product_id = $variation->parent->post->ID;
             $parent_product_url = get_the_permalink( $parent_product_id );
 
@@ -742,27 +742,27 @@ if( $colors ){
 
         global $product;
 
-        if( isset( $product->variation_id ) ) {
+        if( $product->get_type() === 'variation' ) {
 
-            $visibility = get_post_meta($product->variation_id, '_visibility', true);
+            $visibility = get_post_meta($product->get_id(), '_visibility', true);
 
             if( is_array( $visibility ) ) {
 
                 // visible in search
 
-                if( is_visible_when('search', $product->variation_id) ) {
+                if( is_visible_when('search', $product->get_id()) ) {
                     $visible = true;
                 }
 
                 // visible in filtered
 
-                if( is_visible_when('filtered', $product->variation_id) ) {
+                if( is_visible_when('filtered', $product->get_id()) ) {
                     $visible = true;
                 }
 
                 // visible in catalog
 
-                if( is_visible_when('catalog', $product->variation_id) ) {
+                if( is_visible_when('catalog', $product->get_id()) ) {
                     $visible = true;
                 }
 
@@ -894,7 +894,7 @@ if( $colors ){
 
         $purchasable = $product->is_purchasable();
 
-        if( $product->variation_id ) {
+        if( $product->get_type() === 'variation' ) {
 
             if( $product->variation_data && !empty( $product->variation_data ) ) {
                 foreach( $product->variation_data as $value ) {
@@ -922,7 +922,7 @@ if( $colors ){
 
     function add_to_cart_text( $text, $product ) {
 
-        if( $product->variation_id ) {
+        if( $product->get_type() === 'variation' ) {
 
             $text = is_purchasable( $product ) && $product->is_in_stock() ? $text : __( 'Select options', 'woocommerce' );
 
@@ -944,7 +944,7 @@ if( $colors ){
 
     function add_to_cart_url( $url, $product ) {
 
-        if( $product->variation_id ) {
+        if( $product->get_type() === 'variation' ) {
 
             $url = is_purchasable( $product ) && $product->is_in_stock() ? $url : get_variation_url( $product );
 

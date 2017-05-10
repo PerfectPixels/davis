@@ -70,7 +70,7 @@
 
 	}
 
-	.total { background: #fff; border: none !important; padding: 0 !important; text-align: center; margin: 0; padding: 15px 0 !important;
+	.total { background: #fff; border: none !important; text-align: center; margin: 0; padding: 15px 0 !important;
 
 		small,
 		span { font-size: 18px; line-height: 1; font-weight: bold; text-transform: uppercase; color: #000; letter-spacing: -0.03em; }
@@ -92,7 +92,7 @@
 }
 
 // OFFCANVAS CART
-.offcanvas-cart { background: #fff; width: 500px; max-width: 100%; overflow: hidden; position: fixed; top: 0; right: 0; bottom: 0; box-shadow: 0 0 15px rgba(0,0,0,.1); z-index: 10003; opacity: 0; visibility: hidden; transform: translate3d(100%, 0, 0); transition: opacity .5s $cb, width .8s $cb, transform .5s $cb, visibility 0s .5s;
+.offcanvas-cart { background: #fff; width: 500px; max-width: 100%; display: block; overflow: hidden; position: fixed; top: 0; right: 0; bottom: 0; box-shadow: 0 0 15px rgba(0,0,0,.1); z-index: 10003; opacity: 0; visibility: hidden; transform: translate3d(100%, 0, 0); transition: opacity .5s $cb, width .8s $cb, transform .5s $cb, visibility 0s .5s;
 
 	.widget_shopping_cart_content {
 
@@ -103,7 +103,7 @@
 			h4,
 			h6 { text-transform: none; text-align: center; letter-spacing: -0.01em; animation: inFromBottom .6s both $cb; }
 
-			h4 { color: #000; font-family: 18px; text-transform: uppercase; margin: 0 0 5px; }
+			h4 { color: #000; font-size: 18px; text-transform: uppercase; margin: 0 0 5px; }
 			h6 { color: #999; font-size: 12px; margin: 0; }
 
 			.cart-nav { background: #ccc; list-style: none; height: 2px; width: 90%; max-width: 425px; margin: 30px auto 0; padding: 0; animation: cartStepsShow .4s both $cb;
@@ -332,10 +332,10 @@
 
 	.mini_cart_item { animation: none !important; }
 
-	.close-cart { width: 30px; height: 30px; display: block; position: absolute; top: 30px; right: 30px; transform: rotate3d(0,0,1,0deg); opacity: 0; transition: transform 1s $cb, opacity .4s $cb; }
+	.close-cart { transform: rotate3d(0,0,1,0deg); opacity: 0; }
 
 	.close-cart:before,
-	.close-cart:after { background: #000; width: 30px; height: 3px; content: ""; position: absolute; top: 50%; left: 50%; margin: -1px 0 0 -15px; transform: rotate3d(0,0,1,0deg); transition: transform .8s $cb; }
+	.close-cart:after { transform: rotate3d(0,0,1,0deg); }
 
 	p.total { animation: inFromBottom .4s both $cb; }
 
@@ -449,7 +449,7 @@
 
 .cart-container { width: 100%; }
 
-body.offcanvas-cart { position: static; transform: none; overflow: visible; width: 100%;
+body.offcanvas-cart { position: static; transform: none; overflow: visible; width: 100%; visibility: visible; transition: none;
 
 	#checkout-container {  width: 100%; margin: 0; transition: all .8s $cb;
 

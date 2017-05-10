@@ -38,9 +38,9 @@ if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 				echo apply_filters( 'woocommerce_order_item_name', $product_permalink ? sprintf( '<a href="%s">%s</a>', $product_permalink, $item['name'] ) : $item['name'], $item, $is_visible );
 	
 				do_action( 'woocommerce_order_item_meta_start', $item_id, $item, $order );
-	
-				$order->display_item_meta( $item );
-				$order->display_item_downloads( $item );
+
+				wc_display_item_meta( $item );
+				wc_display_item_downloads( $item );
 	
 				do_action( 'woocommerce_order_item_meta_end', $item_id, $item, $order );
 				?>
