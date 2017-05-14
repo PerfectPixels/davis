@@ -4,15 +4,16 @@
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/checkout/thankyou.php.
  *
- * HOWEVER, on occasion WooCommerce will need to update template files and you (the theme developer).
- * will need to copy the new files to your theme to maintain compatibility. We try to do this.
- * as little as possible, but it does happen. When this occurs the version of the template file will.
- * be bumped and the readme will list any important changes.
+ * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
  *
- * @see 	    http://docs.woothemes.com/document/template-structure/
+ * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     2.2.0
+ * @version     3.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -108,7 +109,7 @@ if ( $order ){ ?>
 					<?php $related = array();
 
 					foreach( $order->get_items() as $item_id => $item ) {
-							$product = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $item ), $item );
+							$product = apply_filters( 'woocommerce_order_item_product', $item->get_product(), $item );
 
 							$related = array_merge( $related, wc_get_related_products( $product->get_id(), 30 ) );
 
@@ -203,10 +204,10 @@ if ( $order ){ ?>
 									<td><?php echo date_i18n( get_option( 'date_format' ), strtotime( wc_get_order( $id ) ) ); ?></td>
 								</tr>
 							<?php } ?>
-							<?php if ( $order->payment_method_title && get_theme_mod( 'display_payment_method', false ) ){ ?>
+							<?php if ( $order->get_payment_method_title() && get_theme_mod( 'display_payment_method', false ) ){ ?>
 								<tr class="method">
 									<th><?php _e( 'Payment Method', 'woocommerce' ); ?></th>
-									<td><?php echo $order->payment_method_title; ?></td>
+									<td><?php echo $order->get_payment_method_title(); ?></td>
 								</tr>
 							<?php } ?>
 							<tr class="grand-total">

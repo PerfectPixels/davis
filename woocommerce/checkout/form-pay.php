@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<td class="product-name">
 							<?php
 								
-								$product = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $item ), $item );
+								$product = apply_filters( 'woocommerce_order_item_product', $item->get_product(), $item );
 								
 								echo $product->get_image( 'shop_thumbnail' );
 								
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								
 								<span class="desc">
 									<?php 
-									echo apply_filters( 'woocommerce_order_item_name', esc_html( $item['name'] ), $item, false );
+									echo apply_filters( 'woocommerce_order_item_name', esc_html( $item->get_name() ), $item, false );
 	
 									do_action( 'woocommerce_order_item_meta_start', $item_id, $item, $order );
 									wc_display_item_meta( $item );
@@ -59,7 +59,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									?>
 								</span>
 						</td>
-						<td class="product-quantity"><?php echo apply_filters( 'woocommerce_order_item_quantity_html', ' <strong class="product-quantity">' . sprintf( '&times; %s', esc_html( $item['qty'] ) ) . '</strong>', $item ); ?></td>
+						<td class="product-quantity"><?php echo apply_filters( 'woocommerce_order_item_quantity_html', ' <strong class="product-quantity">' . sprintf( '&times; %s', esc_html( $item->get_quantity() ) ) . '</strong>', $item ); ?></td>
 						<td class="product-subtotal"><?php echo $order->get_formatted_line_subtotal( $item ); ?></td>
 					</tr>
 				<?php endforeach; ?>

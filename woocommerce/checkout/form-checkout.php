@@ -7,12 +7,14 @@
  * @version     2.3.0
  */
 
+global $woocommerce;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 // If checkout registration is disabled and not logged in, the user cannot checkout
-if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_user_logged_in() ) {
+if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
 	echo apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) );
 	return;
 }
@@ -23,8 +25,7 @@ if ( in_array( 'paypal-express-checkout' ,get_body_class() ) ) {
 	$paypal_checkout = false;
 }
 
-$get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->get_checkout_url() );
-$the_cart = WC()->cart->get_cart();
+$get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', $woocommerce->cart->get_checkout_url() );
 $content_cart_count	= WC()->cart->get_cart_contents_count();
 
 ?>
@@ -110,7 +111,7 @@ $content_cart_count	= WC()->cart->get_cart_contents_count();
 					<?php } ?>
 
 					<div id="customer-details-form">
-						<?php if ( sizeof( $checkout->checkout_fields ) > 0 ) : ?>
+						<?php if ( $checkout->get_checkout_fields() ) : ?>
 
 							<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
@@ -130,7 +131,7 @@ $content_cart_count	= WC()->cart->get_cart_contents_count();
 					</div>
 				</div>
 			<?php } else { ?>
-				<?php if ( sizeof( $checkout->checkout_fields ) > 0 ) : ?>
+				<?php if ( $checkout->get_checkout_fields() ) : ?>
 
 					<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
@@ -191,7 +192,7 @@ $content_cart_count	= WC()->cart->get_cart_contents_count();
 				<?php do_action( 'woocommerce_before_cart_contents' ); ?>
 
 				<?php
-				foreach ( $the_cart as $cart_item_key => $cart_item ) {
+				foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 					$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 					$product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
 
@@ -265,7 +266,7 @@ $content_cart_count	= WC()->cart->get_cart_contents_count();
 
 				<?php wp_nonce_field( 'woocommerce-cart' ); ?>
 
-				<?php if ( WC()->cart->coupons_enabled() ) { ?>
+				<?php if ( wc_coupons_enabled() ) { ?>
 					<a class="showcoupon-link"><?php _e( 'Have a discount voucher or gift code?', 'woocommerce' ); ?></a>
 					<div id="coupons">
 						<div class="checkout_coupon">

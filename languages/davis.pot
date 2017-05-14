@@ -1181,7 +1181,7 @@ msgstr ""
 msgid "Cart Title"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:288, woocommerce/cart/mini-cart.php:19, woocommerce/checkout/form-checkout.php:45
+#: inc/backend/theme-options/shop.php:288, woocommerce/cart/mini-cart.php:19, woocommerce/checkout/form-checkout.php:46
 msgid "Cart Summary"
 msgstr ""
 
@@ -1189,7 +1189,7 @@ msgstr ""
 msgid "Details Title"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:303, woocommerce/cart/mini-cart.php:22, woocommerce/checkout/form-checkout.php:56
+#: inc/backend/theme-options/shop.php:303, woocommerce/cart/mini-cart.php:22, woocommerce/checkout/form-checkout.php:57
 msgid "Customer Details"
 msgstr ""
 
@@ -1197,7 +1197,7 @@ msgstr ""
 msgid "Details Subtitle"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:312, woocommerce/checkout/form-checkout.php:57
+#: inc/backend/theme-options/shop.php:312, woocommerce/checkout/form-checkout.php:58
 msgid "Fill in your details in the form bellow"
 msgstr ""
 
@@ -1205,7 +1205,7 @@ msgstr ""
 msgid "Shipping / Payment Title"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:321, woocommerce/cart/mini-cart.php:23, woocommerce/checkout/form-checkout.php:159
+#: inc/backend/theme-options/shop.php:321, woocommerce/cart/mini-cart.php:23, woocommerce/checkout/form-checkout.php:160
 msgid "Shipping & Payment"
 msgstr ""
 
@@ -1213,7 +1213,7 @@ msgstr ""
 msgid "Shipping / Payment Subtitle"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:330, woocommerce/checkout/form-checkout.php:160
+#: inc/backend/theme-options/shop.php:330, woocommerce/checkout/form-checkout.php:161
 msgid "Select your preferred shipping and payment methods"
 msgstr ""
 
@@ -1221,7 +1221,7 @@ msgstr ""
 msgid "Review Title"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:339, woocommerce/checkout/form-checkout.php:182
+#: inc/backend/theme-options/shop.php:339, woocommerce/checkout/form-checkout.php:183
 msgid "Review Order"
 msgstr ""
 
@@ -1229,7 +1229,7 @@ msgstr ""
 msgid "Review Subtitle"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:348, woocommerce/checkout/form-checkout.php:183
+#: inc/backend/theme-options/shop.php:348, woocommerce/checkout/form-checkout.php:184
 msgid "Confirm your cart content and the total of your order"
 msgstr ""
 
@@ -1241,7 +1241,7 @@ msgstr ""
 msgid "Choose if you want a quick checkout available on all pages instead of the default Woocommerce checkout page. PLEASE NOTE: Quick checkout was not tested with all existing plugins that adds/modifies the checkout process or layout. If you find any issues while using it please disable it."
 msgstr ""
 
-#: inc/frontend/cart.php:114, woocommerce/cart/mini-cart.php:20, woocommerce/checkout/form-checkout.php:46
+#: inc/frontend/cart.php:114, woocommerce/cart/mini-cart.php:20, woocommerce/checkout/form-checkout.php:47
 msgid "You have %d item in your cart"
 msgid_plural "You have %d items in your cart"
 msgstr[0] ""
@@ -1357,7 +1357,7 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
-#: inc/functions/helpers.php:131
+#: inc/functions/helpers.php:132
 msgid "Assign a menu in Theme Options > Menus"
 msgstr ""
 
@@ -1756,63 +1756,63 @@ msgstr ""
 msgid "Place Order"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:37
+#: woocommerce/checkout/form-checkout.php:38
 msgid "Your are using Paypal Checkout - Please double check your details before placing your order."
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:71
+#: woocommerce/checkout/form-checkout.php:72
 msgid "Returning customer? "
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:72
+#: woocommerce/checkout/form-checkout.php:73
 msgid "Click here to login"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:86, woocommerce/myaccount/form-login.php:85, woocommerce/myaccount/form-login.php:110
+#: woocommerce/checkout/form-checkout.php:87, woocommerce/myaccount/form-login.php:85, woocommerce/myaccount/form-login.php:110
 msgid "Username or Email Address*"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:87, woocommerce/myaccount/form-login.php:112
+#: woocommerce/checkout/form-checkout.php:88, woocommerce/myaccount/form-login.php:112
 msgid "Sending email"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:87, woocommerce/myaccount/form-login.php:112
+#: woocommerce/checkout/form-checkout.php:88, woocommerce/myaccount/form-login.php:112
 msgid "Reset Password"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:88, woocommerce/myaccount/form-login.php:113, woocommerce/single-product/form-flag-contribution.php:45
+#: woocommerce/checkout/form-checkout.php:89, woocommerce/myaccount/form-login.php:113, woocommerce/single-product/form-flag-contribution.php:45
 msgid "Cancel"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:99
+#: woocommerce/checkout/form-checkout.php:100
 msgid "Login/Register with Social Media"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:106, woocommerce/myaccount/form-login.php:164
+#: woocommerce/checkout/form-checkout.php:107, woocommerce/myaccount/form-login.php:164
 msgid "We would never post anything without your permission."
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:163
+#: woocommerce/checkout/form-checkout.php:164
 msgid "Shipping Method"
 msgstr ""
 
-#: woocommerce/checkout/form-checkout.php:170
+#: woocommerce/checkout/form-checkout.php:171
 msgid "Payment Method"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:85, woocommerce/myaccount/form-login.php:148, woocommerce/myaccount/form-login.php:149
+#: woocommerce/checkout/thankyou.php:86, woocommerce/myaccount/form-login.php:148, woocommerce/myaccount/form-login.php:149
 msgid "Registering"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:85, woocommerce/myaccount/form-login.php:71, woocommerce/myaccount/form-login.php:148, woocommerce/myaccount/form-login.php:149
+#: woocommerce/checkout/thankyou.php:86, woocommerce/myaccount/form-login.php:71, woocommerce/myaccount/form-login.php:148, woocommerce/myaccount/form-login.php:149
 msgid "Register"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:179
+#: woocommerce/checkout/thankyou.php:180
 msgid "Order Summary"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:213
+#: woocommerce/checkout/thankyou.php:214
 msgid "Grand Total"
 msgstr ""
 

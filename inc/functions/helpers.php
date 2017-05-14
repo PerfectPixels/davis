@@ -10,8 +10,9 @@
   *
   * @access public
   * @param string $section
+  * @param array $default
   */
-function pp_get_header_elements( $section, $default = '' ){
+function pp_get_header_elements( $section, $default = array('') ){
 	$options = get_theme_mod( $section, $default );
 
 	if ( is_array($options) ) {
@@ -58,11 +59,11 @@ function pp_can_display( $element ){
             $output = true;
         }
     } else if ( $element === 'mobile_bottom' ){
-        if ( get_theme_mod( 'mobile_bottom_bar_area' ) ){
+        if ( get_theme_mod( 'mobile_bottom_bar_area', array('search_icon', 'account', 'wishlist', 'cart') ) ){
             $output = true;
         }
     } else if ( $element === 'top_bar' ){
-	    if ( get_theme_mod( 'top_bar_left_area' ) || get_theme_mod( 'top_bar_center_area' ) || get_theme_mod( 'top_bar_right_area' ) || get_theme_mod( 'tablet_top_bar_left_area' ) || get_theme_mod( 'tablet_top_bar_right_area' ) || get_theme_mod( 'mobile_top_bar_area' ) ){
+	    if ( get_theme_mod( 'top_bar_left_area', array('social_icon', 'text_1') ) || get_theme_mod( 'top_bar_center_area' ) || get_theme_mod( 'top_bar_right_area', array('account', 'wishlist', 'cart') ) || get_theme_mod( 'tablet_top_bar_left_area' ) || get_theme_mod( 'tablet_top_bar_right_area' ) || get_theme_mod( 'mobile_top_bar_area' ) ){
 		    $output = true;
 	    }
     } else if ( $element === 'sidebar_footer' ){

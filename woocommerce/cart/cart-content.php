@@ -77,7 +77,7 @@ $the_cart 			= WC()->cart->get_cart();
 
     <?php else : ?>
 
-        <li class="empty"><?php echo sprintf( __( 'Your shopping cart is empty. Browse our <a href="%s" class="primary-color">shop</a>', 'davis' ), get_permalink( woocommerce_get_page_id( 'shop' ) ) ); ?></li>
+        <li class="empty"><?php echo sprintf( __( 'Your shopping cart is empty. Browse our <a href="%s" class="primary-color">shop</a>', 'davis' ), get_permalink( wc_get_page_id( 'shop' ) ) ); ?></li>
 
     <?php endif; ?>
 

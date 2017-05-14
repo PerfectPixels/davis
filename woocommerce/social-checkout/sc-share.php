@@ -23,7 +23,7 @@
 		}
 		// 2.2 compat
 		if ( function_exists( 'wc_get_product' ) ) {
-			$product = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $cart_item ), $cart_item );
+			$product = apply_filters( 'woocommerce_order_item_product', $cart_item->get_product(), $cart_item );
 		} else if ( function_exists( 'get_product' ) ) {
 			// 2.0 compat
 			$product = get_product( $id );
@@ -64,7 +64,7 @@
 		$item->id = null;
 	}
 	if ( function_exists( 'get_product' ) ) {
-		$product = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $cart_item ), $cart_item );
+		$product = apply_filters( 'woocommerce_order_item_product', $cart_item->get_product(), $cart_item );
 	} else {
 		$product = new WC_Product( $item->id );
 	}

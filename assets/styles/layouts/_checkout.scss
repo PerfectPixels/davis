@@ -1,6 +1,21 @@
 body.checkout {
 
-	.woocommerce { overflow: hidden; padding: 0; }
+	.woocommerce { overflow: hidden; padding: 0;
+
+      .payment_method_yith-stripe #wc-yith-stripe-cc-form .form-row {
+
+          label {
+            font-size: 11px !important;
+          }
+
+          &:nth-of-type(1),
+          &:nth-of-type(2) {
+            width: 100% !important;
+          }
+
+      }
+
+    }
 
 }
 
@@ -16,7 +31,7 @@ body.checkout {
 
 		h4, h6 { text-transform: none; text-align: center; letter-spacing: -0.01em; }
 
-		h4 { color: #000; font-family: 18px; text-transform: uppercase; margin: 0 0 5px; }
+		h4 { color: #000; font-size: 18px; text-transform: uppercase; margin: 0 0 5px; }
 		h6 { color: #999; font-size: 12px; margin: 0; }
 
 	}
@@ -179,6 +194,22 @@ body.checkout {
 			}
 
 		}
+
+        .select2-container {
+          width: 100% !important;
+          margin-bottom: 10px;
+
+          .select2-selection {
+            border-radius: 0;
+            height: auto;
+
+            .select2-selection__rendered {
+              text-transform: uppercase !important;
+            }
+
+          }
+
+        }
 
 		.woocommerce-billing-fields {
 
@@ -367,6 +398,60 @@ body.checkout {
 
 			}
 
+            .payment_method_yith-stripe {
+
+              #wc-yith-stripe-cc-form {
+
+                .form-row {
+                  width: 49%;
+
+                  label {
+
+                    .cvv2-help {
+                      display: none;
+                    }
+
+                    &[for=yith-stripe-card-number]:before { background: #028abf; width: 2px; height: 0; position: absolute; right: calc( 1% + 9px); bottom: -88px; content: ""; transition: height .3s $cb; }
+                  }
+
+                  input {
+                    font-size: 12px;
+                    line-height: 1;
+                    border: none;
+                    padding: 15px 10px;
+                    margin: 0 !important;
+
+                    &#yith-stripe-card-number { background-image: url(../images/card.png); background-position: 99% 8px; background-repeat: no-repeat; background-size: 44px 28px;
+
+                      &.visa { background-image: url(../images/visa.png); }
+                      &.mastercard { background-image: url(../images/mastercard.png); }
+                      &.amex { background-image: url(../images/amex.png); }
+                      &.discover { background-image: url(../images/discover.png); }
+                      &.dinersclub { background-image: url(../images/dinersclub.png); }
+                      &.jcb { background-image: url(../images/jcb.png); }
+
+                    }
+
+                    &#yith-stripe-card-cvc { width: 100% !important; }
+
+                    &#yith-stripe-card-cvc:focus { border-color: #028abf !important; box-shadow: inset 1px -1px 0 #028abf !important; }
+
+                  }
+
+                }
+
+                &.cvc-focus {
+
+                  input#yith-stripe-card-number { background-image: url(../images/cvc.png) !important; }
+
+                  label[for=yith-stripe-card-number]:before { height: 55px; }
+
+                }
+
+              }
+
+            }
+
 			.payment_method_authorize_net_aim {
 
 				.form-row-first,
@@ -446,9 +531,20 @@ body.checkout {
 
 				a.button { width: 100%; text-align: center; margin: 10px 0; float: none; }
 
-				.woocommerce_error,
-				.woocommerce_info,
-				.woocommerce_message { background: #fff; }
+				.woocommerce-error,
+				.woocommerce-info,
+				.woocommerce-message {
+                  background: #fff;
+                  padding: 20px 10px 20px 50px !important;
+
+                  &:before {
+                    left: 20px;
+                  }
+
+                  &:after {
+                    width: 40px;
+                  }
+                }
 
 			}
 
@@ -476,7 +572,7 @@ body.checkout {
 
 			div:not(.blockUI):before { background: #f7f7f7; border: 1px solid #ccc; width: 26px; height: 26px; content: ""; display: block; position: absolute; top: -13px; left: 50%; margin-left: -13px; border-radius: 50%; z-index: 2; }
 
-			div:not(.blockUI):after { font-size: 21px; line-height: 12px; color: #999; position: absolute; top: -5px; left: 50%; margin-left: -6px; z-index: 3; }
+			div:not(.blockUI):after {     font-family: Arial; font-weight: 600; font-size: 21px; line-height: 12px; color: #999; position: absolute; top: -6px; left: 50%; margin-left: -6px; z-index: 3; }
 
 			div.minus {
 
@@ -511,6 +607,10 @@ body.checkout {
 			label { color: #999;
 
 				a { color: #000; text-decoration: underline; }
+
+                &:after {
+                  top: 3px;
+                }
 
 			}
 

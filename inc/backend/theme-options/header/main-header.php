@@ -212,13 +212,13 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'color',
 		),
 		array(
-			'element'  => array( '.primary-nav .ul li a', '.nav-header .icon-search .select2-container .select2-choice', '.nav-header .dropdown-hover .dropdown-menu a' ),
+			'element'  => array( '.primary-nav .ul li a', '.nav-header .icon-search .select2-container .select2-selection', '.nav-header .dropdown-hover .dropdown-menu a' ),
 			'function' => 'css',
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.nav-header .wishlist-counter', '.nav-header .sep', '.nav-header .contact-details a:after', '.nav-header .menu-item-has-children > a span.mobile-arrow:before', '.nav-header .menu-item-has-children > a span.mobile-arrow:after', '.nav-header .header-text-color-bg', '.nav-header .header-text-color-bg-speudo:before', '.nav-header .header-text-color-bg-speudo:after', '.nav-header .menu-link:before', '.nav-header .menu-link:after', '.nav-header .go-back a:before', '.nav-header .go-back a:after', '.nav-header .icon-search .select2-container .select2-choice:before', '.nav-header .icon-search .select2-container .select2-choice:after' ),
+			'element'  => array( '.nav-header .wishlist-counter', '.nav-header .sep', '.nav-header .contact-details a:after', '.nav-header .menu-item-has-children > a span.mobile-arrow:before', '.nav-header .menu-item-has-children > a span.mobile-arrow:after', '.nav-header .header-text-color-bg', '.nav-header .header-text-color-bg-speudo:before', '.nav-header .header-text-color-bg-speudo:after', '.nav-header .menu-link:before', '.nav-header .menu-link:after', '.nav-header .go-back a:before', '.nav-header .go-back a:after', '.nav-header .icon-search .select2-container .select2-selection:before', '.nav-header .icon-search .select2-container .select2-selection:after' ),
 			'function' => 'css',
 			'property' => 'background-color',
 		),
@@ -229,12 +229,12 @@ Kirki::add_field( 'pp_theme', array(
 			'property' => 'color',
 		),
 		array(
-			'element'  => array( '.primary-nav .ul li a','.nav-header .icon-search .select2-container .select2-choice', '.nav-header .dropdown-hover .dropdown-menu a' ),
+			'element'  => array( '.primary-nav .ul li a','.nav-header .icon-search .select2-container .select2-selection', '.nav-header .dropdown-hover .dropdown-menu a' ),
 			'property' => 'color',
 			'suffix'   => '!important',
 		),
 		array(
-			'element'  => array( '.nav-header .wishlist-counter', '.nav-header .sep', '.nav-header .contact-details a:after', '.nav-header .menu-item-has-children > a span.mobile-arrow:before', '.nav-header .menu-item-has-children > a span.mobile-arrow:after', '.nav-header .header-text-color-bg', '.nav-header .header-text-color-bg-speudo:before', '.nav-header .header-text-color-bg-speudo:after', '.nav-header .menu-link:before', '.nav-header .menu-link:after', '.nav-header .go-back a:before', '.nav-header .go-back a:after', '.nav-header .icon-search .select2-container .select2-choice:before', '.nav-header .icon-search .select2-container .select2-choice:after' ),
+			'element'  => array( '.nav-header .wishlist-counter', '.nav-header .sep', '.nav-header .contact-details a:after', '.nav-header .menu-item-has-children > a span.mobile-arrow:before', '.nav-header .menu-item-has-children > a span.mobile-arrow:after', '.nav-header .header-text-color-bg', '.nav-header .header-text-color-bg-speudo:before', '.nav-header .header-text-color-bg-speudo:after', '.nav-header .menu-link:before', '.nav-header .menu-link:after', '.nav-header .go-back a:before', '.nav-header .go-back a:after', '.nav-header .icon-search .select2-container .select2-selection:before', '.nav-header .icon-search .select2-container .select2-selection:after' ),
 			'property' => 'background-color',
 		),
 	),
@@ -270,7 +270,7 @@ Kirki::add_field( 'pp_theme', array(
 			'suffix'   => '!important',
 		),
         array(
-            'element'  => array( '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:before', '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:after', '.nav-header .cd-search-trigger.search-form-visible:after', '.primary-nav > li > a:after', '.nav-header .dropdown-menu  li a:after', '.nav-header .menu-item:not(.simple-menu-item) > a:hover:before', '.nav-header :not(.simple-menu-item) > a:hover:after', '.nav-header .go-back a:hover:before', '.nav-header .go-back a:hover:after','.nav-header a:hover .header-text-color-bg', '.nav-header a:hover .header-text-color-bg-speudo:before', '.nav-header a:hover .header-text-color-bg-speudo:after' ),
+            'element'  => array( '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:before', '.nav-header .menu-item-has-children:hover > a span.mobile-arrow:after', '.nav-header .cd-search-trigger.search-form-visible:after', '.primary-nav > li > a:after', '.nav-header .dropdown-menu  li a:after', '.nav-header .menu-item:not(.simple-menu-item) > a:hover:before', '.nav-header .menu-item:not(.simple-menu-item) > a:hover:after', '.nav-header .go-back a:hover:before', '.nav-header .go-back a:hover:after','.nav-header a:hover .header-text-color-bg', '.nav-header a:hover .header-text-color-bg-speudo:before', '.nav-header a:hover .header-text-color-bg-speudo:after' ),
             'property' => 'background-color',
             'suffix'   => '!important',
         ),

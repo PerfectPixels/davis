@@ -88,11 +88,23 @@ $product-height-6: 200px;
 
 			span.select2 {
 
-				span.select2-selection {
+				&-selection { height: 44px !important; font-weight: normal; margin-bottom: 0 !important; padding: 0 !important;
 
-					span.select2-selection__rendered { padding: 25px 40px 22px 20px; }
+					&__rendered { font-size: 13px; padding: 7px 73px 8px 14px !important; }
+
+                    &__arrow { top: 19px !important; right: 13px !important; }
 
 				}
+
+                &.select2-container--open {
+
+                  span.select2-selection {
+
+                    &__arrow { top: 13px !important; }
+
+                  }
+
+                }
 
 			}
 

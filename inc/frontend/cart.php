@@ -282,7 +282,7 @@ class PP_Cart {
             WC()->customer->set_shipping_to_base();
           }
 
-          WC()->customer->calculated_shipping( true );
+          WC()->customer->set_calculated_shipping( true );
 
           echo do_action( 'woocommerce_calculated_shipping' );
 

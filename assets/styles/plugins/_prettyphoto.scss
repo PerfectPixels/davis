@@ -1,24 +1,30 @@
 div.pp_pic_holder {
-  position: fixed;
-  width: 100% !important;
-  height: 100%;
-  left: 0 !important;
-  top: 0 !important;
   z-index: 100000;
 
-  .pp_content {
-    margin: 0 auto;
-  }
+  .pp_content_container {
+    padding: 0;
 
-  .pp_close {
-    @extend %close-cross;
-    font-size: 0;
-    background: none !important;
-    color: transparent !important;
-    text-shadow: none;
-    line-height: inherit;
-    border-radius: 0;
-    text-indent: 0;
+    .pp_content {
+      margin: 0 auto;
+
+      h3 {
+        padding: 0;
+      }
+    }
+
+    .pp_close {
+      @extend %close-cross;
+      top: 20px;
+      right: 20px;
+      font-size: 0;
+      background: none !important;
+      color: transparent !important;
+      text-shadow: none;
+      line-height: inherit;
+      border-radius: 0;
+      text-indent: 0;
+    }
+
   }
 }
 

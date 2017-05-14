@@ -219,16 +219,26 @@
 					$('.mega-menu .row').each(function(){
 						var h = 0;
 
-						if ($(this).find('> li > ul.sub-menu').length > 0){
-							$(this).find('> li > ul.sub-menu').each(function(){
-								var currentH = parseInt( $(this).attr( 'data-height' ) );
-								if ( currentH > h ){
-									h = currentH;
-								}
-							});
+						if ($(this).find('> li > ul.sub-menu').length > 0) {
+                            $(this).find('> li > ul.sub-menu').each(function () {
+                                var currentH = parseInt( $(this).attr('data-height') );
+                                
+                                if (currentH > h) {
+                                    h = currentH;
+                                }
+                            });
+                        } else {
+                            $(this).find('> li.sub-menu-item').each(function () {
+                                var currentH = parseInt( $(this).outerHeight( true ) );
 
-							$(this).css( 'height', h + 40 );
-						}
+                                if (currentH > h) {
+                                    h = currentH;
+                                }
+                            });
+                        }
+
+						$(this).css( 'height', h + 40 );
+
 					});
 				},
 
@@ -1566,16 +1576,24 @@
 						var response = $.parseJSON( xhr.responseText );
 
 						if ( response.result === 'true' ){
-						    var $wl = $('.action-button.wishlist');
+						    var $wl = $('.action-button.wishlist'),
+                                newPage = $( '<div />' );
 
-							// Replace the wishlist icon
-							if ( $wl.length > 0 ){
-                                $wl.each( function() {
-                                    $( this ).html().load(document.URL + ' .action-button.wishlist > *', function () {
-                                        PP.method.global.loading($container, 'close');
+                            newPage.load( document.URL, function () {
+
+                                PP.method.global.loading($container, 'close');
+
+                                // Replace the wishlist icon
+                                if ($wl.length > 0) {
+                                    $wl.each(function () {
+                                        var $btn = $(this),
+                                            parentClass = '.' + $btn.parent().attr('class').replace(/ /g, '.');
+
+                                        $btn.html( newPage.find( parentClass + ' .action-button.wishlist' ).html() );
                                     });
-                                });
-							}
+                                }
+
+                            });
 						}
 					});
 				},
@@ -2462,7 +2480,7 @@
 						}
 
 						// Change the checkout section
-						PP.method.checkout.views( view );
+						PP.method.checkout.views( view, true );
 
 						return false;
 					});
@@ -2496,40 +2514,55 @@
 					$( 'form.checkout' ).on( 'submit', function(){
 						if ( $( 'body' ).hasClass( 'offcanvas-cart' ) ){
 							$( document ).one('ajaxComplete', function( event, xhr, settings ) {
-								var response;
+								var result;
 
-								try {
-								 	response = $.parseJSON( xhr.responseText );
-								} catch(e) {
-									response = {
-										'result': xhr.responseText,
-										'messages': 'Unknown error, please try again using a different payment method.'
-									};
-								}
+                                try {
+                                    result = $.parseJSON( xhr.responseText );
 
-								if ( response.result === 'success' ){
-									if ( -1 === response.redirect.indexOf( 'https://' ) || -1 === response.redirect.indexOf( 'http://' ) ) {
-										parent.location.href = response.redirect;
-									} else {
-										parent.location.href = decodeURI( response.redirect );
-									}
-								} else {
-									var $modal 	= $( '#message-modal', window.parent.document ),
-										$cart	= $( '.offcanvas-cart', window.parent.document );
+                                    if ( 'success' === result.result ) {
+                                        if ( -1 === result.redirect.indexOf( 'https://' ) || -1 === result.redirect.indexOf( 'http://' ) ) {
+                                            parent.location = result.redirect;
+                                        } else {
+                                            parent.location = decodeURI( result.redirect );
+                                        }
+                                    } else if ( 'failure' === result.result ) {
+                                        throw 'Result failure';
+                                    } else {
+                                        throw 'Invalid response';
+                                    }
+                                } catch( err ) {
+                                    var $modal 	= $( '#message-modal', window.parent.document ),
+                                        $cart	= $( '.offcanvas-cart', window.parent.document );
 
-									// Display the error in modal
-									$modal.find( '.content' ).html( '<h4>' + response.result + '</h4>' + response.messages );
-									$modal.find( '.content ul.woocommerce-error' ).removeClass( 'woocommerce-error' );
-									$modal.addClass( 'error' ).modal( 'show' );
+                                    // Reload page
+                                    if ( true === result.reload ) {
+                                        parent.location.reload();
+                                        return;
+                                    }
 
-									// Display the buttons and header
-									$cart.removeClass( 'hide-actions' );
+                                    // Trigger update in case we need a fresh nonce
+                                    if ( true === result.refresh ) {
+                                        $( document.body ).trigger( 'update_checkout' );
+                                    }
 
-									// Scroll the checkout to the tops
-									$cart.find( '.cart-container' ).scrollTo( 0, 400, {
-										axis: 'y'
-									} );
-								}
+                                    // Add new errors
+                                    if ( result.messages ) {
+                                        $modal.find( '.content' ).html( result.messages );
+                                        $modal.find( '.content ul.woocommerce-error' ).removeClass( 'woocommerce-error' );
+                                    } else {
+                                        $modal.find( '.content' ).html( wc_checkout_params.i18n_checkout_error );
+                                    }
+
+                                    $modal.addClass( 'error' ).modal( 'show' );
+
+                                    // Display the buttons and header
+                                    $cart.removeClass( 'hide-actions' );
+
+                                    // Scroll the checkout to the tops
+                                    $cart.find( '.cart-container' ).scrollTo( 0, 400, {
+                                        axis: 'y'
+                                    } );
+                                }
 							});
 						}
 					});
@@ -2605,7 +2638,7 @@
 
 							}
 						} else {
-							PP.method.checkout.views( $( this ).attr( 'href' ) );
+							PP.method.checkout.views( $( this ).attr( 'href' ), true );
 						}
 
 						return false;
@@ -2628,19 +2661,12 @@
                         }
 
                     })
-                    .on( 'click', '#heading-login-customer a, .showcoupon', function(){
-
-                        setTimeout(function(){
-                            PP.method.checkout.viewHeight();
-                        }, 500);
-
-                    });
 
 					// Show CVC location when input is focused in for Stripe and Authorize.net
-					PP.obj.$body.on( 'focus', 'input.wc-credit-card-form-card-cvc, input.js-sv-wc-payment-gateway-credit-card-form-csc', function(){
+					PP.obj.$body.on( 'focus', 'input.wc-credit-card-form-card-cvc, input.js-sv-wc-payment-gateway-credit-card-form-csc, inout#yith-stripe-card-cvc', function(){
 						$( this ).parents( 'fieldset' ).addClass( 'cvc-focus' );
 					})
-                    .on( 'blur', 'input.wc-credit-card-form-card-cvc, input.js-sv-wc-payment-gateway-credit-card-form-csc', function(){
+                    .on( 'blur', 'input.wc-credit-card-form-card-cvc, input.js-sv-wc-payment-gateway-credit-card-form-csc, inout#yith-stripe-card-cvc', function(){
 						$( this ).parents( 'fieldset' ).removeClass( 'cvc-focus' );
 					})
                     .on( 'update_checkout', function(){
@@ -2711,11 +2737,11 @@
 							if ( ! passed ){
 								// Make sure you are on the details view
 								if ( ! $cart.find( '#checkout_details' ).hasClass( 'in-view' ) ){
-									PP.method.checkout.views( view );
+									PP.method.checkout.views( view, true );
 								}
 							}
 
-						break;
+						    break;
 						case '#shipping':
 							var $chosenMethod = $cart.find('li.wc_payment_method > input[type="radio"]:checked' ).closest('.wc_payment_method'),
 								$inputs		  = $chosenMethod.find('.woocommerce-validated input.input-text');
@@ -2727,7 +2753,13 @@
 								} else {
 									break;
 								}
-							}
+							} else if ( $cart.find('input#payment_method_yith-stripe:checked').length > 0 ){
+                                if ( $chosenMethod.find( '#wc-yith-stripe-payment-token-new' ).is( ':checked' ) ){
+                                    $inputs = $chosenMethod.find( '.wc-credit-card-form input.input-text' );
+                                } else {
+                                    break;
+                                }
+                            }
 
 							$inputs.each( function(){
 								// If empty make it obvious
@@ -2737,10 +2769,10 @@
 								}
 							});
 
-						break;
+						    break;
 						case '#review':
 
-						break;
+						    break;
 					}
 
 					// If error scroll to it for the user to notice
@@ -2755,7 +2787,7 @@
 				},
 
 				// Display the correct checkout sections
-				views: function( view ){
+				views: function( view, animTitle ){
 					var $offcanvasCart	= $( '.offcanvas-cart' ),
 						$cartNavBtn		= $offcanvasCart.find( '.cart-nav a[href="' + view + '"]' ),
 						$cartNavParent	= $cartNavBtn.parent(),
@@ -2856,56 +2888,46 @@
 								btnAttr = $btn.data( view ).split( ',' );
 
 							// Replace the button class starting with icon
-							$btn.attr( 'class', function(i, c){ return c.replace(/(^|\s)icon-\S+/g, btnAttr[1]); } );
-							// Add new button class / href / text
-							$btn.attr( 'href', btnAttr[0] ).find( 'span' ).text( btnAttr[2] );
+							$btn.attr({
+							    'class': function(i, c){ return c.replace(/(^|\s)icon-\S+/g, btnAttr[1]); },
+                                'href': btnAttr[0]
+                            }).find( 'span' ).text( btnAttr[2] );
 						});
 
-						// Animate titles out
-						$cartHeader.addClass( 'hide-title' );
+						if ( animTitle !== false ) {
+                            // Animate titles out
+                            $cartHeader.addClass('hide-title');
 
-						// Wait for titles to be hidden
-						$cartTitle.one( 'animationend', function(){
-							//Change title
-							$cartTitle.text( $viewHeader.find( 'h4' ).text() );
-							$cartSubtitle.text( $viewHeader.find( 'h6' ).text() );
+                            // Wait for titles to be hidden
+                            $cartTitle.one('animationend', function () {
+                                //Change title
+                                $cartTitle.text( $viewHeader.find('h4').text() );
+                                $cartSubtitle.text( $viewHeader.find('h6').text() );
 
-							// Animate titles in
-							$cartHeader.removeClass( 'hide-title' );
-						});
+                                // Animate titles in
+                                $cartHeader.removeClass('hide-title');
+                            });
+                        }
 					}
 
 					// Move the correct section
 					$checkoutIframe.css( 'transform', 'translate3d(' + vwToMove + '%,0,0)' )
-					$checkoutForm.find( '> div' ).removeClass( 'in-view' );
-					$viewToShow.addClass( 'in-view' );
+					$viewToShow.addClass( 'in-view' ).siblings().removeClass( 'in-view' );
 
 					// Scroll to top
-					setTimeout(function(){
-						if ( passed ){
-							$offcanvasCart.find( '.cart-container' ).scrollTo( 0, 0, {
-								onAfter: function(){
-									// Add the content height to the parent element
-									setTimeout(function(){
-										PP.method.checkout.viewHeight();
-									}, 500);
-								}
-							});
-						} else {
-							// Add the content height to the parent element
-							setTimeout(function(){
-								PP.method.checkout.viewHeight();
+                    if ( passed ){
+                        PP.method.checkout.viewHeight();
 
-								// Scroll to the error field
-								if ( ! passed ){
-									$( '.offcanvas-cart .cart-container' ).scrollTo( $viewToShow.find( 'p.error:first' ).offset().top -30, 400, {
-										axis: 'y'
-									} );
-								}
-							}, 500);
-						}
+                        setTimeout(function(){
+                            $offcanvasCart.find( '.cart-container' ).scrollTo( 0, 0 );
+                        }, 400);
 
-					}, 400);
+                    } else {
+                        // Scroll to the error field
+                        $( '.offcanvas-cart .cart-container' ).scrollTo( $viewToShow.find( 'p.error:first' ).offset().top -30, 400, {
+                            axis: 'y'
+                        } );
+                    }
 
 				},
 
@@ -2927,7 +2949,7 @@
 
                             $( newIframe ).on('load', function(){
                                 var $iframe = $( '.offcanvas-cart #iframe-checkout' ),
-                                    iframeContent   = $iframe.contents(),
+                                    iframeContent   = $iframe.contents().scrollTop(0),
                                     $container = iframeContent.find( '#checkout-container' );
 
                                 // Keep only the checkout form
@@ -2936,30 +2958,32 @@
                                 // Mark it when finished loaded
                                 $iframe.addClass( 'loaded' );
 
+                                // Cannot scroll page
+                                $('body').addClass('no-scroll');
+
+                                // Call the cart view
+                                PP.method.checkout.views('#cart', false);
+
                                 // Hide the page cart
-                                $offcanvasCart.find( '#checkout_cart' ).hide( 0, function() {
+                                $offcanvasCart.find( '#checkout_cart' ).hide();
 
-                                    setTimeout(function () {
-                                        // Imitate the real cart
-                                        iframeContent.find('body').addClass('open');
+                                // Imitate the real cart
+                                iframeContent.find('body').addClass('open');
 
-                                        // Cannot scroll page
-                                        $('body').addClass('no-scroll');
+                                setTimeout(function () {
+                                    // Expand the cart
+                                    $offcanvasCart.addClass('expanded open');
 
-                                        // Expand the cart
-                                        $offcanvasCart.addClass('expanded open');
+                                    // Call the cart view
+                                    PP.method.checkout.views('#details', true);
 
-                                        // Call the correct view
-                                        PP.method.checkout.views('#details');
+                                    // Make sure the cart is not longer than the screen
+                                    PP.method.cart.cartMaxHeight();
 
-                                        // Make sure the cart is not longer than the screen
-                                        PP.method.cart.cartMaxHeight();
+                                    // Functions for the checkout UI
+                                    PP.method.checkout.radioCheckboxAction();
+                                }, 300);
 
-                                        // Functions for the checkout UI
-                                        PP.method.checkout.radioCheckboxAction();
-                                    }, 300);
-
-                                });
                             });
                         } else {
                             window.location.hash = '#';
@@ -3075,23 +3099,28 @@
 				radioCheckboxAction: function() {
 					var $iframe = $( '.offcanvas-cart #iframe-checkout' ).contents();
 
-					$iframe.on( 'change click', 'input[name="payment_method"], input[name="wc-stripe-payment-token"], input[name="ship_to_different_address"], input[name="createaccount"]', function(){
+					$iframe.on( 'change click', '.payment_methods input[type="radio"], input[name="ship_to_different_address"], input[name="createaccount"]', function(){
 						setTimeout(function(){
 							PP.method.checkout.viewHeight();
 						}, 400);
-					});
-
-					$iframe.on( 'click', '.js-sv-wc-payment-gateway-echeck-form-check-hint', function(){
+					})
+                    .on( 'click', '.js-sv-wc-payment-gateway-echeck-form-check-hint', function(){
 						setTimeout(function(){
 							PP.method.checkout.viewHeight();
 						}, 400);
-					});
-
-					$iframe.on( 'click', '.showcoupon-link', function(){
+					})
+					.on( 'click', '.showcoupon-link', function(){
 						$(this).next().slideToggle( "fast", function() {
 							PP.method.checkout.viewHeight();
 						});
-					});
+					})
+                    .on( 'click', '#heading-login-customer a, .showcoupon', function(){
+
+                        setTimeout(function(){
+                            PP.method.checkout.viewHeight();
+                        }, 400);
+
+                    });
 				},
 
 				// Change the icon for the saved credit cards
@@ -3274,7 +3303,7 @@
 
 					// Change the view back to cart
                     if ( $cart.hasClass( 'expanded' ) ) {
-                        this.views('#cart');
+                        this.views('#cart', true);
                     }
 
 					// Remove the loader from the "Proceed Checkout" btn

@@ -468,10 +468,11 @@
       display: inline-block !important;
       width: auto !important;
 
-      .select2-choice {
+      .select2-choice,
+      .select2-selection {
         text-transform: none;
         border: none !important;
-        padding: 0.5em 1.7em 0.5em .3em;
+        padding: 0.5em 1.7em 0.5em .3em !important;
         font-size: 1.4rem;
         box-shadow: none !important;
         font-weight: normal;
@@ -482,9 +483,13 @@
         span {
           opacity: 1;
           margin: 0;
+          padding: 0 !important;
+          line-height: 1 !important;
+          font-size: 13px;
         }
 
-        .select2-arrow {
+        .select2-arrow,
+        .select2-selection__arrow {
           display: none;
         }
 

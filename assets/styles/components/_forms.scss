@@ -46,26 +46,20 @@ body .container button.message { background: $green !important; width: 100% !imp
 body .container button.message.error { background: $red !important; }
 body .container button[disabled=disabled] { cursor: text; }
 
-span.select2 { text-align: right; width: auto !important;
-	span.select2-selection { height: auto; border: none; border-radius: none; outline: none !important;
-		span.select2-selection__rendered { line-height: 13px; padding: 15px 40px 12px 20px; }
+.select2 {
+	.select2-selection { height: auto; border: none; border-radius: 0; outline: none !important;
+		.select2-selection__rendered { line-height: 13px; padding: 0 40px 0 20px !important; }
 
-		.select2-selection__arrow { width: 10px; height: 13px; right: 20px; top: 50%; margin-top: -6px; transform: rotate3d(1,0,0,0deg); transition: transform 350ms cubic-bezier(0.7, 0, 0.3, 1);
+		.select2-selection__arrow { width: 10px; height: 13px; right: 20px; top: 50%; margin-top: -6px;
 				b { border-color: #000 transparent transparent transparent !important; border-width: 5px !important; margin-left: 0; left: inherit; right: 0; top: 6px; }
 			}
 			.select2-selection__arrow:before { content: ""; border-color: #fff transparent transparent transparent; border-style: solid; border-width: 5px; height: 0; right: 0; top: 3px; position: absolute; width: 0; z-index: 1; }
 	}
-	span.select2-selection * { font-size: 13px; color: #000 !important; letter-spacing: -0.05em; text-transform: uppercase; }
+	.select2-selection * { font-size: 13px; color: #000 !important; letter-spacing: -0.05em; text-transform: uppercase; }
 }
 
-span.select2.select2-container--open {
-	span.select2-selection {
-		.select2-selection__arrow { transform: rotate3d(1,0,0,180deg); }
-	}
-}
-
-span.select2-container {
-	span.select2-dropdown { z-index: 99; border: 1px solid #f7f8f9; border-bottom-width: 2px; border-radius: 0;
+.select2-container {
+	.select2-dropdown { z-index: 99; border: 1px solid #eee; border-left-width: 2px; border-bottom-width: 2px; border-radius: 0;
 		ul.select2-results__options { max-height: inherit; overflow: hidden;
 			li.select2-results__option { color: #000; font-size: 11px; padding: 10px 20px; text-transform: uppercase; border-bottom: 1px solid #f7f8f9; }
 
@@ -76,13 +70,13 @@ span.select2-container {
 	}
 }
 
-div.select2-container { width: 100% !important;
+.select2-container { width: auto !important;
 
-	a.select2-choice,
-	a.select2-selection { background: #fff; color: #000; border:1px solid #cbcaca !important; box-shadow: inset 1px -1px 0 #cbcaca; border-radius: 0 !important; font-size: 12px; font-weight: bold; line-height: 1; height: auto; padding: 22px 10px; margin-bottom: 10px; text-transform: uppercase; text-align: left;
+	.select2-choice,
+	.select2-selection { background: #fff; color: #000; border:1px solid #eee !important; box-shadow: inset 1px -1px 0 #eee; border-radius: 0 !important; font-size: 12px; font-weight: bold; line-height: 1; height: auto; margin: 0; padding: 15px 0 !important; margin-bottom: 10px; text-transform: uppercase; text-align: left;
 
 		.select2-arrow,
-		.select2-selection__arrow { background: none;  width: 0; height: 0; border:6px solid transparent; border-top-color: #ccc; right: 10px; top: 25px; border-radius: 0; margin: 0;
+		.select2-selection__arrow { background: none;  width: 0 !important; height: 0 !important; border:6px solid transparent; border-top-color: #ccc; right: 20px !important; top: 25px !important; border-radius: 0; margin: 0;
 
 			b { display: none; }
 
@@ -90,7 +84,7 @@ div.select2-container { width: 100% !important;
 
 		.select2-selection__arrow:before { display: none; }
 
-		.select2-selection__rendered { padding: 0; font-size: 14px; line-height: 26px; color: #000; height: auto; text-transform: none !important; }
+		.select2-selection__rendered { padding: 0; font-size: 12px; line-height: 26px !important; color: #000; height: auto; text-transform: none !important; }
 
 	}
 
@@ -99,24 +93,32 @@ div.select2-container { width: 100% !important;
 
 }
 
-div.select2-dropdown-open,
-div.select2-container--open {
+.select2-dropdown-open,
+.select2-container--open {
 
-		a.select2-arrow,
-		a.select2-selection__arrow {  border-top-color: transparent !important; border-bottom-color: #ccc !important; top: 19px !important; }
+  .select2-selection {
+
+    .select2-arrow,
+    .select2-selection__arrow {
+      border-top-color: transparent !important;
+      border-bottom-color: #ccc !important;
+      top: 19px !important;
+    }
+
+  }
 
 }
 
-div.select2-container-active {
+.select2-container-active {
 
-	a.select2-choice,
-	a.select2-selection { color: #000 !important; box-shadow: inset 1px -1px 0 #000 !important; border-color: #000 !important;
+	.select2-choice,
+	.select2-selection { color: #000 !important; box-shadow: inset 1px -1px 0 #000 !important; border-color: #000 !important;
 
 	}
 
 }
 
-div.select2-drop.select2-drop-active { border: none!important; margin: -1px 0 0 -1px; box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2);
+.select2-drop.select2-drop-active { border: none!important; margin: -1px 0 0 -1px; box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2);
 
 	.select2-search { padding: 5px;
 
@@ -163,7 +165,7 @@ body.archive {
 
 
 input[type=checkbox] { display: none !important; }
-input[type=checkbox] + label:not(.berocket_label_widgets)  { position: relative; display: inline-block; }
+input[type=checkbox] + label:not(.berocket_label_widgets)  { position: relative; display: inline-block; cursor: pointer; }
 input[type=checkbox] + label:not(.berocket_label_widgets):before  { background: #f2f3f3; content: ""; display: inline-block; vertical-align: middle; border: 1px solid #ccc; width: 22px; height: 22px; margin-right: 10px; }
 input[type=checkbox] + label:not(.berocket_label_widgets):after { content: '';  position: absolute; width: 12px; height: 8px; background: transparent; top: 5px; left: 5px; border: 3px solid #333; border-top: none; border-right: none; opacity: 0; transform: rotate(-45deg) scale3d(0.7,0.7,0.7); transition: all 300ms cubic-bezier(0.2, 1, 0.3, 1); }
 input[type=checkbox]:checked + label:not(.berocket_label_widgets):after { opacity: 1; transform: rotate(-45deg) scale3d(1,1,1); }
@@ -172,7 +174,7 @@ input[type=checkbox]:checked + label:not(.berocket_label_widgets):after { opacit
 
 input[type=radio] { display: none !important; }
 input[type=radio] + label  { position: relative; display: inline-block; line-height: 1; cursor: pointer; }
-input[type=radio] + label:before  { background: #f2f3f3; content: ""; display: inline-block; vertical-align: middle; border: 1px solid #cccccc; width: 22px; height: 22px; margin-right: 10px; border-radius: 50%; transition: all 300ms cubic-bezier(0.2, 1, 0.3, 1); }
+input[type=radio] + label:before  { background: #f2f3f3; content: ""; display: inline-block; vertical-align: middle; border: 1px solid #cccccc; width: 22px; height: 22px; margin-right: 10px; margin-bottom: 5px; border-radius: 50%; transition: all 300ms cubic-bezier(0.2, 1, 0.3, 1); }
 input[type=radio] + label:after { background: #000; content: '';  position: absolute; width: 10px; height: 10px; top: 6px; left: 6px; opacity: 0; border-radius: 50%; transform: scale3d(0.7,0.7,0.7); transition: all 300ms cubic-bezier(0.2, 1, 0.3, 1); }
 input[type=radio]:checked + label:after { opacity: 1; transform: scale3d(1,1,1); }
 
@@ -188,7 +190,8 @@ input[type=password],
 input[type=url],
 input[type=tel],
 input[type=date],
-textarea { background: #fff; color: #000; border:1px solid #dbdbdb !important; font-size: 13px; font-weight: normal; letter-spacing: -0.02em; line-height: 12px !important; padding: 20px 10px; margin-bottom: 10px !important; width: 100%; -webkit-appearance: none; outline: none !important; transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1); box-shadow: inset 1px -1px 0 #dbdbdb !important; }
+textarea,
+select { background: #fff; color: #000; border:1px solid #eee !important; font-size: 13px; font-weight: normal; letter-spacing: -0.02em; line-height: 12px !important; padding: 20px; margin-bottom: 10px !important; width: 100%; -webkit-appearance: none; outline: none !important; transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1); box-shadow: inset 1px -1px 0 #eee !important; }
 
 textarea { min-height: 150px; }
 
@@ -198,7 +201,8 @@ input[type=password]:focus,
 input[type=url]:focus,
 input[type=tel]:focus,
 input[type=date]:focus,
-textarea:focus { color: #000; box-shadow: inset 1px -1px 0 #000 !important; border-color: #000 !important; }
+textarea:focus,
+select:focus { color: #000; box-shadow: inset 1px -1px 0 #000 !important; border-color: #000 !important; }
 
 ::-webkit-input-placeholder {
    color: #cbcaca;

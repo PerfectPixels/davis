@@ -92,7 +92,7 @@
 }
 
 // OFFCANVAS CART
-.offcanvas-cart { background: #fff; width: 500px; max-width: 100%; display: block; overflow: hidden; position: fixed; top: 0; right: 0; bottom: 0; box-shadow: 0 0 15px rgba(0,0,0,.1); z-index: 10003; opacity: 0; visibility: hidden; transform: translate3d(100%, 0, 0); transition: opacity .5s $cb, width .8s $cb, transform .5s $cb, visibility 0s .5s;
+.offcanvas-cart { background: #fff; width: 500px; max-width: 100%; display: block; position: fixed; top: 0; right: 0; bottom: 0; box-shadow: 0 0 15px rgba(0,0,0,.1); z-index: 10003; opacity: 0; visibility: hidden; transform: translate3d(100%, 0, 0); will-change: transform; transition: opacity .5s $cb, width .8s $cb, transform .5s $cb, visibility 0s .5s;
 
 	.widget_shopping_cart_content {
 
@@ -228,8 +228,6 @@
               }
 
               &.paypal:before {
-                top: 15px;
-                left: 30px;
                 height: 26px;
                 width: 22px;
                 line-height: 1;
@@ -284,7 +282,13 @@
 
 	.cart-container {
 
-		.cart-wrapper {  width: 100%; height: 100%; margin: 0 auto; transition: width .8s $cb; }
+		.cart-wrapper {  width: 100%; height: 100%; margin: 0 auto; transition: width .8s $cb;
+
+          #checkout_cart {
+            margin: 30px 0 40px;
+          }
+
+        }
 
 	}
 
@@ -449,7 +453,7 @@
 
 .cart-container { width: 100%; }
 
-body.offcanvas-cart { position: static; transform: none; overflow: visible; width: 100%; visibility: visible; transition: none;
+body.offcanvas-cart { position: static; transform: none; overflow: visible; width: 100%; visibility: visible; transition: none !important;  will-change: none; box-shadow: none !important;
 
 	#checkout-container {  width: 100%; margin: 0; transition: all .8s $cb;
 
@@ -466,7 +470,8 @@ body.offcanvas-cart { position: static; transform: none; overflow: visible; widt
 			.terms { font-size: 13px ; }
 		}
 
-		.woocommerce-error { display: none; }
+		form.checkout > .woocommerce-error,
+        form.checkout > .woocommerce-NoticeGroup { display: none; }
 
 	}
 
