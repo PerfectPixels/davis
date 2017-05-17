@@ -293,11 +293,11 @@ msgstr ""
 msgid "Choose if you want a quick checkout available on all pages instead of the default Woocommerce checkout page. PLEASE NOTE: Quick checkout was not tested with all existing plugins that adds/modifies the checkout process or layout. If you find any issues while using it please disable it."
 msgstr ""
 
-#: inc/backend/theme-options/checkout.php:88, inc/backend/theme-options/shop/product-style.php:56, inc/backend/theme-options/shop/product-style.php:78, inc/backend/theme-options/shop/shop-page.php:67
+#: inc/backend/theme-options/checkout.php:88, inc/backend/theme-options/shop/product-style.php:56, inc/backend/theme-options/shop/product-style.php:78, inc/backend/theme-options/shop/shop-page.php:82
 msgid "Enable"
 msgstr ""
 
-#: inc/backend/theme-options/checkout.php:89, inc/backend/theme-options/shop/product-style.php:57, inc/backend/theme-options/shop/product-style.php:79, inc/backend/theme-options/shop/shop-page.php:68
+#: inc/backend/theme-options/checkout.php:89, inc/backend/theme-options/shop/product-style.php:57, inc/backend/theme-options/shop/product-style.php:79, inc/backend/theme-options/shop/shop-page.php:83
 msgid "Disable"
 msgstr ""
 
@@ -337,11 +337,11 @@ msgstr ""
 msgid "Choose if you want to display or remove the bottom sidebar in the footer."
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:54, inc/backend/theme-options/footer.php:163, inc/backend/theme-options/shop/product-style.php:42, inc/backend/theme-options/shop/single-product.php:89
+#: inc/backend/theme-options/footer.php:54, inc/backend/theme-options/footer.php:163, inc/backend/theme-options/shop/product-style.php:42, inc/backend/theme-options/shop/single-product.php:97
 msgid "Show"
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:55, inc/backend/theme-options/footer.php:164, inc/backend/theme-options/shop/product-style.php:43, inc/backend/theme-options/shop/single-product.php:90
+#: inc/backend/theme-options/footer.php:55, inc/backend/theme-options/footer.php:164, inc/backend/theme-options/shop/product-style.php:43, inc/backend/theme-options/shop/single-product.php:98
 msgid "Hide"
 msgstr ""
 
@@ -1162,42 +1162,42 @@ msgid "Hot"
 msgstr ""
 
 #: inc/backend/theme-options/shop/product-style.php:130
-msgid "Featured Badge Color"
-msgstr ""
-
-#: inc/backend/theme-options/shop/product-style.php:152
-msgid "Enable New Product Badge"
+msgid "Featured badge Color"
 msgstr ""
 
 #: inc/backend/theme-options/shop/product-style.php:160
+msgid "Enable New Product Badge"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:168
 msgid "New badge duration"
 msgstr ""
 
-#: inc/backend/theme-options/shop/product-style.php:161
+#: inc/backend/theme-options/shop/product-style.php:169
 msgid "Choose how many days a product remains as \"new\""
 msgstr ""
 
-#: inc/backend/theme-options/shop/product-style.php:176
+#: inc/backend/theme-options/shop/product-style.php:184
 msgid "New badge text"
 msgstr ""
 
-#: inc/backend/theme-options/shop/product-style.php:180, inc/mega-menu/class-mega-menu-walker.php:431
+#: inc/backend/theme-options/shop/product-style.php:188, inc/mega-menu/class-mega-menu-walker.php:431
 msgid "New"
 msgstr ""
 
-#: inc/backend/theme-options/shop/product-style.php:191
+#: inc/backend/theme-options/shop/product-style.php:199
 msgid "New Badge Color"
 msgstr ""
 
-#: inc/backend/theme-options/shop/product-style.php:213
+#: inc/backend/theme-options/shop/product-style.php:229
 msgid "Sale badge text"
 msgstr ""
 
-#: inc/backend/theme-options/shop/product-style.php:217
+#: inc/backend/theme-options/shop/product-style.php:233
 msgid "Sale!"
 msgstr ""
 
-#: inc/backend/theme-options/shop/product-style.php:228
+#: inc/backend/theme-options/shop/product-style.php:244
 msgid "Sale Badge Color"
 msgstr ""
 
@@ -1209,35 +1209,35 @@ msgstr ""
 msgid "Shop all products"
 msgstr ""
 
-#: inc/backend/theme-options/shop/shop-page.php:29
+#: inc/backend/theme-options/shop/shop-page.php:36
 msgid "Products per row"
 msgstr ""
 
-#: inc/backend/theme-options/shop/shop-page.php:43
+#: inc/backend/theme-options/shop/shop-page.php:58
 msgid "Shop Sidebar"
 msgstr ""
 
-#: inc/backend/theme-options/shop/shop-page.php:44
+#: inc/backend/theme-options/shop/shop-page.php:59
 msgid "Choose if you want to display the sidebar on the product page and select the type."
 msgstr ""
 
-#: inc/backend/theme-options/shop/shop-page.php:50
+#: inc/backend/theme-options/shop/shop-page.php:65
 msgid "No Sidebar"
 msgstr ""
 
-#: inc/backend/theme-options/shop/shop-page.php:51
+#: inc/backend/theme-options/shop/shop-page.php:66
 msgid "Default Sidebar"
 msgstr ""
 
-#: inc/backend/theme-options/shop/shop-page.php:52
+#: inc/backend/theme-options/shop/shop-page.php:67
 msgid "Off-canvas Sidebar"
 msgstr ""
 
-#: inc/backend/theme-options/shop/shop-page.php:60
+#: inc/backend/theme-options/shop/shop-page.php:75
 msgid "Single Variation Product"
 msgstr ""
 
-#: inc/backend/theme-options/shop/shop-page.php:61
+#: inc/backend/theme-options/shop/shop-page.php:76
 msgid "Separate the variations as single standalone products on category pages without subcategories. This is ideal for customers to have the variations slider on the top categories and see all variations at glance when filtering down."
 msgstr ""
 
@@ -1293,11 +1293,11 @@ msgstr ""
 msgid "Select the which side you want the images to be displayed."
 msgstr ""
 
-#: inc/backend/theme-options/shop/single-product.php:83
+#: inc/backend/theme-options/shop/single-product.php:91
 msgid "Related Product"
 msgstr ""
 
-#: inc/backend/theme-options/shop/single-product.php:96
+#: inc/backend/theme-options/shop/single-product.php:104
 msgid "Related Products"
 msgstr ""
 
