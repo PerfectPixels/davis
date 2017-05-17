@@ -222,7 +222,7 @@
 						if ($(this).find('> li > ul.sub-menu').length > 0) {
                             $(this).find('> li > ul.sub-menu').each(function () {
                                 var currentH = parseInt( $(this).attr('data-height') );
-                                
+
                                 if (currentH > h) {
                                     h = currentH;
                                 }
@@ -269,7 +269,7 @@
 						}
 
 						if ( $nextMenu.parents('.offcanvas' ).length > 0 ){
-							$( '.primary-nav.offcanvas .main-menu' ).css( 'height', $nextMenu.outerHeight() )
+							$( '.primary-nav.offcanvas .main-menu' ).css( 'height', $nextMenu.outerHeight() );
 						}
 
 						selected.parent( '.menu-item-has-children' ).siblings( '.menu-item-has-children' ).children( 'ul' ).addClass( 'is-hidden' ).end().children( 'a' ).removeClass( 'selected' );
@@ -342,7 +342,7 @@
 							count = parseInt( PP.method.global.getStrBetween( $el.attr('class'), 'col-md-', ' ' ) );
 
 						// Add the open wrapper element
-						if (counter == 0){
+						if (counter === 0){
 							$('<span class="row" />').insertBefore( $el );
 						}
 
@@ -502,7 +502,7 @@
 				setAutoplay: function( wrapper, length, delay ) {
 					if( wrapper.hasClass( 'autoplay' ) ) {
 						clearInterval( autoPlayId );
-						autoPlayId = window.setInterval( function(){ this.autoplaySlider( length ) }, delay);
+						autoPlayId = window.setInterval( function(){ this.autoplaySlider( length ); }, delay);
 					}
 				},
 
@@ -627,7 +627,7 @@
 					var _this = this;
 
 					$( 'form.product-search:not(.no-ajax)' ).on('keyup', 'input[type="search"]', function(e) {
-						if ( $(this).parents( '.offcanvas' ).length == 0 ) {
+						if ( $(this).parents( '.offcanvas' ).length === 0 ) {
                             _this.ajaxSearch($(this).parents('form.product-search'));
                         }
 					})
@@ -1181,7 +1181,7 @@
 								   	});
 							   },
 							   complete: function(){
-								   if ($('.offcanvas-cart .cart-wrapper .empty').length == 0){
+								   if ($('.offcanvas-cart .cart-wrapper .empty').length === 0){
 									   $('.offcanvas-cart').removeClass('empty');
 								   }
 							   }
@@ -1575,8 +1575,8 @@
 					$( document ).one('ajaxComplete', function( event, xhr, settings ) {
 						var response = $.parseJSON( xhr.responseText );
 
-						if ( response.result === 'true' ){
-						    var $wl = $('.action-button.wishlist'),
+                        if ( response.result === 'true' ){
+                            var $wl = $('.action-button.wishlist'),
                                 newPage = $( '<div />' );
 
                             newPage.load( document.URL, function () {
@@ -1594,7 +1594,7 @@
                                 }
 
                             });
-						}
+                        }
 					});
 				},
 
@@ -2039,19 +2039,19 @@
 							$saleBadge = $('.product-type-variable .container .single-product-sale'),
 							$selectVar = $mainSlider.closest('.product').find('.summary .variations select'),
 							$slideVar = false,
+                            $desc = $('.summary div[itemprop="description"]'),
 							slideIndex;
 
 						// Check if a variation is selected
 						if (variation) {
 							// Find the image with the same title as the variation selected
 							if (variation.image.title !== ''){
-								$slideVar = $mainSlider.find('img[data-image-title="'+ variation.image.title +'"]'),
+								$slideVar = $mainSlider.find('img[data-image-title="'+ variation.image.title +'"]');
 								slideIndex = $slideVar.parents('.item').attr('data-slick-index');
 							}
 
 							// Change the description if a variation has one
 							if (variation.variation_description !== ''){
-							    var $desc = $('.summary div[itemprop="description"]');
 
 								if ( $desc.length > 0 ){
 									// Save global description
@@ -2065,7 +2065,7 @@
 									if (PP.obj.productDesc === null){
 										PP.obj.productDesc = '';
 									}
-									$('<div itemprop="description">'+variation.variation_description+'</div>').insertAfter('.summary .title-wrap')
+									$('<div itemprop="description">'+variation.variation_description+'</div>').insertAfter('.summary .title-wrap');
 								}
 							} else {
 								if (PP.obj.productDesc !== null){
@@ -2660,7 +2660,7 @@
                             });
                         }
 
-                    })
+                    });
 
 					// Show CVC location when input is focused in for Stripe and Authorize.net
 					PP.obj.$body.on( 'focus', 'input.wc-credit-card-form-card-cvc, input.js-sv-wc-payment-gateway-credit-card-form-csc, inout#yith-stripe-card-cvc', function(){
@@ -2680,7 +2680,7 @@
 							var payInt = setInterval( checkPayment, 200);
 
 							function checkPayment(){
-								if ( $('.woocommerce-checkout-payment').length > 0 && $('.woocommerce-checkout-payment .blockUI').length == 0 ){
+								if ( $('.woocommerce-checkout-payment').length > 0 && $('.woocommerce-checkout-payment .blockUI').length === 0 ){
 									PP.method.checkout.paymentCardIcon();
 									PP.method.checkout.updateSelectedPayment( selectedPayment, cardChosen, paymentForm );
 									clearInterval(payInt);
@@ -2911,7 +2911,7 @@
 					}
 
 					// Move the correct section
-					$checkoutIframe.css( 'transform', 'translate3d(' + vwToMove + '%,0,0)' )
+					$checkoutIframe.css( 'transform', 'translate3d(' + vwToMove + '%,0,0)' );
 					$viewToShow.addClass( 'in-view' ).siblings().removeClass( 'in-view' );
 
 					// Scroll to top
@@ -3166,7 +3166,7 @@
 								if ( $( this ).attr( 'id' ) == cloneId ){
 									$( this ).val( cloneVal );
 
-									return true
+									return true;
 								}
 							});
 						});
@@ -3514,7 +3514,7 @@
 					if ( PP.obj.$window.scrollTop() > 0 ) {
 						PP.obj.$html.addClass( 'scrolled' );
 					} else if ( PP.obj.$html.hasClass( 'scrolled' ) ){
-						PP.obj.$html.removeClass( 'scrolled' )
+						PP.obj.$html.removeClass( 'scrolled' );
 					}
 
 				},
@@ -3597,7 +3597,7 @@
 			PP.obj.$window.scroll( function(){
 
 				PP.method.global.scrollClass();
-				PP.method.navigation.stickyHeader( false )
+				PP.method.navigation.stickyHeader( false );
 
 			});
 		},

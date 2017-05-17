@@ -147,16 +147,7 @@ if ( !$variations_slider && ( $product->is_type( 'variable' ) || $product->is_ty
 
 		} ?>
 
-		<div class="badges">
-
-			<?php if ( ! $variation['is_in_stock'] ) { ?>
-				<span class="out-of-stock"><?php _e( 'Out of stock', 'woocommerce' ); ?></span>
-			<?php } ?>
-			<?php if ( $product->is_on_sale() && $variation['display_price'] !== $variation['display_regular_price'] ) {
-				echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . __( 'Sale!', 'woocommerce' ) . '</span>', $post, $product );
-			} ?>
-
-		</div>
+        <?php wc_get_template( 'loop/sale-flash.php', array( 'variation' => $variation ) ); ?>
 
 		<a href="<?php echo $url; ?>" class="img" data-colors="<?php echo $product_colors; ?>" data-variation-id="<?php echo $variation['variation_id']; ?>" data-product-id="<?php echo $post->ID; ?>" <?php echo $data_attr; ?> data-attr-counter="<?php echo $data_counter; ?>" data-product_variations="<?php echo htmlspecialchars( json_encode( $product->get_available_variations() ) ); ?>"><?php echo get_the_post_thumbnail( $post->ID, $size, $thumb_attr ); ?></a>
 

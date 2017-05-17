@@ -220,21 +220,12 @@ class PP_Woocommerce {
 
     			$variation_url = get_permalink() . trim($attributes, '&');
 
-    			// Product on sale/out of stock
-    			$sales = '<div class="badges">';
-
-    				if ( !$variation['is_in_stock'] == 1 ) {
-    					$sales .= '<span class="out-of-stock">' . __( 'Out of stock', 'woocommerce' ) . '</span>';
-    					$stock_class = 'data-stock-class="false"';
-    				}
-    				if ( $product->is_on_sale() && $variation['display_price'] !== $variation['display_regular_price'] ) {
-    					$sales .= '<span class="onsale">' . __( 'Sale!', 'woocommerce' ) . '</span>';
-    				}
-
-    			$sales .= '</div>';
+                if ( ! $variation['is_in_stock'] ) {
+                    $stock_class = 'data-stock-class="false"';
+                }
 
     			if ( !$exist && $variation['variation_is_visible'] == 1 && $variation['is_purchasable'] == 1 && $variations_slider ){
-    				$output .= '<div>' . $sales . $variation['price_html'];
+    				$output .= '<div>' . pp_return_template_part( 'loop/sale-flash.php', array( 'variation' => $variation, 'full' => false ) ) . $variation['price_html'];
     				$img_title = ( isset( $variation['image_title'] ) ? $variation['image_title'] : '' );
 
     				$output .= '<a href="' . $variation_url . '" class="img"' .$stock_class . ' data-colors="'. $product_colors .'" data-variation-id="'.$variation['variation_id'].'" data-product-id="' . $post->ID .'"' . $data_attr . ' data-attr-counter="' . $data_counter . '">' . /* wp_get_attachment_image( $post->ID, $size, $thumb_attr ); */ '<img src="' .esc_url( $img_src ) . '" class="attachment-'. $size. '" srcset="' . esc_attr( $img_srcset ) . '" sizes="' . $img_sizes . '" title="' . $img_title . '">';

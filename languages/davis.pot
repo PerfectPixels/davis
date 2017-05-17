@@ -225,6 +225,82 @@ msgstr ""
 msgid "Wishlist"
 msgstr ""
 
+#: inc/backend/theme-options/checkout.php:4
+msgid "The cart is being cached, make sure you empty the cache after updating any option in this section."
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:12
+msgid "Cart Title"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:16, woocommerce/cart/mini-cart.php:19, woocommerce/checkout/form-checkout.php:46
+msgid "Cart Summary"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:27
+msgid "Details Title"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:31, woocommerce/cart/mini-cart.php:22, woocommerce/checkout/form-checkout.php:57
+msgid "Customer Details"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:36
+msgid "Details Subtitle"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:40, woocommerce/checkout/form-checkout.php:58
+msgid "Fill in your details in the form bellow"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:45
+msgid "Shipping / Payment Title"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:49, woocommerce/cart/mini-cart.php:23, woocommerce/checkout/form-checkout.php:160
+msgid "Shipping & Payment"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:54
+msgid "Shipping / Payment Subtitle"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:58, woocommerce/checkout/form-checkout.php:161
+msgid "Select your preferred shipping and payment methods"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:63
+msgid "Review Title"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:67, woocommerce/checkout/form-checkout.php:183
+msgid "Review Order"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:72
+msgid "Review Subtitle"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:76, woocommerce/checkout/form-checkout.php:184
+msgid "Confirm your cart content and the total of your order"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:81
+msgid "Quick Checkout"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:82
+msgid "Choose if you want a quick checkout available on all pages instead of the default Woocommerce checkout page. PLEASE NOTE: Quick checkout was not tested with all existing plugins that adds/modifies the checkout process or layout. If you find any issues while using it please disable it."
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:88, inc/backend/theme-options/shop/product-style.php:56, inc/backend/theme-options/shop/product-style.php:78, inc/backend/theme-options/shop/shop-page.php:67
+msgid "Enable"
+msgstr ""
+
+#: inc/backend/theme-options/checkout.php:89, inc/backend/theme-options/shop/product-style.php:57, inc/backend/theme-options/shop/product-style.php:79, inc/backend/theme-options/shop/shop-page.php:68
+msgid "Disable"
+msgstr ""
+
 #: inc/backend/theme-options/footer.php:6
 msgid "Footer"
 msgstr ""
@@ -261,11 +337,11 @@ msgstr ""
 msgid "Choose if you want to display or remove the bottom sidebar in the footer."
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:54, inc/backend/theme-options/footer.php:163, inc/backend/theme-options/shop.php:89, inc/backend/theme-options/shop.php:246
+#: inc/backend/theme-options/footer.php:54, inc/backend/theme-options/footer.php:163, inc/backend/theme-options/shop/product-style.php:42, inc/backend/theme-options/shop/single-product.php:89
 msgid "Show"
 msgstr ""
 
-#: inc/backend/theme-options/footer.php:55, inc/backend/theme-options/footer.php:164, inc/backend/theme-options/shop.php:90, inc/backend/theme-options/shop.php:247
+#: inc/backend/theme-options/footer.php:55, inc/backend/theme-options/footer.php:164, inc/backend/theme-options/shop/product-style.php:43, inc/backend/theme-options/shop/single-product.php:90
 msgid "Hide"
 msgstr ""
 
@@ -381,7 +457,7 @@ msgstr ""
 msgid "Logo Position"
 msgstr ""
 
-#: inc/backend/theme-options/general/site-identity.php:79, inc/backend/theme-options/general/site-identity.php:102, inc/backend/theme-options/general/site-identity.php:124, inc/backend/theme-options/header/main-header.php:116, inc/backend/theme-options/shop.php:221, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87, inc/mega-menu/options/icon.php:50
+#: inc/backend/theme-options/general/site-identity.php:79, inc/backend/theme-options/general/site-identity.php:102, inc/backend/theme-options/general/site-identity.php:124, inc/backend/theme-options/header/main-header.php:116, inc/backend/theme-options/shop/single-product.php:64, inc/mega-menu/options/background.php:75, inc/mega-menu/options/background.php:87, inc/mega-menu/options/icon.php:50
 msgid "Left"
 msgstr ""
 
@@ -873,7 +949,7 @@ msgstr ""
 msgid "Content Position"
 msgstr ""
 
-#: inc/backend/theme-options/header/main-header.php:118, inc/backend/theme-options/shop.php:222, inc/mega-menu/options/background.php:67, inc/mega-menu/options/background.php:89
+#: inc/backend/theme-options/header/main-header.php:118, inc/backend/theme-options/shop/single-product.php:65, inc/mega-menu/options/background.php:67, inc/mega-menu/options/background.php:89
 msgid "Right"
 msgstr ""
 
@@ -1017,228 +1093,212 @@ msgstr ""
 msgid "Shop"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:24
-msgid "Page Title"
+#: inc/backend/theme-options/shop/product-style.php:15
+msgid "Card Styling"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:28, inc/functions/entries.php:36
-msgid "Shop all products"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:39
-msgid "Products per row"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:53
-msgid "Shop Sidebar"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:54
-msgid "Choose if you want to display the sidebar on the product page and select the type."
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:60
-msgid "No Sidebar"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:61
-msgid "Default Sidebar"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:62
-msgid "Off-canvas Sidebar"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:68
+#: inc/backend/theme-options/shop/product-style.php:21
 msgid "Product Card Style"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:69
+#: inc/backend/theme-options/shop/product-style.php:22
 msgid "Choose between the different product design style."
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:82
+#: inc/backend/theme-options/shop/product-style.php:35
 msgid "Product Details"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:83
+#: inc/backend/theme-options/shop/product-style.php:36
 msgid "Choose if you want to display the product details on hover only."
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:96
-msgid "Enable Quickview"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:97
-msgid "Enable Quickview will display a icon in the product details to open a modal."
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:103, inc/backend/theme-options/shop.php:131, inc/backend/theme-options/shop.php:147, inc/backend/theme-options/shop.php:360
-msgid "Enable"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:104, inc/backend/theme-options/shop.php:132, inc/backend/theme-options/shop.php:148, inc/backend/theme-options/shop.php:361
-msgid "Disable"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:110
-msgid "Quickview Layout"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:111
-msgid "Choose the way you want the image to be displayed."
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:117
-msgid "Image on the left"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:118
-msgid "Image at the top"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:124
+#: inc/backend/theme-options/shop/product-style.php:49
 msgid "Variations Slider"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:125
+#: inc/backend/theme-options/shop/product-style.php:50
 msgid "Choose if you want to display the product variations as a slider on the shop pages."
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:140
+#: inc/backend/theme-options/shop/product-style.php:65, woocommerce/loop/add-to-cart.php:28
+msgid "Quickview"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:71
+msgid "Enable Quickview"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:72
+msgid "Enable Quickview will display a icon in the product details to open a modal."
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:85
+msgid "Quickview Layout"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:86
+msgid "Choose the way you want the image to be displayed."
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:92
+msgid "Image on the left"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:93
+msgid "Image at the top"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:108
+msgid "Badges"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:115
+msgid "Featured badge text"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:119, inc/mega-menu/class-mega-menu-walker.php:425
+msgid "Hot"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:130
+msgid "Featured Badge Color"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:152
+msgid "Enable New Product Badge"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:160
+msgid "New badge duration"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:161
+msgid "Choose how many days a product remains as \"new\""
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:176
+msgid "New badge text"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:180, inc/mega-menu/class-mega-menu-walker.php:431
+msgid "New"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:191
+msgid "New Badge Color"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:213
+msgid "Sale badge text"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:217
+msgid "Sale!"
+msgstr ""
+
+#: inc/backend/theme-options/shop/product-style.php:228
+msgid "Sale Badge Color"
+msgstr ""
+
+#: inc/backend/theme-options/shop/shop-page.php:14
+msgid "Page Title"
+msgstr ""
+
+#: inc/backend/theme-options/shop/shop-page.php:18, inc/functions/entries.php:36
+msgid "Shop all products"
+msgstr ""
+
+#: inc/backend/theme-options/shop/shop-page.php:29
+msgid "Products per row"
+msgstr ""
+
+#: inc/backend/theme-options/shop/shop-page.php:43
+msgid "Shop Sidebar"
+msgstr ""
+
+#: inc/backend/theme-options/shop/shop-page.php:44
+msgid "Choose if you want to display the sidebar on the product page and select the type."
+msgstr ""
+
+#: inc/backend/theme-options/shop/shop-page.php:50
+msgid "No Sidebar"
+msgstr ""
+
+#: inc/backend/theme-options/shop/shop-page.php:51
+msgid "Default Sidebar"
+msgstr ""
+
+#: inc/backend/theme-options/shop/shop-page.php:52
+msgid "Off-canvas Sidebar"
+msgstr ""
+
+#: inc/backend/theme-options/shop/shop-page.php:60
 msgid "Single Variation Product"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:141
+#: inc/backend/theme-options/shop/shop-page.php:61
 msgid "Separate the variations as single standalone products on category pages without subcategories. This is ideal for customers to have the variations slider on the top categories and see all variations at glance when filtering down."
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:170
+#: inc/backend/theme-options/shop/single-product.php:13
 msgid "Product Images Style"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:171
+#: inc/backend/theme-options/shop/single-product.php:14
 msgid "Select the way the product is been showcased. (can be overwritten in the product option itself)"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:177
+#: inc/backend/theme-options/shop/single-product.php:20
 msgid "Thumbnails below Summary"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:178
+#: inc/backend/theme-options/shop/single-product.php:21
 msgid "Thumbnails over Image"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:179
+#: inc/backend/theme-options/shop/single-product.php:22
 msgid "Vertical Thumbnails"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:180
+#: inc/backend/theme-options/shop/single-product.php:23
 msgid "No Thumbnails"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:181
+#: inc/backend/theme-options/shop/single-product.php:24
 msgid "Carousel"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:182
+#: inc/backend/theme-options/shop/single-product.php:25
 msgid "Slideshow"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:183
+#: inc/backend/theme-options/shop/single-product.php:26
 msgid "Fullwidth"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:190
+#: inc/backend/theme-options/shop/single-product.php:33
 msgid "Image container background color"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:191
+#: inc/backend/theme-options/shop/single-product.php:34
 msgid "Color used on behind the images."
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:214
+#: inc/backend/theme-options/shop/single-product.php:57
 msgid "Product Images Position"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:215
+#: inc/backend/theme-options/shop/single-product.php:58
 msgid "Select the which side you want the images to be displayed."
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:240
+#: inc/backend/theme-options/shop/single-product.php:83
 msgid "Related Product"
 msgstr ""
 
-#: inc/backend/theme-options/shop.php:253
+#: inc/backend/theme-options/shop/single-product.php:96
 msgid "Related Products"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:275
-msgid "The cart is being cached, make sure you empty the cache after updating any option in this section."
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:284
-msgid "Cart Title"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:288, woocommerce/cart/mini-cart.php:19, woocommerce/checkout/form-checkout.php:46
-msgid "Cart Summary"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:299
-msgid "Details Title"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:303, woocommerce/cart/mini-cart.php:22, woocommerce/checkout/form-checkout.php:57
-msgid "Customer Details"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:308
-msgid "Details Subtitle"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:312, woocommerce/checkout/form-checkout.php:58
-msgid "Fill in your details in the form bellow"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:317
-msgid "Shipping / Payment Title"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:321, woocommerce/cart/mini-cart.php:23, woocommerce/checkout/form-checkout.php:160
-msgid "Shipping & Payment"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:326
-msgid "Shipping / Payment Subtitle"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:330, woocommerce/checkout/form-checkout.php:161
-msgid "Select your preferred shipping and payment methods"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:335
-msgid "Review Title"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:339, woocommerce/checkout/form-checkout.php:183
-msgid "Review Order"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:344
-msgid "Review Subtitle"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:348, woocommerce/checkout/form-checkout.php:184
-msgid "Confirm your cart content and the total of your order"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:353
-msgid "Quick Checkout"
-msgstr ""
-
-#: inc/backend/theme-options/shop.php:354
-msgid "Choose if you want a quick checkout available on all pages instead of the default Woocommerce checkout page. PLEASE NOTE: Quick checkout was not tested with all existing plugins that adds/modifies the checkout process or layout. If you find any issues while using it please disable it."
 msgstr ""
 
 #: inc/frontend/cart.php:114, woocommerce/cart/mini-cart.php:20, woocommerce/checkout/form-checkout.php:47
@@ -1337,11 +1397,11 @@ msgstr ""
 msgid "Edit %s"
 msgstr ""
 
-#: inc/frontend/woocommerce.php:335
+#: inc/frontend/woocommerce.php:326
 msgid "by"
 msgstr ""
 
-#: inc/frontend/woocommerce.php:398
+#: inc/frontend/woocommerce.php:389
 msgid "Share:"
 msgstr ""
 
@@ -1359,14 +1419,6 @@ msgstr ""
 
 #: inc/functions/helpers.php:132
 msgid "Assign a menu in Theme Options > Menus"
-msgstr ""
-
-#: inc/mega-menu/class-mega-menu-walker.php:425
-msgid "Hot"
-msgstr ""
-
-#: inc/mega-menu/class-mega-menu-walker.php:431
-msgid "New"
 msgstr ""
 
 #: inc/mega-menu/class-mega-menu-walker.php:437
@@ -1814,10 +1866,6 @@ msgstr ""
 
 #: woocommerce/checkout/thankyou.php:214
 msgid "Grand Total"
-msgstr ""
-
-#: woocommerce/loop/add-to-cart.php:28
-msgid "Quickview"
 msgstr ""
 
 #: woocommerce/loop/add-to-cart.php:50, woocommerce/loop/add-to-cart.php:51

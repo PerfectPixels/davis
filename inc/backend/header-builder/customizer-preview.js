@@ -18,7 +18,7 @@
 							device = 'mobile'; 
 						}
 
-						$( '#header-' + device + ' .unused' ).find( '[data-type=' + type + ']' ).appendTo( '.header-builder [data-setting=' + setting +']' )
+						$( '#header-' + device + ' .unused' ).find( '[data-type=' + type + ']' ).appendTo( '.header-builder [data-setting=' + setting +']' );
 					});
 				}
 			});
@@ -147,7 +147,7 @@
                     contentPos = $img.data( 'content-pos' ),
                     arrElements = $img.data( 'elements' ).split(/\[(.*?)\]/),
                     options = $img.data( 'options' ).split(/\[(.*?)\]/),
-                    newElements = arrElements.filter( function(n){ return n != "" } ),
+                    newElements = arrElements.filter( function(n){ return n !== ""; } ),
                     devices = [ 'desktop', 'tablet' ],
                     count = 0;
 

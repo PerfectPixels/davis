@@ -462,6 +462,19 @@
       }
     }
 
+    &#input_product_card_style {
+
+      label {
+        padding: 0;
+
+        img {
+          padding: 0;
+        }
+
+      }
+
+    }
+
   }
 
   input:checked + label img {

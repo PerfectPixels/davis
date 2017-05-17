@@ -141,9 +141,9 @@ var menuSettings;
 			}
 
 			if ($el.hasClass('submenu-bigger')) {
-				next = current == steps.length ? current : current + 1;
+				next = current === steps.length ? current : current + 1;
 			} else {
-				next = current == 0 ? current : current - 1;
+				next = current === 0 ? current : current - 1;
 			}
 
 			$column[0].style.width = steps[next];

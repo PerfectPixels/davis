@@ -132,7 +132,8 @@
 				wlid = $btn.data( 'listid' ),
 				$form = WCWL.current_product_form,
 				sep = wishlist_params.current_url.indexOf( '?' ) >= 0 ? '&' : '?',
-				newURL = wishlist_params.current_url + sep + 'add-to-wishlist-itemid=' + WCWL.current_product_id;
+				newURL = wishlist_params.current_url + sep + 'add-to-wishlist-itemid=' + WCWL.current_product_id,
+				formData = '';
 				
 			$form.find("input#wlid").val(wlid);
 			
@@ -142,9 +143,8 @@
 				$( '<div class="loading-overlay"><p class="loading"></p></div>' ).appendTo($form);
 				$( '#wl-list-pop-wrap' ).hide();
 				$( '.wishlist-options' ).hide().removeClass( 'open' ).insertAfter( '#wl-list-pop-wrap' );
-				
-				var formData = 'quantity=1';
-				
+
+                formData = 'quantity=1';
 				formData += '&add-to-cart=' + $form.find( '.add_to_cart_button' ).data( 'product_id' );
 				formData += '&wlid=' + $form.find( '[name=wlid]' ).val();
 				formData += '&add-to-wishlist-type=' + $form.find( '[name=add-to-wishlist-type]' ).val();
@@ -170,8 +170,7 @@
 				} 
 			// If we are on a single product page
 			} else {	
-				var formData = 'quantity=' + $form.find( 'input.qty' ).val();
-				
+				formData = 'quantity=' + $form.find( 'input.qty' ).val();
 				formData += '&add-to-cart=' + $form.data( 'product_id' );
 				formData += '&wlid=' + $form.find( '[name=wlid]' ).val();
 				formData += '&add-to-wishlist-type=' + $form.find( '[name=add-to-wishlist-type]' ).val();
@@ -209,8 +208,7 @@
 		$( '.wlconfirm' ).click(function () {
 			var message = $(this).data( 'message' );
 
-			var answer = confirm(message ? message : wishlist_params.are_you_sure);
-			return answer;
+            return confirm(message ? message : wishlist_params.are_you_sure);
 		});
 
 		$( 'input[type=checkbox]', '.wl-table thead tr th' ).click(function () {
